@@ -55,6 +55,7 @@ def normalize_brand(raw: str) -> str:
 def normalize_model(raw: str) -> str:
     collapsed = re.sub(r"\s+", " ", str(raw)).strip()
     collapsed = re.sub(r"\s*-\s*", "-", collapsed)
+    collapsed = re.sub(r"(?i)\bpolytour\b", "Poly Tour", collapsed)
     return MODEL_ALIASES.get(_key(collapsed), collapsed)
 
 

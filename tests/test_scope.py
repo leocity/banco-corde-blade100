@@ -54,3 +54,8 @@ def test_scope_competitors():
 def test_string_id():
     assert string_id("Solinco", "Confidential", "16L") == "solinco-confidential-16l"
     assert string_id("Toroline", "O-Toro", "17") == "toroline-o-toro-17"
+
+
+def test_polytour_spacing():
+    assert normalize_model("PolyTour REV") == "Poly Tour REV"
+    assert normalize_model("Polytour Rev") == "Poly Tour Rev"
