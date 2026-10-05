@@ -149,7 +149,7 @@
   "static_stiffness_kgmm": 0.9,
   "shape": "round",
   "composition": "polyester",
-  "match": "proxy"
+  "match": "exact"
  },
  {
   "id": "kirschbaum-flash-green-17",
@@ -157,7 +157,7 @@
   "static_stiffness_kgmm": 0.85,
   "shape": "round",
   "composition": "polyester",
-  "match": "proxy"
+  "match": "exact"
  },
  {
   "id": "signum-pro-x-perience-17",
@@ -333,6 +333,22 @@
   "static_stiffness_kgmm": 0.9,
   "shape": "round",
   "composition": "polyester",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
   "match": "proxy"
  }
 ]

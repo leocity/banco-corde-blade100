@@ -4,14 +4,14 @@ import json
 import pathlib
 
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
+from pipeline.notes_gen import apply_notes
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
 def build(records, notes):
     discriminant = derive_all(records)
-    for r in records:
-        r["notes"] = notes.get(r["id"], {})
+    apply_notes(records, notes)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
     return {

@@ -58,3 +58,15 @@ def test_exact_twu_mm_overrides_nominal():
 def test_ids_unique():
     ids = [r["id"] for r in merge(EX, TW, MA, RP)]
     assert len(ids) == len(set(ids))
+
+
+def test_integration_on_real_files():
+    import json, pathlib
+    p = pathlib.Path(__file__).resolve().parent.parent / "data" / "merged.json"
+    recs = {r["id"]: r for r in json.loads(p.read_text(encoding="utf-8"))}
+    assert recs["solinco-confidential-16l"]["twu"]["match"] == "proxy"
+    assert recs["solinco-confidential-16l"]["rpedia"]["static_stiffness_kgmm"] == 1.0
+    assert recs["re-string-zero-16"]["twu"] is None
+    assert recs["grapplesnake-tour-m8-17"]["excel"] is None
+    assert recs["toroline-o-toro-17"]["twu"]["stiffness_lbin"] == 165.7
+    assert len(recs) == len(json.loads(p.read_text(encoding="utf-8")))

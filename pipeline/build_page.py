@@ -25,5 +25,11 @@ if __name__ == "__main__":
     data = json.loads((ROOT / "data" / "strings.json").read_text(encoding="utf-8"))
     out = ROOT / "dist" / "string-explorer.html"
     out.parent.mkdir(exist_ok=True)
-    out.write_text(render(data), encoding="utf-8")
+    page = render(data)
+    out.write_text(page, encoding="utf-8")
+    # anteprima locale: lo scheletro (doctype, charset, viewport) lo aggiunge l'Artifact in pubblicazione
+    (out.parent / "preview.html").write_text(
+        '<!doctype html><html lang="it"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></head><body>'
+        + page + "</body></html>", encoding="utf-8")
     print(out, f"{out.stat().st_size // 1024} KB")

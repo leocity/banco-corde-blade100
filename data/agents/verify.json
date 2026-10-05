@@ -1,0 +1,42 @@
+[
+ {
+  "id": "kirschbaum-flash-orange-17",
+  "field": "rpedia.match",
+  "found": "proxy",
+  "expected": "exact",
+  "source_url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-orange-125",
+  "note": "Same model and colour; page gauge 1.25 = Kirschbaum 17 (TWU lists Kirschbaum 17 as 1.25), so not a diameter proxy"
+ },
+ {
+  "id": "kirschbaum-flash-green-17",
+  "field": "rpedia.match",
+  "found": "proxy",
+  "expected": "exact",
+  "source_url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-green-125",
+  "note": "Same model and colour; page gauge 1.25 = Kirschbaum 17, so not a diameter proxy"
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "field": "rpedia.match",
+  "found": "proxy",
+  "expected": "exact (or probable: pink vs Neon Pink)",
+  "source_url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+  "note": "Same model, gauge 1.23 = Toroline 17 (O-Toro 17 is 1.23 on TWU); differs only by colour name, not diameter"
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "field": "rpedia.match",
+  "found": "proxy",
+  "expected": "probable",
+  "source_url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+  "note": "Same model and gauge 1.23 but page is Neon Pink (record is Orange): colour variant, not a diameter proxy"
+ },
+ {
+  "id": "tecnifibre-razor-17",
+  "field": "rpedia.match",
+  "found": "proxy",
+  "expected": "probable",
+  "source_url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+  "note": "Page is Razor Code at 1.25 = 17 (same diameter); name differs (Razor vs Razor Code), consistent with twu.match=probable"
+ }
+]

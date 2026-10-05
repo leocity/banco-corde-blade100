@@ -19,3 +19,8 @@ export function profileScore(sub, weights, dislikedSim) {
 export function kgToLbs(kg) {
   return Math.round(kg * 2.2046 * 2) / 2;
 }
+
+export function dislikedFlag(bestLiked, worstDisliked) {
+  if (worstDisliked === null || worstDisliked === undefined || worstDisliked <= DISLIKED_THRESHOLD) return false;
+  return bestLiked === null || bestLiked === undefined || worstDisliked > bestLiked;
+}

@@ -1,4 +1,4 @@
-import { profileScore, kgToLbs, DEFAULT_WEIGHTS, DISLIKED_THRESHOLD } from './score.js';
+import { profileScore, kgToLbs, DEFAULT_WEIGHTS, DISLIKED_THRESHOLD, dislikedFlag } from './score.js';
 
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
@@ -18,14 +18,16 @@ const nameOf = (r) => `${r.brand} ${r.model}`;
 const gaugeOf = (r) => (r.gauge_mm ? r.gauge_mm.toFixed(2) + ' mm' : r.gauge_label || '—');
 const fullName = (r) => `${nameOf(r)} ${r.gauge_mm ? r.gauge_mm.toFixed(2) : r.gauge_label}`;
 const cat = (r) => (r.preference === 'liked' ? 'liked' : r.preference === 'disliked' ? 'disliked' : r.is_target ? 'target' : 'other');
-const worstDisliked = (r) => {
-  if (r.preference === 'disliked') return null;
-  const v = Object.values(r.derived.similarity_disliked || {}).filter((x) => x !== null);
-  return v.length ? Math.max(...v) : null;
-};
 const bestLiked = (r) => {
   const v = Object.values(r.derived.similarity_liked || {}).filter((x) => x !== null);
   return v.length ? Math.max(...v) : null;
+};
+// valore usato per la penalità: solo quando scatta l'avviso (stessa regola di derive.disliked_flag)
+const worstDisliked = (r) => {
+  if (r.preference) return null;
+  const v = Object.values(r.derived.similarity_disliked || {}).filter((x) => x !== null);
+  const w = v.length ? Math.max(...v) : null;
+  return dislikedFlag(bestLiked(r), w) ? w : null;
 };
 const isProxy = (r) => r.twu && r.twu.match !== 'exact';
 
@@ -114,7 +116,7 @@ function badges(r) {
   const out = [];
   if (r.preference === 'liked') out.push('<span class="badge liked">★ preferita</span>');
   if (r.preference === 'disliked') out.push('<span class="badge disliked">✕ non gradita</span>');
-  if (r.derived.disliked_warning) out.push(`<span class="badge warn" title="Somiglianza oltre ${DISLIKED_THRESHOLD} con una corda che non ti è piaciuta">⚠ simile a una non gradita</span>`);
+  if (r.derived.disliked_warning) out.push(`<span class="badge warn" title="Somiglianza oltre ${DISLIKED_THRESHOLD} con una corda che non ti è piaciuta, più che con le tue preferite">⚠ simile a una non gradita</span>`);
   out.push(`<span class="cov" title="Fonti con dati: Excel, TWU, Racketpedia">${'●'.repeat(r.coverage)}${'○'.repeat(3 - r.coverage)}</span>`);
   return out.join(' ');
 }
@@ -248,7 +250,7 @@ function drawScatter() {
   }
   for (const r of sorted.filter((r) => r.preference)) {
     const x = sx(mx.get(r)), y = sy(my.get(r)), right = x < W - 200;
-    s += `<text class="lbl" x="${x + (right ? 10 : -10)}" y="${y - 8}" text-anchor="${right ? 'start' : 'end'}">${r.preference === 'liked' ? '★ ' : '✕ '}${esc(r.model)} ${esc(r.gauge_mm ? r.gauge_mm.toFixed(2) : r.gauge_label)}</text>`;
+    s += `<text class="lbl" x="${x + (right ? 10 : -10)}" y="${y - 8}" text-anchor="${right ? 'start' : 'end'}">${r.preference === 'liked' ? '★ ' : '✕ '}${esc(r.model)} ${esc(r.gauge_label || '')}</text>`;
   }
   svg.innerHTML = s;
   $('#map-note').textContent = `${pts.length} corde con entrambi i valori; ${ALL.length - pts.length} escluse perché manca almeno un dato. Tocca un punto per aprire la scheda.`;
@@ -382,7 +384,7 @@ function renderGuide() {
       ].map(([t, a, b, c]) => `<div class="gcard"><h3>${t}</h3><p>${a}</p><p class="scale">${b}</p><p class="small muted">${c}</p></div>`).join('')}
     </div>
     <h3>Il punteggio "Per te"</h3>
-    <p>Ogni corda riceve un percentile (0–100) rispetto alle ${ALL.length} corde del banco per spin, controllo, potenza, tenuta e comfort. Il punteggio è la media pesata di spin, controllo, tenuta e potenza con i pesi che scegli. Se la corda somiglia per più di ${DISLIKED_THRESHOLD} su 100 a Confidential Soft o RPM Blast perde 15 punti. Controllo e potenza vengono dalla stessa rigidità vista in direzioni opposte, quindi alzare uno abbassa l'altro.</p>
+    <p>Ogni corda riceve un percentile (0–100) rispetto alle ${ALL.length} corde del banco per spin, controllo, potenza, tenuta e comfort. Il punteggio è la media pesata di spin, controllo, tenuta e potenza con i pesi che scegli. Se la corda somiglia per più di ${DISLIKED_THRESHOLD} su 100 a Confidential Soft o RPM Blast, e più che alle tue preferite, perde 15 punti. Controllo e potenza vengono dalla stessa rigidità vista in direzioni opposte, quindi alzare uno abbassa l'altro.</p>
     <h3>La tensione suggerita</h3>
     <p>Si parte dalla tua preferita più simile (Confidential 22/21 kg, O-Toro 23/22 kg) e si corregge di circa 0,5–1 kg ogni 15 lb/in di rigidità TWU in più o in meno, fino a ±2 kg. È un punto di partenza: con una poly nuova, se dopo due ore la senti ancora dura, scendi di 1 kg la volta successiva.</p>
     <h3>Glossario del file Excel (colonne A–Y)</h3>

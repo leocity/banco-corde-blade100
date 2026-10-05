@@ -80,3 +80,17 @@ def test_similarity_is_smooth_not_clipped_to_zero():
     far = dict(POP_RECS[9], shape="HEX")
     s = similarity(POP_RECS[0], far, POP)
     assert 0 < s < 30
+
+
+def test_tension_note_uses_readable_anchor_name():
+    t = tension_start({"twu": {"stiffness_lbin": 252.3}}, ANCHORS)
+    assert "Confidential 1.25" in t["note"] and "solinco-confidential-16l" not in t["note"]
+
+
+def test_disliked_flag_requires_dominance_over_liked():
+    from pipeline.derive import disliked_flag
+    assert disliked_flag(best_liked=97, worst_disliked=80) is False
+    assert disliked_flag(best_liked=50, worst_disliked=80) is True
+    assert disliked_flag(best_liked=None, worst_disliked=80) is True
+    assert disliked_flag(best_liked=10, worst_disliked=70) is False
+    assert disliked_flag(best_liked=10, worst_disliked=None) is False

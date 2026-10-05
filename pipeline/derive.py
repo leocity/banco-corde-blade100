@@ -6,6 +6,7 @@ DISLIKED_PENALTY_THRESHOLD = 75
 DISLIKED_PENALTY = 15
 KG_TO_LBS = 2.2046
 ANCHOR_TENSIONS = {"solinco-confidential-16l": [22, 21], "toroline-o-toro-17": [23, 22]}
+ANCHOR_NAMES = {"solinco-confidential-16l": "Confidential 1.25", "toroline-o-toro-17": "O-Toro 1.23"}
 DISLIKED_GROUPS = {"confidential_soft": ("Solinco", "Confidential Soft"), "rpm_blast": ("Babolat", "RPM Blast")}
 
 
@@ -100,6 +101,13 @@ def profile_score(sub, weights=DEFAULT_WEIGHTS, disliked_sim=None):
     return int(max(0, min(100, score)))
 
 
+def disliked_flag(best_liked, worst_disliked):
+    """Avviso/penalità solo se la corda supera la soglia E somiglia più alla non gradita che alla preferita più vicina."""
+    if worst_disliked is None or worst_disliked <= DISLIKED_PENALTY_THRESHOLD:
+        return False
+    return best_liked is None or worst_disliked > best_liked
+
+
 def _half(x):
     return round(x * 2) / 2
 
@@ -109,11 +117,11 @@ def tension_start(rec, anchors):
     st = _get(rec, "twu", "stiffness_lbin")
     if st is None or anchor.get("stiffness") is None:
         kg = list(anchor["kg"])
-        note = f"tensione della preferita più simile ({anchor['id']}), senza dati TWU per correggerla"
+        note = f"tensione della preferita più simile ({ANCHOR_NAMES.get(anchor['id'], anchor['id'])}), senza dati TWU per correggerla"
     else:
         delta = max(-2.0, min(2.0, _half(-0.75 * (st - anchor["stiffness"]) / 15)))
         kg = [anchor["kg"][0] + delta, anchor["kg"][1] + delta]
-        note = f"da {anchor['id']} corretta di {delta:+.1f} kg per la differenza di rigidità TWU"
+        note = f"da {ANCHOR_NAMES.get(anchor['id'], anchor['id'])} corretta di {delta:+.1f} kg per la differenza di rigidità TWU"
     return {"kg": kg, "lbs": [_half(k * KG_TO_LBS) for k in kg], "from": anchor["id"],
             "indicative": True, "note": note}
 
@@ -144,6 +152,8 @@ def derive_all(records):
             vals = [s for s in (similarity(r, d, pop) for d in rs) if s is not None]
             sim_d[g] = max(vals) if vals else None
         worst = max([v for v in sim_d.values() if v is not None], default=None)
+        best = max([v for v in sim_l.values() if v is not None], default=None)
+        flag = r.get("preference") is None and disliked_flag(best, worst)
         anchors = [{"id": k, "kg": ANCHOR_TENSIONS[k], "stiffness": _get(a, "twu", "stiffness_lbin"),
                     "sim": similarity(r, a, pop)} for k, a in liked.items()]
         sub = subscores(r, pop)
@@ -151,8 +161,8 @@ def derive_all(records):
             "subscores": sub,
             "similarity_liked": sim_l,
             "similarity_disliked": sim_d,
-            "disliked_warning": worst is not None and worst > DISLIKED_PENALTY_THRESHOLD and r.get("preference") != "disliked",
-            "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if r.get("preference") != "disliked" else None),
+            "disliked_warning": flag,
+            "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if flag else None),
             "tension_start": tension_start(r, anchors) if anchors else None,
         }
     return discriminant_metrics(records, pop)

@@ -149,7 +149,7 @@
   "static_stiffness_kgmm": 0.9,
   "shape": "round",
   "composition": "polyester",
-  "match": "proxy"
+  "match": "exact"
  },
  {
   "id": "kirschbaum-flash-pink-17",
@@ -173,7 +173,7 @@
   "static_stiffness_kgmm": 0.85,
   "shape": "round",
   "composition": "polyester",
-  "match": "proxy"
+  "match": "exact"
  },
  {
   "id": "kirschbaum-flash-black-17",
@@ -469,7 +469,7 @@
   "static_stiffness_kgmm": 0.95,
   "shape": "hexagonal",
   "composition": "Hybrid",
-  "match": "proxy"
+  "match": "exact"
  },
  {
   "id": "toroline-toro-toro-matcha-16l",

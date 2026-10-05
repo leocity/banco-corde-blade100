@@ -1,0 +1,764 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "name": "Babolat RPM Blast 16L",
+  "twu": {
+   "twu_name": "Babolat RPM Blast 16",
+   "match": "proxy",
+   "stiffness_lbin": 232.6,
+   "tension_loss_pct": 45.9,
+   "spin_potential": 4.5
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125",
+   "static_stiffness_kgmm": 1.18,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "name": "Babolat RPM Blast 17",
+  "twu": {
+   "twu_name": "Babolat RPM Blast 17/1.25",
+   "match": "exact",
+   "stiffness_lbin": 233.7,
+   "tension_loss_pct": 33.3,
+   "spin_potential": 4.6
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125",
+   "static_stiffness_kgmm": 1.18,
+   "match": "exact"
+  },
+  "excel": {
+   "tl6": 20.0,
+   "tl12": 18.0,
+   "stiff_index_avg": 2.778
+  }
+ },
+ {
+  "id": "head-lynx-tour-16",
+  "name": "Head Lynx Tour 16",
+  "twu": {
+   "twu_name": "Head Lynx Tour 16 (1.30)",
+   "match": "exact",
+   "stiffness_lbin": 228.6,
+   "tension_loss_pct": 30.5,
+   "spin_potential": 6.1
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125",
+   "static_stiffness_kgmm": 1.05,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "kirschbaum-competition-16l",
+  "name": "Kirschbaum Competition 16L",
+  "twu": {
+   "twu_name": "Kirschbaum Competition 16/1.30",
+   "match": "proxy",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 47.5,
+   "spin_potential": 4.9
+  }
+ },
+ {
+  "id": "kirschbaum-max-power-16l",
+  "name": "Kirschbaum Max Power 16L",
+  "twu": {
+   "twu_name": "Kirschbaum Max Power 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 233.2,
+   "tension_loss_pct": 20.9,
+   "spin_potential": 5.9
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-grey-125",
+   "static_stiffness_kgmm": 1.27,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "kirschbaum-pro-line-evl-16l",
+  "name": "Kirschbaum Pro Line Evl 16L",
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line Evolution 17 (1.25)",
+   "match": "proxy",
+   "stiffness_lbin": 208.0,
+   "tension_loss_pct": 28.9,
+   "spin_potential": 4.9
+  }
+ },
+ {
+  "id": "kirschbaum-pro-line-rough-16l",
+  "name": "Kirschbaum Pro Line rough 16L"
+ },
+ {
+  "id": "kirschbaum-black-shark-16l",
+  "name": "Kirschbaum Black Shark 16L",
+  "twu": {
+   "twu_name": "Kirschbaum Black Shark 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 223.5,
+   "tension_loss_pct": 41.2,
+   "spin_potential": 5.4
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-125",
+   "static_stiffness_kgmm": 0.72,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "kirschbaum-xplosive-spd-17",
+  "name": "Kirschbaum Xplosive Spd 17",
+  "twu": {
+   "twu_name": "Kirschbaum Xplosive Speed 1.25",
+   "match": "probable",
+   "stiffness_lbin": 185.7,
+   "tension_loss_pct": 41.4,
+   "spin_potential": 7.1
+  }
+ },
+ {
+  "id": "kirschbaum-pro-line-17",
+  "name": "Kirschbaum Pro Line 17"
+ },
+ {
+  "id": "kirschbaum-helix-blue-17",
+  "name": "Kirschbaum Helix blue 17",
+  "twu": {
+   "twu_name": "Kirschbaum Helix 17",
+   "match": "probable",
+   "stiffness_lbin": 208.6,
+   "tension_loss_pct": 44.2,
+   "spin_potential": 5.4
+  }
+ },
+ {
+  "id": "kirschbaum-flash-orange-17",
+  "name": "Kirschbaum Flash orange 17",
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-orange-125",
+   "static_stiffness_kgmm": 0.9,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "kirschbaum-flash-pink-17",
+  "name": "Kirschbaum Flash pink 17",
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  }
+ },
+ {
+  "id": "kirschbaum-flash-yellow-17",
+  "name": "Kirschbaum Flash yellow 17",
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  }
+ },
+ {
+  "id": "kirschbaum-flash-green-17",
+  "name": "Kirschbaum Flash green 17",
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-green-125",
+   "static_stiffness_kgmm": 0.85,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "kirschbaum-flash-black-17",
+  "name": "Kirschbaum Flash black 17",
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  }
+ },
+ {
+  "id": "luxilon-4g-black-17",
+  "name": "Luxilon 4G Black 17",
+  "twu": {
+   "twu_name": "Luxilon 4G 16L (1.25)",
+   "match": "proxy",
+   "stiffness_lbin": 258.9,
+   "tension_loss_pct": 21.3,
+   "spin_potential": 3.9
+  }
+ },
+ {
+  "id": "luxilon-alu-power-blk-17",
+  "name": "Luxilon Alu Power blk 17",
+  "twu": {
+   "twu_name": "Luxilon ALU Power 125/16L",
+   "match": "proxy",
+   "stiffness_lbin": 209.2,
+   "tension_loss_pct": 46.6,
+   "spin_potential": 5.8
+  }
+ },
+ {
+  "id": "luxilon-alu-power-gry-17l",
+  "name": "Luxilon Alu Power gry 17L",
+  "twu": {
+   "twu_name": "Luxilon ALU Power 125/16L",
+   "match": "proxy",
+   "stiffness_lbin": 209.2,
+   "tension_loss_pct": 46.6,
+   "spin_potential": 5.8
+  }
+ },
+ {
+  "id": "luxilon-element-soft-ir-17",
+  "name": "Luxilon Element Soft IR 17",
+  "twu": {
+   "twu_name": "Luxilon Element Soft IR 1.27",
+   "match": "proxy",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 43.7,
+   "spin_potential": 7.0
+  }
+ },
+ {
+  "id": "luxilon-4g-desert-17",
+  "name": "Luxilon 4G Desert 17",
+  "twu": {
+   "twu_name": "Luxilon 4G 16L (1.25)",
+   "match": "proxy",
+   "stiffness_lbin": 258.9,
+   "tension_loss_pct": 21.3,
+   "spin_potential": 3.9
+  }
+ },
+ {
+  "id": "re-string-slap-17",
+  "name": "Re-String Slap 17",
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-slap-black-123",
+   "static_stiffness_kgmm": 0.75,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "re-string-sync-17",
+  "name": "Re-String Sync 17",
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-120",
+   "static_stiffness_kgmm": 0.85,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "re-string-zero-17",
+  "name": "Re-String Zero 17",
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-123",
+   "static_stiffness_kgmm": 1.05,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "solinco-hyper-g-soft-17",
+  "name": "Solinco Hyper-G Soft 17",
+  "twu": {
+   "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+   "match": "proxy",
+   "stiffness_lbin": 172.0,
+   "tension_loss_pct": 28.7,
+   "spin_potential": 5.2
+  }
+ },
+ {
+  "id": "solinco-hyper-g-soft-16",
+  "name": "Solinco Hyper-G Soft 16",
+  "twu": {
+   "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+   "match": "proxy",
+   "stiffness_lbin": 172.0,
+   "tension_loss_pct": 28.7,
+   "spin_potential": 5.2
+  }
+ },
+ {
+  "id": "solinco-confidential-16l",
+  "name": "Solinco Confidential 16L",
+  "twu": {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 22.2,
+   "spin_potential": 6.4
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-125",
+   "static_stiffness_kgmm": 1,
+   "match": "exact"
+  },
+  "excel": {
+   "tl6": 15.0,
+   "tl12": 20.0,
+   "stiff_index_avg": 2.333
+  }
+ },
+ {
+  "id": "solinco-confidential-17",
+  "name": "Solinco Confidential 17",
+  "twu": {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 22.2,
+   "spin_potential": 6.4
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120",
+   "static_stiffness_kgmm": 1,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "tecnifibre-razor-17",
+  "name": "Tecnifibre Razor 17",
+  "twu": {
+   "twu_name": "Tecnifibre Razor Code 17 (1.25)",
+   "match": "probable",
+   "stiffness_lbin": 229.2,
+   "tension_loss_pct": 29.6,
+   "spin_potential": 5.6
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+   "static_stiffness_kgmm": 1.28,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "name": "Toroline Absolute 17L",
+  "twu": {
+   "twu_name": "Toroline Absolute 17 (1.20)",
+   "match": "exact",
+   "stiffness_lbin": 180.6,
+   "tension_loss_pct": 47.1,
+   "spin_potential": 9.3
+  }
+ },
+ {
+  "id": "toroline-ether-17l",
+  "name": "Toroline Ether 17L"
+ },
+ {
+  "id": "toroline-enos-pro-16",
+  "name": "Toroline Enos Pro 16"
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "name": "Toroline O-Toro 17",
+  "twu": {
+   "twu_name": "Toroline O-Toro 17 (1.23)",
+   "match": "exact",
+   "stiffness_lbin": 165.7,
+   "tension_loss_pct": 44.4,
+   "spin_potential": 9.4
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-fluo-green-123",
+   "static_stiffness_kgmm": 0.95,
+   "match": "exact"
+  },
+  "excel": {
+   "tl6": 18.0,
+   "tl12": 7.0,
+   "stiff_index_avg": 3.6
+  }
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "name": "Toroline Toro Toro Orange 17",
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+   "static_stiffness_kgmm": 0.95,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "name": "Toroline Toro Toro pink 17",
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+   "static_stiffness_kgmm": 0.95,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "wilson-revolve-spin-17",
+  "name": "Wilson Revolve Spin 17",
+  "twu": {
+   "twu_name": "Wilson Revolve Spin 16",
+   "match": "proxy",
+   "stiffness_lbin": 172.6,
+   "tension_loss_pct": 54.5,
+   "spin_potential": 5.0
+  }
+ },
+ {
+  "id": "yonex-poly-tour-pro-ble-17",
+  "name": "Yonex Poly Tour Pro ble 17",
+  "twu": {
+   "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+   "match": "probable",
+   "stiffness_lbin": 188.6,
+   "tension_loss_pct": 33.3,
+   "spin_potential": 5.2
+  }
+ },
+ {
+  "id": "yonex-poly-tour-spin-17",
+  "name": "Yonex Poly Tour Spin 17",
+  "twu": {
+   "twu_name": "Yonex Poly Tour Spin 16L (1.25)",
+   "match": "proxy",
+   "stiffness_lbin": 213.7,
+   "tension_loss_pct": 27.2,
+   "spin_potential": 6.3
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-spin-blue-125",
+   "static_stiffness_kgmm": 1.08,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16",
+  "name": "Signum Pro Plasma HEXtreme 16",
+  "twu": {
+   "twu_name": "Signum Pro Plasma HEXtreme 16 (1.30)",
+   "match": "exact",
+   "stiffness_lbin": 225.7,
+   "tension_loss_pct": 24.8,
+   "spin_potential": 7.3
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-plasma-hextreme-orange-125",
+   "static_stiffness_kgmm": 1.1,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "head-lynx-tour-17",
+  "name": "Head Lynx Tour 17",
+  "twu": {
+   "twu_name": "Head Lynx Tour 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 217.7,
+   "tension_loss_pct": 24.6,
+   "spin_potential": 7.1
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125",
+   "static_stiffness_kgmm": 1.05,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "name": "Solinco Confidential Soft 16L",
+  "twu": {
+   "twu_name": "Solinco Confidential Soft 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 194.3,
+   "tension_loss_pct": 27.7,
+   "spin_potential": 6.5
+  }
+ },
+ {
+  "id": "solinco-revolution-16",
+  "name": "Solinco Revolution 16",
+  "twu": {
+   "twu_name": "Solinco Revolution 16",
+   "match": "exact",
+   "stiffness_lbin": 215.5,
+   "tension_loss_pct": 47.4,
+   "spin_potential": 6.4
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-130",
+   "static_stiffness_kgmm": 1.15,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "name": "Solinco Tour Bite 16L",
+  "twu": {
+   "twu_name": "Solinco Tour Bite 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 237.7,
+   "tension_loss_pct": 25.2,
+   "spin_potential": 5.9
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-125",
+   "static_stiffness_kgmm": 1.12,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "solinco-tour-bite-soft-16l",
+  "name": "Solinco Tour Bite Soft 16L",
+  "twu": {
+   "twu_name": "Solinco Tour Bite Soft 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 192.0,
+   "tension_loss_pct": 29.3,
+   "spin_potential": 5.8
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-125",
+   "static_stiffness_kgmm": 0.85,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16l",
+  "name": "Grapplesnake Tour Sniper 16L",
+  "twu": {
+   "twu_name": "Grapplesnake Tour Sniper 1.25",
+   "match": "exact",
+   "stiffness_lbin": 206.3,
+   "tension_loss_pct": 32.0,
+   "spin_potential": 5.8
+  }
+ },
+ {
+  "id": "kirschbaum-super-smash-17",
+  "name": "Kirschbaum Super Smash 17",
+  "twu": {
+   "twu_name": "Kirschbaum Super Smash 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 210.9,
+   "tension_loss_pct": 48.0,
+   "spin_potential": 5.7
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-super-smash-orange-123",
+   "static_stiffness_kgmm": 0.97,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "kirschbaum-max-power-rough-17",
+  "name": "Kirschbaum Max Power Rough 17",
+  "twu": {
+   "twu_name": "Kirschbaum Max Power Rough 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 223.5,
+   "tension_loss_pct": 26.4,
+   "spin_potential": 5.6
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-rough-grey-125",
+   "static_stiffness_kgmm": 1.03,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-17-125",
+  "name": "Kirschbaum Super Smash Spiky 17",
+  "twu": {
+   "twu_name": "Kirschbaum Super Smash Spiky 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 214.3,
+   "tension_loss_pct": 51.0,
+   "spin_potential": 5.2
+  }
+ },
+ {
+  "id": "kirschbaum-p2-17",
+  "name": "Kirschbaum P2 17",
+  "twu": {
+   "twu_name": "Kirschbaum P2 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 235.5,
+   "tension_loss_pct": 33.9,
+   "spin_potential": 4.9
+  }
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-17l",
+  "name": "Kirschbaum Pro Line II 17L",
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line II 17L (1.20)",
+   "match": "exact",
+   "stiffness_lbin": 193.2,
+   "tension_loss_pct": 46.0,
+   "spin_potential": 4.8
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-ii-red-125",
+   "static_stiffness_kgmm": 0.75,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "kirschbaum-pro-line-x-17",
+  "name": "Kirschbaum Pro Line X 17",
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line X 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 218.3,
+   "tension_loss_pct": 37.0,
+   "spin_potential": 4.8
+  }
+ },
+ {
+  "id": "signum-pro-firestorm-16l",
+  "name": "Signum Pro Firestorm 16L",
+  "twu": {
+   "twu_name": "Signum Pro Firestorm 1.25",
+   "match": "exact",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 46.4,
+   "spin_potential": 4.8
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-firestorm-amber-125",
+   "static_stiffness_kgmm": 0.85,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "head-hawk-17",
+  "name": "Head Hawk 17",
+  "twu": {
+   "twu_name": "Head Hawk 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 204.6,
+   "tension_loss_pct": 32.9,
+   "spin_potential": 4.7
+  }
+ },
+ {
+  "id": "signum-pro-hyperion-16",
+  "name": "Signum Pro Hyperion 16",
+  "twu": {
+   "twu_name": "Signum Pro Hyperion 16",
+   "match": "exact",
+   "stiffness_lbin": 220.0,
+   "tension_loss_pct": 40.9,
+   "spin_potential": 4.6
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-hyperion-black-124",
+   "static_stiffness_kgmm": 0.8,
+   "match": "proxy"
+  }
+ },
+ {
+  "id": "kirschbaum-competition-17",
+  "name": "Kirschbaum Competition 17",
+  "twu": {
+   "twu_name": "Kirschbaum Competition 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 47.5,
+   "spin_potential": 4.5
+  }
+ },
+ {
+  "id": "solinco-barb-wire-16",
+  "name": "Solinco Barb Wire 16",
+  "twu": {
+   "twu_name": "Solinco Barb Wire 16",
+   "match": "exact",
+   "stiffness_lbin": 214.3,
+   "tension_loss_pct": 40.2,
+   "spin_potential": 4.4
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-130",
+   "static_stiffness_kgmm": 1.05,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-17",
+  "name": "Solinco Tour Bite Diamond Rough 17",
+  "twu": {
+   "twu_name": "Solinco Tour Bite Diamond Rough 17 (1.20)",
+   "match": "exact",
+   "stiffness_lbin": 181.7,
+   "tension_loss_pct": 43.5,
+   "spin_potential": 4.3
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-diamond-rough-120",
+   "static_stiffness_kgmm": 0.55,
+   "match": "exact"
+  }
+ },
+ {
+  "id": "kirschbaum-pro-line-i-17",
+  "name": "Kirschbaum Pro Line I 17",
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line I 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 204.6,
+   "tension_loss_pct": 50.8,
+   "spin_potential": 4.1
+  }
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-17l",
+  "name": "Signum Pro Poly-Plasma Pure 17L",
+  "twu": {
+   "twu_name": "Signum Pro Poly-Plasma Pure 17L (1.18)",
+   "match": "exact",
+   "stiffness_lbin": 196.0,
+   "tension_loss_pct": 44.3,
+   "spin_potential": null
+  }
+ },
+ {
+  "id": "yonex-poly-tour-pro-yellow-16l",
+  "name": "Yonex Poly Tour Pro Yellow 16L",
+  "twu": {
+   "twu_name": "Yonex Poly Tour Pro Yellow 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 181.2,
+   "tension_loss_pct": 46.3,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-pro-yellow-125",
+   "static_stiffness_kgmm": 1.05,
+   "match": "exact"
+  }
+ }
+]

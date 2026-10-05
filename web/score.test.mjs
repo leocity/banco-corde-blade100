@@ -17,3 +17,11 @@ test('kg -> lbs arrotondato a 0.5', () => {
   assert.equal(kgToLbs(22), 48.5);
   assert.equal(kgToLbs(20.5), 45);
 });
+
+import { dislikedFlag } from './score.js';
+test('avviso non gradite solo se più simile alla non gradita che alla preferita', () => {
+  assert.equal(dislikedFlag(97, 80), false);
+  assert.equal(dislikedFlag(50, 80), true);
+  assert.equal(dislikedFlag(null, 80), true);
+  assert.equal(dislikedFlag(10, null), false);
+});
