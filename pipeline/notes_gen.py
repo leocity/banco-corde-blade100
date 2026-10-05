@@ -76,6 +76,9 @@ def _vs(r):
         else:
             fmt = lambda v: "n.d." if v is None else f"{v}/100"
             out = [f"Somiglianza {fmt(c)} con Confidential e {fmt(o)} con O-Toro."]
+            basis = max((d.get("similarity_basis") or {}).values(), default=6)
+            if basis <= 3:
+                out.append(f"Calcolata su sole {basis} misure (manca TWU): prendila come indicazione.")
         if d.get("disliked_warning"):
             g, v = max(((k, v) for k, v in (d.get("similarity_disliked") or {}).items() if v is not None), key=lambda kv: kv[1])
             out.append(f"Attenzione: assomiglia molto a {DISLIKED_NAMES[g]} ({v}/100), che non ti è piaciuta.")

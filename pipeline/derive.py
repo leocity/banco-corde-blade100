@@ -31,7 +31,7 @@ METRICS = {
     "excel_creep": lambda r: _get(r, "excel", "static_24h_creep"),
     "rpedia_static": lambda r: _get(r, "rpedia", "static_stiffness_kgmm"),
 }
-SIMILARITY_FEATURES = ("twu_stiffness", "twu_tension_loss", "twu_spin", "excel_stiff_index")
+SIMILARITY_FEATURES = ("twu_stiffness", "twu_tension_loss", "twu_spin", "excel_stiff_index", "excel_tl6", "rpedia_static")
 
 
 def population(records):
@@ -71,6 +71,10 @@ def _stats(xs):
     m = sum(xs) / len(xs)
     sd = math.sqrt(sum((x - m) ** 2 for x in xs) / len(xs)) or 1.0
     return m, sd
+
+
+def shared_features(a, b):
+    return sum(METRICS[k](a) is not None and METRICS[k](b) is not None for k in SIMILARITY_FEATURES)
 
 
 def similarity(a, b, pop):
@@ -161,6 +165,7 @@ def derive_all(records):
             "subscores": sub,
             "similarity_liked": sim_l,
             "similarity_disliked": sim_d,
+            "similarity_basis": {("confidential" if "confidential" in k else "otoro"): shared_features(r, a) for k, a in liked.items()},
             "disliked_warning": flag,
             "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if flag else None),
             "tension_start": tension_start(r, anchors) if anchors else None,

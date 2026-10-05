@@ -94,3 +94,18 @@ def test_disliked_flag_requires_dominance_over_liked():
     assert disliked_flag(best_liked=None, worst_disliked=80) is True
     assert disliked_flag(best_liked=10, worst_disliked=70) is False
     assert disliked_flag(best_liked=10, worst_disliked=None) is False
+
+
+def test_similarity_for_excel_and_racketpedia_only_strings():
+    pop_recs = [dict(r, rpedia={"static_stiffness_kgmm": 0.8 + i * 0.05}) for i, r in enumerate(POP_RECS)]
+    pop = population(pop_recs)
+    excel_only = {"shape": "HEX", "twu": None, "rpedia": {"static_stiffness_kgmm": 1.0},
+                  "excel": {"stiff_index_avg": 4.0, "tl6": 14.0}}
+    assert similarity(excel_only, pop_recs[4], pop) is not None
+
+
+def test_shared_feature_count():
+    from pipeline.derive import shared_features
+    excel_only = {"twu": None, "rpedia": None, "excel": {"stiff_index_avg": 4.0, "tl6": 14.0}}
+    assert shared_features(excel_only, POP_RECS[1]) == 2
+    assert shared_features(POP_RECS[1], POP_RECS[2]) == 5

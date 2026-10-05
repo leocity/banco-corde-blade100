@@ -186,7 +186,7 @@ function openSheet(id) {
     <div class="notes">${[['feel', 'Sensazione'], ['on_blade_100_v9', 'Sulla Blade 100 v9'], ['for_your_style', 'Per il tuo stile'], ['vs_favorites', 'Rispetto alle tue preferite']]
       .filter(([k]) => r.notes?.[k]).map(([k, l]) => `<div class="note"><h3>${l}</h3><p>${esc(r.notes[k])}</p></div>`).join('')}</div>
     <div><h3>Profilo (percentili sulle ${ALL.length} corde)</h3>${subBars(r)}</div>
-    <div><h3>Somiglianza</h3>${kv([
+    <div><h3>Somiglianza <span class="muted small">su ${Math.max(...Object.values(sims.similarity_basis || { x: 0 }))} misure su 6</span></h3>${kv([
       ['★ Confidential 1.25', fmt(sims.similarity_liked?.confidential, 0)], ['★ O-Toro 1.23', fmt(sims.similarity_liked?.otoro, 0)],
       ['✕ Confidential Soft', fmt(sims.similarity_disliked?.confidential_soft, 0)], ['✕ RPM Blast', fmt(sims.similarity_disliked?.rpm_blast, 0)]])}</div>
     <div class="src-grid">
