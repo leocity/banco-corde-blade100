@@ -14,6 +14,7 @@ const SUBS = [
   ['spin', 'Spin'], ['control', 'Controllo'], ['power', 'Potenza'], ['durability', 'Tenuta'], ['comfort', 'Comfort'],
 ];
 const fmt = (v, d = 1) => (v === null || v === undefined || Number.isNaN(v) ? '—' : Number(v).toFixed(d));
+const fmtH = (v, d = 1) => (v === null || v === undefined || Number.isNaN(v) ? '<span class="na" title="Non testato da questa fonte">—</span>' : Number(v).toFixed(d));
 const nameOf = (r) => `${r.brand} ${r.model}`;
 const gaugeOf = (r) => (r.gauge_mm ? r.gauge_mm.toFixed(2) + ' mm' : r.gauge_label || '—');
 const fullName = (r) => `${nameOf(r)} ${r.gauge_mm ? r.gauge_mm.toFixed(2) : r.gauge_label}`;
@@ -117,6 +118,7 @@ function badges(r) {
   if (r.preference === 'liked') out.push('<span class="badge liked">★ preferita</span>');
   if (r.preference === 'disliked') out.push('<span class="badge disliked">✕ non gradita</span>');
   if (r.derived.disliked_warning) out.push(`<span class="badge warn" title="Somiglianza oltre ${DISLIKED_THRESHOLD} con una corda che non ti è piaciuta, più che con le tue preferite">⚠ simile a una non gradita</span>`);
+  if (r.derived.sources_disagree) out.push('<span class="badge" title="Il test Ektelon e TWU danno giudizi opposti sulla morbidezza: guarda le due misure nella scheda">fonti discordanti</span>');
   out.push(`<span class="cov" title="Fonti con dati: Excel, TWU, Racketpedia">${'●'.repeat(r.coverage)}${'○'.repeat(3 - r.coverage)}</span>`);
   return out.join(' ');
 }
@@ -183,6 +185,7 @@ function openSheet(id) {
       <div>${badges(r)} <span class="badge">Punteggio ${fmt(r._score, 0)}</span></div>
     </div>
     ${ts ? `<div class="tension"><div class="tbox"><span class="muted small">Tensione di partenza (verticali/orizzontali)</span><span class="big">${fmt(ts.kg[0], 1)} / ${fmt(ts.kg[1], 1)} kg</span><span class="num">${fmt(ts.lbs[0], 1)} / ${fmt(ts.lbs[1], 1)} lbs</span><span class="muted small">Indicativa: ${esc(ts.note)}</span></div>${olg}</div>` : ''}
+    ${r.derived.sources_disagree ? `<p class="callout small">Fonti discordanti: il test Ektelon la dà ${fmt(e?.stiff_index_avg, 2)} di Stiff Index (alto = morbida), TWU ${fmt(t?.stiffness_lbin, 0)} lb/in. Misurano cose diverse (allungamento statico contro impatto): fidati di più di TWU per la sensazione all'impatto.</p>` : ''}
     <div class="notes">${[['feel', 'Sensazione'], ['on_blade_100_v9', 'Sulla Blade 100 v9'], ['for_your_style', 'Per il tuo stile'], ['vs_favorites', 'Rispetto alle tue preferite']]
       .filter(([k]) => r.notes?.[k]).map(([k, l]) => `<div class="note"><h3>${l}</h3><p>${esc(r.notes[k])}</p></div>`).join('')}</div>
     <div><h3>Profilo (percentili sulle ${ALL.length} corde)</h3>${subBars(r)}</div>
@@ -196,7 +199,8 @@ function openSheet(id) {
         ['Stiff Index medio (alto = morbida)', fmt(e.stiff_index_avg, 2)],
         ['Scorrimento 24 h con 40 lbs', e.static_24h_creep === null ? '—' : fmt(e.static_24h_creep, 2) + '″'],
         ['Perdita tensione 6 mesi', e.tl6 === null ? (e.tl6_raw === 0 ? '0 nel file (non misurato)' : '—') : fmt(e.tl6, 0) + ' %'],
-        ['Perdita tensione 12 mesi', e.tl12 === null ? '—' : fmt(e.tl12, 0) + ' %']]) : ''}</div>
+        ['Perdita tensione 12 mesi', e.tl12 === null ? '—' : fmt(e.tl12, 0) + ' %'],
+        ...(e.extra_test_sets ? [['Set di test nel file', `${e.extra_test_sets + 1} (mostrato il primo)`]] : [])]) : ''}</div>
       <div class="src"><h3>Tennis Warehouse University <span class="muted small">${t ? `${t.ref_tension_lbs} lbs, swing ${t.swing === 'Fast' ? 'veloce' : t.swing}` : 'non presente'}</span></h3>${t ? `${isProxy(t ? r : {}) ? `<p class="proxy small">Dato di «${esc(t.twu_name)}»: ${t.match === 'proxy' ? 'stesso modello, calibro diverso' : 'stessa corda, nome diverso'}.</p>` : ''}${kv([
         ['Rigidità', `<span class="${isProxy(r) ? 'proxy' : ''}">${fmt(t.stiffness_lbin, 1)} lb/in</span>`],
         ['Perdita di tensione', `<span class="${isProxy(r) ? 'proxy' : ''}">${fmt(t.tension_loss_pct, 1)} %</span>`],
@@ -283,8 +287,8 @@ const COLS = [
   { key: 'name', label: 'Corda', get: (r) => nameOf(r), cell: (r) => `<button class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button>` },
   { key: 'mm', label: 'mm', n: true, get: (r) => r.gauge_mm, cell: (r) => fmt(r.gauge_mm, 2) },
   { key: 'shape', label: 'Forma', get: (r) => SHAPES[r.shape] || r.shape || '', cell: (r) => esc(SHAPES[r.shape] || r.shape || '—') },
-  ...['twu_st', 'twu_tl', 'twu_sp'].map((k) => ({ key: k, label: M[k].short, n: true, get: M[k].get, cell: (r) => `<span class="${isProxy(r) ? 'proxy' : ''}" ${isProxy(r) ? 'title="dato TWU di un altro calibro o nome"' : ''}>${fmt(M[k].get(r), M[k].d)}</span>` })),
-  ...['si', 'tl6', 'rp', 'score'].map((k) => ({ key: k, label: M[k].short, n: true, get: M[k].get, cell: (r) => fmt(M[k].get(r), M[k].d) })),
+  ...['twu_st', 'twu_tl', 'twu_sp'].map((k) => ({ key: k, label: M[k].short, n: true, get: M[k].get, cell: (r) => `<span class="${isProxy(r) ? 'proxy' : ''}" ${isProxy(r) ? 'title="dato TWU di un altro calibro o nome"' : ''}>${fmtH(M[k].get(r), M[k].d)}</span>` })),
+  ...['si', 'tl6', 'rp', 'score'].map((k) => ({ key: k, label: k === 'si' ? 'Stiff Idx ↑morbida' : M[k].short, title: k === 'si' ? 'Stiff Index del test Ektelon: più alto = più MORBIDA (scala inversa rispetto a TWU e Racketpedia)' : M[k].hint, n: true, get: M[k].get, cell: (r) => fmtH(M[k].get(r), M[k].d) })),
   { key: 'sim', label: 'Simil. ★', n: true, get: bestLiked, cell: (r) => fmt(bestLiked(r), 0) },
   { key: 'cov', label: 'Fonti', get: (r) => r.coverage, cell: (r) => `<span class="cov">${'●'.repeat(r.coverage)}${'○'.repeat(3 - r.coverage)}</span>${r.derived.disliked_warning ? ' <span class="badge warn">⚠</span>' : ''}${r.preference === 'liked' ? ' ★' : r.preference === 'disliked' ? ' ✕' : ''}` },
 ];
@@ -308,7 +312,7 @@ function renderTable() {
     return (typeof va === 'string' ? va.localeCompare(vc) : va - vc) * sortDir;
   });
   $('#f-count').textContent = `${rows.length} corde. Valori in corsivo: dato TWU preso da un altro calibro dello stesso modello.`;
-  $('#table').innerHTML = `<thead><tr>${COLS.map((c) => `<th class="${c.n ? 'n' : ''}" aria-sort="${c.key === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-sort="${c.key}">${esc(c.label)}${c.key === sortKey ? (sortDir > 0 ? ' ▲' : ' ▼') : ''}</button></th>`).join('')}</tr></thead>
+  $('#table').innerHTML = `<thead><tr>${COLS.map((c) => `<th class="${c.n ? 'n' : ''}" aria-sort="${c.key === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-sort="${c.key}"${c.title ? ` title="${esc(c.title)}"` : ''}>${esc(c.label)}${c.key === sortKey ? (sortDir > 0 ? ' ▲' : ' ▼') : ''}</button></th>`).join('')}</tr></thead>
     <tbody>${rows.map((r) => `<tr>${COLS.map((c) => `<td class="${c.n ? 'n' : ''}">${c.cell(r)}</td>`).join('')}</tr>`).join('')}</tbody>`;
   $('#table').querySelectorAll('[data-sort]').forEach((btn) => btn.addEventListener('click', () => {
     if (sortKey === btn.dataset.sort) sortDir = -sortDir; else { sortKey = btn.dataset.sort; sortDir = btn.dataset.sort === 'name' || btn.dataset.sort === 'shape' ? 1 : -1; }
@@ -342,7 +346,7 @@ function renderCompare() {
   }).join('')}</div></div>`).join('') : '<p class="muted">Scegli almeno una corda.</p>';
   const rows = [
     ['Calibro', (r) => gaugeOf(r)], ['Forma', (r) => SHAPES[r.shape] || r.shape || '—'],
-    ...['twu_st', 'twu_tl', 'twu_sp', 'si', 'tl6', 'rp'].map((k) => [M[k].label, (r) => `<span class="${k.startsWith('twu') && isProxy(r) ? 'proxy' : ''}">${fmt(M[k].get(r), M[k].d)}</span>`]),
+    ...['twu_st', 'twu_tl', 'twu_sp', 'si', 'tl6', 'rp'].map((k) => [M[k].label, (r) => `<span class="${k.startsWith('twu') && isProxy(r) ? 'proxy' : ''}">${fmtH(M[k].get(r), M[k].d)}</span>`]),
     ['Punteggio profilo', (r) => fmt(r._score, 0)],
     ['Tensione di partenza', (r) => tensionText(r) || '—'],
   ];

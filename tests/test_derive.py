@@ -109,3 +109,12 @@ def test_shared_feature_count():
     excel_only = {"twu": None, "rpedia": None, "excel": {"stiff_index_avg": 4.0, "tl6": 14.0}}
     assert shared_features(excel_only, POP_RECS[1]) == 2
     assert shared_features(POP_RECS[1], POP_RECS[2]) == 5
+
+
+def test_sources_disagree_when_excel_soft_but_twu_stiff():
+    from pipeline.derive import sources_disagree
+    soft_excel_stiff_twu = {"twu": {"stiffness_lbin": 242.0}, "excel": {"stiff_index_avg": 6.6}}
+    consistent = {"twu": {"stiffness_lbin": 242.0}, "excel": {"stiff_index_avg": 3.1}}
+    assert sources_disagree(soft_excel_stiff_twu, POP) is True
+    assert sources_disagree(consistent, POP) is False
+    assert sources_disagree({"twu": None, "excel": {"stiff_index_avg": 6.6}}, POP) is False

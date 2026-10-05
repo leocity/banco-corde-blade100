@@ -78,7 +78,8 @@ def _vs(r):
             out = [f"Somiglianza {fmt(c)} con Confidential e {fmt(o)} con O-Toro."]
             basis = max((d.get("similarity_basis") or {}).values(), default=6)
             if basis <= 3:
-                out.append(f"Calcolata su sole {basis} misure (manca TWU): prendila come indicazione.")
+                missing = [n for n, k in (("TWU", "twu"), ("test Ektelon", "excel"), ("Racketpedia", "rpedia")) if not r.get(k)]
+                out.append(f"Calcolata su sole {basis} misure (mancano {' e '.join(missing)}): prendila come indicazione.")
         if d.get("disliked_warning"):
             g, v = max(((k, v) for k, v in (d.get("similarity_disliked") or {}).items() if v is not None), key=lambda kv: kv[1])
             out.append(f"Attenzione: assomiglia molto a {DISLIKED_NAMES[g]} ({v}/100), che non ti è piaciuta.")

@@ -47,6 +47,10 @@ def _build(key, rows):
         t = int(_num(r[5]) or 0)
         if t in TENSIONS and t not in by_t:
             by_t[t] = r
+    per_t = {t: sum(1 for r in rows if int(_num(r[5]) or 0) == t) for t in TENSIONS}
+    extra_sets = max(0, max(per_t.values()) - 1)
+    if extra_sets:
+        _warn(f"{brand} {model} {gauge}: {extra_sets + 1} set di test nel file, uso il primo")
     missing = [t for t in TENSIONS if t not in by_t]
     if missing:
         _warn(f"{brand} {model} {gauge}: righe mancanti per {missing} lbs")
@@ -79,6 +83,7 @@ def _build(key, rows):
             "static_24h": s_24,
             "static_recoil": _num(r40[18]) if r40 else None,
             "static_24h_creep": round(s_24 - s_init, 3) if None not in (s_init, s_24) else None,
+            "extra_test_sets": extra_sets,
             "tl6_raw": tl6_raw,
             "tl12_raw": tl12_raw,
             # 0% in 6/12 mesi su una poly è implausibile: nel file è un "non misurato"

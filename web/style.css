@@ -187,3 +187,4 @@ dialog#sheet::backdrop { background: rgb(10 16 15 / .45); }
   .preset, .tabs button, .rowlink { transition: background-color .15s, color .15s, text-decoration-color .15s; }
 }
 #cmp-table th, #cmp-table td:first-child { white-space: normal; min-width: 8em; vertical-align: bottom; }
+.na { color: var(--muted); cursor: help; }

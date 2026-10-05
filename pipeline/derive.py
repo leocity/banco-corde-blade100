@@ -105,6 +105,14 @@ def profile_score(sub, weights=DEFAULT_WEIGHTS, disliked_sim=None):
     return int(max(0, min(100, score)))
 
 
+def sources_disagree(rec, pop, gap=50):
+    """Excel (Stiff Index, alto = morbida) e TWU (rigidità, alto = rigida) danno giudizi opposti sulla morbidezza."""
+    si, st = METRICS["excel_stiff_index"](rec), METRICS["twu_stiffness"](rec)
+    if si is None or st is None:
+        return False
+    return abs(percentile(si, pop["excel_stiff_index"]) - (100 - percentile(st, pop["twu_stiffness"]))) >= gap
+
+
 def disliked_flag(best_liked, worst_disliked):
     """Avviso/penalità solo se la corda supera la soglia E somiglia più alla non gradita che alla preferita più vicina."""
     if worst_disliked is None or worst_disliked <= DISLIKED_PENALTY_THRESHOLD:
@@ -167,6 +175,7 @@ def derive_all(records):
             "similarity_disliked": sim_d,
             "similarity_basis": {("confidential" if "confidential" in k else "otoro"): shared_features(r, a) for k, a in liked.items()},
             "disliked_warning": flag,
+            "sources_disagree": sources_disagree(r, pop),
             "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if flag else None),
             "tension_start": tension_start(r, anchors) if anchors else None,
         }

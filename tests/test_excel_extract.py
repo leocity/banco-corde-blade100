@@ -68,3 +68,10 @@ def test_zero_tension_loss_treated_as_not_measured(recs):
     ex = recs["solinco-hyper-g-17"]["excel"]
     assert ex["tl6"] is None and ex["tl6_raw"] == 0
     assert ex["tl12"] == 21
+
+
+def test_group_with_two_test_sets_warns_and_flags(capsys):
+    rows = [_row(t) for t in (40, 50, 60, 65)] + [_row(t) for t in (40, 50, 60, 65)]
+    out = load_rows(rows)
+    assert out[0]["excel"]["extra_test_sets"] == 1
+    assert "set" in capsys.readouterr().err.lower()

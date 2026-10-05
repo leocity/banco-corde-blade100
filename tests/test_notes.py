@@ -61,3 +61,10 @@ def test_twu_with_missing_spin_value():
     r = rec(twu={"twu_name": "X Y 17", "match": "exact", "stiffness_lbin": 286.9, "tension_loss_pct": 23.5, "spin_potential": None})
     r["derived"]["subscores"]["spin"] = None
     assert "non misurato" in generate_notes(r)["feel"]
+
+
+def test_low_basis_note_names_the_actually_missing_sources():
+    r = rec(excel=None)  # solo TWU: 3 misure, TWU presente
+    r["derived"]["similarity_basis"] = {"confidential": 3, "otoro": 3}
+    v = generate_notes(r)["vs_favorites"]
+    assert "manca TWU" not in v and "Ektelon" in v and "Racketpedia" in v
