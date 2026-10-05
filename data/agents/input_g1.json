@@ -1,0 +1,251 @@
+{
+ "excel_to_match": [
+  {
+   "id": "re-string-slap-17",
+   "brand": "Re-String",
+   "model": "Slap",
+   "gauge_label": "17",
+   "shape": "HEX"
+  },
+  {
+   "id": "re-string-sync-17",
+   "brand": "Re-String",
+   "model": "Sync",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "re-string-vivo-17",
+   "brand": "Re-String",
+   "model": "Vivo",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "re-string-zero-16",
+   "brand": "Re-String",
+   "model": "Zero",
+   "gauge_label": "16",
+   "shape": "HEX"
+  },
+  {
+   "id": "re-string-zero-17",
+   "brand": "Re-String",
+   "model": "Zero",
+   "gauge_label": "17",
+   "shape": "HEX"
+  },
+  {
+   "id": "solinco-hyper-g-soft-17",
+   "brand": "Solinco",
+   "model": "Hyper-G Soft",
+   "gauge_label": "17",
+   "shape": "SQ"
+  },
+  {
+   "id": "solinco-hyper-g-soft-16",
+   "brand": "Solinco",
+   "model": "Hyper-G Soft",
+   "gauge_label": "16",
+   "shape": "SQ"
+  },
+  {
+   "id": "solinco-confidential-16l",
+   "brand": "Solinco",
+   "model": "Confidential",
+   "gauge_label": "16L",
+   "shape": "RND"
+  },
+  {
+   "id": "solinco-confidential-17",
+   "brand": "Solinco",
+   "model": "Confidential",
+   "gauge_label": "17",
+   "shape": "RND"
+  }
+ ],
+ "twu_candidates": [
+  {
+   "twu_name": "Solinco Revolution 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Revolution",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Hyper-G 16 Round (1.30)",
+   "brand": "Solinco",
+   "model": "Hyper-G Round",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Hyper-G 16",
+   "brand": "Solinco",
+   "model": "Hyper-G",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Tour Bite 16 Soft",
+   "brand": "Solinco",
+   "model": "Tour Bite Soft",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Tour Bite 16",
+   "brand": "Solinco",
+   "model": "Tour Bite",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Revolution 17",
+   "brand": "Solinco",
+   "model": "Revolution",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Solinco Outlast 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Outlast",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Confidential Soft 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Confidential Soft",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Revolution 16",
+   "brand": "Solinco",
+   "model": "Revolution",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "brand": "Solinco",
+   "model": "Confidential",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Tour Bite 17",
+   "brand": "Solinco",
+   "model": "Tour Bite",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Solinco Hyper-G 17 (1.20)",
+   "brand": "Solinco",
+   "model": "Hyper-G",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Solinco Hyper-G 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Hyper-G",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Outlast 16",
+   "brand": "Solinco",
+   "model": "Outlast",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Mach 10 16 (1.30)",
+   "brand": "Solinco",
+   "model": "Mach 10",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Tour Bite 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Tour Bite",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Tour Bite Soft 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Tour Bite Soft",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Tour Bite Soft 17 (1.20)",
+   "brand": "Solinco",
+   "model": "Tour Bite Soft",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Solinco Barb Wire 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Barb Wire",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Outlast 17",
+   "brand": "Solinco",
+   "model": "Outlast",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Solinco Tour Bite Diamond Rough 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Tour Bite Diamond Rough",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+   "brand": "Solinco",
+   "model": "Hyper-G Soft",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Solinco Barb Wire 17 (1.20)",
+   "brand": "Solinco",
+   "model": "Barb Wire",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Solinco Tour Bite Diamond Rough 16 (1.30)",
+   "brand": "Solinco",
+   "model": "Tour Bite Diamond Rough",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Barb Wire 16",
+   "brand": "Solinco",
+   "model": "Barb Wire",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Solinco Tour Bite Diamond Rough 17 (1.20)",
+   "brand": "Solinco",
+   "model": "Tour Bite Diamond Rough",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  }
+ ]
+}

@@ -1,0 +1,1082 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "twu_name": "Babolat RPM Blast 16",
+  "match": "proxy",
+  "note": "Same model RPM Blast, gauge 16L vs 16 (1.25-1.28 vs 1.30mm, same gauge family)"
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "twu_name": "Babolat RPM Blast 17/1.25",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16l",
+  "twu_name": "Babolat RPM Blast Rough 16",
+  "match": "proxy",
+  "note": "Same model RPM Blast Rough, gauge 16L vs 16 (1.25-1.28 vs 1.30mm, same gauge family)"
+ },
+ {
+  "id": "head-hawk-16",
+  "twu_name": "Head Hawk 16 (1.30)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "head-hawk-power-17",
+  "twu_name": "Head Hawk Power 17 (1.25)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "head-hawk-touch-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Touch denotes different model from base Hawk"
+ },
+ {
+  "id": "head-lynx-tour-16",
+  "twu_name": "Head Lynx Tour 16 (1.30)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "head-hawk-seeding-16",
+  "twu_name": null,
+  "match": "none",
+  "note": "Seeding denotes different model from base Hawk"
+ },
+ {
+  "id": "kirschbaum-competition-16l",
+  "twu_name": "Kirschbaum Competition 16/1.30",
+  "match": "proxy",
+  "note": "Same model, gauge 16 (1.30) vs 16L (1.25-1.28)"
+ },
+ {
+  "id": "kirschbaum-max-power-16l",
+  "twu_name": "Kirschbaum Max Power 16 (1.30)",
+  "match": "proxy",
+  "note": "Same model, gauge 16 (1.30) vs 16L"
+ },
+ {
+  "id": "kirschbaum-plx-16l",
+  "twu_name": null,
+  "match": "none",
+  "note": "No PLX candidate found"
+ },
+ {
+  "id": "kirschbaum-pro-line-evl-16l",
+  "twu_name": "Kirschbaum Pro Line Evolution 17 (1.25)",
+  "match": "proxy",
+  "note": "Name match (Evl=Evolution), gauge 17 (1.25) vs 16L"
+ },
+ {
+  "id": "kirschbaum-pro-line-rough-16l",
+  "twu_name": null,
+  "match": "none",
+  "note": "Rough denotes different model; Pro Line Rough not found"
+ },
+ {
+  "id": "kirschbaum-black-shark-16l",
+  "twu_name": "Kirschbaum Black Shark 16 (1.30)",
+  "match": "proxy",
+  "note": "Same model, gauge 16 (1.30) vs 16L"
+ },
+ {
+  "id": "kirschbaum-black-shark-17",
+  "twu_name": "Kirschbaum Black Shark 17 (1.25)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "kirschbaum-xplosive-spd-17",
+  "twu_name": "Kirschbaum Xplosive Speed 1.25",
+  "match": "probable",
+  "note": "override manuale: abbreviazione, stesso diametro 1.25"
+ },
+ {
+  "id": "kirschbaum-pro-line-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Pro Line base model not found (only Pro Line I/II/X/Evolution)"
+ },
+ {
+  "id": "kirschbaum-helix-white-17",
+  "twu_name": "Kirschbaum Helix 17",
+  "match": "exact",
+  "note": "White is color variant of Helix; gauge 17 (1.2)"
+ },
+ {
+  "id": "kirschbaum-helix-blue-17",
+  "twu_name": "Kirschbaum Helix 17",
+  "match": "probable",
+  "note": "Blue is color variant of Helix; gauge 17 (1.2) (variante colore)"
+ },
+ {
+  "id": "kirschbaum-flash-orange-17",
+  "twu_name": "Kirschbaum Flash 16 (1.30)",
+  "match": "proxy",
+  "note": "Orange is color variant of Flash, gauge 16 (1.30) vs 17"
+ },
+ {
+  "id": "kirschbaum-flash-pink-17",
+  "twu_name": "Kirschbaum Flash 16 (1.30)",
+  "match": "proxy",
+  "note": "Pink is color variant of Flash, gauge 16 (1.30) vs 17"
+ },
+ {
+  "id": "kirschbaum-flash-yellow-17",
+  "twu_name": "Kirschbaum Flash 16 (1.30)",
+  "match": "proxy",
+  "note": "Yellow is color variant of Flash, gauge 16 (1.30) vs 17"
+ },
+ {
+  "id": "kirschbaum-flash-green-17",
+  "twu_name": "Kirschbaum Flash 16 (1.30)",
+  "match": "proxy",
+  "note": "Green is color variant of Flash, gauge 16 (1.30) vs 17"
+ },
+ {
+  "id": "kirschbaum-flash-black-17",
+  "twu_name": "Kirschbaum Flash 16 (1.30)",
+  "match": "proxy",
+  "note": "Black is color variant of Flash, gauge 16 (1.30) vs 17"
+ },
+ {
+  "id": "luxilon-4g-black-17",
+  "twu_name": "Luxilon 4G 16L (1.25)",
+  "match": "proxy",
+  "note": "Black is color variant of 4G, gauge 16L (1.25) vs 17"
+ },
+ {
+  "id": "luxilon-alu-power-blk-17",
+  "twu_name": "Luxilon ALU Power 125/16L",
+  "match": "proxy",
+  "note": "Blk is color variant of Alu Power, gauge 16L vs 17"
+ },
+ {
+  "id": "luxilon-alu-power-gry-17l",
+  "twu_name": "Luxilon ALU Power 125/16L",
+  "match": "proxy",
+  "note": "Gry is color variant of Alu Power, gauge 16L (1.25) vs 17L (1.18-1.20)"
+ },
+ {
+  "id": "luxilon-element-soft-ir-17",
+  "twu_name": "Luxilon Element Soft IR 1.27",
+  "match": "proxy",
+  "note": "Model match, gauge 16L (1.27) vs 17"
+ },
+ {
+  "id": "luxilon-4g-desert-17",
+  "twu_name": "Luxilon 4G 16L (1.25)",
+  "match": "proxy",
+  "note": "Desert is color variant of 4G, gauge 16L vs 17"
+ },
+ {
+  "id": "re-string-slap-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Re-String brand not found in TWU database"
+ },
+ {
+  "id": "re-string-sync-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Re-String brand not found in TWU database"
+ },
+ {
+  "id": "re-string-vivo-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Re-String brand not found in TWU database"
+ },
+ {
+  "id": "re-string-zero-16",
+  "twu_name": null,
+  "match": "none",
+  "note": "Re-String brand not found in TWU database"
+ },
+ {
+  "id": "re-string-zero-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Re-String brand not found in TWU database"
+ },
+ {
+  "id": "signum-pro-x-perience-17",
+  "twu_name": "Signum Pro X-Perience 17 (1.24)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "signum-pro-polaris-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Polaris 17 not found"
+ },
+ {
+  "id": "solinco-hyper-g-17",
+  "twu_name": "Solinco Hyper-G 17 (1.20)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "solinco-hyper-g-soft-17",
+  "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+  "match": "proxy",
+  "note": "Same model Hyper-G Soft, different gauge (17 vs 16L)"
+ },
+ {
+  "id": "solinco-hyper-g-soft-16",
+  "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+  "match": "proxy",
+  "note": "Same model Hyper-G Soft, different gauge (16 vs 16L)"
+ },
+ {
+  "id": "solinco-tour-bite-17",
+  "twu_name": "Solinco Tour Bite 17",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "solinco-confidential-16",
+  "twu_name": "Solinco Confidential 16 (1.30)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "solinco-confidential-16l",
+  "twu_name": "Solinco Confidential 16 (1.30)",
+  "match": "proxy",
+  "note": "Same model Confidential, different gauge (16L vs 16/1.30)"
+ },
+ {
+  "id": "solinco-confidential-17",
+  "twu_name": "Solinco Confidential 16 (1.30)",
+  "match": "proxy",
+  "note": "Same model Confidential, different gauge (17 vs 16/1.30)"
+ },
+ {
+  "id": "solinco-revolution-16l",
+  "twu_name": "Solinco Revolution 16L (1.25)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "tecnifibre-razor-17",
+  "twu_name": "Tecnifibre Razor Code 17 (1.25)",
+  "match": "probable",
+  "note": "override manuale: 'Razor' nel file = Razor Code"
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "twu_name": "Toroline Absolute 17 (1.20)",
+  "match": "exact",
+  "note": "Same model Absolute, gauge 17L (1.18-1.20) matches TWU 1.20mm, Toroline string"
+ },
+ {
+  "id": "toroline-caviar-17l",
+  "twu_name": null,
+  "match": "none",
+  "note": "Caviar is a distinct Toroline model; no Caviar in TWU candidates"
+ },
+ {
+  "id": "toroline-caviar-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Caviar is a distinct Toroline model; no Caviar in TWU candidates"
+ },
+ {
+  "id": "toroline-ether-17l",
+  "twu_name": null,
+  "match": "none",
+  "note": "Ether is a distinct Toroline model; no Ether in TWU candidates"
+ },
+ {
+  "id": "toroline-enos-pro-16",
+  "twu_name": null,
+  "match": "none",
+  "note": "Enos Pro is a distinct Toroline model; no Enos Pro in TWU candidates"
+ },
+ {
+  "id": "toroline-enos-pro-neon-yl-16l",
+  "twu_name": null,
+  "match": "none",
+  "note": "Enos Pro with neon yl variant; no Enos Pro in TWU candidates"
+ },
+ {
+  "id": "toroline-enos-pro-carbon-16l",
+  "twu_name": null,
+  "match": "none",
+  "note": "Enos Pro with carbon variant; no Enos Pro in TWU candidates"
+ },
+ {
+  "id": "toroline-enos-pro-neon-pk-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Enos Pro with neon pk variant; no Enos Pro in TWU candidates"
+ },
+ {
+  "id": "toroline-wasabi-green-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Wasabi is a distinct Toroline model; no Wasabi in TWU candidates"
+ },
+ {
+  "id": "toroline-wasabi-x-blue-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Wasabi X is a distinct Toroline model; no Wasabi in TWU candidates"
+ },
+ {
+  "id": "toroline-wasabi-pom-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Wasabi Pom is a distinct Toroline model; no Wasabi in TWU candidates"
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "twu_name": "Toroline Super Toro 17 (1.23)",
+  "match": "exact",
+  "note": "Same model Super Toro, gauge 17L (1.18-1.20) corresponds to Toroline 1.23 per rules, Toroline string"
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "twu_name": "Toroline O-Toro 17 (1.23)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Toro Toro is a distinct Toroline model (Orange is color variant); no Toro Toro in TWU candidates"
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "twu_name": null,
+  "match": "none",
+  "note": "Toro Toro is a distinct Toroline model (pink is color variant); no Toro Toro in TWU candidates"
+ },
+ {
+  "id": "toroline-toro-toro-matcha-16l",
+  "twu_name": null,
+  "match": "none",
+  "note": "Toro Toro is a distinct Toroline model (matcha is color variant); no Toro Toro in TWU candidates"
+ },
+ {
+  "id": "wilson-revolve-spin-16",
+  "twu_name": "Wilson Revolve Spin 16",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "wilson-revolve-spin-17",
+  "twu_name": "Wilson Revolve Spin 16",
+  "match": "proxy",
+  "note": "Same model Revolve Spin, gauge 17 vs 16 (1.20-1.25 vs 1.30mm, different gauges)"
+ },
+ {
+  "id": "wilson-revolve-17",
+  "twu_name": "Wilson Revolve 17 (1.25)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "yonex-poly-tour-pro-bk-17",
+  "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+  "match": "exact",
+  "note": "Bk is color variant of Poly Tour Pro; gauge 17 (1.20)"
+ },
+ {
+  "id": "yonex-poly-tour-pro-ble-17",
+  "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+  "match": "probable",
+  "note": "Ble is color variant of Poly Tour Pro; gauge 17 (1.20) (variante colore)"
+ },
+ {
+  "id": "yonex-poly-tour-rev-16l",
+  "twu_name": "Yonex Polytour Rev 16L (1.25)",
+  "match": "exact",
+  "note": "id identico"
+ },
+ {
+  "id": "yonex-poly-tour-spin-17",
+  "twu_name": "Yonex Poly Tour Spin 16L (1.25)",
+  "match": "proxy",
+  "note": "Spin model match, gauge 16L (1.25) vs 17"
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "twu_name": "Babolat RPM Blast Rough 17",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "toroline-o-toro-snap-16l",
+  "twu_name": "Toroline O-TORO Snap 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "tecnifibre-razor-spin-17",
+  "twu_name": "Tecnifibre Razor Spin 17/1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "twu_name": "Babolat RPM Blast Rough 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "twu_name": "Toroline O-Toro Spin 17 (1.23)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "grapplesnake-tour-m8-17",
+  "twu_name": "Grapplesnake Tour M8 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "toroline-o-toro-tour-17",
+  "twu_name": "Toroline O-Toro Tour 17 (1.23)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "toroline-cash-16l",
+  "twu_name": "Toroline Cash 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-spiky-shark-16",
+  "twu_name": "Kirschbaum Spiky Shark 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-spiky-shark-17",
+  "twu_name": "Kirschbaum Spiky Shark 17",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "tecnifibre-razor-soft-17",
+  "twu_name": "Tecnifibre Razor Soft 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16",
+  "twu_name": "Signum Pro Plasma HEXtreme 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-hyper-g-round-16",
+  "twu_name": "Solinco Hyper-G 16 Round (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "toroline-snapper-17",
+  "twu_name": "Toroline Snapper 17 (1.23)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "wilson-revolve-16",
+  "twu_name": "Wilson Revolve 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16l",
+  "twu_name": "Kirschbaum Xplosive Speed 1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "head-lynx-tour-17",
+  "twu_name": "Head Lynx Tour 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-hyper-g-16",
+  "twu_name": "Solinco Hyper-G 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-element-rough-16",
+  "twu_name": "Luxilon Element Rough 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "babolat-rpm-blast-orange-16",
+  "twu_name": "Babolat RPM Blast Orange 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-element-soft-ir-16l",
+  "twu_name": "Luxilon Element Soft IR 1.27",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-soft-16",
+  "twu_name": "Solinco Tour Bite 16 Soft",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-alu-power-soft-16l",
+  "twu_name": "Luxilon Alu Power Soft 1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-16",
+  "twu_name": "Solinco Tour Bite 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-4g-soft-16l",
+  "twu_name": "Luxilon 4G Soft 1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "grapplesnake-alpha-17",
+  "twu_name": "Grapplesnake Alpha 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-revolution-17",
+  "twu_name": "Solinco Revolution 17",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-element-16",
+  "twu_name": "Luxilon Element 1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-outlast-16l",
+  "twu_name": "Solinco Outlast 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-alu-power-rough-16l",
+  "twu_name": "Luxilon ALU Power Rough 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "twu_name": "Solinco Confidential Soft 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-revolution-16",
+  "twu_name": "Solinco Revolution 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "yonex-poly-tour-spin-16l",
+  "twu_name": "Yonex Poly Tour Spin 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-yellow-jacket-17",
+  "twu_name": "Signum Pro Yellow Jacket 17g (1.22)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-hyper-g-16l",
+  "twu_name": "Solinco Hyper-G 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-outlast-16",
+  "twu_name": "Solinco Outlast 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-max-power-rough-16",
+  "twu_name": "Kirschbaum Max Power Rough 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-mach-10-16",
+  "twu_name": "Solinco Mach 10 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16l",
+  "twu_name": "Signum Pro Plasma HEXtreme 16L/1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "twu_name": "Solinco Tour Bite 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-max-power-16",
+  "twu_name": "Kirschbaum Max Power 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-alu-power-16l",
+  "twu_name": "Luxilon ALU Power 125/16L",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-soft-16l",
+  "twu_name": "Solinco Tour Bite Soft 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16l",
+  "twu_name": "Grapplesnake Tour Sniper 1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-16",
+  "twu_name": "Kirschbaum Pro Line II 1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-super-smash-17",
+  "twu_name": "Kirschbaum Super Smash 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-soft-17",
+  "twu_name": "Solinco Tour Bite Soft 17 (1.20)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16",
+  "twu_name": "Kirschbaum Xplosive Speed 1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-16l",
+  "twu_name": "Signum Pro Poly-Plasma Pure 16L",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-max-power-rough-17",
+  "twu_name": "Kirschbaum Max Power Rough 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-barb-wire-16l",
+  "twu_name": "Solinco Barb Wire 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "tecnifibre-razor-code-17",
+  "twu_name": "Tecnifibre Razor Code 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "tecnifibre-ice-code-16",
+  "twu_name": "Tecnifibre Ice Code 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-outlast-17",
+  "twu_name": "Solinco Outlast 17",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-element-16l",
+  "twu_name": "Luxilon Element 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-firestorm-16",
+  "twu_name": "Signum Pro Firestorm 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-helix-16",
+  "twu_name": "Kirschbaum Helix 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-touch-turbo-16l",
+  "twu_name": "Kirschbaum Touch Turbo 16L (1.275)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-black-shark-16",
+  "twu_name": "Kirschbaum Black Shark 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-max-power-17",
+  "twu_name": "Kirschbaum Max Power 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16l",
+  "twu_name": "Solinco Tour Bite Diamond Rough 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-plasma-17",
+  "twu_name": "Signum Pro Poly Plasma 17 (1.23)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-touch-turbo-16",
+  "twu_name": "Kirschbaum Touch Turbo 1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-super-smash-16",
+  "twu_name": "Kirschbaum Super Smash 16/1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-p2-16",
+  "twu_name": "Kirschbaum P2 16/1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-17",
+  "twu_name": "Signum Pro Poly-Plasma Pure 17 (1.23)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-touch-turbo-17",
+  "twu_name": "Kirschbaum Touch Turbo 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-17-125",
+  "twu_name": "Kirschbaum Super Smash Spiky 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-hyper-g-soft-16l",
+  "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-tornado-16",
+  "twu_name": "Signum Pro Tornado 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-17-12",
+  "twu_name": "Kirschbaum Super Smash Spiky 1.20",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-x-16",
+  "twu_name": "Kirschbaum Pro Line X 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-16",
+  "twu_name": "Kirschbaum Super Smash Spiky 16/1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-plasma-17l",
+  "twu_name": "Signum Pro Poly-Plasma 17L (1.18)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-alu-power-vibe-16",
+  "twu_name": "Luxilon Alu Power Vibe 16 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-competition-16",
+  "twu_name": "Kirschbaum Competition 16/1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-p2-17",
+  "twu_name": "Kirschbaum P2 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-barb-wire-17",
+  "twu_name": "Solinco Barb Wire 17 (1.20)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16",
+  "twu_name": "Solinco Tour Bite Diamond Rough 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-evolution-17",
+  "twu_name": "Kirschbaum Pro Line Evolution 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "head-hawk-rough-17",
+  "twu_name": "Head Hawk Rough 17",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-megaforce-17",
+  "twu_name": "Signum Pro Poly Megaforce 17 (1.19)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-tornado-17",
+  "twu_name": "Signum Pro Tornado 17 (1.23)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-17l",
+  "twu_name": "Kirschbaum Pro Line II 17L (1.20)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-p2-17l",
+  "twu_name": "Kirschbaum P2 17L (1.20)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-x-17",
+  "twu_name": "Kirschbaum Pro Line X 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-firestorm-16l",
+  "twu_name": "Signum Pro Firestorm 1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "yonex-poly-tour-spin-g-16l",
+  "twu_name": "Yonex Poly Tour Spin G 1.25",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-plasma-16l",
+  "twu_name": "Signum Pro Poly-Plasma 16L",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-17",
+  "twu_name": "Kirschbaum Pro Line II 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "head-hawk-17",
+  "twu_name": "Head Hawk 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-hyperion-16",
+  "twu_name": "Signum Pro Hyperion 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "babolat-rpm-blast-16",
+  "twu_name": "Babolat RPM Blast 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-competition-17",
+  "twu_name": "Kirschbaum Competition 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-i-16",
+  "twu_name": "Kirschbaum Pro Line I 1.30",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-barb-wire-16",
+  "twu_name": "Solinco Barb Wire 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-megaforce-16",
+  "twu_name": "Signum Pro Poly Megaforce 16",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-speed-spin-16",
+  "twu_name": "Signum Pro Poly Speed Spin 1.28",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-17",
+  "twu_name": "Solinco Tour Bite Diamond Rough 17 (1.20)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-hyperion-17",
+  "twu_name": "Signum Pro Hyperion 17 (1.24)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "tecnifibre-razor-code-16",
+  "twu_name": "Tecnifibre Razor Code 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-4g-rough-16l",
+  "twu_name": "Luxilon 4G Rough 16L",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-i-17",
+  "twu_name": "Kirschbaum Pro Line I 17 (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-competition-17l",
+  "twu_name": "Kirschbaum Competition 17L (1.20)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-pro-line-i-17l",
+  "twu_name": "Kirschbaum Pro Line I 17L (1.20)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-4g-16l",
+  "twu_name": "Luxilon 4G 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "yonex-poly-tour-pro-yellow-16",
+  "twu_name": "Yonex Poly Tour Pro Yellow 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-17l",
+  "twu_name": "Signum Pro Poly-Plasma Pure 17L (1.18)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "yonex-poly-tour-pro-yellow-16l",
+  "twu_name": "Yonex Poly Tour Pro Yellow 16L (1.25)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "luxilon-4g-16",
+  "twu_name": "Luxilon 4G 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "yonex-poly-tour-rev-16",
+  "twu_name": "Yonex PolyTour REV 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ },
+ {
+  "id": "kirschbaum-flash-16",
+  "twu_name": "Kirschbaum Flash 16 (1.30)",
+  "match": "exact",
+  "note": "solo TWU"
+ }
+]

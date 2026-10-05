@@ -1,0 +1,164 @@
+[
+  {
+    "id": "head-hawk-touch-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Touch denotes different model from base Hawk"
+  },
+  {
+    "id": "head-hawk-seeding-16",
+    "twu_name": null,
+    "match": "none",
+    "note": "Seeding denotes different model from base Hawk"
+  },
+  {
+    "id": "kirschbaum-competition-16l",
+    "twu_name": "Kirschbaum Competition 16/1.30",
+    "match": "proxy",
+    "note": "Same model, gauge 16 (1.30) vs 16L (1.25-1.28)"
+  },
+  {
+    "id": "kirschbaum-max-power-16l",
+    "twu_name": "Kirschbaum Max Power 16 (1.30)",
+    "match": "proxy",
+    "note": "Same model, gauge 16 (1.30) vs 16L"
+  },
+  {
+    "id": "kirschbaum-plx-16l",
+    "twu_name": null,
+    "match": "none",
+    "note": "No PLX candidate found"
+  },
+  {
+    "id": "kirschbaum-pro-line-evl-16l",
+    "twu_name": "Kirschbaum Pro Line Evolution 17 (1.25)",
+    "match": "proxy",
+    "note": "Name match (Evl=Evolution), gauge 17 (1.25) vs 16L"
+  },
+  {
+    "id": "kirschbaum-pro-line-rough-16l",
+    "twu_name": null,
+    "match": "none",
+    "note": "Rough denotes different model; Pro Line Rough not found"
+  },
+  {
+    "id": "kirschbaum-black-shark-16l",
+    "twu_name": "Kirschbaum Black Shark 16 (1.30)",
+    "match": "proxy",
+    "note": "Same model, gauge 16 (1.30) vs 16L"
+  },
+  {
+    "id": "kirschbaum-xplosive-spd-17",
+    "twu_name": "Kirschbaum Xplosive Speed 1.25",
+    "match": "proxy",
+    "note": "Name match (Spd=Speed), gauge 16L (1.25) vs 17"
+  },
+  {
+    "id": "kirschbaum-pro-line-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Pro Line base model not found (only Pro Line I/II/X/Evolution)"
+  },
+  {
+    "id": "kirschbaum-helix-white-17",
+    "twu_name": "Kirschbaum Helix 17",
+    "match": "exact",
+    "note": "White is color variant of Helix; gauge 17 (1.2)"
+  },
+  {
+    "id": "kirschbaum-helix-blue-17",
+    "twu_name": "Kirschbaum Helix 17",
+    "match": "exact",
+    "note": "Blue is color variant of Helix; gauge 17 (1.2)"
+  },
+  {
+    "id": "kirschbaum-flash-orange-17",
+    "twu_name": "Kirschbaum Flash 16 (1.30)",
+    "match": "proxy",
+    "note": "Orange is color variant of Flash, gauge 16 (1.30) vs 17"
+  },
+  {
+    "id": "kirschbaum-flash-pink-17",
+    "twu_name": "Kirschbaum Flash 16 (1.30)",
+    "match": "proxy",
+    "note": "Pink is color variant of Flash, gauge 16 (1.30) vs 17"
+  },
+  {
+    "id": "kirschbaum-flash-yellow-17",
+    "twu_name": "Kirschbaum Flash 16 (1.30)",
+    "match": "proxy",
+    "note": "Yellow is color variant of Flash, gauge 16 (1.30) vs 17"
+  },
+  {
+    "id": "kirschbaum-flash-green-17",
+    "twu_name": "Kirschbaum Flash 16 (1.30)",
+    "match": "proxy",
+    "note": "Green is color variant of Flash, gauge 16 (1.30) vs 17"
+  },
+  {
+    "id": "kirschbaum-flash-black-17",
+    "twu_name": "Kirschbaum Flash 16 (1.30)",
+    "match": "proxy",
+    "note": "Black is color variant of Flash, gauge 16 (1.30) vs 17"
+  },
+  {
+    "id": "luxilon-4g-black-17",
+    "twu_name": "Luxilon 4G 16L (1.25)",
+    "match": "proxy",
+    "note": "Black is color variant of 4G, gauge 16L (1.25) vs 17"
+  },
+  {
+    "id": "luxilon-alu-power-blk-17",
+    "twu_name": "Luxilon ALU Power 125/16L",
+    "match": "proxy",
+    "note": "Blk is color variant of Alu Power, gauge 16L vs 17"
+  },
+  {
+    "id": "luxilon-alu-power-gry-17l",
+    "twu_name": "Luxilon ALU Power 125/16L",
+    "match": "proxy",
+    "note": "Gry is color variant of Alu Power, gauge 16L (1.25) vs 17L (1.18-1.20)"
+  },
+  {
+    "id": "luxilon-element-soft-ir-17",
+    "twu_name": "Luxilon Element Soft IR 1.27",
+    "match": "proxy",
+    "note": "Model match, gauge 16L (1.27) vs 17"
+  },
+  {
+    "id": "luxilon-4g-desert-17",
+    "twu_name": "Luxilon 4G 16L (1.25)",
+    "match": "proxy",
+    "note": "Desert is color variant of 4G, gauge 16L vs 17"
+  },
+  {
+    "id": "signum-pro-polaris-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Polaris 17 not found"
+  },
+  {
+    "id": "tecnifibre-razor-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Razor base model not found (only Razor Code/Soft/Spin variants)"
+  },
+  {
+    "id": "yonex-poly-tour-pro-bk-17",
+    "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+    "match": "exact",
+    "note": "Bk is color variant of Poly Tour Pro; gauge 17 (1.20)"
+  },
+  {
+    "id": "yonex-poly-tour-pro-ble-17",
+    "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+    "match": "exact",
+    "note": "Ble is color variant of Poly Tour Pro; gauge 17 (1.20)"
+  },
+  {
+    "id": "yonex-poly-tour-spin-17",
+    "twu_name": "Yonex Poly Tour Spin 16L (1.25)",
+    "match": "proxy",
+    "note": "Spin model match, gauge 16L (1.25) vs 17"
+  }
+]

@@ -1,0 +1,4 @@
+[
+ {"id": "tecnifibre-razor-17", "twu_name": "Tecnifibre Razor Code 17 (1.25)", "match": "probable", "note": "override manuale: 'Razor' nel file = Razor Code"},
+ {"id": "kirschbaum-xplosive-spd-17", "twu_name": "Kirschbaum Xplosive Speed 1.25", "match": "probable", "note": "override manuale: abbreviazione, stesso diametro 1.25"}
+]

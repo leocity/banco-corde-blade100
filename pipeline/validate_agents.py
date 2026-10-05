@@ -20,6 +20,13 @@ def assemble_matches(excel, twu, agent_rows):
             out.append(agent[e["id"]])
         else:
             out.append({"id": e["id"], "twu_name": None, "match": "none", "note": "nessun risultato agente"})
+    # più varianti colore sulla stessa riga TWU: la prima resta exact, le altre diventano probable
+    exact_seen = set()
+    for i, m in enumerate(out):
+        if m["match"] == "exact":
+            if m["twu_name"] in exact_seen:
+                out[i] = {**m, "match": "probable", "note": (m.get("note") or "") + " (variante colore)"}
+            exact_seen.add(m["twu_name"])
     claimed = {m["twu_name"] for m in out if m["match"] == "exact"}
     ids = {m["id"] for m in out}
     for t in twu:
@@ -67,6 +74,23 @@ def validate_rpedia(rows, ids):
     return errs
 
 
+def project_rpedia(rows, matches, twu):
+    """Riporta le righe Racketpedia (prodotte sull'unione Excel+TWU) sugli id finali.
+    Se un id Excel ha assorbito una riga TWU (match exact) e non ha dati propri, eredita quelli dell'id TWU."""
+    by_id = {r["id"]: r for r in rows}
+    twu_id_by_name = {t["twu_name"]: t["id"] for t in twu}
+    out = []
+    for m in matches:
+        row = dict(by_id.get(m["id"]) or {"id": m["id"], "url": None, "static_stiffness_kgmm": None,
+                                          "shape": None, "composition": None, "match": "none"})
+        if row.get("static_stiffness_kgmm") is None and m["match"] == "exact":
+            alt = by_id.get(twu_id_by_name.get(m["twu_name"]))
+            if alt and alt.get("static_stiffness_kgmm") is not None:
+                row = {**alt, "id": m["id"]}
+        out.append(row)
+    return out
+
+
 def _load(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
@@ -82,7 +106,7 @@ if __name__ == "__main__":
     ids = {m["id"] for m in matches}
     rp_parts = sorted(glob.glob("data/agents/rpedia_*.json"))
     if rp_parts:
-        rp = [r for p in rp_parts for r in _load(p)]
+        rp = project_rpedia([r for p in rp_parts for r in _load(p)], matches, twu)
         with open("data/agents/rpedia.json", "w", encoding="utf-8") as f:
             json.dump(rp, f, ensure_ascii=False, indent=1)
         errs += validate_rpedia(rp, ids)

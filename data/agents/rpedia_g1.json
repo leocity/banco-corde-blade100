@@ -1,0 +1,18 @@
+[
+  {"id": "re-string-slap-17", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "re-string-sync-17", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "re-string-vivo-17", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "re-string-zero-16", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "re-string-zero-17", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "solinco-hyper-g-17", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-120", "static_stiffness_kgmm": 1, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-hyper-g-soft-17", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "solinco-hyper-g-soft-16", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "solinco-tour-bite-17", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-120", "static_stiffness_kgmm": 0.97, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-confidential-16", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120", "static_stiffness_kgmm": 1, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-confidential-16l", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120", "static_stiffness_kgmm": 1, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-confidential-17", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120", "static_stiffness_kgmm": 1, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-revolution-16l", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-120", "static_stiffness_kgmm": 1.07, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-hyper-g-round-16", "url": null, "static_stiffness_kgmm": null, "shape": null, "composition": null, "match": "none"},
+  {"id": "solinco-hyper-g-16", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-120", "static_stiffness_kgmm": 1, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-tour-bite-soft-16", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-120", "static_stiffness_kgmm": 0.48, "shape": "pentagonal", "composition": "copolyester", "match": "none"},
+  {"id": "solinco-tour-bite-16", "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-120", "static_stiffness_kgmm": 0.97, "shape": "pentagonal", "composition": "copolyester", "match": "none"}

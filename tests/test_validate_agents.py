@@ -43,3 +43,28 @@ def test_rpedia_missing_id_and_ok_case():
            "static_stiffness_kgmm": 1.1, "shape": "round", "composition": "copolyester", "match": "exact"}]
     assert validate_rpedia(ok, {"a-x-17"}) == []
     assert validate_rpedia(ok, {"a-x-17", "a-y-16l"})
+
+
+def test_project_rpedia_onto_final_ids():
+    from pipeline.validate_agents import project_rpedia
+    matches = [{"id": "a-x-17", "twu_name": "A X 17 (1.20)", "match": "exact", "note": ""},
+               {"id": "a-y-16l", "twu_name": "A Y 16 (1.30)", "match": "exact", "note": ""}]
+    twu = TWU
+    url = "https://www.racketpedia.com/en-GB/tennis-string/a-y-130"
+    rp = [{"id": "a-x-17", "url": None, "static_stiffness_kgmm": None, "shape": None, "composition": None, "match": "none"},
+          {"id": "a-y-16l", "url": None, "static_stiffness_kgmm": None, "shape": None, "composition": None, "match": "none"},
+          {"id": "a-y-16", "url": url, "static_stiffness_kgmm": 1.2, "shape": "round", "composition": "copolyester", "match": "exact"},
+          {"id": "a-z-17", "url": None, "static_stiffness_kgmm": None, "shape": None, "composition": None, "match": "none"}]
+    out = {r["id"]: r for r in project_rpedia(rp, matches, twu)}
+    assert set(out) == {"a-x-17", "a-y-16l"}
+    assert out["a-y-16l"]["static_stiffness_kgmm"] == 1.2
+
+
+def test_colour_variants_claiming_same_exact_are_downgraded():
+    excel = [{"id": "k-helix-white-17"}, {"id": "k-helix-blue-17"}]
+    twu = [{"id": "k-helix-17", "twu_name": "K Helix 17"}]
+    agent = [{"id": "k-helix-white-17", "twu_name": "K Helix 17", "match": "exact", "note": ""},
+             {"id": "k-helix-blue-17", "twu_name": "K Helix 17", "match": "exact", "note": ""}]
+    m = assemble_matches(excel, twu, agent)
+    assert sorted(x["match"] for x in m) == ["exact", "probable"]
+    assert validate_matches(m, excel, twu) == []

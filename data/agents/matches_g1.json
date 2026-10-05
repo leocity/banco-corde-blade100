@@ -1,0 +1,56 @@
+[
+  {
+    "id": "re-string-slap-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Re-String brand not found in TWU database"
+  },
+  {
+    "id": "re-string-sync-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Re-String brand not found in TWU database"
+  },
+  {
+    "id": "re-string-vivo-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Re-String brand not found in TWU database"
+  },
+  {
+    "id": "re-string-zero-16",
+    "twu_name": null,
+    "match": "none",
+    "note": "Re-String brand not found in TWU database"
+  },
+  {
+    "id": "re-string-zero-17",
+    "twu_name": null,
+    "match": "none",
+    "note": "Re-String brand not found in TWU database"
+  },
+  {
+    "id": "solinco-hyper-g-soft-17",
+    "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+    "match": "proxy",
+    "note": "Same model Hyper-G Soft, different gauge (17 vs 16L)"
+  },
+  {
+    "id": "solinco-hyper-g-soft-16",
+    "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+    "match": "proxy",
+    "note": "Same model Hyper-G Soft, different gauge (16 vs 16L)"
+  },
+  {
+    "id": "solinco-confidential-16l",
+    "twu_name": "Solinco Confidential 16 (1.30)",
+    "match": "proxy",
+    "note": "Same model Confidential, different gauge (16L vs 16/1.30)"
+  },
+  {
+    "id": "solinco-confidential-17",
+    "twu_name": "Solinco Confidential 16 (1.30)",
+    "match": "proxy",
+    "note": "Same model Confidential, different gauge (17 vs 16/1.30)"
+  }
+]

@@ -1,0 +1,790 @@
+{
+ "excel_to_match": [
+  {
+   "id": "head-hawk-touch-17",
+   "brand": "Head",
+   "model": "Hawk Touch",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "head-hawk-seeding-16",
+   "brand": "Head",
+   "model": "Hawk Seeding",
+   "gauge_label": "16",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-competition-16l",
+   "brand": "Kirschbaum",
+   "model": "Competition",
+   "gauge_label": "16L",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-max-power-16l",
+   "brand": "Kirschbaum",
+   "model": "Max Power",
+   "gauge_label": "16L",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-plx-16l",
+   "brand": "Kirschbaum",
+   "model": "PLX",
+   "gauge_label": "16L",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-pro-line-evl-16l",
+   "brand": "Kirschbaum",
+   "model": "Pro Line Evl",
+   "gauge_label": "16L",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-pro-line-rough-16l",
+   "brand": "Kirschbaum",
+   "model": "Pro Line rough",
+   "gauge_label": "16L",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-black-shark-16l",
+   "brand": "Kirschbaum",
+   "model": "Black Shark",
+   "gauge_label": "16L",
+   "shape": "GEAR"
+  },
+  {
+   "id": "kirschbaum-xplosive-spd-17",
+   "brand": "Kirschbaum",
+   "model": "Xplosive Spd",
+   "gauge_label": "17",
+   "shape": "PENT"
+  },
+  {
+   "id": "kirschbaum-pro-line-17",
+   "brand": "Kirschbaum",
+   "model": "Pro Line",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-helix-white-17",
+   "brand": "Kirschbaum",
+   "model": "Helix white",
+   "gauge_label": "17",
+   "shape": "TWST"
+  },
+  {
+   "id": "kirschbaum-helix-blue-17",
+   "brand": "Kirschbaum",
+   "model": "Helix blue",
+   "gauge_label": "17",
+   "shape": "TWST"
+  },
+  {
+   "id": "kirschbaum-flash-orange-17",
+   "brand": "Kirschbaum",
+   "model": "Flash orange",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-flash-pink-17",
+   "brand": "Kirschbaum",
+   "model": "Flash pink",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-flash-yellow-17",
+   "brand": "Kirschbaum",
+   "model": "Flash yellow",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-flash-green-17",
+   "brand": "Kirschbaum",
+   "model": "Flash green",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "kirschbaum-flash-black-17",
+   "brand": "Kirschbaum",
+   "model": "Flash black",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "luxilon-4g-black-17",
+   "brand": "Luxilon",
+   "model": "4G Black",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "luxilon-alu-power-blk-17",
+   "brand": "Luxilon",
+   "model": "Alu Power blk",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "luxilon-alu-power-gry-17l",
+   "brand": "Luxilon",
+   "model": "Alu Power gry",
+   "gauge_label": "17L",
+   "shape": "RND"
+  },
+  {
+   "id": "luxilon-element-soft-ir-17",
+   "brand": "Luxilon",
+   "model": "Element Soft IR",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "luxilon-4g-desert-17",
+   "brand": "Luxilon",
+   "model": "4G Desert",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "signum-pro-polaris-17",
+   "brand": "Signum Pro",
+   "model": "Polaris",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "tecnifibre-razor-17",
+   "brand": "Tecnifibre",
+   "model": "Razor",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "yonex-poly-tour-pro-bk-17",
+   "brand": "Yonex",
+   "model": "Poly Tour Pro bk",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "yonex-poly-tour-pro-ble-17",
+   "brand": "Yonex",
+   "model": "Poly Tour Pro ble",
+   "gauge_label": "17",
+   "shape": "RND"
+  },
+  {
+   "id": "yonex-poly-tour-spin-17",
+   "brand": "Yonex",
+   "model": "Poly Tour Spin",
+   "gauge_label": "17",
+   "shape": "HEX"
+  }
+ ],
+ "twu_candidates": [
+  {
+   "twu_name": "Tecnifibre Razor Spin 17/1.25",
+   "brand": "Tecnifibre",
+   "model": "Razor Spin",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Spiky Shark 16",
+   "brand": "Kirschbaum",
+   "model": "Spiky Shark",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Head Hawk Power 17 (1.25)",
+   "brand": "Head",
+   "model": "Hawk Power",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Spiky Shark 17",
+   "brand": "Kirschbaum",
+   "model": "Spiky Shark",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Tecnifibre Razor Soft 17 (1.25)",
+   "brand": "Tecnifibre",
+   "model": "Razor Soft",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Signum Pro Plasma HEXtreme 16 (1.30)",
+   "brand": "Signum Pro",
+   "model": "Plasma HEXtreme",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Yonex Polytour Rev 16L (1.25)",
+   "brand": "Yonex",
+   "model": "Poly Tour Rev",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Xplosive Speed 1.25",
+   "brand": "Kirschbaum",
+   "model": "Xplosive Speed",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Head Lynx Tour 17 (1.25)",
+   "brand": "Head",
+   "model": "Lynx Tour",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Luxilon Element Rough 16 (1.30)",
+   "brand": "Luxilon",
+   "model": "Element Rough",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Luxilon Element Soft IR 1.27",
+   "brand": "Luxilon",
+   "model": "Element Soft IR",
+   "gauge_label": "16L",
+   "gauge_mm": 1.27
+  },
+  {
+   "twu_name": "Luxilon Alu Power Soft 1.25",
+   "brand": "Luxilon",
+   "model": "Alu Power Soft",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Luxilon 4G Soft 1.25",
+   "brand": "Luxilon",
+   "model": "4G Soft",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Luxilon Element 1.30",
+   "brand": "Luxilon",
+   "model": "Element",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Luxilon ALU Power Rough 16L (1.25)",
+   "brand": "Luxilon",
+   "model": "ALU Power Rough",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Head Hawk 16 (1.30)",
+   "brand": "Head",
+   "model": "Hawk",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Yonex Poly Tour Spin 16L (1.25)",
+   "brand": "Yonex",
+   "model": "Poly Tour Spin",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Signum Pro Yellow Jacket 17g (1.22)",
+   "brand": "Signum Pro",
+   "model": "Yellow Jacket",
+   "gauge_label": "17",
+   "gauge_mm": 1.22
+  },
+  {
+   "twu_name": "Signum Pro X-Perience 17 (1.24)",
+   "brand": "Signum Pro",
+   "model": "X-Perience",
+   "gauge_label": "17",
+   "gauge_mm": 1.24
+  },
+  {
+   "twu_name": "Head Lynx Tour 16 (1.30)",
+   "brand": "Head",
+   "model": "Lynx Tour",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Max Power Rough 16 (1.30)",
+   "brand": "Kirschbaum",
+   "model": "Max Power Rough",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Signum Pro Plasma HEXtreme 16L/1.25",
+   "brand": "Signum Pro",
+   "model": "Plasma HEXtreme",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Max Power 16 (1.30)",
+   "brand": "Kirschbaum",
+   "model": "Max Power",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Luxilon ALU Power 125/16L",
+   "brand": "Luxilon",
+   "model": "ALU Power",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Black Shark 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Black Shark",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line II 1.30",
+   "brand": "Kirschbaum",
+   "model": "Pro Line II",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Super Smash 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Super Smash",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Xplosive Speed 1.30",
+   "brand": "Kirschbaum",
+   "model": "Xplosive Speed",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Signum Pro Poly-Plasma Pure 16L",
+   "brand": "Signum Pro",
+   "model": "Poly-Plasma Pure",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Max Power Rough 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Max Power Rough",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Tecnifibre Razor Code 17 (1.25)",
+   "brand": "Tecnifibre",
+   "model": "Razor Code",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Tecnifibre Ice Code 16 (1.30)",
+   "brand": "Tecnifibre",
+   "model": "Ice Code",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Luxilon Element 16L (1.25)",
+   "brand": "Luxilon",
+   "model": "Element",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Signum Pro Firestorm 16 (1.30)",
+   "brand": "Signum Pro",
+   "model": "Firestorm",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Helix 16",
+   "brand": "Kirschbaum",
+   "model": "Helix",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Helix 17",
+   "brand": "Kirschbaum",
+   "model": "Helix",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Kirschbaum Touch Turbo 16L (1.275)",
+   "brand": "Kirschbaum",
+   "model": "Touch Turbo",
+   "gauge_label": "16L",
+   "gauge_mm": 1.275
+  },
+  {
+   "twu_name": "Kirschbaum Black Shark 16 (1.30)",
+   "brand": "Kirschbaum",
+   "model": "Black Shark",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Max Power 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Max Power",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Signum Pro Poly Plasma 17 (1.23)",
+   "brand": "Signum Pro",
+   "model": "Poly Plasma",
+   "gauge_label": "17",
+   "gauge_mm": 1.23
+  },
+  {
+   "twu_name": "Kirschbaum Touch Turbo 1.30",
+   "brand": "Kirschbaum",
+   "model": "Touch Turbo",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Super Smash 16/1.30",
+   "brand": "Kirschbaum",
+   "model": "Super Smash",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum P2 16/1.30",
+   "brand": "Kirschbaum",
+   "model": "P2",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Signum Pro Poly-Plasma Pure 17 (1.23)",
+   "brand": "Signum Pro",
+   "model": "Poly-Plasma Pure",
+   "gauge_label": "17",
+   "gauge_mm": 1.23
+  },
+  {
+   "twu_name": "Kirschbaum Touch Turbo 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Touch Turbo",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Super Smash Spiky 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Super Smash Spiky",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+   "brand": "Yonex",
+   "model": "Poly Tour Pro",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Signum Pro Tornado 16",
+   "brand": "Signum Pro",
+   "model": "Tornado",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Super Smash Spiky 1.20",
+   "brand": "Kirschbaum",
+   "model": "Super Smash Spiky",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line X 16 (1.30)",
+   "brand": "Kirschbaum",
+   "model": "Pro Line X",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Super Smash Spiky 16/1.30",
+   "brand": "Kirschbaum",
+   "model": "Super Smash Spiky",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Signum Pro Poly-Plasma 17L (1.18)",
+   "brand": "Signum Pro",
+   "model": "Poly-Plasma",
+   "gauge_label": "17L",
+   "gauge_mm": 1.18
+  },
+  {
+   "twu_name": "Luxilon Alu Power Vibe 16 (1.25)",
+   "brand": "Luxilon",
+   "model": "Alu Power Vibe",
+   "gauge_label": "16",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Competition 16/1.30",
+   "brand": "Kirschbaum",
+   "model": "Competition",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum P2 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "P2",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line Evolution 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Pro Line Evolution",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Head Hawk Rough 17",
+   "brand": "Head",
+   "model": "Hawk Rough",
+   "gauge_label": "17",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Signum Pro Poly Megaforce 17 (1.19)",
+   "brand": "Signum Pro",
+   "model": "Poly Megaforce",
+   "gauge_label": "17",
+   "gauge_mm": 1.19
+  },
+  {
+   "twu_name": "Signum Pro Tornado 17 (1.23)",
+   "brand": "Signum Pro",
+   "model": "Tornado",
+   "gauge_label": "17",
+   "gauge_mm": 1.23
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line II 17L (1.20)",
+   "brand": "Kirschbaum",
+   "model": "Pro Line II",
+   "gauge_label": "17L",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Kirschbaum P2 17L (1.20)",
+   "brand": "Kirschbaum",
+   "model": "P2",
+   "gauge_label": "17L",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line X 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Pro Line X",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Signum Pro Firestorm 1.25",
+   "brand": "Signum Pro",
+   "model": "Firestorm",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Yonex Poly Tour Spin G 1.25",
+   "brand": "Yonex",
+   "model": "Poly Tour Spin G",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Signum Pro Poly-Plasma 16L",
+   "brand": "Signum Pro",
+   "model": "Poly-Plasma",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line II 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Pro Line II",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Head Hawk 17 (1.25)",
+   "brand": "Head",
+   "model": "Hawk",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Signum Pro Hyperion 16",
+   "brand": "Signum Pro",
+   "model": "Hyperion",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Competition 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Competition",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line I 1.30",
+   "brand": "Kirschbaum",
+   "model": "Pro Line I",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Signum Pro Poly Megaforce 16",
+   "brand": "Signum Pro",
+   "model": "Poly Megaforce",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Signum Pro Poly Speed Spin 1.28",
+   "brand": "Signum Pro",
+   "model": "Poly Speed Spin",
+   "gauge_label": "16",
+   "gauge_mm": 1.28
+  },
+  {
+   "twu_name": "Signum Pro Hyperion 17 (1.24)",
+   "brand": "Signum Pro",
+   "model": "Hyperion",
+   "gauge_label": "17",
+   "gauge_mm": 1.24
+  },
+  {
+   "twu_name": "Tecnifibre Razor Code 16 (1.30)",
+   "brand": "Tecnifibre",
+   "model": "Razor Code",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Luxilon 4G Rough 16L",
+   "brand": "Luxilon",
+   "model": "4G Rough",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line I 17 (1.25)",
+   "brand": "Kirschbaum",
+   "model": "Pro Line I",
+   "gauge_label": "17",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Kirschbaum Competition 17L (1.20)",
+   "brand": "Kirschbaum",
+   "model": "Competition",
+   "gauge_label": "17L",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Kirschbaum Pro Line I 17L (1.20)",
+   "brand": "Kirschbaum",
+   "model": "Pro Line I",
+   "gauge_label": "17L",
+   "gauge_mm": 1.2
+  },
+  {
+   "twu_name": "Luxilon 4G 16L (1.25)",
+   "brand": "Luxilon",
+   "model": "4G",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Yonex Poly Tour Pro Yellow 16 (1.30)",
+   "brand": "Yonex",
+   "model": "Poly Tour Pro Yellow",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Signum Pro Poly-Plasma Pure 17L (1.18)",
+   "brand": "Signum Pro",
+   "model": "Poly-Plasma Pure",
+   "gauge_label": "17L",
+   "gauge_mm": 1.18
+  },
+  {
+   "twu_name": "Yonex Poly Tour Pro Yellow 16L (1.25)",
+   "brand": "Yonex",
+   "model": "Poly Tour Pro Yellow",
+   "gauge_label": "16L",
+   "gauge_mm": 1.25
+  },
+  {
+   "twu_name": "Luxilon 4G 16 (1.30)",
+   "brand": "Luxilon",
+   "model": "4G",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Yonex PolyTour REV 16 (1.30)",
+   "brand": "Yonex",
+   "model": "Poly Tour REV",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  },
+  {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "brand": "Kirschbaum",
+   "model": "Flash",
+   "gauge_label": "16",
+   "gauge_mm": 1.3
+  }
+ ]
+}
