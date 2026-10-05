@@ -24,6 +24,7 @@ MODEL_ALIASES = {
     "o toro": "O-Toro",
     "toro toro ornage": "Toro Toro Orange",
     "wasabi pom": "Wasabi Pom",
+    "rpm rough": "RPM Blast Rough",
 }
 
 GAUGE_MM = {"16": 1.30, "16L": 1.25, "17": 1.20, "17L": 1.18}
