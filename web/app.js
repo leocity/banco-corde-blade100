@@ -248,9 +248,16 @@ function drawScatter() {
     const c = cat(r), dim = hb && r.brand !== hb, big = c === 'liked' || c === 'disliked' || (hb && r.brand === hb);
     s += `<circle class="dot${hb && r.brand === hb ? ' hl' : ''}" data-id="${esc(r.id)}" cx="${sx(mx.get(r)).toFixed(1)}" cy="${sy(my.get(r)).toFixed(1)}" r="${big ? 7 : 5}" fill="${CAT_COLOR[c]}" opacity="${dim ? 0.22 : 1}" tabindex="0" role="button" aria-label="${esc(fullName(r))}"/>`;
   }
+  // etichette dirette solo per preferite e non gradite; i punti quasi sovrapposti condividono un'etichetta
+  const groups = [];
   for (const r of sorted.filter((r) => r.preference)) {
-    const x = sx(mx.get(r)), y = sy(my.get(r)), right = x < W - 200;
-    s += `<text class="lbl" x="${x + (right ? 10 : -10)}" y="${y - 8}" text-anchor="${right ? 'start' : 'end'}">${r.preference === 'liked' ? '★ ' : '✕ '}${esc(r.model)} ${esc(r.gauge_label || '')}</text>`;
+    const x = sx(mx.get(r)), y = sy(my.get(r));
+    const g = groups.find((g) => g.model === r.model && Math.hypot(g.x - x, g.y - y) < 14);
+    if (g) g.gauges.push(r.gauge_label || ''); else groups.push({ x, y, model: r.model, pref: r.preference, gauges: [r.gauge_label || ''] });
+  }
+  for (const g of groups) {
+    const right = g.x < W - 200;
+    s += `<text class="lbl" x="${g.x + (right ? 10 : -10)}" y="${g.y - 8}" text-anchor="${right ? 'start' : 'end'}">${g.pref === 'liked' ? '★ ' : '✕ '}${esc(g.model)} ${esc(g.gauges.join(' · '))}</text>`;
   }
   svg.innerHTML = s;
   $('#map-note').textContent = `${pts.length} corde con entrambi i valori; ${ALL.length - pts.length} escluse perché manca almeno un dato. Tocca un punto per aprire la scheda.`;
