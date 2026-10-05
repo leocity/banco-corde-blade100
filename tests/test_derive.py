@@ -73,3 +73,10 @@ def test_discriminant_sorted_desc():
     d = discriminant_metrics(recs, population(recs))
     seps = [x["separation"] for x in d]
     assert seps == sorted(seps, reverse=True) and len(d) >= 4
+
+
+def test_similarity_is_smooth_not_clipped_to_zero():
+    # due deviazioni standard di distanza su tutte le feature: deve restare > 0 (curva gaussiana)
+    far = dict(POP_RECS[9], shape="HEX")
+    s = similarity(POP_RECS[0], far, POP)
+    assert 0 < s < 30

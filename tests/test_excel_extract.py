@@ -59,8 +59,9 @@ def test_partial_group_does_not_crash(capsys):
     assert "warning" in capsys.readouterr().err.lower()
 
 
-def test_rpm_rough_aliased_to_blast_rough(recs):
-    assert "babolat-rpm-blast-rough-16l" in recs
+def test_rpm_rough_is_a_different_product_out_of_scope(recs):
+    # RPM Rough (gear) è un prodotto diverso da RPM Blast Rough: non va unificato
+    assert "babolat-rpm-blast-rough-16l" not in recs and "babolat-rpm-rough-16l" not in recs
 
 
 def test_zero_tension_loss_treated_as_not_measured(recs):

@@ -1,0 +1,7052 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 7.733
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.978,
+    "60": 0.978,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.311111111111109,
+    "60": 3.466666666666672,
+    "65": 5.511111111111104
+   },
+   "stiff_index_avg": 3.378,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 33.059999999999974
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.28,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 17.0,
+   "tl12_raw": 17.0,
+   "tl6": 17.0,
+   "tl12": 17.0
+  },
+  "twu": {
+   "twu_name": "Babolat RPM Blast 16",
+   "match": "proxy",
+   "note": "Same model RPM Blast, gauge 16L vs 16 (1.25-1.28 vs 1.30mm, same gauge family)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 232.6,
+   "tension_loss_pct": 45.9,
+   "spin_potential": 4.5
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.18,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125",
+   "shape": "octagonal",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": "disliked",
+  "coverage": 3
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 4.444,
+    "60": 6.667,
+    "65": 7.733
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 2.222,
+    "60": 2.222,
+    "65": 5.511
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 4.444444444444445,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.778,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 19.0,
+    "60": 28.5,
+    "65": 33.059999999999974
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.62,
+   "static_24h": 12.12,
+   "static_recoil": 11.62,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 20.0,
+   "tl12_raw": 18.0,
+   "tl6": 20.0,
+   "tl12": 18.0
+  },
+  "twu": {
+   "twu_name": "Babolat RPM Blast 17/1.25",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 233.7,
+   "tension_loss_pct": 33.3,
+   "spin_potential": 4.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.18,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125",
+   "shape": "octagonal",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": "disliked",
+  "coverage": 3
+ },
+ {
+  "id": "head-hawk-16",
+  "brand": "Head",
+  "model": "Hawk",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.222,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.2,
+   "static_initial": 12.0,
+   "static_24h": 12.5,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 8.0,
+   "tl12_raw": 16.0,
+   "tl6": 8.0,
+   "tl12": 16.0
+  },
+  "twu": {
+   "twu_name": "Head Hawk 16 (1.30)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 230.3,
+   "tension_loss_pct": 28.5,
+   "spin_potential": 6.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "head-hawk-power-17",
+  "brand": "Head",
+  "model": "Hawk Power",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 5.511,
+    "60": 7.733,
+    "65": 8.889
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 5.511
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 4.444444444444445,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 3.333,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 23.55999999999997,
+    "60": 33.059999999999974,
+    "65": 38.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.87,
+   "static_24h": 12.12,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 12.0,
+   "tl12_raw": 17.0,
+   "tl6": 12.0,
+   "tl12": 17.0
+  },
+  "twu": {
+   "twu_name": "Head Hawk Power 17 (1.25)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 203.5,
+   "tension_loss_pct": 48.3,
+   "spin_potential": 7.5
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "head-hawk-touch-17",
+  "brand": "Head",
+  "model": "Hawk Touch",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 4.444,
+    "60": 5.6,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.978,
+    "50": 2.222,
+    "60": 2.222,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.2444444444444496,
+    "50": 2.2222222222222223,
+    "60": 3.3777777777777844,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.556,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 19.0,
+    "60": 23.94000000000003,
+    "65": 28.5
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.5,
+   "static_24h": 11.75,
+   "static_recoil": 11.62,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 11.0,
+   "tl12_raw": 14.0,
+   "tl6": 11.0,
+   "tl12": 14.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-hawk-touch-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "head-lynx-tour-16",
+  "brand": "Head",
+  "model": "Lynx Tour",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 2.222,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 2.2222222222222223,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.778,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 28.5
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.5,
+   "static_24h": 11.75,
+   "static_recoil": 11.25,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 8.0,
+   "tl12_raw": 16.0,
+   "tl6": 8.0,
+   "tl12": 16.0
+  },
+  "twu": {
+   "twu_name": "Head Lynx Tour 16 (1.30)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 228.6,
+   "tension_loss_pct": 30.5,
+   "spin_potential": 6.1
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "head-hawk-seeding-16",
+  "brand": "Head",
+  "model": "Hawk Seeding",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 3.289
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.1555555555555626,
+    "60": 2.2222222222222223,
+    "65": 1.0666666666666598
+   },
+   "stiff_index_avg": 1.378,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 14.05999999999997
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.62,
+   "static_24h": 11.75,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.13,
+   "tl6_raw": 8.0,
+   "tl12_raw": 12.0,
+   "tl6": 8.0,
+   "tl12": 12.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-competition-16l",
+  "brand": "Kirschbaum",
+  "model": "Competition",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 3.289,
+    "50": 4.444,
+    "60": 5.511,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 3.288888888888882,
+    "50": 3.3777777777777844,
+    "60": 4.444444444444445,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.889,
+   "olg_16x19": {
+    "40": 14.05999999999997,
+    "50": 19.0,
+    "60": 23.55999999999997,
+    "65": 28.5
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.23,
+   "static_initial": 11.5,
+   "static_24h": 12.0,
+   "static_recoil": 11.25,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 0.0,
+   "tl12_raw": 10.0,
+   "tl6": null,
+   "tl12": 10.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Competition 16/1.30",
+   "match": "proxy",
+   "note": "Same model, gauge 16 (1.30) vs 16L (1.25-1.28)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 47.5,
+   "spin_potential": 4.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-max-power-16l",
+  "brand": "Kirschbaum",
+  "model": "Max Power",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 3.3777777777777844,
+    "65": 3.288888888888882
+   },
+   "stiff_index_avg": 2.778,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.23,
+   "static_initial": 11.5,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 0.0,
+   "tl12_raw": 10.0,
+   "tl6": null,
+   "tl12": 10.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Max Power 16 (1.30)",
+   "match": "proxy",
+   "note": "Same model, gauge 16 (1.30) vs 16L",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 233.2,
+   "tension_loss_pct": 20.9,
+   "spin_potential": 5.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.27,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "kirschbaum-plx-16l",
+  "brand": "Kirschbaum",
+  "model": "PLX",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 3.3777777777777844,
+    "65": 3.288888888888882
+   },
+   "stiff_index_avg": 2.778,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 12.0,
+   "static_24h": 12.25,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 0.0,
+   "tl12_raw": 14.0,
+   "tl6": null,
+   "tl12": 14.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-evl-16l",
+  "brand": "Kirschbaum",
+  "model": "Pro Line Evl",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.533,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.222,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 28.5
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.5,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 0.0,
+   "tl12_raw": 12.0,
+   "tl6": null,
+   "tl12": 12.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line Evolution 17 (1.25)",
+   "match": "proxy",
+   "note": "Name match (Evl=Evolution), gauge 17 (1.25) vs 16L",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.0,
+   "tension_loss_pct": 28.9,
+   "spin_potential": 4.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-pro-line-rough-16l",
+  "brand": "Kirschbaum",
+  "model": "Pro Line rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.067,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 3.288888888888882,
+    "60": 3.3777777777777844,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.29,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 6.0,
+   "tl12_raw": null,
+   "tl6": 6.0,
+   "tl12": null
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-black-shark-16l",
+  "brand": "Kirschbaum",
+  "model": "Black Shark",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "GEAR",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 4.444,
+    "50": 5.511,
+    "60": 7.733,
+    "65": 8.889
+   },
+   "recover_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 5.511,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 2.778,
+   "olg_16x19": {
+    "40": 19.0,
+    "50": 23.55999999999997,
+    "60": 33.059999999999974,
+    "65": 38.0
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.25,
+   "static_initial": 11.75,
+   "static_24h": 12.75,
+   "static_recoil": 11.75,
+   "static_24h_creep": 1.0,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Black Shark 16 (1.30)",
+   "match": "proxy",
+   "note": "Same model, gauge 16 (1.30) vs 16L",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 223.5,
+   "tension_loss_pct": 41.2,
+   "spin_potential": 5.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.72,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "kirschbaum-black-shark-17",
+  "brand": "Kirschbaum",
+  "model": "Black Shark",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "GEAR",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.822,
+    "60": 4.978,
+    "65": 6.044
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 3.911111111111122,
+    "65": 3.8222222222222197
+   },
+   "stiff_index_avg": 3.311,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 16.33999999999999,
+    "60": 21.28000000000002,
+    "65": 25.83999999999999
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.56,
+   "static_24h": 11.75,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.19,
+   "tl6_raw": 22.0,
+   "tl12_raw": null,
+   "tl6": 22.0,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Black Shark 17 (1.25)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 216.6,
+   "tension_loss_pct": 38.4,
+   "spin_potential": 5.8
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.72,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "kirschbaum-xplosive-spd-17",
+  "brand": "Kirschbaum",
+  "model": "Xplosive Spd",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "PENT",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 3.289,
+    "50": 6.04,
+    "60": 8.889,
+    "65": 9.956
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 5.511,
+    "65": 5.511
+   },
+   "stiff_index": {
+    "40": 3.288888888888882,
+    "50": 4.977777777777778,
+    "60": 3.3777777777777844,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 4.022,
+   "olg_16x19": {
+    "40": 14.05999999999997,
+    "50": 25.840000000000003,
+    "60": 38.0,
+    "65": 42.559999999999974
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.23,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 8.0,
+   "tl12_raw": 12.0,
+   "tl6": 8.0,
+   "tl12": 12.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Xplosive Speed 1.25",
+   "match": "probable",
+   "note": "override manuale: abbreviazione, stesso diametro 1.25",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 185.7,
+   "tension_loss_pct": 41.4,
+   "spin_potential": 7.1
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-pro-line-17",
+  "brand": "Kirschbaum",
+  "model": "Pro Line",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 4.978,
+    "60": 7.733,
+    "65": 8.889
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 2.222,
+    "60": 3.822,
+    "65": 5.511
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.75555555555556,
+    "60": 3.911111111111107,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.778,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 21.28000000000002,
+    "60": 33.059999999999974,
+    "65": 38.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.81,
+   "static_24h": 12.18,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.37,
+   "tl6_raw": 6.0,
+   "tl12_raw": 34.0,
+   "tl6": 6.0,
+   "tl12": 34.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-helix-white-17",
+  "brand": "Kirschbaum",
+  "model": "Helix white",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "TWST",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.756,
+    "60": 4.444,
+    "65": 6.044
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.6,
+    "65": 3.822
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.6888888888889002,
+    "60": 2.844444444444447,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 1.956,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 11.780000000000019,
+    "60": 19.0,
+    "65": 25.83999999999999
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.23,
+   "static_initial": 11.68,
+   "static_24h": 11.87,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.19,
+   "tl6_raw": 7.0,
+   "tl12_raw": 22.0,
+   "tl6": 7.0,
+   "tl12": 22.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Helix 17",
+   "match": "exact",
+   "note": "White is color variant of Helix; gauge 17 (1.2)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.6,
+   "tension_loss_pct": 44.2,
+   "spin_potential": 5.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-helix-blue-17",
+  "brand": "Kirschbaum",
+  "model": "Helix blue",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "TWST",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 6.044
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.6,
+    "60": 1.6,
+    "65": 3.822
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.6888888888888847,
+    "60": 2.844444444444447,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 1.956,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 25.83999999999999
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.23,
+   "static_initial": 11.68,
+   "static_24h": 11.87,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.19,
+   "tl6_raw": 7.0,
+   "tl12_raw": 22.0,
+   "tl6": 7.0,
+   "tl12": 22.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Helix 17",
+   "match": "probable",
+   "note": "Blue is color variant of Helix; gauge 17 (1.2) (variante colore)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.6,
+   "tension_loss_pct": 44.2,
+   "spin_potential": 5.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-flash-orange-17",
+  "brand": "Kirschbaum",
+  "model": "Flash orange",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.289,
+    "60": 6.044,
+    "65": 7.733
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 3.288888888888882,
+    "60": 2.75555555555556,
+    "65": 3.288888888888882
+   },
+   "stiff_index_avg": 2.733,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 14.05999999999997,
+    "60": 25.83999999999999,
+    "65": 33.059999999999974
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.62,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 16.0,
+   "tl12_raw": 20.0,
+   "tl6": 16.0,
+   "tl12": 20.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "note": "Orange is color variant of Flash, gauge 16 (1.30) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-orange-125",
+   "shape": "round",
+   "composition": "polyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "kirschbaum-flash-pink-17",
+  "brand": "Kirschbaum",
+  "model": "Flash pink",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.289,
+    "60": 5.511,
+    "65": 7.2
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.75555555555556
+   },
+   "stiff_index_avg": 2.2,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 14.05999999999997,
+    "60": 23.55999999999997,
+    "65": 30.78000000000002
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.62,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 16.0,
+   "tl12_raw": 18.0,
+   "tl6": 16.0,
+   "tl12": 18.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "note": "Pink is color variant of Flash, gauge 16 (1.30) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-flash-yellow-17",
+  "brand": "Kirschbaum",
+  "model": "Flash yellow",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.289,
+    "60": 5.511,
+    "65": 7.2
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.75555555555556
+   },
+   "stiff_index_avg": 2.2,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 14.05999999999997,
+    "60": 23.55999999999997,
+    "65": 30.78000000000002
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.62,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 16.0,
+   "tl12_raw": 18.0,
+   "tl6": 16.0,
+   "tl12": 18.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "note": "Yellow is color variant of Flash, gauge 16 (1.30) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-flash-green-17",
+  "brand": "Kirschbaum",
+  "model": "Flash green",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.289,
+    "60": 5.511,
+    "65": 7.2
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 3.289,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 3.911111111111122
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 14.05999999999997,
+    "60": 23.55999999999997,
+    "65": 30.78000000000002
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.62,
+   "static_24h": 12.0,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 16.0,
+   "tl12_raw": 18.0,
+   "tl6": 16.0,
+   "tl12": 18.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "note": "Green is color variant of Flash, gauge 16 (1.30) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-green-125",
+   "shape": "round",
+   "composition": "polyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "kirschbaum-flash-black-17",
+  "brand": "Kirschbaum",
+  "model": "Flash black",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 0.533,
+    "50": 2.222,
+    "60": 4.444,
+    "65": 4.978
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 2.222,
+    "65": 3.822
+   },
+   "stiff_index": {
+    "40": 0.5333333333333378,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 1.1555555555555626
+   },
+   "stiff_index_avg": 1.533,
+   "olg_16x19": {
+    "40": 2.280000000000019,
+    "50": 9.5,
+    "60": 19.0,
+    "65": 21.28000000000002
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.5,
+   "static_24h": 11.81,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.31,
+   "tl6_raw": 12.0,
+   "tl12_raw": 24.0,
+   "tl6": 12.0,
+   "tl12": 24.0
+  },
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "proxy",
+   "note": "Black is color variant of Flash, gauge 16 (1.30) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-4g-black-17",
+  "brand": "Luxilon",
+  "model": "4G Black",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 1.067
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.1555555555555626,
+    "60": 2.2222222222222223,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 1.956,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.5,
+   "static_24h": 12.0,
+   "static_recoil": 11.25,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 10.0,
+   "tl12_raw": 20.0,
+   "tl6": 10.0,
+   "tl12": 20.0
+  },
+  "twu": {
+   "twu_name": "Luxilon 4G 16L (1.25)",
+   "match": "proxy",
+   "note": "Black is color variant of 4G, gauge 16L (1.25) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 258.9,
+   "tension_loss_pct": 21.3,
+   "spin_potential": 3.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-alu-power-blk-17",
+  "brand": "Luxilon",
+  "model": "Alu Power blk",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 1.933,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.5,
+   "static_24h": 11.75,
+   "static_recoil": 11.25,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 10.0,
+   "tl12_raw": 17.0,
+   "tl6": 10.0,
+   "tl12": 17.0
+  },
+  "twu": {
+   "twu_name": "Luxilon ALU Power 125/16L",
+   "match": "proxy",
+   "note": "Blk is color variant of Alu Power, gauge 16L vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 209.2,
+   "tension_loss_pct": 46.6,
+   "spin_potential": 5.8
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-alu-power-gry-17l",
+  "brand": "Luxilon",
+  "model": "Alu Power gry",
+  "gauge_label": "17L",
+  "gauge_mm": 1.18,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 2.222,
+    "60": 5.511,
+    "65": 8.889
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 2.222,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 3.288888888888882,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.044,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 9.5,
+    "60": 23.55999999999997,
+    "65": 38.0
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.19,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Luxilon ALU Power 125/16L",
+   "match": "proxy",
+   "note": "Gry is color variant of Alu Power, gauge 16L (1.25) vs 17L (1.18-1.20)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 209.2,
+   "tension_loss_pct": 46.6,
+   "spin_potential": 5.8
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-element-soft-ir-17",
+  "brand": "Luxilon",
+  "model": "Element Soft IR",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 7.733,
+    "60": 9.867,
+    "65": 11.111
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 4.444,
+    "60": 6.667,
+    "65": 6.667
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 3.1999999999999953,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.289,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 33.059999999999974,
+    "60": 42.17999999999998,
+    "65": 47.5
+   },
+   "elong_40": 1.27,
+   "elong_65": 1.26,
+   "static_initial": 11.62,
+   "static_24h": 12.12,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 11.0,
+   "tl12_raw": 15.0,
+   "tl6": 11.0,
+   "tl12": 15.0
+  },
+  "twu": {
+   "twu_name": "Luxilon Element Soft IR 1.27",
+   "match": "proxy",
+   "note": "Model match, gauge 16L (1.27) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 43.7,
+   "spin_potential": 7.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-4g-desert-17",
+  "brand": "Luxilon",
+  "model": "4G Desert",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 0.978,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.978,
+    "60": 2.222,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 0.9777777777777727,
+    "50": 1.2444444444444496,
+    "60": 1.0666666666666598,
+    "65": 1.0666666666666598
+   },
+   "stiff_index_avg": 1.089,
+   "olg_16x19": {
+    "40": 4.179999999999978,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.5,
+   "static_24h": 12.0,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 8.0,
+   "tl12_raw": 20.0,
+   "tl6": 8.0,
+   "tl12": 20.0
+  },
+  "twu": {
+   "twu_name": "Luxilon 4G 16L (1.25)",
+   "match": "proxy",
+   "note": "Desert is color variant of 4G, gauge 16L vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 258.9,
+   "tension_loss_pct": 21.3,
+   "spin_potential": 3.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "re-string-slap-17",
+  "brand": "Re-String",
+  "model": "Slap",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.289,
+    "60": 4.978,
+    "65": 7.733
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 1.6,
+    "65": 3.822
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.755555555555544,
+    "60": 3.3777777777777844,
+    "65": 3.911111111111107
+   },
+   "stiff_index_avg": 2.911,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 14.05999999999997,
+    "60": 21.28000000000002,
+    "65": 33.059999999999974
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.22,
+   "static_initial": 11.56,
+   "static_24h": 11.81,
+   "static_recoil": 11.43,
+   "static_24h_creep": 0.25,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.75,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-slap-black-123",
+   "shape": "hexagonal",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "re-string-sync-17",
+  "brand": "Re-String",
+  "model": "Sync",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 2.756,
+    "60": 8.889,
+    "65": 9.956
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 4.444,
+    "65": 5.511
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.2222222222222223,
+    "60": 4.444444444444445,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.178,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 11.780000000000019,
+    "60": 38.0,
+    "65": 42.559999999999974
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.87,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.13,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-120",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "re-string-vivo-17",
+  "brand": "Re-String",
+  "model": "Vivo",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.756,
+    "60": 3.822,
+    "65": 6.044
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.6888888888889002,
+    "60": 2.75555555555556,
+    "65": 1.5999999999999976
+   },
+   "stiff_index_avg": 1.778,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 11.780000000000019,
+    "60": 16.33999999999999,
+    "65": 25.83999999999999
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.22,
+   "static_initial": 11.87,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.13,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-vivo-blue-123",
+   "shape": "round",
+   "composition": null,
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "re-string-zero-16",
+  "brand": "Re-String",
+  "model": "Zero",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 4.444,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 3.289,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.2222222222222223,
+    "60": 1.1555555555555626,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 1.667,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 19.0,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.28,
+   "elong_65": 1.27,
+   "static_initial": 11.5,
+   "static_24h": 11.75,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 20.0,
+   "tl12_raw": 24.0,
+   "tl6": 20.0,
+   "tl12": 24.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-128",
+   "shape": "hexagonal",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "re-string-zero-17",
+  "brand": "Re-String",
+  "model": "Zero",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 3.288888888888882
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.22,
+   "static_initial": 11.62,
+   "static_24h": 11.87,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 11.0,
+   "tl12_raw": 19.0,
+   "tl6": 11.0,
+   "tl12": 19.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-123",
+   "shape": "hexagonal",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-x-perience-17",
+  "brand": "Signum Pro",
+  "model": "X-Perience",
+  "gauge_label": "17",
+  "gauge_mm": 1.24,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.978,
+    "60": 0.978,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.311111111111109,
+    "60": 2.311111111111109,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.267,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.24,
+   "elong_65": 1.23,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 5.0,
+   "tl12_raw": 0.0,
+   "tl6": 5.0,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Signum Pro X-Perience 17 (1.24)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 224.6,
+   "tension_loss_pct": 25.2,
+   "spin_potential": 6.2
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.07,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-x-perience-green-124",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "signum-pro-polaris-17",
+  "brand": "Signum Pro",
+  "model": "Polaris",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 4.444,
+    "50": 5.6,
+    "60": 8.889,
+    "65": 11.111
+   },
+   "recover_pct": {
+    "40": 0.978,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 5.6
+   },
+   "stiff_index": {
+    "40": 3.466666666666672,
+    "50": 3.3777777777777844,
+    "60": 5.600000000000007,
+    "65": 5.511111111111104
+   },
+   "stiff_index_avg": 4.489,
+   "olg_16x19": {
+    "40": 19.0,
+    "50": 23.94000000000003,
+    "60": 38.0,
+    "65": 47.5
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.18,
+   "static_initial": 11.88,
+   "static_24h": 12.12,
+   "static_recoil": 11.62,
+   "static_24h_creep": 0.24,
+   "tl6_raw": 12.0,
+   "tl12_raw": 0.0,
+   "tl6": 12.0,
+   "tl12": null
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-hyper-g-17",
+  "brand": "Solinco",
+  "model": "Hyper-G",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "SQ",
+  "material": "poly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 0.0,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 0.0,
+    "50": 1.1555555555555626,
+    "60": 1.0666666666666598,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 1.111,
+   "olg_16x19": {
+    "40": 0.0,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.22,
+   "static_initial": 11.25,
+   "static_24h": 13.0,
+   "static_recoil": 11.75,
+   "static_24h_creep": 1.75,
+   "tl6_raw": 0.0,
+   "tl12_raw": 21.0,
+   "tl6": null,
+   "tl12": 21.0
+  },
+  "twu": {
+   "twu_name": "Solinco Hyper-G 17 (1.20)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 194.9,
+   "tension_loss_pct": 25.7,
+   "spin_potential": 6.1
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-120",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "solinco-hyper-g-soft-17",
+  "brand": "Solinco",
+  "model": "Hyper-G Soft",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "SQ",
+  "material": "poly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 0.978,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 3.466666666666672,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.356,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 28.5
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.19,
+   "static_initial": 11.5,
+   "static_24h": 11.75,
+   "static_recoil": 11.36,
+   "static_24h_creep": 0.25,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+   "match": "proxy",
+   "note": "Same model Hyper-G Soft, different gauge (17 vs 16L)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 172.0,
+   "tension_loss_pct": 28.7,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-hyper-g-soft-16",
+  "brand": "Solinco",
+  "model": "Hyper-G Soft",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "SQ",
+  "material": "poly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 0.978,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 2.311111111111109,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.511,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.29,
+   "static_initial": 11.5,
+   "static_24h": 11.88,
+   "static_recoil": 11.62,
+   "static_24h_creep": 0.38,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+   "match": "proxy",
+   "note": "Same model Hyper-G Soft, different gauge (16 vs 16L)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 172.0,
+   "tension_loss_pct": 28.7,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-tour-bite-17",
+  "brand": "Solinco",
+  "model": "Tour Bite",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "SQ",
+  "material": "poly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 6.667,
+    "65": 11.111
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.067,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 5.600000000000007,
+    "65": 7.822222222222229
+   },
+   "stiff_index_avg": 4.733,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 28.5,
+    "65": 47.5
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.19,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.25,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Solinco Tour Bite 17",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 181.2,
+   "tension_loss_pct": 48.6,
+   "spin_potential": 6.3
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.97,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-120",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "solinco-confidential-16",
+  "brand": "Solinco",
+  "model": "Confidential",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 1.933,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.3,
+   "static_initial": 11.62,
+   "static_24h": 11.87,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 15.0,
+   "tl12_raw": 26.0,
+   "tl6": 15.0,
+   "tl12": 26.0
+  },
+  "twu": {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 22.2,
+   "spin_potential": 6.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.15,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-130",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "solinco-confidential-16l",
+  "brand": "Solinco",
+  "model": "Confidential",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.667,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.666666666666673,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.333,
+   "olg_16x19": {
+    "40": 11.400000000000027,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 19.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.62,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 15.0,
+   "tl12_raw": 20.0,
+   "tl6": 15.0,
+   "tl12": 20.0
+  },
+  "twu": {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "match": "proxy",
+   "note": "Same model Confidential, different gauge (16L vs 16/1.30)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 22.2,
+   "spin_potential": 6.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-125",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": "liked",
+  "coverage": 3
+ },
+ {
+  "id": "solinco-confidential-17",
+  "brand": "Solinco",
+  "model": "Confidential",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 4.444,
+    "60": 5.511,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 2.222,
+    "60": 2.222,
+    "65": 5.511
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 3.288888888888882,
+    "65": 1.1555555555555626
+   },
+   "stiff_index_avg": 2.222,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 19.0,
+    "60": 23.55999999999997,
+    "65": 28.5
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.19,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.25,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "match": "proxy",
+   "note": "Same model Confidential, different gauge (17 vs 16/1.30)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 22.2,
+   "spin_potential": 6.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "solinco-revolution-16l",
+  "brand": "Solinco",
+  "model": "Revolution",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.756,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.75555555555556,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.356,
+   "olg_16x19": {
+    "40": 11.780000000000019,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.3,
+   "static_initial": 11.62,
+   "static_24h": 12.0,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 27.0,
+   "tl12_raw": 10.0,
+   "tl6": 27.0,
+   "tl12": 10.0
+  },
+  "twu": {
+   "twu_name": "Solinco Revolution 16L (1.25)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 212.6,
+   "tension_loss_pct": 28.4,
+   "spin_potential": 8.0
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.15,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-125",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "tecnifibre-razor-17",
+  "brand": "Tecnifibre",
+  "model": "Razor",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 3.822,
+    "65": 4.978
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 0.533,
+    "65": 1.067
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.6888888888888847,
+    "60": 3.288888888888882,
+    "65": 3.911111111111122
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 16.33999999999999,
+    "65": 21.28000000000002
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.62,
+   "static_24h": 12.0,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 13.0,
+   "tl12_raw": 15.0,
+   "tl6": 13.0,
+   "tl12": 15.0
+  },
+  "twu": {
+   "twu_name": "Tecnifibre Razor Code 17 (1.25)",
+   "match": "probable",
+   "note": "override manuale: 'Razor' nel file = Razor Code",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 229.2,
+   "tension_loss_pct": 29.6,
+   "spin_potential": 5.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.28,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "brand": "Toroline",
+  "model": "Absolute",
+  "gauge_label": "17L",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 3.289,
+    "50": 5.511,
+    "60": 7.733,
+    "65": 8.889
+   },
+   "recover_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 5.511,
+    "65": 5.511
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 2.2222222222222223,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.778,
+   "olg_16x19": {
+    "40": 14.05999999999997,
+    "50": 23.55999999999997,
+    "60": 33.059999999999974,
+    "65": 38.0
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.19,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 12.0,
+   "tl12_raw": 23.0,
+   "tl6": 12.0,
+   "tl12": 23.0
+  },
+  "twu": {
+   "twu_name": "Toroline Absolute 17 (1.20)",
+   "match": "exact",
+   "note": "Same model Absolute, gauge 17L (1.18-1.20) matches TWU 1.20mm, Toroline string",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 180.6,
+   "tension_loss_pct": 47.1,
+   "spin_potential": 9.3
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-caviar-17l",
+  "brand": "Toroline",
+  "model": "Caviar",
+  "gauge_label": "17L",
+  "gauge_mm": 1.18,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 0.0,
+    "50": 2.222,
+    "60": 4.444,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 2.222,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 0.0,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 2.222,
+   "olg_16x19": {
+    "40": 0.0,
+    "50": 9.5,
+    "60": 19.0,
+    "65": 28.5
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.19,
+   "static_initial": 11.62,
+   "static_24h": 11.87,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 19.0,
+   "tl12_raw": 24.0,
+   "tl6": 19.0,
+   "tl12": 24.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-caviar-17",
+  "brand": "Toroline",
+  "model": "Caviar",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 4.444,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.1555555555555626,
+    "60": 2.2222222222222223,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 2.222,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 19.0,
+    "65": 28.5
+   },
+   "elong_40": 1.24,
+   "elong_65": 1.23,
+   "static_initial": 11.62,
+   "static_24h": 11.75,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.13,
+   "tl6_raw": 17.0,
+   "tl12_raw": 25.0,
+   "tl6": 17.0,
+   "tl12": 25.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-ether-17l",
+  "brand": "Toroline",
+  "model": "Ether",
+  "gauge_label": "17L",
+  "gauge_mm": 1.18,
+  "shape": "SQ",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 5.511,
+    "65": 7.733
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 2.222,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 3.288888888888882,
+    "60": 3.288888888888882,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.311,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 23.55999999999997,
+    "65": 33.059999999999974
+   },
+   "elong_40": 1.2,
+   "elong_65": 1.19,
+   "static_initial": 12.0,
+   "static_24h": 12.25,
+   "static_recoil": 11.87,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 10.0,
+   "tl12_raw": 17.0,
+   "tl6": 10.0,
+   "tl12": 17.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-enos-pro-16",
+  "brand": "Toroline",
+  "model": "Enos Pro",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.756,
+    "60": 3.822,
+    "65": 4.978
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 1.067,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.6888888888889002,
+    "60": 2.75555555555556,
+    "65": 2.75555555555556
+   },
+   "stiff_index_avg": 2.067,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 11.780000000000019,
+    "60": 16.33999999999999,
+    "65": 21.28000000000002
+   },
+   "elong_40": 1.27,
+   "elong_65": 1.26,
+   "static_initial": 11.62,
+   "static_24h": 11.75,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.13,
+   "tl6_raw": 14.0,
+   "tl12_raw": 8.0,
+   "tl6": 14.0,
+   "tl12": 8.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-enos-pro-neon-yl-16l",
+  "brand": "Toroline",
+  "model": "Enos Pro neon yl",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 1.6,
+    "60": 3.822,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 0.533,
+    "65": 2.756
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.0666666666666598,
+    "60": 3.288888888888882,
+    "65": 2.755555555555544
+   },
+   "stiff_index_avg": 2.044,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 6.839999999999989,
+    "60": 16.33999999999999,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.75,
+   "static_24h": 12.31,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.56,
+   "tl6_raw": 17.0,
+   "tl12_raw": 12.0,
+   "tl6": 17.0,
+   "tl12": 12.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-enos-pro-carbon-16l",
+  "brand": "Toroline",
+  "model": "Enos Pro-carbon",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 0.533,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 3.822
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.067,
+    "65": 1.6
+   },
+   "stiff_index": {
+    "40": 0.5333333333333378,
+    "50": 1.0666666666666598,
+    "60": 1.1555555555555626,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 1.244,
+   "olg_16x19": {
+    "40": 2.280000000000019,
+    "50": 4.55999999999997,
+    "60": 9.5,
+    "65": 16.33999999999999
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.75,
+   "static_24h": 12.31,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.56,
+   "tl6_raw": 8.0,
+   "tl12_raw": 12.0,
+   "tl6": 8.0,
+   "tl12": 12.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125",
+   "shape": "round",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-enos-pro-neon-pk-17",
+  "brand": "Toroline",
+  "model": "Enos Pro neon pk",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 2.756,
+    "60": 4.978,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 0.533,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.2222222222222223,
+    "60": 4.444444444444445,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.622,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 11.780000000000019,
+    "60": 21.28000000000002,
+    "65": 28.5
+   },
+   "elong_40": 1.24,
+   "elong_65": 1.24,
+   "static_initial": 11.43,
+   "static_24h": 11.75,
+   "static_recoil": 11.25,
+   "static_24h_creep": 0.32,
+   "tl6_raw": 14.0,
+   "tl12_raw": 16.0,
+   "tl6": 14.0,
+   "tl12": 16.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-wasabi-green-17",
+  "brand": "Toroline",
+  "model": "Wasabi green",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "SQ",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 2.222,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 1.0666666666666598,
+    "65": 3.288888888888882
+   },
+   "stiff_index_avg": 2.2,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.75,
+   "static_24h": 11.87,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.12,
+   "tl6_raw": 15.0,
+   "tl12_raw": 12.0,
+   "tl6": 15.0,
+   "tl12": 12.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-wasabi-neon-green-123",
+   "shape": "square",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-wasabi-x-blue-17",
+  "brand": "Toroline",
+  "model": "Wasabi X blue",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 4.444,
+    "60": 7.733,
+    "65": 9.422
+   },
+   "recover_pct": {
+    "40": 0.533,
+    "50": 2.756,
+    "60": 3.822,
+    "65": 6.667
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 1.6888888888888847,
+    "60": 3.911111111111107,
+    "65": 2.75555555555556
+   },
+   "stiff_index_avg": 2.356,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 19.0,
+    "60": 33.059999999999974,
+    "65": 40.280000000000015
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.23,
+   "static_initial": 11.81,
+   "static_24h": 12.0,
+   "static_recoil": 11.62,
+   "static_24h_creep": 0.19,
+   "tl6_raw": 12.0,
+   "tl12_raw": 17.0,
+   "tl6": 12.0,
+   "tl12": 17.0
+  },
+  "twu": null,
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-wasabi-pom-17",
+  "brand": "Toroline",
+  "model": "Wasabi Pom",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "SQ",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 5.511
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.222,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 23.55999999999997
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.22,
+   "static_initial": 11.62,
+   "static_24h": 11.75,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.13,
+   "tl6_raw": 9.0,
+   "tl12_raw": 19.0,
+   "tl6": 9.0,
+   "tl12": 19.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-wasabi-neon-green-123",
+   "shape": "square",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "brand": "Toroline",
+  "model": "Super Toro",
+  "gauge_label": "17L",
+  "gauge_mm": 1.23,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.067,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.2222222222222223,
+    "60": 2.2222222222222223,
+    "65": 1.1555555555555626
+   },
+   "stiff_index_avg": 1.667,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.22,
+   "static_initial": 11.62,
+   "static_24h": 11.87,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 13.0,
+   "tl12_raw": 24.0,
+   "tl6": 13.0,
+   "tl12": 24.0
+  },
+  "twu": {
+   "twu_name": "Toroline Super Toro 17 (1.23)",
+   "match": "exact",
+   "note": "Same model Super Toro, gauge 17L (1.18-1.20) corresponds to Toroline 1.23 per rules, Toroline string",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 189.7,
+   "tension_loss_pct": 34.7,
+   "spin_potential": 7.8
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-super-toro-blue-123",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "brand": "Toroline",
+  "model": "O-Toro",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.822,
+    "60": 5.511,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 1.067,
+    "65": 1.6
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 3.288888888888882,
+    "60": 4.444444444444445,
+    "65": 5.066666666666669
+   },
+   "stiff_index_avg": 3.6,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 16.33999999999999,
+    "60": 23.55999999999997,
+    "65": 28.5
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.23,
+   "static_initial": 11.68,
+   "static_24h": 12.0,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.32,
+   "tl6_raw": 18.0,
+   "tl12_raw": 7.0,
+   "tl6": 18.0,
+   "tl12": 7.0
+  },
+  "twu": {
+   "twu_name": "Toroline O-Toro 17 (1.23)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 165.7,
+   "tension_loss_pct": 44.4,
+   "spin_potential": 9.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-fluo-green-123",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": "liked",
+  "coverage": 3
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "brand": "Toroline",
+  "model": "Toro Toro Orange",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 2.756,
+    "60": 4.444,
+    "65": 6.044
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 1.067,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.2222222222222223,
+    "60": 3.3777777777777844,
+    "65": 2.75555555555556
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 11.780000000000019,
+    "60": 19.0,
+    "65": 25.83999999999999
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.23,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 14.0,
+   "tl12_raw": 16.0,
+   "tl6": 14.0,
+   "tl12": 16.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "brand": "Toroline",
+  "model": "Toro Toro pink",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 2.756,
+    "60": 4.444,
+    "65": 6.044
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 1.067,
+    "65": 3.289
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 2.2222222222222223,
+    "60": 3.3777777777777844,
+    "65": 2.75555555555556
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 11.780000000000019,
+    "60": 19.0,
+    "65": 25.83999999999999
+   },
+   "elong_40": 1.23,
+   "elong_65": 1.23,
+   "static_initial": 11.75,
+   "static_24h": 12.0,
+   "static_recoil": 11.37,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 14.0,
+   "tl12_raw": 8.0,
+   "tl6": 14.0,
+   "tl12": 8.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-toro-toro-matcha-16l",
+  "brand": "Toroline",
+  "model": "Toro Toro matcha",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "HEX",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.756,
+    "60": 3.822,
+    "65": 4.978
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.533,
+    "60": 0.533,
+    "65": 1.6
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.2222222222222223,
+    "60": 3.288888888888882,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 11.780000000000019,
+    "60": 16.33999999999999,
+    "65": 21.28000000000002
+   },
+   "elong_40": 1.27,
+   "elong_65": 1.27,
+   "static_initial": 11.87,
+   "static_24h": 12.25,
+   "static_recoil": 11.62,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 8.0,
+   "tl12_raw": 13.0,
+   "tl6": 8.0,
+   "tl12": 13.0
+  },
+  "twu": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "wilson-revolve-spin-16",
+  "brand": "Wilson",
+  "model": "Revolve Spin",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 5.511,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.067,
+    "60": 2.222,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 3.288888888888882,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.044,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 23.55999999999997,
+    "65": 28.5
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.29,
+   "static_initial": 11.87,
+   "static_24h": 12.12,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.25,
+   "tl6_raw": 10.0,
+   "tl12_raw": 27.0,
+   "tl6": 10.0,
+   "tl12": 27.0
+  },
+  "twu": {
+   "twu_name": "Wilson Revolve Spin 16",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 172.6,
+   "tension_loss_pct": 54.5,
+   "spin_potential": 5.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "wilson-revolve-spin-17",
+  "brand": "Wilson",
+  "model": "Revolve Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 4.444,
+    "60": 6.667,
+    "65": 8.889
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 2.222,
+    "60": 2.222,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.2222222222222223,
+    "60": 4.444444444444445,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.333,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 19.0,
+    "60": 28.5,
+    "65": 38.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.23,
+   "static_initial": 11.87,
+   "static_24h": 12.25,
+   "static_recoil": 11.75,
+   "static_24h_creep": 0.38,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Wilson Revolve Spin 16",
+   "match": "proxy",
+   "note": "Same model Revolve Spin, gauge 17 vs 16 (1.20-1.25 vs 1.30mm, different gauges)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 172.6,
+   "tension_loss_pct": 54.5,
+   "spin_potential": 5.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "wilson-revolve-17",
+  "brand": "Wilson",
+  "model": "Revolve",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 3.289,
+    "50": 4.444,
+    "60": 5.6,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.978,
+    "60": 0.978,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 3.288888888888882,
+    "50": 3.466666666666672,
+    "60": 4.622222222222234,
+    "65": 4.444444444444445
+   },
+   "stiff_index_avg": 3.956,
+   "olg_16x19": {
+    "40": 14.05999999999997,
+    "50": 19.0,
+    "60": 23.94000000000003,
+    "65": 28.5
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 12.0,
+   "static_24h": 12.5,
+   "static_recoil": 12.25,
+   "static_24h_creep": 0.5,
+   "tl6_raw": null,
+   "tl12_raw": null,
+   "tl6": null,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Wilson Revolve 17 (1.25)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.0,
+   "tension_loss_pct": 36.2,
+   "spin_potential": 7.7
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "yonex-poly-tour-pro-bk-17",
+  "brand": "Yonex",
+  "model": "Poly Tour Pro bk",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 6.667
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 1.156,
+    "60": 1.156,
+    "65": 4.444
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.1333333333333195,
+    "60": 3.288888888888882,
+    "65": 2.2222222222222223
+   },
+   "stiff_index_avg": 2.467,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 28.5
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.75,
+   "static_24h": 12.25,
+   "static_recoil": 12.0,
+   "static_24h_creep": 0.5,
+   "tl6_raw": 12.0,
+   "tl12_raw": 10.0,
+   "tl6": 12.0,
+   "tl12": 10.0
+  },
+  "twu": {
+   "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+   "match": "exact",
+   "note": "Bk is color variant of Poly Tour Pro; gauge 17 (1.20)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 188.6,
+   "tension_loss_pct": 33.3,
+   "spin_potential": 5.2
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-pro-yellow-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "yonex-poly-tour-pro-ble-17",
+  "brand": "Yonex",
+  "model": "Poly Tour Pro ble",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.6,
+    "50": 3.289,
+    "60": 4.978,
+    "65": 7.733
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 0.533,
+    "65": 4.978
+   },
+   "stiff_index": {
+    "40": 1.5999999999999976,
+    "50": 3.288888888888882,
+    "60": 4.444444444444445,
+    "65": 2.755555555555544
+   },
+   "stiff_index_avg": 3.022,
+   "olg_16x19": {
+    "40": 6.839999999999989,
+    "50": 14.05999999999997,
+    "60": 21.28000000000002,
+    "65": 33.059999999999974
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.81,
+   "static_24h": 12.43,
+   "static_recoil": 12.0,
+   "static_24h_creep": 0.62,
+   "tl6_raw": 12.0,
+   "tl12_raw": 17.0,
+   "tl6": 12.0,
+   "tl12": 17.0
+  },
+  "twu": {
+   "twu_name": "Yonex Poly Tour Pro 17 (1.20)",
+   "match": "probable",
+   "note": "Ble is color variant of Poly Tour Pro; gauge 17 (1.20) (variante colore)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 188.6,
+   "tension_loss_pct": 33.3,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "yonex-poly-tour-rev-16l",
+  "brand": "Yonex",
+  "model": "Poly Tour Rev",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "HEX",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.067,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 0.0,
+    "65": 1.067
+   },
+   "stiff_index": {
+    "40": 1.0666666666666598,
+    "50": 2.2222222222222223,
+    "60": 3.288888888888882,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.489,
+   "olg_16x19": {
+    "40": 4.55999999999997,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.25,
+   "static_initial": 11.75,
+   "static_24h": 12.12,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.37,
+   "tl6_raw": 8.0,
+   "tl12_raw": 16.0,
+   "tl6": 8.0,
+   "tl12": 16.0
+  },
+  "twu": {
+   "twu_name": "Yonex Polytour Rev 16L (1.25)",
+   "match": "exact",
+   "note": "id identico",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 193.2,
+   "tension_loss_pct": 34.4,
+   "spin_potential": 7.2
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-rev-purple-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "yonex-poly-tour-spin-17",
+  "brand": "Yonex",
+  "model": "Poly Tour Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "poly",
+  "is_target": false,
+  "excel": {
+   "stretch_pct": {
+    "40": 1.156,
+    "50": 2.222,
+    "60": 3.289,
+    "65": 4.444
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.0,
+    "60": 1.156,
+    "65": 1.156
+   },
+   "stiff_index": {
+    "40": 1.1555555555555626,
+    "50": 2.2222222222222223,
+    "60": 2.1333333333333195,
+    "65": 3.288888888888882
+   },
+   "stiff_index_avg": 2.2,
+   "olg_16x19": {
+    "40": 4.94000000000003,
+    "50": 9.5,
+    "60": 14.05999999999997,
+    "65": 19.0
+   },
+   "elong_40": 1.25,
+   "elong_65": 1.24,
+   "static_initial": 11.5,
+   "static_24h": 11.88,
+   "static_recoil": 11.5,
+   "static_24h_creep": 0.38,
+   "tl6_raw": 10.0,
+   "tl12_raw": null,
+   "tl6": 10.0,
+   "tl12": null
+  },
+  "twu": {
+   "twu_name": "Yonex Poly Tour Spin 16L (1.25)",
+   "match": "proxy",
+   "note": "Spin model match, gauge 16L (1.25) vs 17",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 213.7,
+   "tension_loss_pct": 27.2,
+   "spin_potential": 6.3
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.08,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-spin-blue-125",
+   "shape": "round",
+   "composition": "polyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 3
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Babolat RPM Blast Rough 17",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 196.0,
+   "tension_loss_pct": 35.7,
+   "spin_potential": 9.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-o-toro-snap-16l",
+  "brand": "Toroline",
+  "model": "O-TORO Snap",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Toroline O-TORO Snap 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 164.6,
+   "tension_loss_pct": 41.7,
+   "spin_potential": 8.7
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "tecnifibre-razor-spin-17",
+  "brand": "Tecnifibre",
+  "model": "Razor Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Tecnifibre Razor Spin 17/1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 26.5,
+   "spin_potential": 8.6
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Babolat RPM Blast Rough 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 209.7,
+   "tension_loss_pct": 29.5,
+   "spin_potential": 8.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "brand": "Toroline",
+  "model": "O-Toro Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Toroline O-Toro Spin 17 (1.23)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 173.2,
+   "tension_loss_pct": 38.3,
+   "spin_potential": 8.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "grapplesnake-tour-m8-17",
+  "brand": "Grapplesnake",
+  "model": "Tour M8",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Grapplesnake Tour M8 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 34.3,
+   "spin_potential": 8.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-o-toro-tour-17",
+  "brand": "Toroline",
+  "model": "O-Toro Tour",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": "HEX",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Toroline O-Toro Tour 17 (1.23)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 216.6,
+   "tension_loss_pct": 25.0,
+   "spin_potential": 7.7
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-tour-neon-mint-123",
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "toroline-cash-16l",
+  "brand": "Toroline",
+  "model": "Cash",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Toroline Cash 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 182.9,
+   "tension_loss_pct": 34.8,
+   "spin_potential": 7.6
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-spiky-shark-16",
+  "brand": "Kirschbaum",
+  "model": "Spiky Shark",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Spiky Shark 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 216.0,
+   "tension_loss_pct": 47.4,
+   "spin_potential": 7.5
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-spiky-shark-17",
+  "brand": "Kirschbaum",
+  "model": "Spiky Shark",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Spiky Shark 17",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 53.5,
+   "spin_potential": 7.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "tecnifibre-razor-soft-17",
+  "brand": "Tecnifibre",
+  "model": "Razor Soft",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Tecnifibre Razor Soft 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 212.0,
+   "tension_loss_pct": 33.3,
+   "spin_potential": 7.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.15,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-soft-black-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16",
+  "brand": "Signum Pro",
+  "model": "Plasma HEXtreme",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Plasma HEXtreme 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 225.7,
+   "tension_loss_pct": 24.8,
+   "spin_potential": 7.3
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-plasma-hextreme-orange-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-hyper-g-round-16",
+  "brand": "Solinco",
+  "model": "Hyper-G Round",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Hyper-G 16 Round (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 226.3,
+   "tension_loss_pct": 32.3,
+   "spin_potential": 7.3
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "toroline-snapper-17",
+  "brand": "Toroline",
+  "model": "Snapper",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": "OCT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Toroline Snapper 17 (1.23)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 190.9,
+   "tension_loss_pct": 35.9,
+   "spin_potential": 7.3
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-snapper-lavender-123",
+   "shape": "octagonal",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "wilson-revolve-16",
+  "brand": "Wilson",
+  "model": "Revolve",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Wilson Revolve 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 184.0,
+   "tension_loss_pct": 45.2,
+   "spin_potential": 7.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16l",
+  "brand": "Kirschbaum",
+  "model": "Xplosive Speed",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Xplosive Speed 1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 185.7,
+   "tension_loss_pct": 41.4,
+   "spin_potential": 7.1
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "head-lynx-tour-17",
+  "brand": "Head",
+  "model": "Lynx Tour",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Head Lynx Tour 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 217.7,
+   "tension_loss_pct": 24.6,
+   "spin_potential": 7.1
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-hyper-g-16",
+  "brand": "Solinco",
+  "model": "Hyper-G",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Hyper-G 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 219.5,
+   "tension_loss_pct": 26.3,
+   "spin_potential": 7.0
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.02,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-130",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-element-rough-16",
+  "brand": "Luxilon",
+  "model": "Element Rough",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon Element Rough 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 198.3,
+   "tension_loss_pct": 34.9,
+   "spin_potential": 7.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "babolat-rpm-blast-orange-16",
+  "brand": "Babolat",
+  "model": "RPM Blast Orange",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Babolat RPM Blast Orange 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 38.9,
+   "spin_potential": 7.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "luxilon-element-soft-ir-16l",
+  "brand": "Luxilon",
+  "model": "Element Soft IR",
+  "gauge_label": "16L",
+  "gauge_mm": 1.27,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon Element Soft IR 1.27",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 43.7,
+   "spin_potential": 7.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-tour-bite-soft-16",
+  "brand": "Solinco",
+  "model": "Tour Bite Soft",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite 16 Soft",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 184.0,
+   "tension_loss_pct": 50.3,
+   "spin_potential": 6.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.5,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-130",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-alu-power-soft-16l",
+  "brand": "Luxilon",
+  "model": "Alu Power Soft",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon Alu Power Soft 1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 36.6,
+   "spin_potential": 6.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.73,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-soft-silver-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-tour-bite-16",
+  "brand": "Solinco",
+  "model": "Tour Bite",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 202.9,
+   "tension_loss_pct": 47.1,
+   "spin_potential": 6.7
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-130",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-4g-soft-16l",
+  "brand": "Luxilon",
+  "model": "4G Soft",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon 4G Soft 1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 217.2,
+   "tension_loss_pct": 25.4,
+   "spin_potential": 6.7
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.13,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-4g-soft-gold-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "grapplesnake-alpha-17",
+  "brand": "Grapplesnake",
+  "model": "Alpha",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Grapplesnake Alpha 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 218.3,
+   "tension_loss_pct": 29.4,
+   "spin_potential": 6.7
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-revolution-17",
+  "brand": "Solinco",
+  "model": "Revolution",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Revolution 17",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 188.6,
+   "tension_loss_pct": 50.0,
+   "spin_potential": 6.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.07,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-120",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-element-16",
+  "brand": "Luxilon",
+  "model": "Element",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon Element 1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 191.5,
+   "tension_loss_pct": 44.3,
+   "spin_potential": 6.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.8,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-element-bronze-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-outlast-16l",
+  "brand": "Solinco",
+  "model": "Outlast",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Outlast 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.0,
+   "tension_loss_pct": 28.8,
+   "spin_potential": 6.5
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.08,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-outlast-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-alu-power-rough-16l",
+  "brand": "Luxilon",
+  "model": "ALU Power Rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon ALU Power Rough 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 209.2,
+   "tension_loss_pct": 39.6,
+   "spin_potential": 6.5
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.72,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-rough-silver-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "brand": "Solinco",
+  "model": "Confidential Soft",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Confidential Soft 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 194.3,
+   "tension_loss_pct": 27.7,
+   "spin_potential": 6.5
+  },
+  "rpedia": null,
+  "preference": "disliked",
+  "coverage": 1
+ },
+ {
+  "id": "solinco-revolution-16",
+  "brand": "Solinco",
+  "model": "Revolution",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Revolution 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 215.5,
+   "tension_loss_pct": 47.4,
+   "spin_potential": 6.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.15,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-130",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "yonex-poly-tour-spin-16l",
+  "brand": "Yonex",
+  "model": "Poly Tour Spin",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Yonex Poly Tour Spin 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 213.7,
+   "tension_loss_pct": 27.2,
+   "spin_potential": 6.3
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.08,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-spin-blue-125",
+   "shape": "round",
+   "composition": "polyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-yellow-jacket-17",
+  "brand": "Signum Pro",
+  "model": "Yellow Jacket",
+  "gauge_label": "17",
+  "gauge_mm": 1.22,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Yellow Jacket 17g (1.22)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 32.6,
+   "spin_potential": 6.3
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-hyper-g-16l",
+  "brand": "Solinco",
+  "model": "Hyper-G",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Hyper-G 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 218.3,
+   "tension_loss_pct": 24.7,
+   "spin_potential": 6.1
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-125",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-outlast-16",
+  "brand": "Solinco",
+  "model": "Outlast",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Outlast 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.0,
+   "tension_loss_pct": 47.3,
+   "spin_potential": 6.0
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.93,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-outlast-130",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-max-power-rough-16",
+  "brand": "Kirschbaum",
+  "model": "Max Power Rough",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Max Power Rough 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 230.9,
+   "tension_loss_pct": 28.3,
+   "spin_potential": 6.0
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.03,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-rough-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-mach-10-16",
+  "brand": "Solinco",
+  "model": "Mach 10",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Mach 10 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 26.3,
+   "spin_potential": 6.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16l",
+  "brand": "Signum Pro",
+  "model": "Plasma HEXtreme",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Plasma HEXtreme 16L/1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 204.6,
+   "tension_loss_pct": 41.5,
+   "spin_potential": 5.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-plasma-hextreme-orange-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "brand": "Solinco",
+  "model": "Tour Bite",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 237.7,
+   "tension_loss_pct": 25.2,
+   "spin_potential": 5.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.12,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-125",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-max-power-16",
+  "brand": "Kirschbaum",
+  "model": "Max Power",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Max Power 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 233.2,
+   "tension_loss_pct": 20.9,
+   "spin_potential": 5.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.27,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-alu-power-16l",
+  "brand": "Luxilon",
+  "model": "ALU Power",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon ALU Power 125/16L",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 209.2,
+   "tension_loss_pct": 46.6,
+   "spin_potential": 5.8
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.78,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-silver-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-tour-bite-soft-16l",
+  "brand": "Solinco",
+  "model": "Tour Bite Soft",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite Soft 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.0,
+   "tension_loss_pct": 29.3,
+   "spin_potential": 5.8
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-125",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16l",
+  "brand": "Grapplesnake",
+  "model": "Tour Sniper",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Grapplesnake Tour Sniper 1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 206.3,
+   "tension_loss_pct": 32.0,
+   "spin_potential": 5.8
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-16",
+  "brand": "Kirschbaum",
+  "model": "Pro Line II",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line II 1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 209.7,
+   "tension_loss_pct": 47.6,
+   "spin_potential": 5.7
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.75,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-ii-red-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-super-smash-17",
+  "brand": "Kirschbaum",
+  "model": "Super Smash",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Super Smash 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 210.9,
+   "tension_loss_pct": 48.0,
+   "spin_potential": 5.7
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.97,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-super-smash-orange-123",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-tour-bite-soft-17",
+  "brand": "Solinco",
+  "model": "Tour Bite Soft",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "PENT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite Soft 17 (1.20)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 186.3,
+   "tension_loss_pct": 29.2,
+   "spin_potential": 5.7
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.48,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-120",
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16",
+  "brand": "Kirschbaum",
+  "model": "Xplosive Speed",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Xplosive Speed 1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 193.2,
+   "tension_loss_pct": 43.3,
+   "spin_potential": 5.7
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-16l",
+  "brand": "Signum Pro",
+  "model": "Poly-Plasma Pure",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly-Plasma Pure 16L",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 221.2,
+   "tension_loss_pct": 40.6,
+   "spin_potential": 5.6
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-max-power-rough-17",
+  "brand": "Kirschbaum",
+  "model": "Max Power Rough",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Max Power Rough 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 223.5,
+   "tension_loss_pct": 26.4,
+   "spin_potential": 5.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.03,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-rough-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-barb-wire-16l",
+  "brand": "Solinco",
+  "model": "Barb Wire",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Barb Wire 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 182.9,
+   "tension_loss_pct": 33.5,
+   "spin_potential": 5.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "tecnifibre-razor-code-17",
+  "brand": "Tecnifibre",
+  "model": "Razor Code",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Tecnifibre Razor Code 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 229.2,
+   "tension_loss_pct": 29.6,
+   "spin_potential": 5.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.28,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "tecnifibre-ice-code-16",
+  "brand": "Tecnifibre",
+  "model": "Ice Code",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Tecnifibre Ice Code 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 221.2,
+   "tension_loss_pct": 35.0,
+   "spin_potential": 5.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-ice-code-white-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-outlast-17",
+  "brand": "Solinco",
+  "model": "Outlast",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Outlast 17",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 182.9,
+   "tension_loss_pct": 50.4,
+   "spin_potential": 5.5
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-outlast-120",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-element-16l",
+  "brand": "Luxilon",
+  "model": "Element",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon Element 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.0,
+   "tension_loss_pct": 33.6,
+   "spin_potential": 5.5
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.8,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-element-bronze-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-firestorm-16",
+  "brand": "Signum Pro",
+  "model": "Firestorm",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Firestorm 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 185.7,
+   "tension_loss_pct": 43.0,
+   "spin_potential": 5.5
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-firestorm-amber-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-helix-16",
+  "brand": "Kirschbaum",
+  "model": "Helix",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Helix 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 204.6,
+   "tension_loss_pct": 55.3,
+   "spin_potential": 5.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-touch-turbo-16l",
+  "brand": "Kirschbaum",
+  "model": "Touch Turbo",
+  "gauge_label": "16L",
+  "gauge_mm": 1.275,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Touch Turbo 16L (1.275)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 196.0,
+   "tension_loss_pct": 48.5,
+   "spin_potential": 5.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-black-shark-16",
+  "brand": "Kirschbaum",
+  "model": "Black Shark",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Black Shark 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 223.5,
+   "tension_loss_pct": 41.2,
+   "spin_potential": 5.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.72,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-max-power-17",
+  "brand": "Kirschbaum",
+  "model": "Max Power",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Max Power 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 240.6,
+   "tension_loss_pct": 23.5,
+   "spin_potential": 5.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.27,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-grey-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16l",
+  "brand": "Solinco",
+  "model": "Tour Bite Diamond Rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite Diamond Rough 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 191.5,
+   "tension_loss_pct": 47.0,
+   "spin_potential": 5.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.55,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-diamond-rough-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-poly-plasma-17",
+  "brand": "Signum Pro",
+  "model": "Poly Plasma",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly Plasma 17 (1.23)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 198.3,
+   "tension_loss_pct": 26.0,
+   "spin_potential": 5.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-touch-turbo-16",
+  "brand": "Kirschbaum",
+  "model": "Touch Turbo",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Touch Turbo 1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 218.3,
+   "tension_loss_pct": 45.7,
+   "spin_potential": 5.3
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-super-smash-16",
+  "brand": "Kirschbaum",
+  "model": "Super Smash",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Super Smash 16/1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 221.7,
+   "tension_loss_pct": 50.7,
+   "spin_potential": 5.3
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.97,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-super-smash-orange-123",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-p2-16",
+  "brand": "Kirschbaum",
+  "model": "P2",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum P2 16/1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 218.9,
+   "tension_loss_pct": 38.3,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-17",
+  "brand": "Signum Pro",
+  "model": "Poly-Plasma Pure",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly-Plasma Pure 17 (1.23)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 199.5,
+   "tension_loss_pct": 43.0,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-touch-turbo-17",
+  "brand": "Kirschbaum",
+  "model": "Touch Turbo",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Touch Turbo 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 203.5,
+   "tension_loss_pct": 45.3,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-17-125",
+  "brand": "Kirschbaum",
+  "model": "Super Smash Spiky",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Super Smash Spiky 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 214.3,
+   "tension_loss_pct": 51.0,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-hyper-g-soft-16l",
+  "brand": "Solinco",
+  "model": "Hyper-G Soft",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Hyper-G-Soft 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 172.0,
+   "tension_loss_pct": 28.7,
+   "spin_potential": 5.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-tornado-16",
+  "brand": "Signum Pro",
+  "model": "Tornado",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Tornado 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 215.5,
+   "tension_loss_pct": 47.7,
+   "spin_potential": 5.1
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.72,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-tornado-black-123",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-17-12",
+  "brand": "Kirschbaum",
+  "model": "Super Smash Spiky",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Super Smash Spiky 1.20",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 205.2,
+   "tension_loss_pct": 52.7,
+   "spin_potential": 5.1
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-x-16",
+  "brand": "Kirschbaum",
+  "model": "Pro Line X",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line X 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 240.0,
+   "tension_loss_pct": 27.2,
+   "spin_potential": 5.1
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-16",
+  "brand": "Kirschbaum",
+  "model": "Super Smash Spiky",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Super Smash Spiky 16/1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 216.6,
+   "tension_loss_pct": 54.6,
+   "spin_potential": 5.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-poly-plasma-17l",
+  "brand": "Signum Pro",
+  "model": "Poly-Plasma",
+  "gauge_label": "17L",
+  "gauge_mm": 1.18,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly-Plasma 17L (1.18)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.2,
+   "tension_loss_pct": 40.3,
+   "spin_potential": 5.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "luxilon-alu-power-vibe-16",
+  "brand": "Luxilon",
+  "model": "Alu Power Vibe",
+  "gauge_label": "16",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon Alu Power Vibe 16 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.0,
+   "tension_loss_pct": 34.3,
+   "spin_potential": 5.0
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-competition-16",
+  "brand": "Kirschbaum",
+  "model": "Competition",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Competition 16/1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 47.5,
+   "spin_potential": 4.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-p2-17",
+  "brand": "Kirschbaum",
+  "model": "P2",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum P2 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 235.5,
+   "tension_loss_pct": 33.9,
+   "spin_potential": 4.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-barb-wire-17",
+  "brand": "Solinco",
+  "model": "Barb Wire",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Barb Wire 17 (1.20)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 186.3,
+   "tension_loss_pct": 42.6,
+   "spin_potential": 4.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.75,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-120",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16",
+  "brand": "Solinco",
+  "model": "Tour Bite Diamond Rough",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite Diamond Rough 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 52.0,
+   "spin_potential": 4.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.5,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-diamond-rough-130",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-pro-line-evolution-17",
+  "brand": "Kirschbaum",
+  "model": "Pro Line Evolution",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line Evolution 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.0,
+   "tension_loss_pct": 28.9,
+   "spin_potential": 4.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.77,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-evolution-blue-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "head-hawk-rough-17",
+  "brand": "Head",
+  "model": "Hawk Rough",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Head Hawk Rough 17",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 201.2,
+   "tension_loss_pct": 23.9,
+   "spin_potential": 4.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-poly-megaforce-17",
+  "brand": "Signum Pro",
+  "model": "Poly Megaforce",
+  "gauge_label": "17",
+  "gauge_mm": 1.19,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly Megaforce 17 (1.19)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 213.2,
+   "tension_loss_pct": 36.3,
+   "spin_potential": 4.8
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-tornado-17",
+  "brand": "Signum Pro",
+  "model": "Tornado",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Tornado 17 (1.23)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 214.3,
+   "tension_loss_pct": 44.3,
+   "spin_potential": 4.8
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.72,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-tornado-black-123",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-17l",
+  "brand": "Kirschbaum",
+  "model": "Pro Line II",
+  "gauge_label": "17L",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line II 17L (1.20)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 193.2,
+   "tension_loss_pct": 46.0,
+   "spin_potential": 4.8
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.75,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-ii-red-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-p2-17l",
+  "brand": "Kirschbaum",
+  "model": "P2",
+  "gauge_label": "17L",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum P2 17L (1.20)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.2,
+   "tension_loss_pct": 41.6,
+   "spin_potential": 4.8
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-x-17",
+  "brand": "Kirschbaum",
+  "model": "Pro Line X",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line X 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 218.3,
+   "tension_loss_pct": 37.0,
+   "spin_potential": 4.8
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-firestorm-16l",
+  "brand": "Signum Pro",
+  "model": "Firestorm",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Firestorm 1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 197.7,
+   "tension_loss_pct": 46.4,
+   "spin_potential": 4.8
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-firestorm-amber-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "yonex-poly-tour-spin-g-16l",
+  "brand": "Yonex",
+  "model": "Poly Tour Spin G",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Yonex Poly Tour Spin G 1.25",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 237.2,
+   "tension_loss_pct": 25.7,
+   "spin_potential": 4.8
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-poly-plasma-16l",
+  "brand": "Signum Pro",
+  "model": "Poly-Plasma",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly-Plasma 16L",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 225.7,
+   "tension_loss_pct": 39.2,
+   "spin_potential": 4.7
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-17",
+  "brand": "Kirschbaum",
+  "model": "Pro Line II",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line II 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 201.2,
+   "tension_loss_pct": 44.9,
+   "spin_potential": 4.7
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.75,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-ii-red-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "head-hawk-17",
+  "brand": "Head",
+  "model": "Hawk",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Head Hawk 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 204.6,
+   "tension_loss_pct": 32.9,
+   "spin_potential": 4.7
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-hyperion-16",
+  "brand": "Signum Pro",
+  "model": "Hyperion",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Hyperion 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 220.0,
+   "tension_loss_pct": 40.9,
+   "spin_potential": 4.6
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.8,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-hyperion-black-124",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "babolat-rpm-blast-16",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "OCT",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Babolat RPM Blast 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 232.6,
+   "tension_loss_pct": 45.9,
+   "spin_potential": 4.5
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.25,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-130",
+   "shape": "octagonal",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": "disliked",
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-competition-17",
+  "brand": "Kirschbaum",
+  "model": "Competition",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Competition 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 47.5,
+   "spin_potential": 4.5
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-i-16",
+  "brand": "Kirschbaum",
+  "model": "Pro Line I",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line I 1.30",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 224.6,
+   "tension_loss_pct": 47.8,
+   "spin_potential": 4.4
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-barb-wire-16",
+  "brand": "Solinco",
+  "model": "Barb Wire",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Barb Wire 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 214.3,
+   "tension_loss_pct": 40.2,
+   "spin_potential": 4.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-130",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-poly-megaforce-16",
+  "brand": "Signum Pro",
+  "model": "Poly Megaforce",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly Megaforce 16",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 234.9,
+   "tension_loss_pct": 34.9,
+   "spin_potential": 4.3
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "signum-pro-poly-speed-spin-16",
+  "brand": "Signum Pro",
+  "model": "Poly Speed Spin",
+  "gauge_label": "16",
+  "gauge_mm": 1.28,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly Speed Spin 1.28",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 246.3,
+   "tension_loss_pct": 40.9,
+   "spin_potential": 4.3
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-17",
+  "brand": "Solinco",
+  "model": "Tour Bite Diamond Rough",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": true,
+  "excel": null,
+  "twu": {
+   "twu_name": "Solinco Tour Bite Diamond Rough 17 (1.20)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 181.7,
+   "tension_loss_pct": 43.5,
+   "spin_potential": 4.3
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.55,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-diamond-rough-120",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-hyperion-17",
+  "brand": "Signum Pro",
+  "model": "Hyperion",
+  "gauge_label": "17",
+  "gauge_mm": 1.24,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Hyperion 17 (1.24)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 202.3,
+   "tension_loss_pct": 42.6,
+   "spin_potential": 4.2
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.8,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-hyperion-black-124",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "tecnifibre-razor-code-16",
+  "brand": "Tecnifibre",
+  "model": "Razor Code",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Tecnifibre Razor Code 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 242.9,
+   "tension_loss_pct": 32.7,
+   "spin_potential": 4.2
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.28,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-4g-rough-16l",
+  "brand": "Luxilon",
+  "model": "4G Rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon 4G Rough 16L",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 216.0,
+   "tension_loss_pct": 32.8,
+   "spin_potential": 4.2
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-i-17",
+  "brand": "Kirschbaum",
+  "model": "Pro Line I",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line I 17 (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 204.6,
+   "tension_loss_pct": 50.8,
+   "spin_potential": 4.1
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-competition-17l",
+  "brand": "Kirschbaum",
+  "model": "Competition",
+  "gauge_label": "17L",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Competition 17L (1.20)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 190.3,
+   "tension_loss_pct": 45.0,
+   "spin_potential": 4.1
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "kirschbaum-pro-line-i-17l",
+  "brand": "Kirschbaum",
+  "model": "Pro Line I",
+  "gauge_label": "17L",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Pro Line I 17L (1.20)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 194.9,
+   "tension_loss_pct": 52.2,
+   "spin_potential": 3.9
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "luxilon-4g-16l",
+  "brand": "Luxilon",
+  "model": "4G",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon 4G 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 258.9,
+   "tension_loss_pct": 21.3,
+   "spin_potential": 3.9
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.18,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-4g-gold-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "yonex-poly-tour-pro-yellow-16",
+  "brand": "Yonex",
+  "model": "Poly Tour Pro Yellow",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Yonex Poly Tour Pro Yellow 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 191.5,
+   "tension_loss_pct": 44.5,
+   "spin_potential": 3.4
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-pro-yellow-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-17l",
+  "brand": "Signum Pro",
+  "model": "Poly-Plasma Pure",
+  "gauge_label": "17L",
+  "gauge_mm": 1.18,
+  "shape": null,
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Signum Pro Poly-Plasma Pure 17L (1.18)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 196.0,
+   "tension_loss_pct": 44.3,
+   "spin_potential": null
+  },
+  "rpedia": null,
+  "preference": null,
+  "coverage": 1
+ },
+ {
+  "id": "yonex-poly-tour-pro-yellow-16l",
+  "brand": "Yonex",
+  "model": "Poly Tour Pro Yellow",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Yonex Poly Tour Pro Yellow 16L (1.25)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 181.2,
+   "tension_loss_pct": 46.3,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-pro-yellow-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "luxilon-4g-16",
+  "brand": "Luxilon",
+  "model": "4G",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Luxilon 4G 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 286.9,
+   "tension_loss_pct": 23.5,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 1.18,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-4g-gold-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "yonex-poly-tour-rev-16",
+  "brand": "Yonex",
+  "model": "Poly Tour REV",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Yonex PolyTour REV 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 208.6,
+   "tension_loss_pct": 33.3,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-rev-purple-125",
+   "shape": "round",
+   "composition": "copolyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ },
+ {
+  "id": "kirschbaum-flash-16",
+  "brand": "Kirschbaum",
+  "model": "Flash",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "RND",
+  "material": "poly",
+  "is_target": false,
+  "excel": null,
+  "twu": {
+   "twu_name": "Kirschbaum Flash 16 (1.30)",
+   "match": "exact",
+   "note": "solo TWU",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 192.6,
+   "tension_loss_pct": 36.7,
+   "spin_potential": null
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-orange-125",
+   "shape": "round",
+   "composition": "polyester",
+   "match": "proxy"
+  },
+  "preference": null,
+  "coverage": 2
+ }
+]

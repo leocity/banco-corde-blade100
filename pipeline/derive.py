@@ -83,7 +83,7 @@ def similarity(a, b, pop):
     if len(diffs) < 2:
         return None
     d = math.sqrt(sum(diffs) / len(diffs))
-    sim = round(100 * max(0.0, 1 - d / 2))
+    sim = round(100 * math.exp(-d * d / 2))
     if a.get("shape") and a.get("shape") == b.get("shape"):
         sim += 5
     return min(sim, 100)

@@ -1,0 +1,1434 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125",
+  "static_stiffness_kgmm": 1.18,
+  "shape": "octagonal",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125",
+  "static_stiffness_kgmm": 1.18,
+  "shape": "octagonal",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "head-hawk-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "head-hawk-power-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "head-hawk-touch-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/head-hawk-touch-grey-125",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "head-lynx-tour-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "head-hawk-seeding-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-competition-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-max-power-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-grey-125",
+  "static_stiffness_kgmm": 1.27,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-plx-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-evl-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-rough-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-black-shark-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-125",
+  "static_stiffness_kgmm": 0.72,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-black-shark-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-125",
+  "static_stiffness_kgmm": 0.72,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-xplosive-spd-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-helix-white-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-helix-blue-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-flash-orange-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-orange-125",
+  "static_stiffness_kgmm": 0.9,
+  "shape": "round",
+  "composition": "polyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-flash-pink-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-flash-yellow-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-flash-green-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-green-125",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "round",
+  "composition": "polyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-flash-black-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-4g-black-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-alu-power-blk-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-alu-power-gry-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-element-soft-ir-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-4g-desert-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "re-string-slap-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-slap-black-123",
+  "static_stiffness_kgmm": 0.75,
+  "shape": "hexagonal",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "re-string-sync-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-120",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "re-string-vivo-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-vivo-blue-123",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": null,
+  "match": "proxy"
+ },
+ {
+  "id": "re-string-zero-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-128",
+  "static_stiffness_kgmm": 1.1,
+  "shape": "hexagonal",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "re-string-zero-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-123",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "hexagonal",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "signum-pro-x-perience-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-x-perience-green-124",
+  "static_stiffness_kgmm": 1.07,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "signum-pro-polaris-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-hyper-g-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-120",
+  "static_stiffness_kgmm": 1,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-hyper-g-soft-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "exact"
+ },
+ {
+  "id": "solinco-hyper-g-soft-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "exact"
+ },
+ {
+  "id": "solinco-tour-bite-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-120",
+  "static_stiffness_kgmm": 0.97,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-confidential-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-130",
+  "static_stiffness_kgmm": 1.15,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-confidential-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-125",
+  "static_stiffness_kgmm": 1,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-confidential-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120",
+  "static_stiffness_kgmm": 1,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-revolution-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-125",
+  "static_stiffness_kgmm": 1.15,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "tecnifibre-razor-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+  "static_stiffness_kgmm": 1.28,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-caviar-17l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124",
+  "static_stiffness_kgmm": 1,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-caviar-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124",
+  "static_stiffness_kgmm": 1,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-ether-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-enos-pro-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-enos-pro-neon-yl-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-enos-pro-carbon-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125",
+  "static_stiffness_kgmm": 0.9,
+  "shape": "round",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "toroline-enos-pro-neon-pk-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-wasabi-green-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-wasabi-neon-green-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "square",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-wasabi-x-blue-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-wasabi-pom-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-wasabi-neon-green-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "square",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-super-toro-blue-123",
+  "static_stiffness_kgmm": 0.9,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-fluo-green-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "toroline-toro-toro-matcha-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "wilson-revolve-spin-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "wilson-revolve-spin-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "wilson-revolve-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "yonex-poly-tour-pro-bk-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-pro-yellow-125",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "yonex-poly-tour-pro-ble-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "yonex-poly-tour-rev-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-rev-purple-125",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "yonex-poly-tour-spin-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-spin-blue-125",
+  "static_stiffness_kgmm": 1.08,
+  "shape": "round",
+  "composition": "polyester",
+  "match": "proxy"
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-o-toro-snap-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "tecnifibre-razor-spin-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "grapplesnake-tour-m8-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "toroline-o-toro-tour-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-tour-neon-mint-123",
+  "static_stiffness_kgmm": 1.1,
+  "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "toroline-cash-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-spiky-shark-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-spiky-shark-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "tecnifibre-razor-soft-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-soft-black-125",
+  "static_stiffness_kgmm": 1.15,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-plasma-hextreme-orange-125",
+  "static_stiffness_kgmm": 1.1,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "solinco-hyper-g-round-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "exact"
+ },
+ {
+  "id": "toroline-snapper-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-snapper-lavender-123",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "octagonal",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "wilson-revolve-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "head-lynx-tour-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-hyper-g-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-130",
+  "static_stiffness_kgmm": 1.02,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "luxilon-element-rough-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "babolat-rpm-blast-orange-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-element-soft-ir-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-tour-bite-soft-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-130",
+  "static_stiffness_kgmm": 0.5,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "luxilon-alu-power-soft-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-soft-silver-125",
+  "static_stiffness_kgmm": 0.73,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-tour-bite-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-130",
+  "static_stiffness_kgmm": 1,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "luxilon-4g-soft-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-4g-soft-gold-125",
+  "static_stiffness_kgmm": 1.13,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "grapplesnake-alpha-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-revolution-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-120",
+  "static_stiffness_kgmm": 1.07,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "luxilon-element-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-element-bronze-125",
+  "static_stiffness_kgmm": 0.8,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "solinco-outlast-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-outlast-125",
+  "static_stiffness_kgmm": 1.08,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "luxilon-alu-power-rough-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-rough-silver-125",
+  "static_stiffness_kgmm": 0.72,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "exact"
+ },
+ {
+  "id": "solinco-revolution-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-130",
+  "static_stiffness_kgmm": 1.15,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "yonex-poly-tour-spin-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-spin-blue-125",
+  "static_stiffness_kgmm": 1.08,
+  "shape": "round",
+  "composition": "polyester",
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-yellow-jacket-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-hyper-g-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-125",
+  "static_stiffness_kgmm": 1.1,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-outlast-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-outlast-130",
+  "static_stiffness_kgmm": 0.93,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-max-power-rough-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-rough-grey-125",
+  "static_stiffness_kgmm": 1.03,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "solinco-mach-10-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-plasma-hextreme-orange-125",
+  "static_stiffness_kgmm": 1.1,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-125",
+  "static_stiffness_kgmm": 1.12,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-max-power-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-grey-125",
+  "static_stiffness_kgmm": 1.27,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "luxilon-alu-power-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-silver-125",
+  "static_stiffness_kgmm": 0.78,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-tour-bite-soft-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-125",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-ii-red-125",
+  "static_stiffness_kgmm": 0.75,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-super-smash-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-super-smash-orange-123",
+  "static_stiffness_kgmm": 0.97,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "solinco-tour-bite-soft-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-soft-120",
+  "static_stiffness_kgmm": 0.48,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-max-power-rough-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-rough-grey-125",
+  "static_stiffness_kgmm": 1.03,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-barb-wire-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-125",
+  "static_stiffness_kgmm": 0.9,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "tecnifibre-razor-code-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+  "static_stiffness_kgmm": 1.28,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "tecnifibre-ice-code-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-ice-code-white-125",
+  "static_stiffness_kgmm": 0.9,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "solinco-outlast-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-outlast-120",
+  "static_stiffness_kgmm": 0.95,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "luxilon-element-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-element-bronze-125",
+  "static_stiffness_kgmm": 0.8,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-firestorm-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-firestorm-amber-125",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-helix-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-touch-turbo-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-black-shark-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-125",
+  "static_stiffness_kgmm": 0.72,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-max-power-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-grey-125",
+  "static_stiffness_kgmm": 1.27,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-diamond-rough-125",
+  "static_stiffness_kgmm": 0.55,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-poly-plasma-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-touch-turbo-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-super-smash-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-super-smash-orange-123",
+  "static_stiffness_kgmm": 0.97,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-p2-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-touch-turbo-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-17-125",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-hyper-g-soft-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-tornado-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-tornado-black-123",
+  "static_stiffness_kgmm": 0.72,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-17-12",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-x-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-super-smash-spiky-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-poly-plasma-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-alu-power-vibe-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-competition-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-p2-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-barb-wire-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-120",
+  "static_stiffness_kgmm": 0.75,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-diamond-rough-130",
+  "static_stiffness_kgmm": 0.5,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-pro-line-evolution-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-evolution-blue-125",
+  "static_stiffness_kgmm": 0.77,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "head-hawk-rough-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-poly-megaforce-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-tornado-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-tornado-black-123",
+  "static_stiffness_kgmm": 0.72,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-17l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-ii-red-125",
+  "static_stiffness_kgmm": 0.75,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-p2-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-x-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-firestorm-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-firestorm-amber-125",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "yonex-poly-tour-spin-g-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-poly-plasma-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-ii-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-pro-line-ii-red-125",
+  "static_stiffness_kgmm": 0.75,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "head-hawk-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-hyperion-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-hyperion-black-124",
+  "static_stiffness_kgmm": 0.8,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "babolat-rpm-blast-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-130",
+  "static_stiffness_kgmm": 1.25,
+  "shape": "octagonal",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "kirschbaum-competition-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-i-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-barb-wire-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-130",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-poly-megaforce-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "signum-pro-poly-speed-spin-16",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-diamond-rough-120",
+  "static_stiffness_kgmm": 0.55,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "signum-pro-hyperion-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-hyperion-black-124",
+  "static_stiffness_kgmm": 0.8,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "tecnifibre-razor-code-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-125",
+  "static_stiffness_kgmm": 1.28,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "luxilon-4g-rough-16l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-i-17",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-competition-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "kirschbaum-pro-line-i-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "luxilon-4g-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-4g-gold-125",
+  "static_stiffness_kgmm": 1.18,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "yonex-poly-tour-pro-yellow-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-pro-yellow-125",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "signum-pro-poly-plasma-pure-17l",
+  "url": null,
+  "static_stiffness_kgmm": null,
+  "shape": null,
+  "composition": null,
+  "match": "none"
+ },
+ {
+  "id": "yonex-poly-tour-pro-yellow-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-pro-yellow-125",
+  "static_stiffness_kgmm": 1.05,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "exact"
+ },
+ {
+  "id": "luxilon-4g-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-4g-gold-125",
+  "static_stiffness_kgmm": 1.18,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "yonex-poly-tour-rev-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-rev-purple-125",
+  "static_stiffness_kgmm": 0.85,
+  "shape": "round",
+  "composition": "copolyester",
+  "match": "proxy"
+ },
+ {
+  "id": "kirschbaum-flash-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-orange-125",
+  "static_stiffness_kgmm": 0.9,
+  "shape": "round",
+  "composition": "polyester",
+  "match": "proxy"
+ }
+]

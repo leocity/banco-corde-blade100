@@ -1,0 +1,116 @@
+<title>Banco Corde Blade 100</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/*__CSS__*/
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brandline">
+      <div class="bed" aria-hidden="true"></div>
+      <div>
+        <p class="eyebrow">Banco di incordatura · full poly · calibri 1.18–1.30 mm</p>
+        <h1>Banco Corde Blade 100</h1>
+      </div>
+    </div>
+    <div class="profile" aria-label="Il tuo profilo">
+      <span class="chip">Wilson Blade 100 v9 · 16×19</span>
+      <span class="chip">Tutto campo, rotazioni + piatto</span>
+      <span class="chip">&lt; 50 lbs</span>
+      <span class="chip">4–5 h/settimana</span>
+      <span class="chip liked">★ Confidential 1.25 · 22/21 kg</span>
+      <span class="chip liked">★ O-Toro 1.23 · 23/22 kg</span>
+      <span class="chip disliked">✕ Confidential Soft</span>
+      <span class="chip disliked">✕ RPM Blast</span>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sezioni">
+    <button role="tab" id="tab-perte" data-tab="perte" aria-selected="true">Per te</button>
+    <button role="tab" id="tab-mappa" data-tab="mappa" aria-selected="false">Mappa</button>
+    <button role="tab" id="tab-esplora" data-tab="esplora" aria-selected="false">Esplora</button>
+    <button role="tab" id="tab-confronta" data-tab="confronta" aria-selected="false">Confronta</button>
+    <button role="tab" id="tab-guida" data-tab="guida" aria-selected="false">Guida</button>
+  </nav>
+
+  <main>
+    <!-- PER TE -->
+    <section id="perte" class="panel" role="tabpanel" aria-labelledby="tab-perte">
+      <div class="tastes" id="tastes"></div>
+      <div class="perte-grid">
+        <aside class="weights">
+          <h2>Cosa conta per te</h2>
+          <p class="muted small">Pesi del punteggio. Il default è tarato sul tuo profilo: la Blade dà già controllo, quindi più spin e un po' di potenza.</p>
+          <div id="sliders"></div>
+          <label class="toggle"><input type="checkbox" id="only-target" checked> Solo le marche che stai valutando</label>
+          <button class="ghost" id="reset-weights" type="button">Ripristina pesi</button>
+        </aside>
+        <div class="ranking-col">
+          <div class="presets" role="group" aria-label="Liste pronte">
+            <button type="button" class="preset" data-preset="score" aria-pressed="true">Punteggio profilo</button>
+            <button type="button" class="preset" data-preset="similar" aria-pressed="false">Come le tue preferite</button>
+            <button type="button" class="preset" data-preset="spin" aria-pressed="false">Più spin, stesso controllo</button>
+            <button type="button" class="preset" data-preset="durable" aria-pressed="false">Più durata</button>
+          </div>
+          <p class="muted small" id="preset-desc"></p>
+          <ol class="ranking" id="ranking"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPPA -->
+    <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden>
+      <div class="controls">
+        <label>Asse orizzontale <select id="ax-x"></select></label>
+        <label>Asse verticale <select id="ax-y"></select></label>
+        <label>Evidenzia marca <select id="ax-brand"><option value="">Nessuna</option></select></label>
+      </div>
+      <div class="legend" id="map-legend"></div>
+      <div class="chart-box"><svg id="scatter" role="img" aria-label="Mappa delle corde"></svg><div class="tip" id="tip" hidden></div></div>
+      <p class="muted small" id="map-note"></p>
+    </section>
+
+    <!-- ESPLORA -->
+    <section id="esplora" class="panel" role="tabpanel" aria-labelledby="tab-esplora" hidden>
+      <div class="controls">
+        <label>Cerca <input type="search" id="f-q" placeholder="es. Hyper-G, Toro"></label>
+        <label>Marca <select id="f-brand"><option value="">Tutte</option></select></label>
+        <label>Calibro <select id="f-gauge"><option value="">Tutti</option></select></label>
+        <label>Forma <select id="f-shape"><option value="">Tutte</option></select></label>
+        <label class="toggle"><input type="checkbox" id="f-target"> Solo marche valutate</label>
+      </div>
+      <p class="muted small" id="f-count"></p>
+      <div class="table-scroll"><table class="data" id="table"></table></div>
+    </section>
+
+    <!-- CONFRONTA -->
+    <section id="confronta" class="panel" role="tabpanel" aria-labelledby="tab-confronta" hidden>
+      <div class="controls" id="cmp-pickers"></div>
+      <p class="summary" id="cmp-summary"></p>
+      <div class="legend" id="cmp-legend"></div>
+      <div id="cmp-bars" class="cmp-bars"></div>
+      <div class="table-scroll"><table class="data" id="cmp-table"></table></div>
+    </section>
+
+    <!-- GUIDA -->
+    <section id="guida" class="panel prose" role="tabpanel" aria-labelledby="tab-guida" hidden></section>
+  </main>
+
+  <footer class="foot muted small" id="foot"></footer>
+</div>
+
+<dialog id="sheet" aria-labelledby="sheet-title">
+  <div class="sheet-inner">
+    <button class="close" id="sheet-close" type="button" aria-label="Chiudi scheda">×</button>
+    <div id="sheet-body"></div>
+  </div>
+</dialog>
+
+<script>
+window.STRINGS_DATA = /*__DATA__*/;
+</script>
+<script type="module">
+/*__JS__*/
+</script>

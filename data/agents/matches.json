@@ -12,12 +12,6 @@
   "note": "id identico"
  },
  {
-  "id": "babolat-rpm-blast-rough-16l",
-  "twu_name": "Babolat RPM Blast Rough 16",
-  "match": "proxy",
-  "note": "Same model RPM Blast Rough, gauge 16L vs 16 (1.25-1.28 vs 1.30mm, same gauge family)"
- },
- {
   "id": "head-hawk-16",
   "twu_name": "Head Hawk 16 (1.30)",
   "match": "exact",
