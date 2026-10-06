@@ -58,7 +58,8 @@ def parse_name(name: str):
     else:
         label = _label_from_mm(mm) if mm else None
     model = normalize_model(re.sub(r"\s+", " ", rest).strip())
-    return normalize_brand(brand), model, label, mm if mm else gauge_to_mm(label)
+    nb = normalize_brand(brand)
+    return nb, model, label, mm if mm else gauge_to_mm(label, brand=nb, model=model)
 
 
 def _f(v):

@@ -24,9 +24,22 @@ MODEL_ALIASES = {
     "o toro": "O-Toro",
     "toro toro ornage": "Toro Toro Orange",
     "wasabi pom": "Wasabi Pom",
+    "rpm rough": "RPM Blast Rough",  # Tennis Warehouse: "Formerly called RPM Blast Rough"
 }
 
 GAUGE_MM = {"16": 1.30, "16L": 1.25, "17": 1.20, "17L": 1.18}
+# diametri reali per marca (siti produttori / TWU), quando l'etichetta non porta i mm
+BRAND_GAUGE_MM = {
+    "Babolat": {"17": 1.25, "16": 1.30},
+    "Toroline": {"17": 1.23, "17L": 1.23, "16L": 1.25},
+    "Re-String": {"17": 1.23, "16": 1.28},
+    "Kirschbaum": {"17": 1.25, "17L": 1.20},
+    "Wilson": {"17": 1.25},
+    "Grapplesnake": {"17": 1.25},
+    "Head": {"17": 1.25},
+    "Tecnifibre": {"17": 1.25},
+}
+MODEL_GAUGE_MM = {("Re-String", "Sync"): {"17": 1.25, "18": 1.20}}
 GAUGES_IN_SCOPE = set(GAUGE_MM)
 POLY_MATERIALS = {"poly", "copoly", "co-poly", "polyester"}
 
@@ -55,6 +68,7 @@ def normalize_model(raw: str) -> str:
     collapsed = re.sub(r"\s+", " ", str(raw)).strip()
     collapsed = re.sub(r"\s*-\s*", "-", collapsed)
     collapsed = re.sub(r"(?i)\bpolytour\b", "Poly Tour", collapsed)
+    collapsed = re.sub(r"\bEnos\b", "Enso", collapsed)  # nome ufficiale Toroline: Enso Pro
     return MODEL_ALIASES.get(_key(collapsed), collapsed)
 
 
@@ -65,10 +79,15 @@ def normalize_gauge(raw) -> str | None:
     return s or None
 
 
-def gauge_to_mm(label: str, declared_mm: float | None = None) -> float | None:
+def gauge_to_mm(label: str, declared_mm: float | None = None, brand: str | None = None,
+                model: str | None = None) -> float | None:
     if declared_mm:
         return declared_mm
-    return GAUGE_MM.get(normalize_gauge(label))
+    g = normalize_gauge(label)
+    for table in (MODEL_GAUGE_MM.get((brand, model), {}), BRAND_GAUGE_MM.get(brand, {}), GAUGE_MM):
+        if g in table:
+            return table[g]
+    return None
 
 
 def _model_matches(model: str, prefixes) -> bool:

@@ -51,3 +51,7 @@ def test_ids_are_unique():
     rows = parse_twu(HTML.read_text(encoding="utf-8", errors="ignore"))
     ids = [r["id"] for r in rows]
     assert len(ids) == len(set(ids))
+
+
+def test_rpm_blast_rough_17_is_125(rows):
+    assert rows["Babolat RPM Blast Rough 17"]["gauge_mm"] == 1.25

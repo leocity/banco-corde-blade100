@@ -40,23 +40,7 @@
   "match": "none"
  },
  {
-  "id": "babolat-rpm-blast-rough-16",
-  "url": null,
-  "static_stiffness_kgmm": null,
-  "shape": null,
-  "composition": null,
-  "match": "none"
- },
- {
-  "id": "babolat-rpm-blast-rough-17",
-  "url": null,
-  "static_stiffness_kgmm": null,
-  "shape": null,
-  "composition": null,
-  "match": "none"
- },
- {
-  "id": "toroline-enos-pro-neon-yl-16l",
+  "id": "toroline-enso-pro-neon-yl-16l",
   "url": null,
   "static_stiffness_kgmm": null,
   "shape": null,
@@ -348,6 +332,22 @@
   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
   "static_stiffness_kgmm": 0.95,
   "shape": "hexagonal",
+  "composition": "Hybrid",
+  "match": "proxy"
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+  "static_stiffness_kgmm": 0.83,
+  "shape": "rough",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+  "static_stiffness_kgmm": 0.83,
+  "shape": "rough",
   "composition": "Hybrid",
   "match": "proxy"
  }

@@ -118,6 +118,7 @@ function badges(r) {
   if (r.preference === 'liked') out.push('<span class="badge liked">★ preferita</span>');
   if (r.preference === 'disliked') out.push('<span class="badge disliked">✕ non gradita</span>');
   if (r.derived.disliked_warning) out.push(`<span class="badge warn" title="Somiglianza oltre ${DISLIKED_THRESHOLD} con una corda che non ti è piaciuta, più che con le tue preferite">⚠ simile a una non gradita</span>`);
+  if (r.crosscheck?.verdict === 'contradicted') out.push('<span class="badge warn" title="Le recensioni e i produttori contraddicono i numeri di laboratorio: leggi il controllo incrociato nella scheda">⚑ dati contestati</span>');
   if (r.derived.sources_disagree) out.push('<span class="badge" title="Il test Ektelon e TWU danno giudizi opposti sulla morbidezza: guarda le due misure nella scheda">fonti discordanti</span>');
   out.push(`<span class="cov" title="Fonti con dati: Excel, TWU, Racketpedia">${'●'.repeat(r.coverage)}${'○'.repeat(3 - r.coverage)}</span>`);
   return out.join(' ');
@@ -181,13 +182,14 @@ function openSheet(id) {
     <div class="sheet-head">
       <p class="eyebrow">${r.is_target ? 'Marca valutata' : 'Concorrente di riferimento'}</p>
       <h2 id="sheet-title">${esc(nameOf(r))}</h2>
-      <p class="muted">${esc(gaugeOf(r))} · ${esc(SHAPES[r.shape] || r.shape || 'forma n.d.')} · ${r.material === 'copoly' ? 'co-poliestere' : 'poliestere'}</p>
+      <p class="muted">${esc(gaugeOf(r))} · ${esc(SHAPES[r.shape] || r.shape || 'forma n.d.')}${r.shape_source ? ' (produttore)' : ''}${r.shape_source && r.shape_excel && r.shape_excel !== r.shape ? ` · nel tuo file: ${esc(SHAPES[r.shape_excel] || r.shape_excel)}` : ''} · ${r.material === 'copoly' ? 'co-poliestere' : 'poliestere'}</p>
       <div>${badges(r)} <span class="badge">Punteggio ${fmt(r._score, 0)}</span></div>
     </div>
     ${ts ? `<div class="tension"><div class="tbox"><span class="muted small">Tensione di partenza (verticali/orizzontali)</span><span class="big">${fmt(ts.kg[0], 1)} / ${fmt(ts.kg[1], 1)} kg</span><span class="num">${fmt(ts.lbs[0], 1)} / ${fmt(ts.lbs[1], 1)} lbs</span><span class="muted small">Indicativa: ${esc(ts.note)}</span></div>${olg}</div>` : ''}
     ${r.derived.sources_disagree ? `<p class="callout small">Fonti discordanti: il test Ektelon la dà ${fmt(e?.stiff_index_avg, 2)} di Stiff Index (alto = morbida), TWU ${fmt(t?.stiffness_lbin, 0)} lb/in. Misurano cose diverse (allungamento statico contro impatto): fidati di più di TWU per la sensazione all'impatto.</p>` : ''}
     <div class="notes">${[['feel', 'Sensazione'], ['on_blade_100_v9', 'Sulla Blade 100 v9'], ['for_your_style', 'Per il tuo stile'], ['vs_favorites', 'Rispetto alle tue preferite']]
       .filter(([k]) => r.notes?.[k]).map(([k, l]) => `<div class="note"><h3>${l}</h3><p>${esc(r.notes[k])}</p></div>`).join('')}</div>
+    ${r.crosscheck ? `<div class="callout"><h3>Controllo incrociato web <span class="badge ${['contradicted', 'questionable'].includes(r.crosscheck.verdict) ? 'warn' : ''}">${esc(VERDICT[r.crosscheck.verdict] || r.crosscheck.verdict)}</span></h3>${r.crosscheck.note ? `<p class="small">${esc(r.crosscheck.note)}</p>` : ''}<p class="small muted">Fonti: ${(r.crosscheck.sources || []).map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(new URL(u).hostname.replace('www.', ''))}</a>`).join(' · ')}</p></div>` : ''}
     <div><h3>Profilo (percentili sulle ${ALL.length} corde)</h3>${subBars(r)}</div>
     <div><h3>Somiglianza <span class="muted small">su ${Math.max(...Object.values(sims.similarity_basis || { x: 0 }))} misure su 6</span></h3>${kv([
       ['★ Confidential 1.25', fmt(sims.similarity_liked?.confidential, 0)], ['★ O-Toro 1.23', fmt(sims.similarity_liked?.otoro, 0)],
@@ -213,6 +215,7 @@ function openSheet(id) {
 }
 
 /* ---------- MAPPA ---------- */
+const VERDICT = { confirmed: 'confermata', plausible: 'plausibile', questionable: 'dubbia', contradicted: 'contraddetta', no_data: 'nessun dato esterno' };
 const CAT_LABEL = { liked: 'Tue preferite', disliked: 'Non gradite', target: 'Marche valutate', other: 'Concorrenti' };
 const CAT_COLOR = { liked: 'var(--s-liked)', disliked: 'var(--s-disliked)', target: 'var(--s-target)', other: 'var(--s-other)' };
 function initMap() {

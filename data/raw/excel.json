@@ -51,7 +51,7 @@
   "brand": "Babolat",
   "model": "RPM Blast",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -91,6 +91,53 @@
    "tl12_raw": 18.0,
    "tl6": 20.0,
    "tl12": 18.0
+  }
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16l",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "GEAR",
+  "material": "copoly",
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 5.6
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.978,
+    "60": 0.978,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.311111111111109,
+    "60": 3.466666666666672,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.844,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 23.94000000000003
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.27,
+   "static_initial": 12.0,
+   "static_24h": 12.5,
+   "static_recoil": 12.12,
+   "static_24h_creep": 0.5,
+   "extra_test_sets": 0,
+   "tl6_raw": 0.0,
+   "tl12_raw": 6.0,
+   "tl6": null,
+   "tl12": 6.0
   }
  },
  {
@@ -145,7 +192,7 @@
   "brand": "Head",
   "model": "Hawk Power",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -192,7 +239,7 @@
   "brand": "Head",
   "model": "Hawk Touch",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -615,7 +662,7 @@
   "brand": "Kirschbaum",
   "model": "Black Shark",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "GEAR",
   "material": "copoly",
   "excel": {
@@ -662,7 +709,7 @@
   "brand": "Kirschbaum",
   "model": "Xplosive Spd",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "PENT",
   "material": "copoly",
   "excel": {
@@ -709,7 +756,7 @@
   "brand": "Kirschbaum",
   "model": "Pro Line",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -756,7 +803,7 @@
   "brand": "Kirschbaum",
   "model": "Helix white",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "TWST",
   "material": "copoly",
   "excel": {
@@ -803,7 +850,7 @@
   "brand": "Kirschbaum",
   "model": "Helix blue",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "TWST",
   "material": "copoly",
   "excel": {
@@ -850,7 +897,7 @@
   "brand": "Kirschbaum",
   "model": "Flash orange",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -897,7 +944,7 @@
   "brand": "Kirschbaum",
   "model": "Flash pink",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -944,7 +991,7 @@
   "brand": "Kirschbaum",
   "model": "Flash yellow",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -991,7 +1038,7 @@
   "brand": "Kirschbaum",
   "model": "Flash green",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -1038,7 +1085,7 @@
   "brand": "Kirschbaum",
   "model": "Flash black",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -1320,7 +1367,7 @@
   "brand": "Re-String",
   "model": "Slap",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -1367,7 +1414,7 @@
   "brand": "Re-String",
   "model": "Sync",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -1414,7 +1461,7 @@
   "brand": "Re-String",
   "model": "Vivo",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -1461,7 +1508,7 @@
   "brand": "Re-String",
   "model": "Zero",
   "gauge_label": "16",
-  "gauge_mm": 1.3,
+  "gauge_mm": 1.28,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -1508,7 +1555,7 @@
   "brand": "Re-String",
   "model": "Zero",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2025,7 +2072,7 @@
   "brand": "Tecnifibre",
   "model": "Razor",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -2072,7 +2119,7 @@
   "brand": "Toroline",
   "model": "Absolute",
   "gauge_label": "17L",
-  "gauge_mm": 1.18,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2119,7 +2166,7 @@
   "brand": "Toroline",
   "model": "Caviar",
   "gauge_label": "17L",
-  "gauge_mm": 1.18,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2166,7 +2213,7 @@
   "brand": "Toroline",
   "model": "Caviar",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2213,7 +2260,7 @@
   "brand": "Toroline",
   "model": "Ether",
   "gauge_label": "17L",
-  "gauge_mm": 1.18,
+  "gauge_mm": 1.23,
   "shape": "SQ",
   "material": "copoly",
   "excel": {
@@ -2256,9 +2303,9 @@
   }
  },
  {
-  "id": "toroline-enos-pro-16",
+  "id": "toroline-enso-pro-16",
   "brand": "Toroline",
-  "model": "Enos Pro",
+  "model": "Enso Pro",
   "gauge_label": "16",
   "gauge_mm": 1.3,
   "shape": "RND",
@@ -2303,9 +2350,9 @@
   }
  },
  {
-  "id": "toroline-enos-pro-neon-yl-16l",
+  "id": "toroline-enso-pro-neon-yl-16l",
   "brand": "Toroline",
-  "model": "Enos Pro neon yl",
+  "model": "Enso Pro neon yl",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
   "shape": "RND",
@@ -2350,9 +2397,9 @@
   }
  },
  {
-  "id": "toroline-enos-pro-carbon-16l",
+  "id": "toroline-enso-pro-carbon-16l",
   "brand": "Toroline",
-  "model": "Enos Pro-carbon",
+  "model": "Enso Pro-carbon",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
   "shape": "RND",
@@ -2397,11 +2444,11 @@
   }
  },
  {
-  "id": "toroline-enos-pro-neon-pk-17",
+  "id": "toroline-enso-pro-neon-pk-17",
   "brand": "Toroline",
-  "model": "Enos Pro neon pk",
+  "model": "Enso Pro neon pk",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -2448,7 +2495,7 @@
   "brand": "Toroline",
   "model": "Wasabi green",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "SQ",
   "material": "copoly",
   "excel": {
@@ -2495,7 +2542,7 @@
   "brand": "Toroline",
   "model": "Wasabi X blue",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "RND",
   "material": "copoly",
   "excel": {
@@ -2542,7 +2589,7 @@
   "brand": "Toroline",
   "model": "Wasabi Pom",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "SQ",
   "material": "copoly",
   "excel": {
@@ -2589,7 +2636,7 @@
   "brand": "Toroline",
   "model": "Super Toro",
   "gauge_label": "17L",
-  "gauge_mm": 1.18,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2636,7 +2683,7 @@
   "brand": "Toroline",
   "model": "O-Toro",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2683,7 +2730,7 @@
   "brand": "Toroline",
   "model": "Toro Toro Orange",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2730,7 +2777,7 @@
   "brand": "Toroline",
   "model": "Toro Toro pink",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "excel": {
@@ -2871,7 +2918,7 @@
   "brand": "Wilson",
   "model": "Revolve Spin",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "PENT",
   "material": "poly",
   "excel": {
@@ -2918,7 +2965,7 @@
   "brand": "Wilson",
   "model": "Revolve",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "poly",
   "excel": {

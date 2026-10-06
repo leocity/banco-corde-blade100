@@ -70,3 +70,15 @@ def test_integration_on_real_files():
     assert recs["grapplesnake-tour-m8-17"]["excel"] is None
     assert recs["toroline-o-toro-17"]["twu"]["stiffness_lbin"] == 165.7
     assert len(recs) == len(json.loads(p.read_text(encoding="utf-8")))
+
+
+def test_crosscheck_overrides_shape_and_attach_verdict():
+    from pipeline.merge import apply_crosscheck
+    recs = merge(EX, TW, MA, RP)
+    cc = {"shapes": [{"brand": "Solinco", "model": "Confidential", "shape": "SQ", "source": "https://x"}],
+          "checks": {"solinco-confidential-16l": {"verdict": "questionable", "note": "forma corretta", "sources": ["https://a"]}}}
+    out = {r["id"]: r for r in apply_crosscheck(recs, cc)}
+    r = out["solinco-confidential-16l"]
+    assert r["shape"] == "SQ" and r["shape_excel"] == "RND"
+    assert r["crosscheck"]["verdict"] == "questionable"
+    assert out["re-string-zero-16"]["crosscheck"] is None

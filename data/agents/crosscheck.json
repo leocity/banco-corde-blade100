@@ -1,0 +1,1056 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "verdict": "contradicted",
+  "facts": {
+   "diameters_available": [
+    1.2,
+    1.25,
+    1.3,
+    1.35
+   ],
+   "shape": "octagonal",
+   "material": "co-polyester (PET)"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Total tension loss (RPM Blast 1.25, 62 lb start, 5 hits at 120 mph-equivalent; 17.13 lb = 27.6% of 62 lb, ratio computed by auditor)",
+    "value": 17.13,
+    "unit": "lb",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Stiffness, USRSA-style scale (RPM Blast 1.25)",
+    "value": 273,
+    "unit": "unitless as quoted",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   }
+  ],
+  "consensus": "Babolat RPM Blast is described everywhere as a firm, low-power, high-control octagonal co-poly with moderate tension loss; the 1.25 mm gauge is sold as 17, not 16L.",
+  "issues": [
+   "Babolat sells RPM Blast only as 18/1.20, 17/1.25, 16/1.30 and 15L/1.35: there is no '16L 1.25' gauge. This entry is the same string as babolat-rpm-blast-17 (1.25) and should be merged/removed (or relabelled 17).",
+   "shape field is HEX but the manufacturer and every reviewer say octagonal (8 sides); change to OCT (the note text already says esagonale, change to ottagonale).",
+   "The TWU values used here (232.6 lb/in, 45.9% loss) are the 1.30 values used as a proxy, while the 1.25 gauge has its own exact TWU row (233.7 / 33.3% loss) in the 17 entry; the two 1.25 entries disagree by 12.6 points of tension loss for the same string.",
+   "Note says 'poco spin (4.5)': the TWU lab spin potential is low, but every playtest/brand source rates RPM Blast as a top spin string (star rating 5/5 for spin at restring.london; 'heavy spin' per Babolat). Reword to 'spin potential misurato basso in laboratorio TWU, ma i tester la considerano spinnosa'.",
+   "Material in the input is 'copoly' here but 'poly' in the 1.30 entry: harmonise (co-polyester)."
+  ],
+  "sources": [
+   "https://www.babolat.com/us/rpm-blast-string/243101.html",
+   "https://restring.london/babolat-rpm-blast-review/",
+   "https://tenniscompanion.org/babolat-rpm-blast/",
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+   "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.2,
+    1.25,
+    1.3,
+    1.35
+   ],
+   "shape": "octagonal",
+   "material": "co-polyester (PET)"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Total tension loss (RPM Blast 1.25, 62 lb start, 5 hits at 120 mph-equivalent; 17.13 lb = 27.6% of 62 lb, ratio computed by auditor)",
+    "value": 17.13,
+    "unit": "lb",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Stiffness, USRSA-style scale (RPM Blast 1.25)",
+    "value": 273,
+    "unit": "unitless as quoted",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   }
+  ],
+  "consensus": "Firm, control-oriented co-poly; testers report moderate tension loss, noticeable after ~8-12 hours; comfort is not its strength.",
+  "issues": [
+   "shape field HEX contradicts the manufacturer (octagonal) and the entry's own note ('Ottagonale'); change to OCT.",
+   "Independent USRSA-style test (62 lb start) shows a tension loss of 17.13 lb (about 28%), in line with the 33.3% TWU value; stiffness is consistent with 'firm' wording (but see issue below).",
+   "In the USRSA-style table RPM Blast (273) is softer than Confidential (285) and Hyper-G (290), the opposite of TWU (RPM Blast 233 vs Confidential 222 lb/in). Rankings between strings differ by lab, so avoid stating tight stiffness order as fact.",
+   "Note 'poco spin (4.5)' conflicts with qualitative consensus (spin is its headline feature); qualify as lab spin potential."
+  ],
+  "sources": [
+   "https://www.babolat.com/us/rpm-blast-string/243101.html",
+   "https://restring.london/babolat-rpm-blast-review/",
+   "https://tenniscompanion.org/babolat-rpm-blast/",
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+   "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+  ]
+ },
+ {
+  "id": "solinco-confidential-16l",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "square (4-sided); some sources say pentagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Total tension loss (Confidential 1.25, 62 lb start; 14.95 lb = 24.1% of 62 lb, ratio computed by auditor)",
+    "value": 14.95,
+    "unit": "lb",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Stiffness, USRSA-style scale (Confidential 1.25)",
+    "value": 285,
+    "unit": "unitless as quoted",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   }
+  ],
+  "consensus": "Firm, control-oriented shaped co-poly with excellent tension maintenance, sitting between Tour Bite and Hyper-G in firmness.",
+  "issues": [
+   "shape RND is wrong: Solinco/TW Europe/Tennis Companion/Tennisnerd all describe a four-sided (square) profile (Racketpedia and one retailer say pentagonal). Change shape to square (SQ) and remove 'tonda' from the note.",
+   "Proxy use of the 1.30 TWU row for 1.25 looks reasonable for tension loss: a different lab (USRSA-style, 62 lb) measured 14.95 lb loss on the 1.25 gauge, about 24% (computed), versus 22.2% TWU. Stiffness ordering vs Hyper-G is opposite in that table (Confidential 285 < Hyper-G 290) but sources agree it sits between Tour Bite and Hyper-G.",
+   "Keep the proxy flag visible: no 1.25-specific TWU stiffness row was found on the review pages."
+  ],
+  "sources": [
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://tenniscompanion.org/solinco-confidential/",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-confidential-string-review/18882",
+   "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+   "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+  ]
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "verdict": "confirmed",
+  "facts": {
+   "diameters_available": [
+    1.23
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Stiffness vs Babolat RPM Blast (Toroline cites Tennis Warehouse testing)",
+    "value": -29,
+    "unit": "% (lower)",
+    "source_url": "https://toroline.com/products/o-toro",
+    "same_lab_as_twu": true
+   },
+   {
+    "metric": "Spin potential vs Babolat RPM Blast (Toroline cites Tennis Warehouse testing)",
+    "value": 104,
+    "unit": "% (higher)",
+    "source_url": "https://toroline.com/products/o-toro",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Described as the softer, elastic, spin-friendly member of the Toroline range, with moderate (about 70% retention, one retailer score) tension maintenance.",
+  "issues": [
+   "Softness and high spin are corroborated by manufacturer, TW playtesters and Tennisnerd, but the only quantitative support traces back to the TWU lab; no independent lab number found.",
+   "Note says 'la più morbida del banco' with 166 lb/in, but O-TORO Snap in the same bench shows 164.6, so O-TORO is not the strict minimum; say 'tra le più morbide'.",
+   "Tension loss 44.4% is large; one user test quoted on a retailer page suggests dynamic tension 32 to 27 in 4 hours (about 3 kg). Directionally consistent: soft and elastic strings lose tension quickly."
+  ],
+  "sources": [
+   "https://toroline.com/products/o-toro",
+   "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+   "https://prostrung.com/toroline-otoro-review/",
+   "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+  ]
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "4-sided per TW Europe (one source says five-sided)",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Slightly softer, more pocketing and a bit more power than Confidential, but still clearly a firm poly; peak playability fades in a few hours for some testers.",
+  "issues": [
+   "shape is null: fill in 4-sided/square (TW Europe) with a note that one reviewer calls it five-sided.",
+   "Our note says 'resta nel mezzo': agrees with the sources. Sources describe Soft as only a modest softening, which fits the 194 vs 222 lb/in gap.",
+   "One reviewer reports peak playability only 3-5 hours, which may not match the 27.7% tension loss reading; low-confidence, anecdotal.",
+   "No independent numeric data found."
+  ],
+  "sources": [
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://tenniscompanion.org/solinco-confidential-soft/"
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-16",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.2,
+    1.25,
+    1.3,
+    1.35
+   ],
+   "shape": "octagonal",
+   "material": "co-polyester (PET)"
+  },
+  "independent_numbers": [],
+  "consensus": "Firm, crisp, low-power control poly; moderate tension loss with playability dropping after about 8-12 hours.",
+  "issues": [
+   "Gauge 1.30/16 and octagonal shape are correct.",
+   "'poco spin (4.5)': lab spin potential only; sources otherwise treat RPM Blast as a spin-oriented string. Qualify the wording.",
+   "Material 'poly' here vs 'copoly' in the other RPM Blast entry: harmonise."
+  ],
+  "sources": [
+   "https://www.babolat.com/us/rpm-blast-string/243101.html",
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+   "https://tenniscompanion.org/babolat-rpm-blast/",
+   "https://restring.london/babolat-rpm-blast-review/"
+  ]
+ },
+ {
+  "id": "toroline-o-toro-tour-17",
+  "verdict": "confirmed",
+  "facts": {
+   "diameters_available": [
+    1.2,
+    1.23
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Stiffness increase of O-TORO Tour over O-TORO (manufacturer claim, lab not stated)",
+    "value": 15,
+    "unit": "% (stiffer)",
+    "source_url": "https://toroline.com/products/o-toro-tour",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Auditor cross-check: TWU stiffness ratio Tour/O-TORO from our own data (216.6 vs 165.7 lb/in)",
+    "value": 31,
+    "unit": "% (stiffer)",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Consistently called firmer, crisper and more control-oriented than the original O-TORO, with better tension maintenance but still strong spin.",
+  "issues": [
+   "Direction is confirmed by Toroline, TW playtesters (firmer, control 9.4/10) and retailer reviews. Magnitude: Toroline says about 15% stiffer, our TWU data implies about 31% stiffer; avoid implying a huge gap, or cite both.",
+   "Our note 'tiene molto meglio (25% su TWU)' is plausible: playtesters rate playability duration 7.9/10 and say it keeps its characteristics after tension loss.",
+   "Official gauges are 1.23/17 and 1.20/17L (data has 1.23, correct)."
+  ],
+  "sources": [
+   "https://toroline.com/products/o-toro-tour",
+   "https://www.tennis-warehouse.com/learning_center/reviews/strings/toroline_otoro_tour.html?pcode=TOROTR",
+   "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+   "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.25,
+    1.3
+   ],
+   "shape": "octagonal, textured surface",
+   "material": "co-polyester (PET) with cross-linked silicone coating"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Tension retention rating (Mijnracket test, 16 gauge)",
+    "value": 7.5,
+    "unit": "out of 10",
+    "source_url": "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Spin rating (Mijnracket test, 16 gauge)",
+    "value": 8,
+    "unit": "out of 10",
+    "source_url": "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest",
+    "same_lab_as_twu": false
+   }
+  ],
+  "consensus": "Softer and a touch more powerful than RPM Blast with extra bite from the texture; spin advantage is real in tester ratings but modest compared with the TWU spin figure.",
+  "issues": [
+   "shape is null: fill in octagonal (textured).",
+   "Naming: TW now lists this string as 'RPM Rough' (same SKU, formerly 'RPM Blast Rough'); sources found describe it as a rename, not a different product. The brief says it is not the newer RPM Rough: I could not find evidence of two separate products, please verify against your own label.",
+   "TWU spin 8.2 vs 4.5 ('quasi doppio') is only a lab metric; playtesters rate spin about 90/100 (TW) and 8/10 (Mijnracket, who say the 'ultimate spin' claim is overstated compared with smooth RPM Blast). Soften the wording to 'più spin in laboratorio TWU'.",
+   "Softer than RPM Blast is well supported (TW testers, Mijnracket, Love Tennis Blog, retailers)."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+   "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest",
+   "https://www.lovetennisblog.com/babolat-rpm-blast-rough-string-review/"
+  ]
+ },
+ {
+  "id": "grapplesnake-tour-m8-17",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.25,
+    1.3
+   ],
+   "shape": "octagonal",
+   "material": "polyester (co-poly)"
+  },
+  "independent_numbers": [],
+  "consensus": "Positioned by Grapplesnake as the middle model: softer than Tour Sniper, firmer than Alpha, 'exceptional' tension maintenance and 8-sided bite.",
+  "issues": [
+   "shape is null: fill in octagonal (8-sided), Grapplesnake official.",
+   "Grapplesnake's own ranking from softest to firmest is Alpha, Tour M8, Tour Sniper. Our TWU data gives Alpha 218, M8 210, Sniper 206 lb/in, i.e. the reverse order for Alpha and Sniper. At least one of these three TWU rows disagrees with the manufacturer; mark Grapplesnake stiffness values as low confidence.",
+   "Brand calls tension maintenance 'exceptional', whereas TWU says 34.3% loss (average); Tennisnerd found it holds up especially at low tension. Note 'tenuta nella media' may understate.",
+   "Brand and Tennisnerd describe it as soft/crisp, consistent with a mid stiffness. No independent numbers found."
+  ],
+  "sources": [
+   "https://www.grapplesnakeusa.com/products/tour-m8-set",
+   "https://www.grapplesnakeusa.com/pages/string-info",
+   "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+   "https://www.tennisnerd.net/gear/strings/grapplesnake-tour-m8-review/25992"
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-round-16",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "round",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Smoother, round version of Hyper-G: surgical control on full swings, excellent feel and above-average tension maintenance, slightly less bite than the shaped Hyper-G.",
+  "issues": [
+   "shape is null: fill in round (TW Europe).",
+   "Playtesters say spin/bite is slightly lower than shaped Hyper-G, while our TWU spin 7.3 is higher than Hyper-G (7.0); note 'snapback alto' should not imply more spin than Hyper-G.",
+   "Note says 'tiene bene la tensione' but 32.3% is worse than Hyper-G (26.3%); the TW text says 'strong tension maintenance'. Slight internal inconsistency; keep wording moderate."
+  ],
+  "sources": [
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Round.html?pcode=HGR6LRG"
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-16",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.05,
+    1.1,
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "disputed: square (TW) / pentagonal (Racketpedia, community)",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Stringbed stiffness at TW playtest, 62 then 55 after 24 h unplayed (RDC units)",
+    "value": 55,
+    "unit": "RDC after 24 h",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/shg16review.html",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Medium-firm shaped co-poly, softer than Tour Bite, with very good tension maintenance (testers got about three weeks).",
+  "issues": [
+   "Shape: TW Europe and TW review call Hyper-G square (four edges), Racketpedia pentagonal; unresolved. Consider labelling 'a spigoli (4-5 lati)' rather than hard PENT.",
+   "Stiffness and tension claims agree with TW comparison (Hyper-G softer than Tour Bite)."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/shg16review.html",
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "verdict": "contradicted",
+  "facts": {
+   "diameters_available": [
+    1.25,
+    1.3
+   ],
+   "shape": "octagonal, textured surface",
+   "material": "co-polyester (PET) with cross-linked silicone coating"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Initial stringbed stiffness at 55 lb, TW playtest (17 gauge)",
+    "value": 61,
+    "unit": "RDC units",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+    "same_lab_as_twu": true
+   },
+   {
+    "metric": "Stringbed stiffness after 24 hours (TW playtest, 17 gauge)",
+    "value": 52,
+    "unit": "RDC units",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Textured octagonal co-poly, a bit softer and more powerful than RPM Blast, with excellent spin but poor playability duration in the TW test.",
+  "issues": [
+   "gauge_mm 1.20 is wrong: Blast Rough exists only as 17/1.25 and 16/1.30 (no 1.20). Change gauge_mm to 1.25 and fix the note ('In 1.20' -> 'In 1.25').",
+   "The 17 gauge TWU row (196 lb/in, spin 9.9) is on the 1.25 string; the TW playtest also rates its playability duration low (40/100) and notes noticeable tension loss, so 'calo nella media (36%)' is fair but not a strength.",
+   "shape is null: fill in octagonal.",
+   "Naming: now sold as 'RPM Rough' (see babolat-rpm-blast-rough-16)."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+   "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+   "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest"
+  ]
+ },
+ {
+  "id": "solinco-confidential-17",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "square (4-sided); some sources say pentagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Firm, control-oriented shaped co-poly with excellent tension maintenance; one Tennisnerd reviewer preferred the 1.20 gauge.",
+  "issues": [
+   "shape RND is wrong: use square/4-sided (see 16L); remove 'profilo tonda' from the note.",
+   "The TWU row is the 1.30 data proxied to 1.20 (two gauge steps), so stiffness, tension and spin are likely overstated for the thinner string; present as indicative only.",
+   "No independent numbers for 1.20."
+  ],
+  "sources": [
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://tenniscompanion.org/solinco-confidential/",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-confidential-string-review/18882"
+  ]
+ },
+ {
+  "id": "solinco-revolution-16l",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Stiffness, 1.25 gauge (TW review page)",
+    "value": 213,
+    "unit": "lb/in",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html",
+    "same_lab_as_twu": true
+   },
+   {
+    "metric": "Tension loss over extended hitting before breakage (TW review page, approximate)",
+    "value": 30,
+    "unit": "%",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Hexagonal co-poly with high spin, firm but softer than most Solinco polys and low vibration; tension maintenance average for a poly.",
+  "issues": [
+   "shape RND is wrong: Solinco/TW Europe and Amazon listing describe six-sided (hexagonal). Change to HEX and fix the note ('Tonda come la Confidential' is wrong twice: neither is round).",
+   "TWU numbers (212.6 lb/in, 28.4%) agree with the TW review text, but these are the same lab.",
+   "Racketpedia says pentagonal; the manufacturer says six-sided."
+  ],
+  "sources": [
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html"
+  ]
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.23
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Marketed as a six-edged control/spin co-poly with controllable power; one retailer calls it firm and durable.",
+  "issues": [
+   "gauge_label '17L' does not match Toroline's own naming (1.23 mm is '17'); relabel 17.",
+   "Retailer text calls Super Toro 'firm and durable', whereas our note says 'rigidità medio-bassa (190 lb/in)'. Two lab sources (Excel Stiff Index 1.67 = quite stiff, TWU 190 = soft-medium) also disagree. Treat stiffness as uncertain.",
+   "No independent stiffness/tension numbers found."
+  ],
+  "sources": [
+   "https://toroline.com/products/super-toro",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+  ]
+ },
+ {
+  "id": "grapplesnake-alpha-17",
+  "verdict": "contradicted",
+  "facts": {
+   "diameters_available": [
+    1.25
+   ],
+   "shape": "pentagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Grapplesnake's softest shaped poly of the main trio, softer and more powerful than Tour Sniper and Tour M8, plush feel, good tension stability.",
+  "issues": [
+   "Brand and TW both rank Alpha as the softest (Alpha < Tour M8 < Tour Sniper). Our TWU row (218.3 lb/in, 29.4% loss) makes it stiffer than both, and the note calls it 'più compatta della Tour M8': that contradicts every source. Either the TWU row is for a different string or it is an outlier; mark as low confidence and rewrite the note.",
+   "Describing Alpha as 'la più vicina alla tua Confidential' is not supported (Confidential is a firm poly).",
+   "shape is null: fill in pentagonal (5-sided).",
+   "TW Europe testers disagree on tension maintenance (one stable, one noticeable loss), which fits a moderate 29% figure."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+   "https://www.grapplesnakeusa.com/pages/string-info",
+   "https://www.tenniswarehouse-europe.com/learning_center/string_reviews/grapplesnake_alpha.html?pcode=GSASS125",
+   "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpageACGRAPPLE-GALP125.html"
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-16l",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.05,
+    1.1,
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "disputed: square (TW) / pentagonal (Racketpedia, community)",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Total tension loss (Hyper-G 1.25, 62 lb start; 15.56 lb = 25.1% of 62 lb, ratio computed by auditor)",
+    "value": 15.56,
+    "unit": "lb",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Stiffness, USRSA-style scale (Hyper-G 1.25)",
+    "value": 290,
+    "unit": "unitless as quoted",
+    "source_url": "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "same_lab_as_twu": false
+   }
+  ],
+  "consensus": "Medium-firm shaped co-poly with above-average tension maintenance and precise control.",
+  "issues": [
+   "Independent USRSA-style test: 15.56 lb loss at 62 lb (about 25%, computed) matches TWU 24.7% well.",
+   "Same table gives Hyper-G stiffer (290) than Confidential (285), reversed vs TWU and vs reviewer text; stiffness ordering is not robust.",
+   "Shape disputed (square vs pentagonal), see Hyper-G 16."
+  ],
+  "sources": [
+   "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+  ]
+ },
+ {
+  "id": "toroline-enso-pro-carbon-16l",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.25
+   ],
+   "shape": "round",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Round tournament co-poly with above-average comfort and power for a poly according to TW, though Tennisnerd calls it medium-firm.",
+  "issues": [
+   "Name typo: official product is 'Enso Pro Carbon'.",
+   "Our Excel Stiff Index 1.24 (among the stiffest of the sample) conflicts with Racketpedia 0.9 kg/mm (soft) and with TW text ('above average comfort and power for the breed'); Tennisnerd calls it medium-firm. Stiffness is unresolved.",
+   "No TWU or independent numeric data found."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/TOROLINE_Enso_Pro_16L_125_String/descpageACTORO-T6LENSO.html",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-enso-pro-review-balanced-feel-meets-modern-control/62407"
+  ]
+ },
+ {
+  "id": "wilson-revolve-17",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.25,
+    1.3,
+    1.35
+   ],
+   "shape": "round",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Round low-friction co-poly with above-average comfort for a poly, high spin for a round string, comfortably firm and good playability duration.",
+  "issues": [
+   "Shape and gauge correct.",
+   "Sources describe it as 'comfortably firm' rather than soft; the note 'Poly morbida (192 lb/in)' is relative to this bench only; say 'morbida per una poly'.",
+   "No independent numbers."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/Wilson_Revolve_17_125_String/descpageACWILSON-WRV17.html",
+   "https://tennisoverload.com/wilson-revolve-tennis-string-review/"
+  ]
+ },
+ {
+  "id": "toroline-cash-16l",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.25
+   ],
+   "shape": "round",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Round, firm, crisp, controlled co-poly designed with a doubles specialist; excellent tension holding, stiffer than O-TORO, spin lags behind shaped strings.",
+  "issues": [
+   "Tennisnerd calls Cash firm and controlled, and spin below shaped strings; TW says softening agents give above-average comfort and pop. Our note ('morbida, snapback alto 7.6') leans on TWU only; reword to 'tonda, piu rigida della O-TORO'.",
+   "Tension: Tennisnerd reports excellent tension holding; our 34.8% loss is mid-high. No numbers to arbitrate.",
+   "shape is null: fill in round."
+  ],
+  "sources": [
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-cash-strings-review/67980",
+   "https://www.tennis-warehouse.com/TOROLINE_Cash_16L_125_String/descpageACTORO-TCASH25.html"
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.05,
+    1.1,
+    1.15,
+    1.2,
+    1.25,
+    1.3,
+    1.35
+   ],
+   "shape": "disputed: square (TW) / pentagonal (forum/community)",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Firm, crisp shaped co-poly with respectable tension maintenance; widely seen as the firmest of the Solinco range.",
+  "issues": [
+   "Firmness (237.7 lb/in, highest in the group) and good tension (25%) agree with sources.",
+   "Spin 5.9 is low versus its reputation as a top spin string; the TWU spin metric is the outlier, not a contradiction of firmness. Qualify.",
+   "Shape: TW describes square, forum threads count five sides."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/STB16Lreview.html",
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "https://tt.tennis-warehouse.com/index.php?threads/solinco-tour-is-actually-5-sided.531906/",
+   "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+  ]
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "verdict": "confirmed",
+  "facts": {
+   "diameters_available": [
+    1.23
+   ],
+   "shape": "pentagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Stiffness (TW review page)",
+    "value": 173,
+    "unit": "lb/in",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/T7TOROSreview.html",
+    "same_lab_as_twu": true
+   },
+   {
+    "metric": "Spin potential (TW review page)",
+    "value": 8.2,
+    "unit": "TWU scale",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/T7TOROSreview.html",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Soft end of the poly range, same elasticity as the original O-TORO but with sharper five-sided edges; playtesters noted tension drop and a springy stringbed.",
+  "issues": [
+   "Toroline says same flex as O-TORO, TW testers call it soft: confirmed. Both measurements trace to TWU.",
+   "shape is null: fill in pentagonal.",
+   "A retailer claims it is 'firm, demanding'; this contradicts TW and Toroline and is probably unreliable."
+  ],
+  "sources": [
+   "https://toroline.com/products/o-toro-spin",
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/T7TOROSreview.html",
+   "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+  ]
+ },
+ {
+  "id": "solinco-mach-10-16",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.15,
+    1.2,
+    1.25,
+    1.3
+   ],
+   "shape": "pentagonal (5-sided)",
+   "material": "co-polyester with CloudFORM softening"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Stiffness 1.30 (quoted from TWU)",
+    "value": 222.3,
+    "unit": "lb/in",
+    "source_url": "https://www.racqix.com/en/tennis-strings/solinco/solinco-mach-10-16-1-30-string-reel",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Marketed as Solinco's softer, more powerful poly with strong tension retention, yet still firm compared with multifilament and soft polys.",
+  "issues": [
+   "Solinco positions Mach-10 as soft/comfortably firm, whereas our note says 'rigida e compatta'. Reword to 'rigidità media, piu morbida delle Solinco classiche'.",
+   "Tension retention reported as best of Solinco's soft range: consistent with 26.3%.",
+   "shape is null: fill in pentagonal."
+  ],
+  "sources": [
+   "https://prostrung.com/is-solinco-mach-10-tennis-string-the-best-soft-poly-full-review-playtest/",
+   "https://www.racqix.com/en/tennis-strings/solinco/solinco-mach-10-16-1-30-string-reel",
+   "https://www.tennis-warehouse.com/Solinco_Mach-10_17_120_String/descpageACSOLINCO-SM1020B.html",
+   "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html"
+  ]
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.2
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Toroline's soft, plush, crisp six-sided co-poly with good spin and accessible power.",
+  "issues": [
+   "gauge_label '17L' vs Toroline official '17/1.20'; relabel 17.",
+   "Softness is consistent (181 lb/in); one reviewer scored comfort only 5/10, so do not oversell comfort.",
+   "No independent numbers for tension loss; 47.1% is plausible for a soft poly but not independently confirmed."
+  ],
+  "sources": [
+   "https://toroline.com/products/absolute",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+   "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html"
+  ]
+ },
+ {
+  "id": "toroline-o-toro-snap-16l",
+  "verdict": "contradicted",
+  "facts": {
+   "diameters_available": [
+    1.25
+   ],
+   "shape": "round",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Round, medium-firm low-launch co-poly with a firmer, more dampened feel, less pop and less spin than the shaped O-TORO models.",
+  "issues": [
+   "Our note calls it 'la gemella di O-Toro: morbidissima, spin 8,7': TW describes it as 'medium-firm', Tennisnerd says firmer, more dampened, lower launch and less spin than O-TORO Tour; Toroline lists a Snap TF as the firmer sibling. Only a customer review says it is 'still soft for a poly'.",
+   "The TWU row (164.6 lb/in, 41.7%) is nearly identical to O-TORO's row (165.7) and conflicts with qualitative sources; check that the TWU name match is correct. Mark as low confidence.",
+   "shape is null: fill in round; drop the 'gemella' / 93 similarity wording unless justified."
+  ],
+  "sources": [
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-otoro-snap-review/62115",
+   "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Snap_16L_125_String/descpageACTORO-TOROS7.html",
+   "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+  ]
+ },
+ {
+  "id": "re-string-zero-16",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.23,
+    1.28
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Medium-stiffness hexagonal spin poly with good tension maintenance, softer than Vivo but not soft; no independent lab numbers published.",
+  "issues": [
+   "gauge_mm 1.30 is wrong: Re-String Zero 16 is 1.28 mm (Racketpedia URL also ends in 128). Change to 1.28.",
+   "Stiffness: shop ranks Sync < Slap < Zero < Vivo (soft to firm); Tennisnerd calls Zero 'firm but slightly softer on impact' than Vivo. Excel Stiff Index Zero 1.67 vs Vivo 1.78 (higher = softer) is in the same direction.",
+   "Tension: sources consistently praise tension maintenance (shop 9/10 playability duration, Tennisnerd: snapback stays consistent). Excel TL6/TL12 of 20/24% for the 1.30 sample is not out of line."
+  ],
+  "sources": [
+   "https://shoprestring.com/products/restring-zero-single-set",
+   "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+   "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box",
+   "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557",
+   "https://prostrung.com/restring-zero-tennis-string-review/"
+  ]
+ },
+ {
+  "id": "re-string-zero-17",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.23,
+    1.28
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Medium-stiffness hexagonal spin poly with good tension maintenance; 1.23 mm has more bite and feel.",
+  "issues": [
+   "gauge_mm 1.20 is wrong: Zero 17 is 1.23 mm. Change to 1.23 and the note ('Esagonale 1.20').",
+   "Excel Stiff Index jumps from 1.67 (16) to 2.49 (17): large for one gauge step, treat the gap with caution.",
+   "No independent numeric data found."
+  ],
+  "sources": [
+   "https://shoprestring.com/products/restring-zero-single-set",
+   "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+   "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box"
+  ]
+ },
+ {
+  "id": "re-string-sync-17",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.2,
+    1.25
+   ],
+   "shape": "round",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Tension maintenance score (Prostrung review, 1.25 mm; subjective/derived rating)",
+    "value": 75,
+    "unit": "%",
+    "source_url": "https://prostrung.com/restring-sync-tennis-string-review/",
+    "same_lab_as_twu": false
+   }
+  ],
+  "consensus": "Round co-poly, the softest of the Re-String range, with good tension maintenance and a moderate-poly feel.",
+  "issues": [
+   "gauge mismatch: Sync 17G is 1.25 mm (18G is 1.20 mm). Fix gauge_mm to 1.25 or relabel 18.",
+   "Softest of the range per the shop (comfort score 9) and per the Excel Stiff Index 3.18, so the data direction is consistent.",
+   "Tension maintenance praised ('best cross string' type statements), no lab numbers."
+  ],
+  "sources": [
+   "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+   "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box",
+   "https://prostrung.com/restring-sync-tennis-string-review/"
+  ]
+ },
+ {
+  "id": "re-string-slap-17",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.23
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Hexagonal, lively and crisp when new, deadening after a few hours; ranked second softest of the Re-String range.",
+  "issues": [
+   "gauge_mm 1.20 is wrong: Slap is 1.23 mm (17). Change to 1.23.",
+   "Softness ordering consistent with the Excel Stiff Index (2.91, between Sync 3.18 and Zero 2.49).",
+   "No independent numbers."
+  ],
+  "sources": [
+   "https://www.tennisnerd.net/gear/strings/string-reviews/restring-slap-review-spin-snap-back-on-court-impressions/61581",
+   "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you"
+  ]
+ },
+ {
+  "id": "re-string-vivo-17",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.23,
+    1.28
+   ],
+   "shape": "hexagonal",
+   "material": "recycled polyester co-poly"
+  },
+  "independent_numbers": [],
+  "consensus": "Hexagonal recycled-polyester string, the firmest of the Re-String range, crisp and direct, with excellent tension retention.",
+  "issues": [
+   "shape RND is wrong: Re-String, Tennisnerd and the shop all describe Vivo as hexagonal (six-sided). Change to HEX and fix 'Profilo tonda' in the note.",
+   "gauge_mm 1.20 is wrong: Vivo is 1.23 or 1.28 mm. Change to 1.23.",
+   "Firmest of the range is consistent with Excel Stiff Index 1.78 (lowest = stiffest). Tension retention reviews are very positive (Prostrung gives 100 for tension holding, Tennisnerd 'excellent')."
+  ],
+  "sources": [
+   "https://courtspin.eu/products/restring-vivo",
+   "https://www.tennisnerd.net/gear/racquets/restring-vivo-string-review/45756",
+   "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+   "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557"
+  ]
+ },
+ {
+  "id": "wilson-revolve-spin-16",
+  "verdict": "contradicted",
+  "facts": {
+   "diameters_available": [
+    1.25,
+    1.3
+   ],
+   "shape": "pentagonal",
+   "material": "co-polyester with low-friction UHMW"
+  },
+  "independent_numbers": [
+   {
+    "metric": "Tension retention rating (Mijnracket test)",
+    "value": 8,
+    "unit": "out of 10",
+    "source_url": "https://mijnracket.nl/en/blogs/news/wilson-revolve-spin-16-getest",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Spin/slice rating (Mijnracket test)",
+    "value": 7.5,
+    "unit": "out of 10",
+    "source_url": "https://mijnracket.nl/en/blogs/news/wilson-revolve-spin-16-getest",
+    "same_lab_as_twu": false
+   },
+   {
+    "metric": "Playability duration score (TW 17 gauge playtest, subjective)",
+    "value": 76,
+    "unit": "out of 100",
+    "source_url": "https://www.tennis-warehouse.com/learning_center/string_reviews/WRS17review.html",
+    "same_lab_as_twu": true
+   }
+  ],
+  "consensus": "Firm, dead-feeling, low-power five-sided co-poly that holds its playability about two to three weeks; spin reviews are mixed (Mijnracket found little spin, TW and Tennis Creative rate it 92-93/100).",
+  "issues": [
+   "Tension loss 54.5% is an outlier: TW testers say tension dropped gradually and playability lasted nearly a month, Mijnracket gives retention 8/10 (first 6-8 hours stay elastic), and our own Excel test shows 10% at 6 months and 27% at 12 months. Flag the TWU figure as low confidence.",
+   "Softness: every playtest describes Revolve Spin as firm and dead, whereas TWU 172.6 lb/in and Excel Stiff Index 3.04 place it among the softest. Replace 'morbida' in the note with 'rigidita misurata bassa ma percepita ferma'.",
+   "Low spin 5.0 is partly echoed by Mijnracket ('little spin potential'), but TW testers rate spin 92/100: inconclusive.",
+   "Gauge 1.30/16 and pentagonal profile are correct."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/learning_center/string_reviews/WRS17review.html",
+   "https://mijnracket.nl/en/blogs/news/wilson-revolve-spin-16-getest",
+   "https://tenniscreative.com/wilson-revolve-spin-review/",
+   "https://www.tennis-warehouse.com/Wilson_Revolve_Spin_16_130_String/descpageACWILSON-WRS16.html"
+  ]
+ },
+ {
+  "id": "toroline-caviar-17",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.2,
+    1.24
+   ],
+   "shape": "hexagonal",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Six-sided co-poly described as firm, control-oriented and unusually good at tension maintenance.",
+  "issues": [
+   "Gauges: 17/1.20 and 16L/1.24 exist. The Racketpedia value used (1.0 kg/mm) comes from the 1.24 page (URL ends in 124), not the 1.20 gauge.",
+   "Consistent with firmer-than-Wasabi wording; Excel TL 17/25% is not outstanding but not inconsistent.",
+   "No independent numbers."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/TOROLINE_Caviar_17_120_String/descpageACTORO-T7CAVA.html",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+  ]
+ },
+ {
+  "id": "toroline-wasabi-green-17",
+  "verdict": "plausible",
+  "facts": {
+   "diameters_available": [
+    1.23
+   ],
+   "shape": "square",
+   "material": "co-polyester"
+  },
+  "independent_numbers": [],
+  "consensus": "Square four-edged co-poly, relatively soft for a shaped poly with excellent bite; tension maintenance about average.",
+  "issues": [
+   "gauge_mm 1.20 is wrong: Wasabi is 1.23/17 (Racketpedia URL also ends in 123). Change to 1.23.",
+   "Softness and square profile agree with sources.",
+   "No independent numbers."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/TOROLINE_Wasabi_17_123_String/descpageACTORO-TWASA.html",
+   "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+  ]
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16l",
+  "verdict": "questionable",
+  "facts": {
+   "diameters_available": [
+    1.25,
+    1.3
+   ],
+   "shape": "pentagonal",
+   "material": "co-polyester with aluminum additive"
+  },
+  "independent_numbers": [],
+  "consensus": "Firmest of the three Grapplesnake models: deadened control feel, pre-stretched, excellent tension holding (8-10 hours and beyond).",
+  "issues": [
+   "Official TW listing is '17/1.25' while we label it 16L; relabel 17.",
+   "Brand and TW rank Sniper the firmest, but our TWU row (206.3 lb/in) is the softest of the three. Treat Grapplesnake TWU stiffness as unreliable.",
+   "Sources praise tension holding as excellent; TWU gives 32% (average). Note 'tiene bene la tensione' is fair, but the stiffness wording 'rigidità media' should become 'ferma/controllo'.",
+   "shape is null: fill in pentagonal (one retailer says round; TW, Tennisnerd and Grapplesnake say 5-sided)."
+  ],
+  "sources": [
+   "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+   "https://www.tennisnerd.net/gear/strings/grapplesnake-tour-sniper-review/26877",
+   "https://www.grapplesnakeusa.com/pages/string-info",
+   "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html"
+  ]
+ }
+]

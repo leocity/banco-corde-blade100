@@ -43,28 +43,28 @@
    "shape": "SQ"
   },
   {
-   "id": "toroline-enos-pro-16",
+   "id": "toroline-enso-pro-16",
    "brand": "Toroline",
    "model": "Enos Pro",
    "gauge_label": "16",
    "shape": "RND"
   },
   {
-   "id": "toroline-enos-pro-neon-yl-16l",
+   "id": "toroline-enso-pro-neon-yl-16l",
    "brand": "Toroline",
    "model": "Enos Pro neon yl",
    "gauge_label": "16L",
    "shape": "RND"
   },
   {
-   "id": "toroline-enos-pro-carbon-16l",
+   "id": "toroline-enso-pro-carbon-16l",
    "brand": "Toroline",
    "model": "Enos Pro-carbon",
    "gauge_label": "16L",
    "shape": "RND"
   },
   {
-   "id": "toroline-enos-pro-neon-pk-17",
+   "id": "toroline-enso-pro-neon-pk-17",
    "brand": "Toroline",
    "model": "Enos Pro neon pk",
    "gauge_label": "17",

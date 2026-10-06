@@ -5,7 +5,7 @@
   "model": "RPM Blast",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
-  "shape": "HEX",
+  "shape": "OCT",
   "material": "copoly",
   "is_target": true,
   "excel": {
@@ -64,7 +64,20 @@
    "match": "exact"
   },
   "preference": "disliked",
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "HEX",
+  "shape_source": "https://www.babolat.com/us/rpm-blast-string/243101.html",
+  "crosscheck": {
+   "verdict": "contradicted",
+   "note": "Babolat non vende un calibro 16L: la 1.25 è la 17. Questa riga del tuo file è probabilmente la stessa corda della 17 (o la 1.30): usa la scheda RPM Blast 17.",
+   "sources": [
+    "https://www.babolat.com/us/rpm-blast-string/243101.html",
+    "https://restring.london/babolat-rpm-blast-review/",
+    "https://tenniscompanion.org/babolat-rpm-blast/",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+   ]
+  }
  },
  {
   "id": "babolat-rpm-blast-17",
@@ -72,7 +85,7 @@
   "model": "RPM Blast",
   "gauge_label": "17",
   "gauge_mm": 1.25,
-  "shape": "HEX",
+  "shape": "OCT",
   "material": "copoly",
   "is_target": true,
   "excel": {
@@ -131,7 +144,90 @@
    "match": "exact"
   },
   "preference": "disliked",
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "HEX",
+  "shape_source": "https://www.babolat.com/us/rpm-blast-string/243101.html",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "Forma ottagonale. Lo spin potential TWU è basso, ma tester e Babolat la considerano una corda da spin: il numero di laboratorio va letto come 'snapback misurato', non come giudizio sul gioco. Un laboratorio diverso la misura meno rigida della Confidential: l'ordine di rigidità tra queste due è incerto.",
+   "sources": [
+    "https://www.babolat.com/us/rpm-blast-string/243101.html",
+    "https://restring.london/babolat-rpm-blast-review/",
+    "https://tenniscompanion.org/babolat-rpm-blast/",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+   ]
+  }
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16l",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "OCT",
+  "material": "copoly",
+  "is_target": true,
+  "excel": {
+   "stretch_pct": {
+    "40": 2.222,
+    "50": 3.289,
+    "60": 4.444,
+    "65": 5.6
+   },
+   "recover_pct": {
+    "40": 0.0,
+    "50": 0.978,
+    "60": 0.978,
+    "65": 2.222
+   },
+   "stiff_index": {
+    "40": 2.2222222222222223,
+    "50": 2.311111111111109,
+    "60": 3.466666666666672,
+    "65": 3.3777777777777844
+   },
+   "stiff_index_avg": 2.844,
+   "olg_16x19": {
+    "40": 9.5,
+    "50": 14.05999999999997,
+    "60": 19.0,
+    "65": 23.94000000000003
+   },
+   "elong_40": 1.3,
+   "elong_65": 1.27,
+   "static_initial": 12.0,
+   "static_24h": 12.5,
+   "static_recoil": 12.12,
+   "static_24h_creep": 0.5,
+   "extra_test_sets": 0,
+   "tl6_raw": 0.0,
+   "tl12_raw": 6.0,
+   "tl6": null,
+   "tl12": 6.0
+  },
+  "twu": {
+   "twu_name": "Babolat RPM Blast Rough 16",
+   "match": "proxy",
+   "note": "Same model RPM Blast Rough, gauge 16L vs 16 (1.25-1.28 vs 1.30mm, same gauge family)",
+   "ref_tension_lbs": 51,
+   "swing": "Fast",
+   "stiffness_lbin": 209.7,
+   "tension_loss_pct": 29.5,
+   "spin_potential": 8.2
+  },
+  "rpedia": {
+   "static_stiffness_kgmm": 0.83,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+   "shape": "rough",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
+  "preference": null,
+  "coverage": 3,
+  "shape_excel": "GEAR",
+  "shape_source": "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+  "crosscheck": null
  },
  {
   "id": "head-hawk-16",
@@ -192,7 +288,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "head-hawk-power-17",
@@ -253,14 +351,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "head-hawk-touch-17",
   "brand": "Head",
   "model": "Hawk Touch",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -311,7 +411,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "head-lynx-tour-16",
@@ -378,7 +480,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "HEX",
+  "crosscheck": null
  },
  {
   "id": "head-hawk-seeding-16",
@@ -430,7 +534,9 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-competition-16l",
@@ -491,7 +597,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-max-power-16l",
@@ -558,7 +666,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-plx-16l",
@@ -610,7 +720,9 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-evl-16l",
@@ -671,7 +783,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-rough-16l",
@@ -723,7 +837,9 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-black-shark-16l",
@@ -790,7 +906,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "GEAR",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-black-shark-17",
@@ -857,14 +975,16 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "GEAR",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-xplosive-spd-17",
   "brand": "Kirschbaum",
   "model": "Xplosive Spd",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "PENT",
   "material": "copoly",
   "is_target": false,
@@ -918,14 +1038,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "PENT",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-17",
   "brand": "Kirschbaum",
   "model": "Pro Line",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -970,14 +1092,16 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-helix-white-17",
   "brand": "Kirschbaum",
   "model": "Helix white",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "TWST",
   "material": "copoly",
   "is_target": false,
@@ -1031,14 +1155,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "TWST",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-helix-blue-17",
   "brand": "Kirschbaum",
   "model": "Helix blue",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "TWST",
   "material": "copoly",
   "is_target": false,
@@ -1092,14 +1218,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "TWST",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-flash-orange-17",
   "brand": "Kirschbaum",
   "model": "Flash orange",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -1159,14 +1287,16 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-flash-pink-17",
   "brand": "Kirschbaum",
   "model": "Flash pink",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -1220,14 +1350,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-flash-yellow-17",
   "brand": "Kirschbaum",
   "model": "Flash yellow",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -1281,14 +1413,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-flash-green-17",
   "brand": "Kirschbaum",
   "model": "Flash green",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -1348,14 +1482,16 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-flash-black-17",
   "brand": "Kirschbaum",
   "model": "Flash black",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -1409,7 +1545,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "luxilon-4g-black-17",
@@ -1470,7 +1608,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "luxilon-alu-power-blk-17",
@@ -1531,7 +1671,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "luxilon-alu-power-gry-17l",
@@ -1592,7 +1734,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "luxilon-element-soft-ir-17",
@@ -1653,7 +1797,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "luxilon-4g-desert-17",
@@ -1714,14 +1860,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "re-string-slap-17",
   "brand": "Re-String",
   "model": "Slap",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "is_target": true,
@@ -1772,14 +1920,23 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennisnerd.net/gear/strings/string-reviews/restring-slap-review-spin-snap-back-on-court-impressions/61581",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you"
+   ]
+  }
  },
  {
   "id": "re-string-sync-17",
   "brand": "Re-String",
   "model": "Sync",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": true,
@@ -1830,15 +1987,25 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "La 17 di Sync è 1.25. È la più morbida della gamma Re-String, coerente con il tuo file.",
+   "sources": [
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box",
+    "https://prostrung.com/restring-sync-tennis-string-review/"
+   ]
+  }
  },
  {
   "id": "re-string-vivo-17",
   "brand": "Re-String",
   "model": "Vivo",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
-  "shape": "RND",
+  "gauge_mm": 1.23,
+  "shape": "HEX",
   "material": "copoly",
   "is_target": true,
   "excel": {
@@ -1888,14 +2055,26 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "shape_source": "https://courtspin.eu/products/restring-vivo",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Esagonale, non tonda; diametro reale 1.23. È la più rigida della gamma Re-String con tenuta della tensione molto lodata (Prostrung, Tennisnerd).",
+   "sources": [
+    "https://courtspin.eu/products/restring-vivo",
+    "https://www.tennisnerd.net/gear/racquets/restring-vivo-string-review/45756",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557"
+   ]
+  }
  },
  {
   "id": "re-string-zero-16",
   "brand": "Re-String",
   "model": "Zero",
   "gauge_label": "16",
-  "gauge_mm": 1.3,
+  "gauge_mm": 1.28,
   "shape": "HEX",
   "material": "copoly",
   "is_target": true,
@@ -1946,14 +2125,26 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Il diametro reale è 1.28. Il produttore la colloca a metà della gamma per rigidità (Sync < Slap < Zero < Vivo), coerente con il tuo file. Tenuta lodata dalle recensioni.",
+   "sources": [
+    "https://shoprestring.com/products/restring-zero-single-set",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box",
+    "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557",
+    "https://prostrung.com/restring-zero-tennis-string-review/"
+   ]
+  }
  },
  {
   "id": "re-string-zero-17",
   "brand": "Re-String",
   "model": "Zero",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "is_target": true,
@@ -2004,7 +2195,17 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Il diametro reale è 1.23. Nessun dato di laboratorio pubblicato oltre al tuo file.",
+   "sources": [
+    "https://shoprestring.com/products/restring-zero-single-set",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box"
+   ]
+  }
  },
  {
   "id": "signum-pro-x-perience-17",
@@ -2071,7 +2272,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "signum-pro-polaris-17",
@@ -2123,7 +2326,9 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "solinco-hyper-g-17",
@@ -2190,7 +2395,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "SQ",
+  "crosscheck": null
  },
  {
   "id": "solinco-hyper-g-soft-17",
@@ -2251,7 +2458,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "SQ",
+  "crosscheck": null
  },
  {
   "id": "solinco-hyper-g-soft-16",
@@ -2312,7 +2521,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "SQ",
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-17",
@@ -2379,7 +2590,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "SQ",
+  "crosscheck": null
  },
  {
   "id": "solinco-confidential-16",
@@ -2387,7 +2600,7 @@
   "model": "Confidential",
   "gauge_label": "16",
   "gauge_mm": 1.3,
-  "shape": "RND",
+  "shape": "SQ",
   "material": "copoly",
   "is_target": true,
   "excel": {
@@ -2446,7 +2659,10 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "shape_source": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+  "crosscheck": null
  },
  {
   "id": "solinco-confidential-16l",
@@ -2454,7 +2670,7 @@
   "model": "Confidential",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
-  "shape": "RND",
+  "shape": "SQ",
   "material": "copoly",
   "is_target": true,
   "excel": {
@@ -2513,7 +2729,20 @@
    "match": "exact"
   },
   "preference": "liked",
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "shape_source": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Forma: 4 spigoli (quadrata) per Solinco e Tennis Warehouse, non tonda come nel tuo file. Un altro laboratorio (tabella stile USRSA) misura circa 24% di perdita sulla 1.25, in linea con il 22% TWU usato come proxy.",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tenniscompanion.org/solinco-confidential/",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-confidential-string-review/18882",
+    "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+   ]
+  }
  },
  {
   "id": "solinco-confidential-17",
@@ -2521,7 +2750,7 @@
   "model": "Confidential",
   "gauge_label": "17",
   "gauge_mm": 1.2,
-  "shape": "RND",
+  "shape": "SQ",
   "material": "copoly",
   "is_target": true,
   "excel": {
@@ -2580,7 +2809,18 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "shape_source": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Forma quadrata, non tonda. I dati TWU sono della 1.30 applicati alla 1.20: per un calibro così più sottile sono solo indicativi.",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tenniscompanion.org/solinco-confidential/",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-confidential-string-review/18882"
+   ]
+  }
  },
  {
   "id": "solinco-revolution-16l",
@@ -2588,7 +2828,7 @@
   "model": "Revolution",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
-  "shape": "RND",
+  "shape": "HEX",
   "material": "copoly",
   "is_target": true,
   "excel": {
@@ -2647,14 +2887,24 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "shape_source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Forma esagonale per Solinco (Racketpedia dice pentagonale), non tonda come nel tuo file.",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html"
+   ]
+  }
  },
  {
   "id": "tecnifibre-razor-17",
   "brand": "Tecnifibre",
   "model": "Razor",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "RND",
   "material": "copoly",
   "is_target": false,
@@ -2714,7 +2964,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "toroline-absolute-17l",
@@ -2775,14 +3027,24 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/absolute",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+    "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html"
+   ]
+  }
  },
  {
   "id": "toroline-caviar-17l",
   "brand": "Toroline",
   "model": "Caviar",
   "gauge_label": "17L",
-  "gauge_mm": 1.18,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "is_target": true,
@@ -2833,14 +3095,16 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": null
  },
  {
   "id": "toroline-caviar-17",
   "brand": "Toroline",
   "model": "Caviar",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "is_target": true,
@@ -2891,14 +3155,23 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/TOROLINE_Caviar_17_120_String/descpageACTORO-T7CAVA.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+   ]
+  }
  },
  {
   "id": "toroline-ether-17l",
   "brand": "Toroline",
   "model": "Ether",
   "gauge_label": "17L",
-  "gauge_mm": 1.18,
+  "gauge_mm": 1.23,
   "shape": "SQ",
   "material": "copoly",
   "is_target": true,
@@ -2943,12 +3216,14 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "SQ",
+  "crosscheck": null
  },
  {
-  "id": "toroline-enos-pro-16",
+  "id": "toroline-enso-pro-16",
   "brand": "Toroline",
-  "model": "Enos Pro",
+  "model": "Enso Pro",
   "gauge_label": "16",
   "gauge_mm": 1.3,
   "shape": "RND",
@@ -2995,12 +3270,14 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
-  "id": "toroline-enos-pro-neon-yl-16l",
+  "id": "toroline-enso-pro-neon-yl-16l",
   "brand": "Toroline",
-  "model": "Enos Pro neon yl",
+  "model": "Enso Pro neon yl",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
   "shape": "RND",
@@ -3047,12 +3324,14 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
-  "id": "toroline-enos-pro-carbon-16l",
+  "id": "toroline-enso-pro-carbon-16l",
   "brand": "Toroline",
-  "model": "Enos Pro-carbon",
+  "model": "Enso Pro-carbon",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
   "shape": "RND",
@@ -3105,14 +3384,24 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Il nome ufficiale è Enso Pro Carbon. Rigidità discordante tra fonti: Tennisnerd medio-rigida, Tennis Warehouse più confortevole della media.",
+   "sources": [
+    "https://www.tennis-warehouse.com/TOROLINE_Enso_Pro_16L_125_String/descpageACTORO-T6LENSO.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-enso-pro-review-balanced-feel-meets-modern-control/62407"
+   ]
+  }
  },
  {
-  "id": "toroline-enos-pro-neon-pk-17",
+  "id": "toroline-enso-pro-neon-pk-17",
   "brand": "Toroline",
-  "model": "Enos Pro neon pk",
+  "model": "Enso Pro neon pk",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "RND",
   "material": "copoly",
   "is_target": true,
@@ -3157,14 +3446,16 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "toroline-wasabi-green-17",
   "brand": "Toroline",
   "model": "Wasabi green",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "SQ",
   "material": "copoly",
   "is_target": true,
@@ -3215,14 +3506,23 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "SQ",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/TOROLINE_Wasabi_17_123_String/descpageACTORO-TWASA.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+   ]
+  }
  },
  {
   "id": "toroline-wasabi-x-blue-17",
   "brand": "Toroline",
   "model": "Wasabi X blue",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "RND",
   "material": "copoly",
   "is_target": true,
@@ -3267,14 +3567,16 @@
   "twu": null,
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "toroline-wasabi-pom-17",
   "brand": "Toroline",
   "model": "Wasabi Pom",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "SQ",
   "material": "copoly",
   "is_target": true,
@@ -3325,7 +3627,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "SQ",
+  "crosscheck": null
  },
  {
   "id": "toroline-super-toro-17l",
@@ -3392,7 +3696,16 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "HEX",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Il rivenditore la definisce rigida e durevole; TWU (190 lb/in) la dà medio-morbida e il tuo test (Stiff Index 1,67) piuttosto rigida. Rigidità incerta.",
+   "sources": [
+    "https://toroline.com/products/super-toro",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+   ]
+  }
  },
  {
   "id": "toroline-o-toro-17",
@@ -3459,14 +3772,26 @@
    "match": "exact"
   },
   "preference": "liked",
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "HEX",
+  "crosscheck": {
+   "verdict": "confirmed",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/o-toro",
+    "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+    "https://prostrung.com/toroline-otoro-review/",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  }
  },
  {
   "id": "toroline-toro-toro-orange-17",
   "brand": "Toroline",
   "model": "Toro Toro Orange",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "is_target": true,
@@ -3517,14 +3842,16 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": null
  },
  {
   "id": "toroline-toro-toro-pink-17",
   "brand": "Toroline",
   "model": "Toro Toro pink",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.23,
   "shape": "HEX",
   "material": "copoly",
   "is_target": true,
@@ -3575,7 +3902,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": null
  },
  {
   "id": "toroline-toro-toro-matcha-16l",
@@ -3633,7 +3962,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "HEX",
+  "crosscheck": null
  },
  {
   "id": "wilson-revolve-spin-16",
@@ -3694,14 +4025,25 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "PENT",
+  "crosscheck": {
+   "verdict": "contradicted",
+   "note": "Contraddetta: tutti i test di gioco la descrivono rigida e 'spenta', mentre TWU la misura morbida. Il 54,5% di perdita TWU non è confermato: tester e il tuo file (27% a 12 mesi) indicano un calo graduale.",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/WRS17review.html",
+    "https://mijnracket.nl/en/blogs/news/wilson-revolve-spin-16-getest",
+    "https://tenniscreative.com/wilson-revolve-spin-review/",
+    "https://www.tennis-warehouse.com/Wilson_Revolve_Spin_16_130_String/descpageACWILSON-WRS16.html"
+   ]
+  }
  },
  {
   "id": "wilson-revolve-spin-17",
   "brand": "Wilson",
   "model": "Revolve Spin",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": "PENT",
   "material": "poly",
   "is_target": true,
@@ -3755,7 +4097,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "PENT",
+  "crosscheck": null
  },
  {
   "id": "wilson-revolve-17",
@@ -3816,7 +4160,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/Wilson_Revolve_17_125_String/descpageACWILSON-WRV17.html",
+    "https://tennisoverload.com/wilson-revolve-tennis-string-review/"
+   ]
+  }
  },
  {
   "id": "yonex-poly-tour-pro-bk-17",
@@ -3883,7 +4236,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-pro-ble-17",
@@ -3944,7 +4299,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": "RND",
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-rev-16l",
@@ -4011,7 +4368,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "HEX",
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-spin-17",
@@ -4078,15 +4437,17 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 3
+  "coverage": 3,
+  "shape_excel": "HEX",
+  "crosscheck": null
  },
  {
   "id": "babolat-rpm-blast-rough-17",
   "brand": "Babolat",
   "model": "RPM Blast Rough",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
-  "shape": null,
+  "gauge_mm": 1.25,
+  "shape": "OCT",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4100,9 +4461,26 @@
    "tension_loss_pct": 35.7,
    "spin_potential": 9.9
   },
-  "rpedia": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.83,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+   "shape": "rough",
+   "composition": "Hybrid",
+   "match": "exact"
+  },
   "preference": null,
-  "coverage": 1
+  "coverage": 2,
+  "shape_excel": null,
+  "shape_source": "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+  "crosscheck": {
+   "verdict": "contradicted",
+   "note": "Esiste solo in 1.25 e 1.30: questa è la 1.25, non la 1.20. È la attuale 'RPM Rough'. Nel test di Tennis Warehouse la durata di gioco è bassa.",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+    "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+    "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest"
+   ]
+  }
  },
  {
   "id": "toroline-o-toro-snap-16l",
@@ -4110,7 +4488,7 @@
   "model": "O-TORO Snap",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
-  "shape": null,
+  "shape": "RND",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4126,7 +4504,18 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "shape_source": "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Snap_16L_125_String/descpageACTORO-TOROS7.html",
+  "crosscheck": {
+   "verdict": "contradicted",
+   "note": "Contraddetta: Tennis Warehouse e Tennisnerd la descrivono tonda, medio-rigida, con traiettoria bassa e meno spin della O-Toro. La riga TWU (164,6 lb/in) è quasi identica a quella della O-Toro: dato TWU poco affidabile.",
+   "sources": [
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-otoro-snap-review/62115",
+    "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Snap_16L_125_String/descpageACTORO-TOROS7.html",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  }
  },
  {
   "id": "tecnifibre-razor-spin-17",
@@ -4150,7 +4539,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "babolat-rpm-blast-rough-16",
@@ -4158,7 +4549,7 @@
   "model": "RPM Blast Rough",
   "gauge_label": "16",
   "gauge_mm": 1.3,
-  "shape": null,
+  "shape": "OCT",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4172,9 +4563,27 @@
    "tension_loss_pct": 29.5,
    "spin_potential": 8.2
   },
-  "rpedia": null,
+  "rpedia": {
+   "static_stiffness_kgmm": 0.83,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+   "shape": "rough",
+   "composition": "Hybrid",
+   "match": "proxy"
+  },
   "preference": null,
-  "coverage": 1
+  "coverage": 2,
+  "shape_excel": null,
+  "shape_source": "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "È la stessa corda oggi venduta come 'RPM Rough' (Tennis Warehouse: 'Formerly called RPM Blast Rough'). Più morbida della RPM Blast: confermato da tester e rivenditori. Il vantaggio di spin è reale ma meno ampio di quanto dica il dato TWU.",
+   "sources": [
+    "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+    "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest",
+    "https://www.lovetennisblog.com/babolat-rpm-blast-rough-string-review/"
+   ]
+  }
  },
  {
   "id": "toroline-o-toro-spin-17",
@@ -4198,7 +4607,17 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": {
+   "verdict": "confirmed",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/o-toro-spin",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/T7TOROSreview.html",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  }
  },
  {
   "id": "grapplesnake-tour-m8-17",
@@ -4206,7 +4625,7 @@
   "model": "Tour M8",
   "gauge_label": "17",
   "gauge_mm": 1.25,
-  "shape": null,
+  "shape": "OCT",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4222,7 +4641,19 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "shape_source": "https://www.grapplesnakeusa.com/products/tour-m8-set",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Forma ottagonale. Il produttore parla di tenuta della tensione eccezionale, TWU misura un 34% nella media. Numeri TWU delle Grapplesnake poco affidabili.",
+   "sources": [
+    "https://www.grapplesnakeusa.com/products/tour-m8-set",
+    "https://www.grapplesnakeusa.com/pages/string-info",
+    "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+    "https://www.tennisnerd.net/gear/strings/grapplesnake-tour-m8-review/25992"
+   ]
+  }
  },
  {
   "id": "toroline-o-toro-tour-17",
@@ -4252,7 +4683,18 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": {
+   "verdict": "confirmed",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/o-toro-tour",
+    "https://www.tennis-warehouse.com/learning_center/reviews/strings/toroline_otoro_tour.html?pcode=TOROTR",
+    "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  }
  },
  {
   "id": "toroline-cash-16l",
@@ -4260,7 +4702,7 @@
   "model": "Cash",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
-  "shape": null,
+  "shape": "RND",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4276,7 +4718,17 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "shape_source": "https://www.tennis-warehouse.com/TOROLINE_Cash_16L_125_String/descpageACTORO-TCASH25.html",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Tonda. Tennisnerd la descrive rigida e controllata, più della O-Toro, con ottima tenuta; i numeri TWU la danno più morbida e con tenuta nella media.",
+   "sources": [
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-cash-strings-review/67980",
+    "https://www.tennis-warehouse.com/TOROLINE_Cash_16L_125_String/descpageACTORO-TCASH25.html"
+   ]
+  }
  },
  {
   "id": "kirschbaum-spiky-shark-16",
@@ -4300,14 +4752,16 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-spiky-shark-17",
   "brand": "Kirschbaum",
   "model": "Spiky Shark",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": null,
   "material": "poly",
   "is_target": false,
@@ -4324,7 +4778,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "tecnifibre-razor-soft-17",
@@ -4354,7 +4810,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-plasma-hextreme-16",
@@ -4384,7 +4842,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-hyper-g-round-16",
@@ -4392,7 +4852,7 @@
   "model": "Hyper-G Round",
   "gauge_label": "16",
   "gauge_mm": 1.3,
-  "shape": null,
+  "shape": "RND",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4408,7 +4868,17 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "shape_source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Round.html?pcode=HGR6LRG"
+   ]
+  }
  },
  {
   "id": "toroline-snapper-17",
@@ -4438,7 +4908,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "wilson-revolve-16",
@@ -4462,7 +4934,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-xplosive-speed-16l",
@@ -4486,7 +4960,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "head-lynx-tour-17",
@@ -4516,7 +4992,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-hyper-g-16",
@@ -4546,7 +5024,17 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/shg16review.html",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+   ]
+  }
  },
  {
   "id": "luxilon-element-rough-16",
@@ -4570,7 +5058,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "babolat-rpm-blast-orange-16",
@@ -4594,7 +5084,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-element-soft-ir-16l",
@@ -4618,7 +5110,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-soft-16",
@@ -4648,7 +5142,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-alu-power-soft-16l",
@@ -4678,7 +5174,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-16",
@@ -4708,7 +5206,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-4g-soft-16l",
@@ -4738,7 +5238,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "grapplesnake-alpha-17",
@@ -4746,7 +5248,7 @@
   "model": "Alpha",
   "gauge_label": "17",
   "gauge_mm": 1.25,
-  "shape": null,
+  "shape": "PENT",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4762,7 +5264,19 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "shape_source": "https://www.grapplesnakeusa.com/pages/string-info",
+  "crosscheck": {
+   "verdict": "contradicted",
+   "note": "Contraddetta: Grapplesnake e Tennis Warehouse la indicano come la più morbida delle tre (Alpha < Tour M8 < Tour Sniper), mentre la riga TWU la mette come la più rigida. I numeri TWU delle Grapplesnake sono poco affidabili.",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+    "https://www.grapplesnakeusa.com/pages/string-info",
+    "https://www.tenniswarehouse-europe.com/learning_center/string_reviews/grapplesnake_alpha.html?pcode=GSASS125",
+    "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpageACGRAPPLE-GALP125.html"
+   ]
+  }
  },
  {
   "id": "solinco-revolution-17",
@@ -4770,7 +5284,7 @@
   "model": "Revolution",
   "gauge_label": "17",
   "gauge_mm": 1.2,
-  "shape": "PENT",
+  "shape": "HEX",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4792,7 +5306,10 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "shape_source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+  "crosscheck": null
  },
  {
   "id": "luxilon-element-16",
@@ -4822,7 +5339,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-outlast-16l",
@@ -4852,7 +5371,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-alu-power-rough-16l",
@@ -4882,7 +5403,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-confidential-soft-16l",
@@ -4890,7 +5413,7 @@
   "model": "Confidential Soft",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
-  "shape": null,
+  "shape": "SQ",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4906,7 +5429,17 @@
   },
   "rpedia": null,
   "preference": "disliked",
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "shape_source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tenniscompanion.org/solinco-confidential-soft/"
+   ]
+  }
  },
  {
   "id": "solinco-revolution-16",
@@ -4914,7 +5447,7 @@
   "model": "Revolution",
   "gauge_label": "16",
   "gauge_mm": 1.3,
-  "shape": "PENT",
+  "shape": "HEX",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -4936,7 +5469,10 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "shape_source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-spin-16l",
@@ -4966,7 +5502,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-yellow-jacket-17",
@@ -4990,7 +5528,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-hyper-g-16l",
@@ -5020,7 +5560,17 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+   ]
+  }
  },
  {
   "id": "solinco-outlast-16",
@@ -5050,7 +5600,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-max-power-rough-16",
@@ -5080,7 +5632,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-mach-10-16",
@@ -5104,7 +5658,18 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://prostrung.com/is-solinco-mach-10-tennis-string-the-best-soft-poly-full-review-playtest/",
+    "https://www.racqix.com/en/tennis-strings/solinco/solinco-mach-10-16-1-30-string-reel",
+    "https://www.tennis-warehouse.com/Solinco_Mach-10_17_120_String/descpageACSOLINCO-SM1020B.html",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html"
+   ]
+  }
  },
  {
   "id": "signum-pro-plasma-hextreme-16l",
@@ -5134,7 +5699,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-16l",
@@ -5164,7 +5731,18 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/STB16Lreview.html",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tt.tennis-warehouse.com/index.php?threads/solinco-tour-is-actually-5-sided.531906/",
+    "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+   ]
+  }
  },
  {
   "id": "kirschbaum-max-power-16",
@@ -5194,7 +5772,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-alu-power-16l",
@@ -5224,7 +5804,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-soft-16l",
@@ -5254,7 +5836,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "grapplesnake-tour-sniper-16l",
@@ -5262,7 +5846,7 @@
   "model": "Tour Sniper",
   "gauge_label": "16L",
   "gauge_mm": 1.25,
-  "shape": null,
+  "shape": "PENT",
   "material": "poly",
   "is_target": true,
   "excel": null,
@@ -5278,7 +5862,19 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "shape_source": "https://www.grapplesnakeusa.com/pages/string-info",
+  "crosscheck": {
+   "verdict": "questionable",
+   "note": "Per produttore e tester è la più rigida e controllata delle Grapplesnake, con ottima tenuta; la riga TWU la mette come la più morbida. Venduta come 17/1.25.",
+   "sources": [
+    "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+    "https://www.tennisnerd.net/gear/strings/grapplesnake-tour-sniper-review/26877",
+    "https://www.grapplesnakeusa.com/pages/string-info",
+    "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html"
+   ]
+  }
  },
  {
   "id": "kirschbaum-pro-line-ii-16",
@@ -5308,7 +5904,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-super-smash-17",
@@ -5338,7 +5936,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-soft-17",
@@ -5368,7 +5968,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-xplosive-speed-16",
@@ -5392,7 +5994,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-plasma-pure-16l",
@@ -5416,7 +6020,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-max-power-rough-17",
@@ -5446,7 +6052,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-barb-wire-16l",
@@ -5476,7 +6084,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "tecnifibre-razor-code-17",
@@ -5506,7 +6116,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "tecnifibre-ice-code-16",
@@ -5536,7 +6148,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-outlast-17",
@@ -5566,7 +6180,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-element-16l",
@@ -5596,7 +6212,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-firestorm-16",
@@ -5626,7 +6244,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-helix-16",
@@ -5650,7 +6270,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-touch-turbo-16l",
@@ -5674,7 +6296,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-black-shark-16",
@@ -5704,7 +6328,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-max-power-17",
@@ -5734,7 +6360,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-diamond-rough-16l",
@@ -5764,7 +6392,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-plasma-17",
@@ -5788,7 +6418,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-touch-turbo-16",
@@ -5812,7 +6444,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-super-smash-16",
@@ -5842,7 +6476,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-p2-16",
@@ -5866,7 +6502,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-plasma-pure-17",
@@ -5890,7 +6528,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-touch-turbo-17",
@@ -5914,7 +6554,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-super-smash-spiky-17-125",
@@ -5938,7 +6580,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-hyper-g-soft-16l",
@@ -5962,7 +6606,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-tornado-16",
@@ -5992,7 +6638,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-super-smash-spiky-17-12",
@@ -6016,7 +6664,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-x-16",
@@ -6040,7 +6690,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-super-smash-spiky-16",
@@ -6064,7 +6716,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-plasma-17l",
@@ -6088,7 +6742,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-alu-power-vibe-16",
@@ -6112,7 +6768,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-competition-16",
@@ -6136,7 +6794,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-p2-17",
@@ -6160,7 +6820,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-barb-wire-17",
@@ -6190,7 +6852,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-diamond-rough-16",
@@ -6220,7 +6884,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-evolution-17",
@@ -6250,14 +6916,16 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "head-hawk-rough-17",
   "brand": "Head",
   "model": "Hawk Rough",
   "gauge_label": "17",
-  "gauge_mm": 1.2,
+  "gauge_mm": 1.25,
   "shape": null,
   "material": "poly",
   "is_target": false,
@@ -6274,7 +6942,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-megaforce-17",
@@ -6298,7 +6968,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-tornado-17",
@@ -6328,7 +7000,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-ii-17l",
@@ -6358,7 +7032,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-p2-17l",
@@ -6382,7 +7058,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-x-17",
@@ -6406,7 +7084,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-firestorm-16l",
@@ -6436,7 +7116,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-spin-g-16l",
@@ -6460,7 +7142,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-plasma-16l",
@@ -6484,7 +7168,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-ii-17",
@@ -6514,7 +7200,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "head-hawk-17",
@@ -6538,7 +7226,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-hyperion-16",
@@ -6568,7 +7258,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "babolat-rpm-blast-16",
@@ -6598,7 +7290,19 @@
    "match": "exact"
   },
   "preference": "disliked",
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "shape_source": "https://www.babolat.com/us/rpm-blast-string/243101.html",
+  "crosscheck": {
+   "verdict": "plausible",
+   "note": "Forma ottagonale. Spin potential TWU basso, ma la reputazione nei test di gioco è di corda spinnosa.",
+   "sources": [
+    "https://www.babolat.com/us/rpm-blast-string/243101.html",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+    "https://tenniscompanion.org/babolat-rpm-blast/",
+    "https://restring.london/babolat-rpm-blast-review/"
+   ]
+  }
  },
  {
   "id": "kirschbaum-competition-17",
@@ -6622,7 +7326,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-i-16",
@@ -6646,7 +7352,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-barb-wire-16",
@@ -6676,7 +7384,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-megaforce-16",
@@ -6700,7 +7410,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-speed-spin-16",
@@ -6724,7 +7436,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "solinco-tour-bite-diamond-rough-17",
@@ -6754,7 +7468,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-hyperion-17",
@@ -6784,7 +7500,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "tecnifibre-razor-code-16",
@@ -6814,7 +7532,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-4g-rough-16l",
@@ -6838,7 +7558,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-i-17",
@@ -6862,7 +7584,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-competition-17l",
@@ -6886,7 +7610,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-pro-line-i-17l",
@@ -6910,7 +7636,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-4g-16l",
@@ -6940,7 +7668,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-pro-yellow-16",
@@ -6970,7 +7700,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "signum-pro-poly-plasma-pure-17l",
@@ -6994,7 +7726,9 @@
   },
   "rpedia": null,
   "preference": null,
-  "coverage": 1
+  "coverage": 1,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-pro-yellow-16l",
@@ -7024,7 +7758,9 @@
    "match": "exact"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "luxilon-4g-16",
@@ -7054,7 +7790,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "yonex-poly-tour-rev-16",
@@ -7084,7 +7822,9 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  },
  {
   "id": "kirschbaum-flash-16",
@@ -7114,6 +7854,8 @@
    "match": "proxy"
   },
   "preference": null,
-  "coverage": 2
+  "coverage": 2,
+  "shape_excel": null,
+  "crosscheck": null
  }
 ]

@@ -59,9 +59,14 @@ def test_partial_group_does_not_crash(capsys):
     assert "warning" in capsys.readouterr().err.lower()
 
 
-def test_rpm_rough_is_a_different_product_out_of_scope(recs):
-    # RPM Rough (gear) è un prodotto diverso da RPM Blast Rough: non va unificato
-    assert "babolat-rpm-blast-rough-16l" not in recs and "babolat-rpm-rough-16l" not in recs
+def test_rpm_rough_is_rpm_blast_rough(recs):
+    # Tennis Warehouse: "Formerly called RPM Blast Rough" -> stesso prodotto
+    assert "babolat-rpm-blast-rough-16l" in recs
+
+
+def test_brand_gauge_mm_applied(recs):
+    assert recs["re-string-zero-17"]["gauge_mm"] == 1.23 and recs["re-string-zero-16"]["gauge_mm"] == 1.28
+    assert recs["babolat-rpm-blast-17"]["gauge_mm"] == 1.25
 
 
 def test_zero_tension_loss_treated_as_not_measured(recs):

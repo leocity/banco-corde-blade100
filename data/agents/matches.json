@@ -12,6 +12,12 @@
   "note": "id identico"
  },
  {
+  "id": "babolat-rpm-blast-rough-16l",
+  "twu_name": "Babolat RPM Blast Rough 16",
+  "match": "proxy",
+  "note": "Same model RPM Blast Rough, gauge 16L vs 16 (1.25-1.28 vs 1.30mm, same gauge family)"
+ },
+ {
   "id": "head-hawk-16",
   "twu_name": "Head Hawk 16 (1.30)",
   "match": "exact",
@@ -288,25 +294,25 @@
   "note": "Ether is a distinct Toroline model; no Ether in TWU candidates"
  },
  {
-  "id": "toroline-enos-pro-16",
+  "id": "toroline-enso-pro-16",
   "twu_name": null,
   "match": "none",
   "note": "Enos Pro is a distinct Toroline model; no Enos Pro in TWU candidates"
  },
  {
-  "id": "toroline-enos-pro-neon-yl-16l",
+  "id": "toroline-enso-pro-neon-yl-16l",
   "twu_name": null,
   "match": "none",
   "note": "Enos Pro with neon yl variant; no Enos Pro in TWU candidates"
  },
  {
-  "id": "toroline-enos-pro-carbon-16l",
+  "id": "toroline-enso-pro-carbon-16l",
   "twu_name": null,
   "match": "none",
   "note": "Enos Pro with carbon variant; no Enos Pro in TWU candidates"
  },
  {
-  "id": "toroline-enos-pro-neon-pk-17",
+  "id": "toroline-enso-pro-neon-pk-17",
   "twu_name": null,
   "match": "none",
   "note": "Enos Pro with neon pk variant; no Enos Pro in TWU candidates"

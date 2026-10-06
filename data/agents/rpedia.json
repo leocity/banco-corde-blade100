@@ -16,6 +16,14 @@
   "match": "exact"
  },
  {
+  "id": "babolat-rpm-blast-rough-16l",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+  "static_stiffness_kgmm": 0.83,
+  "shape": "rough",
+  "composition": "Hybrid",
+  "match": "exact"
+ },
+ {
   "id": "head-hawk-16",
   "url": null,
   "static_stiffness_kgmm": null,
@@ -384,7 +392,7 @@
   "match": "none"
  },
  {
-  "id": "toroline-enos-pro-16",
+  "id": "toroline-enso-pro-16",
   "url": null,
   "static_stiffness_kgmm": null,
   "shape": null,
@@ -392,7 +400,7 @@
   "match": "none"
  },
  {
-  "id": "toroline-enos-pro-neon-yl-16l",
+  "id": "toroline-enso-pro-neon-yl-16l",
   "url": null,
   "static_stiffness_kgmm": null,
   "shape": null,
@@ -400,7 +408,7 @@
   "match": "none"
  },
  {
-  "id": "toroline-enos-pro-carbon-16l",
+  "id": "toroline-enso-pro-carbon-16l",
   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125",
   "static_stiffness_kgmm": 0.9,
   "shape": "round",
@@ -408,7 +416,7 @@
   "match": "exact"
  },
  {
-  "id": "toroline-enos-pro-neon-pk-17",
+  "id": "toroline-enso-pro-neon-pk-17",
   "url": null,
   "static_stiffness_kgmm": null,
   "shape": null,
@@ -537,11 +545,11 @@
  },
  {
   "id": "babolat-rpm-blast-rough-17",
-  "url": null,
-  "static_stiffness_kgmm": null,
-  "shape": null,
-  "composition": null,
-  "match": "none"
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+  "static_stiffness_kgmm": 0.83,
+  "shape": "rough",
+  "composition": "Hybrid",
+  "match": "exact"
  },
  {
   "id": "toroline-o-toro-snap-16l",
@@ -561,11 +569,11 @@
  },
  {
   "id": "babolat-rpm-blast-rough-16",
-  "url": null,
-  "static_stiffness_kgmm": null,
-  "shape": null,
-  "composition": null,
-  "match": "none"
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-rough-black-125",
+  "static_stiffness_kgmm": 0.83,
+  "shape": "rough",
+  "composition": "Hybrid",
+  "match": "proxy"
  },
  {
   "id": "toroline-o-toro-spin-17",

@@ -68,7 +68,7 @@ def _build(key, rows):
         "brand": brand,
         "model": model,
         "gauge_label": gauge,
-        "gauge_mm": gauge_to_mm(gauge),
+        "gauge_mm": gauge_to_mm(gauge, brand=brand, model=model),
         "shape": SHAPES.get(shape_raw, shape_raw),
         "material": material,
         "excel": {

@@ -1,0 +1,772 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Babolat RPM Blast 16",
+   "match": "proxy",
+   "stiffness_lbin": 232.6,
+   "tension_loss_pct": 45.9,
+   "spin_potential": 4.5
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.18,
+   "shape": "octagonal",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 3.378,
+   "tl6": 17.0,
+   "tl12": 17.0
+  },
+  "our_note_feel": "Poly rigida e compatta (233 lb/in), poco spin (4.5), profilo esagonale; cala in fretta (45.9% di perdita su TWU)."
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Babolat RPM Blast 17/1.25",
+   "match": "exact",
+   "stiffness_lbin": 233.7,
+   "tension_loss_pct": 33.3,
+   "spin_potential": 4.6
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.18,
+   "shape": "octagonal",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.778,
+   "tl6": 20.0,
+   "tl12": 18.0
+  },
+  "our_note_feel": "Ottagonale rigida (234 lb/in) con poco spin per i dati TWU (4,6) e un calo di tensione sensibile (20% a 6 mesi nel tuo test)."
+ },
+ {
+  "id": "solinco-confidential-16l",
+  "brand": "Solinco",
+  "model": "Confidential",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 22.2,
+   "spin_potential": 6.4
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1,
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-125"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.333,
+   "tl6": 15.0,
+   "tl12": 20.0
+  },
+  "our_note_feel": "Co-poly tonda compatta: risposta piena e prevedibile, poca tasca, ottima tenuta (22% su TWU, misurato sulla 1.30; 15% a 6 mesi nel tuo test). Racketpedia la dà a 1,0 kg/mm sulla 1.25."
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "brand": "Toroline",
+  "model": "O-Toro",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Toroline O-Toro 17 (1.23)",
+   "match": "exact",
+   "stiffness_lbin": 165.7,
+   "tension_loss_pct": 44.4,
+   "spin_potential": 9.4
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-fluo-green-123"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 3.6,
+   "tl6": 18.0,
+   "tl12": 7.0
+  },
+  "our_note_feel": "Co-poly esagonale molto morbida (166 lb/in su TWU, la più morbida del banco) con lo spin più alto (9,4). Perde molta tensione all'inizio (44% su TWU), poi si stabilizza."
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "brand": "Solinco",
+  "model": "Confidential Soft",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Solinco Confidential Soft 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 194.3,
+   "tension_loss_pct": 27.7,
+   "spin_potential": 6.5
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Versione ammorbidita della Confidential (194 contro 222 lb/in), spin quasi uguale (6,5). Non ha però lo scatto di O-Toro: resta nel mezzo."
+ },
+ {
+  "id": "babolat-rpm-blast-16",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "OCT",
+  "material": "poly",
+  "twu": {
+   "twu_name": "Babolat RPM Blast 16",
+   "match": "exact",
+   "stiffness_lbin": 232.6,
+   "tension_loss_pct": 45.9,
+   "spin_potential": 4.5
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.25,
+   "shape": "octagonal",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-130"
+  },
+  "excel_ektelon": null,
+  "our_note_feel": "Poly rigida e compatta (233 lb/in), poco spin (4.5), profilo ottagonale; cala in fretta (45.9% di perdita su TWU)."
+ },
+ {
+  "id": "toroline-o-toro-tour-17",
+  "brand": "Toroline",
+  "model": "O-Toro Tour",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": "HEX",
+  "material": "poly",
+  "twu": {
+   "twu_name": "Toroline O-Toro Tour 17 (1.23)",
+   "match": "exact",
+   "stiffness_lbin": 216.6,
+   "tension_loss_pct": 25.0,
+   "spin_potential": 7.7
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-tour-neon-mint-123"
+  },
+  "excel_ektelon": null,
+  "our_note_feel": "La O-Toro 'da controllo': più rigida (217 lb/in) e tiene molto meglio (25% su TWU), ma conserva spin alto (7,7). Esagonale 1.23."
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Babolat RPM Blast Rough 16",
+   "match": "exact",
+   "stiffness_lbin": 209.7,
+   "tension_loss_pct": 29.5,
+   "spin_potential": 8.2
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Nonostante il nome, sui dati TWU è molto diversa dalla RPM Blast: meno rigida (210 contro 233 lb/in), spin quasi doppio (8,2) e tiene meglio (30%)."
+ },
+ {
+  "id": "grapplesnake-tour-m8-17",
+  "brand": "Grapplesnake",
+  "model": "Tour M8",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Grapplesnake Tour M8 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 210.3,
+   "tension_loss_pct": 34.3,
+   "spin_potential": 8.2
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Rigidità media (210 lb/in), spin alto (8,2 su TWU), tenuta nella media (34%). Non c'è nel tuo file Excel: dati solo TWU."
+ },
+ {
+  "id": "solinco-hyper-g-round-16",
+  "brand": "Solinco",
+  "model": "Hyper-G Round",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Solinco Hyper-G 16 Round (1.30)",
+   "match": "exact",
+   "stiffness_lbin": 226.3,
+   "tension_loss_pct": 32.3,
+   "spin_potential": 7.3
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Poly rigida e compatta (226 lb/in), snapback alto (spin 7.3); tiene bene la tensione."
+ },
+ {
+  "id": "solinco-hyper-g-16",
+  "brand": "Solinco",
+  "model": "Hyper-G",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "PENT",
+  "material": "poly",
+  "twu": {
+   "twu_name": "Solinco Hyper-G 16",
+   "match": "exact",
+   "stiffness_lbin": 219.5,
+   "tension_loss_pct": 26.3,
+   "spin_potential": 7.0
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.02,
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-130"
+  },
+  "excel_ektelon": null,
+  "our_note_feel": "Stessa famiglia della 16L in 1.30: 220 lb/in, tenuta molto buona (26%), spin 7,0 su TWU."
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Babolat RPM Blast Rough 17",
+   "match": "exact",
+   "stiffness_lbin": 196.0,
+   "tension_loss_pct": 35.7,
+   "spin_potential": 9.9
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "In 1.20 diventa morbida (196 lb/in) e molto spinnosa (9,9, tra le più alte). Calo nella media (36%)."
+ },
+ {
+  "id": "solinco-confidential-17",
+  "brand": "Solinco",
+  "model": "Confidential",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Solinco Confidential 16 (1.30)",
+   "match": "proxy",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 22.2,
+   "spin_potential": 6.4
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1,
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.222,
+   "tl6": null,
+   "tl12": null
+  },
+  "our_note_feel": "Poly di rigidità media (222 lb/in), snapback alto (spin 6.4), profilo tonda; tiene bene la tensione."
+ },
+ {
+  "id": "solinco-revolution-16l",
+  "brand": "Solinco",
+  "model": "Revolution",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Solinco Revolution 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 212.6,
+   "tension_loss_pct": 28.4,
+   "spin_potential": 8.0
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.15,
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-revolution-125"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.356,
+   "tl6": 27.0,
+   "tl12": 10.0
+  },
+  "our_note_feel": "Tonda come la Confidential, poco più morbida (213 lb/in) e con più spin (8,0 su TWU). Racketpedia 1,15 kg/mm."
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "brand": "Toroline",
+  "model": "Super Toro",
+  "gauge_label": "17L",
+  "gauge_mm": 1.23,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Toroline Super Toro 17 (1.23)",
+   "match": "exact",
+   "stiffness_lbin": 189.7,
+   "tension_loss_pct": 34.7,
+   "spin_potential": 7.8
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-super-toro-blue-123"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 1.667,
+   "tl6": 13.0,
+   "tl12": 24.0
+  },
+  "our_note_feel": "Esagonale 1.23 di rigidità medio-bassa (190 lb/in), spin alto (7,8). Nel tuo test tiene bene a 6 mesi (13%) ma cala a 12 (24%). Racketpedia 0,9 kg/mm."
+ },
+ {
+  "id": "grapplesnake-alpha-17",
+  "brand": "Grapplesnake",
+  "model": "Alpha",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Grapplesnake Alpha 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 218.3,
+   "tension_loss_pct": 29.4,
+   "spin_potential": 6.7
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Più compatta della Tour M8 (218 lb/in) e tiene meglio (29%), spin 6,7: è la Grapplesnake più vicina alla tua Confidential."
+ },
+ {
+  "id": "solinco-hyper-g-16l",
+  "brand": "Solinco",
+  "model": "Hyper-G",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "PENT",
+  "material": "poly",
+  "twu": {
+   "twu_name": "Solinco Hyper-G 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 218.3,
+   "tension_loss_pct": 24.7,
+   "spin_potential": 6.1
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-125"
+  },
+  "excel_ektelon": null,
+  "our_note_feel": "Co-poly profilata, rigidità simile alla Confidential (218 lb/in) e tenuta ottima (25% su TWU). Spin medio-alto (6,1)."
+ },
+ {
+  "id": "toroline-enso-pro-carbon-16l",
+  "brand": "Toroline",
+  "model": "Enos Pro-carbon",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 0.9,
+   "shape": "round",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 1.244,
+   "tl6": 8.0,
+   "tl12": 12.0
+  },
+  "our_note_feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.24) e su Racketpedia, quindi è meno preciso. Profilo tonda."
+ },
+ {
+  "id": "wilson-revolve-17",
+  "brand": "Wilson",
+  "model": "Revolve",
+  "gauge_label": "17",
+  "gauge_mm": 1.25,
+  "shape": "RND",
+  "material": "poly",
+  "twu": {
+   "twu_name": "Wilson Revolve 17 (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 192.0,
+   "tension_loss_pct": 36.2,
+   "spin_potential": 7.7
+  },
+  "racketpedia": null,
+  "excel_ektelon": {
+   "stiff_index_avg": 3.956,
+   "tl6": null,
+   "tl12": null
+  },
+  "our_note_feel": "Poly morbida (192 lb/in), snapback alto (spin 7.7), profilo tonda; cala nella media."
+ },
+ {
+  "id": "toroline-cash-16l",
+  "brand": "Toroline",
+  "model": "Cash",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Toroline Cash 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 182.9,
+   "tension_loss_pct": 34.8,
+   "spin_potential": 7.6
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Poly morbida (183 lb/in), snapback alto (spin 7.6); cala nella media."
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "brand": "Solinco",
+  "model": "Tour Bite",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": "PENT",
+  "material": "poly",
+  "twu": {
+   "twu_name": "Solinco Tour Bite 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 237.7,
+   "tension_loss_pct": 25.2,
+   "spin_potential": 5.9
+  },
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.12,
+   "shape": "pentagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-125"
+  },
+  "excel_ektelon": null,
+  "our_note_feel": "Più rigida della Confidential (238 lb/in), tiene bene (25%), spin 5,9."
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "brand": "Toroline",
+  "model": "O-Toro Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.23,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Toroline O-Toro Spin 17 (1.23)",
+   "match": "exact",
+   "stiffness_lbin": 173.2,
+   "tension_loss_pct": 38.3,
+   "spin_potential": 8.2
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Poly morbida (173 lb/in), snapback alto (spin 8.2); cala nella media."
+ },
+ {
+  "id": "solinco-mach-10-16",
+  "brand": "Solinco",
+  "model": "Mach 10",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Solinco Mach 10 16 (1.30)",
+   "match": "exact",
+   "stiffness_lbin": 222.3,
+   "tension_loss_pct": 26.3,
+   "spin_potential": 6.0
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Poly rigida e compatta (222 lb/in), spin nella media (6); tiene bene la tensione."
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "brand": "Toroline",
+  "model": "Absolute",
+  "gauge_label": "17L",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": {
+   "twu_name": "Toroline Absolute 17 (1.20)",
+   "match": "exact",
+   "stiffness_lbin": 180.6,
+   "tension_loss_pct": 47.1,
+   "spin_potential": 9.3
+  },
+  "racketpedia": null,
+  "excel_ektelon": {
+   "stiff_index_avg": 2.778,
+   "tl6": 12.0,
+   "tl12": 23.0
+  },
+  "our_note_feel": "Spin altissimo (9,3) e morbida (181 lb/in), ma perde molta tensione (47% su TWU)."
+ },
+ {
+  "id": "toroline-o-toro-snap-16l",
+  "brand": "Toroline",
+  "model": "O-TORO Snap",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Toroline O-TORO Snap 16L (1.25)",
+   "match": "exact",
+   "stiffness_lbin": 164.6,
+   "tension_loss_pct": 41.7,
+   "spin_potential": 8.7
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "La gemella di O-Toro (somiglianza 93): morbidissima (165 lb/in), spin 8,7, calo forte (42%). In 1.25."
+ },
+ {
+  "id": "re-string-zero-16",
+  "brand": "Re-String",
+  "model": "Zero",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.1,
+   "shape": "hexagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-128"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 1.667,
+   "tl6": 20.0,
+   "tl12": 24.0
+  },
+  "our_note_feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.67) e su Racketpedia, quindi è meno preciso. Profilo esagonale."
+ },
+ {
+  "id": "re-string-zero-17",
+  "brand": "Re-String",
+  "model": "Zero",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "shape": "hexagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-123"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.489,
+   "tl6": 11.0,
+   "tl12": 19.0
+  },
+  "our_note_feel": "Esagonale 1.20 testata solo nel tuo file e su Racketpedia (1,05 kg/mm). Stiff Index 2,49, vicino alla Confidential (2,33); tiene bene (11% a 6 mesi, 19% a 12)."
+ },
+ {
+  "id": "re-string-sync-17",
+  "brand": "Re-String",
+  "model": "Sync",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 0.85,
+   "shape": "round",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-120"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 3.178,
+   "tl6": null,
+   "tl12": null
+  },
+  "our_note_feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 3.18) e su Racketpedia, quindi è meno preciso. Profilo tonda."
+ },
+ {
+  "id": "re-string-slap-17",
+  "brand": "Re-String",
+  "model": "Slap",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 0.75,
+   "shape": "hexagonal",
+   "composition": "copolyester",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-slap-black-123"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.911,
+   "tl6": null,
+   "tl12": null
+  },
+  "our_note_feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.91) e su Racketpedia, quindi è meno preciso. Profilo esagonale."
+ },
+ {
+  "id": "re-string-vivo-17",
+  "brand": "Re-String",
+  "model": "Vivo",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "RND",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 1.05,
+   "shape": "round",
+   "composition": null,
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-vivo-blue-123"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 1.778,
+   "tl6": null,
+   "tl12": null
+  },
+  "our_note_feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.78) e su Racketpedia, quindi è meno preciso. Profilo tonda."
+ },
+ {
+  "id": "wilson-revolve-spin-16",
+  "brand": "Wilson",
+  "model": "Revolve Spin",
+  "gauge_label": "16",
+  "gauge_mm": 1.3,
+  "shape": "PENT",
+  "material": "poly",
+  "twu": {
+   "twu_name": "Wilson Revolve Spin 16",
+   "match": "exact",
+   "stiffness_lbin": 172.6,
+   "tension_loss_pct": 54.5,
+   "spin_potential": 5.0
+  },
+  "racketpedia": null,
+  "excel_ektelon": {
+   "stiff_index_avg": 3.044,
+   "tl6": 10.0,
+   "tl12": 27.0
+  },
+  "our_note_feel": "Pentagonale morbida (173 lb/in) ma con spin basso su TWU (5,0) e calo molto forte (55%, tra i più alti del banco). Nel tuo test 27% a 12 mesi."
+ },
+ {
+  "id": "toroline-caviar-17",
+  "brand": "Toroline",
+  "model": "Caviar",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "HEX",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 1,
+   "shape": "hexagonal",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.222,
+   "tl6": 17.0,
+   "tl12": 25.0
+  },
+  "our_note_feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale."
+ },
+ {
+  "id": "toroline-wasabi-green-17",
+  "brand": "Toroline",
+  "model": "Wasabi green",
+  "gauge_label": "17",
+  "gauge_mm": 1.2,
+  "shape": "SQ",
+  "material": "copoly",
+  "twu": null,
+  "racketpedia": {
+   "static_stiffness_kgmm": 0.95,
+   "shape": "square",
+   "composition": "Hybrid",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-wasabi-neon-green-123"
+  },
+  "excel_ektelon": {
+   "stiff_index_avg": 2.2,
+   "tl6": 15.0,
+   "tl12": 12.0
+  },
+  "our_note_feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.20) e su Racketpedia, quindi è meno preciso. Profilo quadrata."
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16l",
+  "brand": "Grapplesnake",
+  "model": "Tour Sniper",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25,
+  "shape": null,
+  "material": "poly",
+  "twu": {
+   "twu_name": "Grapplesnake Tour Sniper 1.25",
+   "match": "exact",
+   "stiffness_lbin": 206.3,
+   "tension_loss_pct": 32.0,
+   "spin_potential": 5.8
+  },
+  "racketpedia": null,
+  "excel_ektelon": null,
+  "our_note_feel": "Poly di rigidità media (206 lb/in), spin nella media (5.8); tiene bene la tensione."
+ }
+]

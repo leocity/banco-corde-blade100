@@ -1,9 +1,8 @@
 {
- "_insight": "I tuoi gusti non sono 'morbido contro rigido'. Ami due corde opposte: Confidential è compatta (222 lb/in su TWU) e perde solo il 22% di tensione; O-Toro è la più morbida del banco (166 lb/in), ha lo spin più alto (9,4) ma perde il 44%. Il filo comune è una risposta netta con buon snapback. RPM Blast è rigida ma con poco spin (4,6) e cala presto; Confidential Soft è una via di mezzo, più morbida della tua Confidential ma senza lo scatto di O-Toro. Regola pratica: cerca spin TWU sopra 6,5, poi scegli se la vuoi compatta (lato Confidential) o viva (lato O-Toro).",
-
+ "_insight": "I tuoi gusti non sono 'morbido contro rigido'. Ami due corde opposte: Confidential è compatta (222 lb/in su TWU) e perde solo il 22% di tensione; O-Toro è la più morbida del banco (166 lb/in), ha lo spin potential più alto (9,4) ma perde il 44%. Il filo comune è una risposta netta con buon snapback. RPM Blast è rigida con uno snapback misurato basso (4,6) e cala presto; Confidential Soft è una via di mezzo, più morbida della tua Confidential ma senza lo scatto di O-Toro. Regola pratica: cerca spin potential TWU sopra 6,5, poi scegli se la vuoi compatta (lato Confidential) o viva (lato O-Toro).",
  "solinco-confidential-16l": {
-  "feel": "Co-poly tonda compatta: risposta piena e prevedibile, poca tasca, ottima tenuta (22% su TWU, misurato sulla 1.30; 15% a 6 mesi nel tuo test). Racketpedia la dà a 1,0 kg/mm sulla 1.25.",
-  "on_blade_100_v9": "Sulla Blade flessibile a RA basso è l'abbinamento classico: il telaio restituisce la potenza che la corda non dà. Il 16×19 aperto compensa lo spin medio della forma tonda.",
+  "feel": "Co-poly a 4 spigoli (quadrata per Solinco; nel tuo file è segnata tonda): risposta piena e prevedibile, poca tasca, ottima tenuta (22% su TWU sulla 1.30, circa 24% sulla 1.25 per un altro laboratorio, 15% a 6 mesi nel tuo test).",
+  "on_blade_100_v9": "Sulla Blade flessibile a RA basso è l'abbinamento classico: il telaio restituisce la potenza che la corda non dà. I 4 spigoli e il 16×19 aperto danno buona presa sulla palla.",
   "for_your_style": "Ideale quando giochi piatto e cerchi direzione; in rotazione funziona perché tiene a lungo la tensione. Con 4–5 ore a settimana resta stabile per 3–4 settimane.",
   "vs_favorites": "È una delle tue preferite e il riferimento lato controllo. A 22/21 kg (48,5/46,5 lbs) è già calibrata: non scendere sotto 21 kg sulle verticali o perde precisione."
  },
@@ -20,9 +19,9 @@
   "vs_favorites": "Riferimento negativo: le corde che le assomigliano più che alle tue preferite ricevono l'avviso ⚠ e perdono 15 punti."
  },
  "babolat-rpm-blast-17": {
-  "feel": "Ottagonale rigida (234 lb/in) con poco spin per i dati TWU (4,6) e un calo di tensione sensibile (20% a 6 mesi nel tuo test).",
+  "feel": "Ottagonale rigida (234 lb/in) con snapback misurato basso da TWU (4,6), anche se i tester la considerano una corda da spin; calo di tensione sensibile (20% a 6 mesi nel tuo test).",
   "on_blade_100_v9": "Su un telaio a RA basso la rigidità si sente come piatto 'secco': controllo sì, ma palla corta e poco aiuto sullo spin.",
-  "for_your_style": "Non ti è piaciuta, e i dati spiegano perché: è rigida come la Confidential ma con molto meno snapback.",
+  "for_your_style": "Non ti è piaciuta: è rigida come la Confidential ma con meno scorrimento delle corde, e il piatto cala prima.",
   "vs_favorites": "Riferimento negativo: segnala le corde rigide e poco 'scorrevoli'."
  },
  "toroline-o-toro-tour-17": {
@@ -41,39 +40,39 @@
   "for_your_style": "Utile se rompi spesso o vuoi una corda che duri un mese pieno senza calare."
  },
  "solinco-revolution-16l": {
-  "feel": "Tonda come la Confidential, poco più morbida (213 lb/in) e con più spin (8,0 su TWU). Racketpedia 1,15 kg/mm.",
-  "on_blade_100_v9": "Sulla Blade dà una sensazione familiare se vieni dalla Confidential, con più rotazione 'gratis'.",
+  "feel": "Esagonale (per Solinco), poco più morbida della Confidential (213 lb/in) e con più spin (8,0 su TWU). Racketpedia 1,15 kg/mm.",
+  "on_blade_100_v9": "Sulla Blade dà una risposta vicina alla Confidential, con più rotazione grazie al profilo a 6 spigoli.",
   "for_your_style": "Interessante per il tuo stile, ma nel tuo test perde il 27% a 6 mesi: tienila d'occhio dopo 10–12 ore di gioco."
  },
  "grapplesnake-tour-m8-17": {
-  "feel": "Rigidità media (210 lb/in), spin alto (8,2 su TWU), tenuta nella media (34%). Non c'è nel tuo file Excel: dati solo TWU.",
+  "feel": "Ottagonale di rigidità media (210 lb/in), snapback alto (8,2 su TWU). Il produttore dichiara una tenuta eccezionale, TWU misura 34% (nella media). È la Grapplesnake di mezzo tra Alpha e Tour Sniper.",
   "on_blade_100_v9": "Sulla Blade dà un piatto equilibrato: più vivo della Confidential, più controllato di O-Toro.",
   "for_your_style": "Buona per giocare in rotazione senza perdere troppo il colpo piatto. Con il tuo volume, rincorda ogni 3 settimane."
  },
  "grapplesnake-alpha-17": {
-  "feel": "Più compatta della Tour M8 (218 lb/in) e tiene meglio (29%), spin 6,7: è la Grapplesnake più vicina alla tua Confidential.",
-  "on_blade_100_v9": "Sulla Blade dà controllo e una risposta prevedibile.",
-  "for_your_style": "Se cerchi un'alternativa alla Confidential con un filo di spin in più, è da provare."
+  "feel": "Pentagonale. Il produttore e Tennis Warehouse la indicano come la più morbida e potente delle tre Grapplesnake; la riga TWU (218 lb/in) dice il contrario, quindi i numeri sono poco affidabili.",
+  "on_blade_100_v9": "Se è morbida come la descrivono, sulla Blade darà un piatto vivo e confortevole: parti dalla tensione suggerita e alza di 0,5 kg se la palla vola.",
+  "for_your_style": "Più adatta al lato O-Toro che al lato Confidential: comfort e potenza più che controllo."
  },
  "babolat-rpm-blast-rough-16": {
-  "feel": "Nonostante il nome, sui dati TWU è molto diversa dalla RPM Blast: meno rigida (210 contro 233 lb/in), spin quasi doppio (8,2) e tiene meglio (30%).",
+  "feel": "È la stessa corda oggi venduta come 'RPM Rough'. Ottagonale testurizzata, più morbida della RPM Blast (210 contro 233 lb/in) e con più snapback in laboratorio (8,2); il vantaggio di spin nei test di gioco è reale ma più contenuto.",
   "on_blade_100_v9": "Sulla Blade dà un piatto medio-compatto con buona presa.",
   "for_your_style": "Funziona per il tuo stile sulla carta, ma è della stessa famiglia della corda che non ti è piaciuta: provala solo dopo O-Toro Tour e Hyper-G."
  },
  "babolat-rpm-blast-rough-17": {
-  "feel": "In 1.20 diventa morbida (196 lb/in) e molto spinnosa (9,9, tra le più alte). Calo nella media (36%).",
-  "on_blade_100_v9": "Sulla Blade il calibro sottile la rende vivace e potente, più vicina a O-Toro che a RPM Blast.",
-  "for_your_style": "Ottima per il topspin; il calibro 1.20 dura meno, quindi aspettati 2–3 settimane."
+  "feel": "La versione 1.25 (non 1.20) della RPM Rough: più morbida (196 lb/in) e con snapback molto alto in laboratorio (9,9). Calo nella media (36%) e durata di gioco bassa nel test di Tennis Warehouse.",
+  "on_blade_100_v9": "Sulla Blade è vivace e potente, più vicina a O-Toro che a RPM Blast.",
+  "for_your_style": "Buona per il topspin, ma con il tuo volume aspettati 2 settimane prima che cali. Ricorda che la tua riga 'RPM Rough' del file è questa stessa corda."
  },
  "toroline-super-toro-17l": {
-  "feel": "Esagonale 1.23 di rigidità medio-bassa (190 lb/in), spin alto (7,8). Nel tuo test tiene bene a 6 mesi (13%) ma cala a 12 (24%). Racketpedia 0,9 kg/mm.",
+  "feel": "Esagonale 1.23, spin alto (7,8 su TWU). Rigidità incerta: TWU la dà medio-morbida (190 lb/in), il tuo test e il rivenditore la danno piuttosto rigida. Nel tuo test tiene bene a 6 mesi (13%) ma cala a 12 (24%).",
   "on_blade_100_v9": "Sulla Blade è vivace ma meno estrema di O-Toro: buona via di mezzo sul lato spin.",
   "for_your_style": "Se O-Toro ti sembra troppo morbida a fine incordatura, Super Toro è il passo verso un po' più di controllo."
  },
  "toroline-o-toro-snap-16l": {
-  "feel": "La gemella di O-Toro (somiglianza 93): morbidissima (165 lb/in), spin 8,7, calo forte (42%). In 1.25.",
-  "on_blade_100_v9": "Sulla Blade dà la stessa sensazione di O-Toro con un calibro leggermente più robusto.",
-  "for_your_style": "Se ami O-Toro ma la rompi o la senti calare troppo in fretta, la 1.25 regge un po' di più."
+  "feel": "Tonda e, secondo Tennis Warehouse e Tennisnerd, medio-rigida, con traiettoria bassa e meno spin della O-Toro. La riga TWU (165 lb/in, spin 8,7) è quasi identica alla O-Toro e contraddice tutte le recensioni: considerala incerta.",
+  "on_blade_100_v9": "Sulla Blade dovrebbe dare più controllo e meno 'trampolino' della O-Toro.",
+  "for_your_style": "Non è la gemella della O-Toro: è più vicina a una corda da controllo tonda. Provala solo se vuoi una O-Toro più tranquilla."
  },
  "toroline-absolute-17l": {
   "feel": "Spin altissimo (9,3) e morbida (181 lb/in), ma perde molta tensione (47% su TWU).",
@@ -86,13 +85,18 @@
   "for_your_style": "Adatta se vuoi ancora più controllo della Confidential. Sulle rotazioni rende meno di Hyper-G e O-Toro Tour."
  },
  "wilson-revolve-spin-16": {
-  "feel": "Pentagonale morbida (173 lb/in) ma con spin basso su TWU (5,0) e calo molto forte (55%, tra i più alti del banco). Nel tuo test 27% a 12 mesi.",
-  "on_blade_100_v9": "Sulla Blade dà comfort e potenza, ma il piatto si scarica presto.",
-  "for_your_style": "Poco adatta: non ha né la tenuta della Confidential né lo snapback di O-Toro."
+  "feel": "Pentagonale. TWU la misura morbida (173 lb/in) con calo fortissimo (55%), ma i test di gioco la descrivono rigida e 'spenta' con calo graduale (nel tuo file 27% a 12 mesi).",
+  "on_blade_100_v9": "Sulla Blade dà un piatto poco vivo: la flessibilità del telaio non basta a renderla potente.",
+  "for_your_style": "Poco adatta: non ha né la risposta compatta della Confidential né lo snapback di O-Toro."
  },
  "re-string-zero-17": {
-  "feel": "Esagonale 1.20 testata solo nel tuo file e su Racketpedia (1,05 kg/mm). Stiff Index 2,49, vicino alla Confidential (2,33); tiene bene (11% a 6 mesi, 19% a 12).",
+  "feel": "Esagonale 1.23, testata solo nel tuo file e su Racketpedia (1,05 kg/mm). Stiff Index 2,49, vicino alla Confidential (2,33); tiene bene (11% a 6 mesi, 19% a 12) e le recensioni ne lodano la tenuta.",
   "on_blade_100_v9": "Sulla Blade dovrebbe comportarsi come una co-poly di controllo medio. Senza dati TWU lo spin non è misurato.",
   "for_your_style": "Candidata interessante sul lato Confidential per la tenuta nel lungo periodo; provala prima di comprare la matassa."
+ },
+ "toroline-cash-16l": {
+  "feel": "Tonda, descritta come rigida e controllata (più della O-Toro) con tenuta ottima; i numeri TWU la danno invece medio-morbida (183 lb/in) con tenuta nella media.",
+  "on_blade_100_v9": "Sulla Blade, se è rigida come la descrivono, si comporta come una corda da controllo: tensione suggerita senza salire.",
+  "for_your_style": "Più vicina al lato Confidential che al lato O-Toro; lo spin è inferiore alle corde profilate."
  }
 }

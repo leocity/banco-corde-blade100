@@ -1,0 +1,395 @@
+{
+ "shapes": [
+  {
+   "brand": "Solinco",
+   "model": "Confidential",
+   "shape": "SQ",
+   "source": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S"
+  },
+  {
+   "brand": "Solinco",
+   "model": "Confidential Soft",
+   "shape": "SQ",
+   "source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html"
+  },
+  {
+   "brand": "Solinco",
+   "model": "Revolution",
+   "shape": "HEX",
+   "source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html"
+  },
+  {
+   "brand": "Re-String",
+   "model": "Vivo",
+   "shape": "HEX",
+   "source": "https://courtspin.eu/products/restring-vivo"
+  },
+  {
+   "brand": "Babolat",
+   "model": "RPM Blast",
+   "shape": "OCT",
+   "source": "https://www.babolat.com/us/rpm-blast-string/243101.html"
+  },
+  {
+   "brand": "Babolat",
+   "model": "RPM Blast Rough",
+   "shape": "OCT",
+   "source": "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html"
+  },
+  {
+   "brand": "Grapplesnake",
+   "model": "Alpha",
+   "shape": "PENT",
+   "source": "https://www.grapplesnakeusa.com/pages/string-info"
+  },
+  {
+   "brand": "Grapplesnake",
+   "model": "Tour M8",
+   "shape": "OCT",
+   "source": "https://www.grapplesnakeusa.com/products/tour-m8-set"
+  },
+  {
+   "brand": "Grapplesnake",
+   "model": "Tour Sniper",
+   "shape": "PENT",
+   "source": "https://www.grapplesnakeusa.com/pages/string-info"
+  },
+  {
+   "brand": "Toroline",
+   "model": "Cash",
+   "shape": "RND",
+   "source": "https://www.tennis-warehouse.com/TOROLINE_Cash_16L_125_String/descpageACTORO-TCASH25.html"
+  },
+  {
+   "brand": "Toroline",
+   "model": "O-TORO Snap",
+   "shape": "RND",
+   "source": "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Snap_16L_125_String/descpageACTORO-TOROS7.html"
+  },
+  {
+   "brand": "Solinco",
+   "model": "Hyper-G Round",
+   "shape": "RND",
+   "source": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html"
+  }
+ ],
+ "checks": {
+  "babolat-rpm-blast-16l": {
+   "verdict": "contradicted",
+   "note": "Babolat non vende un calibro 16L: la 1.25 è la 17. Questa riga del tuo file è probabilmente la stessa corda della 17 (o la 1.30): usa la scheda RPM Blast 17.",
+   "sources": [
+    "https://www.babolat.com/us/rpm-blast-string/243101.html",
+    "https://restring.london/babolat-rpm-blast-review/",
+    "https://tenniscompanion.org/babolat-rpm-blast/",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+   ]
+  },
+  "babolat-rpm-blast-17": {
+   "verdict": "plausible",
+   "note": "Forma ottagonale. Lo spin potential TWU è basso, ma tester e Babolat la considerano una corda da spin: il numero di laboratorio va letto come 'snapback misurato', non come giudizio sul gioco. Un laboratorio diverso la misura meno rigida della Confidential: l'ordine di rigidità tra queste due è incerto.",
+   "sources": [
+    "https://www.babolat.com/us/rpm-blast-string/243101.html",
+    "https://restring.london/babolat-rpm-blast-review/",
+    "https://tenniscompanion.org/babolat-rpm-blast/",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+   ]
+  },
+  "solinco-confidential-16l": {
+   "verdict": "questionable",
+   "note": "Forma: 4 spigoli (quadrata) per Solinco e Tennis Warehouse, non tonda come nel tuo file. Un altro laboratorio (tabella stile USRSA) misura circa 24% di perdita sulla 1.25, in linea con il 22% TWU usato come proxy.",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tenniscompanion.org/solinco-confidential/",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-confidential-string-review/18882",
+    "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa"
+   ]
+  },
+  "toroline-o-toro-17": {
+   "verdict": "confirmed",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/o-toro",
+    "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+    "https://prostrung.com/toroline-otoro-review/",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  },
+  "solinco-confidential-soft-16l": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tenniscompanion.org/solinco-confidential-soft/"
+   ]
+  },
+  "babolat-rpm-blast-16": {
+   "verdict": "plausible",
+   "note": "Forma ottagonale. Spin potential TWU basso, ma la reputazione nei test di gioco è di corda spinnosa.",
+   "sources": [
+    "https://www.babolat.com/us/rpm-blast-string/243101.html",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMB16review.html",
+    "https://tenniscompanion.org/babolat-rpm-blast/",
+    "https://restring.london/babolat-rpm-blast-review/"
+   ]
+  },
+  "toroline-o-toro-tour-17": {
+   "verdict": "confirmed",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/o-toro-tour",
+    "https://www.tennis-warehouse.com/learning_center/reviews/strings/toroline_otoro_tour.html?pcode=TOROTR",
+    "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  },
+  "babolat-rpm-blast-rough-16": {
+   "verdict": "plausible",
+   "note": "È la stessa corda oggi venduta come 'RPM Rough' (Tennis Warehouse: 'Formerly called RPM Blast Rough'). Più morbida della RPM Blast: confermato da tester e rivenditori. Il vantaggio di spin è reale ma meno ampio di quanto dica il dato TWU.",
+   "sources": [
+    "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+    "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest",
+    "https://www.lovetennisblog.com/babolat-rpm-blast-rough-string-review/"
+   ]
+  },
+  "grapplesnake-tour-m8-17": {
+   "verdict": "questionable",
+   "note": "Forma ottagonale. Il produttore parla di tenuta della tensione eccezionale, TWU misura un 34% nella media. Numeri TWU delle Grapplesnake poco affidabili.",
+   "sources": [
+    "https://www.grapplesnakeusa.com/products/tour-m8-set",
+    "https://www.grapplesnakeusa.com/pages/string-info",
+    "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+    "https://www.tennisnerd.net/gear/strings/grapplesnake-tour-m8-review/25992"
+   ]
+  },
+  "solinco-hyper-g-round-16": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Round.html?pcode=HGR6LRG"
+   ]
+  },
+  "solinco-hyper-g-16": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/shg16review.html",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+   ]
+  },
+  "babolat-rpm-blast-rough-17": {
+   "verdict": "contradicted",
+   "note": "Esiste solo in 1.25 e 1.30: questa è la 1.25, non la 1.20. È la attuale 'RPM Rough'. Nel test di Tennis Warehouse la durata di gioco è bassa.",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPMBRSreview.html",
+    "https://www.tennis-warehouse.com/Babolat_RPM_Blast_Rough_130_16_String/descpageACBAB-BRPMBR3.html",
+    "https://mijnracket.nl/en/blogs/news/babolat-rpm-blast-rough-16-getest"
+   ]
+  },
+  "solinco-confidential-17": {
+   "verdict": "questionable",
+   "note": "Forma quadrata, non tonda. I dati TWU sono della 1.30 applicati alla 1.20: per un calibro così più sottile sono solo indicativi.",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tenniscompanion.org/solinco-confidential/",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-confidential-string-review/18882"
+   ]
+  },
+  "solinco-revolution-16l": {
+   "verdict": "questionable",
+   "note": "Forma esagonale per Solinco (Racketpedia dice pentagonale), non tonda come nel tuo file.",
+   "sources": [
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html"
+   ]
+  },
+  "toroline-super-toro-17l": {
+   "verdict": "questionable",
+   "note": "Il rivenditore la definisce rigida e durevole; TWU (190 lb/in) la dà medio-morbida e il tuo test (Stiff Index 1,67) piuttosto rigida. Rigidità incerta.",
+   "sources": [
+    "https://toroline.com/products/super-toro",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+   ]
+  },
+  "grapplesnake-alpha-17": {
+   "verdict": "contradicted",
+   "note": "Contraddetta: Grapplesnake e Tennis Warehouse la indicano come la più morbida delle tre (Alpha < Tour M8 < Tour Sniper), mentre la riga TWU la mette come la più rigida. I numeri TWU delle Grapplesnake sono poco affidabili.",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+    "https://www.grapplesnakeusa.com/pages/string-info",
+    "https://www.tenniswarehouse-europe.com/learning_center/string_reviews/grapplesnake_alpha.html?pcode=GSASS125",
+    "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpageACGRAPPLE-GALP125.html"
+   ]
+  },
+  "solinco-hyper-g-16l": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://truproofficial.com/tru-pro-tennis-string-lab-testing-results-usrsa",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+   ]
+  },
+  "toroline-enso-pro-carbon-16l": {
+   "verdict": "questionable",
+   "note": "Il nome ufficiale è Enso Pro Carbon. Rigidità discordante tra fonti: Tennisnerd medio-rigida, Tennis Warehouse più confortevole della media.",
+   "sources": [
+    "https://www.tennis-warehouse.com/TOROLINE_Enso_Pro_16L_125_String/descpageACTORO-T6LENSO.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-enso-pro-review-balanced-feel-meets-modern-control/62407"
+   ]
+  },
+  "wilson-revolve-17": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/Wilson_Revolve_17_125_String/descpageACWILSON-WRV17.html",
+    "https://tennisoverload.com/wilson-revolve-tennis-string-review/"
+   ]
+  },
+  "toroline-cash-16l": {
+   "verdict": "questionable",
+   "note": "Tonda. Tennisnerd la descrive rigida e controllata, più della O-Toro, con ottima tenuta; i numeri TWU la danno più morbida e con tenuta nella media.",
+   "sources": [
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-cash-strings-review/67980",
+    "https://www.tennis-warehouse.com/TOROLINE_Cash_16L_125_String/descpageACTORO-TCASH25.html"
+   ]
+  },
+  "solinco-tour-bite-16l": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/STB16Lreview.html",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+    "https://tt.tennis-warehouse.com/index.php?threads/solinco-tour-is-actually-5-sided.531906/",
+    "https://www.tennis-warehouse.com/comparison/STB16_SHG16.html"
+   ]
+  },
+  "toroline-o-toro-spin-17": {
+   "verdict": "confirmed",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/o-toro-spin",
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/T7TOROSreview.html",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  },
+  "solinco-mach-10-16": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://prostrung.com/is-solinco-mach-10-tennis-string-the-best-soft-poly-full-review-playtest/",
+    "https://www.racqix.com/en/tennis-strings/solinco/solinco-mach-10-16-1-30-string-reel",
+    "https://www.tennis-warehouse.com/Solinco_Mach-10_17_120_String/descpageACSOLINCO-SM1020B.html",
+    "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html"
+   ]
+  },
+  "toroline-absolute-17l": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://toroline.com/products/absolute",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264",
+    "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html"
+   ]
+  },
+  "toroline-o-toro-snap-16l": {
+   "verdict": "contradicted",
+   "note": "Contraddetta: Tennis Warehouse e Tennisnerd la descrivono tonda, medio-rigida, con traiettoria bassa e meno spin della O-Toro. La riga TWU (164,6 lb/in) è quasi identica a quella della O-Toro: dato TWU poco affidabile.",
+   "sources": [
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-otoro-snap-review/62115",
+    "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Snap_16L_125_String/descpageACTORO-TOROS7.html",
+    "https://thetennisstore.com.au/blogs/string-reviews/the-toroline-o-toro-range-explained-six-strings-one-family-zero-confusion"
+   ]
+  },
+  "re-string-zero-16": {
+   "verdict": "questionable",
+   "note": "Il diametro reale è 1.28. Il produttore la colloca a metà della gamma per rigidità (Sync < Slap < Zero < Vivo), coerente con il tuo file. Tenuta lodata dalle recensioni.",
+   "sources": [
+    "https://shoprestring.com/products/restring-zero-single-set",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box",
+    "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557",
+    "https://prostrung.com/restring-zero-tennis-string-review/"
+   ]
+  },
+  "re-string-zero-17": {
+   "verdict": "questionable",
+   "note": "Il diametro reale è 1.23. Nessun dato di laboratorio pubblicato oltre al tuo file.",
+   "sources": [
+    "https://shoprestring.com/products/restring-zero-single-set",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box"
+   ]
+  },
+  "re-string-sync-17": {
+   "verdict": "questionable",
+   "note": "La 17 di Sync è 1.25. È la più morbida della gamma Re-String, coerente con il tuo file.",
+   "sources": [
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://tennisracketseu.com/blogs/tennis-gear-reviews/restring-tennis-strings-full-lineup-review-sync-vivo-zero-and-custom-box",
+    "https://prostrung.com/restring-sync-tennis-string-review/"
+   ]
+  },
+  "re-string-slap-17": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennisnerd.net/gear/strings/string-reviews/restring-slap-review-spin-snap-back-on-court-impressions/61581",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you"
+   ]
+  },
+  "re-string-vivo-17": {
+   "verdict": "questionable",
+   "note": "Esagonale, non tonda; diametro reale 1.23. È la più rigida della gamma Re-String con tenuta della tensione molto lodata (Prostrung, Tennisnerd).",
+   "sources": [
+    "https://courtspin.eu/products/restring-vivo",
+    "https://www.tennisnerd.net/gear/racquets/restring-vivo-string-review/45756",
+    "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557"
+   ]
+  },
+  "wilson-revolve-spin-16": {
+   "verdict": "contradicted",
+   "note": "Contraddetta: tutti i test di gioco la descrivono rigida e 'spenta', mentre TWU la misura morbida. Il 54,5% di perdita TWU non è confermato: tester e il tuo file (27% a 12 mesi) indicano un calo graduale.",
+   "sources": [
+    "https://www.tennis-warehouse.com/learning_center/string_reviews/WRS17review.html",
+    "https://mijnracket.nl/en/blogs/news/wilson-revolve-spin-16-getest",
+    "https://tenniscreative.com/wilson-revolve-spin-review/",
+    "https://www.tennis-warehouse.com/Wilson_Revolve_Spin_16_130_String/descpageACWILSON-WRS16.html"
+   ]
+  },
+  "toroline-caviar-17": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/TOROLINE_Caviar_17_120_String/descpageACTORO-T7CAVA.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+   ]
+  },
+  "toroline-wasabi-green-17": {
+   "verdict": "plausible",
+   "note": "",
+   "sources": [
+    "https://www.tennis-warehouse.com/TOROLINE_Wasabi_17_123_String/descpageACTORO-TWASA.html",
+    "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-strings-review/23264"
+   ]
+  },
+  "grapplesnake-tour-sniper-16l": {
+   "verdict": "questionable",
+   "note": "Per produttore e tester è la più rigida e controllata delle Grapplesnake, con ottima tenuta; la riga TWU la mette come la più morbida. Venduta come 17/1.25.",
+   "sources": [
+    "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+    "https://www.tennisnerd.net/gear/strings/grapplesnake-tour-sniper-review/26877",
+    "https://www.grapplesnakeusa.com/pages/string-info",
+    "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html"
+   ]
+  }
+ }
+}

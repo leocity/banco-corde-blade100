@@ -59,3 +59,24 @@ def test_string_id():
 def test_polytour_spacing():
     assert normalize_model("PolyTour REV") == "Poly Tour REV"
     assert normalize_model("Polytour Rev") == "Poly Tour Rev"
+
+
+def test_rpm_rough_is_rpm_blast_rough():
+    # TW: "Formerly called RPM Blast Rough"
+    assert normalize_model("RPM Rough") == "RPM Blast Rough"
+
+
+def test_enos_is_enso():
+    assert normalize_model("Enos Pro-carbon") == "Enso Pro-carbon"
+    assert normalize_model("Enos Pro neon yl") == "Enso Pro neon yl"
+
+
+def test_brand_specific_gauge_mm():
+    assert gauge_to_mm("17", brand="Babolat") == 1.25
+    assert gauge_to_mm("17", brand="Re-String", model="Zero") == 1.23
+    assert gauge_to_mm("16", brand="Re-String", model="Zero") == 1.28
+    assert gauge_to_mm("17", brand="Re-String", model="Sync") == 1.25
+    assert gauge_to_mm("17", brand="Toroline") == 1.23
+    assert gauge_to_mm("17", brand="Kirschbaum") == 1.25
+    assert gauge_to_mm("17", brand="Solinco") == 1.20
+    assert gauge_to_mm("17", 1.20, brand="Babolat") == 1.20  # mm dichiarati vincono

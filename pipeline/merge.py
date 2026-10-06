@@ -58,6 +58,20 @@ def merge(excel, twu, matches, rpedia):
     return out
 
 
+def apply_crosscheck(records, cc):
+    """Forme dichiarate dai produttori (vincono sul file Excel, che resta in shape_excel) ed esito del controllo web."""
+    shapes = {(s["brand"], s["model"]): s for s in cc.get("shapes", [])}
+    checks = cc.get("checks", {})
+    for r in records:
+        s = shapes.get((r["brand"], r["model"]))
+        r["shape_excel"] = (r.get("excel") and r.get("shape")) or None
+        if s:
+            r["shape"] = s["shape"]
+            r["shape_source"] = s["source"]
+        r["crosscheck"] = checks.get(r["id"])
+    return records
+
+
 def _load(p):
     with open(p, encoding="utf-8") as f:
         return json.load(f)
@@ -66,6 +80,7 @@ def _load(p):
 if __name__ == "__main__":
     recs = merge(_load("data/raw/excel.json"), _load("data/raw/twu.json"),
                  _load("data/agents/matches.json"), _load("data/agents/rpedia.json"))
+    recs = apply_crosscheck(recs, _load("data/crosscheck_overrides.json"))
     with open("data/merged.json", "w", encoding="utf-8") as f:
         json.dump(recs, f, ensure_ascii=False, indent=1)
     cov = {}
