@@ -43,4 +43,25 @@ def test_build_removes_discontinued_and_lists_them():
     out = build(recs, {}, production=status)
     ids = {r["id"] for r in out["strings"]}
     assert "b-m3-17" not in ids and "solinco-confidential-16l" in ids
-    assert out["removed_discontinued"] == [{"name": "B M3", "successor": "M4"}]
+    assert out["removed_discontinued"] == [{"name": "B M3", "successor": "M4", "reason": "fuori produzione"}]
+
+
+YEARS = [
+    {"brand": "Solinco", "model_key": "hyper g", "year": 2017, "confidence": "exact", "evidence": "", "urls": ["https://y"]},
+    {"brand": "Luxilon", "model_key": "x", "year": 2016, "confidence": "upper_bound", "evidence": "", "urls": ["https://z"]},
+    {"brand": "Babolat", "model_key": "rpm blast", "year": 2011, "confidence": "exact", "evidence": "", "urls": ["https://w"]},
+]
+
+
+def test_outdated_before_2020_removed_including_upper_bound():
+    kept, removed = filter_discontinued(RECS, [], keep_ids={"babolat-rpm-blast-17"}, years=YEARS, cutoff=2020)
+    ids = {r["id"] for r in kept}
+    assert "solinco-hyper-g-16l" not in ids and "luxilon-x-17" not in ids
+    assert "babolat-rpm-blast-17" in ids  # corda di riferimento
+    assert next(r for r in removed if r["id"] == "solinco-hyper-g-16l")["production"]["reason"] == "uscita nel 2017"
+
+
+def test_unknown_year_kept_and_flagged():
+    kept, _ = filter_discontinued(RECS, [], keep_ids=set(), years=YEARS, cutoff=2020)
+    r = next(r for r in kept if r["id"] == "solinco-revolution-16l")
+    assert r["production"]["year"] is None

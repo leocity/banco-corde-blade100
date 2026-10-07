@@ -160,3 +160,4 @@ Prezzi e disponibilità; multifilamenti e ibridi; metriche Racketpedia a pagamen
 
 - **Le recensioni non entrano più in nessun calcolo**: giudizi, punteggio, classifiche, stime di spin e rigidità usano solo dati di laboratorio (Ektelon, TWU, Racketpedia, gemelli di calibro). Restano nella scheda come link informativi, con la scritta "non entrano nel punteggio". Supera §4 (peso 30%) e §5.1 punti 3–4.
 - **Le corde fuori produzione vengono rimosse dal banco**, tranne le 4 corde di riferimento dell'utente.
+- **Corde vecchie**: l'utente intende "superate" (outdated). Si tolgono le corde **uscite prima del 2020** (anno esatto o limite superiore documentato) oltre a quelle fuori produzione; conta solo l'anno, non l'esistenza di un successore. Anno non trovato → la corda resta con badge "anno da verificare".
