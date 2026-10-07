@@ -1,0 +1,686 @@
+[
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g/",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Hyper-G",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g/",
+        "gauge_label":  "16L",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Hyper-G",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g/",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Hyper-G",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g-soft/",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Hyper-G Soft",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g-soft/",
+        "gauge_label":  "16L",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Hyper-G Soft",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g-soft/",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Hyper-G Soft",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g-round/",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Hyper-G Round",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g-round/",
+        "gauge_label":  "16L",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Hyper-G Round",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/hyper-g-round/",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Hyper-G Round",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/mach-10/",
+        "gauge_label":  "16",
+        "shape":  "PENT",
+        "material":  "copoly",
+        "model":  "Mach-10",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/mach-10/",
+        "gauge_label":  "16L",
+        "shape":  "PENT",
+        "material":  "copoly",
+        "model":  "Mach-10",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/mach-10/",
+        "gauge_label":  "17",
+        "shape":  "PENT",
+        "material":  "copoly",
+        "model":  "Mach-10",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite/",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Tour Bite",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite/",
+        "gauge_label":  "16L",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Tour Bite",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite/",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Tour Bite",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite-soft/",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Tour Bite Soft",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite-soft/",
+        "gauge_label":  "16L",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Tour Bite Soft",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite-soft/",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Tour Bite Soft",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite-diamond-rough/",
+        "gauge_label":  "16",
+        "shape":  "STAR",
+        "material":  "copoly",
+        "model":  "Tour Bite Diamond Rough",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite-diamond-rough/",
+        "gauge_label":  "16L",
+        "shape":  "STAR",
+        "material":  "copoly",
+        "model":  "Tour Bite Diamond Rough",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/tour-bite-diamond-rough/",
+        "gauge_label":  "17",
+        "shape":  "STAR",
+        "material":  "copoly",
+        "model":  "Tour Bite Diamond Rough",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/confidential/",
+        "gauge_label":  "16",
+        "shape":  "OCT",
+        "material":  "copoly",
+        "model":  "Confidential",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/confidential/",
+        "gauge_label":  "16L",
+        "shape":  "OCT",
+        "material":  "copoly",
+        "model":  "Confidential",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/confidential/",
+        "gauge_label":  "17",
+        "shape":  "OCT",
+        "material":  "copoly",
+        "model":  "Confidential",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/confidential-soft/",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Confidential Soft",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/confidential-soft/",
+        "gauge_label":  "16L",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Confidential Soft",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/confidential-soft/",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Confidential Soft",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/outlast/",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Outlast",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/outlast/",
+        "gauge_label":  "16L",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Outlast",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/outlast/",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Outlast",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/revolution/",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Revolution",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/revolution/",
+        "gauge_label":  "16L",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Revolution",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/revolution/",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Revolution",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/barb-wire/",
+        "gauge_label":  "16",
+        "shape":  "TWST",
+        "material":  "copoly",
+        "model":  "Barb Wire",
+        "gauge_mm":  1.3,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/barb-wire/",
+        "gauge_label":  "16L",
+        "shape":  "TWST",
+        "material":  "copoly",
+        "model":  "Barb Wire",
+        "gauge_mm":  1.25,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://solincosports.com/equipment/barb-wire/",
+        "gauge_label":  "17",
+        "shape":  "TWST",
+        "material":  "copoly",
+        "model":  "Barb Wire",
+        "gauge_mm":  1.2,
+        "brand":  "Solinco"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/zero-single-set",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Zero",
+        "gauge_mm":  1.28,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/zero-single-set",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Zero",
+        "gauge_mm":  1.23,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/vivo-single-set",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Vivo",
+        "gauge_mm":  1.28,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/vivo-single-set",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Vivo",
+        "gauge_mm":  1.23,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/sync-single-set",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Sync",
+        "gauge_mm":  1.3,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/sync-single-set",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Sync",
+        "gauge_mm":  1.25,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/sync-single-set",
+        "gauge_label":  "18",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Sync",
+        "gauge_mm":  1.2,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/slap-single-set",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "poly",
+        "model":  "Slap",
+        "gauge_mm":  1.28,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://shoprestring.com/products/slap-single-set",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "poly",
+        "model":  "Slap",
+        "gauge_mm":  1.23,
+        "brand":  "Re-String"
+    },
+    {
+        "source_url":  "https://toroline.com/collections/single-sets/products/o-toro",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "O-Toro",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/collections/single-sets/products/o-toro-tour",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "O-Toro Tour",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/collections/single-sets/products/o-toro-spin",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "O-Toro Spin",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/collections/single-sets/products/o-toro-snap-sample",
+        "gauge_label":  "16L",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "O-Toro Snap",
+        "gauge_mm":  1.25,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/wasabi",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Wasabi",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/wasabi-x",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Wasabi X",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/caviar",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Caviar",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/absolute",
+        "gauge_label":  "17L",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Absolute",
+        "gauge_mm":  1.2,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/ether",
+        "gauge_label":  "17L",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Ether",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/enso-pro",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Enso Pro",
+        "gauge_mm":  1.3,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/enso-pro-carbon",
+        "gauge_label":  "16L",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Enso Pro Carbon",
+        "gauge_mm":  1.25,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/cash",
+        "gauge_label":  "16L",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Cash",
+        "gauge_mm":  1.25,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/super-toro",
+        "gauge_label":  "17L",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Super Toro",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://toroline.com/products/a5",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "A5",
+        "gauge_mm":  1.23,
+        "brand":  "Toroline"
+    },
+    {
+        "source_url":  "https://www.grapplesnakeusa.com/products",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "poly",
+        "model":  "Tour Sniper",
+        "gauge_mm":  1.3,
+        "brand":  "Grapplesnake"
+    },
+    {
+        "source_url":  "https://www.grapplesnakeusa.com/products",
+        "gauge_label":  "16L",
+        "shape":  "HEX",
+        "material":  "poly",
+        "model":  "Tour Sniper",
+        "gauge_mm":  1.25,
+        "brand":  "Grapplesnake"
+    },
+    {
+        "source_url":  "https://www.grapplesnakeusa.com/products",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "poly",
+        "model":  "Tour Sniper",
+        "gauge_mm":  1.2,
+        "brand":  "Grapplesnake"
+    },
+    {
+        "source_url":  "https://www.grapplesnakeusa.com/products",
+        "gauge_label":  "16",
+        "shape":  "PENT",
+        "material":  "poly",
+        "model":  "Tour M8",
+        "gauge_mm":  1.3,
+        "brand":  "Grapplesnake"
+    },
+    {
+        "source_url":  "https://www.grapplesnakeusa.com/products",
+        "gauge_label":  "16L",
+        "shape":  "PENT",
+        "material":  "poly",
+        "model":  "Tour M8",
+        "gauge_mm":  1.25,
+        "brand":  "Grapplesnake"
+    },
+    {
+        "source_url":  "https://www.grapplesnakeusa.com/products",
+        "gauge_label":  "17",
+        "shape":  "PENT",
+        "material":  "poly",
+        "model":  "Tour M8",
+        "gauge_mm":  1.2,
+        "brand":  "Grapplesnake"
+    },
+    {
+        "source_url":  "https://www.grapplesnakeusa.com/products",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "poly",
+        "model":  "Alpha",
+        "gauge_mm":  1.25,
+        "brand":  "Grapplesnake"
+    },
+    {
+        "source_url":  "https://www.wilson.com/en-us/sports/tennis/strings/revolve",
+        "gauge_label":  "16",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Revolve",
+        "gauge_mm":  1.3,
+        "brand":  "Wilson"
+    },
+    {
+        "source_url":  "https://www.wilson.com/en-us/sports/tennis/strings/revolve",
+        "gauge_label":  "17",
+        "shape":  "RND",
+        "material":  "copoly",
+        "model":  "Revolve",
+        "gauge_mm":  1.25,
+        "brand":  "Wilson"
+    },
+    {
+        "source_url":  "https://www.wilson.com/en-us/sports/tennis/strings/revolve-spin",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Revolve Spin",
+        "gauge_mm":  1.3,
+        "brand":  "Wilson"
+    },
+    {
+        "source_url":  "https://www.wilson.com/en-us/sports/tennis/strings/revolve-spin",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "Revolve Spin",
+        "gauge_mm":  1.25,
+        "brand":  "Wilson"
+    },
+    {
+        "source_url":  "https://www.wilson.com/en-us/sports/tennis/strings/revolve-twist",
+        "gauge_label":  "16",
+        "shape":  "TWST",
+        "material":  "copoly",
+        "model":  "Revolve Twist",
+        "gauge_mm":  1.3,
+        "brand":  "Wilson"
+    },
+    {
+        "source_url":  "https://www.wilson.com/en-us/sports/tennis/strings/revolve-twist",
+        "gauge_label":  "17",
+        "shape":  "TWST",
+        "material":  "copoly",
+        "model":  "Revolve Twist",
+        "gauge_mm":  1.25,
+        "brand":  "Wilson"
+    },
+    {
+        "source_url":  "https://www.babolat.com/en-us/products/strings/rpm-blast",
+        "gauge_label":  "16",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "RPM Blast",
+        "gauge_mm":  1.3,
+        "brand":  "Babolat"
+    },
+    {
+        "source_url":  "https://www.babolat.com/en-us/products/strings/rpm-blast",
+        "gauge_label":  "17",
+        "shape":  "HEX",
+        "material":  "copoly",
+        "model":  "RPM Blast",
+        "gauge_mm":  1.25,
+        "brand":  "Babolat"
+    },
+    {
+        "source_url":  "https://www.babolat.com/en-us/products/strings/rpm-blast-rough",
+        "gauge_label":  "16",
+        "shape":  "GEAR",
+        "material":  "copoly",
+        "model":  "RPM Rough",
+        "gauge_mm":  1.3,
+        "brand":  "Babolat"
+    },
+    {
+        "source_url":  "https://www.babolat.com/en-us/products/strings/rpm-blast-rough",
+        "gauge_label":  "17",
+        "shape":  "GEAR",
+        "material":  "copoly",
+        "model":  "RPM Rough",
+        "gauge_mm":  1.25,
+        "brand":  "Babolat"
+    }
+]

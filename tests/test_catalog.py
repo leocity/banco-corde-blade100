@@ -25,3 +25,21 @@ def test_missing_from_is_empty_after_add():
     out = add_catalog_only(list(RECS), cat)
     assert missing_from(out, cat) == []
     assert missing_from(RECS, cat) != []
+
+
+def test_colour_variants_are_not_new_products():
+    recs = [{"id": "toroline-wasabi-green-17", "brand": "Toroline", "model": "Wasabi Green", "gauge_label": "17", "gauge_mm": 1.23},
+            {"id": "toroline-wasabi-x-blue-17", "brand": "Toroline", "model": "Wasabi X Blue", "gauge_label": "17", "gauge_mm": 1.23}]
+    cat = [{"brand": "Toroline", "model": "Wasabi", "gauge_label": "17", "gauge_mm": 1.23, "shape": "SQ", "material": "copoly", "source_url": "https://t/w"},
+           {"brand": "Toroline", "model": "Wasabi X", "gauge_label": "17", "gauge_mm": 1.23, "shape": "RND", "material": "copoly", "source_url": "https://t/x"}]
+    assert len(add_catalog_only(recs, cat)) == 2
+
+
+def test_verified_shapes_and_exclusions_win():
+    from pipeline.catalog import clean_catalog
+    cat = [{"brand": "Grapplesnake", "model": "Tour Sniper", "gauge_label": "17", "gauge_mm": 1.20, "shape": "HEX", "material": "copoly", "source_url": "https://g/p"},
+           {"brand": "Grapplesnake", "model": "Tour Sniper", "gauge_label": "16", "gauge_mm": 1.30, "shape": "HEX", "material": "copoly", "source_url": "https://g/p"}]
+    shapes = [{"brand": "Grapplesnake", "model": "Tour Sniper", "shape": "PENT", "source": "https://g/info"}]
+    exclude = [{"brand": "Grapplesnake", "model": "Tour Sniper", "gauge_mm": 1.20, "reason": "diametro non esistente"}]
+    out = clean_catalog(cat, shapes, exclude)
+    assert len(out) == 1 and out[0]["shape"] == "PENT" and out[0]["source_url"] == "https://g/info"

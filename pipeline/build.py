@@ -5,7 +5,7 @@ import json
 import math
 import pathlib
 
-from pipeline.catalog import add_catalog_only
+from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, calibrate_tester_spin, estimate_spin, estimate_stiffness, fit_linear,
                                loo_mae, relatives_of)
@@ -85,7 +85,10 @@ if __name__ == "__main__":
     notes = _load("data/notes.json", {})
     reviews = [row for f in sorted(glob.glob(str(ROOT / "data/agents/reviews_r*.json")))
                for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8"))]
-    out = build(records, notes, reviews=reviews, catalog=_load("data/agents/catalog.json", []))
+    cc = _load("data/crosscheck_overrides.json", {"shapes": []})
+    catalog = clean_catalog(_load("data/agents/catalog.json", []), cc.get("shapes", []),
+                            _load("data/catalog_fixes.json", {"exclude": []})["exclude"])
+    out = build(records, notes, reviews=reviews, catalog=catalog)
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     S = out["strings"]
     kinds = {}
