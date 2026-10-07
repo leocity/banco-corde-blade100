@@ -1,0 +1,1553 @@
+[
+ {
+  "id": "solinco-hyper-g-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SHG16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 73,
+     "control": 96,
+     "power": 51,
+     "durability": 73
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 87). Stiffness: \"medium firm string\" per tester. Review of 16 gauge; this entry is 17 (1.2 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 3,
+     "control": 4,
+     "power": 2,
+     "durability": 5,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Medium-Low, Control High, Comfort Medium, Tension Stability Very High, Stiffness Medium-Firm."
+   }
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-soft-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Soft.html?pcode=SHGS16",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 79,
+     "control": 93,
+     "power": 57,
+     "durability": 69
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 86). Review of 16 gauge; this entry is 17 (1.2 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 5,
+     "control": 3,
+     "power": 3,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Shared row \"Hyper-G Soft / Confidential Soft\". Raw: Power Medium, Control Medium, Comfort Very High, Tension Stability Medium-High."
+   }
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-soft-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Soft.html?pcode=SHGS16",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 79,
+     "control": 93,
+     "power": 57,
+     "durability": 69
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 86). Same gauge as this entry (16)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 5,
+     "control": 3,
+     "power": 3,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Shared row \"Hyper-G Soft / Confidential Soft\". Raw: Power Medium, Control Medium, Comfort Very High, Tension Stability Medium-High."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/STB16Lreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 94,
+     "comfort": 54,
+     "control": 91,
+     "power": 54,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 85). Review of 16L gauge; this entry is 17 (1.2 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 2,
+     "control": 5,
+     "power": 1,
+     "durability": 4,
+     "stiffness": 5
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Very Low, Control Maximum, Comfort Low / Firm, Tension Stability High, Stiffness Firm / Stiff."
+   }
+  ]
+ },
+ {
+  "id": "solinco-confidential-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 90,
+     "comfort": 63,
+     "control": 93,
+     "power": 42,
+     "durability": 88
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 91). Same gauge as this entry (16)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 3,
+     "control": 5,
+     "power": 2,
+     "durability": 5,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Low, Control Very High, Comfort Medium, Tension Stability Elite, Stiffness Medium-Firm."
+   }
+  ]
+ },
+ {
+  "id": "solinco-confidential-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 90,
+     "comfort": 63,
+     "control": 93,
+     "power": 42,
+     "durability": 88
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 91). Review of 16 gauge; this entry is 16L (1.25 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 3,
+     "control": 5,
+     "power": 2,
+     "durability": 5,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Low, Control Very High, Comfort Medium, Tension Stability Elite, Stiffness Medium-Firm."
+   }
+  ]
+ },
+ {
+  "id": "solinco-confidential-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 90,
+     "comfort": 63,
+     "control": 93,
+     "power": 42,
+     "durability": 88
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 91). Review of 16 gauge; this entry is 17 (1.2 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 3,
+     "control": 5,
+     "power": 2,
+     "durability": 5,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Low, Control Very High, Comfort Medium, Tension Stability Elite, Stiffness Medium-Firm."
+   }
+  ]
+ },
+ {
+  "id": "solinco-revolution-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 94,
+     "comfort": 71,
+     "control": 93,
+     "power": 67,
+     "durability": 86
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 95). Review of 16 gauge; this entry is 16L (1.25 mm)."
+   }
+  ]
+ },
+ {
+  "id": "grapplesnake-tour-m8-17",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://tennisnerd.net/gear/strings/grapplesnake-tour-m8-review/25992",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Text only: \"excellent feel, control and spin properties\"; tension maintenance and durability praised. Stiffness mixed (\"stiff\" vs \"feels quite soft\"), left null. Review of 16 gauge; this entry is 17 (1.25 mm)."
+   },
+   {
+    "site": "grapplesnakeusa.com",
+    "url": "https://www.grapplesnakeusa.com/pages/string-info",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": 5,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"our most durable string\", \"steady tension maintenance\". Listed in \"Precision / Low Power\" group."
+   }
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-round-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Round.html?pcode=HGR6LRG",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 72,
+     "comfort": 88,
+     "control": 82,
+     "power": 63,
+     "durability": 81
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, page scores are 0-10 (x10). durability = Playability Duration (TW Durability 8.4). Tested across 16-18 gauges, 17 (1.20) favourite. Same gauge as this entry (16)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SHG16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 73,
+     "control": 96,
+     "power": 51,
+     "durability": 73
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 87). Stiffness: \"medium firm string\" per tester. Same gauge as this entry (16)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 3,
+     "control": 4,
+     "power": 2,
+     "durability": 5,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Medium-Low, Control High, Comfort Medium, Tension Stability Very High, Stiffness Medium-Firm."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-soft-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/STBS16Lreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 84,
+     "comfort": 78,
+     "control": 80,
+     "power": 40,
+     "durability": 53
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 70). Review of 16L gauge; this entry is 16 (1.3 mm)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/STB16Lreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 94,
+     "comfort": 54,
+     "control": 91,
+     "power": 54,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 85). Review of 16L gauge; this entry is 16 (1.3 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 2,
+     "control": 5,
+     "power": 1,
+     "durability": 4,
+     "stiffness": 5
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Very Low, Control Maximum, Comfort Low / Firm, Tension Stability High, Stiffness Firm / Stiff."
+   }
+  ]
+ },
+ {
+  "id": "grapplesnake-alpha-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/Reviews/strings/grapplesnake_alpha.html?pcode=GALP125",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 90,
+     "comfort": 91,
+     "control": 85,
+     "power": 85,
+     "durability": 87
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW playtest, page scores are 0-10 (x10). durability = Playability Duration (TW Durability 8.8). Page describes Alpha as \"soft\". Gauge tested not stated on page; this entry is 17."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://tennisnerd.net/gear/strings/grapplesnake-alpha-string-review/28163",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 4,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Text only: \"soft impact feel\", arm-friendly co-poly. Gauge tested not stated on page; this entry is 17."
+   },
+   {
+    "site": "grapplesnakeusa.com",
+    "url": "https://www.grapplesnakeusa.com/pages/string-info",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 4,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"feels soft and comfortable\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-revolution-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 94,
+     "comfort": 71,
+     "control": 93,
+     "power": 67,
+     "durability": 86
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 95). Review of 16 gauge; this entry is 17 (1.2 mm)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-outlast-16l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/5-durable-polyester-strings-for-frequent-breakers-without-the-boardy-feel/68977",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "Text only: \"Medium, smooth, responsive pocketing\"; \"excellent job to resist notching\"; \"control being its stand out feature\". Same gauge as this entry (16L)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Overview text: \"Offers excellent spin and control\". No numeric score."
+   },
+   {
+    "site": "tennisoverload.com",
+    "url": "https://tennisoverload.com/solinco-outlast-tennis-string-review/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Editorial ratings /10 x10. Site says they reflect construction, manufacturer positioning and retailer evaluation, not a lab playtest. Gauge tested not stated on page; this entry is 16L. [punteggi rimossi: mix di dichiarazioni del produttore]"
+   },
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/outlast/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 5,
+     "stiffness": null
+    },
+    "note": "Brand claims: \"maximum durability\", \"control-focused\", \"longest levels of tension maintenance\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential_soft.html?pcode=CONS15R",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 88,
+     "comfort": 80,
+     "control": 90,
+     "power": 64,
+     "durability": 88
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, page scores are 0-10 (x10). durability = Playability Duration (TW Durability 8.9). Gauge tested not stated on page; this entry is 16L."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 5,
+     "control": 3,
+     "power": 3,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Shared row \"Hyper-G Soft / Confidential Soft\". Raw: Power Medium, Control Medium, Comfort Very High, Tension Stability Medium-High."
+   }
+  ]
+ },
+ {
+  "id": "solinco-revolution-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SREV16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 94,
+     "comfort": 71,
+     "control": 93,
+     "power": 67,
+     "durability": 86
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 95). Same gauge as this entry (16)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SHG16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 73,
+     "control": 96,
+     "power": 51,
+     "durability": 73
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 87). Stiffness: \"medium firm string\" per tester. Review of 16 gauge; this entry is 16L (1.25 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 3,
+     "control": 4,
+     "power": 2,
+     "durability": 5,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Medium-Low, Control High, Comfort Medium, Tension Stability Very High, Stiffness Medium-Firm."
+   }
+  ]
+ },
+ {
+  "id": "solinco-outlast-16",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/5-durable-polyester-strings-for-frequent-breakers-without-the-boardy-feel/68977",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "Text only: \"Medium, smooth, responsive pocketing\"; \"excellent job to resist notching\"; \"control being its stand out feature\". Review of 16L gauge; this entry is 16 (1.3 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Overview text: \"Offers excellent spin and control\". No numeric score."
+   },
+   {
+    "site": "tennisoverload.com",
+    "url": "https://tennisoverload.com/solinco-outlast-tennis-string-review/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Editorial ratings /10 x10. Site says they reflect construction, manufacturer positioning and retailer evaluation, not a lab playtest. Gauge tested not stated on page; this entry is 16. [punteggi rimossi: mix di dichiarazioni del produttore]"
+   },
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/outlast/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 5,
+     "stiffness": null
+    },
+    "note": "Brand claims: \"maximum durability\", \"control-focused\", \"longest levels of tension maintenance\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-mach-10-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_mach_10.html?pcode=SM1025B",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 82,
+     "comfort": 83,
+     "control": 84,
+     "power": 76,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, page scores are 0-10 (x10). durability = Playability Duration (TW Durability 8.0). Gauge tested not stated on page; this entry is 16."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 4,
+     "control": 4,
+     "power": 3,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Medium, Control Medium-High, Comfort High, Tension Stability High, Stiffness Medium."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/STB16Lreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 94,
+     "comfort": 54,
+     "control": 91,
+     "power": 54,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 85). Same gauge as this entry (16L)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 2,
+     "control": 5,
+     "power": 1,
+     "durability": 4,
+     "stiffness": 5
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Raw: Power Very Low, Control Maximum, Comfort Low / Firm, Tension Stability High, Stiffness Firm / Stiff."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-soft-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/STBS16Lreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 84,
+     "comfort": 78,
+     "control": 80,
+     "power": 40,
+     "durability": 53
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 70). Same gauge as this entry (16L)."
+   }
+  ]
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/grapplesnake-tour-sniper-review/26877",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Text only: \"excellent control, decent spin potential\", \"medium-firm polyester\". Tested in 1.25 gauge. Same gauge as this entry (16L)."
+   },
+   {
+    "site": "grapplesnakeusa.com",
+    "url": "https://www.grapplesnakeusa.com/pages/string-info",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": 2,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claims: \"control-oriented to the max\", \"does not launch very hard\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-soft-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/STBS16Lreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 84,
+     "comfort": 78,
+     "control": 80,
+     "power": 40,
+     "durability": 53
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 70). Review of 16L gauge; this entry is 17 (1.2 mm)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-barb-wire-16l",
+  "sources": [
+   {
+    "site": "tennisoverload.com",
+    "url": "https://tennisoverload.com/solinco-barb-wire-tennis-string-review/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Editorial ratings /10 x10. Site says ratings combine brand construction claims and retailer evaluation, not a lab playtest. Gauge tested not stated on page; this entry is 16L. [punteggi rimossi: mix di dichiarazioni del produttore]"
+   },
+   {
+    "site": "holabirdsports.com",
+    "url": "https://www.holabirdsports.com/blogs/news/solinco-barb-wire-tennis-string-review",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Text: \"tough to find a string with more spin and bite\". Overall 4/5 stars only; string broke after six sessions (single anecdote, not mapped). Gauge tested not stated on page; this entry is 16L."
+   },
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/barb-wire/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"maximum spin and bite potential\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-outlast-17",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/5-durable-polyester-strings-for-frequent-breakers-without-the-boardy-feel/68977",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "Text only: \"Medium, smooth, responsive pocketing\"; \"excellent job to resist notching\"; \"control being its stand out feature\". Review of 16L gauge; this entry is 17 (1.2 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Overview text: \"Offers excellent spin and control\". No numeric score."
+   },
+   {
+    "site": "tennisoverload.com",
+    "url": "https://tennisoverload.com/solinco-outlast-tennis-string-review/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Editorial ratings /10 x10. Site says they reflect construction, manufacturer positioning and retailer evaluation, not a lab playtest. Gauge tested not stated on page; this entry is 17. [punteggi rimossi: mix di dichiarazioni del produttore]"
+   },
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/outlast/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 5,
+     "stiffness": null
+    },
+    "note": "Brand claims: \"maximum durability\", \"control-focused\", \"longest levels of tension maintenance\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16l",
+  "sources": [
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/tour-bite-diamond-rough/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"intense spin and bite\". No numeric data found for this model (no TW playtest, no Tennisnerd review)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-soft-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/Solinco_Hyper-G_Soft.html?pcode=SHGS16",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 79,
+     "control": 93,
+     "power": 57,
+     "durability": 69
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 86). Review of 16 gauge; this entry is 16L (1.25 mm)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 5,
+     "control": 3,
+     "power": 3,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Shared row \"Hyper-G Soft / Confidential Soft\". Raw: Power Medium, Control Medium, Comfort Very High, Tension Stability Medium-High."
+   }
+  ]
+ },
+ {
+  "id": "solinco-barb-wire-17",
+  "sources": [
+   {
+    "site": "tennisoverload.com",
+    "url": "https://tennisoverload.com/solinco-barb-wire-tennis-string-review/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Editorial ratings /10 x10. Site says ratings combine brand construction claims and retailer evaluation, not a lab playtest. Gauge tested not stated on page; this entry is 17. [punteggi rimossi: mix di dichiarazioni del produttore]"
+   },
+   {
+    "site": "holabirdsports.com",
+    "url": "https://www.holabirdsports.com/blogs/news/solinco-barb-wire-tennis-string-review",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Text: \"tough to find a string with more spin and bite\". Overall 4/5 stars only; string broke after six sessions (single anecdote, not mapped). Gauge tested not stated on page; this entry is 17."
+   },
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/barb-wire/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"maximum spin and bite potential\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-16",
+  "sources": [
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/tour-bite-diamond-rough/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"intense spin and bite\". No numeric data found for this model (no TW playtest, no Tennisnerd review)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-barb-wire-16",
+  "sources": [
+   {
+    "site": "tennisoverload.com",
+    "url": "https://tennisoverload.com/solinco-barb-wire-tennis-string-review/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Editorial ratings /10 x10. Site says ratings combine brand construction claims and retailer evaluation, not a lab playtest. Gauge tested not stated on page; this entry is 16. [punteggi rimossi: mix di dichiarazioni del produttore]"
+   },
+   {
+    "site": "holabirdsports.com",
+    "url": "https://www.holabirdsports.com/blogs/news/solinco-barb-wire-tennis-string-review",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Text: \"tough to find a string with more spin and bite\". Overall 4/5 stars only; string broke after six sessions (single anecdote, not mapped). Gauge tested not stated on page; this entry is 16."
+   },
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/barb-wire/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"maximum spin and bite potential\"."
+   }
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-diamond-rough-17",
+  "sources": [
+   {
+    "site": "solincosports.com",
+    "url": "https://solincosports.com/equipment/tour-bite-diamond-rough/",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand claim: \"intense spin and bite\". No numeric data found for this model (no TW playtest, no Tennisnerd review)."
+   }
+  ]
+ }
+]

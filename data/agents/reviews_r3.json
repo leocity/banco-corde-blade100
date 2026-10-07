@@ -1,0 +1,560 @@
+[
+ {
+  "id": "tecnifibre-razor-spin-17",
+  "sources": [
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/tecnifibre-razor-spin-review-elite-bite-without-the-harsh-poly-feedback/",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": 65,
+     "control": 90,
+     "power": 80,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "0-100 ratings on page; durability = 'Tension Holding' 80. Gauge not specified."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=67341",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "No numeric scores. Plays a bit firmer than Razor Soft; reviewer notes it got harsher around the 3rd hour."
+   }
+  ]
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16",
+  "sources": []
+ },
+ {
+  "id": "head-lynx-tour-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/head_lynx_tour.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 89,
+     "comfort": 74,
+     "control": 93,
+     "power": 65,
+     "durability": 83
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Page covers Lynx Tour 16/1.30 and 17/1.25. Testers call it a notably firm poly."
+   }
+  ]
+ },
+ {
+  "id": "luxilon-4g-soft-16l",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/LUX4GS16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 85,
+     "comfort": 75,
+     "control": 94,
+     "power": 57,
+     "durability": 85
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Luxilon 4G Soft 16/1.25. Testers: softer than 4G but still on the stiffer side."
+   }
+  ]
+ },
+ {
+  "id": "tecnifibre-razor-soft-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/tecnifibre_razor_soft.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 82,
+     "comfort": 79,
+     "control": 89,
+     "power": 67,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Playtest scores shown on 0-10 scale, converted x10; durability = Playability Duration. Gauge not stated on page. Testers call it firm."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/gear/strings/tecnifibre-razor-soft-review/31369",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "No numeric scores. Described as a firm but not harsh string, 'not a soft string'."
+   }
+  ]
+ },
+ {
+  "id": "luxilon-4g-16",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/LUX4G130review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 86,
+     "comfort": 78,
+     "control": 88,
+     "power": 65,
+     "durability": 82
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Luxilon 4G 16/1.30."
+   }
+  ]
+ },
+ {
+  "id": "signum-pro-x-perience-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse Europe",
+    "url": "https://www.tenniswarehouse-europe.com/learning_center/string_reviews/signum_pro_xperience.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 85,
+     "comfort": 70,
+     "control": 87,
+     "power": 57,
+     "durability": 79
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Review is of X-Perience 1.18 (nearby gauge, thinner than the 1.24 in this id)."
+   }
+  ]
+ },
+ {
+  "id": "kirschbaum-max-power-16",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/KMAXPWR16Rreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 86,
+     "comfort": 64,
+     "control": 96,
+     "power": 38,
+     "durability": 89
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Max Power 16/1.30. Testers: firm and crisp, stiffer side."
+   }
+  ]
+ },
+ {
+  "id": "head-hawk-16",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/HAWK16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 85,
+     "comfort": 56,
+     "control": 84,
+     "power": 37,
+     "durability": 82
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Head Hawk 16/1.30 (17/1.25 page shows the same scores)."
+   }
+  ]
+ },
+ {
+  "id": "kirschbaum-max-power-16l",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/KMAXPWR17review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 86,
+     "comfort": 64,
+     "control": 96,
+     "power": 38,
+     "durability": 89
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Review is of Max Power 17/1.25 (same 1.25 mm diameter as this 16L id). Testers: firm and crisp, stiffer side."
+   }
+  ]
+ },
+ {
+  "id": "kirschbaum-pro-line-rough-16l",
+  "sources": []
+ },
+ {
+  "id": "head-hawk-seeding-16",
+  "sources": []
+ },
+ {
+  "id": "yonex-poly-tour-spin-16l",
+  "sources": []
+ },
+ {
+  "id": "kirschbaum-xplosive-spd-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/kirschbaum_xplosive_speed.html?pcode=XS17",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 83,
+     "comfort": 66,
+     "control": 77,
+     "power": 62,
+     "durability": 73
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Review is of 17/1.23 (nearby gauge to 1.25). Testers describe it as a relatively soft co-poly."
+   }
+  ]
+ },
+ {
+  "id": "yonex-poly-tour-spin-17",
+  "sources": []
+ },
+ {
+  "id": "kirschbaum-max-power-rough-16",
+  "sources": []
+ },
+ {
+  "id": "head-lynx-tour-16",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/head_lynx_tour.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 89,
+     "comfort": 74,
+     "control": 93,
+     "power": 65,
+     "durability": 83
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Page covers Lynx Tour 16/1.30 and 17/1.25. Testers call it a notably firm poly."
+   }
+  ]
+ },
+ {
+  "id": "kirschbaum-pro-line-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/PL2125BKreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 68,
+     "comfort": 63,
+     "control": 88,
+     "power": 45,
+     "durability": 86
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Kirschbaum Pro Line II 17/1.25."
+   }
+  ]
+ },
+ {
+  "id": "head-hawk-power-17",
+  "sources": []
+ },
+ {
+  "id": "luxilon-element-soft-ir-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/luxilon_element_soft_ir.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 80,
+     "comfort": 80,
+     "control": 78,
+     "power": 76,
+     "durability": 64
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Playtest scores shown on 0-10 scale, converted x10; durability = Playability Duration. Gauge not stated on page; applied to this id. Described as one of Luxilon's softest co-polys."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=64171",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "No numeric scores. Tested 1.27/17 Element Soft; described as noticeably softer than traditional Luxilon polys. Gauge 1.27 (nearby to 1.20)."
+   }
+  ]
+ },
+ {
+  "id": "kirschbaum-spiky-shark-16",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SHARK16BKreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 93,
+     "comfort": 55,
+     "control": 83,
+     "power": 25,
+     "durability": 85
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. TW lists this as 'Kirschbaum Spiky Black Shark 16/1.30'; assumed to be the same product as Spiky Shark. Described as firm, very low-powered."
+   }
+  ]
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16l",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/kirschbaum_xplosive_speed.html?pcode=XS17",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 83,
+     "comfort": 66,
+     "control": 77,
+     "power": 62,
+     "durability": 73
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Review is of 17/1.23 (nearby gauge to 1.25); the 16/1.28 page shows identical scores. Testers describe it as a relatively soft co-poly."
+   }
+  ]
+ },
+ {
+  "id": "kirschbaum-max-power-rough-17",
+  "sources": []
+ },
+ {
+  "id": "luxilon-alu-power-rough-16l",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/ALUPR16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 73,
+     "control": 90,
+     "power": 60,
+     "durability": 87
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Playtest 0-100; durability = Playability Duration. Luxilon ALU Power Rough 16L/1.25."
+   }
+  ]
+ },
+ {
+  "id": "luxilon-element-soft-ir-16l",
+  "sources": [
+   {
+    "site": "Tennis Warehouse",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/luxilon_element_soft_ir.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 80,
+     "comfort": 80,
+     "control": 78,
+     "power": 76,
+     "durability": 64
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Playtest scores shown on 0-10 scale, converted x10; durability = Playability Duration. Gauge not stated on page; applied to this id. Described as one of Luxilon's softest co-polys."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=64171",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "No numeric scores. Tested 1.27/17 Element Soft; described as noticeably softer than traditional Luxilon polys."
+   }
+  ]
+ }
+]

@@ -1,0 +1,177 @@
+[
+ {
+  "id": "tecnifibre-razor-spin-17",
+  "brand": "Tecnifibre",
+  "model": "Razor Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "signum-pro-plasma-hextreme-16",
+  "brand": "Signum Pro",
+  "model": "Plasma HEXtreme",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "head-lynx-tour-17",
+  "brand": "Head",
+  "model": "Lynx Tour",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "luxilon-4g-soft-16l",
+  "brand": "Luxilon",
+  "model": "4G Soft",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "tecnifibre-razor-soft-17",
+  "brand": "Tecnifibre",
+  "model": "Razor Soft",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "luxilon-4g-16",
+  "brand": "Luxilon",
+  "model": "4G",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "signum-pro-x-perience-17",
+  "brand": "Signum Pro",
+  "model": "X-Perience",
+  "gauge_label": "17",
+  "gauge_mm": 1.24
+ },
+ {
+  "id": "kirschbaum-max-power-16",
+  "brand": "Kirschbaum",
+  "model": "Max Power",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "head-hawk-16",
+  "brand": "Head",
+  "model": "Hawk",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "kirschbaum-max-power-16l",
+  "brand": "Kirschbaum",
+  "model": "Max Power",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "kirschbaum-pro-line-rough-16l",
+  "brand": "Kirschbaum",
+  "model": "Pro Line rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "head-hawk-seeding-16",
+  "brand": "Head",
+  "model": "Hawk Seeding",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "yonex-poly-tour-spin-16l",
+  "brand": "Yonex",
+  "model": "Poly Tour Spin",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "kirschbaum-xplosive-spd-17",
+  "brand": "Kirschbaum",
+  "model": "Xplosive Spd",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "yonex-poly-tour-spin-17",
+  "brand": "Yonex",
+  "model": "Poly Tour Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.2
+ },
+ {
+  "id": "kirschbaum-max-power-rough-16",
+  "brand": "Kirschbaum",
+  "model": "Max Power Rough",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "head-lynx-tour-16",
+  "brand": "Head",
+  "model": "Lynx Tour",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "kirschbaum-pro-line-17",
+  "brand": "Kirschbaum",
+  "model": "Pro Line",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "head-hawk-power-17",
+  "brand": "Head",
+  "model": "Hawk Power",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "luxilon-element-soft-ir-17",
+  "brand": "Luxilon",
+  "model": "Element Soft IR",
+  "gauge_label": "17",
+  "gauge_mm": 1.2
+ },
+ {
+  "id": "kirschbaum-spiky-shark-16",
+  "brand": "Kirschbaum",
+  "model": "Spiky Shark",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "kirschbaum-xplosive-speed-16l",
+  "brand": "Kirschbaum",
+  "model": "Xplosive Speed",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "kirschbaum-max-power-rough-17",
+  "brand": "Kirschbaum",
+  "model": "Max Power Rough",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "luxilon-alu-power-rough-16l",
+  "brand": "Luxilon",
+  "model": "ALU Power Rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "luxilon-element-soft-ir-16l",
+  "brand": "Luxilon",
+  "model": "Element Soft IR",
+  "gauge_label": "16L",
+  "gauge_mm": 1.27
+ }
+]

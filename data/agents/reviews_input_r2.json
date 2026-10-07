@@ -1,0 +1,261 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16l",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "re-string-slap-17",
+  "brand": "Re-String",
+  "model": "Slap",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "re-string-sync-17",
+  "brand": "Re-String",
+  "model": "Sync",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "re-string-vivo-17",
+  "brand": "Re-String",
+  "model": "Vivo",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "re-string-zero-16",
+  "brand": "Re-String",
+  "model": "Zero",
+  "gauge_label": "16",
+  "gauge_mm": 1.28
+ },
+ {
+  "id": "re-string-zero-17",
+  "brand": "Re-String",
+  "model": "Zero",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "brand": "Toroline",
+  "model": "Absolute",
+  "gauge_label": "17L",
+  "gauge_mm": 1.2
+ },
+ {
+  "id": "toroline-caviar-17l",
+  "brand": "Toroline",
+  "model": "Caviar",
+  "gauge_label": "17L",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-caviar-17",
+  "brand": "Toroline",
+  "model": "Caviar",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-ether-17l",
+  "brand": "Toroline",
+  "model": "Ether",
+  "gauge_label": "17L",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-enso-pro-16",
+  "brand": "Toroline",
+  "model": "Enso Pro",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "toroline-enso-pro-neon-yl-16l",
+  "brand": "Toroline",
+  "model": "Enso Pro neon yl",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "toroline-enso-pro-carbon-16l",
+  "brand": "Toroline",
+  "model": "Enso Pro-carbon",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "toroline-enso-pro-neon-pk-17",
+  "brand": "Toroline",
+  "model": "Enso Pro neon pk",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-wasabi-green-17",
+  "brand": "Toroline",
+  "model": "Wasabi green",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-wasabi-x-blue-17",
+  "brand": "Toroline",
+  "model": "Wasabi X blue",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-wasabi-pom-17",
+  "brand": "Toroline",
+  "model": "Wasabi Pom",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "brand": "Toroline",
+  "model": "Super Toro",
+  "gauge_label": "17L",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "brand": "Toroline",
+  "model": "O-Toro",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "brand": "Toroline",
+  "model": "Toro Toro Orange",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "brand": "Toroline",
+  "model": "Toro Toro pink",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-toro-toro-matcha-16l",
+  "brand": "Toroline",
+  "model": "Toro Toro matcha",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "wilson-revolve-spin-16",
+  "brand": "Wilson",
+  "model": "Revolve Spin",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "wilson-revolve-spin-17",
+  "brand": "Wilson",
+  "model": "Revolve Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "wilson-revolve-17",
+  "brand": "Wilson",
+  "model": "Revolve",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "toroline-o-toro-snap-16l",
+  "brand": "Toroline",
+  "model": "O-TORO Snap",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "brand": "Babolat",
+  "model": "RPM Blast Rough",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "brand": "Toroline",
+  "model": "O-Toro Spin",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-o-toro-tour-17",
+  "brand": "Toroline",
+  "model": "O-Toro Tour",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "toroline-cash-16l",
+  "brand": "Toroline",
+  "model": "Cash",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "toroline-snapper-17",
+  "brand": "Toroline",
+  "model": "Snapper",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "wilson-revolve-16",
+  "brand": "Wilson",
+  "model": "Revolve",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "babolat-rpm-blast-orange-16",
+  "brand": "Babolat",
+  "model": "RPM Blast Orange",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "babolat-rpm-blast-16",
+  "brand": "Babolat",
+  "model": "RPM Blast",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ }
+]

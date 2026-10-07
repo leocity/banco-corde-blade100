@@ -1,0 +1,107 @@
+[
+ {
+  "id": "solinco-hyper-g-round-16l",
+  "brand": "Solinco",
+  "model": "Hyper-G Round",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "solinco-hyper-g-round-17",
+  "brand": "Solinco",
+  "model": "Hyper-G Round",
+  "gauge_label": "17",
+  "gauge_mm": 1.2
+ },
+ {
+  "id": "solinco-mach-10-16l",
+  "brand": "Solinco",
+  "model": "Mach-10",
+  "gauge_label": "16L",
+  "gauge_mm": 1.25
+ },
+ {
+  "id": "solinco-mach-10-17",
+  "brand": "Solinco",
+  "model": "Mach-10",
+  "gauge_label": "17",
+  "gauge_mm": 1.2
+ },
+ {
+  "id": "solinco-confidential-soft-16",
+  "brand": "Solinco",
+  "model": "Confidential Soft",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "solinco-confidential-soft-17",
+  "brand": "Solinco",
+  "model": "Confidential Soft",
+  "gauge_label": "17",
+  "gauge_mm": 1.2
+ },
+ {
+  "id": "re-string-vivo-16",
+  "brand": "Re-String",
+  "model": "Vivo",
+  "gauge_label": "16",
+  "gauge_mm": 1.28
+ },
+ {
+  "id": "re-string-sync-16",
+  "brand": "Re-String",
+  "model": "Sync",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "re-string-sync-18",
+  "brand": "Re-String",
+  "model": "Sync",
+  "gauge_label": "18",
+  "gauge_mm": 1.2
+ },
+ {
+  "id": "re-string-slap-16",
+  "brand": "Re-String",
+  "model": "Slap",
+  "gauge_label": "16",
+  "gauge_mm": 1.28
+ },
+ {
+  "id": "toroline-a5-17",
+  "brand": "Toroline",
+  "model": "A5",
+  "gauge_label": "17",
+  "gauge_mm": 1.23
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16",
+  "brand": "Grapplesnake",
+  "model": "Tour Sniper",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "grapplesnake-tour-m8-16",
+  "brand": "Grapplesnake",
+  "model": "Tour M8",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "wilson-revolve-twist-16",
+  "brand": "Wilson",
+  "model": "Revolve Twist",
+  "gauge_label": "16",
+  "gauge_mm": 1.3
+ },
+ {
+  "id": "wilson-revolve-twist-17",
+  "brand": "Wilson",
+  "model": "Revolve Twist",
+  "gauge_label": "17",
+  "gauge_mm": 1.25
+ }
+]

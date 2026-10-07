@@ -38,7 +38,9 @@ def calibrate_tester_spin(pairs):
     xs, ys = [float(p[0]) for p in pairs], [float(p[1]) for p in pairs]
     a, b = fit_linear(xs, ys)
     mae, base = loo_mae(xs, ys), _loo_mean_mae(ys)
-    return {"a": a, "b": b, "mae": round(mae, 2), "baseline_mae": round(base, 2), "usable": mae < base, "n": len(pairs)}
+    # utile solo se la relazione è nel verso giusto e batte la media di almeno il 5%
+    usable = a > 0 and mae < 0.95 * base
+    return {"a": a, "b": b, "mae": round(mae, 2), "baseline_mae": round(base, 2), "usable": usable, "n": len(pairs)}
 
 
 def base_model(model):

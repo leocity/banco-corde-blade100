@@ -59,3 +59,10 @@ def test_relatives_match_colour_variants():
 def test_stiffness_from_racketpedia_regression():
     s = estimate_stiffness(rec("b-r-17", rp=1.0), [], (100.0, 110.0, 12.0), None, [180.0, 200.0, 220.0])
     assert s["kind"] == "da Racketpedia" and s["value_lbin"] == 210.0 and s["low"] == 198.0
+
+
+def test_calibration_with_negative_slope_or_no_gain_is_unusable():
+    flat = [(40, 7.0), (50, 6.8), (60, 7.1), (70, 6.9), (80, 6.95), (90, 6.85), (55, 7.05), (65, 6.9)]
+    assert calibrate_tester_spin(flat)["usable"] is False
+    good = [(40, 4.0), (50, 5.1), (60, 5.9), (70, 7.2), (80, 7.9), (90, 9.1), (55, 5.4), (65, 6.6)]
+    assert calibrate_tester_spin(good)["usable"] is True
