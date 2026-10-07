@@ -1,0 +1,1825 @@
+[
+ {
+  "id": "babolat-rpm-blast-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/Reviews/BRPMB16/BRPMB16Review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 97,
+     "comfort": 61,
+     "control": 90,
+     "power": 43,
+     "durability": 74
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest of RPM Blast (testers used 16/1.30 and 17/1.25; 16L/1.25 treated as same string). durability=Playability Duration 74. Page says TW University gives a high stiffness rating (firm co-poly). Note: the TW 16 330-reel page lists different Power/Comfort (see next source)."
+   },
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPM33016Rreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 97,
+     "comfort": 87,
+     "control": 90,
+     "power": 67,
+     "durability": 74
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Same TW RPM Blast playtest text on the 16 330-reel page but with different Power (67) and Comfort (87) than the main page (43 / 61); Spin 97, Control 90, Playability Duration 74 identical. Discordant within TW; use with care."
+   },
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/babolat-rpm-blast-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 55,
+     "control": 100,
+     "power": 85,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Gauge not stated."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://tennisnerd.net/gear/strings/babolat-rpm-blast-orange-review/27949",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 3,
+     "control": 4,
+     "power": null,
+     "durability": 2,
+     "stiffness": 4
+    },
+    "note": "Jonas Eriksson, RPM Blast Orange review, describes standard RPM Blast: grand snapback and spin potential, firm and controlled, comfort decent for a stiff string, durability somewhat below average / goes dead quickly for big hitters."
+   }
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/Reviews/BRPMB16/BRPMB16Review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 97,
+     "comfort": 61,
+     "control": 90,
+     "power": 43,
+     "durability": 74
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest of RPM Blast (testers used 16/1.30 and 17/1.25; 17/1.25 treated as same string). durability=Playability Duration 74. Page says TW University gives a high stiffness rating (firm co-poly). Note: the TW 16 330-reel page lists different Power/Comfort (see next source)."
+   },
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPM33016Rreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 97,
+     "comfort": 87,
+     "control": 90,
+     "power": 67,
+     "durability": 74
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Same TW RPM Blast playtest text on the 16 330-reel page but with different Power (67) and Comfort (87) than the main page (43 / 61); Spin 97, Control 90, Playability Duration 74 identical. Discordant within TW; use with care."
+   },
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/babolat-rpm-blast-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 55,
+     "control": 100,
+     "power": 85,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Gauge not stated."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://tennisnerd.net/gear/strings/babolat-rpm-blast-orange-review/27949",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 3,
+     "control": 4,
+     "power": null,
+     "durability": 2,
+     "stiffness": 4
+    },
+    "note": "Jonas Eriksson, RPM Blast Orange review, describes standard RPM Blast: grand snapback and spin potential, firm and controlled, comfort decent for a stiff string, durability somewhat below average / goes dead quickly for big hitters."
+   }
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPRR13review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 90,
+     "comfort": 66,
+     "control": 65,
+     "power": 62,
+     "durability": 40
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW playtest of Babolat RPM Rough (earlier sold as RPM Blast Rough); page covers 1.30 and 1.25 gauges (16L/1.25). durability=Playability Duration 40 (needed cutting out well before breaking). Stiffness: tester cites low stiffness vs other polys; TW says decidedly softer than RPM Blast. Older page BRPMBRSreview.html shows Power 43 (looks like template carry-over from RPM Blast); BRPRR12/13 pages show 62."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/babolat-rpm-rough-1-30mm-string-review/45852",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 2,
+     "control": 4,
+     "power": 2,
+     "durability": 2,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd review of RPM Rough 1.30mm (Pure Drive 98/ProStaff): great spin but not off the charts, very good control on all groundstrokes, jarring/stiff, no added power, performance drops after about 2-4 hours. Stiffness opinion differs from TW (tester says low stiffness)."
+   }
+  ]
+ },
+ {
+  "id": "re-string-slap-17",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/?p=61581",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": 4,
+     "control": 3,
+     "power": 4,
+     "durability": 3,
+     "stiffness": null
+    },
+    "note": "Chris Nash, Slap 1.23 in Head Speed MP: extremely easy access to spin, comfortable for a performance poly, lively; control/predictability below Zero; settles and plays duller after a few hours."
+   },
+   {
+    "site": "shoprestring.com (brand)",
+    "url": "https://shoprestring.com/products/slap-string",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand copy: relentless spin, carries the DNA of Zero with a touch more control/forgiveness. Marketing claim."
+   }
+  ]
+ },
+ {
+  "id": "re-string-sync-17",
+  "sources": [
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/restring-sync-tennis-string-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 70,
+     "control": 90,
+     "power": 76,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Gauge not stated."
+   },
+   {
+    "site": "shoprestring.com (brand)",
+    "url": "https://shoprestring.com/products/sync-single-set",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Brand copy: exceptional control, outstanding feel, long-lasting snapback. Marketing claims."
+   }
+  ]
+ },
+ {
+  "id": "re-string-vivo-17",
+  "sources": [
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/restring-vivo-tennis-string-review-massive-spin-meets-easy-power/",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": 65,
+     "control": 90,
+     "power": 100,
+     "durability": 90
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Lab figures stated for Vivo 1.23."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/racquets/restring-vivo-string-review/45756",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "Jonas Eriksson (1.23): spin potential and control are excellent, holds tension really well, between firm and soft; soft-poly seekers have better options."
+   },
+   {
+    "site": "shoprestring.com (brand)",
+    "url": "https://shoprestring.com/products/vivo-single-set",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand copy: exceptional control with a gripping bite, crisp tempered feel. Marketing claim."
+   }
+  ]
+ },
+ {
+  "id": "re-string-zero-16",
+  "sources": [
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/restring-zero-tennis-string-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 65,
+     "control": 85,
+     "power": 85,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Lab figures stated for Zero 1.23mm (16/1.28 is same string / nearby gauge)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/restring-zero-review/31681",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 4,
+     "control": null,
+     "power": null,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "Jonas Eriksson: medium-to-soft poly, comfort around Yonex Poly Tour Pro, good spin and tension maintenance, relatively lively; tested 1.23 and 1.28 (16/1.28)."
+   },
+   {
+    "site": "shoprestring.com (brand)",
+    "url": "https://shoprestring.com/products/restring-zero-single-set",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": 4,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Brand copy: maximum bite, explosive spin, long-lasting snapback, raw power and blistering pace. Marketing claims."
+   }
+  ]
+ },
+ {
+  "id": "re-string-zero-17",
+  "sources": [
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/restring-zero-tennis-string-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 65,
+     "control": 85,
+     "power": 85,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Lab figures stated for Zero 1.23mm (17/1.23 is same string / nearby gauge)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/restring-zero-review/31681",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 4,
+     "control": null,
+     "power": null,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "Jonas Eriksson: medium-to-soft poly, comfort around Yonex Poly Tour Pro, good spin and tension maintenance, relatively lively; tested 1.23 and 1.28 (17/1.23)."
+   },
+   {
+    "site": "shoprestring.com (brand)",
+    "url": "https://shoprestring.com/products/restring-zero-single-set",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": 4,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Brand copy: maximum bite, explosive spin, long-lasting snapback, raw power and blistering pace. Marketing claims."
+   }
+  ]
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-strings-spin-control-and-color/63502",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 5,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Tennisnerd Toroline overview (Feb 2026, not a hands-on test): Absolute described as the softest poly Toroline makes, ideal if comfort/touch is the priority."
+   }
+  ]
+ },
+ {
+  "id": "toroline-caviar-17l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/upcoming-string-reviews/22973",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": null,
+     "power": 4,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Jonas Eriksson first impressions of Caviar and Super Toro (green): lively, relatively powerful, lots of bite and extra spin."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-strings-spin-control-and-color/63502",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Toroline overview (Feb 2026): Caviar firmer and more control-oriented than Wasabi, pure-control pick, among firmest in the line-up."
+   },
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/caviar",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 5,
+     "stiffness": null
+    },
+    "note": "Brand copy: maximum precision, durability and tension maintenance is unmatched. Marketing claims."
+   }
+  ]
+ },
+ {
+  "id": "toroline-caviar-17",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/upcoming-string-reviews/22973",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": null,
+     "power": 4,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Jonas Eriksson first impressions of Caviar and Super Toro (green): lively, relatively powerful, lots of bite and extra spin."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-strings-spin-control-and-color/63502",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd Toroline overview (Feb 2026): Caviar firmer and more control-oriented than Wasabi, pure-control pick, among firmest in the line-up."
+   },
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/caviar",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 5,
+     "stiffness": null
+    },
+    "note": "Brand copy: maximum precision, durability and tension maintenance is unmatched. Marketing claims."
+   }
+  ]
+ },
+ {
+  "id": "toroline-ether-17l",
+  "sources": [
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/ether",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Brand page lists Stiffness Level: Firm (1.20mm, square)."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-strings-spin-control-and-color/63502",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Tennisnerd Toroline overview (Feb 2026, not hands-on): Ether gives extreme spin and very connected feel; recommended for maximum spin."
+   }
+  ]
+ },
+ {
+  "id": "toroline-enso-pro-16",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/?p=62407",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 3,
+     "control": 4,
+     "power": null,
+     "durability": 3,
+     "stiffness": 3
+    },
+    "note": "Chris Nash, Enso Pro 1.25 (yellow) in Wilson Blade V9: moderate spin, reliable control, comfortable middle-ground feel, tension holding average (tinny after ~8-10 h). Applied to 16/1.30 (reviewed 1.25); Toroline says carbon grey is a bit crisper."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-a5-vs-enso-pro-the-ultimate-round-poly-battle/65969",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 4,
+     "control": null,
+     "power": 4,
+     "durability": 3,
+     "stiffness": 2
+    },
+    "note": "Chris Nash, A5 vs Enso Pro: soft/plush feel, power moderate-to-high, spin moderate (high snapback), better comfort than A5; bouncy after a few hours of heavy hitting."
+   }
+  ]
+ },
+ {
+  "id": "toroline-enso-pro-neon-yl-16l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/?p=62407",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 3,
+     "control": 4,
+     "power": null,
+     "durability": 3,
+     "stiffness": 3
+    },
+    "note": "Chris Nash, Enso Pro 1.25 (yellow) in Wilson Blade V9: moderate spin, reliable control, comfortable middle-ground feel, tension holding average (tinny after ~8-10 h). Applied to 16L/1.25; Toroline says carbon grey is a bit crisper."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-a5-vs-enso-pro-the-ultimate-round-poly-battle/65969",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 4,
+     "control": null,
+     "power": 4,
+     "durability": 3,
+     "stiffness": 2
+    },
+    "note": "Chris Nash, A5 vs Enso Pro: soft/plush feel, power moderate-to-high, spin moderate (high snapback), better comfort than A5; bouncy after a few hours of heavy hitting."
+   }
+  ]
+ },
+ {
+  "id": "toroline-enso-pro-carbon-16l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/?p=62407",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 3,
+     "control": 4,
+     "power": null,
+     "durability": 3,
+     "stiffness": 3
+    },
+    "note": "Chris Nash, Enso Pro 1.25 (yellow) in Wilson Blade V9: moderate spin, reliable control, comfortable middle-ground feel, tension holding average (tinny after ~8-10 h). Applied to 16L/1.25 carbon; Toroline says carbon grey is a bit crisper."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-a5-vs-enso-pro-the-ultimate-round-poly-battle/65969",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 4,
+     "control": null,
+     "power": 4,
+     "durability": 3,
+     "stiffness": 2
+    },
+    "note": "Chris Nash, A5 vs Enso Pro: soft/plush feel, power moderate-to-high, spin moderate (high snapback), better comfort than A5; bouncy after a few hours of heavy hitting."
+   }
+  ]
+ },
+ {
+  "id": "toroline-enso-pro-neon-pk-17",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/?p=62407",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 3,
+     "control": 4,
+     "power": null,
+     "durability": 3,
+     "stiffness": 3
+    },
+    "note": "Chris Nash, Enso Pro 1.25 (yellow) in Wilson Blade V9: moderate spin, reliable control, comfortable middle-ground feel, tension holding average (tinny after ~8-10 h). Applied to 17/1.23 neon pink (reviewed 1.25); Toroline says carbon grey is a bit crisper."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-a5-vs-enso-pro-the-ultimate-round-poly-battle/65969",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": 4,
+     "control": null,
+     "power": 4,
+     "durability": 3,
+     "stiffness": 2
+    },
+    "note": "Chris Nash, A5 vs Enso Pro: soft/plush feel, power moderate-to-high, spin moderate (high snapback), better comfort than A5; bouncy after a few hours of heavy hitting."
+   }
+  ]
+ },
+ {
+  "id": "toroline-wasabi-green-17",
+  "sources": [
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/toroline-wasabi-review-lively-spin-serious-bite-surprising-power/",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": 65,
+     "control": 90,
+     "power": 85,
+     "durability": 70
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Colour variants (green/pink/red) are the same Wasabi string."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-wasabi-review/31178",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": 4,
+     "control": 4,
+     "power": null,
+     "durability": 3,
+     "stiffness": null
+    },
+    "note": "Jonas Eriksson tested Wasabi Neon Pink 1.23: excellent spin, very good comfort, good control (for a softer poly), tension maintenance about average, relatively soft for a shaped string."
+   }
+  ]
+ },
+ {
+  "id": "toroline-wasabi-x-blue-17",
+  "sources": [
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/wasabix",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Brand copy: Wasabi X is a round, ultra-slick softer co-poly meant mainly as a cross string; a different string from the square Wasabi. No hands-on review found."
+   }
+  ]
+ },
+ {
+  "id": "toroline-wasabi-pom-17",
+  "sources": [
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/toroline-wasabi-review-lively-spin-serious-bite-surprising-power/",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": 65,
+     "control": 90,
+     "power": 85,
+     "durability": 70
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Colour variants (green/pink/red) are the same Wasabi string."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-wasabi-review/31178",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": 4,
+     "control": 4,
+     "power": null,
+     "durability": 3,
+     "stiffness": null
+    },
+    "note": "Jonas Eriksson tested Wasabi Neon Pink 1.23: excellent spin, very good comfort, good control (for a softer poly), tension maintenance about average, relatively soft for a shaped string."
+   }
+  ]
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/upcoming-string-reviews/22973",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": null,
+     "power": 4,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Jonas Eriksson first impressions of Super Toro (green) and Caviar: lively, relatively powerful, lots of bite and extra spin."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/toroline-strings-spin-control-and-color/63502",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Tennisnerd Toroline overview (Feb 2026): Super Toro listed (with Enso Pro) as the durability pick."
+   }
+  ]
+ },
+ {
+  "id": "toroline-o-toro-17",
+  "sources": [
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/toroline-otoro-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": 70,
+     "control": 95,
+     "power": 80,
+     "durability": 70
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-o-toro-review/40704",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 5,
+     "control": 3,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Jonas Eriksson: comfortable, semi-lively, good spin, not max control; comfort/snapback/feel excellent."
+   },
+   {
+    "site": "tennis-warehouse.com (guide, TWU lab data)",
+    "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW guide: O-Toro rated 9.4 (/10) for Spin Potential (TWU lab measure, not a tester score) and stiffness 166 lb/in, called lower stiffness for a flagship poly. No TW tester playtest of plain O-Toro found. [spin 94 rimosso: è lo spin potential TWU, non un voto dei tester]"
+   }
+  ]
+ },
+ {
+  "id": "toroline-toro-toro-orange-17",
+  "sources": [
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/toro-toro",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Brand copy: massive spin and precision, surgical precision, softer flex. Marketing claims; colour variants (pink/orange/matcha) are the same string."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-toro-pro-string-review/35368",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "HYBRID review (Toro Toro 1.23 mains + Enso Pro carbon crosses), not full bed: heavy topspin (more than Hyper-G), strong control, snap-back lasting about 15 h. Indicative only."
+   }
+  ]
+ },
+ {
+  "id": "toroline-toro-toro-pink-17",
+  "sources": [
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/toro-toro",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Brand copy: massive spin and precision, surgical precision, softer flex. Marketing claims; colour variants (pink/orange/matcha) are the same string."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-toro-pro-string-review/35368",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "HYBRID review (Toro Toro 1.23 mains + Enso Pro carbon crosses), not full bed: heavy topspin (more than Hyper-G), strong control, snap-back lasting about 15 h. Indicative only."
+   }
+  ]
+ },
+ {
+  "id": "toroline-toro-toro-matcha-16l",
+  "sources": [
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/toro-toro",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Brand copy: massive spin and precision, surgical precision, softer flex. Marketing claims; colour variants (pink/orange/matcha) are the same string."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-toro-pro-string-review/35368",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 4,
+     "power": null,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "HYBRID review (Toro Toro 1.23 mains + Enso Pro carbon crosses), not full bed: heavy topspin (more than Hyper-G), strong control, snap-back lasting about 15 h. Indicative only."
+   }
+  ]
+ },
+ {
+  "id": "wilson-revolve-spin-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/WRS16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 73,
+     "control": 93,
+     "power": 44,
+     "durability": 76
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest of Wilson Revolve Spin 16/1.30. durability=Playability Duration 76 (page also lists Durability 90). TW: quite firm and low powered, never uncomfortable for testers."
+   }
+  ]
+ },
+ {
+  "id": "wilson-revolve-spin-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/WRS17review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": 73,
+     "control": 93,
+     "power": 44,
+     "durability": 76
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest of Wilson Revolve Spin 17/1.25. durability=Playability Duration 76 (page also lists Durability 90). TW: quite firm and low powered, never uncomfortable for testers."
+   }
+  ]
+ },
+ {
+  "id": "wilson-revolve-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/WRV17review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 87,
+     "comfort": 77,
+     "control": 88,
+     "power": 58,
+     "durability": 83
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW playtest of Wilson Revolve 17/1.25. durability=Playability Duration 83 (TW also lists a separate string-Durability score of 93 on the 16 page). Testers: relatively soft / on the softer side for a poly; exceptional tension maintenance."
+   }
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-rough-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPRR13review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 90,
+     "comfort": 66,
+     "control": 65,
+     "power": 62,
+     "durability": 40
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW playtest of Babolat RPM Rough (earlier sold as RPM Blast Rough); page covers 1.30 and 1.25 gauges (17/1.25). durability=Playability Duration 40 (needed cutting out well before breaking). Stiffness: tester cites low stiffness vs other polys; TW says decidedly softer than RPM Blast. Older page BRPMBRSreview.html shows Power 43 (looks like template carry-over from RPM Blast); BRPRR12/13 pages show 62."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/babolat-rpm-rough-1-30mm-string-review/45852",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 2,
+     "control": 4,
+     "power": 2,
+     "durability": 2,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd review of RPM Rough 1.30mm (Pure Drive 98/ProStaff): great spin but not off the charts, very good control on all groundstrokes, jarring/stiff, no added power, performance drops after about 2-4 hours. Stiffness opinion differs from TW (tester says low stiffness)."
+   }
+  ]
+ },
+ {
+  "id": "toroline-o-toro-snap-16l",
+  "sources": [
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-otoro-snap-review/62115",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 3,
+     "control": 5,
+     "power": 2,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "Chris Nash, O-Toro Snap 1.25 round (Blade V9): excellent baseline control, good spin (a bit below O-Toro), less pop, comfortable enough for long sessions, good tension holding (slightly behind O-Toro Tour)."
+   }
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-rough-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPRR13review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 90,
+     "comfort": 66,
+     "control": 65,
+     "power": 62,
+     "durability": 40
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW playtest of Babolat RPM Rough (earlier sold as RPM Blast Rough); page covers 1.30 and 1.25 gauges (16/1.30). durability=Playability Duration 40 (needed cutting out well before breaking). Stiffness: tester cites low stiffness vs other polys; TW says decidedly softer than RPM Blast. Older page BRPMBRSreview.html shows Power 43 (looks like template carry-over from RPM Blast); BRPRR12/13 pages show 62."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/babolat-rpm-rough-1-30mm-string-review/45852",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 2,
+     "control": 4,
+     "power": 2,
+     "durability": 2,
+     "stiffness": 4
+    },
+    "note": "Tennisnerd review of RPM Rough 1.30mm (Pure Drive 98/ProStaff): great spin but not off the charts, very good control on all groundstrokes, jarring/stiff, no added power, performance drops after about 2-4 hours. Stiffness opinion differs from TW (tester says low stiffness)."
+   }
+  ]
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/T7TOROSreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 79,
+     "comfort": 84,
+     "control": null,
+     "power": 71,
+     "durability": 78
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW playtest (Feb 2026), scores /10 x10: Power 7.1, Spin 7.9, Comfort 8.4, Playability Duration 7.8, Overall 8.5 (Control not scored). TW: one of the softest in Toroline line-up (lab 173 lb/in)."
+   },
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/toroline-otoro-spin-review-explosive-bite-with-controlled-power/",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": 70,
+     "control": 90,
+     "power": 85,
+     "durability": 85
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-otoro-spin-review-heavy-spin-firm-response-hidden-feel/63969",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Chris Nash (1.23, Head Speed MP): outstanding spin access, firm/rigid response, depth control harder. Stiffness opinion differs from TW (soft end of poly spectrum)."
+   }
+  ]
+ },
+ {
+  "id": "toroline-o-toro-tour-17",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/toroline_otoro_tour.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 92,
+     "comfort": null,
+     "control": 94,
+     "power": null,
+     "durability": 79
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 4,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest (Oct 2025), scores /10 x10: Control 9.4, Spin 9.2, Feel 8.3, Playability Duration 7.9, Overall 9.1 (Power/Comfort not scored). Testers: firmer than O-Toro and Wasabi but played softer than lab stiffness; comfortable. Lab stiffness 217 lb/in per TW guide."
+   },
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/toroline-otoro-tour-tennis-string-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": 60,
+     "control": 100,
+     "power": 80,
+     "durability": 100
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score."
+   }
+  ]
+ },
+ {
+  "id": "toroline-cash-16l",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (guide)",
+    "url": "https://www.tennis-warehouse.com/learning_center/gear_guides/tennis_string/best_toroline_string_for_me.html",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": 4,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW guide (not a scored playtest): Cash is a slightly softer alternative to A5; inherent liveliness gives free power with plenty of spin and feel."
+   }
+  ]
+ },
+ {
+  "id": "toroline-snapper-17",
+  "sources": [
+   {
+    "site": "toroline.com (brand)",
+    "url": "https://toroline.com/products/snapper",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "Brand copy: octagonal, max snapback, exceptional directional control and a softer response. Marketing claims; no independent review found."
+   }
+  ]
+ },
+ {
+  "id": "wilson-revolve-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/WRV16review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 87,
+     "comfort": 77,
+     "control": 88,
+     "power": 58,
+     "durability": 83
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 2
+    },
+    "note": "TW playtest of Wilson Revolve 16/1.30. durability=Playability Duration 83 (TW also lists a separate string-Durability score of 93 on the 16 page). Testers: relatively soft / on the softer side for a poly; exceptional tension maintenance."
+   }
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-orange-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/babolat_rpm_blast_orange.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 95,
+     "comfort": 73,
+     "control": 94,
+     "power": 55,
+     "durability": 78
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW playtest of Babolat RPM Blast Orange (TW Europe exclusive colour), 16/1.30. durability=Playability Duration 78."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://tennisnerd.net/gear/strings/babolat-rpm-blast-orange-review/27949",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": 3,
+     "control": null,
+     "power": null,
+     "durability": 3,
+     "stiffness": 4
+    },
+    "note": "Jonas Eriksson tested RPM Blast Orange at 53 lbs: firm, not soft but not harsh, board-like feel; playable 10+ hours, better tension maintenance than standard black RPM Blast."
+   }
+  ]
+ },
+ {
+  "id": "babolat-rpm-blast-16",
+  "sources": [
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/Reviews/BRPMB16/BRPMB16Review.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 97,
+     "comfort": 61,
+     "control": 90,
+     "power": 43,
+     "durability": 74
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW playtest of RPM Blast (testers used 16/1.30 and 17/1.25; 16/1.30 treated as same string). durability=Playability Duration 74. Page says TW University gives a high stiffness rating (firm co-poly). Note: the TW 16 330-reel page lists different Power/Comfort (see next source)."
+   },
+   {
+    "site": "tennis-warehouse.com (playtest)",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/BRPM33016Rreview.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 97,
+     "comfort": 87,
+     "control": 90,
+     "power": 67,
+     "durability": 74
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Same TW RPM Blast playtest text on the 16 330-reel page but with different Power (67) and Comfort (87) than the main page (43 / 61); Spin 97, Control 90, Playability Duration 74 identical. Discordant within TW; use with care."
+   },
+   {
+    "site": "prostrung.com",
+    "url": "https://prostrung.com/babolat-rpm-blast-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 55,
+     "control": 100,
+     "power": 85,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "prostrung \"lab-style\" indicative scores (0-100; methodology/origin not stated on page); durability = Tension Holding score. Gauge not stated."
+   },
+   {
+    "site": "tennisnerd.net",
+    "url": "https://tennisnerd.net/gear/strings/babolat-rpm-blast-orange-review/27949",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": 3,
+     "control": 4,
+     "power": null,
+     "durability": 2,
+     "stiffness": 4
+    },
+    "note": "Jonas Eriksson, RPM Blast Orange review, describes standard RPM Blast: grand snapback and spin potential, firm and controlled, comfort decent for a stiff string, durability somewhat below average / goes dead quickly for big hitters."
+   }
+  ]
+ }
+]

@@ -1,0 +1,170 @@
+[
+ {
+  "id": "toroline-o-toro-tour-17",
+  "site": "tennis-warehouse.com (playtest)",
+  "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/toroline_otoro_tour.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 92,
+   "comfort": null,
+   "control": 94,
+   "power": null,
+   "durability": 79
+  },
+  "note": "TW playtest (Oct 2025), scores /10 x10: Control 9.4, Spin 9.2, Feel 8.3, Playability Duration 7.9, Overall 9.1 (Power/Comfort not scored). Testers: firmer than O-Toro and Wasabi but played softer than lab stiffness; comfortable. Lab stiffness 217 lb/in per TW guide."
+ },
+ {
+  "id": "head-hawk-16",
+  "site": "Tennis Warehouse",
+  "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/HAWK16review.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 85,
+   "comfort": 56,
+   "control": 84,
+   "power": 37,
+   "durability": 82
+  },
+  "note": "Playtest 0-100; durability = Playability Duration. Head Hawk 16/1.30 (17/1.25 page shows the same scores)."
+ },
+ {
+  "id": "wilson-revolve-16",
+  "site": "tennis-warehouse.com (playtest)",
+  "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/WRV16review.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 87,
+   "comfort": 77,
+   "control": 88,
+   "power": 58,
+   "durability": 83
+  },
+  "note": "TW playtest of Wilson Revolve 16/1.30. durability=Playability Duration 83 (TW also lists a separate string-Durability score of 93 on the 16 page). Testers: relatively soft / on the softer side for a poly; exceptional tension maintenance."
+ },
+ {
+  "id": "luxilon-element-soft-ir-16l",
+  "site": "Tennis Warehouse",
+  "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/luxilon_element_soft_ir.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 80,
+   "comfort": 80,
+   "control": 78,
+   "power": 76,
+   "durability": 64
+  },
+  "note": "Playtest scores shown on 0-10 scale, converted x10; durability = Playability Duration. Gauge not stated on page; applied to this id. Described as one of Luxilon's softest co-polys."
+ },
+ {
+  "id": "head-lynx-tour-17",
+  "site": "Tennis Warehouse",
+  "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/head_lynx_tour.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 89,
+   "comfort": 74,
+   "control": 93,
+   "power": 65,
+   "durability": 83
+  },
+  "note": "Playtest 0-100; durability = Playability Duration. Page covers Lynx Tour 16/1.30 and 17/1.25. Testers call it a notably firm poly."
+ },
+ {
+  "id": "kirschbaum-pro-line-17",
+  "site": "Tennis Warehouse",
+  "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/PL2125BKreview.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 68,
+   "comfort": 63,
+   "control": 88,
+   "power": 45,
+   "durability": 86
+  },
+  "note": "Playtest 0-100; durability = Playability Duration. Kirschbaum Pro Line II 17/1.25."
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "site": "tennisnerd.net",
+  "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+  "kind": "review",
+  "scores": {
+   "spin": 90,
+   "comfort": null,
+   "control": null,
+   "power": null,
+   "durability": null
+  },
+  "note": "Tennisnerd Solinco overview table (Spin x/10 -> x10; other columns qualitative). Shared row \"Hyper-G Soft / Confidential Soft\". Raw: Power Medium, Control Medium, Comfort Very High, Tension Stability Medium-High."
+ },
+ {
+  "id": "solinco-confidential-soft-16l",
+  "site": "tennis-warehouse.com",
+  "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential_soft.html?pcode=CONS15R",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 88,
+   "comfort": 80,
+   "control": 90,
+   "power": 64,
+   "durability": 88
+  },
+  "note": "TW playtest, page scores are 0-10 (x10). durability = Playability Duration (TW Durability 8.9). Gauge tested not stated on page; this entry is 16L."
+ },
+ {
+  "id": "luxilon-element-soft-ir-17",
+  "site": "Tennis Warehouse",
+  "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/luxilon_element_soft_ir.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 80,
+   "comfort": 80,
+   "control": 78,
+   "power": 76,
+   "durability": 64
+  },
+  "note": "Playtest scores shown on 0-10 scale, converted x10; durability = Playability Duration. Gauge not stated on page; applied to this id. Described as one of Luxilon's softest co-polys."
+ },
+ {
+  "id": "babolat-rpm-blast-orange-16",
+  "site": "tennis-warehouse.com (playtest)",
+  "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/babolat_rpm_blast_orange.html",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 95,
+   "comfort": 73,
+   "control": 94,
+   "power": 55,
+   "durability": 78
+  },
+  "note": "TW playtest of Babolat RPM Blast Orange (TW Europe exclusive colour), 16/1.30. durability=Playability Duration 78."
+ },
+ {
+  "id": "kirschbaum-xplosive-spd-17",
+  "site": "Tennis Warehouse",
+  "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/kirschbaum_xplosive_speed.html?pcode=XS17",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 83,
+   "comfort": 66,
+   "control": 77,
+   "power": 62,
+   "durability": 73
+  },
+  "note": "Playtest 0-100; durability = Playability Duration. Review is of 17/1.23 (nearby gauge to 1.25). Testers describe it as a relatively soft co-poly."
+ },
+ {
+  "id": "solinco-confidential-17",
+  "site": "tennis-warehouse.com",
+  "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+  "kind": "lab_playtest",
+  "scores": {
+   "spin": 90,
+   "comfort": 63,
+   "control": 93,
+   "power": 42,
+   "durability": 88
+  },
+  "note": "TW playtest, 0-100. durability = Playability Duration (TW Durability 91). Review of 16 gauge; this entry is 17 (1.2 mm)."
+ }
+]
