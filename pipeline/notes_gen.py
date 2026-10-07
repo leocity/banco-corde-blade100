@@ -1,6 +1,7 @@
 """Note da maestro incordatore: regole applicate ai dati di ogni corda + note scritte a mano che hanno precedenza."""
 
 KEYS = ("feel", "on_blade_100_v9", "for_your_style", "vs_favorites")
+SPIN_KIND_IT = {"parente": "da un calibro o colore gemello", "tester": "dai punteggi dei tester", "qualitativo": "dai giudizi dei tester"}
 DISLIKED_NAMES = {"confidential_soft": "Confidential Soft", "rpm_blast": "RPM Blast"}
 SHAPE_IT = {"RND": "tonda", "HEX": "esagonale", "PENT": "pentagonale", "SQ": "quadrata", "OCT": "ottagonale",
             "GEAR": "a ingranaggio", "TWST": "ritorta", "STAR": "a stella", "TRI": "triangolare", "HEP": "eptagonale"}
@@ -20,10 +21,17 @@ def _feel(r, s):
     t = r.get("twu")
     shape = SHAPE_IT.get(r.get("shape") or "", "")
     stiff = {"hi": "rigida e compatta", "mid": "di rigidità media", "lo": "morbida"}.get(_band(s["control"]))
+    sp = r.get("spin")
+    est = (f" Spin stimato ≈ {sp['value']:g} ({SPIN_KIND_IT.get(sp['kind'], sp['kind'])}, tra {sp['low']:g} e {sp['high']:g})."
+           if sp and sp.get("kind") not in (None, "misurato") else "")
+    if r.get("catalog_only"):
+        n = ((r.get("reviews") or {}).get("agg") or {}).get("n_sources", 0)
+        return (f"Nessun test di laboratorio: i giudizi vengono solo dalle recensioni ({n} fonti), quindi sono indicativi."
+                + (f" Profilo {shape}." if shape else "") + est)
     if not t:
         si = (r.get("excel") or {}).get("stiff_index_avg")
         base = f"Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index {si:.2f}) e su Racketpedia, quindi è meno preciso." if si else "Senza dati TWU né test completi: considera la scheda un'indicazione di massima."
-        return base + (f" Profilo {shape}." if shape else "")
+        return base + (f" Profilo {shape}." if shape else "") + est
     sv = t.get("spin_potential")
     spin = "spin non misurato da TWU" if sv is None else {"hi": f"snapback alto (spin {sv:g})", "mid": f"spin nella media ({sv:g})",
                                                          "lo": f"poco spin ({sv:g})"}.get(_band(s["spin"]), f"spin {sv:g}")

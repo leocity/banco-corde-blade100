@@ -63,7 +63,7 @@ def test_tension_start_delta_capped():
 
 def test_tension_start_without_twu_falls_back_to_anchor():
     t = tension_start({"twu": None}, ANCHORS)
-    assert t["kg"] == [22, 21] and "senza dati TWU" in t["note"]
+    assert t["kg"] == [22, 21] and "senza una rigidità misurata" in t["note"]
 
 
 def test_discriminant_sorted_desc():

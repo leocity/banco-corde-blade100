@@ -68,3 +68,16 @@ def test_low_basis_note_names_the_actually_missing_sources():
     r["derived"]["similarity_basis"] = {"confidential": 3, "otoro": 3}
     v = generate_notes(r)["vs_favorites"]
     assert "manca TWU" not in v and "Ektelon" in v and "Racketpedia" in v
+
+
+def test_estimated_spin_is_called_estimate_in_notes():
+    r = rec(twu=None)
+    r["derived"]["subscores"]["spin"] = 70
+    r["spin"] = {"value": 7.6, "low": 6.5, "high": 8.7, "kind": "tester", "basis_n": 2}
+    assert "stimato" in generate_notes(r)["feel"]
+
+
+def test_catalog_only_note_says_reviews_only():
+    r = rec(twu=None, excel=None, catalog_only=True)
+    r["reviews"] = {"agg": {"n_sources": 3}, "sources": []}
+    assert "recensioni" in generate_notes(r)["feel"]

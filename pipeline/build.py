@@ -1,16 +1,65 @@
-"""merged.json + metriche derivate + note -> data/strings.json (spec §5–6)."""
+"""merged.json + catalogo + recensioni + stime + metriche derivate + note -> data/strings.json (spec v1 §5–6, v2 §3–5)."""
 import datetime
+import glob
 import json
+import math
 import pathlib
 
+from pipeline.catalog import add_catalog_only
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
+from pipeline.estimate import (MEASURED, calibrate_tester_spin, estimate_spin, estimate_stiffness, fit_linear,
+                               loo_mae, relatives_of)
 from pipeline.notes_gen import apply_notes
+from pipeline.reviews import aggregate
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
-def build(records, notes):
-    discriminant = derive_all(records)
+def _measured(r, field):
+    t = r.get("twu") or {}
+    return t.get(field) if t.get("match") in MEASURED else None
+
+
+def _corr(xs, ys):
+    mx, my = sum(xs) / len(xs), sum(ys) / len(ys)
+    sx = math.sqrt(sum((x - mx) ** 2 for x in xs))
+    sy = math.sqrt(sum((y - my) ** 2 for y in ys))
+    return round(sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / (sx * sy), 2) if sx and sy else None
+
+
+def build(records, notes, reviews=None, catalog=None):
+    records = add_catalog_only(records, catalog or [])
+    agg = {row["id"]: aggregate(row) for row in (reviews or [])}
+    src = {row["id"]: row.get("sources", []) for row in (reviews or [])}
+
+    # calibrazione tester -> spin TWU (solo corde con spin misurato e punteggio tester numerico)
+    pairs = [(agg[r["id"]]["score"]["spin"], _measured(r, "spin_potential")) for r in records
+             if r["id"] in agg and agg[r["id"]]["score"]["spin"] is not None and _measured(r, "spin_potential") is not None]
+    calib = calibrate_tester_spin(pairs)
+
+    # Racketpedia statica -> scala TWU (coppie esatte)
+    rp = [((r.get("rpedia") or {}).get("static_stiffness_kgmm"), _measured(r, "stiffness_lbin")) for r in records
+          if (r.get("rpedia") or {}).get("match") == "exact"]
+    rp = [(x, y) for x, y in rp if x is not None and y is not None]
+    rp_meta = None
+    if len(rp) >= 5:
+        xs, ys = [p[0] for p in rp], [p[1] for p in rp]
+        a, b = fit_linear(xs, ys)
+        rp_meta = {"a": round(a, 2), "b": round(b, 2), "mae": round(loo_mae(xs, ys), 1), "n": len(rp), "r": _corr(xs, ys)}
+
+    spin_pop = [v for v in (_measured(r, "spin_potential") for r in records) if v is not None]
+    stiff_pop = [v for v in (_measured(r, "stiffness_lbin") for r in records) if v is not None]
+    for r in records:
+        rel = relatives_of(r, records)
+        r["spin"] = estimate_spin(r, rel, agg.get(r["id"]), calib, spin_pop)
+        r["stiffness"] = estimate_stiffness(r, rel, (rp_meta["a"], rp_meta["b"], rp_meta["mae"]) if rp_meta else None,
+                                            agg.get(r["id"]), stiff_pop)
+        r["reviews"] = {"agg": agg.get(r["id"]),
+                        "sources": [{k: s.get(k) for k in ("site", "url", "kind", "scores", "levels", "note")}
+                                    for s in src.get(r["id"], [])]}
+        r.setdefault("catalog_only", False)
+
+    discriminant = derive_all(records, agg)
     apply_notes(records, notes)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
@@ -21,21 +70,28 @@ def build(records, notes):
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
+        "estimates_meta": {"spin_calibration": calib, "rp_to_twu": rp_meta},
         "strings": records,
     }
 
 
+def _load(p, default=None):
+    p = ROOT / p
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
+
+
 if __name__ == "__main__":
-    records = json.loads((ROOT / "data" / "merged.json").read_text(encoding="utf-8"))
-    p = ROOT / "data" / "notes.json"
-    notes = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
-    out = build(records, notes)
+    records = _load("data/merged.json")
+    notes = _load("data/notes.json", {})
+    reviews = [row for f in sorted(glob.glob(str(ROOT / "data/agents/reviews_r*.json")))
+               for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8"))]
+    out = build(records, notes, reviews=reviews, catalog=_load("data/agents/catalog.json", []))
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-    rs = sorted([r for r in records if r["derived"]["profile_score"] is not None],
-                key=lambda r: -r["derived"]["profile_score"])
-    print("top 10 punteggio:", [(r["id"], r["derived"]["profile_score"]) for r in rs[:10]])
-    sim = sorted([r for r in records if r["preference"] != "liked"],
-                 key=lambda r: -max([v for v in r["derived"]["similarity_liked"].values() if v is not None] or [-1]))
-    print("top 10 somiglianza:", [(r["id"], r["derived"]["similarity_liked"]) for r in sim[:10]])
-    print("discriminanti:", out["discriminant"])
-    print("ancore:", [(r["id"], r["derived"]["subscores"], r["derived"]["similarity_liked"], r["derived"]["similarity_disliked"]) for r in records if r["preference"]])
+    S = out["strings"]
+    kinds = {}
+    for r in S:
+        k = (r["spin"] or {}).get("kind")
+        kinds[k] = kinds.get(k, 0) + 1
+    print(len(S), "corde; spin per tipo:", kinds, "| solo catalogo:", sum(r["catalog_only"] for r in S))
+    print("calibrazione spin:", out["estimates_meta"]["spin_calibration"])
+    print("Racketpedia -> TWU:", out["estimates_meta"]["rp_to_twu"])

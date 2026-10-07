@@ -34,8 +34,35 @@ METRICS = {
 SIMILARITY_FEATURES = ("twu_stiffness", "twu_tension_loss", "twu_spin", "excel_stiff_index", "excel_tl6", "rpedia_static")
 
 
+LAB_SPIN_KINDS = ("misurato", "parente")
+LAB_STIFF_KINDS = ("misurata", "parente", "da Racketpedia")
+
+
+def spin_lab(r):
+    """Spin che conta come dato di laboratorio (misurato o parente). Senza campo 'spin' usa TWU (dati v1)."""
+    if "spin" not in r:
+        return _get(r, "twu", "spin_potential")
+    s = r.get("spin")
+    return s["value"] if s and s["kind"] in LAB_SPIN_KINDS else None
+
+
+def stiff_lab(r):
+    if "stiffness" not in r:
+        return _get(r, "twu", "stiffness_lbin")
+    s = r.get("stiffness")
+    return s["value_lbin"] if s and s["kind"] in LAB_STIFF_KINDS else None
+
+
 def population(records):
-    return {k: [v for v in (f(r) for r in records) if v is not None] for k, f in METRICS.items()}
+    pop = {k: [v for v in (f(r) for r in records) if v is not None] for k, f in METRICS.items()}
+    # popolazioni di riferimento: solo valori misurati, così le stime non spostano i percentili
+    pop["spin_measured"] = [v for v in (
+        (r["spin"]["value"] if r.get("spin") and r["spin"]["kind"] == "misurato" else None) if "spin" in r
+        else _get(r, "twu", "spin_potential") for r in records) if v is not None]
+    pop["stiff_measured"] = [v for v in (
+        (r["stiffness"]["value_lbin"] if r.get("stiffness") and r["stiffness"]["kind"] == "misurata" else None)
+        if "stiffness" in r else _get(r, "twu", "stiffness_lbin") for r in records) if v is not None]
+    return pop
 
 
 def percentile(value, pop):
@@ -56,15 +83,51 @@ def _inv(p):
 
 
 def subscores(rec, pop):
+    """Sotto-punteggi di laboratorio (percentili sulle popolazioni misurate)."""
     pct = lambda k: percentile(METRICS[k](rec), pop[k])
-    comfort_src = "rpedia_static" if METRICS["rpedia_static"](rec) is not None else "twu_stiffness"
+    st = percentile(stiff_lab(rec), pop["stiff_measured"])
+    rp = METRICS["rpedia_static"](rec)
     return {
-        "spin": pct("twu_spin"),
-        "control": _mean([pct("twu_stiffness"), _inv(pct("excel_stretch50"))]),
-        "power": _mean([_inv(pct("twu_stiffness")), pct("excel_stretch50")]),
+        "spin": percentile(spin_lab(rec), pop["spin_measured"]),
+        "control": _mean([st, _inv(pct("excel_stretch50"))]),
+        "power": _mean([_inv(st), pct("excel_stretch50")]),
         "durability": _mean([_inv(pct("twu_tension_loss")), _inv(pct("excel_tl6"))]),
-        "comfort": _inv(pct(comfort_src)),
+        "comfort": _inv(pct("rpedia_static") if rp is not None else st),
     }
+
+
+JUDGE_CRITERIA = ("stiffness", "spin", "control", "power", "durability", "comfort")
+LAB_WEIGHT, REVIEW_WEIGHT = 0.7, 0.3
+WORDS = ("molto basso", "basso", "medio", "alto", "molto alto")
+STIFF_WORDS = ("molto morbida", "morbida", "media", "rigida", "molto rigida")
+
+
+def _review_score(agg, crit):
+    if not agg:
+        return None
+    s = (agg.get("score") or {}).get(crit)
+    if s is not None:
+        return s
+    lv = (agg.get("level") or {}).get(crit)
+    return None if lv is None else (lv - 1) * 25
+
+
+def judgments(rec, sub, agg, pop):
+    """Giudizio semplice per criterio: 70% laboratorio + 30% recensioni, pesi rinormalizzati se una parte manca."""
+    lab = {**sub, "stiffness": percentile(stiff_lab(rec), pop["stiff_measured"])}
+    out = {}
+    for c in JUDGE_CRITERIA:
+        l, v = lab.get(c), _review_score(agg, c)
+        parts = [(x, w) for x, w in ((l, LAB_WEIGHT), (v, REVIEW_WEIGHT)) if x is not None]
+        if not parts:
+            out[c] = {"score": None, "level": None, "word": None, "lab_share": None}
+            continue
+        den = sum(w for _, w in parts)
+        score = round(sum(x * w for x, w in parts) / den, 1)
+        level = min(5, int(score // 20) + 1)
+        out[c] = {"score": score, "level": level, "word": (STIFF_WORDS if c == "stiffness" else WORDS)[level - 1],
+                  "lab_share": round((LAB_WEIGHT if l is not None else 0) / den, 2)}
+    return out
 
 
 def _stats(xs):
@@ -126,10 +189,10 @@ def _half(x):
 
 def tension_start(rec, anchors):
     anchor = max(anchors, key=lambda a: -1 if a.get("sim") is None else a["sim"])
-    st = _get(rec, "twu", "stiffness_lbin")
+    st = stiff_lab(rec)
     if st is None or anchor.get("stiffness") is None:
         kg = list(anchor["kg"])
-        note = f"tensione della preferita più simile ({ANCHOR_NAMES.get(anchor['id'], anchor['id'])}), senza dati TWU per correggerla"
+        note = f"tensione della preferita più simile ({ANCHOR_NAMES.get(anchor['id'], anchor['id'])}), senza una rigidità misurata per correggerla"
     else:
         delta = max(-2.0, min(2.0, _half(-0.75 * (st - anchor["stiffness"]) / 15)))
         kg = [anchor["kg"][0] + delta, anchor["kg"][1] + delta]
@@ -152,7 +215,8 @@ def discriminant_metrics(records, pop):
     return sorted(out, key=lambda x: x["separation"], reverse=True)
 
 
-def derive_all(records):
+def derive_all(records, reviews=None):
+    reviews = reviews or {}
     pop = population(records)
     by_id = {r["id"]: r for r in records}
     liked = {k: by_id[k] for k in ANCHOR_TENSIONS if k in by_id}
@@ -166,11 +230,16 @@ def derive_all(records):
         worst = max([v for v in sim_d.values() if v is not None], default=None)
         best = max([v for v in sim_l.values() if v is not None], default=None)
         flag = r.get("preference") is None and disliked_flag(best, worst)
-        anchors = [{"id": k, "kg": ANCHOR_TENSIONS[k], "stiffness": _get(a, "twu", "stiffness_lbin"),
+        anchors = [{"id": k, "kg": ANCHOR_TENSIONS[k], "stiffness": stiff_lab(a),
                     "sim": similarity(r, a, pop)} for k, a in liked.items()]
-        sub = subscores(r, pop)
+        lab = subscores(r, pop)
+        j = judgments(r, lab, reviews.get(r["id"]), pop)
+        # punteggio profilo sui giudizi misti (laboratorio + recensioni); stessi campi letti da score.js
+        sub = {k: j[k]["score"] for k in ("spin", "control", "power", "durability", "comfort")}
         r["derived"] = {
             "subscores": sub,
+            "lab_subscores": lab,
+            "judgments": j,
             "similarity_liked": sim_l,
             "similarity_disliked": sim_d,
             "similarity_basis": {("confidential" if "confidential" in k else "otoro"): shared_features(r, a) for k, a in liked.items()},
