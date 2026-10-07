@@ -31,7 +31,7 @@ def _feel(r, s):
         est = ""
     if r.get("catalog_only"):
         n = ((r.get("reviews") or {}).get("agg") or {}).get("n_sources", 0)
-        return (f"Nessun test di laboratorio: i giudizi vengono solo dalle recensioni ({n} fonti), quindi sono indicativi."
+        return (f"Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda ({n} fonti) sono solo un riferimento."
                 + (f" Profilo {shape}." if shape else "") + est)
     if not t:
         si = (r.get("excel") or {}).get("stiff_index_avg")

@@ -47,7 +47,7 @@ function bars(r) {
   return `<div class="bars">${CRIT.map(([k, l]) => {
     const x = j[k] || {};
     const est = (k === 'spin' && isEst(r.spin, 'misurato')) || (k === 'stiffness' && isEst(r.stiffness, 'misurata')) || x.lab_share === 0;
-    const title = x.score === null || x.score === undefined ? 'nessun dato' : `${Math.round(x.score)}/100 · ${x.lab_share === 0 ? 'solo recensioni' : x.lab_share === 1 ? 'solo laboratorio' : '70% laboratorio, 30% recensioni'}`;
+    const title = x.score === null || x.score === undefined ? 'nessun dato' : `${Math.round(x.score)}/100 · dati di laboratorio`;
     return `<div class="bar-row" title="${esc(title)}"><span class="lab">${l}</span><div class="track"><div class="fill${k === 'stiffness' ? ' neutral' : ''}${est ? ' est' : ''}" style="width:${x.score ?? 0}%"></div></div><span class="word">${x.word ? `<b>${esc(x.word)}</b>` : '<span class="muted">n.d.</span>'}<span class="num">${x.score === null || x.score === undefined ? '' : Math.round(x.score)}</span></span></div>`;
   }).join('')}</div>`;
 }
@@ -56,7 +56,7 @@ function badges(r) {
   if (r.preference === 'liked') out.push('<span class="badge liked">★ preferita</span>');
   if (r.preference === 'disliked') out.push('<span class="badge disliked">✕ non gradita</span>');
   const labAny = Object.values(r.derived.judgments || {}).some((j) => j && j.lab_share > 0);
-  if (r.catalog_only && !labAny) out.push('<span class="badge est" title="Nessun test di laboratorio: giudizi solo dalle recensioni">solo recensioni</span>');
+  if (r.catalog_only && !labAny) out.push('<span class="badge est" title="Nessun test di laboratorio: non viene giudicata">senza test di laboratorio</span>');
   else if (r.catalog_only) out.push('<span class="badge est" title="Non testata direttamente: i dati di laboratorio vengono da un calibro gemello">dati da calibro gemello</span>');
   if (r.spin && isEst(r.spin, 'misurato')) out.push(`<span class="badge est" title="Spin ${esc(SPIN_KIND[r.spin.kind])}">${r.spin.value == null ? 'spin solo dai tester' : 'spin stimato'}</span>`);
   if (r.derived.disliked_warning) out.push('<span class="badge warn" title="Somiglia più a una corda che non ti è piaciuta che alle tue preferite">⚠ simile a una non gradita</span>');
@@ -123,7 +123,7 @@ $('#q').addEventListener('input', renderList);
 const conf = BY_ID['solinco-confidential-16l'];
 const sub = (r, k) => r.derived.subscores?.[k] ?? null;
 const PRESETS = {
-  score: { desc: 'Prima le corde con spin misurato, ordinate per punteggio; poi quelle giudicate solo dai tester.', list: (rs) => rs.filter((r) => r._score !== null).sort((a, b) => (hasLab(b) - hasLab(a)) || (b._score - a._score)) },
+  score: { desc: 'Ordinate per punteggio sul tuo profilo, calcolato solo su dati di laboratorio.', list: (rs) => rs.filter((r) => r._score !== null).sort((a, b) => (hasLab(b) - hasLab(a)) || (b._score - a._score)) },
   similar: { desc: 'Le più vicine per misure a Confidential o O-Toro.', list: (rs) => rs.filter((r) => !r.preference && bestLiked(r) !== null).sort((a, b) => bestLiked(b) - bestLiked(a)) },
   spin: { desc: 'Almeno il controllo della tua Confidential (±10), ma più spin.', list: (rs) => rs.filter((r) => !r.preference && !r.derived.disliked_warning && sub(r, 'spin') !== null && sub(r, 'control') !== null && sub(r, 'control') >= sub(conf, 'control') - 10 && sub(r, 'spin') > sub(conf, 'spin')).sort((a, b) => sub(b, 'spin') - sub(a, 'spin')) },
   durable: { desc: 'Quelle che tengono meglio la tensione, escluse quelle simili alle non gradite.', list: (rs) => rs.filter((r) => sub(r, 'durability') !== null && !r.derived.disliked_warning && r.preference !== 'disliked').sort((a, b) => sub(b, 'durability') - sub(a, 'durability')) },
@@ -190,7 +190,7 @@ function openSheet(id) {
         ['Rigidità dinamica', fmtH(t.stiffness_lbin, 1) + ' lb/in'], ['Perdita di tensione', fmtH(t.tension_loss_pct, 1) + ' %'], ['Spin potential', fmtH(t.spin_potential, 1)]])}` : '<p class="muted small">Non presente.</p>'}</div>
       <div class="src"><h3>Racketpedia</h3>${p ? `${kv([['Rigidità statica', fmt(p.static_stiffness_kgmm, 2) + ' kg/mm']])}<p class="small"><a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">Apri su Racketpedia</a></p>` : '<p class="muted small">Non presente.</p>'}</div>
     </details>
-    <details class="sheet-section"${r.catalog_only ? ' open' : ''}><summary>Cosa dicono i tester (${revs.length} fonti${r.catalog_only ? ', unica fonte dei giudizi' : ', fino al 30% del giudizio'})</summary>
+    <details class="sheet-section"><summary>Cosa dicono i tester (${revs.length} fonti · solo riferimento, non entrano nel punteggio)</summary>
       ${revs.length ? revs.map((s) => {
         const sc = Object.entries(s.scores || {}).filter(([, v]) => v !== null).map(([k, v]) => `${CRIT_IT[k]} ${Math.round(v)}`);
         const lv = Object.entries(s.levels || {}).filter(([, v]) => v !== null).map(([k, v]) => `${CRIT_IT[k]} ${['molto basso', 'basso', 'medio', 'alto', 'molto alto'][v - 1]}`);
@@ -380,7 +380,7 @@ function renderGuide() {
   const m = DATA.estimates_meta || {}, c = m.spin_calibration || {}, rp = m.rp_to_twu || {};
   $('#guida').innerHTML = `
     <h2>Come leggere il banco</h2>
-    <p>Ogni corda ha fino a quattro fonti: il test Ektelon del tuo file, il laboratorio di Tennis Warehouse University (TWU), Racketpedia e le recensioni dei tester. Le barre fondono laboratorio (70%) e recensioni (30%); se manca il laboratorio contano solo le recensioni e la scheda lo dice.</p>
+    <p>Ogni corda ha fino a quattro fonti: il test Ektelon del tuo file, il laboratorio di Tennis Warehouse University (TWU), Racketpedia e le recensioni dei tester. Barre, punteggi e classifiche usano <b>solo dati di laboratorio</b>. Le recensioni dei tester restano nella scheda come link di riferimento, ma non spostano nulla.</p>
     <div class="callout"><h3>Perché le due rigidità non coincidono</h3>
       <p>Sulle ${rp.n ?? 48} corde misurate da entrambi, TWU e Racketpedia vanno nella stessa direzione ma non sono allineate (correlazione r = ${fmt(rp.r ?? 0.62, 2)}).</p>
       <ul>
@@ -395,8 +395,8 @@ function renderGuide() {
       <ul>
         <li><b>Misurato</b>: lo spin potential di TWU sulla stessa corda.</li>
         <li><b>Da calibro o colore gemello</b>: lo stesso modello misurato in un altro calibro, ±0,5.</li>
-        <li><b>Dai punteggi dei tester</b>: ${c.usable ? `una retta che converte il voto spin dei tester nella scala TWU, errore medio ±${fmt(c.mae, 2)} su ${c.n} corde.` : `non usata: su ${c.n ?? 0} corde i voti dei tester non prevedono lo spin TWU meglio della media (errore ${fmt(c.mae, 2)} contro ${fmt(c.baseline_mae, 2)}).`}</li>
-        <li><b>Dai giudizi dei tester</b>: ${(m.spin_qualitative || {}).usable ? `il giudizio diventa la fascia corrispondente della distribuzione TWU, errore medio ±${fmt(m.spin_qualitative.mae, 2)}.` : `mostriamo solo la parola (es. "alto secondo i tester"), senza numero: controllato su ${(m.spin_qualitative || {}).n ?? 0} corde misurate, tradurre il giudizio in un numero sbaglia di ${fmt((m.spin_qualitative || {}).mae, 2)} contro ${fmt((m.spin_qualitative || {}).baseline_mae, 2)} della semplice media.`}</li>
+        <li><b>Recensioni</b>: non entrano nei calcoli. Le abbiamo verificate: ${c.n ? `su ${c.n} corde il voto spin dei tester non prevede lo spin TWU (pendenza ${fmt(c.a, 3)}), ` : ''}${(m.spin_qualitative || {}).n ? `e tradurre i giudizi in un numero sbaglia di ${fmt(m.spin_qualitative.mae, 2)} contro ${fmt(m.spin_qualitative.baseline_mae, 2)} della media.` : ''}</li>
+
       </ul>
       <p>Il tuo file Excel non basta a stimare lo spin: su 57 corde un modello basato su allungamento, recupero, forma e calibro sbaglia di 1,27 punti, peggio della media (1,20). Lo spin dipende soprattutto da quanto le corde scivolano l'una sull'altra, che il test in trazione non misura. Nella mappa le stime sono cerchi vuoti con la loro barra d'errore.</p></div>
     <div class="guide-grid">
@@ -414,6 +414,6 @@ function renderGuide() {
 
 /* ---------- avvio ---------- */
 renderTop3(); renderTastes(); renderSliders(); renderList(); initMap(); initCompare(); initExplore(); renderExplore(); renderGuide();
-$('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni di Tennis Warehouse, Tennisnerd e altri con link in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
+$('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni di Tennis Warehouse, Tennisnerd e altri solo come link di riferimento in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
 showTab((location.hash || '').slice(1) || store.get('tab', 'perte'));
 window.addEventListener('hashchange', () => showTab(location.hash.slice(1)));

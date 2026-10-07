@@ -29,9 +29,9 @@ def test_build_adds_catalog_estimates_and_meta():
     out = build(recs, {}, reviews=reviews, catalog=catalog)
     S = {r["id"]: r for r in out["strings"]}
     assert S["b-nuova-17"]["catalog_only"] is True
-    assert S["b-nuova-17"]["spin"]["kind"] in ("tester", "qualitativo")
+    assert S["b-nuova-17"]["spin"] is None  # recensioni escluse dai calcoli (decisione utente 2026-10-07)
     assert S["b-m3-17"]["spin"]["kind"] == "misurato"
     assert out["estimates_meta"]["spin_calibration"]["n"] >= 5
     assert "rp_to_twu" in out["estimates_meta"]
     assert S["b-nuova-17"]["reviews"]["sources"][0]["url"] == "https://tw/n"
-    assert S["b-nuova-17"]["derived"]["judgments"]["comfort"]["lab_share"] == 0
+    assert S["b-nuova-17"]["derived"]["judgments"]["comfort"]["score"] is None

@@ -155,3 +155,8 @@ Formula invariata (pesi 35/25/20/20, penalità per le non gradite con la regola 
 ## 8. Fuori ambito
 
 Prezzi e disponibilità; multifilamenti e ibridi; metriche Racketpedia a pagamento; trascrizioni integrali di video.
+
+## 9. Modifica decisa dall'utente (2026-10-07, dopo la v2)
+
+- **Le recensioni non entrano più in nessun calcolo**: giudizi, punteggio, classifiche, stime di spin e rigidità usano solo dati di laboratorio (Ektelon, TWU, Racketpedia, gemelli di calibro). Restano nella scheda come link informativi, con la scritta "non entrano nel punteggio". Supera §4 (peso 30%) e §5.1 punti 3–4.
+- **Le corde fuori produzione vengono rimosse dal banco**, tranne le 4 corde di riferimento dell'utente.

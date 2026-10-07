@@ -53,15 +53,17 @@ def build(records, notes, reviews=None, catalog=None):
     stiff_pop = [v for v in (_measured(r, "stiffness_lbin") for r in records) if v is not None]
     for r in records:
         rel = relatives_of(r, records)
-        r["spin"] = estimate_spin(r, rel, agg.get(r["id"]), calib, spin_pop, qual["usable"], qual["mae"])
+        # solo dati di laboratorio (decisione utente 2026-10-07): le recensioni non entrano nelle stime
+        r["spin"] = estimate_spin(r, rel, None, calib, spin_pop)
         r["stiffness"] = estimate_stiffness(r, rel, (rp_meta["a"], rp_meta["b"], rp_meta["mae"]) if rp_meta else None,
-                                            agg.get(r["id"]), stiff_pop)
+                                            None, stiff_pop)
         r["reviews"] = {"agg": agg.get(r["id"]),
                         "sources": [{k: s.get(k) for k in ("site", "url", "kind", "scores", "levels", "note")}
                                     for s in src.get(r["id"], [])]}
         r.setdefault("catalog_only", False)
 
-    discriminant = derive_all(records, agg)
+    # giudizi e punteggi solo dal laboratorio; le recensioni restano in r["reviews"] come link informativi
+    discriminant = derive_all(records)
     apply_notes(records, notes)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))

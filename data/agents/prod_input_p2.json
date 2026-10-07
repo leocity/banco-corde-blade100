@@ -1,0 +1,440 @@
+[
+ {
+  "brand": "Head",
+  "model_key": "hawk",
+  "names": [
+   "Hawk"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Head",
+  "model_key": "hawk power",
+  "names": [
+   "Hawk Power"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Head",
+  "model_key": "hawk touch",
+  "names": [
+   "Hawk Touch"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Head",
+  "model_key": "lynx tour",
+  "names": [
+   "Lynx Tour"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Head",
+  "model_key": "hawk seeding",
+  "names": [
+   "Hawk Seeding"
+  ],
+  "gauges_mm": [
+   1.3
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "4g",
+  "names": [
+   "4G",
+   "4G Black",
+   "4G Desert"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "alu power",
+  "names": [
+   "ALU Power",
+   "Alu Power blk",
+   "Alu Power gry"
+  ],
+  "gauges_mm": [
+   1.18,
+   1.2,
+   1.25
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "element soft ir",
+  "names": [
+   "Element Soft IR"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.27
+  ]
+ },
+ {
+  "brand": "Tecnifibre",
+  "model_key": "razor",
+  "names": [
+   "Razor"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "absolute",
+  "names": [
+   "Absolute"
+  ],
+  "gauges_mm": [
+   1.2
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "caviar",
+  "names": [
+   "Caviar"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "ether",
+  "names": [
+   "Ether"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "enso pro",
+  "names": [
+   "Enso Pro",
+   "Enso Pro neon pk",
+   "Enso Pro neon yl"
+  ],
+  "gauges_mm": [
+   1.23,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "enso pro carbon",
+  "names": [
+   "Enso Pro-carbon"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "wasabi",
+  "names": [
+   "Wasabi Pom",
+   "Wasabi green"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "wasabi x",
+  "names": [
+   "Wasabi X blue"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "super toro",
+  "names": [
+   "Super Toro"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "o toro",
+  "names": [
+   "O-Toro"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "toro toro",
+  "names": [
+   "Toro Toro Orange",
+   "Toro Toro matcha",
+   "Toro Toro pink"
+  ],
+  "gauges_mm": [
+   1.23,
+   1.25
+  ]
+ },
+ {
+  "brand": "Yonex",
+  "model_key": "poly tour pro",
+  "names": [
+   "Poly Tour Pro Yellow",
+   "Poly Tour Pro bk",
+   "Poly Tour Pro ble"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Yonex",
+  "model_key": "poly tour rev",
+  "names": [
+   "Poly Tour REV",
+   "Poly Tour Rev"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Yonex",
+  "model_key": "poly tour spin",
+  "names": [
+   "Poly Tour Spin"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "o toro snap",
+  "names": [
+   "O-TORO Snap"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Tecnifibre",
+  "model_key": "razor spin",
+  "names": [
+   "Razor Spin"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "o toro spin",
+  "names": [
+   "O-Toro Spin"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "o toro tour",
+  "names": [
+   "O-Toro Tour"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "cash",
+  "names": [
+   "Cash"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Tecnifibre",
+  "model_key": "razor soft",
+  "names": [
+   "Razor Soft"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "snapper",
+  "names": [
+   "Snapper"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "element rough",
+  "names": [
+   "Element Rough"
+  ],
+  "gauges_mm": [
+   1.3
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "alu power soft",
+  "names": [
+   "Alu Power Soft"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "4g soft",
+  "names": [
+   "4G Soft"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "element",
+  "names": [
+   "Element"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "alu power rough",
+  "names": [
+   "ALU Power Rough"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Tecnifibre",
+  "model_key": "razor code",
+  "names": [
+   "Razor Code"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Tecnifibre",
+  "model_key": "ice code",
+  "names": [
+   "Ice Code"
+  ],
+  "gauges_mm": [
+   1.3
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "alu power vibe",
+  "names": [
+   "Alu Power Vibe"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Head",
+  "model_key": "hawk rough",
+  "names": [
+   "Hawk Rough"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Yonex",
+  "model_key": "poly tour spin g",
+  "names": [
+   "Poly Tour Spin G"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Luxilon",
+  "model_key": "4g rough",
+  "names": [
+   "4G Rough"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Toroline",
+  "model_key": "a5",
+  "names": [
+   "A5"
+  ],
+  "gauges_mm": [
+   1.23
+  ]
+ }
+]

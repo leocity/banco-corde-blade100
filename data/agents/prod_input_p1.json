@@ -1,0 +1,280 @@
+[
+ {
+  "brand": "Babolat",
+  "model_key": "rpm blast",
+  "names": [
+   "RPM Blast",
+   "RPM Blast Orange"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Babolat",
+  "model_key": "rpm blast rough",
+  "names": [
+   "RPM Blast Rough"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Re-String",
+  "model_key": "slap",
+  "names": [
+   "Slap"
+  ],
+  "gauges_mm": [
+   1.23,
+   1.28
+  ]
+ },
+ {
+  "brand": "Re-String",
+  "model_key": "sync",
+  "names": [
+   "Sync"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Re-String",
+  "model_key": "vivo",
+  "names": [
+   "Vivo"
+  ],
+  "gauges_mm": [
+   1.23,
+   1.28
+  ]
+ },
+ {
+  "brand": "Re-String",
+  "model_key": "zero",
+  "names": [
+   "Zero"
+  ],
+  "gauges_mm": [
+   1.23,
+   1.28
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "hyper g",
+  "names": [
+   "Hyper-G"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "hyper g soft",
+  "names": [
+   "Hyper-G Soft"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "tour bite",
+  "names": [
+   "Tour Bite"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "confidential",
+  "names": [
+   "Confidential"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "revolution",
+  "names": [
+   "Revolution"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Wilson",
+  "model_key": "revolve spin",
+  "names": [
+   "Revolve Spin"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Wilson",
+  "model_key": "revolve",
+  "names": [
+   "Revolve"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Grapplesnake",
+  "model_key": "tour m8",
+  "names": [
+   "Tour M8"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "hyper g round",
+  "names": [
+   "Hyper-G Round"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "tour bite soft",
+  "names": [
+   "Tour Bite Soft"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Grapplesnake",
+  "model_key": "alpha",
+  "names": [
+   "Alpha"
+  ],
+  "gauges_mm": [
+   1.25
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "outlast",
+  "names": [
+   "Outlast"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "confidential soft",
+  "names": [
+   "Confidential Soft"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "mach 10",
+  "names": [
+   "Mach 10",
+   "Mach-10"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Grapplesnake",
+  "model_key": "tour sniper",
+  "names": [
+   "Tour Sniper"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "barb wire",
+  "names": [
+   "Barb Wire"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Solinco",
+  "model_key": "tour bite diamond rough",
+  "names": [
+   "Tour Bite Diamond Rough"
+  ],
+  "gauges_mm": [
+   1.2,
+   1.25,
+   1.3
+  ]
+ },
+ {
+  "brand": "Wilson",
+  "model_key": "revolve twist",
+  "names": [
+   "Revolve Twist"
+  ],
+  "gauges_mm": [
+   1.25,
+   1.3
+  ]
+ }
+]
