@@ -58,3 +58,37 @@ def test_stiffness_judgment_words_are_descriptive():
     pop = population([lab(i) for i in range(10)])
     j = judgments(rec, subscores(rec, pop), None, pop)
     assert j["stiffness"]["word"] in ("rigida", "molto rigida")
+
+
+def test_review_part_uses_percentile_not_raw_score():
+    rec = lab(5)
+    pop = population([lab(i) for i in range(10)])
+    sub = subscores(rec, pop)
+    agg = {"score": {"spin": 90.0, "comfort": None, "control": None, "power": None, "durability": None},
+           "level": {k: None for k in ("spin", "comfort", "control", "power", "durability", "stiffness")},
+           "pct": {"spin": 20.0}, "wsum": {"spin": 1.0}, "n_sources": 1}
+    j = judgments(rec, sub, agg, pop)
+    assert round(j["spin"]["score"], 1) == round(0.7 * sub["spin"] + 0.3 * 20.0, 1)
+
+
+def test_brand_only_reviews_weigh_less():
+    rec = lab(5)
+    pop = population([lab(i) for i in range(10)])
+    sub = subscores(rec, pop)
+    agg = {"score": {k: None for k in ("spin", "comfort", "control", "power", "durability")},
+           "level": {k: None for k in ("spin", "comfort", "control", "power", "durability", "stiffness")},
+           "pct": {"spin": 100.0}, "wsum": {"spin": 0.4}, "n_sources": 1}
+    j = judgments(rec, sub, agg, pop)
+    w = 0.3 * 0.4
+    shrunk = 50 + (100.0 - 50) * 0.4  # fonte debole: il voto si avvicina alla media
+    assert round(j["spin"]["score"], 1) == round((0.7 * sub["spin"] + w * shrunk) / (0.7 + w), 1)
+
+
+def test_brand_only_review_without_lab_is_shrunk_toward_middle():
+    rec = {"id": "x", "twu": None, "excel": None, "rpedia": None, "spin": None, "stiffness": None}
+    pop = population([lab(i) for i in range(10)])
+    agg = {"score": {k: None for k in ("spin", "comfort", "control", "power", "durability")},
+           "level": {k: None for k in ("spin", "comfort", "control", "power", "durability", "stiffness")},
+           "pct": {"spin": 95.0}, "wsum": {"spin": 0.4}, "n_sources": 1}
+    j = judgments(rec, subscores(rec, pop), agg, pop)
+    assert j["spin"]["score"] == 68.0 and j["spin"]["word"] == "alto"

@@ -32,11 +32,34 @@ def _wmean(pairs):
     return sum(v * w for v, w in pairs) / den if den else None
 
 
+def _value(s, c):
+    """Valore 0–100 di una fonte per un criterio: punteggio se c'è, altrimenti livello 1–5 -> 0–100."""
+    sc = (s.get("scores") or {}).get(c)
+    if sc is not None:
+        return sc
+    lv = (s.get("levels") or {}).get(c)
+    return None if lv is None else (lv - 1) * 25
+
+
 def aggregate(row):
     srcs = row.get("sources") or []
     w = lambda s: KIND_WEIGHT.get(s.get("kind"), 0.5)
     return {
         "score": {c: _wmean([((s.get("scores") or {}).get(c), w(s)) for s in srcs]) for c in CRITERIA},
         "level": {c: _wmean([((s.get("levels") or {}).get(c), w(s)) for s in srcs]) for c in LEVEL_CRITERIA},
+        "raw": {c: _wmean([(_value(s, c), w(s)) for s in srcs]) for c in LEVEL_CRITERIA},
+        # affidabilità: somma dei pesi delle fonti che si esprimono sul criterio (un playtest = 1, il produttore = 0,4)
+        "wsum": {c: round(sum(w(s) for s in srcs if _value(s, c) is not None), 2) for c in LEVEL_CRITERIA},
         "n_sources": len(srcs),
     }
+
+
+def add_percentiles(aggs):
+    """I voti dei tester diventano percentili tra le corde recensite, sulla stessa scala dei dati di laboratorio."""
+    for c in LEVEL_CRITERIA:
+        pop = [a["raw"][c] for a in aggs.values() if a["raw"].get(c) is not None]
+        for a in aggs.values():
+            v = a["raw"].get(c)
+            a.setdefault("pct", {})[c] = None if v is None or not pop else round(
+                (sum(x < v for x in pop) + 0.5 * sum(x == v for x in pop)) / len(pop) * 100, 1)
+    return aggs

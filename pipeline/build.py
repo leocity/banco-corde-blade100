@@ -10,7 +10,7 @@ from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, calibrate_tester_spin, estimate_spin, estimate_stiffness, fit_linear,
                                loo_mae, relatives_of)
 from pipeline.notes_gen import apply_notes
-from pipeline.reviews import aggregate
+from pipeline.reviews import add_percentiles, aggregate
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -29,7 +29,7 @@ def _corr(xs, ys):
 
 def build(records, notes, reviews=None, catalog=None):
     records = add_catalog_only(records, catalog or [])
-    agg = {row["id"]: aggregate(row) for row in (reviews or [])}
+    agg = add_percentiles({row["id"]: aggregate(row) for row in (reviews or [])})
     src = {row["id"]: row.get("sources", []) for row in (reviews or [])}
 
     # calibrazione tester -> spin TWU (solo corde con spin misurato e punteggio tester numerico)

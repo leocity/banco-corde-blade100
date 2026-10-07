@@ -117,8 +117,16 @@ def judgments(rec, sub, agg, pop):
     lab = {**sub, "stiffness": percentile(stiff_lab(rec), pop["stiff_measured"])}
     out = {}
     for c in JUDGE_CRITERIA:
-        l, v = lab.get(c), _review_score(agg, c)
-        parts = [(x, w) for x, w in ((l, LAB_WEIGHT), (v, REVIEW_WEIGHT)) if x is not None]
+        l = lab.get(c)
+        if agg and "pct" in agg:
+            v = agg["pct"].get(c)
+            rel = min(1.0, (agg.get("wsum") or {}).get(c, 1.0))
+            if v is not None:
+                v = 50 + (v - 50) * rel  # fonti deboli (es. solo produttore) avvicinano il voto alla media
+            rw = REVIEW_WEIGHT * rel
+        else:
+            v, rw = _review_score(agg, c), REVIEW_WEIGHT
+        parts = [(x, w) for x, w in ((l, LAB_WEIGHT), (v, rw)) if x is not None]
         if not parts:
             out[c] = {"score": None, "level": None, "word": None, "lab_share": None}
             continue

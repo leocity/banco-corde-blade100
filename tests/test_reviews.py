@@ -34,3 +34,17 @@ def test_aggregate_levels_and_empty_criteria():
 def test_aggregate_no_sources():
     agg = aggregate({"id": "a", "sources": []})
     assert agg["n_sources"] == 0 and all(v is None for v in agg["score"].values())
+
+
+def test_aggregate_reports_weight_sum_per_criterion():
+    row = {"id": "a", "sources": [src("lab_playtest", {"spin": 90}), src("brand", levels={"spin": 5})]}
+    agg = aggregate(row)
+    assert round(agg["wsum"]["spin"], 2) == 1.4 and agg["wsum"]["comfort"] == 0
+
+
+def test_review_percentiles_across_population():
+    from pipeline.reviews import add_percentiles
+    aggs = {i: aggregate({"id": i, "sources": [src("review", {"spin": s})]}) for i, s in (("a", 70), ("b", 80), ("c", 90))}
+    add_percentiles(aggs)
+    assert aggs["a"]["pct"]["spin"] < aggs["b"]["pct"]["spin"] < aggs["c"]["pct"]["spin"]
+    assert aggs["b"]["pct"]["spin"] == 50.0
