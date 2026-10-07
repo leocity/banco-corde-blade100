@@ -1,0 +1,873 @@
+[
+ {
+  "id": "solinco-hyper-g-round-16l",
+  "sources": [
+   {
+    "site": "Tennis Warehouse playtest",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_hyper-g_round.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 72,
+     "comfort": 88,
+     "control": 82,
+     "power": 63,
+     "durability": 81
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW team playtest, 0-10 x10. Gauges 16 to 18 tested (not one specific gauge), so applies to 16L and 17. durability = Playability Duration 8.1 (TW Durability 8.4). Text: firm monofilament."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=35533",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "No numeric scores. Text: Hyper-G is pretty firm; Round has lower stiffness, between Hyper-G Soft and regular Hyper-G; gauge not stated."
+   },
+   {
+    "site": "Tennis Warehouse product page",
+    "url": "https://www.tennis-warehouse.com/Solinco_Hyper-G_Round_16L_125_String_/descpageACSOLINCO-SHGR16L.html",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Retailer product copy for 16L: \"medium firm\", impressive tension maintenance for a poly (no level given for durability)."
+   }
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-round-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse playtest",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_hyper-g_round.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 72,
+     "comfort": 88,
+     "control": 82,
+     "power": 63,
+     "durability": 81
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW team playtest, 0-10 x10. Gauges 16 to 18 tested (not one specific gauge), so applies to 16L and 17. durability = Playability Duration 8.1 (TW Durability 8.4). Text: firm monofilament."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=35533",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "No numeric scores. Text: Hyper-G is pretty firm; Round has lower stiffness, between Hyper-G Soft and regular Hyper-G; gauge not stated."
+   },
+   {
+    "site": "Tennis Warehouse product page",
+    "url": "https://www.tennis-warehouse.com/Solinco_Hyper-G_Round_16L_125_String_/descpageACSOLINCO-SHGR16L.html",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Retailer product copy for 16L: \"medium firm\", impressive tension maintenance for a poly (no level given for durability). Same model, 16L page used for the 17 id."
+   }
+  ]
+ },
+ {
+  "id": "solinco-mach-10-16l",
+  "sources": [
+   {
+    "site": "Tennis Warehouse playtest",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_mach_10.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 82,
+     "comfort": 83,
+     "control": 84,
+     "power": 76,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW team playtest (3 testers), 0-10 x10. Gauge not stated; applies to 16L and 17. durability = Playability Duration 7.5 (TW Durability 8.0)."
+   },
+   {
+    "site": "Tennis Companion",
+    "url": "https://tenniscompanion.org/polyester-tennis-strings/",
+    "kind": "review",
+    "scores": {
+     "spin": 85,
+     "comfort": 79,
+     "control": 83,
+     "power": 74,
+     "durability": 71
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Reviewer ratings table 0-10 x10 (row Solinco Mach-10). Gauge not stated. durability = \"Playability\" column 7.1 (separate \"Durability\" column 8.3)."
+   },
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/is-solinco-mach-10-tennis-string-the-best-soft-poly-full-review-playtest/",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": 70,
+     "control": 85,
+     "power": 85,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Page cites Racketpedia LAB percentages (instrument-derived, not tester ratings). Gauge not stated. durability = Tension Holding 80%."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=45373",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 3
+    },
+    "note": "No numeric scores. Text: softer five-sided poly, soft on the arm but somewhat crisp, mix of power and spin; gauge not stated."
+   }
+  ]
+ },
+ {
+  "id": "solinco-mach-10-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse playtest",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_mach_10.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 82,
+     "comfort": 83,
+     "control": 84,
+     "power": 76,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "TW team playtest (3 testers), 0-10 x10. Gauge not stated; applies to 16L and 17. durability = Playability Duration 7.5 (TW Durability 8.0)."
+   },
+   {
+    "site": "Tennis Companion",
+    "url": "https://tenniscompanion.org/polyester-tennis-strings/",
+    "kind": "review",
+    "scores": {
+     "spin": 85,
+     "comfort": 79,
+     "control": 83,
+     "power": 74,
+     "durability": 71
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Reviewer ratings table 0-10 x10 (row Solinco Mach-10). Gauge not stated. durability = \"Playability\" column 7.1 (separate \"Durability\" column 8.3)."
+   },
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/is-solinco-mach-10-tennis-string-the-best-soft-poly-full-review-playtest/",
+    "kind": "review",
+    "scores": {
+     "spin": 90,
+     "comfort": 70,
+     "control": 85,
+     "power": 85,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Page cites Racketpedia LAB percentages (instrument-derived, not tester ratings). Gauge not stated. durability = Tension Holding 80%."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=45373",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 3
+    },
+    "note": "No numeric scores. Text: softer five-sided poly, soft on the arm but somewhat crisp, mix of power and spin; gauge not stated."
+   }
+  ]
+ },
+ {
+  "id": "solinco-confidential-soft-16",
+  "sources": [
+   {
+    "site": "Tennis Warehouse playtest",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential_soft.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 88,
+     "comfort": 80,
+     "control": 90,
+     "power": 64,
+     "durability": 88
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW team playtest (2 testers, 2026), 0-10 x10. Gauge not stated; applies to 16 and 17. durability = Playability Duration 8.8 (TW Durability 8.9). Text: still quite firm."
+   },
+   {
+    "site": "Tennis Companion",
+    "url": "https://tenniscompanion.org/?p=30240",
+    "kind": "review",
+    "scores": {
+     "spin": 88,
+     "comfort": 79,
+     "control": 87,
+     "power": 65,
+     "durability": 69
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Reviewer ratings 0-10 x10. Gauge not stated. durability = \"Playability\" 6.9 (peak playability fades after a few hours); separate \"Durability\" 8.8."
+   }
+  ]
+ },
+ {
+  "id": "solinco-confidential-soft-17",
+  "sources": [
+   {
+    "site": "Tennis Warehouse playtest",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential_soft.html",
+    "kind": "lab_playtest",
+    "scores": {
+     "spin": 88,
+     "comfort": 80,
+     "control": 90,
+     "power": 64,
+     "durability": 88
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "TW team playtest (2 testers, 2026), 0-10 x10. Gauge not stated; applies to 16 and 17. durability = Playability Duration 8.8 (TW Durability 8.9). Text: still quite firm."
+   },
+   {
+    "site": "Tennis Companion",
+    "url": "https://tenniscompanion.org/?p=30240",
+    "kind": "review",
+    "scores": {
+     "spin": 88,
+     "comfort": 79,
+     "control": 87,
+     "power": 65,
+     "durability": 69
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Reviewer ratings 0-10 x10. Gauge not stated. durability = \"Playability\" 6.9 (peak playability fades after a few hours); separate \"Durability\" 8.8."
+   }
+  ]
+ },
+ {
+  "id": "re-string-vivo-16",
+  "sources": [
+   {
+    "site": "reString blog quoting Racketpedia lab",
+    "url": "https://shoprestring.com/blogs/news/racketpedia-restring-vivo-highlights",
+    "kind": "brand",
+    "scores": {
+     "spin": 95,
+     "comfort": null,
+     "control": 90,
+     "power": null,
+     "durability": 100
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Brand blog quoting Racketpedia LAB scores for Vivo 16G 1.28mm (instrument-derived, not tester ratings). durability = Tension Holding 100/100."
+   },
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/restring-vivo-tennis-string-review-massive-spin-meets-easy-power/",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": 65,
+     "control": 90,
+     "power": 100,
+     "durability": 90
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Gauge 1.23 (this id is 1.28, other gauge). Page cites lab-style percentages (instrument-derived, not tester ratings); differs from the Racketpedia 1.28 figures quoted by reString. durability = Tension Holding 90%."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=45756",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 4,
+     "stiffness": 3
+    },
+    "note": "No numeric scores. Tested 1.23 gauge (other gauge). Text: spin potential and control excellent, holds tension really well, somewhere between firm and soft."
+   },
+   {
+    "site": "reString blog (stiffness guide)",
+    "url": "https://shoprestring.com/blogs/news/restring-tennis-strings-stiffness",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 4
+    },
+    "note": "Brand says Vivo is the firmest of its 4 strings (reaches territory of firmer polys, not extreme). Relative level, interpreted as 4."
+   }
+  ]
+ },
+ {
+  "id": "re-string-sync-16",
+  "sources": [
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/restring-sync-tennis-string-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 70,
+     "control": 90,
+     "power": 76,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Gauge 1.25 (other gauge than this id). Page cites Racketpedia LAB percentages (instrument-derived, not tester ratings). durability = Tension Holding 75%."
+   },
+   {
+    "site": "reString blog (Sync vs Tour M8 guide)",
+    "url": "https://shoprestring.com/blogs/news/expert-guide-to-restring-sync-and-grapplesnake-tour-m8",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": 3,
+     "durability": 5,
+     "stiffness": 3
+    },
+    "note": "Brand copy: power Moderate, durability Excellent (round shape + coating), sits in the middle of the firmness spectrum leaning slightly forgiving. Sold in 16/17/18."
+   }
+  ]
+ },
+ {
+  "id": "re-string-sync-18",
+  "sources": [
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/restring-sync-tennis-string-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 95,
+     "comfort": 70,
+     "control": 90,
+     "power": 76,
+     "durability": 75
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Gauge 1.25 (other gauge than this id). Page cites Racketpedia LAB percentages (instrument-derived, not tester ratings). durability = Tension Holding 75%."
+   },
+   {
+    "site": "reString blog (Sync vs Tour M8 guide)",
+    "url": "https://shoprestring.com/blogs/news/expert-guide-to-restring-sync-and-grapplesnake-tour-m8",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": 3,
+     "durability": 5,
+     "stiffness": 3
+    },
+    "note": "Brand copy: power Moderate, durability Excellent (round shape + coating), sits in the middle of the firmness spectrum leaning slightly forgiving. Sold in 16/17/18."
+   }
+  ]
+ },
+ {
+  "id": "re-string-slap-16",
+  "sources": [
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=61581",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "No numeric scores. Tested 1.23 gauge (other gauge). Text: extremely easy access to spin, mixed on control/feel (tinny vs Zero, less predictable on flat shots), plays more muted after a few hours."
+   },
+   {
+    "site": "reString blog (lineup guide)",
+    "url": "https://shoprestring.com/blogs/news/what-restring-string-is-best-for-you",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 3
+    },
+    "note": "Brand: \"best-in-class spin and power string\"; Slap sits mid-category, neither firm nor soft (stiffness guide). Brand self-scorecard (1-10) deliberately not entered as scores: comfort 8, control 8, spin 10, power 9, playability duration 9."
+   }
+  ]
+ },
+ {
+  "id": "toroline-a5-17",
+  "sources": [
+   {
+    "site": "Toroline (brand page)",
+    "url": "https://toroline.com/products/a5",
+    "kind": "brand",
+    "scores": {
+     "spin": 100,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Spin 100 = Racketpedia LAB rating quoted by brand (not a tester score). Brand: \"Elite Spin\", exceptional snapback, strong tension stability. Gauge 1.25 (other gauge)."
+   },
+   {
+    "site": "Tennis Warehouse product page",
+    "url": "https://www.tennis-warehouse.com/TOROLINE_A5_16L_125_String/descpageACTORO-TA525.html",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": 3
+    },
+    "note": "Retailer copy for 16L/1.25: \"moderate stiffness\", above-average pop and pocketing for a poly. Other gauge than this id."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=65182",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "No tester scores. Reviewer repeats Racketpedia lab 100/100 spin; says more snapback and spin potential than Alu Power; gauge 1.25 (other gauge)."
+   }
+  ]
+ },
+ {
+  "id": "grapplesnake-tour-sniper-16",
+  "sources": [
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/grapplesnake-tour-sniper-tennis-string-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": 65,
+     "control": 90,
+     "power": 90,
+     "durability": 90
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Page cites Racketpedia LAB percentages (instrument-derived, not tester ratings). Gauge for the numbers not stated (page discusses 1.25). durability = Tension Holding 90%."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://www.tennisnerd.net/?p=26877",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 3,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 4,
+     "stiffness": 4
+    },
+    "note": "No numeric scores. Tested 1.25 (other gauge). Text: excellent control, decent spin, medium-firm poly, held tension well, no issue with stiffness."
+   },
+   {
+    "site": "Tennis Warehouse product page",
+    "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_16_130_String/descpage-GTSS130.html",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Retailer/brand copy for 16/1.30: \"Massive Spin. Maximum Control.\", slightly firmer feel, partially pre-stretched."
+   }
+  ]
+ },
+ {
+  "id": "grapplesnake-tour-m8-16",
+  "sources": [
+   {
+    "site": "ProStrung",
+    "url": "https://prostrung.com/grapplesnake-tour-m8-review/",
+    "kind": "review",
+    "scores": {
+     "spin": 100,
+     "comfort": 65,
+     "control": 85,
+     "power": 80,
+     "durability": 80
+    },
+    "levels": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Page cites lab-style percentages (instrument-derived, not tester ratings). Gauge for the numbers not stated (page recommends 1.25, 1.30 for durability). durability = Tension Holding 80%."
+   },
+   {
+    "site": "Tennisnerd",
+    "url": "https://tennisnerd.net/?p=25992",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 4,
+     "stiffness": null
+    },
+    "note": "No numeric scores. Tested 1.30 gauge. Text: excellent control and spin, held tension well even at low tension; reviewer calls it stiff and control-oriented yet \"quite soft when strung\" (stiffness left null)."
+   },
+   {
+    "site": "Tennis Warehouse product page",
+    "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_16130_String/descpageACGRAPPLE-GM8S.html",
+    "kind": "brand",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 5,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": null,
+     "stiffness": null
+    },
+    "note": "Retailer/brand copy for 16/1.30: \"phenomenal spin\", \"exceptional control on full swings\", balanced Goldilocks feel."
+   },
+   {
+    "site": "Racqix",
+    "url": "https://www.racqix.com/en/blog/grapplesnake-tour-m8-review",
+    "kind": "review",
+    "scores": {
+     "spin": null,
+     "comfort": null,
+     "control": null,
+     "power": null,
+     "durability": null
+    },
+    "levels": {
+     "spin": 4,
+     "comfort": null,
+     "control": 5,
+     "power": null,
+     "durability": 5,
+     "stiffness": null
+    },
+    "note": "Affiliate blog, no numeric scores. Own labels: spin access High, stability/control Very high, durability (1.30) Excellent; \"not a free power string\"."
+   }
+  ]
+ },
+ {
+  "id": "wilson-revolve-twist-16",
+  "sources": []
+ },
+ {
+  "id": "wilson-revolve-twist-17",
+  "sources": []
+ }
+]
