@@ -22,6 +22,11 @@ const subline = (r) => [r.gauge_mm ? `${NF(2).format(r.gauge_mm)} mm` : r.gauge_
 const SPIN_KIND = { misurato: 'misurato', parente: 'da calibro/colore gemello', tester: 'stimato dai tester', qualitativo: 'stimato dai giudizi' };
 const STIFF_KIND = { misurata: 'misurata (TWU)', parente: 'da calibro gemello', 'da Racketpedia': 'da Racketpedia', qualitativo: 'dai giudizi dei tester' };
 const isEst = (o, measured) => o && o.kind !== measured;
+const LEVEL_WORD = ['molto basso', 'basso', 'medio', 'alto', 'molto alto'];
+const spinWord = (r) => (r.spin && r.spin.level != null ? LEVEL_WORD[Math.max(0, Math.min(4, Math.round(r.spin.level) - 1))] : null);
+const labSpin = (r) => !!r.spin && ['misurato', 'parente'].includes(r.spin.kind);
+const hasLab = (r) => !r.catalog_only && labSpin(r);
+const safeUrl = (u) => (/^https?:\/\//i.test(String(u || '')) ? u : '#');
 
 /* ---------- punteggio live ---------- */
 let weights = { ...DEFAULT_WEIGHTS, ...store.get('weights', {}) };
@@ -50,8 +55,10 @@ function badges(r) {
   const out = [];
   if (r.preference === 'liked') out.push('<span class="badge liked">★ preferita</span>');
   if (r.preference === 'disliked') out.push('<span class="badge disliked">✕ non gradita</span>');
-  if (r.catalog_only) out.push('<span class="badge est" title="Nessun test di laboratorio: giudizi solo dalle recensioni">solo recensioni</span>');
-  else if (isEst(r.spin, 'misurato') && r.spin) out.push(`<span class="badge est" title="Spin ${esc(SPIN_KIND[r.spin.kind])}">spin stimato</span>`);
+  const labAny = Object.values(r.derived.judgments || {}).some((j) => j && j.lab_share > 0);
+  if (r.catalog_only && !labAny) out.push('<span class="badge est" title="Nessun test di laboratorio: giudizi solo dalle recensioni">solo recensioni</span>');
+  else if (r.catalog_only) out.push('<span class="badge est" title="Non testata direttamente: i dati di laboratorio vengono da un calibro gemello">dati da calibro gemello</span>');
+  if (r.spin && isEst(r.spin, 'misurato')) out.push(`<span class="badge est" title="Spin ${esc(SPIN_KIND[r.spin.kind])}">${r.spin.value == null ? 'spin solo dai tester' : 'spin stimato'}</span>`);
   if (r.derived.disliked_warning) out.push('<span class="badge warn" title="Somiglia più a una corda che non ti è piaciuta che alle tue preferite">⚠ simile a una non gradita</span>');
   if (r.crosscheck?.verdict === 'contradicted') out.push('<span class="badge warn" title="Recensioni e produttori contraddicono i numeri di laboratorio">⚑ dati contestati</span>');
   return out.join(' ');
@@ -94,11 +101,11 @@ document.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('cli
 $('#open-guide').addEventListener('click', () => { showTab('guida'); history.replaceState(null, '', '#guida'); scrollTo(0, 0); });
 
 /* ---------- PER TE ---------- */
-const reliable = (r) => r.is_target && !r.preference && !r.catalog_only && !r.derived.disliked_warning && r.crosscheck?.verdict !== 'contradicted' && r._score !== null;
+const reliable = (r) => r.is_target && !r.preference && !r.catalog_only && labSpin(r) && !r.derived.disliked_warning && r.crosscheck?.verdict !== 'contradicted' && r._score !== null;
 function renderTop3() {
   const top = ALL.filter(reliable).sort((a, b) => b._score - a._score).slice(0, 3);
   $('#top3').innerHTML = top.map((r, i) => card(r, { rank: ['Prima scelta', 'Seconda scelta', 'Terza scelta'][i], why: true })).join('');
-  $('#top3-note').textContent = 'Tra le marche che valuti, escluse le corde senza test di laboratorio, quelle con dati contestati e quelle simili alle non gradite.';
+  $('#top3-note').textContent = 'Tra le marche che valuti, solo corde con spin misurato o da un calibro gemello; escluse quelle con dati contestati e quelle simili alle non gradite.';
 }
 function renderTastes() {
   $('#tastes').innerHTML = `<p class="eyebrow">Cosa dicono i tuoi gusti</p>${DATA.insight ? `<p>${esc(DATA.insight)}</p>` : ''}`;
@@ -116,7 +123,7 @@ $('#q').addEventListener('input', renderList);
 const conf = BY_ID['solinco-confidential-16l'];
 const sub = (r, k) => r.derived.subscores?.[k] ?? null;
 const PRESETS = {
-  score: { desc: 'Ordinate per punteggio sul tuo profilo (70% laboratorio, 30% recensioni).', list: (rs) => rs.filter((r) => r._score !== null).sort((a, b) => b._score - a._score) },
+  score: { desc: 'Prima le corde con spin misurato, ordinate per punteggio; poi quelle giudicate solo dai tester.', list: (rs) => rs.filter((r) => r._score !== null).sort((a, b) => (hasLab(b) - hasLab(a)) || (b._score - a._score)) },
   similar: { desc: 'Le più vicine per misure a Confidential o O-Toro.', list: (rs) => rs.filter((r) => !r.preference && bestLiked(r) !== null).sort((a, b) => bestLiked(b) - bestLiked(a)) },
   spin: { desc: 'Almeno il controllo della tua Confidential (±10), ma più spin.', list: (rs) => rs.filter((r) => !r.preference && !r.derived.disliked_warning && sub(r, 'spin') !== null && sub(r, 'control') !== null && sub(r, 'control') >= sub(conf, 'control') - 10 && sub(r, 'spin') > sub(conf, 'spin')).sort((a, b) => sub(b, 'spin') - sub(a, 'spin')) },
   durable: { desc: 'Quelle che tengono meglio la tensione, escluse quelle simili alle non gradite.', list: (rs) => rs.filter((r) => sub(r, 'durability') !== null && !r.derived.disliked_warning && r.preference !== 'disliked').sort((a, b) => sub(b, 'durability') - sub(a, 'durability')) },
@@ -156,7 +163,7 @@ function openSheet(id) {
     const v = sp(e.olg_16x19, near);
     if (v !== null && v !== undefined) olg = `<div class="tbox"><span class="muted small">Lunghezza guadagnata 16×19 a ${near} lbs</span><span class="big">${fmt(v, 1)}″</span><span class="muted small">utile se incordi da matassa</span></div>`;
   }
-  const spinTxt = r.spin ? `${r.spin.kind === 'misurato' ? '' : '≈ '}${fmt(r.spin.value, 1)}${r.spin.kind === 'misurato' ? '' : ` (tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)})`} · ${SPIN_KIND[r.spin.kind]}` : 'non disponibile';
+  const spinTxt = !r.spin ? 'non disponibile' : r.spin.value == null ? `${spinWord(r)} secondo i tester · nessuna stima numerica affidabile` : `${r.spin.kind === 'misurato' ? '' : '≈ '}${fmt(r.spin.value, 1)}${r.spin.kind === 'misurato' ? '' : ` (tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)})`} · ${SPIN_KIND[r.spin.kind]}`;
   const stTxt = r.stiffness ? `${r.stiffness.kind === 'misurata' ? '' : '≈ '}${fmt(r.stiffness.value_lbin, 0)} lb/in${r.stiffness.kind === 'misurata' ? '' : ` (tra ${fmt(r.stiffness.low, 0)} e ${fmt(r.stiffness.high, 0)})`} · ${STIFF_KIND[r.stiffness.kind]}` : 'non disponibile';
   const revs = r.reviews?.sources || [];
   $('#sheet-body').innerHTML = `
@@ -181,16 +188,16 @@ function openSheet(id) {
         ...(e.extra_test_sets ? [['Set di test nel file', `${e.extra_test_sets + 1} (mostrato il primo)`]] : [])]) : '<p class="muted small">Non testata nel tuo file.</p>'}</div>
       <div class="src"><h3>Tennis Warehouse University</h3>${t ? `${t.match !== 'exact' ? `<p class="proxy small">Dato di «${esc(t.twu_name)}» (${t.match === 'proxy' ? 'stesso modello, altro calibro' : 'stessa corda, nome diverso'}).</p>` : ''}${kv([
         ['Rigidità dinamica', fmtH(t.stiffness_lbin, 1) + ' lb/in'], ['Perdita di tensione', fmtH(t.tension_loss_pct, 1) + ' %'], ['Spin potential', fmtH(t.spin_potential, 1)]])}` : '<p class="muted small">Non presente.</p>'}</div>
-      <div class="src"><h3>Racketpedia</h3>${p ? `${kv([['Rigidità statica', fmt(p.static_stiffness_kgmm, 2) + ' kg/mm']])}<p class="small"><a href="${esc(p.url)}" target="_blank" rel="noopener">Apri su Racketpedia</a></p>` : '<p class="muted small">Non presente.</p>'}</div>
+      <div class="src"><h3>Racketpedia</h3>${p ? `${kv([['Rigidità statica', fmt(p.static_stiffness_kgmm, 2) + ' kg/mm']])}<p class="small"><a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">Apri su Racketpedia</a></p>` : '<p class="muted small">Non presente.</p>'}</div>
     </details>
-    <details class="sheet-section"${r.catalog_only ? ' open' : ''}><summary>Cosa dicono i tester (${revs.length} fonti, peso 30%)</summary>
+    <details class="sheet-section"${r.catalog_only ? ' open' : ''}><summary>Cosa dicono i tester (${revs.length} fonti${r.catalog_only ? ', unica fonte dei giudizi' : ', fino al 30% del giudizio'})</summary>
       ${revs.length ? revs.map((s) => {
         const sc = Object.entries(s.scores || {}).filter(([, v]) => v !== null).map(([k, v]) => `${CRIT_IT[k]} ${Math.round(v)}`);
         const lv = Object.entries(s.levels || {}).filter(([, v]) => v !== null).map(([k, v]) => `${CRIT_IT[k]} ${['molto basso', 'basso', 'medio', 'alto', 'molto alto'][v - 1]}`);
-        return `<div class="rev"><span><b>${esc(s.site)}</b> <span class="muted small">${KIND_IT[s.kind] || s.kind}</span></span>${sc.length ? `<span class="small">Punteggi /100: ${esc(sc.join(' · '))}</span>` : ''}${lv.length ? `<span class="small">Giudizi: ${esc(lv.join(' · '))}</span>` : ''}${s.note ? `<span class="muted small">${esc(s.note)}</span>` : ''}<a class="small" href="${esc(s.url)}" target="_blank" rel="noopener">Fonte</a></div>`;
+        return `<div class="rev"><span><b>${esc(s.site)}</b> <span class="muted small">${esc(KIND_IT[s.kind] || s.kind)}</span></span>${sc.length ? `<span class="small">Punteggi /100: ${esc(sc.join(' · '))}</span>` : ''}${lv.length ? `<span class="small">Giudizi: ${esc(lv.join(' · '))}</span>` : ''}${s.note ? `<span class="muted small">${esc(s.note)}</span>` : ''}<a class="small" href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">Fonte</a></div>`;
       }).join('') : '<p class="muted small">Nessuna recensione trovata.</p>'}
     </details>
-    ${r.crosscheck ? `<details class="sheet-section"><summary>Controllo incrociato: ${esc(VERDICT[r.crosscheck.verdict] || r.crosscheck.verdict)}</summary>${r.crosscheck.note ? `<p class="small">${esc(r.crosscheck.note)}</p>` : ''}<p class="small muted">Fonti: ${(r.crosscheck.sources || []).map((u) => { let h = u; try { h = new URL(u).hostname.replace('www.', ''); } catch { /* url non valido */ } return `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(h)}</a>`; }).join(' · ')}</p></details>` : ''}
+    ${r.crosscheck ? `<details class="sheet-section"><summary>Controllo incrociato: ${esc(VERDICT[r.crosscheck.verdict] || r.crosscheck.verdict)}</summary>${r.crosscheck.note ? `<p class="small">${esc(r.crosscheck.note)}</p>` : ''}<p class="small muted">Fonti: ${(r.crosscheck.sources || []).map((u) => { let h = u; try { h = new URL(u).hostname.replace('www.', ''); } catch { /* url non valido */ } return `<a href="${esc(safeUrl(u))}" target="_blank" rel="noopener">${esc(h)}</a>`; }).join(' · ')}</p></details>` : ''}
     <details class="sheet-section"><summary>Somiglianza con le tue corde</summary>${kv([
       ['★ Confidential 1.25', fmt(r.derived.similarity_liked?.confidential, 0)], ['★ O-Toro 1.23', fmt(r.derived.similarity_liked?.otoro, 0)],
       ['✕ Confidential Soft', fmt(r.derived.similarity_disliked?.confidential_soft, 0)], ['✕ RPM Blast', fmt(r.derived.similarity_disliked?.rpm_blast, 0)]])}</details>
@@ -297,7 +304,7 @@ function addToCompare(id) {
 }
 const ROWS = [
   { k: 'stiffness', label: 'Rigidità', lead: 'più rigida', val: (r) => r.stiffness?.value_lbin, show: (r) => `${r.stiffness ? `${isEst(r.stiffness, 'misurata') ? '≈ ' : ''}${fmt(r.stiffness.value_lbin, 0)} lb/in` : '—'} · ${r.derived.judgments?.stiffness?.word || 'n.d.'}`, small: (r) => [r.stiffness && isEst(r.stiffness, 'misurata') ? STIFF_KIND[r.stiffness.kind] : '', r.rpedia ? `Racketpedia ${fmt(r.rpedia.static_stiffness_kgmm, 2)} kg/mm` : '', r.excel?.stiff_index_avg != null ? `Stiff Index ${fmt(r.excel.stiff_index_avg, 2)}` : ''].filter(Boolean).join(' · ') },
-  { k: 'spin', label: 'Spin', lead: 'più spin', val: (r) => r.spin?.value, show: (r) => `${r.spin ? `${isEst(r.spin, 'misurato') ? '≈ ' : ''}${fmt(r.spin.value, 1)}` : '—'} · ${r.derived.judgments?.spin?.word || 'n.d.'}`, small: (r) => (r.spin && isEst(r.spin, 'misurato') ? `${SPIN_KIND[r.spin.kind]}, tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)}` : '') },
+  { k: 'spin', label: 'Spin', lead: 'più spin', val: (r) => (labSpin(r) ? r.spin.value : null), show: (r) => (r.spin && r.spin.value == null ? `${spinWord(r)} secondo i tester` : `${r.spin ? `${isEst(r.spin, 'misurato') ? '≈ ' : ''}${fmt(r.spin.value, 1)}` : '—'} · ${r.derived.judgments?.spin?.word || 'n.d.'}`), small: (r) => (!r.spin ? '' : r.spin.value == null ? 'nessuna stima numerica affidabile' : isEst(r.spin, 'misurato') ? `${SPIN_KIND[r.spin.kind]}, tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)}` : '') },
   { k: 'control', label: 'Controllo', lead: 'più controllo', val: (r) => r.derived.judgments?.control?.score },
   { k: 'power', label: 'Potenza', lead: 'più potenza', val: (r) => r.derived.judgments?.power?.score },
   { k: 'durability', label: 'Tenuta', lead: 'tiene meglio', val: (r) => r.derived.judgments?.durability?.score, small: (r) => [r.twu?.tension_loss_pct != null ? `TWU −${fmt(r.twu.tension_loss_pct, 0)}%` : '', r.excel?.tl6 != null ? `6 mesi −${fmt(r.excel.tl6, 0)}%` : '', r.excel?.tl12 != null ? `12 mesi −${fmt(r.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') },
@@ -340,7 +347,7 @@ const COLS = [
   { key: 'mm', label: 'mm', n: true, get: (r) => r.gauge_mm, cell: (r) => fmtH(r.gauge_mm, 2) },
   { key: 'shape', label: 'Forma', get: (r) => SHAPES[r.shape] || r.shape || '', cell: (r) => esc(SHAPES[r.shape] || r.shape || '—') },
   { key: 'stiff', label: 'Rigidità', n: true, get: (r) => r.stiffness?.value_lbin, cell: (r) => (r.stiffness ? `<span class="${isEst(r.stiffness, 'misurata') ? 'proxy' : ''}" title="${esc(STIFF_KIND[r.stiffness.kind])}">${isEst(r.stiffness, 'misurata') ? '≈' : ''}${fmt(r.stiffness.value_lbin, 0)}</span>` : fmtH(null)) },
-  { key: 'spin', label: 'Spin', n: true, get: (r) => r.spin?.value, cell: (r) => (r.spin ? `<span class="${isEst(r.spin, 'misurato') ? 'proxy' : ''}" title="${esc(SPIN_KIND[r.spin.kind])}">${isEst(r.spin, 'misurato') ? '≈' : ''}${fmt(r.spin.value, 1)}</span>` : fmtH(null)) },
+  { key: 'spin', label: 'Spin', n: true, get: (r) => r.spin?.value, cell: (r) => (!r.spin ? fmtH(null) : r.spin.value == null ? `<span class="proxy" title="giudizio dei tester, senza numero">${esc(spinWord(r))}</span>` : `<span class="${isEst(r.spin, 'misurato') ? 'proxy' : ''}" title="${esc(SPIN_KIND[r.spin.kind])}">${isEst(r.spin, 'misurato') ? '≈' : ''}${fmt(r.spin.value, 1)}</span>`) },
   { key: 'tl', label: 'Perdita %', n: true, get: (r) => r.twu?.tension_loss_pct, cell: (r) => fmtH(r.twu?.tension_loss_pct, 1) },
   { key: 'si', label: 'Stiff Idx', title: 'Stiff Index del test Ektelon: indice di cedimento, più alto = la corda torna meno indietro', n: true, get: (r) => r.excel?.stiff_index_avg, cell: (r) => fmtH(r.excel?.stiff_index_avg, 2) },
   { key: 'score', label: 'Per te', n: true, get: (r) => r._score, cell: (r) => fmtH(r._score, 0) },
@@ -361,7 +368,7 @@ function renderExplore() {
   const q = $('#f-q').value.trim().toLowerCase(), b = $('#f-brand').value, g = $('#f-gauge').value, sh = $('#f-shape').value;
   const rows = ALL.filter((r) => (!q || fullName(r).toLowerCase().includes(q)) && (!b || r.brand === b) && (!g || r.gauge_label === g) && (!sh || r.shape === sh) && (!$('#f-target').checked || r.is_target) && (!$('#f-lab').checked || !r.catalog_only));
   const col = COLS.find((c) => c.key === sortKey);
-  rows.sort((a, c) => { const va = col.get(a), vc = col.get(c); if (va == null && vc == null) return 0; if (va == null) return 1; if (vc == null) return -1; return (typeof va === 'string' ? va.localeCompare(vc) : va - vc) * sortDir; });
+  rows.sort((a, c) => { if (sortKey === 'score' && hasLab(a) !== hasLab(c)) return hasLab(c) - hasLab(a); const va = col.get(a), vc = col.get(c); if (va == null && vc == null) return 0; if (va == null) return 1; if (vc == null) return -1; return (typeof va === 'string' ? va.localeCompare(vc) : va - vc) * sortDir; });
   $('#f-count').textContent = `${rows.length} corde. "≈" e corsivo indicano un valore stimato.`;
   $('#f-cards').innerHTML = rows.slice(0, 60).map((r) => card(r)).join('') + (rows.length > 60 ? `<p class="muted small">Mostrate le prime 60: usa i filtri per restringere.</p>` : '');
   $('#table').innerHTML = `<thead><tr>${COLS.map((c) => `<th class="${c.n ? 'n' : ''}" aria-sort="${c.key === sortKey ? (sortDir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-sort="${c.key}"${c.title ? ` title="${esc(c.title)}"` : ''}>${esc(c.label)}${c.key === sortKey ? (sortDir > 0 ? ' ▲' : ' ▼') : ''}</button></th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${COLS.map((c) => `<td class="${c.n ? 'n' : ''}">${c.cell(r)}</td>`).join('')}</tr>`).join('')}</tbody>`;
@@ -389,7 +396,7 @@ function renderGuide() {
         <li><b>Misurato</b>: lo spin potential di TWU sulla stessa corda.</li>
         <li><b>Da calibro o colore gemello</b>: lo stesso modello misurato in un altro calibro, ±0,5.</li>
         <li><b>Dai punteggi dei tester</b>: ${c.usable ? `una retta che converte il voto spin dei tester nella scala TWU, errore medio ±${fmt(c.mae, 2)} su ${c.n} corde.` : `non usata: su ${c.n ?? 0} corde i voti dei tester non prevedono lo spin TWU meglio della media (errore ${fmt(c.mae, 2)} contro ${fmt(c.baseline_mae, 2)}).`}</li>
-        <li><b>Dai giudizi dei tester</b>: il giudizio (basso … molto alto) diventa la fascia corrispondente della distribuzione TWU, con il suo margine.</li>
+        <li><b>Dai giudizi dei tester</b>: ${(m.spin_qualitative || {}).usable ? `il giudizio diventa la fascia corrispondente della distribuzione TWU, errore medio ±${fmt(m.spin_qualitative.mae, 2)}.` : `mostriamo solo la parola (es. "alto secondo i tester"), senza numero: controllato su ${(m.spin_qualitative || {}).n ?? 0} corde misurate, tradurre il giudizio in un numero sbaglia di ${fmt((m.spin_qualitative || {}).mae, 2)} contro ${fmt((m.spin_qualitative || {}).baseline_mae, 2)} della semplice media.`}</li>
       </ul>
       <p>Il tuo file Excel non basta a stimare lo spin: su 57 corde un modello basato su allungamento, recupero, forma e calibro sbaglia di 1,27 punti, peggio della media (1,20). Lo spin dipende soprattutto da quanto le corde scivolano l'una sull'altra, che il test in trazione non misura. Nella mappa le stime sono cerchi vuoti con la loro barra d'errore.</p></div>
     <div class="guide-grid">

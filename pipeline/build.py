@@ -7,10 +7,10 @@ import pathlib
 
 from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
-from pipeline.estimate import (MEASURED, calibrate_tester_spin, estimate_spin, estimate_stiffness, fit_linear,
-                               loo_mae, relatives_of)
+from pipeline.estimate import (MEASURED, backtest_qualitative, calibrate_tester_spin, estimate_spin,
+                               estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
 from pipeline.notes_gen import apply_notes
-from pipeline.reviews import add_percentiles, aggregate
+from pipeline.reviews import add_percentiles, aggregate, validate_reviews
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -48,10 +48,12 @@ def build(records, notes, reviews=None, catalog=None):
         rp_meta = {"a": round(a, 2), "b": round(b, 2), "mae": round(loo_mae(xs, ys), 1), "n": len(rp), "r": _corr(xs, ys)}
 
     spin_pop = [v for v in (_measured(r, "spin_potential") for r in records) if v is not None]
+    qpairs = [(tester_level(agg.get(r["id"])), _measured(r, "spin_potential")) for r in records if r["id"] in agg]
+    qual = backtest_qualitative([(l, y) for l, y in qpairs if l is not None and y is not None], spin_pop)
     stiff_pop = [v for v in (_measured(r, "stiffness_lbin") for r in records) if v is not None]
     for r in records:
         rel = relatives_of(r, records)
-        r["spin"] = estimate_spin(r, rel, agg.get(r["id"]), calib, spin_pop)
+        r["spin"] = estimate_spin(r, rel, agg.get(r["id"]), calib, spin_pop, qual["usable"], qual["mae"])
         r["stiffness"] = estimate_stiffness(r, rel, (rp_meta["a"], rp_meta["b"], rp_meta["mae"]) if rp_meta else None,
                                             agg.get(r["id"]), stiff_pop)
         r["reviews"] = {"agg": agg.get(r["id"]),
@@ -70,7 +72,7 @@ def build(records, notes, reviews=None, catalog=None):
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
-        "estimates_meta": {"spin_calibration": calib, "rp_to_twu": rp_meta},
+        "estimates_meta": {"spin_calibration": calib, "spin_qualitative": qual, "rp_to_twu": rp_meta},
         "strings": records,
     }
 
@@ -85,6 +87,9 @@ if __name__ == "__main__":
     notes = _load("data/notes.json", {})
     reviews = [row for f in sorted(glob.glob(str(ROOT / "data/agents/reviews_r*.json")))
                for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8"))]
+    errs = validate_reviews(reviews, {r["id"] for r in reviews})
+    if errs:
+        raise SystemExit("recensioni non valide: " + "; ".join(errs))
     cc = _load("data/crosscheck_overrides.json", {"shapes": []})
     catalog = clean_catalog(_load("data/agents/catalog.json", []), cc.get("shapes", []),
                             _load("data/catalog_fixes.json", {"exclude": []})["exclude"])
@@ -97,4 +102,5 @@ if __name__ == "__main__":
         kinds[k] = kinds.get(k, 0) + 1
     print(len(S), "corde; spin per tipo:", kinds, "| solo catalogo:", sum(r["catalog_only"] for r in S))
     print("calibrazione spin:", out["estimates_meta"]["spin_calibration"])
+    print("fascia qualitativa:", out["estimates_meta"]["spin_qualitative"])
     print("Racketpedia -> TWU:", out["estimates_meta"]["rp_to_twu"])

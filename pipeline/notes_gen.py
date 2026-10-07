@@ -22,8 +22,13 @@ def _feel(r, s):
     shape = SHAPE_IT.get(r.get("shape") or "", "")
     stiff = {"hi": "rigida e compatta", "mid": "di rigidità media", "lo": "morbida"}.get(_band(s["control"]))
     sp = r.get("spin")
-    est = (f" Spin stimato ≈ {sp['value']:g} ({SPIN_KIND_IT.get(sp['kind'], sp['kind'])}, tra {sp['low']:g} e {sp['high']:g})."
-           if sp and sp.get("kind") not in (None, "misurato") else "")
+    if sp and sp.get("kind") not in (None, "misurato") and sp.get("value") is not None:
+        est = f" Spin stimato ≈ {sp['value']:g} ({SPIN_KIND_IT.get(sp['kind'], sp['kind'])}, tra {sp['low']:g} e {sp['high']:g})."
+    elif sp and sp.get("level") is not None:
+        word = ("molto basso", "basso", "medio", "alto", "molto alto")[max(0, min(4, round(sp["level"]) - 1))]
+        est = f" Spin giudicato {word} dai tester; nessuna stima numerica affidabile."
+    else:
+        est = ""
     if r.get("catalog_only"):
         n = ((r.get("reviews") or {}).get("agg") or {}).get("n_sources", 0)
         return (f"Nessun test di laboratorio: i giudizi vengono solo dalle recensioni ({n} fonti), quindi sono indicativi."
@@ -40,7 +45,12 @@ def _feel(r, s):
     return f"Poly {stiff or 'di rigidità non misurata'}{st}, {spin}" + (f", profilo {shape}" if shape else "") + (f"; {dur}." if dur else ".")
 
 
+INSUFFICIENT = "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili."
+
+
 def _blade(r, s):
+    if all(s.get(k) is None for k in ("control", "spin", "power")):
+        return INSUFFICIENT
     b = _band(s["control"])
     if b == "hi":
         return ("La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta "
@@ -53,6 +63,8 @@ def _blade(r, s):
 
 
 def _style(r, s):
+    if all(s.get(k) is None for k in ("spin", "control", "durability")):
+        return INSUFFICIENT
     out = []
     sp = _band(s["spin"])
     if sp == "hi":

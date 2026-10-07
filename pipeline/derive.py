@@ -204,7 +204,9 @@ def tension_start(rec, anchors):
     else:
         delta = max(-2.0, min(2.0, _half(-0.75 * (st - anchor["stiffness"]) / 15)))
         kg = [anchor["kg"][0] + delta, anchor["kg"][1] + delta]
-        note = f"da {ANCHOR_NAMES.get(anchor['id'], anchor['id'])} corretta di {delta:+.1f} kg per la differenza di rigidità TWU"
+        src = {"misurata": "TWU", "parente": "TWU di un calibro gemello", "da Racketpedia": "Racketpedia convertita, ±11 lb/in"}.get(
+            ((rec.get("stiffness") or {}).get("kind")), "TWU")
+        note = f"da {ANCHOR_NAMES.get(anchor['id'], anchor['id'])} corretta di {delta:+.1f} kg per la differenza di rigidità ({src})"
     return {"kg": kg, "lbs": [_half(k * KG_TO_LBS) for k in kg], "from": anchor["id"],
             "indicative": True, "note": note}
 

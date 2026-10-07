@@ -81,3 +81,11 @@ def test_catalog_only_note_says_reviews_only():
     r = rec(twu=None, excel=None, catalog_only=True)
     r["reviews"] = {"agg": {"n_sources": 3}, "sources": []}
     assert "recensioni" in generate_notes(r)["feel"]
+
+
+def test_null_subscores_say_insufficient_data():
+    r = rec(twu=None, excel=None)
+    r["derived"]["subscores"] = {"spin": None, "control": None, "power": None, "durability": None, "comfort": None}
+    r["derived"]["similarity_liked"] = {"confidential": None, "otoro": None}
+    n = generate_notes(r)
+    assert "insufficienti" in n["on_blade_100_v9"] and "insufficienti" in n["for_your_style"]

@@ -71,7 +71,7 @@ def _out(value, low, high, kind, n=1):
     return {"value": round(value, 2), "low": round(low, 2), "high": round(high, 2), "kind": kind, "basis_n": n}
 
 
-def estimate_spin(rec, relatives, tester_agg, calib, twu_spin_pop):
+def estimate_spin(rec, relatives, tester_agg, calib, twu_spin_pop, qual_usable=True, qual_mae=None):
     t = rec.get("twu") or {}
     if t.get("spin_potential") is not None:
         v = t["spin_potential"]
@@ -86,12 +86,35 @@ def estimate_spin(rec, relatives, tester_agg, calib, twu_spin_pop):
     if score is not None and calib and calib.get("usable"):
         v = calib["a"] * score + calib["b"]
         return _out(v, v - calib["mae"], v + calib["mae"], "tester")
-    level = ((tester_agg or {}).get("level") or {}).get("spin")
-    if level is None and score is not None:
-        level = 1 + score / 25  # 0–100 -> 1–5
-    if level is not None and twu_spin_pop:
-        return _out(*_band(level, twu_spin_pop), "qualitativo")
-    return None
+    level = tester_level(tester_agg)
+    if level is None:
+        return None
+    if qual_usable and twu_spin_pop:
+        v, lo, hi = _band(level, twu_spin_pop)
+        m = max(hi - v, qual_mae or 0)
+        return _out(v, v - m, v + m, "qualitativo")
+    # i giudizi dei tester non predicono lo spin TWU meglio della media: niente numero, solo il giudizio
+    return {"value": None, "low": None, "high": None, "kind": "qualitativo", "level": round(level, 2), "basis_n": 1}
+
+
+def tester_level(tester_agg):
+    """Livello 1–5 dei tester per lo spin: dal giudizio, oppure dal percentile del voto tra le corde recensite."""
+    a = tester_agg or {}
+    level = (a.get("level") or {}).get("spin")
+    pct = (a.get("pct") or {}).get("spin")
+    if level is None and pct is not None:
+        level = 1 + pct / 25
+    return level
+
+
+def backtest_qualitative(pairs, twu_spin_pop):
+    """pairs = [(livello tester, spin TWU misurato)]: la fascia qualitativa batte la media?"""
+    if len(pairs) < 5:
+        return {"mae": None, "baseline_mae": None, "usable": False, "n": len(pairs)}
+    ys = [y for _, y in pairs]
+    mae = sum(abs(_band(l, twu_spin_pop)[0] - y) for l, y in pairs) / len(pairs)
+    base = _loo_mean_mae(ys)
+    return {"mae": round(mae, 2), "baseline_mae": round(base, 2), "usable": mae < 0.95 * base, "n": len(pairs)}
 
 
 def estimate_stiffness(rec, relatives, rp_to_twu, tester_agg, twu_stiff_pop):

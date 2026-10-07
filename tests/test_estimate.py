@@ -66,3 +66,17 @@ def test_calibration_with_negative_slope_or_no_gain_is_unusable():
     assert calibrate_tester_spin(flat)["usable"] is False
     good = [(40, 4.0), (50, 5.1), (60, 5.9), (70, 7.2), (80, 7.9), (90, 9.1), (55, 5.4), (65, 6.6)]
     assert calibrate_tester_spin(good)["usable"] is True
+
+
+def test_qualitative_spin_without_number_when_backtest_fails():
+    agg = {"score": {"spin": None}, "level": {"spin": 4.0}}
+    s = estimate_spin(rec("b-q-17"), [], agg, BAD, POP, qual_usable=False)
+    assert s["kind"] == "qualitativo" and s["value"] is None and s["level"] == 4.0
+
+
+def test_backtest_qualitative():
+    from pipeline.estimate import backtest_qualitative
+    # livelli casuali rispetto allo spin vero: non deve risultare utile
+    pairs = [(5, 4.0), (1, 9.0), (4, 5.0), (2, 8.5), (5, 5.5), (3, 7.5), (1, 6.0), (4, 4.5)]
+    bt = backtest_qualitative(pairs, POP)
+    assert bt["usable"] is False and bt["mae"] >= bt["baseline_mae"]
