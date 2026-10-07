@@ -1,0 +1,112 @@
+[
+ {
+  "id": "toroline-o-toro-tour-17",
+  "brand": "Toroline",
+  "model": "O-Toro Tour",
+  "gauge_mm": 1.23,
+  "score": 77,
+  "tension_kg": [
+   22.5,
+   21.5
+  ]
+ },
+ {
+  "id": "grapplesnake-tour-m8-17",
+  "brand": "Grapplesnake",
+  "model": "Tour M8",
+  "gauge_mm": 1.25,
+  "score": 68,
+  "tension_kg": [
+   22.5,
+   21.5
+  ]
+ },
+ {
+  "id": "solinco-revolution-16l",
+  "brand": "Solinco",
+  "model": "Revolution",
+  "gauge_mm": 1.25,
+  "score": 67,
+  "tension_kg": [
+   22.5,
+   21.5
+  ]
+ },
+ {
+  "id": "toroline-super-toro-17l",
+  "brand": "Toroline",
+  "model": "Super Toro",
+  "gauge_mm": 1.23,
+  "score": 65,
+  "tension_kg": [
+   23.5,
+   22.5
+  ]
+ },
+ {
+  "id": "solinco-hyper-g-16l",
+  "brand": "Solinco",
+  "model": "Hyper-G",
+  "gauge_mm": 1.25,
+  "score": 62,
+  "tension_kg": [
+   22.0,
+   21.0
+  ]
+ },
+ {
+  "id": "toroline-cash-16l",
+  "brand": "Toroline",
+  "model": "Cash",
+  "gauge_mm": 1.25,
+  "score": 63,
+  "tension_kg": [
+   22.0,
+   21.0
+  ]
+ },
+ {
+  "id": "solinco-tour-bite-16l",
+  "brand": "Solinco",
+  "model": "Tour Bite",
+  "gauge_mm": 1.25,
+  "score": 62,
+  "tension_kg": [
+   21.0,
+   20.0
+  ]
+ },
+ {
+  "id": "toroline-absolute-17l",
+  "brand": "Toroline",
+  "model": "Absolute",
+  "gauge_mm": 1.2,
+  "score": 61,
+  "tension_kg": [
+   22.5,
+   21.5
+  ]
+ },
+ {
+  "id": "toroline-o-toro-spin-17",
+  "brand": "Toroline",
+  "model": "O-Toro Spin",
+  "gauge_mm": 1.23,
+  "score": 60,
+  "tension_kg": [
+   22.5,
+   21.5
+  ]
+ },
+ {
+  "id": "re-string-vivo-17",
+  "brand": "Re-String",
+  "model": "Vivo",
+  "gauge_mm": 1.23,
+  "score": 78,
+  "tension_kg": [
+   22.5,
+   21.5
+  ]
+ }
+]

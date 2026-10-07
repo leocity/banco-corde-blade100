@@ -1,0 +1,130 @@
+[
+  {
+    "id": "toroline-o-toro-tour-17",
+    "set": {
+      "name": "Toroline O-TORO Tour 17/1.23 String Mint",
+      "gauge": "17/1.23",
+      "price_eur": 15.90,
+      "availability": "In Stock: 31.10",
+      "url": "https://www.tenniswarehouse-europe.com/Toroline_O-TORO_Tour_17_123_String_Mint/descpageACTWUS-T7TOROTTE-EN.html"
+    },
+    "reel": null,
+    "note": "Exact gauge 17/1.23 set found. No 200 m reel in 17/1.23 on TWE. 100 m reels exist: 'Toroline O-TORO Tour 17L String Reel Neon Green 100m' (17L/1.20) at 99,90 EUR, URL https://www.tenniswarehouse-europe.com/Toroline_O-TORO_Tour_17L_String_Reel_Neon_Green_100m/descpageACTWUS-TOOTOTRNG-EN.html. Prices seen 2026-10-07 on product page; 'Prices include VAT'. Availability text '31.10' shown verbatim (may be a date stamp, not a count)."
+  },
+  {
+    "id": "grapplesnake-tour-m8-17",
+    "set": {
+      "name": "Grapplesnake M8 String Set 1.25",
+      "gauge": "17/1.25",
+      "price_eur": 14.90,
+      "availability": "In Stock: 07.10",
+      "url": "https://www.tenniswarehouse-europe.com/Grapplesnake_M8_String_Set_125/descpageAC-GM8S17-EN.html"
+    },
+    "reel": {
+      "name": "Grapplesnake Tour M8 String Reel 1.25 200m",
+      "gauge": "1.25mm",
+      "price_eur": 168.00,
+      "url": "https://www.tenniswarehouse-europe.com/Grapplesnake_Tour_M8_String_Reel_125_200m/descpageAC-GM8SR-EN.html"
+    },
+    "note": "Set is listed by TWE as 'M8 String Set' (Tour M8 naming not used on the set page). Reel availability shown on page: 'In Stock: 07.10' (verbatim, may be a date stamp). Prices seen 2026-10-07; 'Prices include VAT'. Page currency display reads '$ x EUR' inconsistently; euro value used."
+  },
+  {
+    "id": "solinco-revolution-16l",
+    "set": {
+      "name": "Solinco Revolution 1.25/16L String",
+      "gauge": "16L (1.25mm)",
+      "price_eur": 7.50,
+      "availability": "In Stock: 3+",
+      "url": "https://www.tenniswarehouse-europe.com/Solinco_Revolution_125_16L_String/descpageACNOASOLH-SREV16L-EN.html"
+    },
+    "reel": {
+      "name": "Solinco Revolution 1.25/16L String Reel - 200m",
+      "gauge": "16L g (1.25mm)",
+      "price_eur": 92.90,
+      "url": "https://www.tenniswarehouse-europe.com/Solinco_Revolution_125_16L_String_Reel_-_200m_/descpageACNOASOLH-SREV16LR-EN.html"
+    },
+    "note": "Exact gauge found. Reel is listed as Sale (SRP 119,90 EUR). Reel availability shown on page: 'In Stock: 1'. Prices seen 2026-10-07; 'Prices include VAT'."
+  },
+  {
+    "id": "toroline-super-toro-17l",
+    "set": {
+      "name": "Toroline Super Toro 17/1.23 String Blue",
+      "gauge": "17/1.23",
+      "price_eur": 12.00,
+      "availability": "In Stock: 3+",
+      "url": "https://www.tenniswarehouse-europe.com/Toroline_Super_Toro_17_123_String_Blue/descpageACTWUS-T7SUPTDB-EN.html"
+    },
+    "reel": null,
+    "note": "Exact gauge 17/1.23 set found (input gauge_mm 1.23; no 17L label on TWE). No 200 m reel found. 100 m reel: 'Toroline Super Toro 17/1.23 String Reel Blue 100m' at 74,99 EUR, URL https://www.tenniswarehouse-europe.com/Toroline_Super_Toro_17_123_String_Reel_Blue_100m/descpageACTWUS-T7SUPTBR-EN.html. Prices seen 2026-10-07; 'Prices include VAT'."
+  },
+  {
+    "id": "solinco-hyper-g-16l",
+    "set": {
+      "name": "Solinco Hyper-G 1.25/16L String",
+      "gauge": "1.25/16L (spec table says 16/1.30mm; mismatch on page)",
+      "price_eur": 9.90,
+      "availability": "In Stock: 3+",
+      "url": "https://www.tenniswarehouse-europe.com/Solinco_Hyper-G_125_16L_String/descpage-SHG16L.html"
+    },
+    "reel": {
+      "name": "Solinco Hyper-G 1.25/16L String Reel - 200m",
+      "gauge": "16L/1.25mm",
+      "price_eur": 118.90,
+      "url": "https://www.tenniswarehouse-europe.com/Solinco_Hyper-G_125_16L_String_Reel_-_200m/descpageACNOASOLH-SHG16LR-EN.html"
+    },
+    "note": "Title gauge 1.25/16L matches gauge_mm 1.25; the spec table on the set page says 16/1.30mm, so confirm gauge before ordering. Reel availability shown on page: 'In Stock: 15.10' (verbatim). Other Hyper-G variants exist (Soft, SPECIAL) and were not used. Prices seen 2026-10-07; 'Prices include VAT'."
+  },
+  {
+    "id": "toroline-cash-16l",
+    "set": null,
+    "reel": null,
+    "note": "not found on tenniswarehouse-europe.com. Searches: site-restricted 'Toroline Cash 16L 1.25 string' (2 queries, including allowed_domains filter); category page https://www.tenniswarehouse-europe.com/catpage-TOROSTRI-EN.html lists 54 Toroline products and no Cash. Cash is only mentioned in the A5 description. Not sold on TWE as far as these checks show."
+  },
+  {
+    "id": "solinco-tour-bite-16l",
+    "set": {
+      "name": "Solinco Tour Bite 1.25/16L String",
+      "gauge": "16L / 1.25mm",
+      "price_eur": 9.90,
+      "availability": "In Stock: 3+",
+      "url": "https://www.tenniswarehouse-europe.com/Solinco_Tour_Bite_125_16L_String/descpageACNOASOLH-STB16L-EN.html"
+    },
+    "reel": {
+      "name": "Solinco Tour Bite 1.25/16L String Reel - 200m",
+      "gauge": "16L / 1.25mm",
+      "price_eur": 119.90,
+      "url": "https://www.tenniswarehouse-europe.com/Solinco_Tour_Bite_125_16L_String_Reel_-_200m/descpageACNOASOLH-STB16LR-EN.html"
+    },
+    "note": "Exact gauge found. Reel availability shown on page: 'In Stock: 3+'. A softer 'Tour Bite Soft 1.25/16L' also exists and was not used. Prices seen 2026-10-07; 'Prices include VAT'."
+  },
+  {
+    "id": "toroline-absolute-17l",
+    "set": {
+      "name": "Toroline Absolute 17/1.20 String Black",
+      "gauge": "17/1.20",
+      "price_eur": 12.90,
+      "availability": "In Stock: 07.10",
+      "url": "https://www.tenniswarehouse-europe.com/Toroline_Absolute_17_120_String_Black/descpageACTWUS-T7ABSBK-EN.html"
+    },
+    "reel": null,
+    "note": "Input gauge_mm is 1.20; TWE sells Absolute 17/1.20 (no 17L label), so exact gauge match. No 200 m reel found. 100 m reel: 'Toroline Absolute 17/1.20 String Reel 100m' at 74,99 EUR, URL https://www.tenniswarehouse-europe.com/Toroline_Absolute_17_120_String_Reel_100m/descpageACTWUS-T8ABSOR-EN.html. Availability '07.10' shown verbatim. Prices seen 2026-10-07; 'Prices include VAT'."
+  },
+  {
+    "id": "toroline-o-toro-spin-17",
+    "set": {
+      "name": "Toroline O-TORO Spin 17/1.23 String Neon Green",
+      "gauge": "17/1.23",
+      "price_eur": 15.90,
+      "availability": "In Stock: 09.10",
+      "url": "https://www.tenniswarehouse-europe.com/Toroline_O-TORO_Spin_17_123_String_Neon_Green/descpageACTWUS-T7TOROSGN-EN.html"
+    },
+    "reel": null,
+    "note": "Exact gauge 17/1.23 set found (colour: Neon Green; Lavender, Neon Pink and White also listed at 15,90 EUR). No 200 m reel found. 100 m reel: 'Toroline O-TORO Spin 17 String Reel Neon Green 100m' at 99,90 EUR, URL https://www.tenniswarehouse-europe.com/Toroline_O-TORO_Spin_17_String_Reel_Neon_Green_100m/descpageACTWUS-TOTOR7RSG-EN.html. Availability '09.10' shown verbatim. Prices seen 2026-10-07; 'Prices include VAT'."
+  },
+  {
+    "id": "re-string-vivo-17",
+    "set": null,
+    "reel": null,
+    "note": "not found on tenniswarehouse-europe.com. Searches (4 queries, 2 with allowed_domains filter): 'site:tenniswarehouse-europe.com ReString Vivo 17 string', 'Re-String Vivo 17 1.23 string set reel', 'ReString Vivo string', 'Re-String brand strings Vivo Zero Sync'. No Re-String or Vivo product pages returned; results were other brands' pages and reel listings."
+  }
+]
