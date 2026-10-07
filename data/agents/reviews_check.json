@@ -1,0 +1,104 @@
+[
+  {
+    "id": "toroline-o-toro-tour-17",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/toroline_otoro_tour.html",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 9.2→92, Control 9.4→94, Durability 7.9→79"
+  },
+  {
+    "id": "head-hawk-16",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/HAWK16review.html",
+    "status": "mismatch",
+    "mismatches": [
+      {
+        "field": "spin",
+        "found": 87,
+        "page": 87
+      }
+    ],
+    "model_ok": true,
+    "note": "Spin mismatch: expected 85, page shows 87 (off by 2)"
+  },
+  {
+    "id": "wilson-revolve-16",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/WRV16review.html",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 87, Control 88, Power 58, Comfort 77, Durability 83"
+  },
+  {
+    "id": "luxilon-element-soft-ir-16l",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/luxilon_element_soft_ir.html",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 8.0→80, Control 7.8→78, Comfort 8.0→80, Power 7.6→76, Durability 6.4→64"
+  },
+  {
+    "id": "head-lynx-tour-17",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/head_lynx_tour.html",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 89, Control 93, Power 65, Comfort 74, Durability 83"
+  },
+  {
+    "id": "kirschbaum-pro-line-17",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/PL2125BKreview.html",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 68, Control 88, Power 45, Comfort 63, Durability 86"
+  },
+  {
+    "id": "solinco-confidential-soft-16l",
+    "url": "https://www.tennisnerd.net/gear/strings/solinco-tennis-strings-a-brand-built-for-spin-and-tension-stability/69240",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "Spin verified: 9.0→90; page is overview table, other scores qualitative"
+  },
+  {
+    "id": "solinco-confidential-soft-16l",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential_soft.html?pcode=CONS15R",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 8.8→88, Control 9.0→90, Comfort 8.0→80, Durability 8.8→88"
+  },
+  {
+    "id": "luxilon-element-soft-ir-17",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/luxilon_element_soft_ir.html",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified (same page as 16L): Spin 8.0→80, Control 7.8→78, Comfort 8.0→80, Power 7.6→76, Durability 6.4→64"
+  },
+  {
+    "id": "babolat-rpm-blast-orange-16",
+    "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/babolat_rpm_blast_orange.html",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 95, Control 94, Power 55, Comfort 73, Durability 78"
+  },
+  {
+    "id": "kirschbaum-xplosive-spd-17",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/kirschbaum_xplosive_speed.html?pcode=XS17",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 83, Control 77, Power 62, Comfort 66, Durability 73"
+  },
+  {
+    "id": "solinco-confidential-17",
+    "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16S",
+    "status": "ok",
+    "mismatches": [],
+    "model_ok": true,
+    "note": "All scores verified: Spin 90, Control 93, Power 42, Comfort 63, Durability 88"
+  }
+]

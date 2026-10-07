@@ -235,7 +235,7 @@
     "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/HAWK16review.html",
     "kind": "lab_playtest",
     "scores": {
-     "spin": 85,
+     "spin": 87,
      "comfort": 56,
      "control": 84,
      "power": 37,
@@ -249,7 +249,7 @@
      "durability": null,
      "stiffness": null
     },
-    "note": "Playtest 0-100; durability = Playability Duration. Head Hawk 16/1.30 (17/1.25 page shows the same scores)."
+    "note": "Playtest 0-100; durability = Playability Duration. Head Hawk 16/1.30 (17/1.25 page shows the same scores). [spin corretto 85→87 dopo verifica]"
    }
   ]
  },
