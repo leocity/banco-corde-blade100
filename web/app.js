@@ -60,6 +60,8 @@ function badges(r) {
   else if (r.catalog_only) out.push('<span class="badge est" title="Non testata direttamente: i dati di laboratorio vengono da un calibro gemello">dati da calibro gemello</span>');
   if (r.spin && isEst(r.spin, 'misurato')) out.push(`<span class="badge est" title="Spin ${esc(SPIN_KIND[r.spin.kind])}">${r.spin.value == null ? 'spin solo dai tester' : 'spin stimato'}</span>`);
   if (r.derived.disliked_warning) out.push('<span class="badge warn" title="Somiglia più a una corda che non ti è piaciuta che alle tue preferite">⚠ simile a una non gradita</span>');
+  if (r.production?.status === 'discontinued') out.push('<span class="badge warn" title="Fuori produzione: resta solo come tuo riferimento">fuori produzione</span>');
+  if (r.production?.status === 'unclear') out.push('<span class="badge" title="Non è chiaro se sia ancora in vendita: verifica prima di comprare">produzione da verificare</span>');
   if (r.crosscheck?.verdict === 'contradicted') out.push('<span class="badge warn" title="Recensioni e produttori contraddicono i numeri di laboratorio">⚑ dati contestati</span>');
   return out.join(' ');
 }
@@ -408,6 +410,7 @@ function renderGuide() {
         ['Tensione di partenza', 'Dalla tua preferita più simile, corretta di circa 0,75 kg ogni 15 lb/in di differenza di rigidità, fino a ±2 kg.']]
         .map(([t, d]) => `<div class="gcard"><h3>${t}</h3><p>${d}</p></div>`).join('')}
     </div>
+    ${(DATA.removed_discontinued || []).length ? `<div class="callout"><h3>Corde tolte perché fuori produzione</h3><p class="small">${DATA.removed_discontinued.map((x) => esc(x.name) + (x.successor ? ` (sostituita da ${esc(x.successor)})` : '')).join(' · ')}</p><p class="small muted">Verificato su sito del produttore, Tennis Warehouse e Tennis Warehouse Europe. Le tue corde di riferimento restano anche se fuori produzione.</p></div>` : ''}
     <h3>Glossario del file Excel (colonne A–Y)</h3>
     <div class="table-scroll"><table class="data"><tbody>${[['A–C', 'Marca, nome, calibro'], ['D–G', 'Tipo: poly, co-poly, budello, multifilamento'], ['H', 'Forma'], ['I', 'Tensione: 40, 50, 60, 65 lbs'], ['J–K', 'Lunghezza in tensione del tratto di 11,25″ e percentuale'], ['L–M', 'Lunghezza a riposo dopo il rilascio e percentuale'], ['N', 'Diff: stretch − recover'], ['O', 'Stiff Index: (diff / 11,25) × 100, indice di cedimento'], ['P–Q', 'Gain sul tratto e OLG sul piatto 16×19'], ['R–S', 'Elongazione al micrometro (non significativa)'], ['T–W', 'Peso statico 40 lbs: iniziale, dopo 24 h, a riposo, differenza'], ['X–Y', 'Perdita di tensione a 6 e 12 mesi da 50 lbs']].map(([a, b]) => `<tr><td class="n">${a}</td><td style="white-space:normal">${esc(b)}</td></tr>`).join('')}</tbody></table></div>`;
 }
