@@ -310,8 +310,8 @@ function renderCompare() {
     const vals = chosen.map(({ r }) => row.val(r)).filter((v) => v != null);
     if (vals.length >= 2) leaders[row.k] = Math.max(...vals);
   }
-  $('#cmp-cards').innerHTML = chosen.length ? chosen.map(({ r, i }) => `<article class="ccard" style="--slot:${SLOT[i]}">
-    <h3>${esc(nameOf(r))}</h3><p class="muted small">${esc(subline(r))}</p><div class="badges">${badges(r)}</div>
+  $('#cmp-cards').innerHTML = chosen.length ? chosen.map(({ r, i }) => `<article class="ccard">
+    <h3><i class="sw" style="background:${SLOT[i]}"></i> ${esc(nameOf(r))}</h3><p class="muted small">${esc(subline(r))}</p><div class="badges">${badges(r)}</div>
     ${ROWS.map((row) => { const v = row.val(r); const w = r.derived.judgments?.[row.k];
       return `<div class="crow"><span class="k">${row.label}</span><span class="v">${row.show ? row.show(r) : `${w?.word || 'n.d.'} <span class="num muted">${v == null ? '' : Math.round(v)}</span>`}</span>${row.small && row.small(r) ? `<span class="s">${esc(row.small(r))}</span>` : ''}${v != null && leaders[row.k] === v ? `<span class="lead">▲ ${row.lead}</span>` : ''}</div>`; }).join('')}
     <div class="crow"><span class="k">Tensione di partenza</span><span class="v num">${tensionText(r)}</span></div>
