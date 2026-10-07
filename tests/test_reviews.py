@@ -48,3 +48,11 @@ def test_review_percentiles_across_population():
     add_percentiles(aggs)
     assert aggs["a"]["pct"]["spin"] < aggs["b"]["pct"]["spin"] < aggs["c"]["pct"]["spin"]
     assert aggs["b"]["pct"]["spin"] == 50.0
+
+
+def test_lone_level_is_not_ranked_against_numeric_scores():
+    from pipeline.reviews import add_percentiles
+    aggs = {i: aggregate({"id": i, "sources": [src("lab_playtest", {"spin": s})]}) for i, s in (("a", 80), ("b", 90), ("c", 95))}
+    aggs["d"] = aggregate({"id": "d", "sources": [src("review", levels={"spin": 4})]})
+    add_percentiles(aggs)
+    assert aggs["d"]["pct"]["spin"] == 75.0  # "alto" resta alto, non finisce in fondo ai voti numerici

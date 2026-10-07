@@ -56,10 +56,16 @@ def aggregate(row):
 
 def add_percentiles(aggs):
     """I voti dei tester diventano percentili tra le corde recensite, sulla stessa scala dei dati di laboratorio."""
+    # voti numerici e giudizi a livelli stanno su scale diverse: i numeri si confrontano solo tra numeri,
+    # un livello 1–5 diventa direttamente il percentile 0/25/50/75/100
     for c in LEVEL_CRITERIA:
-        pop = [a["raw"][c] for a in aggs.values() if a["raw"].get(c) is not None]
+        pop = [a["score"][c] for a in aggs.values() if c in a["score"] and a["score"][c] is not None]
         for a in aggs.values():
-            v = a["raw"].get(c)
-            a.setdefault("pct", {})[c] = None if v is None or not pop else round(
-                (sum(x < v for x in pop) + 0.5 * sum(x == v for x in pop)) / len(pop) * 100, 1)
+            v = a["score"].get(c) if c in a["score"] else None
+            if v is not None and pop:
+                pct = round((sum(x < v for x in pop) + 0.5 * sum(x == v for x in pop)) / len(pop) * 100, 1)
+            else:
+                lv = a["level"].get(c)
+                pct = None if lv is None else round((lv - 1) * 25, 1)
+            a.setdefault("pct", {})[c] = pct
     return aggs
