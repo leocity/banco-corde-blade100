@@ -134,6 +134,8 @@ Fatto in questo ramo:
 - **Duplicazione**: le top 3 non si ripetono nella lista "Migliori per te".
 - **Accessibilità**: `--muted` più scuro (≥ 5:1), etichette zone senza opacità, pulsanti da 44 px, intestazioni di Esplora con unità e tooltip.
 
+- **Dati mancanti in mappa e confronto** (segnalato dall'utente): la mappa non scarta più in silenzio le corde con un solo asse (fascia "non disponibile" in basso/a sinistra), conta e elenca quelle senza né rigidità né spin e quelle nascoste dai filtri; il confronto mostra "dato mancante" con il motivo, "Dati: ✓/✗" per scheda, i leader solo "tra le corde con dato" e una riga "Non confrontabili per dati mancanti". Numeri reali: la mappa predefinita disegna 34 corde, 21 hanno dati incompleti e 47 sono nascoste dai filtri.
+
 Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
 
 ## C. Priorità consigliate

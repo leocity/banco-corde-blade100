@@ -162,6 +162,9 @@ details[open] > summary { margin-bottom: 10px; }
 #scatter .mid { stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 4 4; opacity: .5; }
 #scatter .dot { stroke: var(--surface); stroke-width: 2; cursor: pointer; }
 #scatter .dot.hollow { fill: var(--surface); stroke-width: 2.2; }
+#scatter .strip { fill: var(--surface-2); }
+#scatter .strip-lbl { fill: var(--fg-2); font-size: 10.5px; }
+#scatter .dot.miss { fill: var(--surface); stroke-width: 2; stroke-dasharray: 3 2; }
 #scatter .err { stroke-width: 1.5; opacity: .6; }
 #scatter .dot:hover, #scatter .dot.sel { stroke: var(--fg); }
 #scatter .lbl { fill: var(--fg); font-weight: 700; font-size: 11px; }
@@ -184,6 +187,14 @@ select, input[type="search"] { font: inherit; font-size: .95rem; padding: 6px 8p
 .crow .s { font-size: .8rem; color: var(--muted); }
 .lead { color: var(--court); font-size: .8rem; font-weight: 600; }
 .swipe-hint { display: none; }
+.crow.missing { background: repeating-linear-gradient(135deg, transparent 0 6px, var(--surface-2) 6px 7px); }
+.crow.missing .v { color: var(--muted); font-style: italic; font-weight: 600; }
+.completeness { margin: 6px 0; color: var(--fg-2); }
+.completeness .lack { color: var(--warn-fg); font-weight: 600; }
+.gaps { color: var(--warn-fg); font-weight: 600; }
+.map-status { color: var(--fg-2); }
+#map-missing { display: grid; gap: 8px; }
+#map-missing details p { margin: 0 0 6px; }
 
 /* esplora */
 .table-scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }

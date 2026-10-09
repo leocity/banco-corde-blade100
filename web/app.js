@@ -149,7 +149,10 @@ function renderList() {
   let rs = ALL;
   if ($('#only-target').checked) rs = rs.filter((r) => r.is_target || r.preference);
   if (q) { rs = rs.filter((r) => fullName(r).toLowerCase().includes(q)); $('#preset-desc').textContent = `${rs.length} corde trovate per "${q}".`; }
-  else $('#preset-desc').textContent = PRESETS[preset].desc;
+  else {
+    const noScore = ALL.filter((r) => r._score === null && (r.is_target || r.preference)).length;
+    $('#preset-desc').textContent = PRESETS[preset].desc + (preset === 'score' && noScore ? ` ${noScore} corde non hanno punteggio perché manca spin o tenuta: le trovi in Esplora.` : '');
+  }
   const shown = new Set(topIds());
   let list = q ? rs.sort((a, b) => (b._score ?? -1) - (a._score ?? -1)) : PRESETS[preset].list([...rs]);
   if (!q && preset === 'score') list = list.filter((r) => !shown.has(r.id));
@@ -247,15 +250,36 @@ function ticks(min, max, n = 5) {
   return out;
 }
 const median = (xs) => { const s = [...xs].sort((a, b) => a - b); return s.length ? s[Math.floor(s.length / 2)] : 0; };
+function renderMapStatus({ pts, stripB, stripL, noneR, hidComp, hidEst, mx, my }) {
+  const list = (rs) => rs.map((r) => `<button class="rowlink" type="button" data-open="${esc(r.id)}">${esc(fullName(r))}</button>`).join(', ');
+  const total = pts.length + stripB.length + stripL.length + noneR.length;
+  const parts = [];
+  if (stripB.length) parts.push(`<p><b>${stripB.length}</b> senza ${esc(my.short.toLowerCase())}: sono nella fascia in basso, posizionate solo per ${esc(mx.short.toLowerCase())}.</p><p class="small">${list(stripB)}</p>`);
+  if (stripL.length) parts.push(`<p><b>${stripL.length}</b> senza ${esc(mx.short.toLowerCase())}: sono nella fascia a sinistra, posizionate solo per ${esc(my.short.toLowerCase())}.</p><p class="small">${list(stripL)}</p>`);
+  if (noneR.length) parts.push(`<p><b>${noneR.length}</b> senza né ${esc(mx.short.toLowerCase())} né ${esc(my.short.toLowerCase())}: non si possono posizionare.</p><p class="small">${list(noneR)}</p>`);
+  if (hidEst.length) parts.push(`<p><b>${hidEst.length}</b> con valori stimati, nascoste perché "Mostra le stime" è spento.</p>`);
+  if (hidComp.length) parts.push(`<p><b>${hidComp.length}</b> concorrenti nascosti: attiva "Mostra anche i concorrenti" per vederli (${hidComp.filter((r) => mx.get(r) != null && my.get(r) != null).length} hanno entrambi i dati).</p>`);
+  $('#map-missing').innerHTML = `<p class="map-status"><b>${pts.length}</b> corde nel grafico${total > pts.length ? `, altre <b>${total - pts.length}</b> con dati incompleti` : ''}${hidComp.length || hidEst.length ? `, ${hidComp.length + hidEst.length} nascoste dai filtri` : ''}.</p>${parts.length ? `<details class="advanced" open><summary>Corde con dati mancanti o nascoste</summary>${parts.join('')}</details>` : ''}`;
+}
 function drawScatter() {
   const kx = $('#ax-x').value, ky = $('#ax-y').value, mx = AX[kx], my = AX[ky];
   const showComp = $('#show-comp').checked, showEst = $('#show-est').checked;
-  const pts = ALL.filter((r) => (showComp || r.is_target || r.preference) && mx.get(r) != null && my.get(r) != null && (showEst || (!mx.est(r) && !my.est(r))));
-  const W = 900, H = 540, L = 60, R = 18, T = 18, B = 52, svg = $('#scatter');
+  const vis = (r) => showComp || r.is_target || r.preference;
+  const hasBoth = (r) => mx.get(r) != null && my.get(r) != null;
+  const estOk = (r) => showEst || (!mx.est(r) && !my.est(r));
+  const pts = ALL.filter((r) => vis(r) && hasBoth(r) && estOk(r));
+  // corde con un solo asse: non si nascondono, finiscono nelle fasce "dato non disponibile"
+  const stripB = ALL.filter((r) => vis(r) && mx.get(r) != null && my.get(r) == null).sort((a, b) => mx.get(a) - mx.get(b));
+  const stripL = ALL.filter((r) => vis(r) && mx.get(r) == null && my.get(r) != null).sort((a, b) => my.get(a) - my.get(b));
+  const noneR = ALL.filter((r) => vis(r) && mx.get(r) == null && my.get(r) == null);
+  const hidComp = ALL.filter((r) => !vis(r));
+  const hidEst = ALL.filter((r) => vis(r) && hasBoth(r) && !estOk(r));
+  renderMapStatus({ pts, stripB, stripL, noneR, hidComp, hidEst, mx, my });
+  const W = 900, H = 600, L = 116, R = 18, T = 18, B = 104, svg = $('#scatter');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  if (!pts.length) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle">Nessuna corda con entrambi i valori</text>`; return; }
-  const xs = pts.flatMap((r) => [mx.get(r), mx.lo?.(r), mx.hi?.(r)]).filter((v) => v != null);
-  const ys = pts.flatMap((r) => [my.get(r), my.lo?.(r), my.hi?.(r)]).filter((v) => v != null);
+  if (!pts.length && !stripB.length && !stripL.length) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle">Nessuna corda con almeno un valore</text>`; return; }
+  const xs = [...pts, ...stripB].flatMap((r) => [mx.get(r), mx.lo?.(r), mx.hi?.(r)]).filter((v) => v != null);
+  const ys = [...pts, ...stripL].flatMap((r) => [my.get(r), my.lo?.(r), my.hi?.(r)]).filter((v) => v != null);
   const pad = (a, b) => { const s = (b - a) * 0.05 || 1; return [a - s, b + s]; };
   const [x0, x1] = pad(Math.min(...xs), Math.max(...xs)), [y0, y1] = pad(Math.min(...ys), Math.max(...ys));
   const sx = (v) => L + (v - x0) / (x1 - x0) * (W - L - R), sy = (v) => H - B - (v - y0) / (y1 - y0) * (H - T - B);
@@ -269,7 +293,17 @@ function drawScatter() {
     s += `<text class="zone" x="${L + 10}" y="${H - B - 10}">MORBIDE E TRANQUILLE</text><text class="zone" x="${W - R - 10}" y="${H - B - 10}" text-anchor="end">CONTROLLO PURO</text>`;
   }
   s += `<text class="axis-title" x="${(L + W - R) / 2}" y="${H - 12}" text-anchor="middle">${esc(mx.label)}${kx === 'stiff' ? ' → più rigida' : ''}</text>`;
-  s += `<text class="axis-title" transform="translate(16 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle">${esc(my.label)}${ky === 'spin' ? ' → più spin' : ''}</text>`;
+  s += `<text class="axis-title" transform="translate(14 ${(T + H - B) / 2}) rotate(-90)" text-anchor="middle">${esc(my.label)}${ky === 'spin' ? ' → più spin' : ''}</text>`;
+  const stripDot = (r, x, y) => `<circle class="dot miss" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" style="stroke:${CAT_COLOR[cat(r)]}" tabindex="0" role="button" aria-label="${esc(fullName(r))}: ${esc(my.short)} non disponibile"/>`;
+  if (stripB.length) {
+    const y0s = H - B + 28;
+    s += `<rect class="strip" x="${L}" y="${y0s}" width="${W - L - R}" height="48" rx="6"/><text class="strip-lbl" x="${L + 6}" y="${y0s + 11}">${esc(my.short)} non disponibile (${stripB.length})</text>`;
+    s += stripB.map((r, i) => stripDot(r, sx(mx.get(r)), y0s + 22 + (i % 3) * 11)).join('');
+  }
+  if (stripL.length) {
+    s += `<rect class="strip" x="40" y="${T}" width="60" height="${H - B - T}" rx="6"/><text class="strip-lbl" transform="translate(52 ${H - B - 8}) rotate(-90)">${esc(mx.short)} non disponibile (${stripL.length})</text>`;
+    s += stripL.map((r, i) => stripDot(r, 72 + (i % 3) * 11, sy(my.get(r)))).join('');
+  }
   const order = { other: 0, target: 1, disliked: 2, liked: 3 };
   for (const r of [...pts].sort((a, b) => order[cat(a)] - order[cat(b)])) {
     const x = sx(mx.get(r)), y = sy(my.get(r)), c = CAT_COLOR[cat(r)], est = mx.est(r) || my.est(r);
@@ -290,7 +324,8 @@ function drawScatter() {
     const r = BY_ID[d.dataset.id];
     const show = () => {
       tip.hidden = false;
-      tip.innerHTML = `<b>${esc(fullName(r))}</b><br>${esc(mx.short)} ${mx.est(r) ? '≈ ' : ''}${fmt(mx.get(r), mx.d)} · ${esc(my.short)} ${my.est(r) ? '≈ ' : ''}${fmt(my.get(r), my.d)}`;
+      const v = (a) => (a.get(r) == null ? 'non disponibile' : `${a.est(r) ? '≈ ' : ''}${fmt(a.get(r), a.d)}`);
+      tip.innerHTML = `<b>${esc(fullName(r))}</b><br>${esc(mx.short)} ${v(mx)} · ${esc(my.short)} ${v(my)}`;
       const box = svg.getBoundingClientRect(), k = box.width / W;
       tip.style.left = Math.min(Number(d.getAttribute('cx')) * k + 12, box.width - 250) + 'px'; tip.style.top = Math.max(Number(d.getAttribute('cy')) * k - 50, 4) + 'px';
     };
@@ -310,7 +345,7 @@ if (!Array.isArray(picks)) {
   picks = ['solinco-confidential-16l', 'toroline-o-toro-17', top ? top.id : '', ''];
 }
 function initCompare() {
-  const opts = '<option value="">— scegli —</option>' + [...ALL].sort((a, b) => fullName(a).localeCompare(fullName(b))).map((r) => `<option value="${esc(r.id)}">${esc(fullName(r))}${r.preference === 'liked' ? ' ★' : r.preference === 'disliked' ? ' ✕' : ''}</option>`).join('');
+  const opts = '<option value="">— scegli —</option>' + [...ALL].sort((a, b) => fullName(a).localeCompare(fullName(b))).map((r) => `<option value="${esc(r.id)}">${esc(fullName(r))}${r.preference === 'liked' ? ' ★' : r.preference === 'disliked' ? ' ✕' : ''}${r._score === null ? ' · parziale' : ''}</option>`).join('');
   $('#cmp-pickers').innerHTML = [0, 1, 2, 3].map((i) => `<label><span><i class="sw" style="background:${SLOT[i]}"></i> Corda ${i + 1}</span><select id="cmp-${i}">${opts}</select></label>`).join('');
   [0, 1, 2, 3].forEach((i) => { const s = $('#cmp-' + i); s.value = picks[i] || ''; s.addEventListener('change', () => { picks[i] = s.value; store.set('picks2', picks); renderCompare(); }); });
 }
@@ -326,27 +361,39 @@ const ROWS = [
   { k: 'durability', label: 'Tenuta', lead: 'tiene meglio', val: (r) => r.derived.judgments?.durability?.score, small: (r) => [r.twu?.tension_loss_pct != null ? `TWU −${fmt(r.twu.tension_loss_pct, 0)}% (prova breve)` : '', r.excel?.tl6 != null ? `6 mesi −${fmt(r.excel.tl6, 0)}%` : '', r.excel?.tl12 != null ? `12 mesi −${fmt(r.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') },
   { k: 'comfort', label: 'Comfort (stima dalla rigidità)', lead: 'più comoda', val: (r) => r.derived.judgments?.comfort?.score },
 ];
+const MISSING_WHY = {
+  stiffness: () => 'nessuna fonte (TWU, Racketpedia, calibro gemello) ha la rigidità di questa corda',
+  spin: (r) => (r.catalog_only ? 'solo catalogo: nessun test di laboratorio' : 'TWU non l\'ha misurata e non c\'è un calibro gemello misurato'),
+  control: () => 'è una stima dalla rigidità, che manca',
+  durability: () => 'né perdita TWU né TL6/TL12 del tuo test',
+  comfort: () => 'è una stima dalla rigidità, che manca',
+};
+const ROW_NAME = { stiffness: 'rigidità', spin: 'spin', durability: 'tenuta' };
 function renderCompare() {
   const chosen = picks.map((id, i) => ({ r: BY_ID[id], i })).filter((x) => x.r);
-  const leaders = {};
+  const leaders = {}, nWith = {};
   for (const row of ROWS) {
     const vals = chosen.map(({ r }) => row.val(r)).filter((v) => v != null);
+    nWith[row.k] = vals.length;
     if (vals.length >= 2) leaders[row.k] = Math.max(...vals);
   }
   $('#cmp-cards').innerHTML = chosen.length ? chosen.map(({ r, i }) => `<article class="ccard">
     <h3><i class="sw" style="background:${SLOT[i]}"></i> ${esc(nameOf(r))}</h3><p class="muted small">${esc(subline(r))}</p><div class="badges">${badges(r)}</div>
+    <p class="small completeness">Dati: ${['spin', 'stiffness', 'durability'].map((k) => { const ok = ROWS.find((x) => x.k === k).val(r) != null; return `<span class="${ok ? 'has' : 'lack'}">${ok ? '✓' : '✗'} ${ROW_NAME[k]}</span>`; }).join(' · ')}</p>
     ${ROWS.map((row) => { const v = row.val(r); const w = r.derived.judgments?.[row.k];
-      return `<div class="crow"><span class="k">${row.label}</span><span class="v">${row.show ? row.show(r) : `${w?.word || 'n.d.'} <span class="num muted">${v == null ? '' : Math.round(v)}</span>`}</span>${row.small && row.small(r) ? `<span class="s">${esc(row.small(r))}</span>` : ''}${v != null && leaders[row.k] === v ? `<span class="lead">▲ ${row.lead}</span>` : ''}</div>`; }).join('')}
+      if (v == null) return `<div class="crow missing"><span class="k">${row.label}</span><span class="v">dato mancante</span><span class="s">${esc(MISSING_WHY[row.k](r))}. Non confrontabile.</span></div>`;
+      return `<div class="crow"><span class="k">${row.label}</span><span class="v">${row.show ? row.show(r) : `${w?.word || 'n.d.'} <span class="num muted">${v == null ? '' : Math.round(v)}</span>`}</span>${row.small && row.small(r) ? `<span class="s">${esc(row.small(r))}</span>` : ''}${v != null && leaders[row.k] === v ? `<span class="lead">▲ ${row.lead}${nWith[row.k] < chosen.length ? ` (tra le ${nWith[row.k]} con dato)` : ''}</span>` : ''}</div>`; }).join('')}
     <div class="crow"><span class="k">Tensione di partenza</span><span class="v num">${tensionText(r)}</span></div>
-    <div class="crow"><span class="k">Punteggio (rango tra ${ALL.length})</span><span class="v">${fmt(r._score, 0)}</span></div>
+    <div class="crow${r._score === null ? ' missing' : ''}"><span class="k">Punteggio (rango tra ${ALL.length})</span><span class="v">${r._score === null ? 'non calcolabile' : fmt(r._score, 0)}</span>${r._score === null ? '<span class="s">servono spin e tenuta</span>' : ''}</div>
     <button class="btn" type="button" data-open="${esc(r.id)}">Scheda</button></article>`).join('') : '<p class="muted">Scegli almeno una corda.</p>';
-  $('#cmp-summary').innerHTML = chosen.length >= 2 ? summary(chosen[0].r, chosen[1].r) : '';
+  const gaps = ['spin', 'stiffness', 'durability'].map((k) => { const row = ROWS.find((x) => x.k === k); const who = chosen.filter(({ r }) => row.val(r) == null).map(({ r }) => nameOf(r)); return who.length ? `${ROW_NAME[k]} (manca per ${who.map(esc).join(', ')})` : ''; }).filter(Boolean);
+  $('#cmp-summary').innerHTML = (chosen.length >= 2 ? summary(chosen[0].r, chosen[1].r) : '') + (gaps.length ? `<span class="gaps"> ⚠ Non confrontabili per dati mancanti: ${gaps.join('; ')}.</span>` : '');
 }
 function summary(a, b) {
   const gain = [], lose = [];
   for (const [k, l] of [['spin', 'spin'], ['durability', 'tenuta']]) {
     const va = a.derived.judgments?.[k]?.score, vb = b.derived.judgments?.[k]?.score;
-    if (va == null || vb == null) continue;
+    if (va == null || vb == null) continue; // criterio non confrontabile: lo segnala la riga "Non confrontabili"
     if (vb - va >= 10) gain.push(l); else if (va - vb >= 10) lose.push(l);
   }
   const join = (xs) => (xs.length > 1 ? xs.slice(0, -1).join(', ') + ' e ' + xs.at(-1) : xs[0]);
