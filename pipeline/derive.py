@@ -1,7 +1,9 @@
 """Metriche derivate: sotto-punteggi, somiglianze, tensione suggerita, metriche discriminanti (spec §6)."""
 import math
 
-DEFAULT_WEIGHTS = {"spin": 35, "control": 25, "durability": 20, "power": 20}
+# Pesi del punteggio su assi indipendenti: spin e tenuta (misurati) e affinità con le preferite.
+# La v2 usava anche controllo (25) e potenza (20), ma potenza = 100 − controllo: i due pesi si annullavano.
+DEFAULT_WEIGHTS = {"spin": 35, "durability": 20, "affinity": 20}
 DISLIKED_PENALTY_THRESHOLD = 75
 DISLIKED_PENALTY = 15
 KG_TO_LBS = 2.2046
@@ -90,13 +92,15 @@ def subscores(rec, pop):
     return {
         "spin": percentile(spin_lab(rec), pop["spin_measured"]),
         "control": _mean([st, _inv(pct("excel_stretch50"))]),
-        "power": _mean([_inv(st), pct("excel_stretch50")]),
         "durability": _mean([_inv(pct("twu_tension_loss")), _inv(pct("excel_tl6"))]),
         "comfort": _inv(pct("rpedia_static") if rp is not None else st),
     }
 
 
-JUDGE_CRITERIA = ("stiffness", "spin", "control", "power", "durability", "comfort")
+# "control" e "comfort" non sono misurati: seguono la rigidità (e l'allungamento a 50 lb dove c'è l'Excel).
+# "potenza" è stata tolta: era sempre 100 − controllo.
+PROXY_CRITERIA = ("control", "comfort")
+JUDGE_CRITERIA = ("stiffness", "spin", "control", "durability", "comfort")
 LAB_WEIGHT, REVIEW_WEIGHT = 0.7, 0.3
 WORDS = ("molto basso", "basso", "medio", "alto", "molto alto")
 STIFF_WORDS = ("molto morbida", "morbida", "media", "rigida", "molto rigida")
@@ -115,6 +119,12 @@ def _review_score(agg, crit):
 def judgments(rec, sub, agg, pop):
     """Giudizio semplice per criterio: 70% laboratorio + 30% recensioni, pesi rinormalizzati se una parte manca."""
     lab = {**sub, "stiffness": percentile(stiff_lab(rec), pop["stiff_measured"])}
+    # stime da modello: si mostrano nelle barre (tratteggiate, lab_share 0) ma non entrano mai nel punteggio
+    modelled = set()
+    if lab["stiffness"] is None and (rec.get("stiffness") or {}).get("kind") == "modello":
+        lab["stiffness"] = percentile(rec["stiffness"]["value_lbin"], pop["stiff_measured"]); modelled.add("stiffness")
+    if lab["spin"] is None and (rec.get("spin") or {}).get("kind") == "modello":
+        lab["spin"] = percentile(rec["spin"]["value"], pop["spin_measured"]); modelled.add("spin")
     out = {}
     for c in JUDGE_CRITERIA:
         l = lab.get(c)
@@ -134,7 +144,9 @@ def judgments(rec, sub, agg, pop):
         score = round(sum(x * w for x, w in parts) / den, 1)
         level = min(5, int(score // 20) + 1)
         out[c] = {"score": score, "level": level, "word": (STIFF_WORDS if c == "stiffness" else WORDS)[level - 1],
-                  "lab_share": round((LAB_WEIGHT if l is not None else 0) / den, 2)}
+                  "lab_share": 0.0 if c in modelled else round((LAB_WEIGHT if l is not None else 0) / den, 2)}
+        if c in modelled:
+            out[c]["modelled"] = True
     return out
 
 
@@ -165,7 +177,13 @@ def similarity(a, b, pop):
     return min(sim, 100)
 
 
+REQUIRED_FOR_SCORE = ("spin", "durability")
+
+
 def profile_score(sub, weights=DEFAULT_WEIGHTS, disliked_sim=None):
+    # senza spin e tenuta il punteggio sarebbe gonfiato dagli altri assi: meglio nessun punteggio
+    if any(sub.get(k) is None for k in REQUIRED_FOR_SCORE):
+        return None
     num = sum(weights[k] * sub[k] for k in weights if sub.get(k) is not None)
     den = sum(weights[k] for k in weights if sub.get(k) is not None)
     if not den:
@@ -245,7 +263,8 @@ def derive_all(records, reviews=None):
         lab = subscores(r, pop)
         j = judgments(r, lab, reviews.get(r["id"]), pop)
         # punteggio profilo sui giudizi misti (laboratorio + recensioni); stessi campi letti da score.js
-        sub = {k: j[k]["score"] for k in ("spin", "control", "power", "durability", "comfort")}
+        sub = {k: lab[k] for k in ("spin", "control", "durability", "comfort")}  # punteggio: solo laboratorio
+        sub["affinity"] = best  # somiglianza massima con una preferita (0-100)
         r["derived"] = {
             "subscores": sub,
             "lab_subscores": lab,

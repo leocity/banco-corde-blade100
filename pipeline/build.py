@@ -7,9 +7,10 @@ import pathlib
 
 from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
-from pipeline.estimate import (MEASURED, backtest_qualitative, calibrate_tester_spin, estimate_spin,
+from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
 from pipeline.notes_gen import apply_notes
+from pipeline.rpedia_site import apply_site
 from pipeline.production import filter_discontinued
 from pipeline.reviews import add_percentiles, aggregate, validate_reviews
 
@@ -31,10 +32,12 @@ def _corr(xs, ys):
 REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
-def build(records, notes, reviews=None, catalog=None, production=None, years=None):
+def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None):
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
+    # Racketpedia dal sito (fonte primaria): verifica, riempie e corregge gli abbinamenti scritti dall'agente
+    rp_log = apply_site(records, site_rows or [], base_model) if site_rows else []
     removed_list = sorted({(f"{r['brand']} {r['model']}", (r.get("production") or {}).get("successor"),
                             (r.get("production") or {}).get("reason")) for r in removed})
     agg = add_percentiles({row["id"]: aggregate(row) for row in (reviews or [])})
@@ -59,12 +62,22 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     qpairs = [(tester_level(agg.get(r["id"])), _measured(r, "spin_potential")) for r in records if r["id"] in agg]
     qual = backtest_qualitative([(l, y) for l, y in qpairs if l is not None and y is not None], spin_pop)
     stiff_pop = [v for v in (_measured(r, "stiffness_lbin") for r in records) if v is not None]
+    rp_args = (rp_meta["a"], rp_meta["b"], rp_meta["mae"]) if rp_meta else None
+    gauge_model = fit_gauge_model(records)
+    # modello della rigidità dal solo calibro: nessun giudizio personale dei tester
+    stiff_model = fit_stiffness_model([(r.get("gauge_mm"), _measured(r, "stiffness_lbin")) for r in records
+                                       if _measured(r, "stiffness_lbin") is not None])
+    for r in records:
+        r["stiffness"] = estimate_stiffness(r, relatives_of(r, records), rp_args, None, stiff_pop, gauge=gauge_model, model=stiff_model,
+                                            rp_siblings=siblings_with_rp(r, records))
+    # modello dello spin da rigidità + forma, addestrato solo su corde con spin e rigidità misurati da TWU
+    train = [((r["stiffness"] or {}).get("value_lbin") if (r["stiffness"] or {}).get("kind") == "misurata" else None,
+              r.get("shape"), _measured(r, "spin_potential")) for r in records if _measured(r, "spin_potential") is not None]
+    spin_model = fit_spin_model(train)
     for r in records:
         rel = relatives_of(r, records)
         # solo dati di laboratorio (decisione utente 2026-10-07): le recensioni non entrano nelle stime
-        r["spin"] = estimate_spin(r, rel, None, calib, spin_pop)
-        r["stiffness"] = estimate_stiffness(r, rel, (rp_meta["a"], rp_meta["b"], rp_meta["mae"]) if rp_meta else None,
-                                            None, stiff_pop)
+        r["spin"] = estimate_spin(r, rel, None, calib, spin_pop, model=spin_model, stiffness=r["stiffness"])
         r["reviews"] = {"agg": agg.get(r["id"]),
                         "sources": [{k: s.get(k) for k in ("site", "url", "kind", "scores", "levels", "note")}
                                     for s in src.get(r["id"], [])]}
@@ -82,7 +95,9 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
-        "estimates_meta": {"spin_calibration": calib, "spin_qualitative": qual, "rp_to_twu": rp_meta},
+        "estimates_meta": {"spin_calibration": calib, "spin_qualitative": qual, "rp_to_twu": rp_meta, "spin_model": spin_model,
+                           "stiffness_gauge": gauge_model, "stiffness_model": stiff_model,
+                           "rpedia_site": {"rows": len(site_rows or []), "changes": [list(x) for x in rp_log]}},
         "removed_discontinued": [{"name": n, "successor": sc, "reason": rs} for n, sc, rs in removed_list],
         "strings": records,
     }
@@ -108,7 +123,9 @@ if __name__ == "__main__":
                   for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     years = [row for f in sorted(glob.glob(str(ROOT / "data/agents/year_p*.json")))
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
-    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years)
+    site_rows = _load("data/raw/racketpedia.json", [])
+    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows)
+    print("Racketpedia dal sito:", len(site_rows), "righe;", len(out["estimates_meta"]["rpedia_site"]["changes"]), "abbinamenti nuovi o corretti")
     print("rimosse:", [(x["name"], x["reason"]) for x in out["removed_discontinued"]])
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     S = out["strings"]
