@@ -98,6 +98,57 @@
    "mae": 11.3,
    "n": 18,
    "r": 0.63
+  },
+  "spin_model": {
+   "stiffness_shape": {
+    "mae": 0.99,
+    "baseline_mae": 1.19,
+    "q80": 1.48,
+    "n": 54,
+    "usable": true,
+    "fit": {
+     "mu": [
+      208.36111,
+      0.11111,
+      0.27778
+     ],
+     "sd": [
+      18.26404,
+      0.31427,
+      0.4479
+     ],
+     "w": [
+      -0.45147,
+      0.42406,
+      -0.25315
+     ],
+     "ym": 6.13704
+    },
+    "slope_per_lbin": -0.0247
+   },
+   "shape": {
+    "mae": 1.04,
+    "baseline_mae": 1.19,
+    "q80": 1.57,
+    "n": 54,
+    "usable": true,
+    "fit": {
+     "mu": [
+      0.11111,
+      0.27778
+     ],
+     "sd": [
+      0.31427,
+      0.4479
+     ],
+     "w": [
+      0.52918,
+      -0.23269
+     ],
+     "ym": 6.13704
+    },
+    "slope_per_lbin": null
+   }
   }
  },
  "removed_discontinued": [
@@ -455,18 +506,18 @@
      "https://tenniscompanion.org/babolat-rpm-blast/"
     ]
    },
+   "stiffness": {
+    "value_lbin": 232.6,
+    "low": 232.6,
+    "high": 232.6,
+    "kind": "parente"
+   },
    "spin": {
     "value": 4.5,
     "low": 4.0,
     "high": 5.0,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 232.6,
-    "low": 232.6,
-    "high": 232.6,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -773,18 +824,18 @@
      "https://tenniscompanion.org/babolat-rpm-blast/"
     ]
    },
+   "stiffness": {
+    "value_lbin": 233.7,
+    "low": 233.7,
+    "high": 233.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.6,
     "low": 4.6,
     "high": 4.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 233.7,
-    "low": 233.7,
-    "high": 233.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -1073,18 +1124,18 @@
      "https://www.tennisnerd.net/gear/strings/string-reviews/head-hawk-power-review/29623"
     ]
    },
+   "stiffness": {
+    "value_lbin": 203.5,
+    "low": 203.5,
+    "high": 203.5,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.5,
     "low": 7.5,
     "high": 7.5,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 203.5,
-    "low": 203.5,
-    "high": 203.5,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -1294,18 +1345,18 @@
      "https://tennisnerd.net/gear/strings/head-lynx-tour-string-review/20825"
     ]
    },
+   "stiffness": {
+    "value_lbin": 228.6,
+    "low": 228.6,
+    "high": 228.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.1,
     "low": 6.1,
     "high": 6.1,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 228.6,
-    "low": 228.6,
-    "high": 228.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -1522,8 +1573,15 @@
      "https://www.tenniswarehouse-europe.com/catpage-STHEAD-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -1646,7 +1704,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.38) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.38) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 25/100 con Confidential e 1/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -1727,18 +1785,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-KIRCOM-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 210.3,
+    "low": 210.3,
+    "high": 210.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 4.9,
     "low": 4.4,
     "high": 5.4,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 210.3,
-    "low": 210.3,
-    "high": 210.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": null,
@@ -1893,8 +1951,15 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -2017,7 +2082,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -2098,18 +2163,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-KIRHEL-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 208.6,
+    "low": 208.6,
+    "high": 208.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.4,
     "low": 5.4,
     "high": 5.4,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 208.6,
-    "low": 208.6,
-    "high": 208.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -2273,18 +2338,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-KIRHEL-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 208.6,
+    "low": 208.6,
+    "high": 208.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.4,
     "low": 5.4,
     "high": 5.4,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 208.6,
-    "low": 208.6,
-    "high": 208.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -2454,12 +2519,19 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 192.6,
     "low": 192.6,
     "high": 192.6,
     "kind": "parente"
+   },
+   "spin": {
+    "value": 6.53,
+    "low": 5.05,
+    "high": 8.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": null,
@@ -2623,12 +2695,19 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 192.6,
     "low": 192.6,
     "high": 192.6,
     "kind": "parente"
+   },
+   "spin": {
+    "value": 6.53,
+    "low": 5.05,
+    "high": 8.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": null,
@@ -2792,12 +2871,19 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 192.6,
     "low": 192.6,
     "high": 192.6,
     "kind": "parente"
+   },
+   "spin": {
+    "value": 6.53,
+    "low": 5.05,
+    "high": 8.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": null,
@@ -2967,12 +3053,19 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 192.6,
     "low": 192.6,
     "high": 192.6,
     "kind": "parente"
+   },
+   "spin": {
+    "value": 6.53,
+    "low": 5.05,
+    "high": 8.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": null,
@@ -3136,12 +3229,19 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 192.6,
     "low": 192.6,
     "high": 192.6,
     "kind": "parente"
+   },
+   "spin": {
+    "value": 6.53,
+    "low": 5.05,
+    "high": 8.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": null,
@@ -3303,18 +3403,18 @@
      "https://www.tennis-warehouse.com/Luxilon_Polyester_-_Control_Durability__Spin/catpage-LUXSETS.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 197.7,
+    "low": 197.7,
+    "high": 197.7,
+    "kind": "parente"
+   },
    "spin": {
     "value": 7.0,
     "low": 6.5,
     "high": 7.5,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 197.7,
-    "low": 197.7,
-    "high": 197.7,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -3565,12 +3665,19 @@
      "https://sites.google.com/view/tennistech"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 191.1,
     "low": 179.8,
     "high": 202.4,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.92,
+    "low": 6.41,
+    "high": 9.43,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -3737,7 +3844,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.91) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.91) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.92 (modello, tra 6.41 e 9.43).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Somiglianza 35/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
@@ -3821,12 +3928,19 @@
      "https://www.tennisnerd.net/?p=36197"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 197.9,
     "low": 186.6,
     "high": 209.2,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 6.4,
+    "low": 4.9,
+    "high": 7.91,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -3993,7 +4107,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 3.18) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 3.18) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.4 (modello, tra 4.9 e 7.91).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Somiglianza 47/100 con Confidential e 78/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
@@ -4080,12 +4194,19 @@
      "https://www.tennisnerd.net/gear/racquets/restring-vivo-string-review/45756"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 211.5,
     "low": 200.2,
     "high": 222.8,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.42,
+    "low": 5.91,
+    "high": 8.92,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -4273,7 +4394,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.78) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.78) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.42 (modello, tra 5.91 e 8.92).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Somiglianza 79/100 con Confidential e 15/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
@@ -4359,12 +4480,19 @@
      "https://tennisnerd.net/gear/strings/restring-zero-review/31681"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 214.8,
     "low": 203.5,
     "high": 226.1,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.33,
+    "low": 5.83,
+    "high": 8.84,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -4552,7 +4680,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.67) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.67) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.33 (modello, tra 5.83 e 8.84).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 58/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
@@ -4636,12 +4764,19 @@
      "https://tennisnerd.net/gear/strings/restring-zero-review/31681"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 211.5,
     "low": 200.2,
     "high": 222.8,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.42,
+    "low": 5.91,
+    "high": 8.92,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -4915,18 +5050,18 @@
      "https://www.tenniswarehouse-europe.com/learning_center/string_reviews/signum_pro_xperience.html?lang=fr"
     ]
    },
+   "stiffness": {
+    "value_lbin": 224.6,
+    "low": 224.6,
+    "high": 224.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.2,
     "low": 6.2,
     "high": 6.2,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 224.6,
-    "low": 224.6,
-    "high": 224.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -5142,8 +5277,15 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGPOL-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": null,
     "sources": []
@@ -5225,7 +5367,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 4.49) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 4.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 4/100 con Confidential e 34/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
@@ -5306,18 +5448,18 @@
      "https://www.tennisnerd.net/?p=23271"
     ]
    },
+   "stiffness": {
+    "value_lbin": 172.0,
+    "low": 172.0,
+    "high": 172.0,
+    "kind": "parente"
+   },
    "spin": {
     "value": 5.2,
     "low": 4.7,
     "high": 5.7,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 172.0,
-    "low": 172.0,
-    "high": 172.0,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -5565,18 +5707,18 @@
      "https://www.tennisnerd.net/?p=23271"
     ]
    },
+   "stiffness": {
+    "value_lbin": 172.0,
+    "low": 172.0,
+    "high": 172.0,
+    "kind": "parente"
+   },
    "spin": {
     "value": 5.2,
     "low": 4.7,
     "high": 5.7,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 172.0,
-    "low": 172.0,
-    "high": 172.0,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -5831,18 +5973,18 @@
      "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 222.3,
+    "low": 222.3,
+    "high": 222.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.4,
     "low": 6.4,
     "high": 6.4,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -6107,18 +6249,18 @@
      "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 222.3,
+    "low": 222.3,
+    "high": 222.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 6.4,
     "low": 5.9,
     "high": 6.9,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -6381,18 +6523,18 @@
      "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 222.3,
+    "low": 222.3,
+    "high": 222.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 6.4,
     "low": 5.9,
     "high": 6.9,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -6645,18 +6787,18 @@
      "https://www.tecnifibre.com/en/collections/cordages-tennis"
     ]
    },
+   "stiffness": {
+    "value_lbin": 229.2,
+    "low": 229.2,
+    "high": 229.2,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.6,
     "low": 5.6,
     "high": 5.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 229.2,
-    "low": 229.2,
-    "high": 229.2,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -6827,18 +6969,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 180.6,
+    "low": 180.6,
+    "high": 180.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 9.3,
     "low": 9.3,
     "high": 9.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 180.6,
-    "low": 180.6,
-    "high": 180.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -7061,12 +7203,19 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 208.1,
     "low": 196.8,
     "high": 219.4,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.5,
+    "low": 5.99,
+    "high": 9.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -7254,7 +7403,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.5 (modello, tra 5.99 e 9.01).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 84/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
@@ -7338,12 +7487,19 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 208.1,
     "low": 196.8,
     "high": 219.4,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.5,
+    "low": 5.99,
+    "high": 9.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -7531,7 +7687,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.5 (modello, tra 5.99 e 9.01).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 95/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
@@ -7603,8 +7759,15 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -7770,7 +7933,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.07) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.07) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 94/100 con Confidential e 17/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -7842,8 +8005,15 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -8009,7 +8179,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.04) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.04) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 89/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -8081,8 +8251,15 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -8248,7 +8425,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.62) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.62) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 93/100 con Confidential e 42/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -8333,12 +8510,19 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 204.7,
     "low": 193.4,
     "high": 216.0,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 6.23,
+    "low": 4.73,
+    "high": 7.74,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -8505,7 +8689,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.20) e su Racketpedia, quindi è meno preciso. Profilo quadrata.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.20) e su Racketpedia, quindi è meno preciso. Profilo quadrata. Spin stimato ≈ 6.23 (modello, tra 4.73 e 7.74).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 100/100 con Confidential e 39/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
@@ -8576,8 +8760,15 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -8722,7 +8913,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.36) e su Racketpedia, quindi è meno preciso. Profilo tonda.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.36) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 87/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -8800,12 +8991,19 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 204.7,
     "low": 193.4,
     "high": 216.0,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 6.23,
+    "low": 4.73,
+    "high": 7.74,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -8972,7 +9170,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo quadrata.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo quadrata. Spin stimato ≈ 6.23 (modello, tra 4.73 e 7.74).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 71/100 con Confidential e 19/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
@@ -9065,18 +9263,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 189.7,
+    "low": 189.7,
+    "high": 189.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.8,
     "low": 7.8,
     "high": 7.8,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 189.7,
-    "low": 189.7,
-    "high": 189.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -9340,18 +9538,18 @@
      "https://www.tennisnerd.net/?p=40704"
     ]
    },
+   "stiffness": {
+    "value_lbin": 165.7,
+    "low": 165.7,
+    "high": 165.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 9.4,
     "low": 9.4,
     "high": 9.4,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 165.7,
-    "low": 165.7,
-    "high": 165.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -9616,12 +9814,19 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 204.7,
     "low": 193.4,
     "high": 216.0,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.58,
+    "low": 6.08,
+    "high": 9.09,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -9788,7 +9993,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (modello, tra 6.08 e 9.09).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
@@ -9865,12 +10070,19 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 204.7,
     "low": 193.4,
     "high": 216.0,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.58,
+    "low": 6.08,
+    "high": 9.09,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -10037,7 +10249,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (modello, tra 6.08 e 9.09).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
@@ -10114,12 +10326,19 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 204.7,
     "low": 193.4,
     "high": 216.0,
     "kind": "da Racketpedia"
+   },
+   "spin": {
+    "value": 7.58,
+    "low": 6.08,
+    "high": 9.09,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -10286,7 +10505,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale.",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (modello, tra 6.08 e 9.09).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 58/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
@@ -10371,18 +10590,18 @@
      "https://www.tenniswarehouse-europe.com/learning_center/reviews/strings/yonex_polytour_rev.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 193.2,
+    "low": 193.2,
+    "high": 193.2,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.2,
     "low": 7.2,
     "high": 7.2,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 193.2,
-    "low": 193.2,
-    "high": 193.2,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -10550,18 +10769,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-YPTSS-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 213.7,
+    "low": 213.7,
+    "high": 213.7,
+    "kind": "parente"
+   },
    "spin": {
     "value": 6.3,
     "low": 5.8,
     "high": 6.8,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 213.7,
-    "low": 213.7,
-    "high": 213.7,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -10738,18 +10957,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 164.6,
+    "low": 164.6,
+    "high": 164.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 8.7,
     "low": 8.7,
     "high": 8.7,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 164.6,
-    "low": 164.6,
-    "high": 164.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -10937,18 +11156,18 @@
      "https://www.tennisnerd.net/?p=67341"
     ]
    },
+   "stiffness": {
+    "value_lbin": 222.3,
+    "low": 222.3,
+    "high": 222.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 8.6,
     "low": 8.6,
     "high": 8.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -11167,18 +11386,18 @@
      "https://www.tennisnerd.net/?p=63969"
     ]
    },
+   "stiffness": {
+    "value_lbin": 173.2,
+    "low": 173.2,
+    "high": 173.2,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 8.2,
     "low": 8.2,
     "high": 8.2,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 173.2,
-    "low": 173.2,
-    "high": 173.2,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -11419,18 +11638,18 @@
      "https://www.tennisnerd.net/?p=25992"
     ]
    },
+   "stiffness": {
+    "value_lbin": 210.3,
+    "low": 210.3,
+    "high": 210.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 8.2,
     "low": 8.2,
     "high": 8.2,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 210.3,
-    "low": 210.3,
-    "high": 210.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -11656,18 +11875,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 216.6,
+    "low": 216.6,
+    "high": 216.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.7,
     "low": 7.7,
     "high": 7.7,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 216.6,
-    "low": 216.6,
-    "high": 216.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -11885,18 +12104,18 @@
      "https://www.tennisnerd.net/?p=67980"
     ]
    },
+   "stiffness": {
+    "value_lbin": 182.9,
+    "low": 182.9,
+    "high": 182.9,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.6,
     "low": 7.6,
     "high": 7.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 182.9,
-    "low": 182.9,
-    "high": 182.9,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -12091,18 +12310,18 @@
      "https://www.tennisnerd.net/gear/strings/tecnifibre-razor-soft-review/31369"
     ]
    },
+   "stiffness": {
+    "value_lbin": 212.0,
+    "low": 212.0,
+    "high": 212.0,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.4,
     "low": 7.4,
     "high": 7.4,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 212.0,
-    "low": 212.0,
-    "high": 212.0,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -12318,18 +12537,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGPLHE-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 225.7,
+    "low": 225.7,
+    "high": 225.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.3,
     "low": 7.3,
     "high": 7.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 225.7,
-    "low": 225.7,
-    "high": 225.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -12505,18 +12724,18 @@
      "https://www.tennisnerd.net/?p=35533"
     ]
    },
+   "stiffness": {
+    "value_lbin": 226.3,
+    "low": 226.3,
+    "high": 226.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.3,
     "low": 7.3,
     "high": 7.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 226.3,
-    "low": 226.3,
-    "high": 226.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -12711,18 +12930,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 190.9,
+    "low": 190.9,
+    "high": 190.9,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.3,
     "low": 7.3,
     "high": 7.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 190.9,
-    "low": 190.9,
-    "high": 190.9,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -12917,18 +13136,18 @@
      "https://tennisnerd.net/gear/strings/head-lynx-tour-string-review/20825"
     ]
    },
+   "stiffness": {
+    "value_lbin": 217.7,
+    "low": 217.7,
+    "high": 217.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.1,
     "low": 7.1,
     "high": 7.1,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 217.7,
-    "low": 217.7,
-    "high": 217.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -13116,18 +13335,18 @@
      "https://www.tennis-warehouse.com/Luxilon_Polyester_-_Control_Durability__Spin/catpage-LUXSETS.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 197.7,
+    "low": 197.7,
+    "high": 197.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.0,
     "low": 7.0,
     "high": 7.0,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 197.7,
-    "low": 197.7,
-    "high": 197.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -13341,18 +13560,18 @@
      "https://www.tennis-warehouse.com/Luxilon_Polyester_-_Control_Durability__Spin/catpage-LUXSETS.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 197.7,
+    "low": 197.7,
+    "high": 197.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.9,
     "low": 6.9,
     "high": 6.9,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 197.7,
-    "low": 197.7,
-    "high": 197.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -13488,18 +13707,18 @@
      "https://www.tennisnerd.net/?p=28163"
     ]
    },
+   "stiffness": {
+    "value_lbin": 218.3,
+    "low": 218.3,
+    "high": 218.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.7,
     "low": 6.7,
     "high": 6.7,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 218.3,
-    "low": 218.3,
-    "high": 218.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -13739,18 +13958,18 @@
      "https://www.tennisnerd.net/?p=63442"
     ]
    },
+   "stiffness": {
+    "value_lbin": 194.3,
+    "low": 194.3,
+    "high": 194.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.5,
     "low": 6.5,
     "high": 6.5,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 194.3,
-    "low": 194.3,
-    "high": 194.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -13965,18 +14184,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-YPTSS-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 213.7,
+    "low": 213.7,
+    "high": 213.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.3,
     "low": 6.3,
     "high": 6.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 213.7,
-    "low": 213.7,
-    "high": 213.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -14150,18 +14369,18 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 230.9,
+    "low": 230.9,
+    "high": 230.9,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.0,
     "low": 6.0,
     "high": 6.0,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 230.9,
-    "low": 230.9,
-    "high": 230.9,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -14338,18 +14557,18 @@
      "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-mach-10-string/45373"
     ]
    },
+   "stiffness": {
+    "value_lbin": 222.3,
+    "low": 222.3,
+    "high": 222.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 6.0,
     "low": 6.0,
     "high": 6.0,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -14565,18 +14784,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGPLHE-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 204.6,
+    "low": 204.6,
+    "high": 204.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.9,
     "low": 5.9,
     "high": 5.9,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 204.6,
-    "low": 204.6,
-    "high": 204.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -14712,18 +14931,18 @@
      "https://www.tennisnerd.net/?p=26877"
     ]
    },
+   "stiffness": {
+    "value_lbin": 206.3,
+    "low": 206.3,
+    "high": 206.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.8,
     "low": 5.8,
     "high": 5.8,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 206.3,
-    "low": 206.3,
-    "high": 206.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -14940,18 +15159,18 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 210.9,
+    "low": 210.9,
+    "high": 210.9,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.7,
     "low": 5.7,
     "high": 5.7,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 210.9,
-    "low": 210.9,
-    "high": 210.9,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -15077,18 +15296,18 @@
      "https://www.tennisnerd.net/?p=63821"
     ]
    },
+   "stiffness": {
+    "value_lbin": 221.2,
+    "low": 221.2,
+    "high": 221.2,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.6,
     "low": 5.6,
     "high": 5.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 221.2,
-    "low": 221.2,
-    "high": 221.2,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -15221,18 +15440,18 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 223.5,
+    "low": 223.5,
+    "high": 223.5,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.6,
     "low": 5.6,
     "high": 5.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 223.5,
-    "low": 223.5,
-    "high": 223.5,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -15404,18 +15623,18 @@
      "https://www.tennis-warehouse.com/SolincoString.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 182.9,
+    "low": 182.9,
+    "high": 182.9,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.6,
     "low": 5.6,
     "high": 5.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 182.9,
-    "low": 182.9,
-    "high": 182.9,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -15647,18 +15866,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-KIRHEL-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 204.6,
+    "low": 204.6,
+    "high": 204.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.4,
     "low": 5.4,
     "high": 5.4,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 204.6,
-    "low": 204.6,
-    "high": 204.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -15791,18 +16010,18 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 221.7,
+    "low": 221.7,
+    "high": 221.7,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.3,
     "low": 5.3,
     "high": 5.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 221.7,
-    "low": 221.7,
-    "high": 221.7,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -15928,18 +16147,18 @@
      "https://www.tennisnerd.net/?p=63821"
     ]
    },
+   "stiffness": {
+    "value_lbin": 199.5,
+    "low": 199.5,
+    "high": 199.5,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.2,
     "low": 5.2,
     "high": 5.2,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 199.5,
-    "low": 199.5,
-    "high": 199.5,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -16066,18 +16285,18 @@
      "https://www.tennisnerd.net/?p=23271"
     ]
    },
+   "stiffness": {
+    "value_lbin": 172.0,
+    "low": 172.0,
+    "high": 172.0,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.2,
     "low": 5.2,
     "high": 5.2,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 172.0,
-    "low": 172.0,
-    "high": 172.0,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -16293,18 +16512,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGTOR-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 215.5,
+    "low": 215.5,
+    "high": 215.5,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.1,
     "low": 5.1,
     "high": 5.1,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 215.5,
-    "low": 215.5,
-    "high": 215.5,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -16430,18 +16649,18 @@
      "https://prod.tennis.com/news/articles/string-preview-luxilon-alu-power-vibe"
     ]
    },
+   "stiffness": {
+    "value_lbin": 208.0,
+    "low": 208.0,
+    "high": 208.0,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.0,
     "low": 5.0,
     "high": 5.0,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 208.0,
-    "low": 208.0,
-    "high": 208.0,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -16568,18 +16787,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-KIRCOM-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 210.3,
+    "low": 210.3,
+    "high": 210.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.9,
     "low": 4.9,
     "high": 4.9,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 210.3,
-    "low": 210.3,
-    "high": 210.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -16710,18 +16929,18 @@
      "https://www.tennis-warehouse.com/SolincoString.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 186.3,
+    "low": 186.3,
+    "high": 186.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.9,
     "low": 4.9,
     "high": 4.9,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 186.3,
-    "low": 186.3,
-    "high": 186.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -16952,18 +17171,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGPOME-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 213.2,
+    "low": 213.2,
+    "high": 213.2,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.8,
     "low": 4.8,
     "high": 4.8,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 213.2,
-    "low": 213.2,
-    "high": 213.2,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -17095,18 +17314,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGTOR-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 214.3,
+    "low": 214.3,
+    "high": 214.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.8,
     "low": 4.8,
     "high": 4.8,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 214.3,
-    "low": 214.3,
-    "high": 214.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -17238,18 +17457,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGHYP-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 220.0,
+    "low": 220.0,
+    "high": 220.0,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.6,
     "low": 4.6,
     "high": 4.6,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 220.0,
-    "low": 220.0,
-    "high": 220.0,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -17392,18 +17611,18 @@
      "https://tenniscompanion.org/babolat-rpm-blast/"
     ]
    },
+   "stiffness": {
+    "value_lbin": 232.6,
+    "low": 232.6,
+    "high": 232.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.5,
     "low": 4.5,
     "high": 4.5,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 232.6,
-    "low": 232.6,
-    "high": 232.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -17656,18 +17875,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-KIRCOM-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 210.3,
+    "low": 210.3,
+    "high": 210.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.5,
     "low": 4.5,
     "high": 4.5,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 210.3,
-    "low": 210.3,
-    "high": 210.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -17798,18 +18017,18 @@
      "https://www.tennis-warehouse.com/SolincoString.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 214.3,
+    "low": 214.3,
+    "high": 214.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.4,
     "low": 4.4,
     "high": 4.4,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 214.3,
-    "low": 214.3,
-    "high": 214.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": {
@@ -18040,18 +18259,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGPOME-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 234.9,
+    "low": 234.9,
+    "high": 234.9,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.3,
     "low": 4.3,
     "high": 4.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 234.9,
-    "low": 234.9,
-    "high": 234.9,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -18178,18 +18397,18 @@
      "https://www.tennis-point.com/search?sSearch=signum+poly+speed+spin"
     ]
    },
+   "stiffness": {
+    "value_lbin": 246.3,
+    "low": 246.3,
+    "high": 246.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.3,
     "low": 4.3,
     "high": 4.3,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 246.3,
-    "low": 246.3,
-    "high": 246.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -18321,18 +18540,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGHYP-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 202.3,
+    "low": 202.3,
+    "high": 202.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.2,
     "low": 4.2,
     "high": 4.2,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 202.3,
-    "low": 202.3,
-    "high": 202.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -18459,18 +18678,18 @@
      "https://www.tenniswarehouse-europe.com/catpage-KIRCOM-EN.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 190.3,
+    "low": 190.3,
+    "high": 190.3,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 4.1,
     "low": 4.1,
     "high": 4.1,
     "kind": "misurato",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 190.3,
-    "low": 190.3,
-    "high": 190.3,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -18596,18 +18815,18 @@
      "https://www.tennisnerd.net/?p=63821"
     ]
    },
+   "stiffness": {
+    "value_lbin": 196.0,
+    "low": 196.0,
+    "high": 196.0,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 5.2,
     "low": 4.7,
     "high": 5.7,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 196.0,
-    "low": 196.0,
-    "high": 196.0,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -18738,18 +18957,18 @@
      "https://www.tenniswarehouse-europe.com/learning_center/reviews/strings/yonex_polytour_rev.html"
     ]
    },
+   "stiffness": {
+    "value_lbin": 208.6,
+    "low": 208.6,
+    "high": 208.6,
+    "kind": "misurata"
+   },
    "spin": {
     "value": 7.2,
     "low": 6.7,
     "high": 7.7,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 208.6,
-    "low": 208.6,
-    "high": 208.6,
-    "kind": "misurata"
    },
    "reviews": {
     "agg": null,
@@ -18882,12 +19101,19 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "spin": null,
    "stiffness": {
     "value_lbin": 192.6,
     "low": 192.6,
     "high": 192.6,
     "kind": "misurata"
+   },
+   "spin": {
+    "value": 6.53,
+    "low": 5.05,
+    "high": 8.01,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": null,
@@ -19005,18 +19231,18 @@
      "https://www.tennisnerd.net/?p=35533"
     ]
    },
+   "stiffness": {
+    "value_lbin": 226.3,
+    "low": 226.3,
+    "high": 226.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 7.3,
     "low": 6.8,
     "high": 7.8,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 226.3,
-    "low": 226.3,
-    "high": 226.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -19238,18 +19464,18 @@
      "https://www.tennisnerd.net/?p=35533"
     ]
    },
+   "stiffness": {
+    "value_lbin": 226.3,
+    "low": 226.3,
+    "high": 226.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 7.3,
     "low": 6.8,
     "high": 7.8,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 226.3,
-    "low": 226.3,
-    "high": 226.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -19471,18 +19697,18 @@
      "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-mach-10-string/45373"
     ]
    },
+   "stiffness": {
+    "value_lbin": 222.3,
+    "low": 222.3,
+    "high": 222.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 6.0,
     "low": 5.5,
     "high": 6.5,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -19725,18 +19951,18 @@
      "https://www.tennisnerd.net/gear/strings/string-reviews/solinco-mach-10-string/45373"
     ]
    },
+   "stiffness": {
+    "value_lbin": 222.3,
+    "low": 222.3,
+    "high": 222.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 6.0,
     "low": 5.5,
     "high": 6.5,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -19979,18 +20205,18 @@
      "https://www.tennisnerd.net/?p=63442"
     ]
    },
+   "stiffness": {
+    "value_lbin": 194.3,
+    "low": 194.3,
+    "high": 194.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 6.5,
     "low": 6.0,
     "high": 7.0,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 194.3,
-    "low": 194.3,
-    "high": 194.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -20191,18 +20417,18 @@
      "https://www.tennisnerd.net/?p=63442"
     ]
    },
+   "stiffness": {
+    "value_lbin": 194.3,
+    "low": 194.3,
+    "high": 194.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 6.5,
     "low": 6.0,
     "high": 7.0,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 194.3,
-    "low": 194.3,
-    "high": 194.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -20402,8 +20628,15 @@
      "https://www.tennisnerd.net/gear/racquets/restring-vivo-string-review/45756"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 7.78,
+    "low": 6.21,
+    "high": 9.35,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -20610,7 +20843,7 @@
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (4 fonti) sono solo un riferimento. Profilo esagonale.",
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (4 fonti) sono solo un riferimento. Profilo esagonale. Spin stimato ≈ 7.78 (modello, tra 6.21 e 9.35).",
     "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -20643,8 +20876,15 @@
      "https://www.tennisnerd.net/?p=36197"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -20809,7 +21049,7 @@
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda.",
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -20842,8 +21082,15 @@
      "https://www.tennisnerd.net/?p=36197"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -21008,7 +21255,7 @@
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda.",
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -21042,8 +21289,15 @@
      "https://sites.google.com/view/tennistech"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 7.78,
+    "low": 6.21,
+    "high": 9.35,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -21208,7 +21462,7 @@
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo esagonale.",
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo esagonale. Spin stimato ≈ 7.78 (modello, tra 6.21 e 9.35).",
     "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -21243,8 +21497,15 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "spin": null,
    "stiffness": null,
+   "spin": {
+    "value": 6.09,
+    "low": 4.52,
+    "high": 7.66,
+    "kind": "modello",
+    "basis_n": 54,
+    "model": "forma"
+   },
    "reviews": {
     "agg": {
      "score": {
@@ -21430,7 +21691,7 @@
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (3 fonti) sono solo un riferimento. Profilo tonda.",
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (3 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
     "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -21464,18 +21725,18 @@
      "https://www.tennisnerd.net/?p=26877"
     ]
    },
+   "stiffness": {
+    "value_lbin": 206.3,
+    "low": 206.3,
+    "high": 206.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 5.8,
     "low": 5.3,
     "high": 6.3,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 206.3,
-    "low": 206.3,
-    "high": 206.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {
@@ -21696,18 +21957,18 @@
      "https://www.tennisnerd.net/?p=25992"
     ]
    },
+   "stiffness": {
+    "value_lbin": 210.3,
+    "low": 210.3,
+    "high": 210.3,
+    "kind": "parente"
+   },
    "spin": {
     "value": 8.2,
     "low": 7.7,
     "high": 8.7,
     "kind": "parente",
     "basis_n": 1
-   },
-   "stiffness": {
-    "value_lbin": 210.3,
-    "low": 210.3,
-    "high": 210.3,
-    "kind": "parente"
    },
    "reviews": {
     "agg": {

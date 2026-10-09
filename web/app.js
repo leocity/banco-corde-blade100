@@ -19,7 +19,7 @@ const nameOf = (r) => `${r.brand} ${r.model}`;
 const mmOf = (r) => (r.gauge_mm ? NF(2).format(r.gauge_mm) : r.gauge_label || '');
 const fullName = (r) => `${nameOf(r)} ${mmOf(r)}`;
 const subline = (r) => [r.gauge_mm ? `${NF(2).format(r.gauge_mm)} mm` : r.gauge_label, SHAPES[r.shape] || r.shape].filter(Boolean).join(' · ');
-const SPIN_KIND = { misurato: 'misurato', parente: 'da calibro/colore gemello', tester: 'stimato dai tester', qualitativo: 'stimato dai giudizi' };
+const SPIN_KIND = { misurato: 'misurato', parente: 'da calibro/colore gemello', tester: 'stimato dai tester', qualitativo: 'stimato dai giudizi', modello: 'stima da modello (rigidità e forma): bassa affidabilità' };
 const STIFF_KIND = { misurata: 'misurata (TWU)', parente: 'da calibro gemello', 'da Racketpedia': 'da Racketpedia', qualitativo: 'dai giudizi dei tester' };
 const isEst = (o, measured) => o && o.kind !== measured;
 const LEVEL_WORD = ['molto basso', 'basso', 'medio', 'alto', 'molto alto'];
@@ -67,7 +67,7 @@ function badges(r) {
   const labAny = Object.values(r.derived.judgments || {}).some((j) => j && j.lab_share > 0);
   if (r.catalog_only && !labAny) out.push('<span class="badge est" title="Nessun test di laboratorio: non viene giudicata">senza test di laboratorio</span>');
   else if (r.catalog_only) out.push('<span class="badge est" title="Non testata direttamente: i dati di laboratorio vengono da un calibro gemello">dati da calibro gemello</span>');
-  if (r.spin && isEst(r.spin, 'misurato')) out.push(`<span class="badge est" title="Spin ${esc(SPIN_KIND[r.spin.kind])}">${r.spin.value == null ? 'spin solo dai tester' : 'spin stimato'}</span>`);
+  if (r.spin && isEst(r.spin, 'misurato')) out.push(`<span class="badge est" title="Spin ${esc(SPIN_KIND[r.spin.kind])}">${r.spin.value == null ? 'spin solo dai tester' : r.spin.kind === 'modello' ? 'spin da modello' : 'spin stimato'}</span>`);
   if (r.derived.disliked_warning) out.push('<span class="badge warn" title="Somiglia più a una corda che non ti è piaciuta che alle tue preferite">⚠ simile a una non gradita</span>');
   if (r.production?.reason) out.push(`<span class="badge warn" title="Resta solo come tuo riferimento">${esc(r.production.reason)}</span>`);
   else if (r.production && r.production.year == null) out.push('<span class="badge" title="Anno di uscita non trovato: verifica che non sia un modello datato">anno da verificare</span>');
@@ -241,7 +241,7 @@ function initMap() {
   const opts = Object.entries(AX).map(([k, a]) => `<option value="${k}">${esc(a.label)}</option>`).join('');
   $('#ax-x').innerHTML = opts; $('#ax-y').innerHTML = opts; $('#ax-x').value = 'stiff'; $('#ax-y').value = 'spin';
   ['#ax-x', '#ax-y', '#show-comp', '#show-est'].forEach((s) => $(s).addEventListener('change', drawScatter));
-  $('#map-legend').innerHTML = ['liked', 'disliked', 'target', 'other'].map((c) => `<span><i class="sw" style="background:${CAT_COLOR[c]}"></i>${CAT_LABEL[c]}</span>`).join('') + '<span><i class="sw hollow"></i>Valore stimato, con margine</span>';
+  $('#map-legend').innerHTML = ['liked', 'disliked', 'target', 'other'].map((c) => `<span><i class="sw" style="background:${CAT_COLOR[c]}"></i>${CAT_LABEL[c]}</span>`).join('') + '<span><i class="sw hollow"></i>Valore stimato, con margine</span><span><i class="sw hollow dashed"></i>Spin da modello (bassa affidabilità)</span>';
 }
 function ticks(min, max, n = 5) {
   const span = max - min || 1, step0 = span / n, mag = 10 ** Math.floor(Math.log10(step0));
@@ -257,6 +257,8 @@ function renderMapStatus({ pts, stripB, stripL, noneR, hidComp, hidEst, mx, my }
   if (stripB.length) parts.push(`<p><b>${stripB.length}</b> senza ${esc(my.short.toLowerCase())}: sono nella fascia in basso, posizionate solo per ${esc(mx.short.toLowerCase())}.</p><p class="small">${list(stripB)}</p>`);
   if (stripL.length) parts.push(`<p><b>${stripL.length}</b> senza ${esc(mx.short.toLowerCase())}: sono nella fascia a sinistra, posizionate solo per ${esc(my.short.toLowerCase())}.</p><p class="small">${list(stripL)}</p>`);
   if (noneR.length) parts.push(`<p><b>${noneR.length}</b> senza né ${esc(mx.short.toLowerCase())} né ${esc(my.short.toLowerCase())}: non si possono posizionare.</p><p class="small">${list(noneR)}</p>`);
+  const nModel = [...pts, ...stripL].filter((r) => r.spin?.kind === 'modello').length;
+  if (nModel && (mx === AX.spin || my === AX.spin)) parts.push(`<p><b>${nModel}</b> hanno lo spin <b>stimato da modello</b> (rigidità e forma): cerchi tratteggiati con barra d'errore larga (±${fmt((DATA.estimates_meta?.spin_model?.stiffness_shape || {}).q80, 1)}). Dicono se la corda sta sopra o sotto la media, non un valore preciso. Non entrano nel punteggio.</p>`);
   if (hidEst.length) parts.push(`<p><b>${hidEst.length}</b> con valori stimati, nascoste perché "Mostra le stime" è spento.</p>`);
   if (hidComp.length) parts.push(`<p><b>${hidComp.length}</b> concorrenti nascosti: attiva "Mostra anche i concorrenti" per vederli (${hidComp.filter((r) => mx.get(r) != null && my.get(r) != null).length} hanno entrambi i dati).</p>`);
   $('#map-missing').innerHTML = `<p class="map-status"><b>${pts.length}</b> corde nel grafico${total > pts.length ? `, altre <b>${total - pts.length}</b> con dati incompleti` : ''}${hidComp.length || hidEst.length ? `, ${hidComp.length + hidEst.length} nascoste dai filtri` : ''}.</p>${parts.length ? `<details class="advanced" open><summary>Corde con dati mancanti o nascoste</summary>${parts.join('')}</details>` : ''}`;
@@ -275,7 +277,7 @@ function drawScatter() {
   const hidComp = ALL.filter((r) => !vis(r));
   const hidEst = ALL.filter((r) => vis(r) && hasBoth(r) && !estOk(r));
   renderMapStatus({ pts, stripB, stripL, noneR, hidComp, hidEst, mx, my });
-  const W = 900, H = 600, L = 116, R = 18, T = 18, B = 104, svg = $('#scatter');
+  const W = 900, H = 600, L = 116, R = 18, T = 18, B = stripB.length ? 104 : 56, svg = $('#scatter');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   if (!pts.length && !stripB.length && !stripL.length) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle">Nessuna corda con almeno un valore</text>`; return; }
   const xs = [...pts, ...stripB].flatMap((r) => [mx.get(r), mx.lo?.(r), mx.hi?.(r)]).filter((v) => v != null);
@@ -307,9 +309,10 @@ function drawScatter() {
   const order = { other: 0, target: 1, disliked: 2, liked: 3 };
   for (const r of [...pts].sort((a, b) => order[cat(a)] - order[cat(b)])) {
     const x = sx(mx.get(r)), y = sy(my.get(r)), c = CAT_COLOR[cat(r)], est = mx.est(r) || my.est(r);
-    if (my.est(r) && my.lo) s += `<line class="err" x1="${x}" x2="${x}" y1="${sy(my.lo(r))}" y2="${sy(my.hi(r))}" stroke="${c}"/>`;
-    if (mx.est(r) && mx.lo) s += `<line class="err" x1="${sx(mx.lo(r))}" x2="${sx(mx.hi(r))}" y1="${y}" y2="${y}" stroke="${c}"/>`;
-    s += `<circle class="dot${est ? ' hollow' : ''}" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.preference ? 8 : 6}" ${est ? `style="stroke:${c}"` : `fill="${c}"`} tabindex="0" role="button" aria-label="${esc(fullName(r))}"/>`;
+    const mdl = (kx === 'spin' || ky === 'spin') && r.spin?.kind === 'modello' ? ' model' : '';
+    if (my.est(r) && my.lo) s += `<line class="err${mdl}" x1="${x}" x2="${x}" y1="${sy(my.lo(r))}" y2="${sy(my.hi(r))}" stroke="${c}"/>`;
+    if (mx.est(r) && mx.lo) s += `<line class="err${mdl}" x1="${sx(mx.lo(r))}" x2="${sx(mx.hi(r))}" y1="${y}" y2="${y}" stroke="${c}"/>`;
+    s += `<circle class="dot${est ? ' hollow' : ''}${mdl}" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.preference ? 8 : 6}" ${est ? `style="stroke:${c}"` : `fill="${c}"`} tabindex="0" role="button" aria-label="${esc(fullName(r))}"/>`;
   }
   const groups = [];
   for (const r of pts.filter((r) => r.preference)) {
@@ -381,12 +384,13 @@ function renderCompare() {
     <h3><i class="sw" style="background:${SLOT[i]}"></i> ${esc(nameOf(r))}</h3><p class="muted small">${esc(subline(r))}</p><div class="badges">${badges(r)}</div>
     <p class="small completeness">Dati: ${['spin', 'stiffness', 'durability'].map((k) => { const ok = ROWS.find((x) => x.k === k).val(r) != null; return `<span class="${ok ? 'has' : 'lack'}">${ok ? '✓' : '✗'} ${ROW_NAME[k]}</span>`; }).join(' · ')}</p>
     ${ROWS.map((row) => { const v = row.val(r); const w = r.derived.judgments?.[row.k];
+      if (v == null && row.k === 'spin' && r.spin?.kind === 'modello') return `<div class="crow est"><span class="k">${row.label}</span><span class="v">≈ ${fmt(r.spin.value, 1)} · stima da modello</span><span class="s">tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)} (${esc(r.spin.model)}; errore tipico ±${fmt((DATA.estimates_meta?.spin_model?.[r.spin.model === 'forma' ? 'shape' : 'stiffness_shape'] || {}).mae, 1)}). Non entra nel confronto né nel punteggio.</span></div>`;
       if (v == null) return `<div class="crow missing"><span class="k">${row.label}</span><span class="v">dato mancante</span><span class="s">${esc(MISSING_WHY[row.k](r))}. Non confrontabile.</span></div>`;
       return `<div class="crow"><span class="k">${row.label}</span><span class="v">${row.show ? row.show(r) : `${w?.word || 'n.d.'} <span class="num muted">${v == null ? '' : Math.round(v)}</span>`}</span>${row.small && row.small(r) ? `<span class="s">${esc(row.small(r))}</span>` : ''}${v != null && leaders[row.k] === v ? `<span class="lead">▲ ${row.lead}${nWith[row.k] < chosen.length ? ` (tra le ${nWith[row.k]} con dato)` : ''}</span>` : ''}</div>`; }).join('')}
     <div class="crow"><span class="k">Tensione di partenza</span><span class="v num">${tensionText(r)}</span></div>
     <div class="crow${r._score === null ? ' missing' : ''}"><span class="k">Punteggio (rango tra ${ALL.length})</span><span class="v">${r._score === null ? 'non calcolabile' : fmt(r._score, 0)}</span>${r._score === null ? '<span class="s">servono spin e tenuta</span>' : ''}</div>
     <button class="btn" type="button" data-open="${esc(r.id)}">Scheda</button></article>`).join('') : '<p class="muted">Scegli almeno una corda.</p>';
-  const gaps = ['spin', 'stiffness', 'durability'].map((k) => { const row = ROWS.find((x) => x.k === k); const who = chosen.filter(({ r }) => row.val(r) == null).map(({ r }) => nameOf(r)); return who.length ? `${ROW_NAME[k]} (manca per ${who.map(esc).join(', ')})` : ''; }).filter(Boolean);
+  const gaps = ['spin', 'stiffness', 'durability'].map((k) => { const row = ROWS.find((x) => x.k === k); const who = chosen.filter(({ r }) => row.val(r) == null).map(({ r }) => nameOf(r) + (k === 'spin' && r.spin?.kind === 'modello' ? ' (solo stima da modello)' : '')); return who.length ? `${ROW_NAME[k]} (manca per ${who.map(esc).join(', ')})` : ''; }).filter(Boolean);
   $('#cmp-summary').innerHTML = (chosen.length >= 2 ? summary(chosen[0].r, chosen[1].r) : '') + (gaps.length ? `<span class="gaps"> ⚠ Non confrontabili per dati mancanti: ${gaps.join('; ')}.</span>` : '');
 }
 function summary(a, b) {
@@ -458,6 +462,7 @@ function renderGuide() {
       <ul>
         <li><b>Misurato</b>: lo spin potential di TWU sulla stessa corda.</li>
         <li><b>Da calibro o colore gemello</b>: lo stesso modello misurato in un altro calibro, ±0,5.</li>
+        <li><b>Da modello (rigidità e forma)</b>: per le corde senza TWU né gemello. Più morbida e a sezione esagonale = più spin. ${(m.spin_model?.stiffness_shape || {}).mae ? `Verificato su ${m.spin_model.stiffness_shape.n} corde misurate (leave-one-out): errore medio ${fmt(m.spin_model.stiffness_shape.mae, 2)} contro ${fmt(m.spin_model.stiffness_shape.baseline_mae, 2)} della media; l'intervallo mostrato (±${fmt(m.spin_model.stiffness_shape.q80, 1)}) copre circa l'80% dei casi. Senza rigidità si usa la sola forma (errore ${fmt((m.spin_model.shape || {}).mae, 2)}).` : ''} È una stima debole: l'effetto della forma esagonale viene da sole 6 corde misurate e non distingue corde vicine. Compare solo in mappa, confronto e schede, <b>mai nel punteggio o nelle top 3</b>.</li>
         <li><b>Recensioni</b>: non entrano nei calcoli. Le abbiamo verificate: ${c.n ? `su ${c.n} corde il voto spin dei tester non prevede lo spin TWU (pendenza ${fmt(c.a, 3)}), ` : ''}${(m.spin_qualitative || {}).n ? `e tradurre i giudizi in un numero sbaglia di ${fmt(m.spin_qualitative.mae, 2)} contro ${fmt(m.spin_qualitative.baseline_mae, 2)} della media.` : ''}</li>
 
       </ul>

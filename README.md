@@ -21,7 +21,7 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 1. **Solo dati di laboratorio** per giudizi, punteggio e classifiche (Ektelon, TWU, Racketpedia, gemelli di calibro misurati). Le recensioni restano solo come link.
 2. **Si tolgono le corde uscite prima del 2020 e quelle fuori produzione**; le 4 corde di riferimento restano sempre. Anno non trovato → badge "anno da verificare".
 3. Punteggio profilo (0–100, posizione tra le corde del banco, non un voto): spin 35, tenuta 20, affinità con le preferite 20; serve almeno spin e tenuta, altrimenti nessun punteggio; −15 se la corda somiglia più a una non gradita che alle preferite (soglia 75). Controllo e comfort sono solo *stime dalla rigidità* e non entrano nel punteggio; "potenza" è stata tolta (era 100 − controllo).
-4. Spin: misurato TWU, oppure da gemello di calibro/colore (±0,5). Nessuna stima dalle recensioni (verificato: non predicono lo spin TWU).
+4. Spin: misurato TWU, oppure da gemello di calibro/colore (±0,5), oppure — solo per posizionare la corda in mappa e confronto — **stima da modello** (rigidità + forma esagonale, ridge; in leave-one-out errore medio 0,99 contro 1,19 della media, intervallo ±1,5 all'80%; senza rigidità solo la forma). Le stime da modello non entrano mai nel punteggio né nelle top 3. Nessuna stima dalle recensioni (verificato: non predicono lo spin TWU).
 
 ## Comandi
 

@@ -1,4 +1,4 @@
-from pipeline.estimate import (calibrate_tester_spin, estimate_spin, estimate_stiffness, fit_linear,
+from pipeline.estimate import (fit_spin_model, model_spin, calibrate_tester_spin, estimate_spin, estimate_stiffness, fit_linear,
                                loo_mae, relatives_of)
 
 POP = [4.0, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.0, 10.0]
@@ -80,3 +80,43 @@ def test_backtest_qualitative():
     pairs = [(5, 4.0), (1, 9.0), (4, 5.0), (2, 8.5), (5, 5.5), (3, 7.5), (1, 6.0), (4, 4.5)]
     bt = backtest_qualitative(pairs, POP)
     assert bt["usable"] is False and bt["mae"] >= bt["baseline_mae"]
+
+
+def _train(n=40):
+    # spin cala con la rigidità e sale per le esagonali, più un po' di rumore deterministico
+    rows = []
+    for i in range(n):
+        st = 160 + (i * 7) % 80
+        hexa = i % 5 == 0
+        y = 9.0 - 0.025 * (st - 160) + (1.2 if hexa else 0.0) + ((i * 37) % 11 - 5) * 0.05
+        rows.append((float(st), "HEX" if hexa else "RND", y))
+    return rows
+
+
+def test_spin_model_usable_and_predicts_direction():
+    m = fit_spin_model(_train())
+    assert m["stiffness_shape"]["usable"] and m["stiffness_shape"]["mae"] < m["stiffness_shape"]["baseline_mae"]
+    soft = model_spin({"shape": "RND"}, {"value_lbin": 165.0, "low": 165.0, "high": 165.0}, m)
+    stiff = model_spin({"shape": "RND"}, {"value_lbin": 235.0, "low": 235.0, "high": 235.0}, m)
+    assert soft["kind"] == "modello" and soft["value"] > stiff["value"] and soft["low"] < soft["value"] < soft["high"]
+
+
+def test_spin_model_not_used_when_it_does_not_beat_the_mean():
+    noise = [(160.0 + (i * 7) % 80, "RND", [4.0, 9.0, 6.0, 7.5, 5.0][(i * 3) % 5]) for i in range(40)]
+    assert not fit_spin_model(noise)["stiffness_shape"]["usable"]
+    assert model_spin({"shape": "RND"}, {"value_lbin": 200.0}, fit_spin_model(noise)) is None
+
+
+def test_model_never_overrides_measured_or_relative():
+    m = fit_spin_model(_train())
+    measured = rec("b-x-17", twu={"match": "exact", "spin_potential": 7.0, "stiffness_lbin": 200.0})
+    assert estimate_spin(measured, [], None, GOOD, POP, model=m, stiffness={"value_lbin": 200.0})["kind"] == "misurato"
+    rel = [rec("b-x-16", twu={"match": "exact", "spin_potential": 9.0, "stiffness_lbin": 210.0}, mm=1.30)]
+    assert estimate_spin(rec("b-x-17"), rel, None, GOOD, POP, model=m, stiffness=None)["kind"] == "parente"
+
+
+def test_model_estimate_widens_with_uncertain_stiffness():
+    m = fit_spin_model(_train())
+    sure = model_spin({"shape": "RND"}, {"value_lbin": 200.0, "low": 200.0, "high": 200.0}, m)
+    unsure = model_spin({"shape": "RND"}, {"value_lbin": 200.0, "low": 150.0, "high": 250.0}, m)
+    assert unsure["high"] - unsure["low"] > sure["high"] - sure["low"]

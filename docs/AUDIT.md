@@ -136,6 +136,8 @@ Fatto in questo ramo:
 
 - **Dati mancanti in mappa e confronto** (segnalato dall'utente): la mappa non scarta più in silenzio le corde con un solo asse (fascia "non disponibile" in basso/a sinistra), conta e elenca quelle senza né rigidità né spin e quelle nascoste dai filtri; il confronto mostra "dato mancante" con il motivo, "Dati: ✓/✗" per scheda, i leader solo "tra le corde con dato" e una riga "Non confrontabili per dati mancanti". Numeri reali: la mappa predefinita disegna 34 corde, 21 hanno dati incompleti e 47 sono nascoste dai filtri.
 
+- **Spin stimato per le corde senza dati** (richiesta dell'utente, es. Re-String): `pipeline/estimate.py` ha un modello ridge su rigidità + forma, provato in leave-one-out su 54 corde con spin misurato: errore medio 0,99 contro 1,19 della media (−17%); intervallo ±1,5 (80%); senza rigidità solo la forma (1,04). Le recensioni, il tuo Excel e il calibro non migliorano la stima. Le 30 corde senza spin ora hanno una stima ("da modello"): cerchi tratteggiati con barra d'errore larga in mappa, riga "stima da modello" nel confronto, mai nel punteggio. Limite dichiarato: l'effetto "esagonale = più spin" viene da 6 corde misurate.
+
 Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
 
 ## C. Priorità consigliate
