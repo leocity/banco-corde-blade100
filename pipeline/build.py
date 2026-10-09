@@ -7,7 +7,7 @@ import pathlib
 
 from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
-from pipeline.estimate import (MEASURED, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model,
+from pipeline.estimate import (MEASURED, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
 from pipeline.notes_gen import apply_notes
 from pipeline.production import filter_discontinued
@@ -60,8 +60,13 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     qual = backtest_qualitative([(l, y) for l, y in qpairs if l is not None and y is not None], spin_pop)
     stiff_pop = [v for v in (_measured(r, "stiffness_lbin") for r in records) if v is not None]
     rp_args = (rp_meta["a"], rp_meta["b"], rp_meta["mae"]) if rp_meta else None
+    gauge_model = fit_gauge_model(records)
+    # modello della rigidità dal solo calibro: nessun giudizio personale dei tester
+    stiff_model = fit_stiffness_model([(r.get("gauge_mm"), _measured(r, "stiffness_lbin")) for r in records
+                                       if _measured(r, "stiffness_lbin") is not None])
     for r in records:
-        r["stiffness"] = estimate_stiffness(r, relatives_of(r, records), rp_args, None, stiff_pop)
+        r["stiffness"] = estimate_stiffness(r, relatives_of(r, records), rp_args, None, stiff_pop, gauge=gauge_model, model=stiff_model,
+                                            rp_siblings=siblings_with_rp(r, records))
     # modello dello spin da rigidità + forma, addestrato solo su corde con spin e rigidità misurati da TWU
     train = [((r["stiffness"] or {}).get("value_lbin") if (r["stiffness"] or {}).get("kind") == "misurata" else None,
               r.get("shape"), _measured(r, "spin_potential")) for r in records if _measured(r, "spin_potential") is not None]
@@ -87,7 +92,8 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
-        "estimates_meta": {"spin_calibration": calib, "spin_qualitative": qual, "rp_to_twu": rp_meta, "spin_model": spin_model},
+        "estimates_meta": {"spin_calibration": calib, "spin_qualitative": qual, "rp_to_twu": rp_meta, "spin_model": spin_model,
+                           "stiffness_gauge": gauge_model, "stiffness_model": stiff_model},
         "removed_discontinued": [{"name": n, "successor": sc, "reason": rs} for n, sc, rs in removed_list],
         "strings": records,
     }

@@ -1,7 +1,8 @@
 """Note da maestro incordatore: regole applicate ai dati di ogni corda + note scritte a mano che hanno precedenza."""
 
 KEYS = ("feel", "on_blade_100_v9", "for_your_style", "vs_favorites")
-SPIN_KIND_IT = {"parente": "da un calibro o colore gemello", "tester": "dai punteggi dei tester", "qualitativo": "dai giudizi dei tester"}
+SPIN_KIND_IT = {"parente": "da un calibro o colore gemello", "tester": "dai punteggi dei tester", "qualitativo": "dai giudizi dei tester",
+                "modello": "da un modello su rigidità e forma, bassa affidabilità"}
 DISLIKED_NAMES = {"confidential_soft": "Confidential Soft", "rpm_blast": "RPM Blast"}
 SHAPE_IT = {"RND": "tonda", "HEX": "esagonale", "PENT": "pentagonale", "SQ": "quadrata", "OCT": "ottagonale",
             "GEAR": "a ingranaggio", "TWST": "ritorta", "STAR": "a stella", "TRI": "triangolare", "HEP": "eptagonale"}
@@ -41,7 +42,8 @@ def _feel(r, s):
     spin = "spin non misurato da TWU" if sv is None else {"hi": f"snapback alto (spin {sv:g})", "mid": f"spin nella media ({sv:g})",
                                                          "lo": f"poco spin ({sv:g})"}.get(_band(s["spin"]), f"spin {sv:g}")
     dur = {"hi": "tiene bene la tensione", "mid": "cala nella media", "lo": f"cala in fretta ({t['tension_loss_pct'] or 0:g}% di perdita su TWU)"}.get(_band(s["durability"]), "")
-    st = f" ({t['stiffness_lbin']:.0f} lb/in)" if t.get("stiffness_lbin") is not None else ""
+    rs = r.get("stiffness")
+    st = f" ({'≈ ' if rs['kind'] != 'misurata' else ''}{rs['value_lbin']:.0f} lb/in)" if rs else ""
     return f"Poly {stiff or 'di rigidità non misurata'}{st}, {spin}" + (f", profilo {shape}" if shape else "") + (f"; {dur}." if dur else ".")
 
 

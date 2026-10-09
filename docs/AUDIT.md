@@ -138,6 +138,22 @@ Fatto in questo ramo:
 
 - **Spin stimato per le corde senza dati** (richiesta dell'utente, es. Re-String): `pipeline/estimate.py` ha un modello ridge su rigidità + forma, provato in leave-one-out su 54 corde con spin misurato: errore medio 0,99 contro 1,19 della media (−17%); intervallo ±1,5 (80%); senza rigidità solo la forma (1,04). Le recensioni, il tuo Excel e il calibro non migliorano la stima. Le 30 corde senza spin ora hanno una stima ("da modello"): cerchi tratteggiati con barra d'errore larga in mappa, riga "stima da modello" nel confronto, mai nel punteggio. Limite dichiarato: l'effetto "esagonale = più spin" viene da 6 corde misurate.
 
+- **Rigidità stimata e ricerca** (richiesta dell'utente: la rigidità è fondamentale). Backtest leave-one-out su 57 corde con rigidità TWU misurata (sd 18 lb/in; media come riferimento: errore 14,6):
+
+  | Segnale | n | r | Errore con modello | Note |
+  |---|---|---|---|---|
+  | Calibro | 57 | +0,49 | 12,6 | più spessa = più rigida; usabile ma debole |
+  | Gemello, copia del valore | 20 coppie | – | 13,4 | comportamento v2 |
+  | Gemello corretto per calibro (+203 lb/in per mm) | 20 coppie / 13 modelli | – | **9,2** | −31% sulla copia |
+  | Racketpedia statica | 18 esatte | +0,63 | 11,3 | già in uso (±11) |
+  | Racketpedia + calibro | 30 | – | 10,0 | miglioramento marginale, non adottato |
+  | Excel (Stiff Index, allungamenti, scorrimento, TL6) | 12 | −0,06…−0,40 | – | non predicono la rigidità |
+  | Giudizio dei tester sulla rigidità | 16 | +0,70 | 10,2 (con calibro) | **scartato**: sono opinioni, e possono ricalcare i dati TWU |
+
+  Effetti: le 8 righe TWU di calibro diverso ora sono corrette per il diametro (es. Confidential 1,25: 222 → 212 lb/in; Confidential 17: → 202), con margine ±15; 4 Re-String 16/18 prendono il valore del gemello Racketpedia corretto per il calibro (±19); 8 corde senza altro dato hanno solo la stima dal calibro (±22, poco più della media). Tutte compaiono con "≈", cerchi vuoti/tratteggiati in mappa e dichiarate in Guida. Le stime dal solo calibro non entrano nel punteggio.
+
+  Ricerca web: nessuna fonte pubblica indicizzata riporta rigidità TWU in lb/in per Re-String, Toroline Enso Pro/Wasabi X/A5. Racketpedia ha righe statiche per alcune di queste famiglie (riportate dai risultati di ricerca: es. Enso Pro Neon Pink 1,25 ≈ 0,8 kg/mm, Wasabi 1,23 ≈ 0,95–1,0, Re-String Sync ≈ 0,95, Zero ≈ 1,1), ma **non sono state importate**: non ho potuto aprire racketpedia.com da questo ambiente (rete bloccata) e un riassunto di ricerca non è una fonte da citare. Con `racketpedia.com` tra i domini consentiti si potrebbero verificare e inserire come match esatti/proxy in `data/agents/rpedia_overrides.json` (hanno la precedenza sulle stime e riducono l'errore da ±22 a ±11).
+
 Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
 
 ## C. Priorità consigliate

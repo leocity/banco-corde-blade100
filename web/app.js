@@ -20,7 +20,8 @@ const mmOf = (r) => (r.gauge_mm ? NF(2).format(r.gauge_mm) : r.gauge_label || ''
 const fullName = (r) => `${nameOf(r)} ${mmOf(r)}`;
 const subline = (r) => [r.gauge_mm ? `${NF(2).format(r.gauge_mm)} mm` : r.gauge_label, SHAPES[r.shape] || r.shape].filter(Boolean).join(' · ');
 const SPIN_KIND = { misurato: 'misurato', parente: 'da calibro/colore gemello', tester: 'stimato dai tester', qualitativo: 'stimato dai giudizi', modello: 'stima da modello (rigidità e forma): bassa affidabilità' };
-const STIFF_KIND = { misurata: 'misurata (TWU)', parente: 'da calibro gemello', 'da Racketpedia': 'da Racketpedia', qualitativo: 'dai giudizi dei tester' };
+const STIFF_KIND = { misurata: 'misurata (TWU)', parente: 'da riga TWU di un calibro gemello, corretta per il diametro', 'da Racketpedia': 'da Racketpedia convertita sulla scala TWU', modello: 'stima dal solo calibro: bassa affidabilità' };
+const stKind = (s) => (s.via === 'gemello' ? 'da Racketpedia di un calibro gemello, corretta per il diametro' : STIFF_KIND[s.kind] || s.kind);
 const isEst = (o, measured) => o && o.kind !== measured;
 const LEVEL_WORD = ['molto basso', 'basso', 'medio', 'alto', 'molto alto'];
 const spinWord = (r) => (r.spin && r.spin.level != null ? LEVEL_WORD[Math.max(0, Math.min(4, Math.round(r.spin.level) - 1))] : null);
@@ -184,7 +185,7 @@ function openSheet(id) {
     if (v !== null && v !== undefined) olg = `<div class="tbox"><span class="muted small">Lunghezza guadagnata 16×19 a ${near} lbs</span><span class="big">${fmt(v, 1)}″</span><span class="muted small">utile se incordi da matassa</span></div>`;
   }
   const spinTxt = !r.spin ? 'non disponibile' : r.spin.value == null ? `${spinWord(r)} secondo i tester · nessuna stima numerica affidabile` : `${r.spin.kind === 'misurato' ? '' : '≈ '}${fmt(r.spin.value, 1)}${r.spin.kind === 'misurato' ? '' : ` (tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)})`} · ${SPIN_KIND[r.spin.kind]}`;
-  const stTxt = r.stiffness ? `${r.stiffness.kind === 'misurata' ? '' : '≈ '}${fmt(r.stiffness.value_lbin, 0)} lb/in${r.stiffness.kind === 'misurata' ? '' : ` (tra ${fmt(r.stiffness.low, 0)} e ${fmt(r.stiffness.high, 0)})`} · ${STIFF_KIND[r.stiffness.kind]}` : 'non disponibile';
+  const stTxt = r.stiffness ? `${r.stiffness.kind === 'misurata' ? '' : '≈ '}${fmt(r.stiffness.value_lbin, 0)} lb/in${r.stiffness.kind === 'misurata' ? '' : ` (tra ${fmt(r.stiffness.low, 0)} e ${fmt(r.stiffness.high, 0)})`} · ${stKind(r.stiffness)}` : 'non disponibile';
   const revs = r.reviews?.sources || [];
   $('#sheet-body').innerHTML = `
     <div class="sheet-head">
@@ -257,8 +258,12 @@ function renderMapStatus({ pts, stripB, stripL, noneR, hidComp, hidEst, mx, my }
   if (stripB.length) parts.push(`<p><b>${stripB.length}</b> senza ${esc(my.short.toLowerCase())}: sono nella fascia in basso, posizionate solo per ${esc(mx.short.toLowerCase())}.</p><p class="small">${list(stripB)}</p>`);
   if (stripL.length) parts.push(`<p><b>${stripL.length}</b> senza ${esc(mx.short.toLowerCase())}: sono nella fascia a sinistra, posizionate solo per ${esc(my.short.toLowerCase())}.</p><p class="small">${list(stripL)}</p>`);
   if (noneR.length) parts.push(`<p><b>${noneR.length}</b> senza né ${esc(mx.short.toLowerCase())} né ${esc(my.short.toLowerCase())}: non si possono posizionare.</p><p class="small">${list(noneR)}</p>`);
-  const nModel = [...pts, ...stripL].filter((r) => r.spin?.kind === 'modello').length;
-  if (nModel && (mx === AX.spin || my === AX.spin)) parts.push(`<p><b>${nModel}</b> hanno lo spin <b>stimato da modello</b> (rigidità e forma): cerchi tratteggiati con barra d'errore larga (±${fmt((DATA.estimates_meta?.spin_model?.stiffness_shape || {}).q80, 1)}). Dicono se la corda sta sopra o sotto la media, non un valore preciso. Non entrano nel punteggio.</p>`);
+  const nModel = [...pts, ...stripL, ...stripB].filter((r) => (mx === AX.spin || my === AX.spin ? r.spin?.kind === 'modello' : false)).length;
+  const nStModel = [...pts, ...stripL, ...stripB].filter((r) => (mx === AX.stiff || my === AX.stiff) && r.stiffness?.kind === 'modello').length;
+  if (nStModel) parts.push(`<p><b>${nStModel}</b> hanno la rigidità <b>stimata dal solo calibro</b> (±${fmt((DATA.estimates_meta?.stiffness_model?.gauge || {}).q80, 0)} lb/in): sono cerchi tratteggiati con barra orizzontale larga. Dice poco più della media del banco; non entra nel punteggio.</p>`);
+  const nStRp = [...pts, ...stripL, ...stripB].filter((r) => (mx === AX.stiff || my === AX.stiff) && r.stiffness && r.stiffness.kind !== 'misurata' && r.stiffness.kind !== 'modello').length;
+  if (nStRp) parts.push(`<p><b>${nStRp}</b> hanno la rigidità <b>stimata</b> da un gemello o da Racketpedia (±10–19 lb/in): cerchi vuoti con barra d'errore.</p>`);
+  if (nModel) parts.push(`<p><b>${nModel}</b> hanno lo spin <b>stimato da modello</b> (rigidità e forma): cerchi tratteggiati con barra d'errore larga (±${fmt((DATA.estimates_meta?.spin_model?.stiffness_shape || {}).q80, 1)}). Dicono se la corda sta sopra o sotto la media, non un valore preciso. Non entrano nel punteggio.</p>`);
   if (hidEst.length) parts.push(`<p><b>${hidEst.length}</b> con valori stimati, nascoste perché "Mostra le stime" è spento.</p>`);
   if (hidComp.length) parts.push(`<p><b>${hidComp.length}</b> concorrenti nascosti: attiva "Mostra anche i concorrenti" per vederli (${hidComp.filter((r) => mx.get(r) != null && my.get(r) != null).length} hanno entrambi i dati).</p>`);
   $('#map-missing').innerHTML = `<p class="map-status"><b>${pts.length}</b> corde nel grafico${total > pts.length ? `, altre <b>${total - pts.length}</b> con dati incompleti` : ''}${hidComp.length || hidEst.length ? `, ${hidComp.length + hidEst.length} nascoste dai filtri` : ''}.</p>${parts.length ? `<details class="advanced" open><summary>Corde con dati mancanti o nascoste</summary>${parts.join('')}</details>` : ''}`;
@@ -309,7 +314,7 @@ function drawScatter() {
   const order = { other: 0, target: 1, disliked: 2, liked: 3 };
   for (const r of [...pts].sort((a, b) => order[cat(a)] - order[cat(b)])) {
     const x = sx(mx.get(r)), y = sy(my.get(r)), c = CAT_COLOR[cat(r)], est = mx.est(r) || my.est(r);
-    const mdl = (kx === 'spin' || ky === 'spin') && r.spin?.kind === 'modello' ? ' model' : '';
+    const mdl = ((kx === 'spin' || ky === 'spin') && r.spin?.kind === 'modello') || ((kx === 'stiff' || ky === 'stiff') && r.stiffness?.kind === 'modello') ? ' model' : '';
     if (my.est(r) && my.lo) s += `<line class="err${mdl}" x1="${x}" x2="${x}" y1="${sy(my.lo(r))}" y2="${sy(my.hi(r))}" stroke="${c}"/>`;
     if (mx.est(r) && mx.lo) s += `<line class="err${mdl}" x1="${sx(mx.lo(r))}" x2="${sx(mx.hi(r))}" y1="${y}" y2="${y}" stroke="${c}"/>`;
     s += `<circle class="dot${est ? ' hollow' : ''}${mdl}" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.preference ? 8 : 6}" ${est ? `style="stroke:${c}"` : `fill="${c}"`} tabindex="0" role="button" aria-label="${esc(fullName(r))}"/>`;
@@ -358,7 +363,7 @@ function addToCompare(id) {
   showTab('confronta'); history.replaceState(null, '', '#confronta'); scrollTo(0, 0);
 }
 const ROWS = [
-  { k: 'stiffness', label: 'Rigidità', lead: 'più rigida', val: (r) => r.stiffness?.value_lbin, show: (r) => `${r.stiffness ? `${isEst(r.stiffness, 'misurata') ? '≈ ' : ''}${fmt(r.stiffness.value_lbin, 0)} lb/in` : '—'} · ${r.derived.judgments?.stiffness?.word || 'n.d.'}`, small: (r) => [r.stiffness && isEst(r.stiffness, 'misurata') ? STIFF_KIND[r.stiffness.kind] : '', r.rpedia ? `Racketpedia ${fmt(r.rpedia.static_stiffness_kgmm, 2)} kg/mm` : '', r.excel?.stiff_index_avg != null ? `Stiff Index ${fmt(r.excel.stiff_index_avg, 2)}` : ''].filter(Boolean).join(' · ') },
+  { k: 'stiffness', label: 'Rigidità', lead: 'più rigida', val: (r) => (r.stiffness && r.stiffness.kind !== 'modello' ? r.stiffness.value_lbin : null), show: (r) => `${r.stiffness ? `${isEst(r.stiffness, 'misurata') ? '≈ ' : ''}${fmt(r.stiffness.value_lbin, 0)} lb/in` : '—'} · ${r.derived.judgments?.stiffness?.word || 'n.d.'}`, small: (r) => [r.stiffness && isEst(r.stiffness, 'misurata') ? `${stKind(r.stiffness)}, tra ${fmt(r.stiffness.low, 0)} e ${fmt(r.stiffness.high, 0)} lb/in` : '', r.rpedia ? `Racketpedia ${fmt(r.rpedia.static_stiffness_kgmm, 2)} kg/mm` : '', r.excel?.stiff_index_avg != null ? `Stiff Index ${fmt(r.excel.stiff_index_avg, 2)}` : ''].filter(Boolean).join(' · ') },
   { k: 'spin', label: 'Spin', lead: 'più spin', val: (r) => (labSpin(r) ? r.spin.value : null), show: (r) => (r.spin && r.spin.value == null ? `${spinWord(r)} secondo i tester` : `${r.spin ? `${isEst(r.spin, 'misurato') ? '≈ ' : ''}${fmt(r.spin.value, 1)}` : '—'} · ${r.derived.judgments?.spin?.word || 'n.d.'}`), small: (r) => (!r.spin ? '' : r.spin.value == null ? 'nessuna stima numerica affidabile' : isEst(r.spin, 'misurato') ? `${SPIN_KIND[r.spin.kind]}, tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)}` : '') },
   { k: 'control', label: 'Controllo (stima dalla rigidità)', lead: 'più compatta', val: (r) => r.derived.judgments?.control?.score },
   { k: 'durability', label: 'Tenuta', lead: 'tiene meglio', val: (r) => r.derived.judgments?.durability?.score, small: (r) => [r.twu?.tension_loss_pct != null ? `TWU −${fmt(r.twu.tension_loss_pct, 0)}% (prova breve)` : '', r.excel?.tl6 != null ? `6 mesi −${fmt(r.excel.tl6, 0)}%` : '', r.excel?.tl12 != null ? `12 mesi −${fmt(r.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') },
@@ -385,12 +390,13 @@ function renderCompare() {
     <p class="small completeness">Dati: ${['spin', 'stiffness', 'durability'].map((k) => { const ok = ROWS.find((x) => x.k === k).val(r) != null; return `<span class="${ok ? 'has' : 'lack'}">${ok ? '✓' : '✗'} ${ROW_NAME[k]}</span>`; }).join(' · ')}</p>
     ${ROWS.map((row) => { const v = row.val(r); const w = r.derived.judgments?.[row.k];
       if (v == null && row.k === 'spin' && r.spin?.kind === 'modello') return `<div class="crow est"><span class="k">${row.label}</span><span class="v">≈ ${fmt(r.spin.value, 1)} · stima da modello</span><span class="s">tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)} (${esc(r.spin.model)}; errore tipico ±${fmt((DATA.estimates_meta?.spin_model?.[r.spin.model === 'forma' ? 'shape' : 'stiffness_shape'] || {}).mae, 1)}). Non entra nel confronto né nel punteggio.</span></div>`;
+      if (v == null && row.k === 'stiffness' && r.stiffness?.kind === 'modello') return `<div class="crow est"><span class="k">${row.label}</span><span class="v">≈ ${fmt(r.stiffness.value_lbin, 0)} lb/in · stima dal solo calibro</span><span class="s">tra ${fmt(r.stiffness.low, 0)} e ${fmt(r.stiffness.high, 0)} lb/in: poco più della media del banco. Non entra nel confronto né nel punteggio.</span></div>`;
       if (v == null) return `<div class="crow missing"><span class="k">${row.label}</span><span class="v">dato mancante</span><span class="s">${esc(MISSING_WHY[row.k](r))}. Non confrontabile.</span></div>`;
       return `<div class="crow"><span class="k">${row.label}</span><span class="v">${row.show ? row.show(r) : `${w?.word || 'n.d.'} <span class="num muted">${v == null ? '' : Math.round(v)}</span>`}</span>${row.small && row.small(r) ? `<span class="s">${esc(row.small(r))}</span>` : ''}${v != null && leaders[row.k] === v ? `<span class="lead">▲ ${row.lead}${nWith[row.k] < chosen.length ? ` (tra le ${nWith[row.k]} con dato)` : ''}</span>` : ''}</div>`; }).join('')}
     <div class="crow"><span class="k">Tensione di partenza</span><span class="v num">${tensionText(r)}</span></div>
     <div class="crow${r._score === null ? ' missing' : ''}"><span class="k">Punteggio (rango tra ${ALL.length})</span><span class="v">${r._score === null ? 'non calcolabile' : fmt(r._score, 0)}</span>${r._score === null ? '<span class="s">servono spin e tenuta</span>' : ''}</div>
     <button class="btn" type="button" data-open="${esc(r.id)}">Scheda</button></article>`).join('') : '<p class="muted">Scegli almeno una corda.</p>';
-  const gaps = ['spin', 'stiffness', 'durability'].map((k) => { const row = ROWS.find((x) => x.k === k); const who = chosen.filter(({ r }) => row.val(r) == null).map(({ r }) => nameOf(r) + (k === 'spin' && r.spin?.kind === 'modello' ? ' (solo stima da modello)' : '')); return who.length ? `${ROW_NAME[k]} (manca per ${who.map(esc).join(', ')})` : ''; }).filter(Boolean);
+  const gaps = ['spin', 'stiffness', 'durability'].map((k) => { const row = ROWS.find((x) => x.k === k); const who = chosen.filter(({ r }) => row.val(r) == null).map(({ r }) => nameOf(r) + ((k === 'spin' && r.spin?.kind === 'modello') || (k === 'stiffness' && r.stiffness?.kind === 'modello') ? ' (solo stima)' : '')); return who.length ? `${ROW_NAME[k]} (manca per ${who.map(esc).join(', ')})` : ''; }).filter(Boolean);
   $('#cmp-summary').innerHTML = (chosen.length >= 2 ? summary(chosen[0].r, chosen[1].r) : '') + (gaps.length ? `<span class="gaps"> ⚠ Non confrontabili per dati mancanti: ${gaps.join('; ')}.</span>` : '');
 }
 function summary(a, b) {
@@ -401,7 +407,7 @@ function summary(a, b) {
     if (vb - va >= 10) gain.push(l); else if (va - vb >= 10) lose.push(l);
   }
   const join = (xs) => (xs.length > 1 ? xs.slice(0, -1).join(', ') + ' e ' + xs.at(-1) : xs[0]);
-  const sa = a.stiffness?.value_lbin, sb = b.stiffness?.value_lbin;
+  const sa = a.stiffness?.kind === 'modello' ? null : a.stiffness?.value_lbin, sb = b.stiffness?.kind === 'modello' ? null : b.stiffness?.value_lbin;
   const stiff = sa != null && sb != null && Math.abs(sb - sa) >= 10 ? ` La seconda è ${sb > sa ? 'più rigida' : 'più morbida'} di circa ${fmt(Math.abs(sb - sa), 0)} lb/in.` : '';
   let s = `Passando da <b>${esc(fullName(a))}</b> a <b>${esc(fullName(b))}</b> `;
   s += !gain.length && !lose.length ? 'il profilo resta simile.' : [gain.length ? `guadagni ${join(gain)}` : '', lose.length ? `perdi ${join(lose)}` : ''].filter(Boolean).join(' e ') + '.';
@@ -413,7 +419,7 @@ const COLS = [
   { key: 'name', label: 'Corda', get: nameOf, cell: (r) => `<button class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button>` },
   { key: 'mm', label: 'mm', n: true, get: (r) => r.gauge_mm, cell: (r) => fmtH(r.gauge_mm, 2) },
   { key: 'shape', label: 'Forma', get: (r) => SHAPES[r.shape] || r.shape || '', cell: (r) => esc(SHAPES[r.shape] || r.shape || '—') },
-  { key: 'stiff', label: 'Rigidità lb/in', title: 'Rigidità dinamica TWU (lb/in). ≈ = stima da calibro gemello o da Racketpedia', n: true, get: (r) => r.stiffness?.value_lbin, cell: (r) => (r.stiffness ? `<span class="${isEst(r.stiffness, 'misurata') ? 'proxy' : ''}" title="${esc(STIFF_KIND[r.stiffness.kind])}">${isEst(r.stiffness, 'misurata') ? '≈' : ''}${fmt(r.stiffness.value_lbin, 0)}</span>` : fmtH(null)) },
+  { key: 'stiff', label: 'Rigidità lb/in', title: 'Rigidità dinamica TWU (lb/in). ≈ = stima da calibro gemello o da Racketpedia', n: true, get: (r) => r.stiffness?.value_lbin, cell: (r) => (r.stiffness ? `<span class="${isEst(r.stiffness, 'misurata') ? 'proxy' : ''}" title="${esc(stKind(r.stiffness))}">${isEst(r.stiffness, 'misurata') ? '≈' : ''}${fmt(r.stiffness.value_lbin, 0)}</span>` : fmtH(null)) },
   { key: 'spin', label: 'Spin TWU', title: 'Spin potential TWU, scala 0–10 a 51 lbs, swing veloce. ≈ = stima da calibro/colore gemello', n: true, get: (r) => r.spin?.value, cell: (r) => (!r.spin ? fmtH(null) : r.spin.value == null ? `<span class="proxy" title="giudizio dei tester, senza numero">${esc(spinWord(r))}</span>` : `<span class="${isEst(r.spin, 'misurato') ? 'proxy' : ''}" title="${esc(SPIN_KIND[r.spin.kind])}">${isEst(r.spin, 'misurato') ? '≈' : ''}${fmt(r.spin.value, 1)}</span>`) },
   { key: 'tl', label: 'Perdita TWU %', title: 'Perdita di tensione misurata da TWU (prova breve)', n: true, get: (r) => r.twu?.tension_loss_pct, cell: (r) => fmtH(r.twu?.tension_loss_pct, 1) },
   { key: 'si', label: 'Stiff Idx', title: 'Stiff Index del test Ektelon: indice di cedimento, più alto = la corda torna meno indietro', n: true, get: (r) => r.excel?.stiff_index_avg, cell: (r) => fmtH(r.excel?.stiff_index_avg, 2) },
@@ -456,6 +462,14 @@ function renderGuide() {
         <li><b>Risoluzione.</b> Racketpedia arrotonda a 0,05 kg/mm: molte corde risultano a pari merito.</li>
       </ul>
       <p>In campo pesa di più TWU, che simula l'impatto. Quando TWU manca convertiamo Racketpedia sulla scala TWU con un errore medio di ±${fmt(rp.mae ?? 11, 0)} lb/in.</p></div>
+    <div class="callout"><h3>Come stimiamo la rigidità quando manca</h3>
+      <ul>
+        <li><b>Misurata</b>: rigidità dinamica TWU della stessa corda.</li>
+        <li><b>Da gemello TWU, corretta per il diametro</b>: stessa corda in un altro calibro. Prima copiavamo il valore; ora lo correggiamo di circa ${fmt((m.stiffness_gauge || {}).slope, 0)} lb/in per mm (a parità di modello, su ${(m.stiffness_gauge || {}).n_pairs ?? '—'} coppie di calibri): errore medio ${fmt((m.stiffness_gauge || {}).mae, 1)} contro ${fmt((m.stiffness_gauge || {}).copy_mae, 1)} del copia-incolla, margine ±${fmt((m.stiffness_gauge || {}).q80, 0)} lb/in. Vale anche per le tue preferite: la Confidential 1,25 deriva dalla riga TWU del 1,30.</li>
+        <li><b>Da Racketpedia</b>: rigidità statica convertita sulla scala TWU (errore medio ±${fmt(rp.mae ?? 11, 0)} lb/in), eventualmente di un calibro gemello e corretta per il diametro.</li>
+        <li><b>Dal solo calibro</b>: l'ultima risorsa, per le corde senza nessun altro dato. Errore medio ${fmt(((m.stiffness_model || {}).gauge || {}).mae, 1)} contro ${fmt(((m.stiffness_model || {}).gauge || {}).baseline_mae, 1)} della media: è poco meglio di dire "nella media". Margine ±${fmt(((m.stiffness_model || {}).gauge || {}).q80, 0)} lb/in.</li>
+      </ul>
+      <p>I giudizi personali dei tester non entrano in nessuna stima (non sono misure). Le stime di rigidità si vedono con "≈", cerchi vuoti in mappa e barre tratteggiate; le ultime due sono escluse dal punteggio.</p></div>
     <div class="callout"><h3>Lo Stiff Index del tuo file</h3>
       <p>È (allungamento − recupero) / 11,25 × 100: misura quanto la corda <b>non torna indietro</b> dopo essere stata tirata. Nei dati si lega più alla perdita di tensione (r = 0,60) che alla rigidità (r = −0,34), quindi leggilo come indice di cedimento. Più alto = la corda cede di più.</p></div>
     <div class="callout"><h3>Come stimiamo lo spin</h3>

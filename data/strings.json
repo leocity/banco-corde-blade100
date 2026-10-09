@@ -73,7 +73,7 @@
    "liked_higher": false
   }
  ],
- "insight": "I tuoi gusti non sono 'morbido contro rigido'. Ami due corde opposte: Confidential è compatta (222 lb/in su TWU) e perde solo il 22% di tensione; O-Toro è la più morbida del banco (166 lb/in), ha lo spin potential più alto (9,4) ma perde il 44%. Il filo comune è una risposta netta con buon snapback. RPM Blast è rigida con uno snapback misurato basso (4,6) e cala presto; Confidential Soft è una via di mezzo, più morbida della tua Confidential ma senza lo scatto di O-Toro. Regola pratica: cerca spin potential TWU sopra 6,5, poi scegli se la vuoi compatta (lato Confidential) o viva (lato O-Toro).",
+ "insight": "I tuoi gusti non sono 'morbido contro rigido'. Ami due corde opposte: Confidential è compatta (circa 212 lb/in: la riga TWU è del calibro 1,30 con 222 lb/in, corretta per il tuo 1,25) e perde solo il 22% di tensione; O-Toro è tra le più morbide del banco (166 lb/in, misurata), ha lo spin potential più alto (9,4) ma perde il 44%. Il filo comune è una risposta netta con buon snapback. RPM Blast è rigida con uno snapback misurato basso (4,6) e cala presto; Confidential Soft è una via di mezzo, più morbida della tua Confidential ma senza lo scatto di O-Toro. Regola pratica: cerca spin potential TWU sopra 6,5, poi scegli se la vuoi compatta (lato Confidential) o viva (lato O-Toro).",
  "guide": {
   "twu_ref": "51 lbs swing veloce"
  },
@@ -148,6 +148,36 @@
      "ym": 6.13704
     },
     "slope_per_lbin": null
+   }
+  },
+  "stiffness_gauge": {
+   "slope": 203.2,
+   "mae": 9.2,
+   "copy_mae": 13.4,
+   "q80": 15.1,
+   "n_pairs": 20,
+   "n_models": 13,
+   "usable": true
+  },
+  "stiffness_model": {
+   "gauge": {
+    "mae": 12.59,
+    "baseline_mae": 14.63,
+    "q80": 21.78,
+    "n": 57,
+    "usable": true,
+    "fit": {
+     "mu": [
+      1.25719
+     ],
+     "sd": [
+      0.03172
+     ],
+     "w": [
+      8.42609
+     ],
+     "ym": 207.87193
+    }
    }
   }
  },
@@ -507,10 +537,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 232.6,
-    "low": 232.6,
-    "high": 232.6,
-    "kind": "parente"
+    "value_lbin": 222.4,
+    "low": 207.3,
+    "high": 237.5,
+    "kind": "parente",
+    "from_lbin": 232.6,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
     "value": 4.5,
@@ -653,20 +685,20 @@
    "derived": {
     "subscores": {
      "spin": 11.1,
-     "control": 65.7,
+     "control": 59.1,
      "durability": 14.6,
-     "comfort": 6.2,
+     "comfort": 6.200000000000003,
      "affinity": 27
     },
     "lab_subscores": {
      "spin": 11.1,
-     "control": 65.7,
+     "control": 59.1,
      "durability": 14.6,
      "comfort": 6.200000000000003
     },
     "judgments": {
      "stiffness": {
-      "score": 93.9,
+      "score": 80.7,
       "level": 5,
       "word": "molto rigida",
       "lab_share": 1.0
@@ -678,9 +710,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 65.7,
-      "level": 4,
-      "word": "alto",
+      "score": 59.1,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "durability": {
@@ -726,9 +758,9 @@
     }
    },
    "notes": {
-    "feel": "Poly rigida e compatta (233 lb/in), poco spin (4.5), profilo ottagonale; cala in fretta (45.9% di perdita su TWU).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "feel": "Poly di rigidità media (≈ 222 lb/in), poco spin (4.5), profilo ottagonale; cala in fretta (45.9% di perdita su TWU).",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Non ti è piaciuta: serve come riferimento negativo per segnalare le corde troppo simili. Parti da 21.5/20.5 kg (47.5/45 lbs). I dati TWU sono di «Babolat RPM Blast 16»."
    }
   },
@@ -973,7 +1005,7 @@
      "spin": 14.8,
      "control": 54.6,
      "durability": 34.6,
-     "comfort": 6.2,
+     "comfort": 6.200000000000003,
      "affinity": 52
     },
     "lab_subscores": {
@@ -1031,16 +1063,16 @@
     "profile_score": 30,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      21.0,
+      20.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      46.5,
+      44.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
@@ -1489,23 +1521,23 @@
     "profile_score": 65,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      21.0,
+      20.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      46.5,
+      44.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (229 lb/in), spin nella media (6.1), profilo esagonale; tiene bene la tensione.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 66/100 con Confidential e 13/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
+    "vs_favorites": "Somiglianza 66/100 con Confidential e 13/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
    }
   },
   {
@@ -1573,14 +1605,21 @@
      "https://www.tenniswarehouse-europe.com/catpage-STHEAD-EN.html"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 219.2,
+    "low": 197.5,
+    "high": 241.0,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 5.88,
+    "low": 4.3,
+    "high": 7.45,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -1644,16 +1683,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 70.2,
+      "level": 4,
+      "word": "rigida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 50.0,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 85.2,
@@ -1704,7 +1745,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.38) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.38) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 5.88 (da un modello su rigidità e forma, bassa affidabilità, tra 4.3 e 7.45).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 25/100 con Confidential e 1/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -1786,10 +1827,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 210.3,
-    "low": 210.3,
-    "high": 210.3,
-    "kind": "parente"
+    "value_lbin": 200.1,
+    "low": 185.0,
+    "high": 215.2,
+    "kind": "parente",
+    "from_lbin": 210.3,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
     "value": 4.9,
@@ -1806,22 +1849,22 @@
    "derived": {
     "subscores": {
      "spin": 22.2,
-     "control": 31.8,
+     "control": 22.6,
      "durability": 9.3,
-     "comfort": 50.0,
+     "comfort": 68.4,
      "affinity": 11
     },
     "lab_subscores": {
      "spin": 22.2,
-     "control": 31.8,
+     "control": 22.6,
      "durability": 9.3,
-     "comfort": 50.0
+     "comfort": 68.4
     },
     "judgments": {
      "stiffness": {
-      "score": 50.0,
-      "level": 3,
-      "word": "media",
+      "score": 31.6,
+      "level": 2,
+      "word": "morbida",
       "lab_share": 1.0
      },
      "spin": {
@@ -1831,7 +1874,7 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 31.8,
+      "score": 22.6,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -1843,9 +1886,9 @@
       "lab_share": 1.0
      },
      "comfort": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
+      "score": 68.4,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      }
     },
@@ -1879,7 +1922,7 @@
     }
    },
    "notes": {
-    "feel": "Poly morbida (210 lb/in), poco spin (4.9), profilo tonda; cala in fretta (47.5% di perdita su TWU).",
+    "feel": "Poly morbida (≈ 200 lb/in), poco spin (4.9), profilo tonda; cala in fretta (47.5% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 11/100 con Confidential e 11/100 con O-Toro. Attenzione: assomiglia molto a RPM Blast (76/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Kirschbaum Competition 16/1.30»."
@@ -1951,14 +1994,21 @@
      "https://www.tennis-warehouse.com/KirschbaumString.html"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 206.0,
+    "low": 184.2,
+    "high": 227.7,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.2,
+    "low": 4.63,
+    "high": 7.78,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -2022,16 +2072,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 38.6,
+      "level": 2,
+      "word": "morbida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 58.3,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 37.5,
@@ -2082,7 +2134,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.2 (da un modello su rigidità e forma, bassa affidabilità, tra 4.63 e 7.78).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -2244,23 +2296,23 @@
     "profile_score": 39,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (209 lb/in), spin nella media (5.4), profilo ritorta; cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -2419,23 +2471,23 @@
     "profile_score": 39,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (209 lb/in), spin nella media (5.4), profilo ritorta; cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Kirschbaum Helix 17»."
+    "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Kirschbaum Helix 17»."
    }
   },
   {
@@ -2520,15 +2572,17 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 192.6,
-    "low": 192.6,
-    "high": 192.6,
-    "kind": "parente"
+    "value_lbin": 182.4,
+    "low": 167.3,
+    "high": 197.5,
+    "kind": "parente",
+    "from_lbin": 192.6,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
-    "value": 6.53,
-    "low": 5.05,
-    "high": 8.01,
+    "value": 6.79,
+    "low": 5.26,
+    "high": 8.31,
     "kind": "modello",
     "basis_n": 54,
     "model": "rigidità e forma"
@@ -2541,32 +2595,33 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
      "comfort": 70.8,
      "affinity": 58
     },
     "lab_subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
      "comfort": 70.8
     },
     "judgments": {
      "stiffness": {
-      "score": 20.2,
-      "level": 2,
-      "word": "morbida",
+      "score": 8.8,
+      "level": 1,
+      "word": "molto morbida",
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 66.7,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": 28.9,
+      "score": 23.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -2601,23 +2656,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      48.5,
+      46.5
      ],
      "from": "toroline-o-toro-17",
      "indicative": true,
-     "note": "da O-Toro 1.23 corretta di -1.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da O-Toro 1.23 corretta di -1.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
-    "feel": "Poly morbida (193 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
+    "feel": "Poly morbida (≈ 182 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 50/100 con Confidential e 58/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
+    "vs_favorites": "Somiglianza 50/100 con Confidential e 58/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
    }
   },
   {
@@ -2696,15 +2751,17 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 192.6,
-    "low": 192.6,
-    "high": 192.6,
-    "kind": "parente"
+    "value_lbin": 182.4,
+    "low": 167.3,
+    "high": 197.5,
+    "kind": "parente",
+    "from_lbin": 192.6,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
-    "value": 6.53,
-    "low": 5.05,
-    "high": 8.01,
+    "value": 6.79,
+    "low": 5.26,
+    "high": 8.31,
     "kind": "modello",
     "basis_n": 54,
     "model": "rigidità e forma"
@@ -2717,32 +2774,33 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
-     "comfort": 79.8,
+     "comfort": 91.2,
      "affinity": 47
     },
     "lab_subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
-     "comfort": 79.8
+     "comfort": 91.2
     },
     "judgments": {
      "stiffness": {
-      "score": 20.2,
-      "level": 2,
-      "word": "morbida",
+      "score": 8.8,
+      "level": 1,
+      "word": "molto morbida",
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 66.7,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": 28.9,
+      "score": 23.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -2754,9 +2812,9 @@
       "lab_share": 1.0
      },
      "comfort": {
-      "score": 79.8,
-      "level": 4,
-      "word": "alto",
+      "score": 91.2,
+      "level": 5,
+      "word": "molto alto",
       "lab_share": 1.0
      }
     },
@@ -2790,7 +2848,7 @@
     }
    },
    "notes": {
-    "feel": "Poly morbida (193 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
+    "feel": "Poly morbida (≈ 182 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 47/100 con Confidential e 35/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
@@ -2872,15 +2930,17 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 192.6,
-    "low": 192.6,
-    "high": 192.6,
-    "kind": "parente"
+    "value_lbin": 182.4,
+    "low": 167.3,
+    "high": 197.5,
+    "kind": "parente",
+    "from_lbin": 192.6,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
-    "value": 6.53,
-    "low": 5.05,
-    "high": 8.01,
+    "value": 6.79,
+    "low": 5.26,
+    "high": 8.31,
     "kind": "modello",
     "basis_n": 54,
     "model": "rigidità e forma"
@@ -2893,32 +2953,33 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
-     "comfort": 79.8,
+     "comfort": 91.2,
      "affinity": 47
     },
     "lab_subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
-     "comfort": 79.8
+     "comfort": 91.2
     },
     "judgments": {
      "stiffness": {
-      "score": 20.2,
-      "level": 2,
-      "word": "morbida",
+      "score": 8.8,
+      "level": 1,
+      "word": "molto morbida",
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 66.7,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": 28.9,
+      "score": 23.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -2930,9 +2991,9 @@
       "lab_share": 1.0
      },
      "comfort": {
-      "score": 79.8,
-      "level": 4,
-      "word": "alto",
+      "score": 91.2,
+      "level": 5,
+      "word": "molto alto",
       "lab_share": 1.0
      }
     },
@@ -2966,7 +3027,7 @@
     }
    },
    "notes": {
-    "feel": "Poly morbida (193 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
+    "feel": "Poly morbida (≈ 182 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 47/100 con Confidential e 35/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
@@ -3054,15 +3115,17 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 192.6,
-    "low": 192.6,
-    "high": 192.6,
-    "kind": "parente"
+    "value_lbin": 182.4,
+    "low": 167.3,
+    "high": 197.5,
+    "kind": "parente",
+    "from_lbin": 192.6,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
-    "value": 6.53,
-    "low": 5.05,
-    "high": 8.01,
+    "value": 6.79,
+    "low": 5.26,
+    "high": 8.31,
     "kind": "modello",
     "basis_n": 54,
     "model": "rigidità e forma"
@@ -3075,32 +3138,33 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
      "comfort": 80.2,
      "affinity": 49
     },
     "lab_subscores": {
      "spin": null,
-     "control": 28.9,
+     "control": 23.1,
      "durability": 35.0,
      "comfort": 80.2
     },
     "judgments": {
      "stiffness": {
-      "score": 20.2,
-      "level": 2,
-      "word": "morbida",
+      "score": 8.8,
+      "level": 1,
+      "word": "molto morbida",
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 66.7,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": 28.9,
+      "score": 23.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -3135,23 +3199,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      48.5,
+      46.5
      ],
      "from": "toroline-o-toro-17",
      "indicative": true,
-     "note": "da O-Toro 1.23 corretta di -1.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da O-Toro 1.23 corretta di -1.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
-    "feel": "Poly morbida (193 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
+    "feel": "Poly morbida (≈ 182 lb/in), spin non misurato da TWU, profilo tonda; cala in fretta (36.7% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 48/100 con Confidential e 49/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
+    "vs_favorites": "Somiglianza 48/100 con Confidential e 49/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
    }
   },
   {
@@ -3230,15 +3294,17 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 192.6,
-    "low": 192.6,
-    "high": 192.6,
-    "kind": "parente"
+    "value_lbin": 182.4,
+    "low": 167.3,
+    "high": 197.5,
+    "kind": "parente",
+    "from_lbin": 192.6,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
-    "value": 6.53,
-    "low": 5.05,
-    "high": 8.01,
+    "value": 6.79,
+    "low": 5.26,
+    "high": 8.31,
     "kind": "modello",
     "basis_n": 54,
     "model": "rigidità e forma"
@@ -3251,32 +3317,33 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 52.7,
+     "control": 47.0,
      "durability": 53.2,
-     "comfort": 79.8,
+     "comfort": 91.2,
      "affinity": 36
     },
     "lab_subscores": {
      "spin": null,
-     "control": 52.7,
+     "control": 47.0,
      "durability": 53.2,
-     "comfort": 79.8
+     "comfort": 91.2
     },
     "judgments": {
      "stiffness": {
-      "score": 20.2,
-      "level": 2,
-      "word": "morbida",
+      "score": 8.8,
+      "level": 1,
+      "word": "molto morbida",
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 66.7,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": 52.7,
+      "score": 47.0,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -3288,9 +3355,9 @@
       "lab_share": 1.0
      },
      "comfort": {
-      "score": 79.8,
-      "level": 4,
-      "word": "alto",
+      "score": 91.2,
+      "level": 5,
+      "word": "molto alto",
       "lab_share": 1.0
      }
     },
@@ -3324,7 +3391,7 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (193 lb/in), spin non misurato da TWU, profilo tonda; cala nella media.",
+    "feel": "Poly di rigidità media (≈ 182 lb/in), spin non misurato da TWU, profilo tonda; cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 36/100 con Confidential e 13/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
@@ -3404,10 +3471,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 197.7,
-    "low": 197.7,
-    "high": 197.7,
-    "kind": "parente"
+    "value_lbin": 183.5,
+    "low": 168.4,
+    "high": 198.6,
+    "kind": "parente",
+    "from_lbin": 197.7,
+    "twu_gauge_mm": 1.27
    },
    "spin": {
     "value": 7.0,
@@ -3508,22 +3577,22 @@
    "derived": {
     "subscores": {
      "spin": 69.4,
-     "control": 14.6,
+     "control": 6.7,
      "durability": 48.0,
-     "comfort": 71.9,
+     "comfort": 87.7,
      "affinity": 38
     },
     "lab_subscores": {
      "spin": 69.4,
-     "control": 14.6,
+     "control": 6.7,
      "durability": 48.0,
-     "comfort": 71.9
+     "comfort": 87.7
     },
     "judgments": {
      "stiffness": {
-      "score": 28.1,
-      "level": 2,
-      "word": "morbida",
+      "score": 12.3,
+      "level": 1,
+      "word": "molto morbida",
       "lab_share": 1.0
      },
      "spin": {
@@ -3533,7 +3602,7 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 14.6,
+      "score": 6.7,
       "level": 1,
       "word": "molto basso",
       "lab_share": 1.0
@@ -3545,9 +3614,9 @@
       "lab_share": 1.0
      },
      "comfort": {
-      "score": 71.9,
-      "level": 4,
-      "word": "alto",
+      "score": 87.7,
+      "level": 5,
+      "word": "molto alto",
       "lab_share": 1.0
      }
     },
@@ -3568,23 +3637,23 @@
     "profile_score": 55,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      48.5,
+      46.5
      ],
      "from": "toroline-o-toro-17",
      "indicative": true,
-     "note": "da O-Toro 1.23 corretta di -1.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da O-Toro 1.23 corretta di -1.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
-    "feel": "Poly morbida (198 lb/in), snapback alto (spin 7), profilo tonda; cala nella media.",
+    "feel": "Poly morbida (≈ 184 lb/in), snapback alto (spin 7), profilo tonda; cala nella media.",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 28/100 con Confidential e 38/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs). I dati TWU sono di «Luxilon Element Soft IR 1.27»."
+    "vs_favorites": "Somiglianza 28/100 con Confidential e 38/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Luxilon Element Soft IR 1.27»."
    }
   },
   {
@@ -3790,10 +3859,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 88.9,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 28.4,
@@ -3844,7 +3914,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.91) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.92 (modello, tra 6.41 e 9.43).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.91) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.92 (da un modello su rigidità e forma, bassa affidabilità, tra 6.41 e 9.43).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Somiglianza 35/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
@@ -4053,10 +4123,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 62.0,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 46.7,
@@ -4107,7 +4178,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 3.18) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.4 (modello, tra 4.9 e 7.91).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 3.18) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.4 (da un modello su rigidità e forma, bassa affidabilità, tra 4.9 e 7.91).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Somiglianza 47/100 con Confidential e 78/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
@@ -4340,10 +4411,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 81.5,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 59.0,
@@ -4381,23 +4453,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.78) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.42 (modello, tra 5.91 e 8.92).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.78) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.42 (da un modello su rigidità e forma, bassa affidabilità, tra 5.91 e 8.92).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
-    "vs_favorites": "Somiglianza 79/100 con Confidential e 15/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 79/100 con Confidential e 15/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -4609,7 +4681,7 @@
      "spin": null,
      "control": 74.2,
      "durability": 2.7,
-     "comfort": 16.7,
+     "comfort": 16.700000000000003,
      "affinity": 58
     },
     "lab_subscores": {
@@ -4626,10 +4698,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 79.6,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 74.2,
@@ -4667,23 +4740,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.67) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.33 (modello, tra 5.83 e 8.84).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.67) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.33 (da un modello su rigidità e forma, bassa affidabilità, tra 5.83 e 8.84).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 58/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 58/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -4910,10 +4983,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 81.5,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 46.0,
@@ -4951,23 +5025,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
     "feel": "Esagonale 1.23, testata solo nel tuo file e su Racketpedia (1,05 kg/mm). Stiff Index 2,49, vicino alla Confidential (2,33); tiene bene (11% a 6 mesi, 19% a 12) e le recensioni ne lodano la tenuta.",
     "on_blade_100_v9": "Sulla Blade dovrebbe comportarsi come una co-poly di controllo medio. Senza dati TWU lo spin non è misurato.",
     "for_your_style": "Candidata interessante sul lato Confidential per la tenuta nel lungo periodo; provala prima di comprare la matassa.",
-    "vs_favorites": "Somiglianza 82/100 con Confidential e 37/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 82/100 con Confidential e 37/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -5194,23 +5268,23 @@
     "profile_score": 68,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (225 lb/in), spin nella media (6.2), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 57/100 con Confidential e 4/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 57/100 con Confidential e 4/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -5277,14 +5351,21 @@
      "https://www.tenniswarehouse-europe.com/catpage-SIGPOL-EN.html"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 192.7,
+    "low": 170.9,
+    "high": 214.5,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.53,
+    "low": 4.96,
+    "high": 8.11,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": null,
@@ -5307,16 +5388,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 21.1,
+      "level": 2,
+      "word": "morbida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 64.8,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 3.4,
@@ -5367,7 +5450,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 4.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 4.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.53 (da un modello su rigidità e forma, bassa affidabilità, tra 4.96 e 8.11).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 4/100 con Confidential e 34/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
@@ -5449,10 +5532,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 172.0,
-    "low": 172.0,
-    "high": 172.0,
-    "kind": "parente"
+    "value_lbin": 161.8,
+    "low": 146.7,
+    "high": 176.9,
+    "kind": "parente",
+    "from_lbin": 172.0,
+    "twu_gauge_mm": 1.25
    },
    "spin": {
     "value": 5.2,
@@ -5553,20 +5638,20 @@
    "derived": {
     "subscores": {
      "spin": 29.6,
-     "control": 20.9,
+     "control": 18.8,
      "durability": 77.9,
-     "comfort": 95.6,
+     "comfort": 100.0,
      "affinity": 28
     },
     "lab_subscores": {
      "spin": 29.6,
-     "control": 20.9,
+     "control": 18.8,
      "durability": 77.9,
-     "comfort": 95.6
+     "comfort": 100.0
     },
     "judgments": {
      "stiffness": {
-      "score": 4.4,
+      "score": 0.0,
       "level": 1,
       "word": "molto morbida",
       "lab_share": 1.0
@@ -5578,9 +5663,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 20.9,
-      "level": 2,
-      "word": "basso",
+      "score": 18.8,
+      "level": 1,
+      "word": "molto basso",
       "lab_share": 1.0
      },
      "durability": {
@@ -5590,7 +5675,7 @@
       "lab_share": 1.0
      },
      "comfort": {
-      "score": 95.6,
+      "score": 100.0,
       "level": 5,
       "word": "molto alto",
       "lab_share": 1.0
@@ -5626,7 +5711,7 @@
     }
    },
    "notes": {
-    "feel": "Poly morbida (172 lb/in), poco spin (5.2), profilo quadrata; tiene bene la tensione.",
+    "feel": "Poly morbida (≈ 162 lb/in), poco spin (5.2), profilo quadrata; tiene bene la tensione.",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 28/100 con Confidential e 17/100 con O-Toro. Parti da 24/23 kg (53/50.5 lbs). I dati TWU sono di «Solinco Hyper-G-Soft 16L (1.25)»."
@@ -5708,10 +5793,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 172.0,
-    "low": 172.0,
-    "high": 172.0,
-    "kind": "parente"
+    "value_lbin": 182.2,
+    "low": 167.1,
+    "high": 197.3,
+    "kind": "parente",
+    "from_lbin": 172.0,
+    "twu_gauge_mm": 1.25
    },
    "spin": {
     "value": 5.2,
@@ -5812,20 +5899,20 @@
    "derived": {
     "subscores": {
      "spin": 29.6,
-     "control": 20.9,
+     "control": 23.1,
      "durability": 77.9,
-     "comfort": 95.6,
+     "comfort": 91.2,
      "affinity": 37
     },
     "lab_subscores": {
      "spin": 29.6,
-     "control": 20.9,
+     "control": 23.1,
      "durability": 77.9,
-     "comfort": 95.6
+     "comfort": 91.2
     },
     "judgments": {
      "stiffness": {
-      "score": 4.4,
+      "score": 8.8,
       "level": 1,
       "word": "molto morbida",
       "lab_share": 1.0
@@ -5837,7 +5924,7 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 20.9,
+      "score": 23.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -5849,7 +5936,7 @@
       "lab_share": 1.0
      },
      "comfort": {
-      "score": 95.6,
+      "score": 91.2,
       "level": 5,
       "word": "molto alto",
       "lab_share": 1.0
@@ -5872,23 +5959,23 @@
     "profile_score": 44,
     "tension_start": {
      "kg": [
-      24.0,
-      23.0
+      23.5,
+      22.5
      ],
      "lbs": [
-      53.0,
-      50.5
+      52.0,
+      49.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +2.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da Confidential 1.25 corretta di +1.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
-    "feel": "Poly morbida (172 lb/in), poco spin (5.2), profilo quadrata; tiene bene la tensione.",
+    "feel": "Poly morbida (≈ 182 lb/in), poco spin (5.2), profilo quadrata; tiene bene la tensione.",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 37/100 con Confidential e 12/100 con O-Toro. Parti da 24/23 kg (53/50.5 lbs). I dati TWU sono di «Solinco Hyper-G-Soft 16L (1.25)»."
+    "vs_favorites": "Somiglianza 37/100 con Confidential e 12/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Solinco Hyper-G-Soft 16L (1.25)»."
    }
   },
   {
@@ -6080,7 +6167,7 @@
      "spin": 62.0,
      "control": 81.7,
      "durability": 65.8,
-     "comfort": 10.4,
+     "comfort": 10.400000000000006,
      "affinity": 92
     },
     "lab_subscores": {
@@ -6138,23 +6225,23 @@
     "profile_score": 71,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (222 lb/in), spin nella media (6.4), profilo quadrata; tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 92/100 con Confidential e 7/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 92/100 con Confidential e 7/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -6250,10 +6337,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "parente"
+    "value_lbin": 212.1,
+    "low": 197.0,
+    "high": 227.2,
+    "kind": "parente",
+    "from_lbin": 222.3,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
     "value": 6.4,
@@ -6354,22 +6443,22 @@
    "derived": {
     "subscores": {
      "spin": 62.0,
-     "control": 57.8,
+     "control": 46.8,
      "durability": 65.8,
      "comfort": 45.8,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 62.0,
-     "control": 57.8,
+     "control": 46.8,
      "durability": 65.8,
      "comfort": 45.8
     },
     "judgments": {
      "stiffness": {
-      "score": 78.1,
-      "level": 4,
-      "word": "rigida",
+      "score": 56.1,
+      "level": 3,
+      "word": "media",
       "lab_share": 1.0
      },
      "spin": {
@@ -6379,7 +6468,7 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 57.8,
+      "score": 46.8,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -6524,10 +6613,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
-    "kind": "parente"
+    "value_lbin": 202.0,
+    "low": 186.9,
+    "high": 217.1,
+    "kind": "parente",
+    "from_lbin": 222.3,
+    "twu_gauge_mm": 1.3
    },
    "spin": {
     "value": 6.4,
@@ -6628,22 +6719,22 @@
    "derived": {
     "subscores": {
      "spin": 62.0,
-     "control": 45.8,
+     "control": 22.6,
      "durability": 97.9,
      "comfort": 45.8,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 62.0,
-     "control": 45.8,
+     "control": 22.6,
      "durability": 97.9,
      "comfort": 45.8
     },
     "judgments": {
      "stiffness": {
-      "score": 78.1,
-      "level": 4,
-      "word": "rigida",
+      "score": 31.6,
+      "level": 2,
+      "word": "morbida",
       "lab_share": 1.0
      },
      "spin": {
@@ -6653,9 +6744,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 45.8,
-      "level": 3,
-      "word": "medio",
+      "score": 22.6,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "durability": {
@@ -6688,23 +6779,23 @@
     "profile_score": 82,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (222 lb/in), spin nella media (6.4), profilo quadrata; tiene bene la tensione.",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "feel": "Poly morbida (≈ 202 lb/in), spin nella media (6.4), profilo quadrata; tiene bene la tensione.",
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 100/100 con Confidential e 6/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Solinco Confidential 16 (1.30)»."
+    "vs_favorites": "Somiglianza 100/100 con Confidential e 6/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Solinco Confidential 16 (1.30)»."
    }
   },
   {
@@ -6868,23 +6959,23 @@
     "profile_score": 53,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      21.0,
+      20.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      46.5,
+      44.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (229 lb/in), spin nella media (5.6), profilo tonda; cala nella media.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 61/100 con Confidential e 6/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs). I dati TWU sono di «Tecnifibre Razor Code 17 (1.25)»."
+    "vs_favorites": "Somiglianza 61/100 con Confidential e 6/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs). I dati TWU sono di «Tecnifibre Razor Code 17 (1.25)»."
    }
   },
   {
@@ -7349,10 +7440,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 82.4,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 63.7,
@@ -7390,23 +7482,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.5 (modello, tra 5.99 e 9.01).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.5 (da un modello su rigidità e forma, bassa affidabilità, tra 5.99 e 9.01).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 84/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 84/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -7633,10 +7725,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 82.4,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 63.7,
@@ -7674,23 +7767,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.5 (modello, tra 5.99 e 9.01).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.5 (da un modello su rigidità e forma, bassa affidabilità, tra 5.99 e 9.01).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 95/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 95/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -7759,14 +7852,21 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 219.2,
+    "low": 197.5,
+    "high": 241.0,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 5.88,
+    "low": 4.3,
+    "high": 7.45,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -7873,16 +7973,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 70.2,
+      "level": 4,
+      "word": "rigida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 50.0,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 63.6,
@@ -7933,7 +8035,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.07) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.07) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 5.88 (da un modello su rigidità e forma, bassa affidabilità, tra 4.3 e 7.45).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 94/100 con Confidential e 17/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -8005,14 +8107,21 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 206.0,
+    "low": 184.2,
+    "high": 227.7,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.2,
+    "low": 4.63,
+    "high": 7.78,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -8119,16 +8228,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 38.6,
+      "level": 2,
+      "word": "morbida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 58.3,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 98.9,
@@ -8179,7 +8290,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.04) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.04) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.2 (da un modello su rigidità e forma, bassa affidabilità, tra 4.63 e 7.78).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 89/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -8251,14 +8362,21 @@
      "https://www.tennisnerd.net/?p=35368"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 200.6,
+    "low": 178.9,
+    "high": 222.4,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.34,
+    "low": 4.76,
+    "high": 7.91,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -8365,16 +8483,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 31.6,
+      "level": 2,
+      "word": "morbida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 61.1,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 63.6,
@@ -8425,7 +8545,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.62) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.62) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.34 (da un modello su rigidità e forma, bassa affidabilità, tra 4.76 e 7.91).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 93/100 con Confidential e 42/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -8635,10 +8755,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 59.3,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 61.9,
@@ -8676,23 +8797,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.20) e su Racketpedia, quindi è meno preciso. Profilo quadrata. Spin stimato ≈ 6.23 (modello, tra 4.73 e 7.74).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.20) e su Racketpedia, quindi è meno preciso. Profilo quadrata. Spin stimato ≈ 6.23 (da un modello su rigidità e forma, bassa affidabilità, tra 4.73 e 7.74).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 100/100 con Confidential e 39/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 100/100 con Confidential e 39/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -8760,14 +8881,21 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 200.6,
+    "low": 178.9,
+    "high": 222.4,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.34,
+    "low": 4.76,
+    "high": 7.91,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -8853,16 +8981,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 31.6,
+      "level": 2,
+      "word": "morbida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 61.1,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 13.6,
@@ -8913,7 +9043,7 @@
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.36) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.36) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.34 (da un modello su rigidità e forma, bassa affidabilità, tra 4.76 e 7.91).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 87/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -9116,10 +9246,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 59.3,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 38.0,
@@ -9157,23 +9288,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo quadrata. Spin stimato ≈ 6.23 (modello, tra 4.73 e 7.74).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo quadrata. Spin stimato ≈ 6.23 (da un modello su rigidità e forma, bassa affidabilità, tra 4.73 e 7.74).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 71/100 con Confidential e 19/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 71/100 con Confidential e 19/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -9428,23 +9559,23 @@
     "profile_score": 69,
     "tension_start": {
      "kg": [
-      23.5,
-      22.5
+      23.0,
+      22.0
      ],
      "lbs": [
-      52.0,
-      49.5
+      50.5,
+      48.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Esagonale 1.23, spin alto (7,8 su TWU). Rigidità incerta: TWU la dà medio-morbida (190 lb/in), il tuo test e il rivenditore la danno piuttosto rigida. Nel tuo test tiene bene a 6 mesi (13%) ma cala a 12 (24%).",
     "on_blade_100_v9": "Sulla Blade è vivace ma meno estrema di O-Toro: buona via di mezzo sul lato spin.",
     "for_your_style": "Se O-Toro ti sembra troppo morbida a fine incordatura, Super Toro è il passo verso un po' più di controllo.",
-    "vs_favorites": "Somiglianza 49/100 con Confidential e 31/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs)."
+    "vs_favorites": "Somiglianza 49/100 con Confidential e 31/100 con O-Toro. Parti da 23/22 kg (50.5/48.5 lbs)."
    }
   },
   {
@@ -9939,10 +10070,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 83.3,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 51.1,
@@ -9980,23 +10112,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (modello, tra 6.08 e 9.09).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (da un modello su rigidità e forma, bassa affidabilità, tra 6.08 e 9.09).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -10195,10 +10327,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 83.3,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 51.1,
@@ -10236,23 +10369,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (modello, tra 6.08 e 9.09).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (da un modello su rigidità e forma, bassa affidabilità, tra 6.08 e 9.09).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -10451,10 +10584,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 83.3,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 51.1,
@@ -10492,23 +10626,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (modello, tra 6.08 e 9.09).",
+    "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.58 (da un modello su rigidità e forma, bassa affidabilità, tra 6.08 e 9.09).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 58/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 58/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -10671,23 +10805,23 @@
     "profile_score": 50,
     "tension_start": {
      "kg": [
-      23.5,
-      22.5
+      23.0,
+      22.0
      ],
      "lbs": [
-      52.0,
-      49.5
+      50.5,
+      48.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (193 lb/in), snapback alto (spin 7.2), profilo esagonale; tiene bene la tensione.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 45/100 con Confidential e 30/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (85/100), che non ti è piaciuta. Parti da 23.5/22.5 kg (52/49.5 lbs)."
+    "vs_favorites": "Somiglianza 45/100 con Confidential e 30/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (85/100), che non ti è piaciuta. Parti da 23/22 kg (50.5/48.5 lbs)."
    }
   },
   {
@@ -10770,10 +10904,12 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 213.7,
-    "low": 213.7,
-    "high": 213.7,
-    "kind": "parente"
+    "value_lbin": 203.5,
+    "low": 188.4,
+    "high": 218.6,
+    "kind": "parente",
+    "from_lbin": 213.7,
+    "twu_gauge_mm": 1.25
    },
    "spin": {
     "value": 6.3,
@@ -10831,22 +10967,22 @@
    "derived": {
     "subscores": {
      "spin": 60.2,
-     "control": 72.0,
+     "control": 59.7,
      "durability": 79.3,
-     "comfort": 22.9,
+     "comfort": 22.900000000000006,
      "affinity": 81
     },
     "lab_subscores": {
      "spin": 60.2,
-     "control": 72.0,
+     "control": 59.7,
      "durability": 79.3,
      "comfort": 22.900000000000006
     },
     "judgments": {
      "stiffness": {
-      "score": 58.8,
-      "level": 3,
-      "word": "media",
+      "score": 34.2,
+      "level": 2,
+      "word": "morbida",
       "lab_share": 1.0
      },
      "spin": {
@@ -10856,9 +10992,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 72.0,
-      "level": 4,
-      "word": "alto",
+      "score": 59.7,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "durability": {
@@ -10904,9 +11040,9 @@
     }
    },
    "notes": {
-    "feel": "Poly rigida e compatta (214 lb/in), spin nella media (6.3), profilo esagonale; tiene bene la tensione.",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "feel": "Poly di rigidità media (≈ 204 lb/in), spin nella media (6.3), profilo esagonale; tiene bene la tensione.",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 81/100 con Confidential e 16/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (82/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Yonex Poly Tour Spin 16L (1.25)»."
    }
   },
@@ -11263,7 +11399,7 @@
      "spin": 93.5,
      "control": 78.1,
      "durability": 86.4,
-     "comfort": 21.9,
+     "comfort": 21.900000000000006,
      "affinity": 60
     },
     "lab_subscores": {
@@ -11321,23 +11457,23 @@
     "profile_score": 83,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (222 lb/in), snapback alto (spin 8.6); tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 60/100 con Confidential e 8/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 60/100 con Confidential e 8/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -11803,23 +11939,23 @@
     "profile_score": 71,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Ottagonale di rigidità media (210 lb/in), snapback alto (8,2 su TWU). Il produttore dichiara una tenuta eccezionale, TWU misura 34% (nella media). È la Grapplesnake di mezzo tra Alpha e Tour Sniper.",
     "on_blade_100_v9": "Sulla Blade dà un piatto equilibrato: più vivo della Confidential, più controllato di O-Toro.",
     "for_your_style": "Buona per giocare in rotazione senza perdere troppo il colpo piatto. Con il tuo volume, rincorda ogni 3 settimane.",
-    "vs_favorites": "Somiglianza 47/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 47/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -11982,7 +12118,7 @@
      "spin": 86.1,
      "control": 65.8,
      "durability": 92.1,
-     "comfort": 16.7,
+     "comfort": 16.700000000000003,
      "affinity": 81
     },
     "lab_subscores": {
@@ -12040,23 +12176,23 @@
     "profile_score": 86,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "La O-Toro 'da controllo': più rigida (217 lb/in) e tiene molto meglio (25% su TWU), ma conserva spin alto (7,7). Esagonale 1.23.",
     "on_blade_100_v9": "Sulla Blade è un ponte tra le tue due preferite: piatto compatto come la Confidential, palla che morde come una O-Toro. Racketpedia 1,1 kg/mm.",
     "for_your_style": "Per chi alterna rotazioni e colpi piatti è la candidata più completa del banco. Con 4–5 ore a settimana resta giocabile 3 settimane abbondanti.",
-    "vs_favorites": "Somiglianza 81/100 con Confidential e 18/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 81/100 con Confidential e 18/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -12417,7 +12553,7 @@
      "spin": 80.6,
      "control": 55.3,
      "durability": 66.4,
-     "comfort": 10.4,
+     "comfort": 10.400000000000006,
      "affinity": 61
     },
     "lab_subscores": {
@@ -12475,23 +12611,23 @@
     "profile_score": 72,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (212 lb/in), snapback alto (spin 7.4), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 61/100 con Confidential e 20/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 61/100 con Confidential e 20/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -12601,7 +12737,7 @@
      "spin": 76.9,
      "control": 85.1,
      "durability": 93.6,
-     "comfort": 16.7,
+     "comfort": 16.700000000000003,
      "affinity": 87
     },
     "lab_subscores": {
@@ -12659,23 +12795,23 @@
     "profile_score": 84,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (226 lb/in), snapback alto (spin 7.3), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 87/100 con Confidential e 8/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 87/100 con Confidential e 8/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -12810,7 +12946,7 @@
      "spin": 76.9,
      "control": 86.8,
      "durability": 69.3,
-     "comfort": 13.2,
+     "comfort": 13.200000000000003,
      "affinity": 71
     },
     "lab_subscores": {
@@ -12868,23 +13004,23 @@
     "profile_score": 73,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (226 lb/in), snapback alto (spin 7.3), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 71/100 con Confidential e 7/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 71/100 con Confidential e 7/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -13280,23 +13416,23 @@
     "profile_score": 83,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (218 lb/in), snapback alto (spin 7.1), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 93/100 con Confidential e 11/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 93/100 con Confidential e 11/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -13641,23 +13777,23 @@
     "profile_score": 39,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly morbida (198 lb/in), snapback alto (spin 6.9), profilo tonda; cala nella media.",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 32/100 con Confidential e 28/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (80/100), che non ti è piaciuta. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 32/100 con Confidential e 28/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (80/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -13835,7 +13971,7 @@
      "spin": 65.7,
      "control": 69.3,
      "durability": 75.0,
-     "comfort": 30.7,
+     "comfort": 30.700000000000003,
      "affinity": 86
     },
     "lab_subscores": {
@@ -13893,23 +14029,23 @@
     "profile_score": 74,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Pentagonale. Il produttore e Tennis Warehouse la indicano come la più morbida e potente delle tre Grapplesnake; la riga TWU (218 lb/in) dice il contrario, quindi i numeri sono poco affidabili.",
     "on_blade_100_v9": "Se è morbida come la descrivono, sulla Blade darà un piatto vivo e confortevole: parti dalla tensione suggerita e alza di 0,5 kg se la palla vola.",
     "for_your_style": "Più adatta al lato O-Toro che al lato Confidential: comfort e potenza più che controllo.",
-    "vs_favorites": "Somiglianza 86/100 con Confidential e 7/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 86/100 con Confidential e 7/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -14123,16 +14259,16 @@
     "profile_score": 70,
     "tension_start": {
      "kg": [
-      23.5,
-      22.5
+      23.0,
+      22.0
      ],
      "lbs": [
-      52.0,
-      49.5
+      50.5,
+      48.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
@@ -14248,7 +14384,7 @@
      "spin": 60.2,
      "control": 58.8,
      "durability": 84.3,
-     "comfort": 22.9,
+     "comfort": 22.900000000000006,
      "affinity": 89
     },
     "lab_subscores": {
@@ -14306,23 +14442,23 @@
     "profile_score": 74,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (214 lb/in), spin nella media (6.3), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 89/100 con Confidential e 11/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 89/100 con Confidential e 11/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -14491,23 +14627,23 @@
     "profile_score": 70,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      21.0,
+      20.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      46.5,
+      44.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (231 lb/in), spin nella media (6), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 89/100 con Confidential e 5/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
+    "vs_favorites": "Somiglianza 89/100 con Confidential e 5/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
    }
   },
   {
@@ -14664,7 +14800,7 @@
      "spin": 53.7,
      "control": 78.1,
      "durability": 89.3,
-     "comfort": 21.9,
+     "comfort": 21.900000000000006,
      "affinity": 94
     },
     "lab_subscores": {
@@ -14722,23 +14858,23 @@
     "profile_score": 74,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (222 lb/in), spin nella media (6); tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 94/100 con Confidential e 3/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 94/100 con Confidential e 3/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -14807,7 +14943,7 @@
      "spin": 50.9,
      "control": 36.8,
      "durability": 33.6,
-     "comfort": 16.7,
+     "comfort": 16.700000000000003,
      "affinity": 40
     },
     "lab_subscores": {
@@ -14865,23 +15001,23 @@
     "profile_score": 43,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (205 lb/in), spin nella media (5.9), profilo tonda; cala in fretta (41.5% di perdita su TWU).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 40/100 con Confidential e 20/100 con O-Toro. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 40/100 con Confidential e 20/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -15096,23 +15232,23 @@
     "profile_score": 44,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (206 lb/in), spin nella media (5.8), profilo pentagonale; tiene bene la tensione.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 66/100 con Confidential e 9/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a Confidential Soft (85/100), che non ti è piaciuta. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 66/100 con Confidential e 9/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a Confidential Soft (85/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -15240,23 +15376,23 @@
     "profile_score": 30,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (211 lb/in), spin nella media (5.7), profilo tonda; cala in fretta (48% di perdita su TWU).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 25/100 con Confidential e 17/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 25/100 con Confidential e 17/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -15319,7 +15455,7 @@
      "spin": 42.6,
      "control": 72.8,
      "durability": 37.9,
-     "comfort": 27.2,
+     "comfort": 27.200000000000003,
      "affinity": 39
     },
     "lab_subscores": {
@@ -15377,23 +15513,23 @@
     "profile_score": 25,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (221 lb/in), spin nella media (5.6); cala nella media.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 39/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (78/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 39/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (78/100), che non ti è piaciuta. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -15562,23 +15698,23 @@
     "profile_score": 68,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (224 lb/in), spin nella media (5.6), profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 92/100 con Confidential e 5/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 92/100 con Confidential e 5/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -15809,23 +15945,23 @@
     "profile_score": 32,
     "tension_start": {
      "kg": [
-      24.0,
-      23.0
+      23.5,
+      22.5
      ],
      "lbs": [
-      53.0,
-      50.5
+      52.0,
+      49.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +2.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +1.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly morbida (183 lb/in), spin nella media (5.6), profilo tonda; cala nella media.",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 39/100 con Confidential e 25/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (80/100), che non ti è piaciuta. Parti da 24/23 kg (53/50.5 lbs)."
+    "vs_favorites": "Somiglianza 39/100 con Confidential e 25/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (80/100), che non ti è piaciuta. Parti da 23.5/22.5 kg (52/49.5 lbs)."
    }
   },
   {
@@ -16091,23 +16227,23 @@
     "profile_score": 21,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (222 lb/in), poco spin (5.3), profilo tonda; cala in fretta (50.7% di perdita su TWU).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 19/100 con Confidential e 9/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 19/100 con Confidential e 9/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -16228,23 +16364,23 @@
     "profile_score": 27,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly morbida (200 lb/in), poco spin (5.2); cala in fretta (43% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 22/100 con Confidential e 11/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 22/100 con Confidential e 11/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -16593,23 +16729,23 @@
     "profile_score": 18,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (216 lb/in), poco spin (5.1), profilo tonda; cala in fretta (47.7% di perdita su TWU).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 15/100 con Confidential e 7/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 15/100 con Confidential e 7/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -16730,23 +16866,23 @@
     "profile_score": 42,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (208 lb/in), poco spin (5); cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 51/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 51/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -16868,23 +17004,23 @@
     "profile_score": 2,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (210 lb/in), poco spin (4.9); cala in fretta (47.5% di perdita su TWU).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 14/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (76/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 14/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (76/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -17252,23 +17388,23 @@
     "profile_score": 20,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (213 lb/in), poco spin (4.8); cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 45/100 con Confidential e 4/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (79/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 45/100 con Confidential e 4/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (79/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -17395,23 +17531,23 @@
     "profile_score": 19,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (214 lb/in), poco spin (4.8), profilo tonda; cala in fretta (44.3% di perdita su TWU).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 19/100 con Confidential e 6/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 19/100 con Confidential e 6/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -17538,23 +17674,23 @@
     "profile_score": 25,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (220 lb/in), poco spin (4.6), profilo tonda; cala nella media.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 31/100 con Confidential e 5/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Somiglianza 31/100 con Confidential e 5/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -17760,7 +17896,7 @@
      "spin": 11.1,
      "control": 93.9,
      "durability": 14.3,
-     "comfort": 3.1,
+     "comfort": 3.0999999999999943,
      "affinity": 17
     },
     "lab_subscores": {
@@ -17818,23 +17954,23 @@
     "profile_score": 14,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      21.0,
+      20.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      46.5,
+      44.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (233 lb/in), poco spin (4.5), profilo ottagonale; cala in fretta (45.9% di perdita su TWU).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Non ti è piaciuta: serve come riferimento negativo per segnalare le corde troppo simili. Parti da 21.5/20.5 kg (47.5/45 lbs)."
+    "vs_favorites": "Non ti è piaciuta: serve come riferimento negativo per segnalare le corde troppo simili. Parti da 21/20 kg (46.5/44 lbs)."
    }
   },
   {
@@ -17956,23 +18092,23 @@
     "profile_score": 0,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (210 lb/in), poco spin (4.5); cala in fretta (47.5% di perdita su TWU).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 13/100 con Confidential e 4/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (77/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 13/100 con Confidential e 4/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (77/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -18203,23 +18339,23 @@
     "profile_score": 25,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (214 lb/in), poco spin (4.4), profilo tonda; cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 39/100 con Confidential e 6/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 39/100 con Confidential e 6/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -18282,7 +18418,7 @@
      "spin": 5.6,
      "control": 97.4,
      "durability": 55.0,
-     "comfort": 2.6,
+     "comfort": 2.5999999999999943,
      "affinity": 40
     },
     "lab_subscores": {
@@ -18340,23 +18476,23 @@
     "profile_score": 13,
     "tension_start": {
      "kg": [
-      21.5,
-      20.5
+      21.0,
+      20.0
      ],
      "lbs": [
-      47.5,
-      45.0
+      46.5,
+      44.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (235 lb/in), poco spin (4.3); cala nella media.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 40/100 con Confidential e 1/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (98/100), che non ti è piaciuta. Parti da 21.5/20.5 kg (47.5/45 lbs)."
+    "vs_favorites": "Somiglianza 40/100 con Confidential e 1/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (98/100), che non ti è piaciuta. Parti da 21/20 kg (46.5/44 lbs)."
    }
   },
   {
@@ -18420,7 +18556,7 @@
      "spin": 5.6,
      "control": 99.1,
      "durability": 35.7,
-     "comfort": 0.9,
+     "comfort": 0.9000000000000057,
      "affinity": 20
     },
     "lab_subscores": {
@@ -18478,23 +18614,23 @@
     "profile_score": 2,
     "tension_start": {
      "kg": [
-      21.0,
-      20.0
+      20.5,
+      19.5
      ],
      "lbs": [
-      46.5,
-      44.0
+      45.0,
+      43.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di -1.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di -1.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly rigida e compatta (246 lb/in), poco spin (4.3); cala nella media.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
-    "vs_favorites": "Somiglianza 20/100 con Confidential e 0/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (85/100), che non ti è piaciuta. Parti da 21/20 kg (46.5/44 lbs)."
+    "vs_favorites": "Somiglianza 20/100 con Confidential e 0/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (85/100), che non ti è piaciuta. Parti da 20.5/19.5 kg (45/43 lbs)."
    }
   },
   {
@@ -18621,23 +18757,23 @@
     "profile_score": 15,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      50.5,
-      48.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly morbida (202 lb/in), poco spin (4.2), profilo tonda; cala in fretta (42.6% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 21/100 con Confidential e 8/100 con O-Toro. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Somiglianza 21/100 con Confidential e 8/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -18759,23 +18895,23 @@
     "profile_score": 7,
     "tension_start": {
      "kg": [
-      23.5,
-      22.5
+      23.0,
+      22.0
      ],
      "lbs": [
-      52.0,
-      49.5
+      50.5,
+      48.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly morbida (190 lb/in), poco spin (4.1); cala in fretta (45% di perdita su TWU).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-    "vs_favorites": "Somiglianza 9/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 23.5/22.5 kg (52/49.5 lbs)."
+    "vs_favorites": "Somiglianza 9/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
    }
   },
   {
@@ -19038,23 +19174,23 @@
     "profile_score": 51,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      22.0,
+      21.0
      ],
      "lbs": [
-      49.5,
-      47.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU)"
     }
    },
    "notes": {
     "feel": "Poly di rigidità media (209 lb/in), spin non misurato da TWU, profilo tonda; tiene bene la tensione.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-    "vs_favorites": "Somiglianza 54/100 con Confidential e 26/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon): prendila come indicazione. Attenzione: assomiglia molto a Confidential Soft (76/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Somiglianza 54/100 con Confidential e 26/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon): prendila come indicazione. Attenzione: assomiglia molto a Confidential Soft (76/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -19142,10 +19278,11 @@
       "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 64.8,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": 20.2,
@@ -19232,9 +19369,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 226.3,
-    "low": 226.3,
-    "high": 226.3,
+    "value_lbin": 216.1,
+    "low": 201.0,
+    "high": 231.2,
     "kind": "parente"
    },
    "spin": {
@@ -19356,22 +19493,22 @@
    "derived": {
     "subscores": {
      "spin": 76.9,
-     "control": 86.8,
+     "control": 64.9,
      "durability": null,
-     "comfort": 13.2,
+     "comfort": 35.099999999999994,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 76.9,
-     "control": 86.8,
+     "control": 64.9,
      "durability": null,
-     "comfort": 13.200000000000003
+     "comfort": 35.099999999999994
     },
     "judgments": {
      "stiffness": {
-      "score": 86.8,
-      "level": 5,
-      "word": "molto rigida",
+      "score": 64.9,
+      "level": 4,
+      "word": "rigida",
       "lab_share": 1.0
      },
      "spin": {
@@ -19381,9 +19518,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 86.8,
-      "level": 5,
-      "word": "molto alto",
+      "score": 64.9,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "durability": {
@@ -19393,9 +19530,9 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 13.2,
-      "level": 1,
-      "word": "molto basso",
+      "score": 35.1,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      }
     },
@@ -19430,8 +19567,8 @@
    },
    "notes": {
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (3 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 7.3 (da un calibro o colore gemello, tra 6.8 e 7.8).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità.",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -19465,9 +19602,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 226.3,
-    "low": 226.3,
-    "high": 226.3,
+    "value_lbin": 206.0,
+    "low": 190.9,
+    "high": 221.1,
     "kind": "parente"
    },
    "spin": {
@@ -19589,22 +19726,22 @@
    "derived": {
     "subscores": {
      "spin": 76.9,
-     "control": 86.8,
+     "control": 38.6,
      "durability": null,
-     "comfort": 13.2,
+     "comfort": 61.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 76.9,
-     "control": 86.8,
+     "control": 38.6,
      "durability": null,
-     "comfort": 13.200000000000003
+     "comfort": 61.4
     },
     "judgments": {
      "stiffness": {
-      "score": 86.8,
-      "level": 5,
-      "word": "molto rigida",
+      "score": 38.6,
+      "level": 2,
+      "word": "morbida",
       "lab_share": 1.0
      },
      "spin": {
@@ -19614,9 +19751,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 86.8,
-      "level": 5,
-      "word": "molto alto",
+      "score": 38.6,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "durability": {
@@ -19626,9 +19763,9 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 13.2,
-      "level": 1,
-      "word": "molto basso",
+      "score": 61.4,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      }
     },
@@ -19649,23 +19786,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (3 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 7.3 (da un calibro o colore gemello, tra 6.8 e 7.8).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi.",
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -19698,9 +19835,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
+    "value_lbin": 212.1,
+    "low": 197.0,
+    "high": 227.2,
     "kind": "parente"
    },
    "spin": {
@@ -19843,22 +19980,22 @@
    "derived": {
     "subscores": {
      "spin": 53.7,
-     "control": 78.1,
+     "control": 56.1,
      "durability": null,
-     "comfort": 21.9,
+     "comfort": 43.9,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 53.7,
-     "control": 78.1,
+     "control": 56.1,
      "durability": null,
-     "comfort": 21.900000000000006
+     "comfort": 43.9
     },
     "judgments": {
      "stiffness": {
-      "score": 78.1,
-      "level": 4,
-      "word": "rigida",
+      "score": 56.1,
+      "level": 3,
+      "word": "media",
       "lab_share": 1.0
      },
      "spin": {
@@ -19868,9 +20005,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 78.1,
-      "level": 4,
-      "word": "alto",
+      "score": 56.1,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "durability": {
@@ -19880,9 +20017,9 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 21.9,
-      "level": 2,
-      "word": "basso",
+      "score": 43.9,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      }
     },
@@ -19917,8 +20054,8 @@
    },
    "notes": {
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (4 fonti) sono solo un riferimento. Profilo pentagonale. Spin stimato ≈ 6 (da un calibro o colore gemello, tra 5.5 e 6.5).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità.",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -19952,9 +20089,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 222.3,
-    "low": 222.3,
-    "high": 222.3,
+    "value_lbin": 202.0,
+    "low": 186.9,
+    "high": 217.1,
     "kind": "parente"
    },
    "spin": {
@@ -20097,22 +20234,22 @@
    "derived": {
     "subscores": {
      "spin": 53.7,
-     "control": 78.1,
+     "control": 31.6,
      "durability": null,
-     "comfort": 21.9,
+     "comfort": 68.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 53.7,
-     "control": 78.1,
+     "control": 31.6,
      "durability": null,
-     "comfort": 21.900000000000006
+     "comfort": 68.4
     },
     "judgments": {
      "stiffness": {
-      "score": 78.1,
-      "level": 4,
-      "word": "rigida",
+      "score": 31.6,
+      "level": 2,
+      "word": "morbida",
       "lab_share": 1.0
      },
      "spin": {
@@ -20122,9 +20259,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 78.1,
-      "level": 4,
-      "word": "alto",
+      "score": 31.6,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "durability": {
@@ -20134,9 +20271,9 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 21.9,
-      "level": 2,
-      "word": "basso",
+      "score": 68.4,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      }
     },
@@ -20157,23 +20294,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.0,
-      21.0
+      22.5,
+      21.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (4 fonti) sono solo un riferimento. Profilo pentagonale. Spin stimato ≈ 6 (da un calibro o colore gemello, tra 5.5 e 6.5).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -20206,9 +20343,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 194.3,
-    "low": 194.3,
-    "high": 194.3,
+    "value_lbin": 204.5,
+    "low": 189.4,
+    "high": 219.6,
     "kind": "parente"
    },
    "spin": {
@@ -20309,20 +20446,20 @@
    "derived": {
     "subscores": {
      "spin": 63.9,
-     "control": 23.7,
+     "control": 35.1,
      "durability": null,
-     "comfort": 76.3,
+     "comfort": 64.9,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 63.9,
-     "control": 23.7,
+     "control": 35.1,
      "durability": null,
-     "comfort": 76.3
+     "comfort": 64.9
     },
     "judgments": {
      "stiffness": {
-      "score": 23.7,
+      "score": 35.1,
       "level": 2,
       "word": "morbida",
       "lab_share": 1.0
@@ -20334,7 +20471,7 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 23.7,
+      "score": 35.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -20346,7 +20483,7 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 76.3,
+      "score": 64.9,
       "level": 4,
       "word": "alto",
       "lab_share": 1.0
@@ -20369,23 +20506,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      23.5,
-      22.5
+      22.5,
+      21.5
      ],
      "lbs": [
-      52.0,
-      49.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo quadrata. Spin stimato ≈ 6.5 (da un calibro o colore gemello, tra 6 e 7).",
-    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 23.5/22.5 kg (52/49.5 lbs)."
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -20418,9 +20555,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 194.3,
-    "low": 194.3,
-    "high": 194.3,
+    "value_lbin": 184.1,
+    "low": 169.0,
+    "high": 199.2,
     "kind": "parente"
    },
    "spin": {
@@ -20521,22 +20658,22 @@
    "derived": {
     "subscores": {
      "spin": 63.9,
-     "control": 23.7,
+     "control": 12.3,
      "durability": null,
-     "comfort": 76.3,
+     "comfort": 87.7,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 63.9,
-     "control": 23.7,
+     "control": 12.3,
      "durability": null,
-     "comfort": 76.3
+     "comfort": 87.7
     },
     "judgments": {
      "stiffness": {
-      "score": 23.7,
-      "level": 2,
-      "word": "morbida",
+      "score": 12.3,
+      "level": 1,
+      "word": "molto morbida",
       "lab_share": 1.0
      },
      "spin": {
@@ -20546,9 +20683,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 23.7,
-      "level": 2,
-      "word": "basso",
+      "score": 12.3,
+      "level": 1,
+      "word": "molto basso",
       "lab_share": 1.0
      },
      "durability": {
@@ -20558,9 +20695,9 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 76.3,
-      "level": 4,
-      "word": "alto",
+      "score": 87.7,
+      "level": 5,
+      "word": "molto alto",
       "lab_share": 1.0
      }
     },
@@ -20628,14 +20765,20 @@
      "https://www.tennisnerd.net/gear/racquets/restring-vivo-string-review/45756"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 221.6,
+    "low": 202.8,
+    "high": 240.5,
+    "kind": "da Racketpedia",
+    "via": "gemello"
+   },
    "spin": {
-    "value": 7.78,
-    "low": 6.21,
-    "high": 9.35,
+    "value": 7.17,
+    "low": 5.61,
+    "high": 8.72,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -20770,35 +20913,36 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": null,
+     "control": 73.7,
      "durability": null,
-     "comfort": null,
+     "comfort": 26.299999999999997,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": null,
+     "control": 73.7,
      "durability": null,
-     "comfort": null
+     "comfort": 26.299999999999997
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 73.7,
+      "level": 4,
+      "word": "rigida",
+      "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 72.2,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 73.7,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 1.0
      },
      "durability": {
       "score": null,
@@ -20807,10 +20951,10 @@
       "lab_share": null
      },
      "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 26.3,
+      "level": 2,
+      "word": "basso",
+      "lab_share": 1.0
      }
     },
     "similarity_liked": {
@@ -20830,23 +20974,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22,
-      21
+      21.5,
+      20.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "tensione della preferita più simile (Confidential 1.25), senza una rigidità misurata per correggerla"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (4 fonti) sono solo un riferimento. Profilo esagonale. Spin stimato ≈ 7.78 (modello, tra 6.21 e 9.35).",
-    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
-    "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (4 fonti) sono solo un riferimento. Profilo esagonale. Spin stimato ≈ 7.17 (da un modello su rigidità e forma, bassa affidabilità, tra 5.61 e 8.72).",
+    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità.",
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
   {
@@ -20876,14 +21020,20 @@
      "https://www.tennisnerd.net/?p=36197"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 208.1,
+    "low": 189.2,
+    "high": 226.9,
+    "kind": "da Racketpedia",
+    "via": "gemello"
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.15,
+    "low": 4.6,
+    "high": 7.7,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -20976,35 +21126,36 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": null,
+     "control": 42.1,
      "durability": null,
-     "comfort": null,
+     "comfort": 57.9,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": null,
+     "control": 42.1,
      "durability": null,
-     "comfort": null
+     "comfort": 57.9
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 42.1,
+      "level": 3,
+      "word": "media",
+      "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 57.4,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 42.1,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 1.0
      },
      "durability": {
       "score": null,
@@ -21013,10 +21164,10 @@
       "lab_share": null
      },
      "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 57.9,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 1.0
      }
     },
     "similarity_liked": {
@@ -21036,8 +21187,8 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22,
-      21
+      22.0,
+      21.0
      ],
      "lbs": [
       48.5,
@@ -21045,13 +21196,13 @@
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "tensione della preferita più simile (Confidential 1.25), senza una rigidità misurata per correggerla"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
-    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
-    "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.15 (da un modello su rigidità e forma, bassa affidabilità, tra 4.6 e 7.7).",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -21082,14 +21233,20 @@
      "https://www.tennisnerd.net/?p=36197"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 187.7,
+    "low": 168.9,
+    "high": 206.6,
+    "kind": "da Racketpedia",
+    "via": "gemello"
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.65,
+    "low": 5.1,
+    "high": 8.21,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -21182,35 +21339,36 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": null,
+     "control": 14.0,
      "durability": null,
-     "comfort": null,
+     "comfort": 86.0,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": null,
+     "control": 14.0,
      "durability": null,
-     "comfort": null
+     "comfort": 86.0
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 14.0,
+      "level": 1,
+      "word": "molto morbida",
+      "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 64.8,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 14.0,
+      "level": 1,
+      "word": "molto basso",
+      "lab_share": 1.0
      },
      "durability": {
       "score": null,
@@ -21219,10 +21377,10 @@
       "lab_share": null
      },
      "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 86.0,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 1.0
      }
     },
     "similarity_liked": {
@@ -21242,23 +21400,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22,
-      21
+      23.0,
+      22.0
      ],
      "lbs": [
-      48.5,
-      46.5
+      50.5,
+      48.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "tensione della preferita più simile (Confidential 1.25), senza una rigidità misurata per correggerla"
+     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
-    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
-    "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.65 (da un modello su rigidità e forma, bassa affidabilità, tra 5.1 e 8.21).",
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 23/22 kg (50.5/48.5 lbs)."
    }
   },
   {
@@ -21289,14 +21447,20 @@
      "https://sites.google.com/view/tennistech"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 201.3,
+    "low": 182.4,
+    "high": 220.1,
+    "kind": "da Racketpedia",
+    "via": "gemello"
+   },
    "spin": {
-    "value": 7.78,
-    "low": 6.21,
-    "high": 9.35,
+    "value": 7.67,
+    "low": 6.12,
+    "high": 9.22,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -21389,35 +21553,36 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": null,
+     "control": 31.6,
      "durability": null,
-     "comfort": null,
+     "comfort": 68.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": null,
+     "control": 31.6,
      "durability": null,
-     "comfort": null
+     "comfort": 68.4
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 31.6,
+      "level": 2,
+      "word": "morbida",
+      "lab_share": 1.0
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 85.2,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 31.6,
+      "level": 2,
+      "word": "basso",
+      "lab_share": 1.0
      },
      "durability": {
       "score": null,
@@ -21426,10 +21591,10 @@
       "lab_share": null
      },
      "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 68.4,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 1.0
      }
     },
     "similarity_liked": {
@@ -21449,23 +21614,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22,
-      21
+      22.5,
+      21.5
      ],
      "lbs": [
-      48.5,
-      46.5
+      49.5,
+      47.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "tensione della preferita più simile (Confidential 1.25), senza una rigidità misurata per correggerla"
+     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (Racketpedia convertita, ±11 lb/in)"
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo esagonale. Spin stimato ≈ 7.78 (modello, tra 6.21 e 9.35).",
-    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
-    "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo esagonale. Spin stimato ≈ 7.67 (da un modello su rigidità e forma, bassa affidabilità, tra 6.12 e 9.22).",
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
   {
@@ -21497,14 +21662,21 @@
      "https://www.tenniswarehouse-europe.com/catpage-TOROLINE-EN.html"
     ]
    },
-   "stiffness": null,
+   "stiffness": {
+    "value_lbin": 200.6,
+    "low": 178.9,
+    "high": 222.4,
+    "kind": "modello",
+    "model": "calibro",
+    "basis_n": 57
+   },
    "spin": {
-    "value": 6.09,
-    "low": 4.52,
-    "high": 7.66,
+    "value": 6.34,
+    "low": 4.76,
+    "high": 7.91,
     "kind": "modello",
     "basis_n": 54,
-    "model": "forma"
+    "model": "rigidità e forma"
    },
    "reviews": {
     "agg": {
@@ -21631,16 +21803,18 @@
     },
     "judgments": {
      "stiffness": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 31.6,
+      "level": 2,
+      "word": "morbida",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "spin": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 61.1,
+      "level": 4,
+      "word": "alto",
+      "lab_share": 0.0,
+      "modelled": true
      },
      "control": {
       "score": null,
@@ -21691,7 +21865,7 @@
     }
    },
    "notes": {
-    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (3 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.09 (modello, tra 4.52 e 7.66).",
+    "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (3 fonti) sono solo un riferimento. Profilo tonda. Spin stimato ≈ 6.34 (da un modello su rigidità e forma, bassa affidabilità, tra 4.76 e 7.91).",
     "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
@@ -21726,9 +21900,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 206.3,
-    "low": 206.3,
-    "high": 206.3,
+    "value_lbin": 216.5,
+    "low": 201.4,
+    "high": 231.6,
     "kind": "parente"
    },
    "spin": {
@@ -21850,22 +22024,22 @@
    "derived": {
     "subscores": {
      "spin": 49.1,
-     "control": 39.5,
+     "control": 64.9,
      "durability": null,
-     "comfort": 60.5,
+     "comfort": 35.099999999999994,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 49.1,
-     "control": 39.5,
+     "control": 64.9,
      "durability": null,
-     "comfort": 60.5
+     "comfort": 35.099999999999994
     },
     "judgments": {
      "stiffness": {
-      "score": 39.5,
-      "level": 2,
-      "word": "morbida",
+      "score": 64.9,
+      "level": 4,
+      "word": "rigida",
       "lab_share": 1.0
      },
      "spin": {
@@ -21875,9 +22049,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 39.5,
-      "level": 2,
-      "word": "basso",
+      "score": 64.9,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "durability": {
@@ -21887,9 +22061,9 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 60.5,
-      "level": 4,
-      "word": "alto",
+      "score": 35.1,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      }
     },
@@ -21910,23 +22084,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      23.0,
-      22.0
+      22.0,
+      21.0
      ],
      "lbs": [
-      50.5,
-      48.5
+      48.5,
+      46.5
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +1.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da Confidential 1.25 corretta di +0.0 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (3 fonti) sono solo un riferimento. Profilo pentagonale. Spin stimato ≈ 5.8 (da un calibro o colore gemello, tra 5.3 e 6.3).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 23/22 kg (50.5/48.5 lbs)."
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
   {
@@ -21958,9 +22132,9 @@
     ]
    },
    "stiffness": {
-    "value_lbin": 210.3,
-    "low": 210.3,
-    "high": 210.3,
+    "value_lbin": 220.5,
+    "low": 205.4,
+    "high": 235.6,
     "kind": "parente"
    },
    "spin": {
@@ -22103,22 +22277,22 @@
    "derived": {
     "subscores": {
      "spin": 90.7,
-     "control": 50.0,
+     "control": 71.9,
      "durability": null,
-     "comfort": 50.0,
+     "comfort": 28.099999999999994,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 90.7,
-     "control": 50.0,
+     "control": 71.9,
      "durability": null,
-     "comfort": 50.0
+     "comfort": 28.099999999999994
     },
     "judgments": {
      "stiffness": {
-      "score": 50.0,
-      "level": 3,
-      "word": "media",
+      "score": 71.9,
+      "level": 4,
+      "word": "rigida",
       "lab_share": 1.0
      },
      "spin": {
@@ -22128,9 +22302,9 @@
       "lab_share": 1.0
      },
      "control": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
+      "score": 71.9,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "durability": {
@@ -22140,9 +22314,9 @@
       "lab_share": null
      },
      "comfort": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
+      "score": 28.1,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      }
     },
@@ -22163,23 +22337,23 @@
     "profile_score": null,
     "tension_start": {
      "kg": [
-      22.5,
-      21.5
+      21.5,
+      20.5
      ],
      "lbs": [
-      49.5,
-      47.5
+      47.5,
+      45.0
      ],
      "from": "solinco-confidential-16l",
      "indicative": true,
-     "note": "da Confidential 1.25 corretta di +0.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
+     "note": "da Confidential 1.25 corretta di -0.5 kg per la differenza di rigidità (TWU di un calibro gemello)"
     }
    },
    "notes": {
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (4 fonti) sono solo un riferimento. Profilo ottagonale. Spin stimato ≈ 8.2 (da un calibro o colore gemello, tra 7.7 e 8.7).",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
+    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità.",
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   }
  ]

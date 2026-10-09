@@ -119,6 +119,12 @@ def _review_score(agg, crit):
 def judgments(rec, sub, agg, pop):
     """Giudizio semplice per criterio: 70% laboratorio + 30% recensioni, pesi rinormalizzati se una parte manca."""
     lab = {**sub, "stiffness": percentile(stiff_lab(rec), pop["stiff_measured"])}
+    # stime da modello: si mostrano nelle barre (tratteggiate, lab_share 0) ma non entrano mai nel punteggio
+    modelled = set()
+    if lab["stiffness"] is None and (rec.get("stiffness") or {}).get("kind") == "modello":
+        lab["stiffness"] = percentile(rec["stiffness"]["value_lbin"], pop["stiff_measured"]); modelled.add("stiffness")
+    if lab["spin"] is None and (rec.get("spin") or {}).get("kind") == "modello":
+        lab["spin"] = percentile(rec["spin"]["value"], pop["spin_measured"]); modelled.add("spin")
     out = {}
     for c in JUDGE_CRITERIA:
         l = lab.get(c)
@@ -138,7 +144,9 @@ def judgments(rec, sub, agg, pop):
         score = round(sum(x * w for x, w in parts) / den, 1)
         level = min(5, int(score // 20) + 1)
         out[c] = {"score": score, "level": level, "word": (STIFF_WORDS if c == "stiffness" else WORDS)[level - 1],
-                  "lab_share": round((LAB_WEIGHT if l is not None else 0) / den, 2)}
+                  "lab_share": 0.0 if c in modelled else round((LAB_WEIGHT if l is not None else 0) / den, 2)}
+        if c in modelled:
+            out[c]["modelled"] = True
     return out
 
 
@@ -255,7 +263,7 @@ def derive_all(records, reviews=None):
         lab = subscores(r, pop)
         j = judgments(r, lab, reviews.get(r["id"]), pop)
         # punteggio profilo sui giudizi misti (laboratorio + recensioni); stessi campi letti da score.js
-        sub = {k: j[k]["score"] for k in ("spin", "control", "durability", "comfort")}
+        sub = {k: lab[k] for k in ("spin", "control", "durability", "comfort")}  # punteggio: solo laboratorio
         sub["affinity"] = best  # somiglianza massima con una preferita (0-100)
         r["derived"] = {
             "subscores": sub,
