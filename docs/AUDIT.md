@@ -173,6 +173,9 @@ Fatto in questo ramo:
   - Accessibilità: frecce sui tab, select/checkbox/summary più grandi, testo minimo 12,8 px.
   - Testi: virgola decimale nelle note generate, "RPM Blast è più rigida della Confidential", insight senza soglia di spin contraddittoria.
 
+- **Terza tornata (ricontrollo del tennista UX):** la freccia "▲" nel confronto compare solo se il primo supera il secondo di un margine reale (15 lb/in, 0,5 di spin, 5 punti di tenuta) e mai su controllo/comfort; etichette della mappa senza sovrapposizioni; toccando punti coincidenti o vicinissimi si vedono tutte le corde; meta viewport nel file; definizione di spin potential uniforme; puntini del confronto e cursori più grandi. Il verdetto del tennista UX dopo il ricontrollo: "sì con riserve" (le riserve sono quelle corrette in questa tornata).
+- **Scelta da confermare:** la Tenuta usa solo la perdita TWU; il TL6/TL12 del tuo test è mostrato ma non pesa se c'è TWU (così le corde senza il tuo test non risultano avvantaggiate). La Confidential 1,25 sale da 73 a 82. Per riportare il tuo test nel punteggio basta una riga in `subscores()` di `pipeline/derive.py`.
+
 Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
 
 ## C. Priorità consigliate

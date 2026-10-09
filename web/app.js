@@ -398,7 +398,15 @@ function drawScatter() {
     const g = groups.find((g) => g.model === r.model && Math.hypot(g.x - x, g.y - y) < 14);
     if (g) g.g.push(r.gauge_label || ''); else groups.push({ x, y, model: r.model, pref: r.preference, g: [r.gauge_label || ''] });
   }
-  for (const g of groups) { const right = g.x < W - 220;  const ly = g.y - 9 < T + 30 ? g.y + 22 : g.y - 9; s += `<text class="lbl" x="${g.x + (right ? 11 : -11)}" y="${ly}" text-anchor="${right ? 'start' : 'end'}">${g.pref === 'liked' ? '★ ' : '✕ '}${esc(g.model)} ${esc(g.g.join(' · '))}</text>`; }
+  const fs = narrow ? 16 : 11, placed = [];
+  for (const g of groups.sort((a, b) => a.y - b.y)) {
+    const right = g.x < W - 220, txt = `${g.pref === 'liked' ? '★ ' : '✕ '}${g.model} ${g.g.join(' · ')}`, w = txt.length * fs * 0.6;
+    let ly = g.y - 9 < T + 30 ? g.y + 22 : g.y - 9;
+    const x0 = g.x + (right ? 11 : -11 - w), box = (y) => ({ x0, x1: x0 + w, y0: y - fs, y1: y + 3 });
+    for (let k = 0; k < 8 && placed.some((b) => !(box(ly).x1 < b.x0 || box(ly).x0 > b.x1 || box(ly).y1 < b.y0 || box(ly).y0 > b.y1)); k++) ly += fs + 3;
+    placed.push(box(ly));
+    s += `<text class="lbl" x="${g.x + (right ? 11 : -11)}" y="${ly}" text-anchor="${right ? 'start' : 'end'}">${esc(txt)}</text>`;
+  }
   svg.innerHTML = s;
   const tip = $('#tip');
   svg.querySelectorAll('.dot, .hit').forEach((d) => {
@@ -417,7 +425,10 @@ function drawScatter() {
       const dot = svg.querySelector(`.dot[data-id="${d.dataset.id}"]`); dot.classList.add('sel');
       const cx = Number(dot.getAttribute('cx')), cy = Number(dot.getAttribute('cy')), right = cx < W - 200;
       svg.insertAdjacentHTML('beforeend', `<text class="lbl sel-lbl" x="${cx + (right ? 14 : -14)}" y="${Math.max(cy - 12, 20)}" text-anchor="${right ? 'start' : 'end'}">${esc(fullName(r))}</text>`);
-      $('#map-pick').innerHTML = card(r, { why: true }); $('#map-pick').scrollIntoView({ block: 'center', behavior: 'smooth' });
+      const same = [...svg.querySelectorAll('.dot')].filter((o) => Math.hypot(Number(o.getAttribute('cx')) - cx, Number(o.getAttribute('cy')) - cy) < 8).map((o) => BY_ID[o.dataset.id]);
+      const group = same.length > 1 ? same : [r];
+      $('#map-pick').innerHTML = (group.length > 1 ? `<p class="muted small">${group.length} corde vicinissime sulla mappa (a volte con dati identici):</p>` : '') + group.map((x) => card(x, { why: true })).join('');
+      (narrow ? $('.chart-box') : $('#map-pick')).scrollIntoView({ block: narrow ? 'start' : 'nearest', behavior: 'smooth' });
     };
     d.addEventListener('click', pick);
     d.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
@@ -447,7 +458,7 @@ const ROWS = [
   { k: 'stiffness', label: 'Rigidità', lead: 'più rigida', val: (r) => (r.stiffness && r.stiffness.kind !== 'modello' ? r.stiffness.value_lbin : null), show: (r) => `${r.stiffness ? `${isEst(r.stiffness, 'misurata') ? '≈ ' : ''}${fmt(r.stiffness.value_lbin, 0)} lb/in` : '—'} · ${r.derived.judgments?.stiffness?.word || 'n.d.'}`, small: (r) => [r.stiffness && isEst(r.stiffness, 'misurata') ? `${stKind(r.stiffness)}, tra ${fmt(r.stiffness.low, 0)} e ${fmt(r.stiffness.high, 0)} lb/in` : '', r.rpedia ? `Racketpedia ${fmt(r.rpedia.static_stiffness_kgmm, 2)} kg/mm` : '', r.excel?.stiff_index_avg != null ? `Stiff Index ${fmt(r.excel.stiff_index_avg, 2)}` : '', r.stiffness?.kind === 'da Racketpedia' ? 'da Racketpedia (statica): rispetto alle corde misurate TWU l\'ordine può invertirsi' : ''].filter(Boolean).join(' · ') },
   { k: 'spin', label: 'Spin', lead: 'più spin', val: (r) => (labSpin(r) ? r.spin.value : null), show: (r) => (r.spin && r.spin.value == null ? `${spinWord(r)} secondo i tester` : `${r.spin ? `${isEst(r.spin, 'misurato') ? '≈ ' : ''}${fmt(r.spin.value, 1)}` : '—'} · ${r.derived.judgments?.spin?.word || 'n.d.'}`), small: (r) => (!r.spin ? '' : r.spin.value == null ? 'nessuna stima numerica affidabile' : isEst(r.spin, 'misurato') ? `${SPIN_KIND[r.spin.kind]}, tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)}` : '') },
   { k: 'control', label: 'Controllo (stima dalla rigidità)', lead: 'più compatta', val: (r) => r.derived.judgments?.control?.score },
-  { k: 'durability', label: 'Tenuta', lead: 'tiene meglio', val: (r) => r.derived.judgments?.durability?.score, small: (r) => [r.twu?.tension_loss_pct != null ? `TWU −${fmt(r.twu.tension_loss_pct, 0)}% (prova breve)` : '', r.excel?.tl6 != null ? `6 mesi −${fmt(r.excel.tl6, 0)}%` : '', r.excel?.tl12 != null ? `12 mesi −${fmt(r.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') },
+  { k: 'durability', label: 'Tenuta', lead: 'tiene meglio', val: (r) => r.derived.judgments?.durability?.score, small: (r) => [r.twu?.tension_loss_pct != null ? `TWU −${fmt(r.twu.tension_loss_pct, 0)}% (prova breve)` : '', r.excel?.tl6 != null ? `6 mesi −${fmt(r.excel.tl6, 0)}%` : '', r.excel?.tl12 != null ? `12 mesi −${fmt(r.excel.tl12, 0)}%` : '', r.twu?.tension_loss_pct != null && r.excel?.tl6 != null ? '(il tuo test è informativo: nel punteggio conta la perdita TWU)' : ''].filter(Boolean).join(' · ') },
   { k: 'comfort', label: 'Comfort (stima dalla rigidità)', lead: 'più comoda', val: (r) => r.derived.judgments?.comfort?.score },
 ];
 const MISSING_WHY = {
@@ -464,7 +475,9 @@ function renderCompare() {
   for (const row of ROWS) {
     const vals = chosen.map(({ r }) => row.val(r)).filter((v) => v != null);
     nWith[row.k] = vals.length;
-    if (vals.length >= 2 && !(row.k === 'stiffness' && Math.max(...vals) - Math.min(...vals) < 15)) leaders[row.k] = Math.max(...vals);
+    const gap = { stiffness: 15, spin: 0.5, durability: 5 }[row.k];   // control/comfort sono stime: nessuna freccia
+    const sorted = [...vals].sort((a, b) => b - a);
+    if (gap !== undefined && sorted.length >= 2 && sorted[0] - sorted[1] >= gap) leaders[row.k] = sorted[0];
   }
   $('#cmp-cards').innerHTML = chosen.length ? chosen.map(({ r, i }) => `<article class="ccard">
     <h3><i class="sw" style="background:${SLOT[i]}"></i> ${esc(nameOf(r))}</h3><p class="muted small">${esc(subline(r))}</p><div class="badges">${badges(r)}</div>
@@ -559,18 +572,18 @@ function renderGuide() {
       <li>Su ogni corda, "Da dove vengono i dati" mostra fonte, metodo e margine di ogni numero.</li>
     </ol></div>
     <div class="callout"><h3>Parole difficili</h3><dl class="kv small">
-      <dt>Spin potential (TWU)</dt><dd>quanto la corda morde la palla e poi torna in sede, scala 0–10</dd>
+      <dt>Spin potential (TWU)</dt><dd>rapporto tra l'attrito corda-palla e quello corda-corda, scala 0–10: più è alto, più la corda morde la palla e torna in sede facilmente</dd>
       <dt>Snapback</dt><dd>il ritorno in sede delle corde dopo il colpo (legato allo spin potential)</dd>
       <dt>Rigidità dinamica (TWU, lb/in)</dt><dd>misurata con un urto veloce, come la palla</dd>
       <dt>Rigidità statica (Racketpedia, kg/mm)</dt><dd>misurata tirando piano la corda</dd>
-      <dt>Percentile / posizione</dt><dd>su 100 corde, a quanti posti dall'ultimo sta questa</dd>
+      <dt>Posizione (percentile)</dt><dd>un numero da 0 a 100: 90 vuol dire meglio del 90% delle altre corde del banco</dd>
       <dt>Corda gemello</dt><dd>stesso modello in un altro calibro o colore</dd>
     </dl></div>
     <p>Ogni corda ha fino a quattro fonti: il test Ektelon del tuo file, il laboratorio di Tennis Warehouse University (TWU), Racketpedia e le recensioni dei tester. Barre, punteggi e classifiche usano <b>solo dati di laboratorio</b>. Le recensioni dei tester restano nella scheda come link di riferimento, ma non spostano nulla.</p>
     <div class="callout"><h3>Perché le due rigidità non coincidono</h3>
       <p>Sulle ${rp.n ?? 48} corde misurate da entrambi, TWU e Racketpedia vanno nella stessa direzione ma non sono allineate (correlazione r = ${fmt(rp.r ?? 0.62, 2)}, dove 1 sarebbe identiche).</p>
       <ul>
-        <li><b>Velocità di carico.</b> TWU colpisce la corda in pochi millesimi di secondo, come la palla; Racketpedia la carica lentamente. Il poliestere cambia rigidità con la velocità di carico: la rigidità cambia con la velocità e ogni miscela reagisce in modo diverso, quindi l'ordine tra corde si rimescola.</li>
+        <li><b>Velocità di carico.</b> TWU colpisce la corda in pochi millesimi di secondo, come la palla; Racketpedia la carica lentamente. Il poliestere cambia rigidità con la velocità di carico: ogni miscela reagisce in modo diverso, quindi l'ordine tra corde si rimescola.</li>
         <li><b>Condizioni diverse.</b> Tensione di riferimento, lunghezza del tratto, temperatura, lotto e diametro reale.</li>
         <li><b>Risoluzione.</b> Racketpedia arrotonda a 0,05 kg/mm: molte corde risultano a pari merito.</li>
       </ul>
@@ -600,7 +613,7 @@ function renderGuide() {
         ['Tenuta', 'Quanto poco la corda perde tensione, dalla perdita TWU (prova breve; il TL6/TL12 del tuo test a 6 e 12 mesi resta nella scheda e si usa solo se manca TWU: sono due misure indipendenti e possono non essere in ordine). Con 4–5 ore a settimana conta: una poly che cala presto si sente alla seconda settimana.'],
         ['Controllo e comfort (stime)', 'Non sono misurati da nessuna fonte. Controllo segue la rigidità (e l\'allungamento a 50 lb del tuo test, dove c\'è); comfort è l\'opposto della rigidità. Le recensioni non entrano. "Potenza" è stata tolta: era sempre l\'opposto di controllo.'],
         ['Punteggio', 'Posizione 0–100 tra le corde del banco (non un voto assoluto): spin 35, tenuta 20, affinità con le tue preferite 20, servono spin e tenuta (senza, nessun punteggio); l\'affinità, se manca, si ignora. −15 se somiglia più a una non gradita (soglia 75). Per le corde con spin da gemello (±0,5) la scheda mostra anche l\'intervallo del punteggio.'],
-        ['Affinità', 'Somiglianza (0–100) con la più vicina delle tue due preferite, calcolata su 6 misure (rigidità, perdita TWU, spin, Stiff Index, TL6, Racketpedia): distanza tra z-score, +5 se stessa forma. È vicinanza, non qualità. Penalità −15 se somiglia più a una non gradita (soglia 75).'],
+        ['Affinità', 'Somiglianza (0–100) con la più vicina delle tue due preferite, calcolata su 6 misure (rigidità, perdita TWU, spin, Stiff Index, TL6, Racketpedia): distanza tra le misure normalizzate, +5 se stessa forma. È vicinanza, non qualità. Penalità −15 se somiglia più a una non gradita (soglia 75).'],
         ['Tensione di partenza', `È una stima: parte dalla tua preferita più simile e la corregge di circa ${fmt(Math.abs((ALL.find((r) => r.derived.tension_start) || {}).derived?.tension_start?.slope_kg_per_15 ?? 0.75), 2)} kg ogni 15 lb/in di rigidità in più (massimo ±2 kg). La pendenza è ricavata dalle tue due preferite (la O-Toro, più morbida, la tendi 1 kg più alta): solo due punti, quindi è un punto di partenza ±1 kg, non una misura.`]]
         .map(([t, d]) => `<div class="gcard"><h3>${t}</h3><p>${d}</p></div>`).join('')}
     </div>
