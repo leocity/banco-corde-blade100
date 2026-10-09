@@ -1,0 +1,54 @@
+# Banco Corde Blade 100
+
+Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v9 (16×19)**, giocatore di club tutto campo con rotazioni, < 50 lbs, 4–5 h/settimana.
+
+- **Pagina pubblicata (Artifact):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne
+- **Corde di riferimento:** ★ Solinco Confidential 1.25 (22/21 kg), ★ Toroline O-Toro 1.23 (23/22 kg); ✕ Confidential Soft, ✕ RPM Blast.
+
+## Fonti dei dati
+
+| Fonte | Dove | Cosa |
+|---|---|---|
+| Test Ektelon dell'utente | `data/source/String chart Aug 262026.xlsx` | allungamento/recupero 40–65 lbs, Stiff Index (= indice di cedimento), peso statico 24 h, TL6/TL12 |
+| TWU String Performance Database | `data/raw/twu.html` (snapshot), `data/raw/twu.json` | rigidità dinamica, perdita di tensione, spin potential (51 lbs, swing veloce) |
+| Racketpedia (solo dati gratuiti) | `data/agents/rpedia*.json` | rigidità statica kg/mm |
+| Recensioni tester | `data/agents/reviews_r*.json` | **solo link informativi**: non entrano in nessun calcolo |
+| Catalogo, produzione, anni di uscita | `data/agents/catalog.json`, `prod_p*.json`, `year_p*.json` | completezza marche, fuori produzione, corde uscite prima del 2020 |
+| Correzioni curate | `data/crosscheck_overrides.json`, `data/catalog_fixes.json`, `data/agents/*_overrides.json`, `data/notes.json` | forme dai produttori, esiti del controllo web, note da incordatore scritte a mano |
+
+## Regole attuali (decise dall'utente)
+
+1. **Solo dati di laboratorio** per giudizi, punteggio e classifiche (Ektelon, TWU, Racketpedia, gemelli di calibro misurati). Le recensioni restano solo come link.
+2. **Si tolgono le corde uscite prima del 2020 e quelle fuori produzione**; le 4 corde di riferimento restano sempre. Anno non trovato → badge "anno da verificare".
+3. Punteggio profilo: spin 35, controllo 25, tenuta 20, potenza 20; −15 se la corda somiglia più a una non gradita che alle preferite (soglia 75).
+4. Spin: misurato TWU, oppure da gemello di calibro/colore (±0,5). Nessuna stima dalle recensioni (verificato: non predicono lo spin TWU).
+
+## Comandi
+
+Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, e Node per i test JS.
+
+```bash
+py -m pip install -r requirements.txt
+py -m pytest -q                          # test Python
+node --test web/score.test.mjs           # test JS (parità punteggio)
+py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
+py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)
+py -m pipeline.validate_agents           # abbinamenti + Racketpedia -> matches.json / rpedia.json
+py -m pipeline.merge                     # -> data/merged.json
+py -m pipeline.build                     # -> data/strings.json
+py -m pipeline.build_page                # -> dist/string-explorer.html (+ dist/preview.html per anteprima locale)
+py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/preview.html
+```
+
+## Struttura
+
+- `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), metriche (`derive.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
+- `web/` — `template.html`, `style.css`, `app.js` (interfaccia), `score.js` (punteggio, parità con Python).
+- `docs/superpowers/specs/` e `plans/` — specifiche e piani (v1 e v2, con le decisioni successive in fondo alla spec v2).
+- `tests/` — 122 test Python.
+
+## Lavoro aperto
+
+- Lista acquisti su Tennis Warehouse Europe da aggiornare con le nuove candidate (`data/agents/shopping_*.json` riflette la lista precedente).
+- 31 corde con "anno da verificare".
+- Minori noti: le Confidential Soft 16/17 (solo catalogo) non hanno l'avviso "simile a non gradita"; nella mappa gli assi avanzati "Perdita"/"Punteggio" disegnano pieni anche valori stimati; niente indicatori a punti nel confronto su telefono.

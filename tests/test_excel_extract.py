@@ -2,7 +2,7 @@ import os
 import pytest
 from pipeline.excel_extract import load_excel, load_rows
 
-XLSX = os.environ.get("XLSX", "F:/Users/Leo/Downloads/String chart Aug 262026.xlsx")
+XLSX = os.environ.get("XLSX", str(__import__("pathlib").Path(__file__).resolve().parent.parent / "data" / "source" / "String chart Aug 262026.xlsx"))
 
 
 @pytest.fixture(scope="module")
