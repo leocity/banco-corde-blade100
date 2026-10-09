@@ -190,6 +190,12 @@ select, input[type="search"] { font: inherit; font-size: .95rem; padding: 6px 8p
 .crow .s { font-size: .8rem; color: var(--muted); }
 .lead { color: var(--court); font-size: .8rem; font-weight: 600; }
 .swipe-hint { display: none; }
+.cmp-dots { display: none; justify-content: center; gap: 8px; }
+.dot-i { width: 14px; height: 14px; min-width: 14px; padding: 0; border-radius: 50%; border: 2px solid var(--fg-2); background: transparent; cursor: pointer; }
+.dot-i.on { background: var(--accent); border-color: var(--accent); }
+.prov { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.prov p { margin-top: 2px; color: var(--fg-2); max-width: 65ch; }
+.leg-row { display: grid; grid-template-columns: minmax(150px, max-content) 1fr; gap: 10px; align-items: center; padding: 4px 0; }
 .crow.missing { background: repeating-linear-gradient(135deg, transparent 0 6px, var(--surface-2) 6px 7px); }
 .crow.est .v { font-style: italic; }
 .crow.missing .v { color: var(--muted); font-style: italic; font-weight: 600; }
@@ -248,6 +254,8 @@ dialog#sheet::backdrop { background: rgb(10 16 15 / .45); }
   .tabs .ico { font-size: 1.1rem; }
   .cmp-scroll { grid-auto-columns: 86%; }
   .swipe-hint { display: block; }
+  .cmp-dots { display: flex; }
+  .dot-i { min-height: 24px; min-width: 24px; background-clip: content-box; padding: 5px; }
   .explore-cards { display: grid; }
   .explore-table { display: none; }
   dialog#sheet { margin: auto 0 0; width: 100%; height: 92%; max-width: 100%; border-radius: 14px 14px 0 0; }

@@ -126,3 +126,21 @@ def test_sources_disagree_when_excel_soft_but_twu_stiff():
     assert sources_disagree(soft_excel_stiff_twu, POP) is True
     assert sources_disagree(consistent, POP) is False
     assert sources_disagree({"twu": None, "excel": {"stiff_index_avg": 6.6}}, POP) is False
+
+
+def test_anchor_slope_from_the_two_favourites():
+    from pipeline.derive import anchor_slope
+    s = anchor_slope([{"stiffness": 212.0, "kg": [22, 21]}, {"stiffness": 166.0, "kg": [23, 22]}])
+    assert abs(s - (1.0 / -46.0)) < 1e-9 and s * 15 > -0.4   # gentler than the old -0.75 per 15 lb/in
+    assert anchor_slope([{"stiffness": 212.0, "kg": [22, 21]}, {"stiffness": 210.0, "kg": [23, 22]}]) is None
+    assert anchor_slope([{"stiffness": 212.0, "kg": [22, 21]}]) is None
+
+
+def test_tension_uses_personal_slope_and_states_it():
+    from pipeline.derive import tension_start
+    anchors = [{"id": "solinco-confidential-16l", "kg": [22, 21], "stiffness": 212.0, "sim": 80},
+               {"id": "toroline-o-toro-17", "kg": [23, 22], "stiffness": 166.0, "sim": 40}]
+    t = tension_start({"twu": {"stiffness_lbin": 242.0}}, anchors, slope=-1.0 / 46.0)
+    assert t["kg"] == [21.5, 20.5] and t["slope_kg_per_15"] == -0.33 and "tue due preferite" in t["note"]
+    old = tension_start({"twu": {"stiffness_lbin": 242.0}}, anchors)
+    assert old["kg"] == [20.5, 19.5] and "non validata" in old["note"]
