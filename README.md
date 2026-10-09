@@ -11,7 +11,7 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 |---|---|---|
 | Test Ektelon dell'utente | `data/source/String chart Aug 262026.xlsx` | allungamento/recupero 40–65 lbs, Stiff Index (= indice di cedimento), peso statico 24 h, TL6/TL12 |
 | TWU String Performance Database | `data/raw/twu.html` (snapshot), `data/raw/twu.json` | rigidità dinamica, perdita di tensione, spin potential (51 lbs, swing veloce) |
-| Racketpedia (solo dati gratuiti) | `data/agents/rpedia*.json` | rigidità statica kg/mm |
+| Racketpedia (solo dati gratuiti) | `data/raw/racketpedia.json` (sito, `py -m pipeline.rpedia_site`), `data/agents/rpedia*.json` (agente, verificato sul sito) | rigidità statica kg/mm, con URL della scheda |
 | Recensioni tester | `data/agents/reviews_r*.json` | **solo link informativi**: non entrano in nessun calcolo |
 | Catalogo, produzione, anni di uscita | `data/agents/catalog.json`, `prod_p*.json`, `year_p*.json` | completezza marche, fuori produzione, corde uscite prima del 2020 |
 | Correzioni curate | `data/crosscheck_overrides.json`, `data/catalog_fixes.json`, `data/agents/*_overrides.json`, `data/notes.json` | forme dai produttori, esiti del controllo web, note da incordatore scritte a mano |
@@ -35,6 +35,7 @@ node --test web/score.test.mjs           # test JS (parità punteggio)
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
 py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)
 py -m pipeline.validate_agents           # abbinamenti + Racketpedia -> matches.json / rpedia.json
+py -m pipeline.rpedia_site               # riscarica Racketpedia dal sito (rete) -> data/raw/racketpedia.json
 py -m pipeline.merge                     # -> data/merged.json
 py -m pipeline.build                     # -> data/strings.json
 py -m pipeline.build_page                # -> dist/string-explorer.html (+ dist/preview.html per anteprima locale)
