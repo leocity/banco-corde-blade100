@@ -156,8 +156,22 @@ Fatto in questo ramo:
   - *Racketpedia* (`pipeline/rpedia_site.py`, `data/raw/racketpedia.json`): scaricate le liste paginate di 11 marche (318 righe con URL e rigidità statica). Le righe scritte dall'agente sono ora verificate sul sito: 21 abbinamenti nuovi o corretti, tra cui 11 corde che non avevano alcun dato (Re-String 16/18, Enso Pro, A5, Helix, Flash, Alpha), la Re-String Sync 1,25 che era abbinata al calibro sbagliato (0,85 → 0,95 kg/mm), la Head Lynx Tour 1,30 (1,05 → 1,15) e la Yonex Poly Tour Rev 1,30 (0,85 → 0,80). La regressione Racketpedia → TWU ora usa 26 coppie esatte invece di 18: errore 10,5 invece di 11,3 lb/in. Le schede gratuite non hanno altro che la rigidità statica (spin, tenuta ecc. sono a pagamento).
   - *TWU*: riscaricata la tabella: identica allo snapshot (130 corde in ambito). Non contiene Re-String, Enso Pro, Wasabi X, Polaris, Hawk Seeding né Pro Line Rough.
   - *StringSpec* (791 corde): dichiara di non misurare nulla, i dati sono TWU rielaborati. Nessun dato nuovo, quindi non usato. Spunto: TWU misura il diametro reale, che potrebbe sostituire il calibro nominale nella correzione.
-  - *USRSA via TruPro*: tabella di laboratorio (62 lb, protocollo USRSA) solo per le corde TRU PRO, nessuna delle nostre. Utile come verifica indipendente della correzione per il calibro: su 25 coppie di calibri (8 modelli) la pendenza di 203 lb/in per mm ricavata da TWU riduce l'errore da 20,7 a 7,8 lb/in (la pendenza USRSA è 289, quindi la nostra correzione è prudente).
+  - *USRSA via TruPro*: tabella di laboratorio (62 lb, protocollo USRSA) solo per le corde TRU PRO, nessuna delle nostre. Utile come verifica indipendente della correzione per il calibro: su 23 coppie di calibri (8 modelli) la pendenza di 203 lb/in per mm ricavata da TWU riduce l'errore da 20,7 a 7,8 lb/in (la pendenza USRSA è 289, quindi la nostra correzione è prudente).
   - Restano senza dati di laboratorio pubblici, quindi solo stima dal calibro: Head Hawk Seeding, Kirschbaum Pro Line Rough, Signum Pro Polaris, Toroline Wasabi X.
+
+- **Seconda tornata (convalida del "tennista UX", agente indipendente, e correzioni):**
+  - *Tenuta* ora usa solo la perdita TWU (c'è per 70 corde); il TL6 del tuo test si usa solo se manca TWU. Prima la media dei due penalizzava chi aveva un TL6 "cattivo": il Confidential 1,20 (stessa perdita TWU del 1,25, ma senza TL6) risultava 98 contro 66.
+  - Le altre taglie delle tue preferite non possono più comparire nelle "3 da provare".
+  - Il margine dello spin da gemello (±0,5) arriva al punteggio (intervallo "tra X e Y").
+  - La pendenza della tensione ora è ricavata dalle tue due preferite (−0,32 kg ogni 15 lb/in, prima −0,75 senza fonte); ±1 kg dichiarato.
+  - Scheda "Da dove vengono i numeri" (fonte, metodo, margine, campione) su ogni corda.
+  - Sintesi del confronto: niente "guadagni spin" sulle stime, un confronto per ogni corda rispetto alla prima, "rigidità simile" se la differenza è entro l'errore; la freccia "più rigida" compare solo oltre 15 lb/in; avviso sulle stime Racketpedia.
+  - Esplora: ordinamento anche su telefono; calibri in mm; selezione del confronto raggruppata per marca con mm e codice.
+  - Mappa su telefono: testi da ~10 px, punti più grandi con area di tocco di 40 px, nome sulla corda toccata, legenda della mediana.
+  - Liste: preset "Da stimare" per le corde senza punteggio (Re-String); "n.d." al posto del trattino grande.
+  - Guida: riquadro "In 5 righe", "Parole difficili", numeri dei modelli e del controllo USRSA letti dai dati (`data/raw/usrsa_trupro.json`); tolte due affermazioni non riscontrabili.
+  - Accessibilità: frecce sui tab, select/checkbox/summary più grandi, testo minimo 12,8 px.
+  - Testi: virgola decimale nelle note generate, "RPM Blast è più rigida della Confidential", insight senza soglia di spin contraddittoria.
 
 Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
 

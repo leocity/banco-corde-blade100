@@ -92,7 +92,9 @@ def subscores(rec, pop):
     return {
         "spin": percentile(spin_lab(rec), pop["spin_measured"]),
         "control": _mean([st, _inv(pct("excel_stretch50"))]),
-        "durability": _mean([_inv(pct("twu_tension_loss")), _inv(pct("excel_tl6"))]),
+        # stessa base per tutte: la perdita TWU (c'è per 70 corde); il TL6 del tuo test solo se manca TWU.
+        # Mescolare le due metriche penalizzava chi ha un tuo TL6 "cattivo" rispetto a chi non ce l'ha.
+        "durability": _inv(pct("twu_tension_loss")) if pct("twu_tension_loss") is not None else _inv(pct("excel_tl6")),
         "comfort": _inv(pct("rpedia_static") if rp is not None else st),
     }
 
@@ -243,7 +245,7 @@ def tension_start(rec, anchors, slope=None):
             ((rec.get("stiffness") or {}).get("kind")), "TWU")
         basis = "dalle tue due preferite" if slope is not None else "regola empirica non validata"
         note = (f"da {ANCHOR_NAMES.get(anchor['id'], anchor['id'])} corretta di {delta:+.1f} kg per la differenza di rigidità "
-                f"({src}; pendenza {k * 15:+.2f} kg ogni 15 lb/in, {basis})")
+                f"({src}; pendenza {k * 15:+.2f} kg ogni 15 lb/in, {basis})").replace(".", ",")
     return {"kg": kg, "lbs": [_half(x * KG_TO_LBS) for x in kg], "from": anchor["id"],
             "indicative": True, "note": note, "slope_kg_per_15": round(k * 15, 2), "range_kg": 1.0}
 

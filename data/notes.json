@@ -1,5 +1,5 @@
 {
- "_insight": "I tuoi gusti non sono 'morbido contro rigido'. Ami due corde opposte: Confidential è compatta (circa 212 lb/in: la riga TWU è del calibro 1,30 con 222 lb/in, corretta per il tuo 1,25) e perde solo il 22% di tensione; O-Toro è tra le più morbide del banco (166 lb/in, misurata), ha lo spin potential più alto (9,4) ma perde il 44%. Il filo comune è una risposta netta con buon snapback. RPM Blast è rigida con uno snapback misurato basso (4,6) e cala presto; Confidential Soft è una via di mezzo, più morbida della tua Confidential ma senza lo scatto di O-Toro. Regola pratica: cerca spin potential TWU sopra 6,5, poi scegli se la vuoi compatta (lato Confidential) o viva (lato O-Toro).",
+ "_insight": "I tuoi gusti non sono 'morbido contro rigido'. Ami due corde opposte: Confidential è compatta (circa 212 lb/in: la riga TWU è del calibro 1,30 con 222 lb/in, corretta per il tuo 1,25) e perde solo il 22% di tensione; O-Toro è tra le più morbide del banco (166 lb/in, misurata), ha lo spin potential più alto (9,4) ma perde il 44%. Lo spin potential è il rapporto tra l'attrito corda-palla e quello corda-corda: più è alto, più la corda morde la palla e poi torna in sede. Le tue due preferite stanno a 6,4 e 9,4; le non gradite a 4,6 (RPM Blast, rigida e che cala presto) e 6,5 (Confidential Soft, più morbida della tua Confidential ma senza lo scatto di O-Toro). Con quattro corde lo spin da solo non basta a distinguere le tue scelte: è un'ipotesi, non una regola. Parti dalle corde con spin potential medio-alto e scegli se le vuoi compatte (lato Confidential) o vive (lato O-Toro).",
  "solinco-confidential-16l": {
   "feel": "Co-poly a 4 spigoli (quadrata per Solinco; nel tuo file è segnata tonda): risposta piena e prevedibile, poca tasca, ottima tenuta (22% su TWU sulla 1.30, circa 24% sulla 1.25 per un altro laboratorio, 15% a 6 mesi nel tuo test).",
   "on_blade_100_v9": "Sulla Blade flessibile a RA basso è l'abbinamento classico: il telaio restituisce la potenza che la corda non dà. I 4 spigoli e il 16×19 aperto danno buona presa sulla palla.",
@@ -21,7 +21,7 @@
  "babolat-rpm-blast-17": {
   "feel": "Ottagonale rigida (234 lb/in) con snapback misurato basso da TWU (4,6), anche se i tester la considerano una corda da spin; calo di tensione sensibile (20% a 6 mesi nel tuo test).",
   "on_blade_100_v9": "Su un telaio a RA basso la rigidità si sente come piatto 'secco': controllo sì, ma palla corta e poco aiuto sullo spin.",
-  "for_your_style": "Non ti è piaciuta: è rigida come la Confidential ma con meno scorrimento delle corde, e il piatto cala prima.",
+  "for_your_style": "Non ti è piaciuta: è più rigida della Confidential (circa 234 contro 212 lb/in), con meno scorrimento delle corde, e il piatto cala prima.",
   "vs_favorites": "Riferimento negativo: segnala le corde rigide e poco 'scorrevoli'."
  },
  "toroline-o-toro-tour-17": {

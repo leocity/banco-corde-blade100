@@ -49,6 +49,7 @@
         <button type="button" class="preset" data-preset="similar" aria-pressed="false">Come le tue preferite</button>
         <button type="button" class="preset" data-preset="spin" aria-pressed="false">Più spin, stesso controllo</button>
         <button type="button" class="preset" data-preset="durable" aria-pressed="false">Durano di più</button>
+        <button type="button" class="preset" data-preset="estimated" aria-pressed="false">Da stimare</button>
       </div>
       <p class="muted small" id="preset-desc"></p>
       <div class="list" id="list"></div>
@@ -91,6 +92,7 @@
     <section id="esplora" class="panel" role="tabpanel" aria-labelledby="tab-esplora" hidden>
       <div class="controls">
         <label>Cerca <input type="search" id="f-q" placeholder="Nome"></label>
+        <label>Ordina per <select id="f-sort"><option value="score:-1">Punteggio (più alto)</option><option value="stiff:1">Rigidità (morbide prima)</option><option value="stiff:-1">Rigidità (rigide prima)</option><option value="spin:-1">Spin (più alto)</option><option value="tl:1">Perdita di tensione (minore)</option><option value="name:1">Nome</option></select></label>
         <label>Marca <select id="f-brand"><option value="">Tutte</option></select></label>
         <label>Calibro <select id="f-gauge"><option value="">Tutti</option></select></label>
         <label>Forma <select id="f-shape"><option value="">Tutte</option></select></label>

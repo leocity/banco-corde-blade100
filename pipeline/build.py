@@ -7,7 +7,7 @@ import pathlib
 
 from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
-from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
+from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calibrate_tester_spin, estimate_spin, check_gauge_usrsa, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
 from pipeline.notes_gen import apply_notes
 from pipeline.rpedia_site import apply_site
@@ -32,7 +32,7 @@ def _corr(xs, ys):
 REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
-def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None):
+def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, usrsa=None):
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
@@ -64,6 +64,8 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     stiff_pop = [v for v in (_measured(r, "stiffness_lbin") for r in records) if v is not None]
     rp_args = (rp_meta["a"], rp_meta["b"], rp_meta["mae"]) if rp_meta else None
     gauge_model = fit_gauge_model(records)
+    if usrsa and gauge_model.get("slope") is not None:
+        gauge_model["usrsa"] = check_gauge_usrsa(usrsa, gauge_model["slope"])
     # modello della rigidità dal solo calibro: nessun giudizio personale dei tester
     stiff_model = fit_stiffness_model([(r.get("gauge_mm"), _measured(r, "stiffness_lbin")) for r in records
                                        if _measured(r, "stiffness_lbin") is not None])
@@ -124,7 +126,8 @@ if __name__ == "__main__":
     years = [row for f in sorted(glob.glob(str(ROOT / "data/agents/year_p*.json")))
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     site_rows = _load("data/raw/racketpedia.json", [])
-    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows)
+    usrsa = (_load("data/raw/usrsa_trupro.json", {}) or {}).get("rows")
+    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows, usrsa=usrsa)
     print("Racketpedia dal sito:", len(site_rows), "righe;", len(out["estimates_meta"]["rpedia_site"]["changes"]), "abbinamenti nuovi o corretti")
     print("rimosse:", [(x["name"], x["reason"]) for x in out["removed_discontinued"]])
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

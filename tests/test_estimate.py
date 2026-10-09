@@ -183,3 +183,11 @@ def test_rp_sibling_used_with_gauge_correction_and_wider_margin():
 
 def test_gauge_model_needs_enough_pairs():
     assert fit_gauge_model([srec("a-1", "A", 1.25, 200.0)])["usable"] is False
+
+
+def test_usrsa_check_reports_error_with_and_without_correction():
+    from pipeline.estimate import check_gauge_usrsa
+    rows = [{"name": "A", "gauge_mm": 1.18, "stiffness_lbin": 190.0}, {"name": "A", "gauge_mm": 1.23, "stiffness_lbin": 200.0},
+            {"name": "A", "gauge_mm": 1.28, "stiffness_lbin": 210.0}]
+    r = check_gauge_usrsa(rows, 200.0)
+    assert r["n_pairs"] == 3 and r["mae_corrected"] < r["mae_no_correction"] and check_gauge_usrsa(rows, None) is None

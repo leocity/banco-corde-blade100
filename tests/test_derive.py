@@ -92,7 +92,7 @@ def test_similarity_is_smooth_not_clipped_to_zero():
 
 def test_tension_note_uses_readable_anchor_name():
     t = tension_start({"twu": {"stiffness_lbin": 252.3}}, ANCHORS)
-    assert "Confidential 1.25" in t["note"] and "solinco-confidential-16l" not in t["note"]
+    assert "Confidential 1,25" in t["note"] and "solinco-confidential-16l" not in t["note"]
 
 
 def test_disliked_flag_requires_dominance_over_liked():
