@@ -3,14 +3,15 @@ import assert from 'node:assert/strict';
 import { profileScore, kgToLbs, DEFAULT_WEIGHTS } from './score.js';
 
 test('penalità non gradite: 15 punti sopra soglia 75', () => {
-  const sub = { spin: 60, control: 50, durability: 70, power: 40 };
+  const sub = { spin: 60, durability: 70, affinity: 50 };
   assert.equal(profileScore(sub, DEFAULT_WEIGHTS, 50) - profileScore(sub, DEFAULT_WEIGHTS, 80), 15);
-  assert.equal(profileScore(sub, DEFAULT_WEIGHTS, 50), 56); // parità con Python (55.5 -> 56)
+  assert.equal(profileScore(sub, DEFAULT_WEIGHTS, 50), 60); // parità con Python
 });
 
 test('pesi rinormalizzati sui sotto-punteggi presenti', () => {
-  assert.equal(profileScore({ spin: 72, control: null, durability: null, power: null }, DEFAULT_WEIGHTS, null), 72);
-  assert.equal(profileScore({ spin: null, control: null, durability: null, power: null }, DEFAULT_WEIGHTS, null), null);
+  assert.equal(profileScore({ spin: 72, durability: 50, affinity: null }, DEFAULT_WEIGHTS, null), 64);
+  assert.equal(profileScore({ spin: 72, durability: null, affinity: 90 }, DEFAULT_WEIGHTS, null), null);
+  assert.equal(profileScore({ spin: null, durability: null, affinity: null }, DEFAULT_WEIGHTS, null), null);
 });
 
 test('kg -> lbs arrotondato a 0.5', () => {

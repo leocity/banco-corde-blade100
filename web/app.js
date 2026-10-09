@@ -41,15 +41,24 @@ function rescore() { for (const r of ALL) r._score = profileScore(r.derived.subs
 rescore();
 
 /* ---------- componenti ---------- */
-const CRIT = [['stiffness', 'Rigidità'], ['spin', 'Spin'], ['control', 'Controllo'], ['power', 'Potenza'], ['durability', 'Tenuta'], ['comfort', 'Comfort']];
+const CRIT = [['stiffness', 'Rigidità'], ['spin', 'Spin'], ['durability', 'Tenuta']];
+const CRIT_PROXY = [['control', 'Controllo'], ['comfort', 'Comfort']];
+const BAR_TITLE = {
+  stiffness: 'Posizione tra le corde del banco (rigidità dinamica TWU)',
+  spin: 'Posizione tra le corde del banco (spin potential TWU)',
+  durability: 'Posizione tra le corde del banco (perdita di tensione TWU e, dove c\'è, TL6 del tuo test)',
+  control: 'Stima: segue la rigidità (e l\'allungamento a 50 lb del tuo test, se presente). Non è misurato',
+  comfort: 'Stima: opposto della rigidità. Non è misurato',
+};
+function barRow(r, k, l, proxy) {
+  const x = (r.derived.judgments || {})[k] || {};
+  const est = proxy || (k === 'spin' && isEst(r.spin, 'misurato')) || (k === 'stiffness' && isEst(r.stiffness, 'misurata')) || x.lab_share === 0;
+  const has = x.score !== null && x.score !== undefined;
+  return `<div class="bar-row" title="${esc(BAR_TITLE[k])}"><span class="lab">${l}</span><div class="track"><div class="fill${k === 'stiffness' ? ' neutral' : ''}${est ? ' est' : ''}" style="width:${x.score ?? 0}%"></div></div><span class="word">${x.word ? `<b>${esc(x.word)}</b>` : '<span class="muted">n.d.</span>'}<span class="num">${has ? Math.round(x.score) : ''}</span></span></div>`;
+}
 function bars(r) {
-  const j = r.derived.judgments || {};
-  return `<div class="bars">${CRIT.map(([k, l]) => {
-    const x = j[k] || {};
-    const est = (k === 'spin' && isEst(r.spin, 'misurato')) || (k === 'stiffness' && isEst(r.stiffness, 'misurata')) || x.lab_share === 0;
-    const title = x.score === null || x.score === undefined ? 'nessun dato' : `${Math.round(x.score)}/100 · dati di laboratorio`;
-    return `<div class="bar-row" title="${esc(title)}"><span class="lab">${l}</span><div class="track"><div class="fill${k === 'stiffness' ? ' neutral' : ''}${est ? ' est' : ''}" style="width:${x.score ?? 0}%"></div></div><span class="word">${x.word ? `<b>${esc(x.word)}</b>` : '<span class="muted">n.d.</span>'}<span class="num">${x.score === null || x.score === undefined ? '' : Math.round(x.score)}</span></span></div>`;
-  }).join('')}</div>`;
+  return `<div class="bars">${CRIT.map(([k, l]) => barRow(r, k, l, false)).join('')}
+    <details class="proxy-bars"><summary>Stime dalla rigidità</summary>${CRIT_PROXY.map(([k, l]) => barRow(r, k, `${l} (stima)`, true)).join('')}<p class="muted small">Controllo e comfort non sono misurati da nessuna fonte: seguono la rigidità. Le barre tratteggiate sono stime.</p></details></div>`;
 }
 function badges(r) {
   const out = [];
@@ -69,24 +78,24 @@ function badges(r) {
 const tensionText = (r) => { const t = r.derived.tension_start; return t ? `${fmt(t.kg[0], 1)}/${fmt(t.kg[1], 1)} kg · ${fmt(t.lbs[0], 1)}/${fmt(t.lbs[1], 1)} lbs` : '—'; };
 function why(r) {
   const j = r.derived.judgments || {};
-  const strong = [['spin', 'spin'], ['control', 'controllo'], ['durability', 'tenuta'], ['comfort', 'comfort'], ['power', 'potenza']]
+  const strong = [['spin', 'spin'], ['durability', 'tenuta']]
     .filter(([k]) => (j[k]?.level || 0) >= 4).map(([, l]) => l);
   const parts = [];
-  if (strong.length) parts.push(`Forte in ${strong.slice(0, 3).join(', ')}`);
+  if (strong.length) parts.push(`Alta in ${strong.join(' e ')}`);
   if (j.stiffness?.word) parts.push(`rigidità ${j.stiffness.word.replace('molto ', 'molto ')}`);
   const sl = r.derived.similarity_liked || {};
   const best = Object.entries(sl).filter(([, v]) => v !== null).sort((a, b) => b[1] - a[1])[0];
-  if (best && best[1] >= 50) parts.push(`simile alla tua ${best[0] === 'confidential' ? 'Confidential' : 'O-Toro'} (${best[1]}/100)`);
+  if (best && best[1] >= 50) parts.push(`affinità ${best[1]}/100 con la tua ${best[0] === 'confidential' ? 'Confidential' : 'O-Toro'}`);
   return parts.join(' · ') || 'Profilo nella media';
 }
 function card(r, opts = {}) {
   return `<article class="scard">
     ${opts.rank ? `<span class="rank-tag">${opts.rank}</span>` : ''}
-    <div class="scard-head"><span class="scard-name">${esc(nameOf(r))}</span><span class="scard-score">${fmt(r._score, 0)}<small>per te</small></span><span class="scard-sub">${esc(subline(r))}</span></div>
+    <div class="scard-head"><span class="scard-name">${esc(nameOf(r))}</span><span class="scard-score">${fmt(r._score, 0)}<small>su 100</small></span><span class="scard-sub">${esc(subline(r))}</span></div>
     <div class="badges">${badges(r)}</div>
     ${opts.why ? `<p class="why">${esc(why(r))}</p>` : ''}
     ${bars(r)}
-    <p class="tension-line">Tensione di partenza: <b class="num">${tensionText(r)}</b></p>
+    <p class="tension-line" title="Stima con regola empirica: parte dalla tua preferita più simile e corregge per la rigidità. Non è una misura.">Tensione di partenza <span class="badge est">stima</span> <b class="num">${tensionText(r)}</b></p>
     <div class="card-actions"><button class="btn primary" type="button" data-open="${esc(r.id)}">Scheda</button><button class="btn" type="button" data-compare="${esc(r.id)}">Confronta</button></div>
   </article>`;
 }
@@ -102,18 +111,20 @@ function showTab(id) {
 }
 document.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('click', () => { showTab(b.dataset.tab); history.replaceState(null, '', '#' + b.dataset.tab); scrollTo(0, 0); }));
 $('#open-guide').addEventListener('click', () => { showTab('guida'); history.replaceState(null, '', '#guida'); scrollTo(0, 0); });
+document.addEventListener('click', (e) => { if (e.target.closest('[data-guide]')) { e.preventDefault(); showTab('guida'); history.replaceState(null, '', '#guida'); scrollTo(0, 0); } });
 
 /* ---------- PER TE ---------- */
 const reliable = (r) => r.is_target && !r.preference && !r.catalog_only && labSpin(r) && !r.derived.disliked_warning && r.crosscheck?.verdict !== 'contradicted' && r._score !== null;
+const topIds = () => ALL.filter(reliable).sort((a, b) => b._score - a._score).slice(0, 3).map((r) => r.id);
 function renderTop3() {
-  const top = ALL.filter(reliable).sort((a, b) => b._score - a._score).slice(0, 3);
+  const top = topIds().map((id) => BY_ID[id]);
   $('#top3').innerHTML = top.map((r, i) => card(r, { rank: ['Prima scelta', 'Seconda scelta', 'Terza scelta'][i], why: true })).join('');
-  $('#top3-note').textContent = 'Tra le marche che valuti, solo corde con spin misurato o da un calibro gemello; escluse quelle con dati contestati e quelle simili alle non gradite.';
+  $('#top3-note').innerHTML = `Solo corde con spin misurato o da calibro gemello. <b>Il punteggio (0–100) è una posizione tra le ${ALL.length} corde del banco, non un voto</b>: spin ${weights.spin}, tenuta ${weights.durability}, affinità con le tue preferite ${weights.affinity}. <a href="#guida" data-guide>Come si calcola e da dove vengono i dati</a>.`;
 }
 function renderTastes() {
-  $('#tastes').innerHTML = `<p class="eyebrow">Cosa dicono i tuoi gusti</p>${DATA.insight ? `<p>${esc(DATA.insight)}</p>` : ''}`;
+  $('#tastes').innerHTML = `<p class="eyebrow">Cosa dicono i tuoi gusti</p>${DATA.insight ? `<p>${esc(DATA.insight)}</p>` : ''}<p class="muted small">Ipotesi ricavata da 4 corde (2 preferite, 2 non gradite) e dalle misure TWU/Excel: non è una regola.</p>`;
 }
-const SLIDER_LABELS = { spin: 'Spin', control: 'Controllo', durability: 'Tenuta di tensione', power: 'Potenza' };
+const SLIDER_LABELS = { spin: 'Spin', durability: 'Tenuta di tensione', affinity: 'Affinità con le tue preferite' };
 function renderSliders() {
   $('#sliders').innerHTML = Object.keys(DEFAULT_WEIGHTS).map((k) => `<div class="slider"><div class="lab"><label for="w-${k}">${SLIDER_LABELS[k]}</label><span class="num" id="wv-${k}">${weights[k]}</span></div><input type="range" id="w-${k}" min="0" max="50" step="5" value="${weights[k]}"></div>`).join('');
   for (const k of Object.keys(DEFAULT_WEIGHTS)) {
@@ -128,7 +139,7 @@ const sub = (r, k) => r.derived.subscores?.[k] ?? null;
 const PRESETS = {
   score: { desc: 'Ordinate per punteggio sul tuo profilo, calcolato solo su dati di laboratorio.', list: (rs) => rs.filter((r) => r._score !== null).sort((a, b) => (hasLab(b) - hasLab(a)) || (b._score - a._score)) },
   similar: { desc: 'Le più vicine per misure a Confidential o O-Toro.', list: (rs) => rs.filter((r) => !r.preference && bestLiked(r) !== null).sort((a, b) => bestLiked(b) - bestLiked(a)) },
-  spin: { desc: 'Almeno il controllo della tua Confidential (±10), ma più spin.', list: (rs) => rs.filter((r) => !r.preference && !r.derived.disliked_warning && sub(r, 'spin') !== null && sub(r, 'control') !== null && sub(r, 'control') >= sub(conf, 'control') - 10 && sub(r, 'spin') > sub(conf, 'spin')).sort((a, b) => sub(b, 'spin') - sub(a, 'spin')) },
+  spin: { desc: 'Rigidità simile alla tua Confidential (entro ±10 punti sulla scala del banco), ma più spin.', list: (rs) => rs.filter((r) => !r.preference && !r.derived.disliked_warning && sub(r, 'spin') !== null && sub(r, 'control') !== null && sub(r, 'control') >= sub(conf, 'control') - 10 && sub(r, 'spin') > sub(conf, 'spin')).sort((a, b) => sub(b, 'spin') - sub(a, 'spin')) },
   durable: { desc: 'Quelle che tengono meglio la tensione, escluse quelle simili alle non gradite.', list: (rs) => rs.filter((r) => sub(r, 'durability') !== null && !r.derived.disliked_warning && r.preference !== 'disliked').sort((a, b) => sub(b, 'durability') - sub(a, 'durability')) },
 };
 let preset = 'score';
@@ -139,7 +150,10 @@ function renderList() {
   if ($('#only-target').checked) rs = rs.filter((r) => r.is_target || r.preference);
   if (q) { rs = rs.filter((r) => fullName(r).toLowerCase().includes(q)); $('#preset-desc').textContent = `${rs.length} corde trovate per "${q}".`; }
   else $('#preset-desc').textContent = PRESETS[preset].desc;
-  const list = (q ? rs.sort((a, b) => (b._score ?? -1) - (a._score ?? -1)) : PRESETS[preset].list([...rs])).slice(0, 12);
+  const shown = new Set(topIds());
+  let list = q ? rs.sort((a, b) => (b._score ?? -1) - (a._score ?? -1)) : PRESETS[preset].list([...rs]);
+  if (!q && preset === 'score') list = list.filter((r) => !shown.has(r.id));
+  list = list.slice(0, 12);
   $('#list').innerHTML = list.length ? list.map((r) => card(r)).join('') : '<p class="muted">Nessuna corda per questo criterio.</p>';
 }
 
@@ -261,7 +275,7 @@ function drawScatter() {
     const x = sx(mx.get(r)), y = sy(my.get(r)), c = CAT_COLOR[cat(r)], est = mx.est(r) || my.est(r);
     if (my.est(r) && my.lo) s += `<line class="err" x1="${x}" x2="${x}" y1="${sy(my.lo(r))}" y2="${sy(my.hi(r))}" stroke="${c}"/>`;
     if (mx.est(r) && mx.lo) s += `<line class="err" x1="${sx(mx.lo(r))}" x2="${sx(mx.hi(r))}" y1="${y}" y2="${y}" stroke="${c}"/>`;
-    s += `<circle class="dot${est ? ' hollow' : ''}" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.preference ? 8 : 6}" ${est ? `stroke="${c}"` : `fill="${c}"`} tabindex="0" role="button" aria-label="${esc(fullName(r))}"/>`;
+    s += `<circle class="dot${est ? ' hollow' : ''}" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.preference ? 8 : 6}" ${est ? `style="stroke:${c}"` : `fill="${c}"`} tabindex="0" role="button" aria-label="${esc(fullName(r))}"/>`;
   }
   const groups = [];
   for (const r of pts.filter((r) => r.preference)) {
@@ -308,10 +322,9 @@ function addToCompare(id) {
 const ROWS = [
   { k: 'stiffness', label: 'Rigidità', lead: 'più rigida', val: (r) => r.stiffness?.value_lbin, show: (r) => `${r.stiffness ? `${isEst(r.stiffness, 'misurata') ? '≈ ' : ''}${fmt(r.stiffness.value_lbin, 0)} lb/in` : '—'} · ${r.derived.judgments?.stiffness?.word || 'n.d.'}`, small: (r) => [r.stiffness && isEst(r.stiffness, 'misurata') ? STIFF_KIND[r.stiffness.kind] : '', r.rpedia ? `Racketpedia ${fmt(r.rpedia.static_stiffness_kgmm, 2)} kg/mm` : '', r.excel?.stiff_index_avg != null ? `Stiff Index ${fmt(r.excel.stiff_index_avg, 2)}` : ''].filter(Boolean).join(' · ') },
   { k: 'spin', label: 'Spin', lead: 'più spin', val: (r) => (labSpin(r) ? r.spin.value : null), show: (r) => (r.spin && r.spin.value == null ? `${spinWord(r)} secondo i tester` : `${r.spin ? `${isEst(r.spin, 'misurato') ? '≈ ' : ''}${fmt(r.spin.value, 1)}` : '—'} · ${r.derived.judgments?.spin?.word || 'n.d.'}`), small: (r) => (!r.spin ? '' : r.spin.value == null ? 'nessuna stima numerica affidabile' : isEst(r.spin, 'misurato') ? `${SPIN_KIND[r.spin.kind]}, tra ${fmt(r.spin.low, 1)} e ${fmt(r.spin.high, 1)}` : '') },
-  { k: 'control', label: 'Controllo', lead: 'più controllo', val: (r) => r.derived.judgments?.control?.score },
-  { k: 'power', label: 'Potenza', lead: 'più potenza', val: (r) => r.derived.judgments?.power?.score },
-  { k: 'durability', label: 'Tenuta', lead: 'tiene meglio', val: (r) => r.derived.judgments?.durability?.score, small: (r) => [r.twu?.tension_loss_pct != null ? `TWU −${fmt(r.twu.tension_loss_pct, 0)}%` : '', r.excel?.tl6 != null ? `6 mesi −${fmt(r.excel.tl6, 0)}%` : '', r.excel?.tl12 != null ? `12 mesi −${fmt(r.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') },
-  { k: 'comfort', label: 'Comfort', lead: 'più comoda', val: (r) => r.derived.judgments?.comfort?.score },
+  { k: 'control', label: 'Controllo (stima dalla rigidità)', lead: 'più compatta', val: (r) => r.derived.judgments?.control?.score },
+  { k: 'durability', label: 'Tenuta', lead: 'tiene meglio', val: (r) => r.derived.judgments?.durability?.score, small: (r) => [r.twu?.tension_loss_pct != null ? `TWU −${fmt(r.twu.tension_loss_pct, 0)}% (prova breve)` : '', r.excel?.tl6 != null ? `6 mesi −${fmt(r.excel.tl6, 0)}%` : '', r.excel?.tl12 != null ? `12 mesi −${fmt(r.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') },
+  { k: 'comfort', label: 'Comfort (stima dalla rigidità)', lead: 'più comoda', val: (r) => r.derived.judgments?.comfort?.score },
 ];
 function renderCompare() {
   const chosen = picks.map((id, i) => ({ r: BY_ID[id], i })).filter((x) => x.r);
@@ -325,13 +338,13 @@ function renderCompare() {
     ${ROWS.map((row) => { const v = row.val(r); const w = r.derived.judgments?.[row.k];
       return `<div class="crow"><span class="k">${row.label}</span><span class="v">${row.show ? row.show(r) : `${w?.word || 'n.d.'} <span class="num muted">${v == null ? '' : Math.round(v)}</span>`}</span>${row.small && row.small(r) ? `<span class="s">${esc(row.small(r))}</span>` : ''}${v != null && leaders[row.k] === v ? `<span class="lead">▲ ${row.lead}</span>` : ''}</div>`; }).join('')}
     <div class="crow"><span class="k">Tensione di partenza</span><span class="v num">${tensionText(r)}</span></div>
-    <div class="crow"><span class="k">Punteggio per te</span><span class="v">${fmt(r._score, 0)}</span></div>
+    <div class="crow"><span class="k">Punteggio (rango tra ${ALL.length})</span><span class="v">${fmt(r._score, 0)}</span></div>
     <button class="btn" type="button" data-open="${esc(r.id)}">Scheda</button></article>`).join('') : '<p class="muted">Scegli almeno una corda.</p>';
   $('#cmp-summary').innerHTML = chosen.length >= 2 ? summary(chosen[0].r, chosen[1].r) : '';
 }
 function summary(a, b) {
   const gain = [], lose = [];
-  for (const [k, l] of [['spin', 'spin'], ['control', 'controllo'], ['power', 'potenza'], ['durability', 'tenuta'], ['comfort', 'comfort']]) {
+  for (const [k, l] of [['spin', 'spin'], ['durability', 'tenuta']]) {
     const va = a.derived.judgments?.[k]?.score, vb = b.derived.judgments?.[k]?.score;
     if (va == null || vb == null) continue;
     if (vb - va >= 10) gain.push(l); else if (va - vb >= 10) lose.push(l);
@@ -349,12 +362,12 @@ const COLS = [
   { key: 'name', label: 'Corda', get: nameOf, cell: (r) => `<button class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button>` },
   { key: 'mm', label: 'mm', n: true, get: (r) => r.gauge_mm, cell: (r) => fmtH(r.gauge_mm, 2) },
   { key: 'shape', label: 'Forma', get: (r) => SHAPES[r.shape] || r.shape || '', cell: (r) => esc(SHAPES[r.shape] || r.shape || '—') },
-  { key: 'stiff', label: 'Rigidità', n: true, get: (r) => r.stiffness?.value_lbin, cell: (r) => (r.stiffness ? `<span class="${isEst(r.stiffness, 'misurata') ? 'proxy' : ''}" title="${esc(STIFF_KIND[r.stiffness.kind])}">${isEst(r.stiffness, 'misurata') ? '≈' : ''}${fmt(r.stiffness.value_lbin, 0)}</span>` : fmtH(null)) },
-  { key: 'spin', label: 'Spin', n: true, get: (r) => r.spin?.value, cell: (r) => (!r.spin ? fmtH(null) : r.spin.value == null ? `<span class="proxy" title="giudizio dei tester, senza numero">${esc(spinWord(r))}</span>` : `<span class="${isEst(r.spin, 'misurato') ? 'proxy' : ''}" title="${esc(SPIN_KIND[r.spin.kind])}">${isEst(r.spin, 'misurato') ? '≈' : ''}${fmt(r.spin.value, 1)}</span>`) },
-  { key: 'tl', label: 'Perdita %', n: true, get: (r) => r.twu?.tension_loss_pct, cell: (r) => fmtH(r.twu?.tension_loss_pct, 1) },
+  { key: 'stiff', label: 'Rigidità lb/in', title: 'Rigidità dinamica TWU (lb/in). ≈ = stima da calibro gemello o da Racketpedia', n: true, get: (r) => r.stiffness?.value_lbin, cell: (r) => (r.stiffness ? `<span class="${isEst(r.stiffness, 'misurata') ? 'proxy' : ''}" title="${esc(STIFF_KIND[r.stiffness.kind])}">${isEst(r.stiffness, 'misurata') ? '≈' : ''}${fmt(r.stiffness.value_lbin, 0)}</span>` : fmtH(null)) },
+  { key: 'spin', label: 'Spin TWU', title: 'Spin potential TWU, scala 0–10 a 51 lbs, swing veloce. ≈ = stima da calibro/colore gemello', n: true, get: (r) => r.spin?.value, cell: (r) => (!r.spin ? fmtH(null) : r.spin.value == null ? `<span class="proxy" title="giudizio dei tester, senza numero">${esc(spinWord(r))}</span>` : `<span class="${isEst(r.spin, 'misurato') ? 'proxy' : ''}" title="${esc(SPIN_KIND[r.spin.kind])}">${isEst(r.spin, 'misurato') ? '≈' : ''}${fmt(r.spin.value, 1)}</span>`) },
+  { key: 'tl', label: 'Perdita TWU %', title: 'Perdita di tensione misurata da TWU (prova breve)', n: true, get: (r) => r.twu?.tension_loss_pct, cell: (r) => fmtH(r.twu?.tension_loss_pct, 1) },
   { key: 'si', label: 'Stiff Idx', title: 'Stiff Index del test Ektelon: indice di cedimento, più alto = la corda torna meno indietro', n: true, get: (r) => r.excel?.stiff_index_avg, cell: (r) => fmtH(r.excel?.stiff_index_avg, 2) },
-  { key: 'score', label: 'Per te', n: true, get: (r) => r._score, cell: (r) => fmtH(r._score, 0) },
-  { key: 'sim', label: 'Simil. ★', n: true, get: bestLiked, cell: (r) => fmtH(bestLiked(r), 0) },
+  { key: 'score', label: 'Punti', title: 'Punteggio 0–100 = posizione in classifica tra le corde del banco', n: true, get: (r) => r._score, cell: (r) => fmtH(r._score, 0) },
+  { key: 'sim', label: 'Affinità ★', title: 'Somiglianza (0–100) con la più vicina delle tue due preferite', n: true, get: bestLiked, cell: (r) => fmtH(bestLiked(r), 0) },
   { key: 'b', label: '', get: () => 0, cell: (r) => badges(r) },
 ];
 let sortKey = 'score', sortDir = -1;
@@ -405,15 +418,15 @@ function renderGuide() {
     <div class="guide-grid">
       ${[['Rigidità', 'Alta: palla controllata e piatto compatto, meno potenza. Bassa: più potenza e comfort. È descrittiva: non è né meglio né peggio.'],
         ['Spin', 'Quanto le verticali scorrono e tornano in sede. Più alto = più rotazione a parità di swing.'],
-        ['Tenuta', 'Quanto poco la corda perde tensione. Con 4–5 ore a settimana conta: una poly che cala presto si sente alla seconda settimana.'],
-        ['Controllo e potenza', 'Vengono dalla rigidità vista in direzioni opposte, più l\'allungamento del tuo test e i giudizi dei tester.'],
-        ['Comfort', 'Opposto della rigidità statica (o dinamica se manca), più i giudizi dei tester.'],
-        ['Tensione di partenza', 'Dalla tua preferita più simile, corretta di circa 0,75 kg ogni 15 lb/in di differenza di rigidità, fino a ±2 kg.']]
+        ['Tenuta', 'Quanto poco la corda perde tensione. Unisce la perdita TWU (prova breve) e, dove c\'è, la perdita TL6 del tuo test a 6 mesi. Con 4–5 ore a settimana conta: una poly che cala presto si sente alla seconda settimana.'],
+        ['Controllo e comfort (stime)', 'Non sono misurati da nessuna fonte. Controllo segue la rigidità (e l\'allungamento a 50 lb del tuo test, dove c\'è); comfort è l\'opposto della rigidità. Le recensioni non entrano. "Potenza" è stata tolta: era sempre l\'opposto di controllo.'],
+        ['Punteggio', 'Posizione 0–100 tra le corde del banco (non un voto assoluto): spin 35, tenuta 20, affinità con le tue preferite 20, servono spin e tenuta (senza, nessun punteggio); l\'affinità, se manca, si ignora. −15 se somiglia più a una non gradita (soglia 75). Gli spin ±0,5 delle stime non sono ancora propagati nel punteggio.'],
+        ['Tensione di partenza', 'È una stima con regola empirica: parte dalla tua preferita più simile e toglie circa 0,75 kg ogni 15 lb/in di rigidità in più (massimo ±2 kg). La regola non è stata validata su misure: usala come punto di partenza.']]
         .map(([t, d]) => `<div class="gcard"><h3>${t}</h3><p>${d}</p></div>`).join('')}
     </div>
-    ${(DATA.removed_discontinued || []).length ? `<div class="callout"><h3>Corde tolte perché vecchie o fuori produzione</h3><p class="small">Escluse le corde uscite prima del 2020 e quelle non più in vendita.</p><p class="small">${DATA.removed_discontinued.map((x) => `${esc(x.name)} <span class="muted">(${esc(x.reason || '')}${x.successor ? `, ora ${esc(x.successor)}` : ''})</span>`).join(' · ')}</p><p class="small muted">Anni e produzione verificati su siti dei produttori, Tennis Warehouse e Tennis Warehouse Europe. Le tue 4 corde di riferimento restano comunque.</p></div>` : ''}
+    ${(DATA.removed_discontinued || []).length ? `<div class="callout"><h3>Corde tolte perché vecchie o fuori produzione</h3><p class="small">Escluse le corde uscite prima del 2020 e quelle non più in vendita.</p><p class="small">${DATA.removed_discontinued.map((x) => `${esc(x.name)} <span class="muted">(${esc(x.reason || '')}${x.successor ? `, ora ${esc(x.successor)}` : ''})</span>`).join(' · ')}</p><p class="small muted">Anni e produzione raccolti da un agente dai siti dei produttori, Tennis Warehouse e Tennis Warehouse Europe: per molte corde l\'anno è solo "già in vendita nel…" e va verificato. Le tue 4 corde di riferimento restano comunque.</p></div>` : ''}
     <h3>Glossario del file Excel (colonne A–Y)</h3>
-    <div class="table-scroll"><table class="data"><tbody>${[['A–C', 'Marca, nome, calibro'], ['D–G', 'Tipo: poly, co-poly, budello, multifilamento'], ['H', 'Forma'], ['I', 'Tensione: 40, 50, 60, 65 lbs'], ['J–K', 'Lunghezza in tensione del tratto di 11,25″ e percentuale'], ['L–M', 'Lunghezza a riposo dopo il rilascio e percentuale'], ['N', 'Diff: stretch − recover'], ['O', 'Stiff Index: (diff / 11,25) × 100, indice di cedimento'], ['P–Q', 'Gain sul tratto e OLG sul piatto 16×19'], ['R–S', 'Elongazione al micrometro (non significativa)'], ['T–W', 'Peso statico 40 lbs: iniziale, dopo 24 h, a riposo, differenza'], ['X–Y', 'Perdita di tensione a 6 e 12 mesi da 50 lbs']].map(([a, b]) => `<tr><td class="n">${a}</td><td style="white-space:normal">${esc(b)}</td></tr>`).join('')}</tbody></table></div>`;
+    <div class="table-scroll"><table class="data"><tbody>${[['A–C', 'Marca, nome, calibro'], ['D–G', 'Tipo: poly, co-poly, budello, multifilamento'], ['H', 'Forma'], ['I', 'Tensione: 40, 50, 60, 65 lbs'], ['J–K', 'Lunghezza in tensione del tratto di 11,25″ e percentuale'], ['L–M', 'Lunghezza a riposo dopo il rilascio e percentuale'], ['N', 'Diff: stretch − recover'], ['O', 'Stiff Index: (diff / 11,25) × 100, indice di cedimento'], ['P–Q', 'Gain sul tratto e OLG sul piatto 16×19'], ['R–S', 'Elongazione al micrometro (non significativa)'], ['T–W', 'Peso statico 40 lbs: iniziale, dopo 24 h, a riposo, differenza'], ['X–Y', 'TL6 / TL12: perdita di tensione (%) a 6 e 12 mesi da 50 lbs']].map(([a, b]) => `<tr><td class="n">${a}</td><td style="white-space:normal">${esc(b)}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
 /* ---------- avvio ---------- */

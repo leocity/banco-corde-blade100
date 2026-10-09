@@ -1,9 +1,12 @@
 // Stessa regola di pipeline/derive.py: profile_score e conversione kg -> lbs.
-export const DEFAULT_WEIGHTS = { spin: 35, control: 25, durability: 20, power: 20 };
+export const DEFAULT_WEIGHTS = { spin: 35, durability: 20, affinity: 20 };
 export const DISLIKED_THRESHOLD = 75;
 export const DISLIKED_PENALTY = 15;
 
+export const REQUIRED_FOR_SCORE = ['spin', 'durability'];
+
 export function profileScore(sub, weights, dislikedSim) {
+  if (REQUIRED_FOR_SCORE.some((k) => sub[k] === null || sub[k] === undefined)) return null;
   let num = 0, den = 0;
   for (const k of Object.keys(weights)) {
     if (sub[k] === null || sub[k] === undefined) continue;

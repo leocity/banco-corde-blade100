@@ -49,7 +49,7 @@ INSUFFICIENT = "Dati insufficienti per giudicarla: non ci sono test di laborator
 
 
 def _blade(r, s):
-    if all(s.get(k) is None for k in ("control", "spin", "power")):
+    if all(s.get(k) is None for k in ("control", "spin")):
         return INSUFFICIENT
     b = _band(s["control"])
     if b == "hi":

@@ -43,8 +43,10 @@ Effetti:
 
 **Fix:** un'etichetta fissa "stima: regola empirica, non misura" con tooltip/tap che apre la formula; mostrare il range (±1 kg) invece di un punto; prima della v3 decidere se la regola ha basi (letteratura, o i tuoi test).
 
-### A4 🟠 Unità del tuo Excel interpretate senza prova ("6 / 12 mesi")
-L'intestazione del foglio dice solo `TL6` e `TL12`. La UI scrive "Perdita tensione **6 / 12 mesi**" (scheda) e "6 mesi −15% · 12 mesi −20%" (confronto), e li fonde con la perdita TWU nella barra "Tenuta". Nel codice c'è il commento "0% in 6/12 mesi su una poly è implausibile". Una poly che perde 17% in 6 *mesi* non è coerente con la tua stessa nota ("sentirai calare dopo 6–8 ore"): è molto più probabile che siano **ore** (o un'altra unità di tempo). **Verifica con te:** cosa significano TL6/TL12? Finché non è chiarito, l'etichetta "mesi" è potenzialmente sbagliata e `tl6` entra nel punteggio di Tenuta.
+### A4 🟡 TL6/TL12: sono mesi (confermato dall'utente), ma l'unità non è dichiarata e si mescola con la perdita TWU
+L'intestazione del foglio dice solo `TL6` e `TL12`; l'utente ha confermato che sono **mesi**, quindi l'etichetta "6 / 12 mesi" della UI è corretta (una prima versione di questo audit ipotizzava "ore": era un errore). Restano due problemi di racconto:
+- il file non lo dichiara (solo il glossario in Guida: "perdita a 6 e 12 mesi da 50 lbs"), e non si spiega che il valore è una perdita percentuale rispetto alla tensione iniziale;
+- la barra "Tenuta" mescola la perdita TWU (prova di laboratorio di breve durata) e TL6 dell'Excel (sei mesi in uso/stoccaggio): sono scale temporali molto diverse e la UI non lo dice.
 
 ### A5 🟠 Somiglianza "81/100" e penalità: metriche opache e su 2+2 campioni
 - `similarity()`: distanza gaussiana (`100·exp(−d²/2)`) su ≤6 variabili in z-score, **+5 se stessa forma**, calcolata solo su variabili in comune (min. 2). Nella card si vede "simile alla tua Confidential (81/100)" senza dire su quanti dati (`similarity_basis` esiste, ma sta nella scheda), né cosa significhi 81.
@@ -119,11 +121,26 @@ Scala: 🔴 blocca la comprensione, 🟠 forte attrito, 🟡 rifinitura.
 
 ---
 
+## Stato delle correzioni (2026-10-09)
+
+Fatto in questo ramo:
+- **A1**: tolta "Potenza"; Controllo e Comfort restano solo come *stime dalla rigidità* (barre tratteggiate, in un pannello chiuso, etichettate "stima"); il punteggio usa assi indipendenti: spin 35, tenuta 20, affinità con le preferite 20. Serve spin e tenuta, altrimenti nessun punteggio (64 corde su 102 hanno un punteggio; prima i dati mancanti gonfiavano la classifica). Le top 3 cambiano.
+- **A2/U5**: il punteggio è dichiarato "posizione tra le 102 corde", con i pesi, e c'è il link alla Guida; l'ipotesi sui gusti è dichiarata come tale (4 corde).
+- **A3**: "Tensione di partenza" ha il badge "stima" e la Guida dice che la regola non è validata.
+- **A4**: TL6/TL12 restano "mesi"; la Guida dichiara la scala temporale e la differenza con la perdita TWU.
+- **A7**: il testo sugli anni non dice più "verificati".
+- **U1**: i punti stimati della mappa ora si vedono (cerchi vuoti con barra d'errore).
+- **U3**: intestazione compatta su telefono, prima scheda nella prima schermata.
+- **Duplicazione**: le top 3 non si ripetono nella lista "Migliori per te".
+- **Accessibilità**: `--muted` più scuro (≥ 5:1), etichette zone senza opacità, pulsanti da 44 px, intestazioni di Esplora con unità e tooltip.
+
+Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
+
 ## C. Priorità consigliate
 
 1. **Sistemare il modello dei criteri (A1)**: togliere Potenza/duplicati, riscrivere Controllo e Comfort come "interpretazioni", ricalcolare il punteggio su assi indipendenti, e rifare le top-3 (cambieranno).
 2. **Aggiungere provenienza a ogni numero (A2, A3, A6, U5, U8, U9)**: un tap su qualunque valore apre "da dove viene" (fonte, condizioni, margine, quante corde nel campione) con link alla Guida; "stima" sempre visibile.
-3. **Chiarire TL6/TL12 con te (A4)** e correggere le etichette; poi decidere se la tensione consigliata (A3) deve restare o essere sostituita da un range con fonte.
+3. **Dichiarare le scale temporali di Tenuta (A4)** (TWU breve, Excel 6/12 mesi) e decidere se la tensione consigliata (A3) deve restare o essere sostituita da un range con fonte.
 4. **Sistemare la mappa (U1/U2)**: i punti stimati sono invisibili oggi.
 5. **Home mobile (U3/U4)**: intestazione compatta, top-3 più brevi, "perché" al posto delle 6 barre.
 6. Accessibilità (contrasto muted, target 44 px, tooltip touch).

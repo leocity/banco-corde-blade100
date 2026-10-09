@@ -32,17 +32,25 @@ def test_similarity_decreases_with_distance():
 
 
 def test_profile_score_disliked_penalty():
-    sub = {"spin": 60, "control": 50, "durability": 70, "power": 40}
+    sub = {"spin": 60, "durability": 70, "affinity": 50}
     assert profile_score(sub, disliked_sim=50) - profile_score(sub, disliked_sim=80) == 15
+    assert profile_score(sub, disliked_sim=50) == 60
 
 
 def test_profile_score_renormalizes_missing():
-    assert profile_score({"spin": 72, "control": None, "durability": None, "power": None}) == 72
+    assert profile_score({"spin": 72, "durability": 50, "affinity": None}) == 64
 
 
-def test_subscores_control_power_inverse_and_comfort():
+def test_profile_score_requires_spin_and_durability():
+    assert profile_score({"spin": 72, "durability": None, "affinity": 90}) is None
+    assert profile_score({"spin": None, "durability": 80, "affinity": 90}) is None
+
+
+def test_subscores_have_no_power_and_weights_are_independent():
+    from pipeline.derive import DEFAULT_WEIGHTS
     s = subscores(POP_RECS[9], POP)
-    assert s["control"] > s["power"] and s["spin"] > 50 and s["comfort"] < 50
+    assert "power" not in s and s["spin"] > 50 and s["comfort"] < 50
+    assert set(DEFAULT_WEIGHTS) == {"spin", "durability", "affinity"}
 
 
 ANCHORS = [{"id": "solinco-confidential-16l", "kg": [22, 21], "stiffness": 222.3, "sim": 80},

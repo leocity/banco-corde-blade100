@@ -20,7 +20,7 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 
 1. **Solo dati di laboratorio** per giudizi, punteggio e classifiche (Ektelon, TWU, Racketpedia, gemelli di calibro misurati). Le recensioni restano solo come link.
 2. **Si tolgono le corde uscite prima del 2020 e quelle fuori produzione**; le 4 corde di riferimento restano sempre. Anno non trovato → badge "anno da verificare".
-3. Punteggio profilo: spin 35, controllo 25, tenuta 20, potenza 20; −15 se la corda somiglia più a una non gradita che alle preferite (soglia 75).
+3. Punteggio profilo (0–100, posizione tra le corde del banco, non un voto): spin 35, tenuta 20, affinità con le preferite 20; serve almeno spin e tenuta, altrimenti nessun punteggio; −15 se la corda somiglia più a una non gradita che alle preferite (soglia 75). Controllo e comfort sono solo *stime dalla rigidità* e non entrano nel punteggio; "potenza" è stata tolta (era 100 − controllo).
 4. Spin: misurato TWU, oppure da gemello di calibro/colore (±0,5). Nessuna stima dalle recensioni (verificato: non predicono lo spin TWU).
 
 ## Comandi
@@ -45,10 +45,12 @@ py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/prev
 - `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), metriche (`derive.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
 - `web/` — `template.html`, `style.css`, `app.js` (interfaccia), `score.js` (punteggio, parità con Python).
 - `docs/superpowers/specs/` e `plans/` — specifiche e piani (v1 e v2, con le decisioni successive in fondo alla spec v2).
-- `tests/` — 122 test Python.
+- `tests/` — 123 test Python.
+- `docs/AUDIT.md` — audit di dati, racconto dei dati e UI (con lo stato delle correzioni).
 
 ## Lavoro aperto
 
 - Lista acquisti su Tennis Warehouse Europe da aggiornare con le nuove candidate (`data/agents/shopping_*.json` riflette la lista precedente).
 - 31 corde con "anno da verificare".
 - Minori noti: le Confidential Soft 16/17 (solo catalogo) non hanno l'avviso "simile a non gradita"; nella mappa gli assi avanzati "Perdita"/"Punteggio" disegnano pieni anche valori stimati; niente indicatori a punti nel confronto su telefono.
+- Dall'audit (vedi `docs/AUDIT.md`, sezione "Stato"): margini d'errore dello spin non propagati nel punteggio, regola della tensione di partenza non validata, etichette sovrapposte nella mappa, anni di uscita da verificare.
