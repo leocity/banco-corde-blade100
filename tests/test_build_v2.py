@@ -34,7 +34,8 @@ def test_build_adds_catalog_estimates_and_meta():
     assert out["estimates_meta"]["spin_calibration"]["n"] >= 5
     assert "rp_to_twu" in out["estimates_meta"]
     assert S["b-nuova-17"]["reviews"]["sources"][0]["url"] == "https://tw/n"
-    assert S["b-nuova-17"]["derived"]["judgments"]["comfort"]["score"] is None
+    assert S["b-nuova-17"]["derived"]["judgments"]["stiffness"]["score"] is None
+    assert "comfort" not in S["b-nuova-17"]["derived"]["judgments"]
 
 
 def test_model_id_groups_colours_and_keeps_families():

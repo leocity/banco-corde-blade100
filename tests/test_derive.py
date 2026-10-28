@@ -49,7 +49,7 @@ def test_profile_score_requires_spin_and_durability():
 def test_subscores_have_no_power_and_weights_are_independent():
     from pipeline.derive import DEFAULT_WEIGHTS
     s = subscores(POP_RECS[9], POP)
-    assert "power" not in s and s["spin"] > 50 and s["comfort"] < 50
+    assert set(s) == {"spin", "durability", "stiffness"} and s["spin"] > 50 and s["stiffness"] > 50
     assert set(DEFAULT_WEIGHTS) == {"spin", "durability", "affinity"}
 
 

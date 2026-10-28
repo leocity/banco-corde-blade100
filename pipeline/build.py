@@ -112,7 +112,8 @@ def _load(p, default=None):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
 
 
-if __name__ == "__main__":
+def build_from_repo():
+    """Stesse fonti di `py -m pipeline.build`, senza scrivere: serve anche ai test di regressione."""
     records = _load("data/merged.json")
     notes = _load("data/notes.json", {})
     reviews = [row for f in sorted(glob.glob(str(ROOT / "data/agents/reviews_r*.json")))
@@ -128,8 +129,13 @@ if __name__ == "__main__":
     years = [row for f in sorted(glob.glob(str(ROOT / "data/agents/year_p*.json")))
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     site_rows = _load("data/raw/racketpedia.json", [])
-    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
-                sources=_load("data/raw/sources.json", {}))
+    return build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
+                 sources=_load("data/raw/sources.json", {}))
+
+
+if __name__ == "__main__":
+    site_rows = _load("data/raw/racketpedia.json", [])
+    out = build_from_repo()
     print("Racketpedia dal sito:", len(site_rows), "righe;", len(out["estimates_meta"]["rpedia_site"]["changes"]), "abbinamenti nuovi o corretti")
     print("rimosse:", [(x["name"], x["reason"]) for x in out["removed_discontinued"]])
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -6,7 +6,7 @@ def rec(**kw):
             "preference": None, "excel": {"tl6": 12.0},
             "twu": {"twu_name": "X Y 17 (1.20)", "match": "exact", "stiffness_lbin": 200.0, "tension_loss_pct": 30.0, "spin_potential": 7.0},
             "rpedia": None,
-            "derived": {"subscores": {"spin": 70, "control": 50, "power": 50, "durability": 50, "comfort": 50},
+            "derived": {"subscores": {"spin": 70, "stiffness": 50, "durability": 50},
                         "similarity_liked": {"confidential": 60, "otoro": 40},
                         "similarity_disliked": {"confidential_soft": 30, "rpm_blast": 20},
                         "disliked_warning": False, "profile_score": 60,
@@ -34,7 +34,7 @@ def test_proxy_twu_is_disclosed():
 
 def test_missing_twu_still_produces_notes():
     r = rec(twu=None)
-    r["derived"]["subscores"] = {"spin": None, "control": None, "power": None, "durability": 40, "comfort": None}
+    r["derived"]["subscores"] = {"spin": None, "stiffness": None, "durability": 40}
     r["derived"]["similarity_liked"] = {"confidential": None, "otoro": None}
     n = generate_notes(r)
     assert all(n[k] for k in KEYS) and "TWU" in n["feel"]
@@ -85,7 +85,7 @@ def test_catalog_only_note_says_reviews_only():
 
 def test_null_subscores_say_insufficient_data():
     r = rec(twu=None, excel=None)
-    r["derived"]["subscores"] = {"spin": None, "control": None, "power": None, "durability": None, "comfort": None}
+    r["derived"]["subscores"] = {"spin": None, "stiffness": None, "durability": None}
     r["derived"]["similarity_liked"] = {"confidential": None, "otoro": None}
     n = generate_notes(r)
     assert "insufficienti" in n["on_blade_100_v9"] and "insufficienti" in n["for_your_style"]

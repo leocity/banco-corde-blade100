@@ -88,38 +88,23 @@ def subscores(rec, pop):
     """Sotto-punteggi di laboratorio (percentili sulle popolazioni misurate)."""
     pct = lambda k: percentile(METRICS[k](rec), pop[k])
     st = percentile(stiff_lab(rec), pop["stiff_measured"])
-    rp = METRICS["rpedia_static"](rec)
     return {
         "spin": percentile(spin_lab(rec), pop["spin_measured"]),
-        "control": _mean([st, _inv(pct("excel_stretch50"))]),
         "durability": _mean([_inv(pct("twu_tension_loss")), _inv(pct("excel_tl6"))]),
-        "comfort": _inv(pct("rpedia_static") if rp is not None else st),
+        "stiffness": st,  # descrittiva (note e giudizio), non entra nel punteggio
     }
 
 
-# "control" e "comfort" non sono misurati: seguono la rigidità (e l'allungamento a 50 lb dove c'è l'Excel).
-# "potenza" è stata tolta: era sempre 100 − controllo.
-PROXY_CRITERIA = ("control", "comfort")
-JUDGE_CRITERIA = ("stiffness", "spin", "control", "durability", "comfort")
-LAB_WEIGHT, REVIEW_WEIGHT = 0.7, 0.3
+# v3: tolti "controllo" e "comfort" (erano stime dalla rigidità) e la quota delle recensioni (codice morto dalla v2).
+JUDGE_CRITERIA = ("stiffness", "spin", "durability")
 WORDS = ("molto basso", "basso", "medio", "alto", "molto alto")
 STIFF_WORDS = ("molto morbida", "morbida", "media", "rigida", "molto rigida")
 
 
-def _review_score(agg, crit):
-    if not agg:
-        return None
-    s = (agg.get("score") or {}).get(crit)
-    if s is not None:
-        return s
-    lv = (agg.get("level") or {}).get(crit)
-    return None if lv is None else (lv - 1) * 25
-
-
-def judgments(rec, sub, agg, pop):
-    """Giudizio semplice per criterio: 70% laboratorio + 30% recensioni, pesi rinormalizzati se una parte manca."""
-    lab = {**sub, "stiffness": percentile(stiff_lab(rec), pop["stiff_measured"])}
-    # stime da modello: si mostrano nelle barre (tratteggiate, lab_share 0) ma non entrano mai nel punteggio
+def judgments(rec, sub, pop):
+    """Giudizio semplice per criterio, solo dai dati di laboratorio (percentili sulle corde misurate)."""
+    lab = dict(sub)
+    # stime da modello: si mostrano (tratteggiate) ma non entrano mai nel punteggio
     modelled = set()
     if lab["stiffness"] is None and (rec.get("stiffness") or {}).get("kind") == "modello":
         lab["stiffness"] = percentile(rec["stiffness"]["value_lbin"], pop["stiff_measured"]); modelled.add("stiffness")
@@ -127,24 +112,12 @@ def judgments(rec, sub, agg, pop):
         lab["spin"] = percentile(rec["spin"]["value"], pop["spin_measured"]); modelled.add("spin")
     out = {}
     for c in JUDGE_CRITERIA:
-        l = lab.get(c)
-        if agg and "pct" in agg:
-            v = agg["pct"].get(c)
-            rel = min(1.0, (agg.get("wsum") or {}).get(c, 1.0))
-            if v is not None:
-                v = 50 + (v - 50) * rel  # fonti deboli (es. solo produttore) avvicinano il voto alla media
-            rw = REVIEW_WEIGHT * rel
-        else:
-            v, rw = _review_score(agg, c), REVIEW_WEIGHT
-        parts = [(x, w) for x, w in ((l, LAB_WEIGHT), (v, rw)) if x is not None]
-        if not parts:
-            out[c] = {"score": None, "level": None, "word": None, "lab_share": None}
+        score = lab.get(c)
+        if score is None:
+            out[c] = {"score": None, "level": None, "word": None}
             continue
-        den = sum(w for _, w in parts)
-        score = round(sum(x * w for x, w in parts) / den, 1)
         level = min(5, int(score // 20) + 1)
-        out[c] = {"score": score, "level": level, "word": (STIFF_WORDS if c == "stiffness" else WORDS)[level - 1],
-                  "lab_share": 0.0 if c in modelled else round((LAB_WEIGHT if l is not None else 0) / den, 2)}
+        out[c] = {"score": score, "level": level, "word": (STIFF_WORDS if c == "stiffness" else WORDS)[level - 1]}
         if c in modelled:
             out[c]["modelled"] = True
     return out
@@ -243,8 +216,7 @@ def discriminant_metrics(records, pop):
     return sorted(out, key=lambda x: x["separation"], reverse=True)
 
 
-def derive_all(records, reviews=None):
-    reviews = reviews or {}
+def derive_all(records):
     pop = population(records)
     by_id = {r["id"]: r for r in records}
     liked = {k: by_id[k] for k in ANCHOR_TENSIONS if k in by_id}
@@ -261,9 +233,8 @@ def derive_all(records, reviews=None):
         anchors = [{"id": k, "kg": ANCHOR_TENSIONS[k], "stiffness": stiff_lab(a),
                     "sim": similarity(r, a, pop)} for k, a in liked.items()]
         lab = subscores(r, pop)
-        j = judgments(r, lab, reviews.get(r["id"]), pop)
-        # punteggio profilo sui giudizi misti (laboratorio + recensioni); stessi campi letti da score.js
-        sub = {k: lab[k] for k in ("spin", "control", "durability", "comfort")}  # punteggio: solo laboratorio
+        j = judgments(r, lab, pop)
+        sub = {k: lab[k] for k in ("spin", "durability")}  # punteggio: solo laboratorio, stessi campi letti da score.js
         sub["affinity"] = best  # somiglianza massima con una preferita (0-100)
         r["derived"] = {
             "subscores": sub,

@@ -881,47 +881,29 @@
    "derived": {
     "subscores": {
      "spin": 11.1,
-     "control": 59.1,
      "durability": 14.6,
-     "comfort": 4.5,
      "affinity": 26
     },
     "lab_subscores": {
      "spin": 11.1,
-     "control": 59.1,
      "durability": 14.6,
-     "comfort": 4.5
+     "stiffness": 80.7
     },
     "judgments": {
      "stiffness": {
       "score": 80.7,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 11.1,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 59.1,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 14.6,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 4.5,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -954,9 +936,9 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (≈ 222 lb/in), poco spin (4.5), profilo ottagonale; cala in fretta (45.9% di perdita su TWU).",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "feel": "Poly rigida e compatta (≈ 222 lb/in), poco spin (4.5), profilo ottagonale; cala in fretta (45.9% di perdita su TWU).",
+    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
+    "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Non ti è piaciuta: serve come riferimento negativo per segnalare le corde troppo simili. Parti da 21.5/20.5 kg (47.5/45 lbs). I dati TWU sono di «Babolat RPM Blast 16»."
    },
    "prov": {
@@ -1238,47 +1220,29 @@
    "derived": {
     "subscores": {
      "spin": 14.8,
-     "control": 54.6,
      "durability": 34.6,
-     "comfort": 4.5,
      "affinity": 51
     },
     "lab_subscores": {
      "spin": 14.8,
-     "control": 54.6,
      "durability": 34.6,
-     "comfort": 4.5
+     "stiffness": 95.6
     },
     "judgments": {
      "stiffness": {
       "score": 95.6,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 14.8,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 54.6,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 34.6,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 4.5,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -1522,47 +1486,29 @@
    "derived": {
     "subscores": {
      "spin": 82.4,
-     "control": 20.5,
      "durability": 32.2,
-     "comfort": 93.3,
      "affinity": 39
     },
     "lab_subscores": {
      "spin": 82.4,
-     "control": 20.5,
      "durability": 32.2,
-     "comfort": 93.3
+     "stiffness": 34.2
     },
     "judgments": {
      "stiffness": {
       "score": 34.2,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 82.4,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 20.5,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 32.2,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 93.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -1828,47 +1774,29 @@
    "derived": {
     "subscores": {
      "spin": 56.5,
-     "control": 63.0,
      "durability": 77.9,
-     "comfort": 8.200000000000003,
      "affinity": 60
     },
     "lab_subscores": {
      "spin": 56.5,
-     "control": 63.0,
      "durability": 77.9,
-     "comfort": 8.200000000000003
+     "stiffness": 88.6
     },
     "judgments": {
      "stiffness": {
       "score": 88.6,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 56.5,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 63.0,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 77.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 8.2,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -1901,9 +1829,9 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (229 lb/in), spin nella media (6.1), profilo esagonale; tiene bene la tensione.",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "feel": "Poly rigida e compatta (229 lb/in), spin nella media (6.1), profilo esagonale; tiene bene la tensione.",
+    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 60/100 con Confidential e 12/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
    },
    "prov": {
@@ -2096,49 +2024,31 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 85.2,
      "durability": 83.8,
-     "comfort": null,
      "affinity": 25
     },
     "lab_subscores": {
      "spin": null,
-     "control": 85.2,
      "durability": 83.8,
-     "comfort": null
+     "stiffness": null
     },
     "judgments": {
      "stiffness": {
       "score": 70.2,
       "level": 4,
       "word": "rigida",
-      "lab_share": 0.0,
       "modelled": true
      },
      "spin": {
       "score": 50.0,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 85.2,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 83.8,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -2172,8 +2082,8 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.38) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 5.88 (da un modello su rigidità e forma, bassa affidabilità, tra 4.3 e 7.45).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 25/100 con Confidential e 1/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    },
    "prov": {
@@ -2306,47 +2216,29 @@
    "derived": {
     "subscores": {
      "spin": 22.2,
-     "control": 22.6,
      "durability": 9.3,
-     "comfort": 68.4,
      "affinity": 11
     },
     "lab_subscores": {
      "spin": 22.2,
-     "control": 22.6,
      "durability": 9.3,
-     "comfort": 68.4
+     "stiffness": 31.6
     },
     "judgments": {
      "stiffness": {
       "score": 31.6,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 22.2,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 22.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 9.3,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 68.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -2551,49 +2443,31 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 37.5,
      "durability": 95.9,
-     "comfort": null,
      "affinity": 27
     },
     "lab_subscores": {
      "spin": null,
-     "control": 37.5,
      "durability": 95.9,
-     "comfort": null
+     "stiffness": null
     },
     "judgments": {
      "stiffness": {
       "score": 38.6,
       "level": 2,
       "word": "morbida",
-      "lab_share": 0.0,
       "modelled": true
      },
      "spin": {
       "score": 58.3,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 37.5,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 95.9,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -2627,7 +2501,7 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.2 (da un modello su rigidità e forma, bassa affidabilità, tra 4.63 e 7.78).",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    },
@@ -2765,47 +2639,29 @@
    "derived": {
     "subscores": {
      "spin": 36.1,
-     "control": 54.2,
      "durability": 57.4,
-     "comfort": 71.6,
      "affinity": 31
     },
     "lab_subscores": {
      "spin": 36.1,
-     "control": 54.2,
      "durability": 57.4,
-     "comfort": 71.6
+     "stiffness": 44.7
     },
     "judgments": {
      "stiffness": {
       "score": 44.7,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 36.1,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 54.2,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 57.4,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 71.6,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -2985,47 +2841,29 @@
    "derived": {
     "subscores": {
      "spin": 36.1,
-     "control": 41.1,
      "durability": 57.4,
-     "comfort": 61.2,
      "affinity": 32
     },
     "lab_subscores": {
      "spin": 36.1,
-     "control": 41.1,
      "durability": 57.4,
-     "comfort": 61.2
+     "stiffness": 44.7
     },
     "judgments": {
      "stiffness": {
       "score": 44.7,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 36.1,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 41.1,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 57.4,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -3208,48 +3046,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 61.2,
      "affinity": 58
     },
     "lab_subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 61.2
+     "stiffness": 8.8
     },
     "judgments": {
      "stiffness": {
       "score": 8.8,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 66.7,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 23.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 35.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -3432,48 +3252,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 87.3,
      "affinity": 43
     },
     "lab_subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 87.3
+     "stiffness": 8.8
     },
     "judgments": {
      "stiffness": {
       "score": 8.8,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 66.7,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 23.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 35.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 87.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -3656,48 +3458,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 61.2,
      "affinity": 52
     },
     "lab_subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 61.2
+     "stiffness": 8.8
     },
     "judgments": {
      "stiffness": {
       "score": 8.8,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 66.7,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 23.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 35.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -3880,48 +3664,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 78.4,
      "affinity": 49
     },
     "lab_subscores": {
      "spin": null,
-     "control": 23.1,
      "durability": 35.0,
-     "comfort": 78.4
+     "stiffness": 8.8
     },
     "judgments": {
      "stiffness": {
       "score": 8.8,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 66.7,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 23.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 35.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 78.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -4104,48 +3870,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 47.0,
      "durability": 53.2,
-     "comfort": 61.2,
      "affinity": 42
     },
     "lab_subscores": {
      "spin": null,
-     "control": 47.0,
      "durability": 53.2,
-     "comfort": 61.2
+     "stiffness": 8.8
     },
     "judgments": {
      "stiffness": {
       "score": 8.8,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 66.7,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 53.2,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -4178,8 +3926,8 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (≈ 182 lb/in), spin non misurato da TWU, profilo tonda; cala nella media.",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "feel": "Poly morbida (≈ 182 lb/in), spin non misurato da TWU, profilo tonda; cala nella media.",
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 42/100 con Confidential e 19/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (79/100), che non ti è piaciuta. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
    },
@@ -4403,47 +4151,29 @@
    "derived": {
     "subscores": {
      "spin": 69.4,
-     "control": 6.7,
      "durability": 48.0,
-     "comfort": 87.7,
      "affinity": 38
     },
     "lab_subscores": {
      "spin": 69.4,
-     "control": 6.7,
      "durability": 48.0,
-     "comfort": 87.7
+     "stiffness": 12.3
     },
     "judgments": {
      "stiffness": {
       "score": 12.3,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 69.4,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 6.7,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 48.0,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 87.7,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -4701,48 +4431,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 30.6,
      "durability": null,
-     "comfort": 93.3,
      "affinity": 46
     },
     "lab_subscores": {
      "spin": null,
-     "control": 30.6,
      "durability": null,
-     "comfort": 93.3
+     "stiffness": 23.7
     },
     "judgments": {
      "stiffness": {
       "score": 23.7,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 88.9,
       "level": 5,
       "word": "molto alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 30.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 93.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -4992,48 +4704,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": null,
-     "comfort": 47.0,
      "affinity": 89
     },
     "lab_subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": null,
-     "comfort": 47.0
+     "stiffness": 40.4
     },
     "judgments": {
      "stiffness": {
       "score": 40.4,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 57.4,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 52.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -5307,48 +5001,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 60.8,
      "durability": null,
-     "comfort": 24.599999999999994,
      "affinity": 79
     },
     "lab_subscores": {
      "spin": null,
-     "control": 60.8,
      "durability": null,
-     "comfort": 24.599999999999994
+     "stiffness": 57.9
     },
     "judgments": {
      "stiffness": {
       "score": 57.9,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 79.6,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 60.8,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 24.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -5621,48 +5297,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 76.0,
      "durability": 2.7,
-     "comfort": 13.400000000000006,
      "affinity": 57
     },
     "lab_subscores": {
      "spin": null,
-     "control": 76.0,
      "durability": 2.7,
-     "comfort": 13.400000000000006
+     "stiffness": 66.7
     },
     "judgments": {
      "stiffness": {
       "score": 66.7,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 74.1,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 76.0,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 2.7,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 13.4,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -5933,48 +5591,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 47.7,
      "durability": 70.3,
-     "comfort": 24.599999999999994,
      "affinity": 81
     },
     "lab_subscores": {
      "spin": null,
-     "control": 47.7,
      "durability": 70.3,
-     "comfort": 24.599999999999994
+     "stiffness": 57.9
     },
     "judgments": {
      "stiffness": {
       "score": 57.9,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 79.6,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 47.7,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 70.3,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 24.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -6208,47 +5848,29 @@
    "derived": {
     "subscores": {
      "spin": 58.3,
-     "control": 60.4,
      "durability": 94.7,
-     "comfort": 20.099999999999994,
      "affinity": 57
     },
     "lab_subscores": {
      "spin": 58.3,
-     "control": 60.4,
      "durability": 94.7,
-     "comfort": 20.099999999999994
+     "stiffness": 83.3
     },
     "judgments": {
      "stiffness": {
       "score": 83.3,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 58.3,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 60.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 94.7,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 20.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -6281,9 +5903,9 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (225 lb/in), spin nella media (6.2), profilo tonda; tiene bene la tensione.",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "feel": "Poly rigida e compatta (225 lb/in), spin nella media (6.2), profilo tonda; tiene bene la tensione.",
+    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 57/100 con Confidential e 4/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    },
    "prov": {
@@ -6434,49 +6056,31 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 3.4,
      "durability": 60.8,
-     "comfort": null,
      "affinity": 34
     },
     "lab_subscores": {
      "spin": null,
-     "control": 3.4,
      "durability": 60.8,
-     "comfort": null
+     "stiffness": null
     },
     "judgments": {
      "stiffness": {
       "score": 21.1,
       "level": 2,
       "word": "morbida",
-      "lab_share": 0.0,
       "modelled": true
      },
      "spin": {
       "score": 64.8,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 3.4,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 60.8,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -6510,7 +6114,7 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 4.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.53 (da un modello su rigidità e forma, bassa affidabilità, tra 4.96 e 8.11).",
-    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
+    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 4/100 con Confidential e 34/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
    },
@@ -6728,47 +6332,29 @@
    "derived": {
     "subscores": {
      "spin": 29.6,
-     "control": 18.8,
      "durability": 77.9,
-     "comfort": 100.0,
      "affinity": 28
     },
     "lab_subscores": {
      "spin": 29.6,
-     "control": 18.8,
      "durability": 77.9,
-     "comfort": 100.0
+     "stiffness": 0.0
     },
     "judgments": {
      "stiffness": {
       "score": 0.0,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 29.6,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 18.8,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 77.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 100.0,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -7028,47 +6614,29 @@
    "derived": {
     "subscores": {
      "spin": 29.6,
-     "control": 23.1,
      "durability": 77.9,
-     "comfort": 91.2,
      "affinity": 37
     },
     "lab_subscores": {
      "spin": 29.6,
-     "control": 23.1,
      "durability": 77.9,
-     "comfort": 91.2
+     "stiffness": 8.8
     },
     "judgments": {
      "stiffness": {
       "score": 8.8,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 29.6,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 23.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 77.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 91.2,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -7333,47 +6901,29 @@
    "derived": {
     "subscores": {
      "spin": 62.0,
-     "control": 81.7,
      "durability": 65.8,
-     "comfort": 8.200000000000003,
      "affinity": 91
     },
     "lab_subscores": {
      "spin": 62.0,
-     "control": 81.7,
      "durability": 65.8,
-     "comfort": 8.200000000000003
+     "stiffness": 78.1
     },
     "judgments": {
      "stiffness": {
       "score": 78.1,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 62.0,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 81.7,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 65.8,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 8.2,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -7674,47 +7224,29 @@
    "derived": {
     "subscores": {
      "spin": 62.0,
-     "control": 46.8,
      "durability": 65.8,
-     "comfort": 35.099999999999994,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 62.0,
-     "control": 46.8,
      "durability": 65.8,
-     "comfort": 35.099999999999994
+     "stiffness": 56.1
     },
     "judgments": {
      "stiffness": {
       "score": 56.1,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 62.0,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 46.8,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 65.8,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -7989,47 +7521,29 @@
    "derived": {
     "subscores": {
      "spin": 62.0,
-     "control": 22.6,
      "durability": 97.9,
-     "comfort": 35.099999999999994,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 62.0,
-     "control": 22.6,
      "durability": 97.9,
-     "comfort": 35.099999999999994
+     "stiffness": 31.6
     },
     "judgments": {
      "stiffness": {
       "score": 31.6,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 62.0,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 22.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 97.9,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -8208,47 +7722,29 @@
    "derived": {
     "subscores": {
      "spin": 42.6,
-     "control": 87.8,
      "durability": 62.5,
-     "comfort": 0.7000000000000028,
      "affinity": 59
     },
     "lab_subscores": {
      "spin": 42.6,
-     "control": 87.8,
      "durability": 62.5,
-     "comfort": 0.7000000000000028
+     "stiffness": 90.4
     },
     "judgments": {
      "stiffness": {
       "score": 90.4,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 42.6,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 87.8,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 62.5,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 0.7,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -8516,47 +8012,29 @@
    "derived": {
     "subscores": {
      "spin": 97.2,
-     "control": 7.3,
      "durability": 36.4,
-     "comfort": 92.1,
      "affinity": 67
     },
     "lab_subscores": {
      "spin": 97.2,
-     "control": 7.3,
      "durability": 36.4,
-     "comfort": 92.1
+     "stiffness": 7.9
     },
     "judgments": {
      "stiffness": {
       "score": 7.9,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 97.2,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 7.3,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 36.4,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 92.1,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -8852,48 +8330,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 67.6,
      "durability": 6.8,
-     "comfort": 35.099999999999994,
      "affinity": 84
     },
     "lab_subscores": {
      "spin": null,
-     "control": 67.6,
      "durability": 6.8,
-     "comfort": 35.099999999999994
+     "stiffness": 50.0
     },
     "judgments": {
      "stiffness": {
       "score": 50.0,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 81.5,
       "level": 5,
       "word": "molto alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 67.6,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 6.8,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -8927,8 +8387,8 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.45 (da un modello su rigidità e forma, bassa affidabilità, tra 5.94 e 8.95).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 84/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    },
    "prov": {
@@ -9164,48 +8624,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 67.6,
      "durability": 14.9,
-     "comfort": 35.099999999999994,
      "affinity": 95
     },
     "lab_subscores": {
      "spin": null,
-     "control": 67.6,
      "durability": 14.9,
-     "comfort": 35.099999999999994
+     "stiffness": 50.0
     },
     "judgments": {
      "stiffness": {
       "score": 50.0,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 81.5,
       "level": 5,
       "word": "molto alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 67.6,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 14.9,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -9239,8 +8681,8 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.45 (da un modello su rigidità e forma, bassa affidabilità, tra 5.94 e 8.95).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 95/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    },
    "prov": {
@@ -9449,48 +8891,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 49.4,
      "durability": 43.2,
-     "comfort": 61.2,
      "affinity": 87
     },
     "lab_subscores": {
      "spin": null,
-     "control": 49.4,
      "durability": 43.2,
-     "comfort": 61.2
+     "stiffness": 35.1
     },
     "judgments": {
      "stiffness": {
       "score": 35.1,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 59.3,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 49.4,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 43.2,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -9734,48 +9158,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 67.0,
      "durability": 14.9,
-     "comfort": 61.2,
      "affinity": 84
     },
     "lab_subscores": {
      "spin": null,
-     "control": 67.0,
      "durability": 14.9,
-     "comfort": 61.2
+     "stiffness": 35.1
     },
     "judgments": {
      "stiffness": {
       "score": 35.1,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 59.3,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 67.0,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 14.9,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -9809,8 +9215,8 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.04) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.25 (da un modello su rigidità e forma, bassa affidabilità, tra 4.75 e 7.76).",
-    "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 84/100 con Confidential e 34/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    },
    "prov": {
@@ -10019,48 +9425,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 45.0,
      "durability": 43.2,
-     "comfort": 87.3,
      "affinity": 64
     },
     "lab_subscores": {
      "spin": null,
-     "control": 45.0,
      "durability": 43.2,
-     "comfort": 87.3
+     "stiffness": 26.3
     },
     "judgments": {
      "stiffness": {
       "score": 26.3,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 63.0,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 45.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 43.2,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 87.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -10094,7 +9482,7 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.62) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.41 (da un modello su rigidità e forma, bassa affidabilità, tra 4.91 e 7.91).",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 64/100 con Confidential e 45/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    },
@@ -10311,48 +9699,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 62.8,
      "durability": 33.8,
-     "comfort": 47.0,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": null,
-     "control": 62.8,
      "durability": 33.8,
-     "comfort": 47.0
+     "stiffness": 40.4
     },
     "judgments": {
      "stiffness": {
       "score": 40.4,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 57.4,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 62.8,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 33.8,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -10570,49 +9940,31 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 13.6,
      "durability": 60.8,
-     "comfort": null,
      "affinity": 87
     },
     "lab_subscores": {
      "spin": null,
-     "control": 13.6,
      "durability": 60.8,
-     "comfort": null
+     "stiffness": null
     },
     "judgments": {
      "stiffness": {
       "score": 31.6,
       "level": 2,
       "word": "morbida",
-      "lab_share": 0.0,
       "modelled": true
      },
      "spin": {
       "score": 61.1,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 13.6,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 60.8,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -10646,7 +9998,7 @@
    },
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.36) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.34 (da un modello su rigidità e forma, bassa affidabilità, tra 4.76 e 7.91).",
-    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
+    "on_blade_100_v9": "Dati insufficienti per giudicarla: non ci sono test di laboratorio né recensioni utilizzabili.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 87/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    },
@@ -10856,48 +10208,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 43.8,
      "durability": 77.0,
-     "comfort": 35.099999999999994,
      "affinity": 73
     },
     "lab_subscores": {
      "spin": null,
-     "control": 43.8,
      "durability": 77.0,
-     "comfort": 35.099999999999994
+     "stiffness": 50.0
     },
     "judgments": {
      "stiffness": {
       "score": 50.0,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 56.5,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 43.8,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 77.0,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -11159,47 +10493,29 @@
    "derived": {
     "subscores": {
      "spin": 88.0,
-     "control": 50.1,
      "durability": 54.6,
-     "comfort": 61.2,
      "affinity": 48
     },
     "lab_subscores": {
      "spin": 88.0,
-     "control": 50.1,
      "durability": 54.6,
-     "comfort": 61.2
+     "stiffness": 14.9
     },
     "judgments": {
      "stiffness": {
       "score": 14.9,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 88.0,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 50.1,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 54.6,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -11518,47 +10834,29 @@
    "derived": {
     "subscores": {
      "spin": 99.1,
-     "control": 10.9,
      "durability": 13.7,
-     "comfort": 47.0,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 99.1,
-     "control": 10.9,
      "durability": 13.7,
-     "comfort": 47.0
+     "stiffness": 2.6
     },
     "judgments": {
      "stiffness": {
       "score": 2.6,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 99.1,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 10.9,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 13.7,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -11833,48 +11131,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": 43.2,
-     "comfort": 47.0,
      "affinity": 96
     },
     "lab_subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": 43.2,
-     "comfort": 47.0
+     "stiffness": 40.4
     },
     "judgments": {
      "stiffness": {
       "score": 40.4,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 83.3,
       "level": 5,
       "word": "molto alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 52.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 43.2,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -12117,48 +11397,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": 43.2,
-     "comfort": 47.0,
      "affinity": 96
     },
     "lab_subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": 43.2,
-     "comfort": 47.0
+     "stiffness": 40.4
     },
     "judgments": {
      "stiffness": {
       "score": 40.4,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 83.3,
       "level": 5,
       "word": "molto alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 52.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 43.2,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -12401,48 +11663,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": 83.8,
-     "comfort": 47.0,
      "affinity": 57
     },
     "lab_subscores": {
      "spin": null,
-     "control": 52.0,
      "durability": 83.8,
-     "comfort": 47.0
+     "stiffness": 40.4
     },
     "judgments": {
      "stiffness": {
       "score": 40.4,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 83.3,
       "level": 5,
       "word": "molto alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 52.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 83.8,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -12612,47 +11856,29 @@
    "derived": {
     "subscores": {
      "spin": 73.1,
-     "control": 53.5,
      "durability": 71.5,
-     "comfort": 78.4,
      "affinity": 44
     },
     "lab_subscores": {
      "spin": 73.1,
-     "control": 53.5,
      "durability": 71.5,
-     "comfort": 78.4
+     "stiffness": 21.9
     },
     "judgments": {
      "stiffness": {
       "score": 21.9,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 73.1,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 53.5,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 71.5,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 78.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -12685,8 +11911,8 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (193 lb/in), snapback alto (spin 7.2), profilo esagonale; tiene bene la tensione.",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "feel": "Poly morbida (193 lb/in), snapback alto (spin 7.2), profilo esagonale; tiene bene la tensione.",
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 44/100 con Confidential e 30/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (89/100), che non ti è piaciuta. Parti da 23/22 kg (50.5/48.5 lbs)."
    },
@@ -12897,47 +12123,29 @@
    "derived": {
     "subscores": {
      "spin": 60.2,
-     "control": 59.7,
      "durability": 79.3,
-     "comfort": 17.900000000000006,
      "affinity": 80
     },
     "lab_subscores": {
      "spin": 60.2,
-     "control": 59.7,
      "durability": 79.3,
-     "comfort": 17.900000000000006
+     "stiffness": 34.2
     },
     "judgments": {
      "stiffness": {
       "score": 34.2,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 60.2,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 59.7,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 79.3,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 17.9,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -12970,8 +12178,8 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (≈ 204 lb/in), spin nella media (6.3), profilo esagonale; tiene bene la tensione.",
-    "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
+    "feel": "Poly morbida (≈ 204 lb/in), spin nella media (6.3), profilo esagonale; tiene bene la tensione.",
+    "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 80/100 con Confidential e 15/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Yonex Poly Tour Spin 16L (1.25)»."
    },
@@ -13146,47 +12354,29 @@
    "derived": {
     "subscores": {
      "spin": 95.4,
-     "control": 0.9,
      "durability": 32.1,
-     "comfort": 99.1,
      "affinity": 94
     },
     "lab_subscores": {
      "spin": 95.4,
-     "control": 0.9,
      "durability": 32.1,
-     "comfort": 99.1
+     "stiffness": 0.9
     },
     "judgments": {
      "stiffness": {
       "score": 0.9,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 95.4,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 0.9,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 32.1,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 99.1,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -13421,47 +12611,29 @@
    "derived": {
     "subscores": {
      "spin": 93.5,
-     "control": 78.1,
      "durability": 86.4,
-     "comfort": 21.900000000000006,
      "affinity": 60
     },
     "lab_subscores": {
      "spin": 93.5,
-     "control": 78.1,
      "durability": 86.4,
-     "comfort": 21.900000000000006
+     "stiffness": 78.1
     },
     "judgments": {
      "stiffness": {
       "score": 78.1,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 93.5,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 78.1,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 86.4,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 21.9,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -13727,47 +12899,29 @@
    "derived": {
     "subscores": {
      "spin": 90.7,
-     "control": 6.1,
      "durability": 40.7,
-     "comfort": 93.9,
      "affinity": 77
     },
     "lab_subscores": {
      "spin": 90.7,
-     "control": 6.1,
      "durability": 40.7,
-     "comfort": 93.9
+     "stiffness": 6.1
     },
     "judgments": {
      "stiffness": {
       "score": 6.1,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 90.7,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 6.1,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 40.7,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 93.9,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -14013,47 +13167,29 @@
    "derived": {
     "subscores": {
      "spin": 90.7,
-     "control": 50.0,
      "durability": 61.4,
-     "comfort": 50.0,
      "affinity": 47
     },
     "lab_subscores": {
      "spin": 90.7,
-     "control": 50.0,
      "durability": 61.4,
-     "comfort": 50.0
+     "stiffness": 50.0
     },
     "judgments": {
      "stiffness": {
       "score": 50.0,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 90.7,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 61.4,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -14305,47 +13441,29 @@
    "derived": {
     "subscores": {
      "spin": 86.1,
-     "control": 65.8,
      "durability": 92.1,
-     "comfort": 13.400000000000006,
      "affinity": 80
     },
     "lab_subscores": {
      "spin": 86.1,
-     "control": 65.8,
      "durability": 92.1,
-     "comfort": 13.400000000000006
+     "stiffness": 65.8
     },
     "judgments": {
      "stiffness": {
       "score": 65.8,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 86.1,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 65.8,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 92.1,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 13.4,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -14568,47 +13686,29 @@
    "derived": {
     "subscores": {
      "spin": 84.3,
-     "control": 10.5,
      "durability": 56.4,
-     "comfort": 89.5,
      "affinity": 50
     },
     "lab_subscores": {
      "spin": 84.3,
-     "control": 10.5,
      "durability": 56.4,
-     "comfort": 89.5
+     "stiffness": 10.5
     },
     "judgments": {
      "stiffness": {
       "score": 10.5,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 84.3,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 10.5,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 56.4,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 89.5,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -14850,47 +13950,29 @@
    "derived": {
     "subscores": {
      "spin": 80.6,
-     "control": 55.3,
      "durability": 66.4,
-     "comfort": 8.200000000000003,
      "affinity": 60
     },
     "lab_subscores": {
      "spin": 80.6,
-     "control": 55.3,
      "durability": 66.4,
-     "comfort": 8.200000000000003
+     "stiffness": 55.3
     },
     "judgments": {
      "stiffness": {
       "score": 55.3,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 80.6,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 55.3,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": 66.4,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 8.2,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -15089,47 +14171,29 @@
    "derived": {
     "subscores": {
      "spin": 76.9,
-     "control": 85.1,
      "durability": 93.6,
-     "comfort": 13.400000000000006,
      "affinity": 86
     },
     "lab_subscores": {
      "spin": 76.9,
-     "control": 85.1,
      "durability": 93.6,
-     "comfort": 13.400000000000006
+     "stiffness": 85.1
     },
     "judgments": {
      "stiffness": {
       "score": 85.1,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 76.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 85.1,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 93.6,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 13.4,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -15353,47 +14417,29 @@
    "derived": {
     "subscores": {
      "spin": 76.9,
-     "control": 86.8,
      "durability": 69.3,
-     "comfort": 13.200000000000003,
      "affinity": 71
     },
     "lab_subscores": {
      "spin": 76.9,
-     "control": 86.8,
      "durability": 69.3,
-     "comfort": 13.200000000000003
+     "stiffness": 86.8
     },
     "judgments": {
      "stiffness": {
       "score": 86.8,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 76.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 86.8,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 69.3,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 13.2,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -15614,47 +14660,29 @@
    "derived": {
     "subscores": {
      "spin": 76.9,
-     "control": 18.4,
      "durability": 53.6,
-     "comfort": 78.4,
      "affinity": 47
     },
     "lab_subscores": {
      "spin": 76.9,
-     "control": 18.4,
      "durability": 53.6,
-     "comfort": 78.4
+     "stiffness": 18.4
     },
     "judgments": {
      "stiffness": {
       "score": 18.4,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 76.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 18.4,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 53.6,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 78.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -15875,47 +14903,29 @@
    "derived": {
     "subscores": {
      "spin": 71.3,
-     "control": 67.5,
      "durability": 95.0,
-     "comfort": 24.599999999999994,
      "affinity": 93
     },
     "lab_subscores": {
      "spin": 71.3,
-     "control": 67.5,
      "durability": 95.0,
-     "comfort": 24.599999999999994
+     "stiffness": 67.5
     },
     "judgments": {
      "stiffness": {
       "score": 67.5,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 71.3,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 67.5,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 95.0,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 24.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -16150,47 +15160,29 @@
    "derived": {
     "subscores": {
      "spin": 69.4,
-     "control": 28.1,
      "durability": 25.7,
-     "comfort": 71.9,
      "affinity": 35
     },
     "lab_subscores": {
      "spin": 69.4,
-     "control": 28.1,
      "durability": 25.7,
-     "comfort": 71.9
+     "stiffness": 28.1
     },
     "judgments": {
      "stiffness": {
       "score": 28.1,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 69.4,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 28.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 25.7,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 71.9,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -16346,47 +15338,29 @@
    "derived": {
     "subscores": {
      "spin": 67.6,
-     "control": 28.1,
      "durability": 50.7,
-     "comfort": 96.3,
      "affinity": 31
     },
     "lab_subscores": {
      "spin": 67.6,
-     "control": 28.1,
      "durability": 50.7,
-     "comfort": 96.3
+     "stiffness": 28.1
     },
     "judgments": {
      "stiffness": {
       "score": 28.1,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 67.6,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 28.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 50.7,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 96.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -16659,47 +15633,29 @@
    "derived": {
     "subscores": {
      "spin": 65.7,
-     "control": 69.3,
      "durability": 75.0,
-     "comfort": 61.2,
      "affinity": 83
     },
     "lab_subscores": {
      "spin": 65.7,
-     "control": 69.3,
      "durability": 75.0,
-     "comfort": 61.2
+     "stiffness": 69.3
     },
     "judgments": {
      "stiffness": {
       "score": 69.3,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 65.7,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 69.3,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 75.0,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -16950,47 +15906,29 @@
    "derived": {
     "subscores": {
      "spin": 63.9,
-     "control": 23.7,
      "durability": 82.1,
-     "comfort": 78.4,
      "affinity": 64
     },
     "lab_subscores": {
      "spin": 63.9,
-     "control": 23.7,
      "durability": 82.1,
-     "comfort": 78.4
+     "stiffness": 23.7
     },
     "judgments": {
      "stiffness": {
       "score": 23.7,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 63.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 23.7,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 82.1,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 78.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -17188,47 +16126,29 @@
    "derived": {
     "subscores": {
      "spin": 60.2,
-     "control": 58.8,
      "durability": 84.3,
-     "comfort": 17.900000000000006,
      "affinity": 88
     },
     "lab_subscores": {
      "spin": 60.2,
-     "control": 58.8,
      "durability": 84.3,
-     "comfort": 17.900000000000006
+     "stiffness": 58.8
     },
     "judgments": {
      "stiffness": {
       "score": 58.8,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 60.2,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 58.8,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 84.3,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 17.9,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -17428,47 +16348,29 @@
    "derived": {
     "subscores": {
      "spin": 53.7,
-     "control": 92.1,
      "durability": 80.7,
-     "comfort": 29.900000000000006,
      "affinity": 89
     },
     "lab_subscores": {
      "spin": 53.7,
-     "control": 92.1,
      "durability": 80.7,
-     "comfort": 29.900000000000006
+     "stiffness": 92.1
     },
     "judgments": {
      "stiffness": {
       "score": 92.1,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 53.7,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 92.1,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 80.7,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 29.9,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -17714,47 +16616,29 @@
    "derived": {
     "subscores": {
      "spin": 53.7,
-     "control": 78.1,
      "durability": 89.3,
-     "comfort": 21.900000000000006,
      "affinity": 94
     },
     "lab_subscores": {
      "spin": 53.7,
-     "control": 78.1,
      "durability": 89.3,
-     "comfort": 21.900000000000006
+     "stiffness": 78.1
     },
     "judgments": {
      "stiffness": {
       "score": 78.1,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 53.7,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 78.1,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 89.3,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 21.9,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -17912,47 +16796,29 @@
    "derived": {
     "subscores": {
      "spin": 50.9,
-     "control": 36.8,
      "durability": 33.6,
-     "comfort": 13.400000000000006,
      "affinity": 39
     },
     "lab_subscores": {
      "spin": 50.9,
-     "control": 36.8,
      "durability": 33.6,
-     "comfort": 13.400000000000006
+     "stiffness": 36.8
     },
     "judgments": {
      "stiffness": {
       "score": 36.8,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 50.9,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 36.8,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 33.6,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 13.4,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -18174,47 +17040,29 @@
    "derived": {
     "subscores": {
      "spin": 49.1,
-     "control": 39.5,
      "durability": 70.7,
-     "comfort": 60.5,
      "affinity": 66
     },
     "lab_subscores": {
      "spin": 49.1,
-     "control": 39.5,
      "durability": 70.7,
-     "comfort": 60.5
+     "stiffness": 39.5
     },
     "judgments": {
      "stiffness": {
       "score": 39.5,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 49.1,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 39.5,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 70.7,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 60.5,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -18373,47 +17221,29 @@
    "derived": {
     "subscores": {
      "spin": 47.2,
-     "control": 53.5,
      "durability": 5.0,
-     "comfort": 40.3,
      "affinity": 25
     },
     "lab_subscores": {
      "spin": 47.2,
-     "control": 53.5,
      "durability": 5.0,
-     "comfort": 40.3
+     "stiffness": 53.5
     },
     "judgments": {
      "stiffness": {
       "score": 53.5,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 47.2,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 53.5,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 5.0,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 40.3,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -18565,47 +17395,29 @@
    "derived": {
     "subscores": {
      "spin": 42.6,
-     "control": 72.8,
      "durability": 37.9,
-     "comfort": 27.200000000000003,
      "affinity": 39
     },
     "lab_subscores": {
      "spin": 42.6,
-     "control": 72.8,
      "durability": 37.9,
-     "comfort": 27.200000000000003
+     "stiffness": 72.8
     },
     "judgments": {
      "stiffness": {
       "score": 72.8,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 42.6,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 72.8,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 37.9,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 27.2,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -18805,47 +17617,29 @@
    "derived": {
     "subscores": {
      "spin": 42.6,
-     "control": 81.6,
      "durability": 87.9,
-     "comfort": 29.900000000000006,
      "affinity": 92
     },
     "lab_subscores": {
      "spin": 42.6,
-     "control": 81.6,
      "durability": 87.9,
-     "comfort": 29.900000000000006
+     "stiffness": 81.6
     },
     "judgments": {
      "stiffness": {
       "score": 81.6,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 42.6,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 81.6,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 87.9,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 29.9,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto alto"
      }
     },
     "similarity_liked": {
@@ -19107,47 +17901,29 @@
    "derived": {
     "subscores": {
      "spin": 42.6,
-     "control": 10.5,
      "durability": 63.6,
-     "comfort": 61.2,
      "affinity": 39
     },
     "lab_subscores": {
      "spin": 42.6,
-     "control": 10.5,
      "durability": 63.6,
-     "comfort": 61.2
+     "stiffness": 10.5
     },
     "judgments": {
      "stiffness": {
       "score": 10.5,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 42.6,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 10.5,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": 63.6,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -19306,47 +18082,29 @@
    "derived": {
     "subscores": {
      "spin": 36.1,
-     "control": 36.8,
      "durability": 0.7,
-     "comfort": 71.6,
      "affinity": 14
     },
     "lab_subscores": {
      "spin": 36.1,
-     "control": 36.8,
      "durability": 0.7,
-     "comfort": 71.6
+     "stiffness": 36.8
     },
     "judgments": {
      "stiffness": {
       "score": 36.8,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 36.1,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 36.8,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 0.7,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 71.6,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -19481,47 +18239,29 @@
    "derived": {
     "subscores": {
      "spin": 32.4,
-     "control": 74.6,
      "durability": 2.1,
-     "comfort": 40.3,
      "affinity": 19
     },
     "lab_subscores": {
      "spin": 32.4,
-     "control": 74.6,
      "durability": 2.1,
-     "comfort": 40.3
+     "stiffness": 74.6
     },
     "judgments": {
      "stiffness": {
       "score": 74.6,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 32.4,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 74.6,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 2.1,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 40.3,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -19673,47 +18413,29 @@
    "derived": {
     "subscores": {
      "spin": 29.6,
-     "control": 30.7,
      "durability": 27.9,
-     "comfort": 69.3,
      "affinity": 22
     },
     "lab_subscores": {
      "spin": 29.6,
-     "control": 30.7,
      "durability": 27.9,
-     "comfort": 69.3
+     "stiffness": 30.7
     },
     "judgments": {
      "stiffness": {
       "score": 30.7,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 29.6,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 30.7,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 27.9,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 69.3,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -19950,47 +18672,29 @@
    "derived": {
     "subscores": {
      "spin": 29.6,
-     "control": 4.4,
      "durability": 77.9,
-     "comfort": 95.6,
      "affinity": 22
     },
     "lab_subscores": {
      "spin": 29.6,
-     "control": 4.4,
      "durability": 77.9,
-     "comfort": 95.6
+     "stiffness": 4.4
     },
     "judgments": {
      "stiffness": {
       "score": 4.4,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 29.6,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 4.4,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 77.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 95.6,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -20148,47 +18852,29 @@
    "derived": {
     "subscores": {
      "spin": 26.9,
-     "control": 64.0,
      "durability": 6.4,
-     "comfort": 98.5,
      "affinity": 14
     },
     "lab_subscores": {
      "spin": 26.9,
-     "control": 64.0,
      "durability": 6.4,
-     "comfort": 98.5
+     "stiffness": 64.0
     },
     "judgments": {
      "stiffness": {
       "score": 64.0,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 26.9,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 64.0,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 6.4,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 98.5,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -20340,47 +19026,29 @@
    "derived": {
     "subscores": {
      "spin": 25.0,
-     "control": 41.2,
      "durability": 61.4,
-     "comfort": 58.8,
      "affinity": 51
     },
     "lab_subscores": {
      "spin": 25.0,
-     "control": 41.2,
      "durability": 61.4,
-     "comfort": 58.8
+     "stiffness": 41.2
     },
     "judgments": {
      "stiffness": {
       "score": 41.2,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 25.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 41.2,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 61.4,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 58.8,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -20533,47 +19201,29 @@
    "derived": {
     "subscores": {
      "spin": 22.2,
-     "control": 50.0,
      "durability": 9.3,
-     "comfort": 50.0,
      "affinity": 14
     },
     "lab_subscores": {
      "spin": 22.2,
-     "control": 50.0,
      "durability": 9.3,
-     "comfort": 50.0
+     "stiffness": 50.0
     },
     "judgments": {
      "stiffness": {
       "score": 50.0,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 22.2,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 9.3,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -20835,47 +19485,29 @@
    "derived": {
     "subscores": {
      "spin": 22.2,
-     "control": 13.2,
      "durability": 30.0,
-     "comfort": 93.3,
      "affinity": 15
     },
     "lab_subscores": {
      "spin": 22.2,
-     "control": 13.2,
      "durability": 30.0,
-     "comfort": 93.3
+     "stiffness": 13.2
     },
     "judgments": {
      "stiffness": {
       "score": 13.2,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 22.2,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 13.2,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 30.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 93.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -21027,47 +19659,29 @@
    "derived": {
     "subscores": {
      "spin": 18.5,
-     "control": 57.0,
      "durability": 52.1,
-     "comfort": 43.0,
      "affinity": 45
     },
     "lab_subscores": {
      "spin": 18.5,
-     "control": 57.0,
      "durability": 52.1,
-     "comfort": 43.0
+     "stiffness": 57.0
     },
     "judgments": {
      "stiffness": {
       "score": 57.0,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 18.5,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 57.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 52.1,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 43.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -21225,47 +19839,29 @@
    "derived": {
     "subscores": {
      "spin": 18.5,
-     "control": 61.4,
      "durability": 20.0,
-     "comfort": 98.5,
      "affinity": 18
     },
     "lab_subscores": {
      "spin": 18.5,
-     "control": 61.4,
      "durability": 20.0,
-     "comfort": 98.5
+     "stiffness": 61.4
     },
     "judgments": {
      "stiffness": {
       "score": 61.4,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 18.5,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 61.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 20.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 98.5,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -21423,47 +20019,29 @@
    "derived": {
     "subscores": {
      "spin": 14.8,
-     "control": 71.1,
      "durability": 35.7,
-     "comfort": 87.3,
      "affinity": 30
     },
     "lab_subscores": {
      "spin": 14.8,
-     "control": 71.1,
      "durability": 35.7,
-     "comfort": 87.3
+     "stiffness": 71.1
     },
     "judgments": {
      "stiffness": {
       "score": 71.1,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 14.8,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 71.1,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 35.7,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 87.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -21758,47 +20336,29 @@
    "derived": {
     "subscores": {
      "spin": 11.1,
-     "control": 93.9,
      "durability": 14.3,
-     "comfort": 2.200000000000003,
      "affinity": 16
     },
     "lab_subscores": {
      "spin": 11.1,
-     "control": 93.9,
      "durability": 14.3,
-     "comfort": 2.200000000000003
+     "stiffness": 93.9
     },
     "judgments": {
      "stiffness": {
       "score": 93.9,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 11.1,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 93.9,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 14.3,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 2.2,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -21951,47 +20511,29 @@
    "derived": {
     "subscores": {
      "spin": 11.1,
-     "control": 50.0,
      "durability": 9.3,
-     "comfort": 50.0,
      "affinity": 13
     },
     "lab_subscores": {
      "spin": 11.1,
-     "control": 50.0,
      "durability": 9.3,
-     "comfort": 50.0
+     "stiffness": 50.0
     },
     "judgments": {
      "stiffness": {
       "score": 50.0,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 11.1,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 9.3,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 50.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -22253,47 +20795,29 @@
    "derived": {
     "subscores": {
      "spin": 8.3,
-     "control": 61.4,
      "durability": 39.3,
-     "comfort": 24.599999999999994,
      "affinity": 39
     },
     "lab_subscores": {
      "spin": 8.3,
-     "control": 61.4,
      "durability": 39.3,
-     "comfort": 24.599999999999994
+     "stiffness": 61.4
     },
     "judgments": {
      "stiffness": {
       "score": 61.4,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 8.3,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 61.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 39.3,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 24.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -22445,47 +20969,29 @@
    "derived": {
     "subscores": {
      "spin": 5.6,
-     "control": 97.4,
      "durability": 55.0,
-     "comfort": 2.5999999999999943,
      "affinity": 40
     },
     "lab_subscores": {
      "spin": 5.6,
-     "control": 97.4,
      "durability": 55.0,
-     "comfort": 2.5999999999999943
+     "stiffness": 97.4
     },
     "judgments": {
      "stiffness": {
       "score": 97.4,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 5.6,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 97.4,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 55.0,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 2.6,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -22638,47 +21144,29 @@
    "derived": {
     "subscores": {
      "spin": 5.6,
-     "control": 99.1,
      "durability": 35.7,
-     "comfort": 0.9000000000000057,
      "affinity": 20
     },
     "lab_subscores": {
      "spin": 5.6,
-     "control": 99.1,
      "durability": 35.7,
-     "comfort": 0.9000000000000057
+     "stiffness": 99.1
     },
     "judgments": {
      "stiffness": {
       "score": 99.1,
       "level": 5,
-      "word": "molto rigida",
-      "lab_share": 1.0
+      "word": "molto rigida"
      },
      "spin": {
       "score": 5.6,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 99.1,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 35.7,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 0.9,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -22836,47 +21324,29 @@
    "derived": {
     "subscores": {
      "spin": 2.8,
-     "control": 32.5,
      "durability": 30.0,
-     "comfort": 87.3,
      "affinity": 20
     },
     "lab_subscores": {
      "spin": 2.8,
-     "control": 32.5,
      "durability": 30.0,
-     "comfort": 87.3
+     "stiffness": 32.5
     },
     "judgments": {
      "stiffness": {
       "score": 32.5,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 2.8,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 32.5,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 30.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 87.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -23029,47 +21499,29 @@
    "derived": {
     "subscores": {
      "spin": 0.9,
-     "control": 16.7,
      "durability": 16.4,
-     "comfort": 83.3,
      "affinity": 9
     },
     "lab_subscores": {
      "spin": 0.9,
-     "control": 16.7,
      "durability": 16.4,
-     "comfort": 83.3
+     "stiffness": 16.7
     },
     "judgments": {
      "stiffness": {
       "score": 16.7,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 0.9,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 16.7,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "molto basso"
      },
      "durability": {
       "score": 16.4,
       "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 83.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "molto basso"
      }
     },
     "similarity_liked": {
@@ -23221,47 +21673,29 @@
    "derived": {
     "subscores": {
      "spin": 29.6,
-     "control": 25.4,
      "durability": 20.0,
-     "comfort": 74.6,
      "affinity": 50
     },
     "lab_subscores": {
      "spin": 29.6,
-     "control": 25.4,
      "durability": 20.0,
-     "comfort": 74.6
+     "stiffness": 25.4
     },
     "judgments": {
      "stiffness": {
       "score": 25.4,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 29.6,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 25.4,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "basso"
      },
      "durability": {
       "score": 20.0,
       "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 74.6,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "basso"
      }
     },
     "similarity_liked": {
@@ -23410,47 +21844,29 @@
    "derived": {
     "subscores": {
      "spin": 73.1,
-     "control": 44.7,
      "durability": 66.4,
-     "comfort": 87.3,
      "affinity": 45
     },
     "lab_subscores": {
      "spin": 73.1,
-     "control": 44.7,
      "durability": 66.4,
-     "comfort": 87.3
+     "stiffness": 44.7
     },
     "judgments": {
      "stiffness": {
       "score": 44.7,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 73.1,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 44.7,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": 66.4,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 87.3,
-      "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
+      "word": "alto"
      }
     },
     "similarity_liked": {
@@ -23594,48 +22010,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 20.2,
      "durability": 45.7,
-     "comfort": 61.2,
      "affinity": 58
     },
     "lab_subscores": {
      "spin": null,
-     "control": 20.2,
      "durability": 45.7,
-     "comfort": 61.2
+     "stiffness": 20.2
     },
     "judgments": {
      "stiffness": {
       "score": 20.2,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 64.8,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 20.2,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": 45.7,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      }
     },
     "similarity_liked": {
@@ -23863,47 +22261,29 @@
    "derived": {
     "subscores": {
      "spin": 76.9,
-     "control": 64.9,
      "durability": null,
-     "comfort": 35.099999999999994,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 76.9,
-     "control": 64.9,
      "durability": null,
-     "comfort": 35.099999999999994
+     "stiffness": 64.9
     },
     "judgments": {
      "stiffness": {
       "score": 64.9,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 76.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 64.9,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -24115,47 +22495,29 @@
    "derived": {
     "subscores": {
      "spin": 76.9,
-     "control": 38.6,
      "durability": null,
-     "comfort": 61.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 76.9,
-     "control": 38.6,
      "durability": null,
-     "comfort": 61.4
+     "stiffness": 38.6
     },
     "judgments": {
      "stiffness": {
       "score": 38.6,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 76.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 38.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 61.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -24388,47 +22750,29 @@
    "derived": {
     "subscores": {
      "spin": 53.7,
-     "control": 56.1,
      "durability": null,
-     "comfort": 43.9,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 53.7,
-     "control": 56.1,
      "durability": null,
-     "comfort": 43.9
+     "stiffness": 56.1
     },
     "judgments": {
      "stiffness": {
       "score": 56.1,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 53.7,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 56.1,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 43.9,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -24661,47 +23005,29 @@
    "derived": {
     "subscores": {
      "spin": 53.7,
-     "control": 31.6,
      "durability": null,
-     "comfort": 68.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 53.7,
-     "control": 31.6,
      "durability": null,
-     "comfort": 68.4
+     "stiffness": 31.6
     },
     "judgments": {
      "stiffness": {
       "score": 31.6,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 53.7,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 31.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 68.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -24898,47 +23224,29 @@
    "derived": {
     "subscores": {
      "spin": 63.9,
-     "control": 35.1,
      "durability": null,
-     "comfort": 61.2,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 63.9,
-     "control": 35.1,
      "durability": null,
-     "comfort": 61.2
+     "stiffness": 35.1
     },
     "judgments": {
      "stiffness": {
       "score": 35.1,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 63.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -25135,47 +23443,29 @@
    "derived": {
     "subscores": {
      "spin": 63.9,
-     "control": 12.3,
      "durability": null,
-     "comfort": 78.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 63.9,
-     "control": 12.3,
      "durability": null,
-     "comfort": 78.4
+     "stiffness": 12.3
     },
     "judgments": {
      "stiffness": {
       "score": 12.3,
       "level": 1,
-      "word": "molto morbida",
-      "lab_share": 1.0
+      "word": "molto morbida"
      },
      "spin": {
       "score": 63.9,
       "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 12.3,
-      "level": 1,
-      "word": "molto basso",
-      "lab_share": 1.0
+      "word": "alto"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 78.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -25414,48 +23704,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 57.9,
      "durability": null,
-     "comfort": 24.599999999999994,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": 57.9,
      "durability": null,
-     "comfort": 24.599999999999994
+     "stiffness": 57.9
     },
     "judgments": {
      "stiffness": {
       "score": 57.9,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 79.6,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 57.9,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 24.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -25651,48 +23923,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 40.4,
      "durability": null,
-     "comfort": 47.0,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": 40.4,
      "durability": null,
-     "comfort": 47.0
+     "stiffness": 40.4
     },
     "judgments": {
      "stiffness": {
       "score": 40.4,
       "level": 3,
-      "word": "media",
-      "lab_share": 1.0
+      "word": "media"
      },
      "spin": {
       "score": 57.4,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 40.4,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 47.0,
-      "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -25888,48 +24142,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 31.6,
      "durability": null,
-     "comfort": 78.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": 31.6,
      "durability": null,
-     "comfort": 78.4
+     "stiffness": 31.6
     },
     "judgments": {
      "stiffness": {
       "score": 31.6,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 61.1,
       "level": 4,
       "word": "alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 31.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 78.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -26126,48 +24362,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 31.6,
      "durability": null,
-     "comfort": 78.4,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": 31.6,
      "durability": null,
-     "comfort": 78.4
+     "stiffness": 31.6
     },
     "judgments": {
      "stiffness": {
       "score": 31.6,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 85.2,
       "level": 5,
       "word": "molto alto",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 31.6,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 78.4,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -26386,48 +24604,30 @@
    "derived": {
     "subscores": {
      "spin": null,
-     "control": 35.1,
      "durability": null,
-     "comfort": 61.2,
      "affinity": null
     },
     "lab_subscores": {
      "spin": null,
-     "control": 35.1,
      "durability": null,
-     "comfort": 61.2
+     "stiffness": 35.1
     },
     "judgments": {
      "stiffness": {
       "score": 35.1,
       "level": 2,
-      "word": "morbida",
-      "lab_share": 1.0
+      "word": "morbida"
      },
      "spin": {
       "score": 59.3,
       "level": 3,
       "word": "medio",
-      "lab_share": 0.0,
       "modelled": true
-     },
-     "control": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 61.2,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -26638,47 +24838,29 @@
    "derived": {
     "subscores": {
      "spin": 49.1,
-     "control": 64.9,
      "durability": null,
-     "comfort": 35.099999999999994,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 49.1,
-     "control": 64.9,
      "durability": null,
-     "comfort": 35.099999999999994
+     "stiffness": 64.9
     },
     "judgments": {
      "stiffness": {
       "score": 64.9,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 49.1,
       "level": 3,
-      "word": "medio",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 64.9,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "medio"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 35.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {
@@ -26910,47 +25092,29 @@
    "derived": {
     "subscores": {
      "spin": 90.7,
-     "control": 71.9,
      "durability": null,
-     "comfort": 28.099999999999994,
      "affinity": null
     },
     "lab_subscores": {
      "spin": 90.7,
-     "control": 71.9,
      "durability": null,
-     "comfort": 28.099999999999994
+     "stiffness": 71.9
     },
     "judgments": {
      "stiffness": {
       "score": 71.9,
       "level": 4,
-      "word": "rigida",
-      "lab_share": 1.0
+      "word": "rigida"
      },
      "spin": {
       "score": 90.7,
       "level": 5,
-      "word": "molto alto",
-      "lab_share": 1.0
-     },
-     "control": {
-      "score": 71.9,
-      "level": 4,
-      "word": "alto",
-      "lab_share": 1.0
+      "word": "molto alto"
      },
      "durability": {
       "score": null,
       "level": null,
-      "word": null,
-      "lab_share": null
-     },
-     "comfort": {
-      "score": 28.1,
-      "level": 2,
-      "word": "basso",
-      "lab_share": 1.0
+      "word": null
      }
     },
     "similarity_liked": {

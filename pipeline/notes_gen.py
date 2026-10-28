@@ -21,7 +21,7 @@ def _kg(t):
 def _feel(r, s):
     t = r.get("twu")
     shape = SHAPE_IT.get(r.get("shape") or "", "")
-    stiff = {"hi": "rigida e compatta", "mid": "di rigidità media", "lo": "morbida"}.get(_band(s["control"]))
+    stiff = {"hi": "rigida e compatta", "mid": "di rigidità media", "lo": "morbida"}.get(_band(s["stiffness"]))
     sp = r.get("spin")
     if sp and sp.get("kind") not in (None, "misurato") and sp.get("value") is not None:
         est = f" Spin stimato ≈ {sp['value']:g} ({SPIN_KIND_IT.get(sp['kind'], sp['kind'])}, tra {sp['low']:g} e {sp['high']:g})."
@@ -51,9 +51,9 @@ INSUFFICIENT = "Dati insufficienti per giudicarla: non ci sono test di laborator
 
 
 def _blade(r, s):
-    if all(s.get(k) is None for k in ("control", "spin")):
+    if all(s.get(k) is None for k in ("stiffness", "spin")):
         return INSUFFICIENT
-    b = _band(s["control"])
+    b = _band(s["stiffness"])
     if b == "hi":
         return ("La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta "
                 "controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.")
@@ -65,7 +65,7 @@ def _blade(r, s):
 
 
 def _style(r, s):
-    if all(s.get(k) is None for k in ("spin", "control", "durability")):
+    if all(s.get(k) is None for k in ("spin", "stiffness", "durability")):
         return INSUFFICIENT
     out = []
     sp = _band(s["spin"])
@@ -75,7 +75,7 @@ def _style(r, s):
         out.append("Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin.")
     else:
         out.append("Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.")
-    if _band(s["control"]) == "hi":
+    if _band(s["stiffness"]) == "hi":
         out.append("Sui colpi piatti dà direzione e stabilità.")
     d = _band(s["durability"])
     out.append({"lo": "Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
@@ -115,7 +115,7 @@ def _vs(r):
 
 
 def generate_notes(r):
-    s = r["derived"]["subscores"]
+    s = r["derived"].get("lab_subscores") or r["derived"]["subscores"]  # serve anche la rigidità, che non entra nel punteggio
     return {"feel": _feel(r, s), "on_blade_100_v9": _blade(r, s), "for_your_style": _style(r, s), "vs_favorites": _vs(r)}
 
 
