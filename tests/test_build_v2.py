@@ -35,3 +35,12 @@ def test_build_adds_catalog_estimates_and_meta():
     assert "rp_to_twu" in out["estimates_meta"]
     assert S["b-nuova-17"]["reviews"]["sources"][0]["url"] == "https://tw/n"
     assert S["b-nuova-17"]["derived"]["judgments"]["comfort"]["score"] is None
+
+
+def test_model_id_groups_colours_and_keeps_families():
+    from pipeline.estimate import model_id
+    assert model_id("Kirschbaum", "Flash Black") == model_id("Kirschbaum", "Flash Orange") == "kirschbaum-flash"
+    assert model_id("Solinco", "Confidential") != model_id("Solinco", "Confidential Soft")
+    assert model_id("Toroline", "O-Toro") != model_id("Toroline", "O-Toro Tour")
+    out = build([lab(i) for i in range(6)], {})
+    assert all(r["model_id"] == model_id(r["brand"], r["model"]) for r in out["strings"])

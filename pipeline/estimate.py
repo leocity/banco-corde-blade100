@@ -142,6 +142,11 @@ def base_model(model):
     return " ".join(words)
 
 
+def model_id(brand, model):
+    """Marca + modello senza colori, come modelId() in web/recommend.js: raggruppa calibri e colori dello stesso modello."""
+    return re.sub(r"[^a-z0-9]+", "-", f"{brand} {base_model(model)}".lower()).strip("-")
+
+
 def relatives_of(rec, records):
     key = (rec["brand"], base_model(rec["model"]))
     rel = [r for r in records if r["id"] != rec["id"] and (r["brand"], base_model(r["model"])) == key

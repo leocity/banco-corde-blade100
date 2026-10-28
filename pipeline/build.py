@@ -7,7 +7,7 @@ import pathlib
 
 from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
-from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
+from pipeline.estimate import (MEASURED, base_model, model_id, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
 from pipeline.notes_gen import apply_notes
 from pipeline.rpedia_site import apply_site
@@ -82,6 +82,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
                         "sources": [{k: s.get(k) for k in ("site", "url", "kind", "scores", "levels", "note")}
                                     for s in src.get(r["id"], [])]}
         r.setdefault("catalog_only", False)
+        r["model_id"] = model_id(r["brand"], r["model"])
 
     # giudizi e punteggi solo dal laboratorio; le recensioni restano in r["reviews"] come link informativi
     discriminant = derive_all(records)

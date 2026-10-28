@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09",
+ "generated": "2026-10-28",
  "weights_default": {
   "spin": 35,
   "durability": 20,
@@ -834,6 +834,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "babolat-rpm-blast",
    "derived": {
     "subscores": {
      "spin": 11.1,
@@ -1152,6 +1153,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "babolat-rpm-blast",
    "derived": {
     "subscores": {
      "spin": 14.8,
@@ -1373,6 +1375,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "head-hawk-power",
    "derived": {
     "subscores": {
      "spin": 82.4,
@@ -1616,6 +1619,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "head-lynx-tour",
    "derived": {
     "subscores": {
      "spin": 56.5,
@@ -1825,6 +1829,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "head-hawk-seeding",
    "derived": {
     "subscores": {
      "spin": null,
@@ -2004,6 +2009,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-competition",
    "derived": {
     "subscores": {
      "spin": 22.2,
@@ -2214,6 +2220,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-pro-line-rough",
    "derived": {
     "subscores": {
      "spin": null,
@@ -2397,6 +2404,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-helix",
    "derived": {
     "subscores": {
      "spin": 36.1,
@@ -2578,6 +2586,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-helix",
    "derived": {
     "subscores": {
      "spin": 36.1,
@@ -2762,6 +2771,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-flash",
    "derived": {
     "subscores": {
      "spin": null,
@@ -2947,6 +2957,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-flash",
    "derived": {
     "subscores": {
      "spin": null,
@@ -3132,6 +3143,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-flash",
    "derived": {
     "subscores": {
      "spin": null,
@@ -3317,6 +3329,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-flash",
    "derived": {
     "subscores": {
      "spin": null,
@@ -3502,6 +3515,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-flash",
    "derived": {
     "subscores": {
      "spin": null,
@@ -3762,6 +3776,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "luxilon-element-soft-ir",
    "derived": {
     "subscores": {
      "spin": 69.4,
@@ -4025,6 +4040,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "re-string-slap",
    "derived": {
     "subscores": {
      "spin": null,
@@ -4289,6 +4305,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "re-string-sync",
    "derived": {
     "subscores": {
      "spin": null,
@@ -4577,6 +4594,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "re-string-vivo",
    "derived": {
     "subscores": {
      "spin": null,
@@ -4864,6 +4882,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "re-string-zero",
    "derived": {
     "subscores": {
      "spin": null,
@@ -5149,6 +5168,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "re-string-zero",
    "derived": {
     "subscores": {
      "spin": null,
@@ -5393,6 +5413,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "signum-pro-x-perience",
    "derived": {
     "subscores": {
      "spin": 58.3,
@@ -5560,6 +5581,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-polaris",
    "derived": {
     "subscores": {
      "spin": null,
@@ -5823,6 +5845,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-hyper-g-soft",
    "derived": {
     "subscores": {
      "spin": 29.6,
@@ -6084,6 +6107,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-hyper-g-soft",
    "derived": {
     "subscores": {
      "spin": 29.6,
@@ -6350,6 +6374,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-confidential",
    "derived": {
     "subscores": {
      "spin": 62.0,
@@ -6628,6 +6653,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-confidential",
    "derived": {
     "subscores": {
      "spin": 62.0,
@@ -6904,6 +6930,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-confidential",
    "derived": {
     "subscores": {
      "spin": 62.0,
@@ -7084,6 +7111,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "tecnifibre-razor",
    "derived": {
     "subscores": {
      "spin": 42.6,
@@ -7329,6 +7357,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-absolute",
    "derived": {
     "subscores": {
      "spin": 97.2,
@@ -7606,6 +7635,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-caviar",
    "derived": {
     "subscores": {
      "spin": null,
@@ -7891,6 +7921,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-caviar",
    "derived": {
     "subscores": {
      "spin": null,
@@ -8149,6 +8180,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-enso-pro",
    "derived": {
     "subscores": {
      "spin": null,
@@ -8407,6 +8439,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-enso-pro",
    "derived": {
     "subscores": {
      "spin": null,
@@ -8665,6 +8698,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-enso-pro",
    "derived": {
     "subscores": {
      "spin": null,
@@ -8930,6 +8964,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-wasabi",
    "derived": {
     "subscores": {
      "spin": null,
@@ -9162,6 +9197,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-wasabi-x",
    "derived": {
     "subscores": {
      "spin": null,
@@ -9421,6 +9457,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-wasabi",
    "derived": {
     "subscores": {
      "spin": null,
@@ -9693,6 +9730,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-super-toro",
    "derived": {
     "subscores": {
      "spin": 88.0,
@@ -9989,6 +10027,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-o-toro",
    "derived": {
     "subscores": {
      "spin": 99.1,
@@ -10245,6 +10284,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-toro-toro",
    "derived": {
     "subscores": {
      "spin": null,
@@ -10502,6 +10542,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-toro-toro",
    "derived": {
     "subscores": {
      "spin": null,
@@ -10759,6 +10800,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-toro-toro",
    "derived": {
     "subscores": {
      "spin": null,
@@ -10939,6 +10981,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "yonex-poly-tour-rev",
    "derived": {
     "subscores": {
      "spin": 73.1,
@@ -11161,6 +11204,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "yonex-poly-tour-spin",
    "derived": {
     "subscores": {
      "spin": 60.2,
@@ -11371,6 +11415,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-o-toro-snap",
    "derived": {
     "subscores": {
      "spin": 95.4,
@@ -11591,6 +11636,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "tecnifibre-razor-spin",
    "derived": {
     "subscores": {
      "spin": 93.5,
@@ -11842,6 +11888,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-o-toro-spin",
    "derived": {
     "subscores": {
      "spin": 90.7,
@@ -12073,6 +12120,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "grapplesnake-tour-m8",
    "derived": {
     "subscores": {
      "spin": 90.7,
@@ -12310,6 +12358,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-o-toro-tour",
    "derived": {
     "subscores": {
      "spin": 86.1,
@@ -12518,6 +12567,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-cash",
    "derived": {
     "subscores": {
      "spin": 84.3,
@@ -12745,6 +12795,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "tecnifibre-razor-soft",
    "derived": {
     "subscores": {
      "spin": 80.6,
@@ -12929,6 +12980,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-plasma-hextreme",
    "derived": {
     "subscores": {
      "spin": 76.9,
@@ -13138,6 +13190,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-hyper-g-round",
    "derived": {
     "subscores": {
      "spin": 76.9,
@@ -13344,6 +13397,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "toroline-snapper",
    "derived": {
     "subscores": {
      "spin": 76.9,
@@ -13550,6 +13604,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "head-lynx-tour",
    "derived": {
     "subscores": {
      "spin": 71.3,
@@ -13770,6 +13825,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "luxilon-element-soft-ir",
    "derived": {
     "subscores": {
      "spin": 69.4,
@@ -13911,6 +13967,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "luxilon-alu-power-soft",
    "derived": {
     "subscores": {
      "spin": 67.6,
@@ -14169,6 +14226,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "grapplesnake-alpha",
    "derived": {
     "subscores": {
      "spin": 65.7,
@@ -14399,6 +14457,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-confidential-soft",
    "derived": {
     "subscores": {
      "spin": 63.9,
@@ -14582,6 +14641,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "yonex-poly-tour-spin",
    "derived": {
     "subscores": {
      "spin": 60.2,
@@ -14767,6 +14827,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-max-power-rough",
    "derived": {
     "subscores": {
      "spin": 53.7,
@@ -14998,6 +15059,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-mach-10",
    "derived": {
     "subscores": {
      "spin": 53.7,
@@ -15141,6 +15203,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-plasma-hextreme",
    "derived": {
     "subscores": {
      "spin": 50.9,
@@ -15372,6 +15435,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "grapplesnake-tour-sniper",
    "derived": {
     "subscores": {
      "spin": 49.1,
@@ -15516,6 +15580,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-super-smash",
    "derived": {
     "subscores": {
      "spin": 47.2,
@@ -15653,6 +15718,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-poly-plasma-pure",
    "derived": {
     "subscores": {
      "spin": 42.6,
@@ -15838,6 +15904,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-max-power-rough",
    "derived": {
     "subscores": {
      "spin": 42.6,
@@ -16085,6 +16152,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-barb-wire",
    "derived": {
     "subscores": {
      "spin": 42.6,
@@ -16229,6 +16297,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-helix",
    "derived": {
     "subscores": {
      "spin": 36.1,
@@ -16373,6 +16442,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-super-smash",
    "derived": {
     "subscores": {
      "spin": 32.4,
@@ -16510,6 +16580,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-poly-plasma-pure",
    "derived": {
     "subscores": {
      "spin": 29.6,
@@ -16732,6 +16803,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-hyper-g-soft",
    "derived": {
     "subscores": {
      "spin": 29.6,
@@ -16875,6 +16947,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-tornado",
    "derived": {
     "subscores": {
      "spin": 26.9,
@@ -17012,6 +17085,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "luxilon-alu-power-vibe",
    "derived": {
     "subscores": {
      "spin": 25.0,
@@ -17150,6 +17224,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-competition",
    "derived": {
     "subscores": {
      "spin": 22.2,
@@ -17397,6 +17472,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-barb-wire",
    "derived": {
     "subscores": {
      "spin": 22.2,
@@ -17534,6 +17610,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-poly-megaforce",
    "derived": {
     "subscores": {
      "spin": 18.5,
@@ -17677,6 +17754,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-tornado",
    "derived": {
     "subscores": {
      "spin": 18.5,
@@ -17820,6 +17898,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-hyperion",
    "derived": {
     "subscores": {
      "spin": 14.8,
@@ -18100,6 +18179,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "babolat-rpm-blast",
    "derived": {
     "subscores": {
      "spin": 11.1,
@@ -18238,6 +18318,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-competition",
    "derived": {
     "subscores": {
      "spin": 11.1,
@@ -18485,6 +18566,7 @@
     ]
    },
    "catalog_only": false,
+   "model_id": "solinco-barb-wire",
    "derived": {
     "subscores": {
      "spin": 8.3,
@@ -18622,6 +18704,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-poly-megaforce",
    "derived": {
     "subscores": {
      "spin": 5.6,
@@ -18760,6 +18843,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-poly-speed-spin",
    "derived": {
     "subscores": {
      "spin": 5.6,
@@ -18903,6 +18987,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-hyperion",
    "derived": {
     "subscores": {
      "spin": 2.8,
@@ -19041,6 +19126,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-competition",
    "derived": {
     "subscores": {
      "spin": 0.9,
@@ -19178,6 +19264,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "signum-pro-poly-plasma-pure",
    "derived": {
     "subscores": {
      "spin": 29.6,
@@ -19320,6 +19407,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "yonex-poly-tour-rev",
    "derived": {
     "subscores": {
      "spin": 73.1,
@@ -19465,6 +19553,7 @@
     "sources": []
    },
    "catalog_only": false,
+   "model_id": "kirschbaum-flash",
    "derived": {
     "subscores": {
      "spin": null,
@@ -19699,6 +19788,7 @@
      }
     ]
    },
+   "model_id": "solinco-hyper-g-round",
    "derived": {
     "subscores": {
      "spin": 76.9,
@@ -19932,6 +20022,7 @@
      }
     ]
    },
+   "model_id": "solinco-hyper-g-round",
    "derived": {
     "subscores": {
      "spin": 76.9,
@@ -20186,6 +20277,7 @@
      }
     ]
    },
+   "model_id": "solinco-mach-10",
    "derived": {
     "subscores": {
      "spin": 53.7,
@@ -20440,6 +20532,7 @@
      }
     ]
    },
+   "model_id": "solinco-mach-10",
    "derived": {
     "subscores": {
      "spin": 53.7,
@@ -20652,6 +20745,7 @@
      }
     ]
    },
+   "model_id": "solinco-confidential-soft",
    "derived": {
     "subscores": {
      "spin": 63.9,
@@ -20864,6 +20958,7 @@
      }
     ]
    },
+   "model_id": "solinco-confidential-soft",
    "derived": {
     "subscores": {
      "spin": 63.9,
@@ -21124,6 +21219,7 @@
      }
     ]
    },
+   "model_id": "re-string-vivo",
    "derived": {
     "subscores": {
      "spin": null,
@@ -21342,6 +21438,7 @@
      }
     ]
    },
+   "model_id": "re-string-sync",
    "derived": {
     "subscores": {
      "spin": null,
@@ -21560,6 +21657,7 @@
      }
     ]
    },
+   "model_id": "re-string-sync",
    "derived": {
     "subscores": {
      "spin": null,
@@ -21779,6 +21877,7 @@
      }
     ]
    },
+   "model_id": "re-string-slap",
    "derived": {
     "subscores": {
      "spin": null,
@@ -22020,6 +22119,7 @@
      }
     ]
    },
+   "model_id": "toroline-a5",
    "derived": {
     "subscores": {
      "spin": null,
@@ -22253,6 +22353,7 @@
      }
     ]
    },
+   "model_id": "grapplesnake-tour-sniper",
    "derived": {
     "subscores": {
      "spin": 49.1,
@@ -22506,6 +22607,7 @@
      }
     ]
    },
+   "model_id": "grapplesnake-tour-m8",
    "derived": {
     "subscores": {
      "spin": 90.7,
