@@ -11,100 +11,42 @@
     <div class="brandline">
       <div class="bed" aria-hidden="true"></div>
       <div class="titles">
-        <p class="eyebrow">Banco di incordatura · full poly · 1.18–1.30 mm</p>
-        <h1>Banco Corde Blade 100</h1>
+        <p class="eyebrow">Banco di incordatura · Blade 100 v9 16×19 · poly 1.18–1.30 mm</p>
+        <h1>Banco Corde</h1>
       </div>
-      <button class="guide-btn" type="button" id="open-guide" aria-label="Apri la guida">Guida</button>
+      <button class="guide-btn" type="button" id="open-how" aria-label="Come leggere i numeri">Come leggere</button>
     </div>
-    <details class="profile-box" id="profile-box">
-      <summary>Il tuo profilo: Blade 100 v9 · rotazioni + piatto · &lt; 50 lbs</summary>
-      <div class="profile">
-        <span class="chip">Wilson Blade 100 v9 · 16×19</span>
-        <span class="chip">Tutto campo, rotazioni + piatto</span>
-        <span class="chip">4–5 h/settimana</span>
-        <span class="chip liked">★ Confidential 1.25 · 22/21 kg</span>
-        <span class="chip liked">★ O-Toro 1.23 · 23/22 kg</span>
-        <span class="chip disliked">✕ Confidential Soft</span>
-        <span class="chip disliked">✕ RPM Blast</span>
-      </div>
-    </details>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Sezioni">
-    <button role="tab" id="tab-perte" data-tab="perte" aria-selected="true"><span class="ico" aria-hidden="true">★</span>Per te</button>
-    <button role="tab" id="tab-mappa" data-tab="mappa" aria-selected="false"><span class="ico" aria-hidden="true">◫</span>Mappa</button>
+    <button role="tab" id="tab-casa" data-tab="casa" aria-selected="true"><span class="ico" aria-hidden="true">★</span>La tua corda</button>
     <button role="tab" id="tab-confronta" data-tab="confronta" aria-selected="false"><span class="ico" aria-hidden="true">⇄</span>Confronta</button>
-    <button role="tab" id="tab-esplora" data-tab="esplora" aria-selected="false"><span class="ico" aria-hidden="true">☰</span>Esplora</button>
+    <button role="tab" id="tab-esplora" data-tab="esplora" aria-selected="false"><span class="ico" aria-hidden="true">◫</span>Esplora</button>
   </nav>
 
   <main>
-    <section id="perte" class="panel" role="tabpanel" aria-labelledby="tab-perte">
-      <div class="section-head"><h2>Le 3 da provare</h2><p class="muted small" id="top3-note"></p></div>
-      <div class="top3" id="top3"></div>
-      <div class="tastes" id="tastes"></div>
-      <div class="section-head"><h2>Cerca o scegli una lista</h2></div>
-      <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="q" placeholder="Cerca: Hyper-G, Toro, Zero…"></label>
-      <div class="presets" role="group" aria-label="Liste pronte">
-        <button type="button" class="preset" data-preset="score" aria-pressed="true">Migliori per te</button>
-        <button type="button" class="preset" data-preset="similar" aria-pressed="false">Come le tue preferite</button>
-        <button type="button" class="preset" data-preset="spin" aria-pressed="false">Più spin, stesso controllo</button>
-        <button type="button" class="preset" data-preset="durable" aria-pressed="false">Durano di più</button>
-      </div>
-      <p class="muted small" id="preset-desc"></p>
-      <div class="list" id="list"></div>
-      <details class="weights" id="weights-box">
-        <summary>Cosa conta per te (pesi del punteggio)</summary>
-        <div id="sliders"></div>
-        <label class="toggle"><input type="checkbox" id="only-target" checked> Solo le marche che stai valutando</label>
-        <button class="ghost" id="reset-weights" type="button">Ripristina pesi</button>
-      </details>
-    </section>
-
-    <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden>
-      <div class="section-head"><h2>Dove sta ogni corda</h2><p class="muted small">Orizzontale: da morbida a rigida. Verticale: quanto spin. Tocca un punto per vederne la scheda.</p></div>
-      <div class="map-controls">
-        <label class="toggle"><input type="checkbox" id="show-comp"> Mostra anche i concorrenti</label>
-        <label class="toggle"><input type="checkbox" id="show-est" checked> Mostra le stime</label>
-      </div>
-      <div class="legend" id="map-legend"></div>
-      <div class="chart-box"><svg id="scatter" role="img" aria-label="Mappa rigidità contro spin"></svg><div class="tip" id="tip" hidden></div></div>
-      <div id="map-missing"></div>
-      <div id="map-pick"></div>
-      <details class="advanced">
-        <summary>Assi avanzati</summary>
-        <div class="controls">
-          <label>Orizzontale <select id="ax-x"></select></label>
-          <label>Verticale <select id="ax-y"></select></label>
-        </div>
-      </details>
+    <section id="casa" class="panel" role="tabpanel" aria-labelledby="tab-casa">
+      <div class="current" id="current"></div>
+      <div id="home-top"></div>
+      <div id="home-more"></div>
+      <div id="home-adv"></div>
     </section>
 
     <section id="confronta" class="panel" role="tabpanel" aria-labelledby="tab-confronta" hidden>
-      <div class="section-head"><h2>Confronta fino a 4 corde</h2></div>
-      <div class="pickers" id="cmp-pickers"></div>
-      <p class="summary" id="cmp-summary"></p>
-      <div class="cmp-scroll" id="cmp-cards"></div>
-      <p class="muted small swipe-hint">Scorri di lato per vedere tutte le corde.</p>
+      <div id="cmp"></div>
     </section>
 
     <section id="esplora" class="panel" role="tabpanel" aria-labelledby="tab-esplora" hidden>
-      <div class="controls">
-        <label>Cerca <input type="search" id="f-q" placeholder="Nome"></label>
-        <label>Marca <select id="f-brand"><option value="">Tutte</option></select></label>
-        <label>Calibro <select id="f-gauge"><option value="">Tutti</option></select></label>
-        <label>Forma <select id="f-shape"><option value="">Tutte</option></select></label>
-        <label class="toggle"><input type="checkbox" id="f-target"> Solo marche valutate</label>
-        <label class="toggle"><input type="checkbox" id="f-lab"> Solo con test di laboratorio</label>
-      </div>
-      <p class="muted small" id="f-count"></p>
-      <div class="list explore-cards" id="f-cards"></div>
-      <div class="table-scroll explore-table"><table class="data" id="table"></table></div>
+      <div id="explore"></div>
     </section>
-
-    <section id="guida" class="panel prose" role="tabpanel" hidden></section>
   </main>
 
   <footer class="foot muted small" id="foot"></footer>
+</div>
+
+<div id="prov-pop" class="pop" role="dialog" aria-label="Da dove viene questo dato" hidden>
+  <button class="pop-close" type="button" aria-label="Chiudi">×</button>
+  <div class="pop-body"></div>
 </div>
 
 <dialog id="sheet" aria-labelledby="sheet-title">

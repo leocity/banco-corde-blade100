@@ -7,10 +7,20 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 
 
+# moduli concatenati in un solo <script type="module">: stesso scope, quindi i nomi in testa devono essere unici
+MODULES = ["score.js", "recommend.js", "format.js", "prov.js", "badges.js", "current.js", "home.js", "compare.js", "explore.js",
+           "app.js"]
+
+
 def _js():
-    score = re.sub(r"^export ", "", (WEB / "score.js").read_text(encoding="utf-8"), flags=re.M)
-    app = re.sub(r"^import .*?;\s*$", "", (WEB / "app.js").read_text(encoding="utf-8"), flags=re.M)
-    return score + "\n" + app
+    parts = []
+    for m in MODULES:
+        p = WEB / m
+        if not p.exists():
+            continue  # tra un task e l'altro un modulo può mancare
+        src = re.sub(r"^import .*?;\s*$", "", p.read_text(encoding="utf-8"), flags=re.M)
+        parts.append(f"/* ---- {m} ---- */\n" + re.sub(r"^export ", "", src, flags=re.M))
+    return "\n".join(parts)
 
 
 def render(data: dict) -> str:
