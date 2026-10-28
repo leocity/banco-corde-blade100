@@ -54,7 +54,11 @@
    "swing": "Fast",
    "stiffness_lbin": 232.6,
    "tension_loss_pct": 45.9,
-   "spin_potential": 4.5
+   "spin_potential": 4.5,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.18,
@@ -134,7 +138,11 @@
    "swing": "Fast",
    "stiffness_lbin": 233.7,
    "tension_loss_pct": 33.3,
-   "spin_potential": 4.6
+   "spin_potential": 4.6,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.088,
+   "cof_string_ball": 0.406,
+   "twu_pcode": "BRPMB17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.18,
@@ -214,7 +222,11 @@
    "swing": "Fast",
    "stiffness_lbin": 209.7,
    "tension_loss_pct": 29.5,
-   "spin_potential": 8.2
+   "spin_potential": 8.2,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.83,
@@ -284,7 +296,11 @@
    "swing": "Fast",
    "stiffness_lbin": 230.3,
    "tension_loss_pct": 28.5,
-   "spin_potential": 6.4
+   "spin_potential": 6.4,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.071,
+   "cof_string_ball": 0.454,
+   "twu_pcode": "HAWK16"
   },
   "rpedia": null,
   "preference": null,
@@ -347,7 +363,11 @@
    "swing": "Fast",
    "stiffness_lbin": 203.5,
    "tension_loss_pct": 48.3,
-   "spin_potential": 7.5
+   "spin_potential": 7.5,
+   "energy_return_pct": 82.0,
+   "cof_string_string": 0.073,
+   "cof_string_ball": 0.545,
+   "twu_pcode": "HAWKP17"
   },
   "rpedia": null,
   "preference": null,
@@ -470,7 +490,11 @@
    "swing": "Fast",
    "stiffness_lbin": 228.6,
    "tension_loss_pct": 30.5,
-   "spin_potential": 6.1
+   "spin_potential": 6.1,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.085,
+   "cof_string_ball": 0.519,
+   "twu_pcode": "LT16CH"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.05,
@@ -593,7 +617,11 @@
    "swing": "Fast",
    "stiffness_lbin": 210.3,
    "tension_loss_pct": 47.5,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -656,7 +684,11 @@
    "swing": "Fast",
    "stiffness_lbin": 233.2,
    "tension_loss_pct": 20.9,
-   "spin_potential": 5.9
+   "spin_potential": 5.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.27,
@@ -779,7 +811,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.0,
    "tension_loss_pct": 28.9,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -896,7 +932,11 @@
    "swing": "Fast",
    "stiffness_lbin": 223.5,
    "tension_loss_pct": 41.2,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.72,
@@ -965,7 +1005,11 @@
    "swing": "Fast",
    "stiffness_lbin": 216.6,
    "tension_loss_pct": 38.4,
-   "spin_potential": 5.8
+   "spin_potential": 5.8,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.72,
@@ -1034,7 +1078,11 @@
    "swing": "Fast",
    "stiffness_lbin": 185.7,
    "tension_loss_pct": 41.4,
-   "spin_potential": 7.1
+   "spin_potential": 7.1,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.082,
+   "cof_string_ball": 0.585,
+   "twu_pcode": "XS17"
   },
   "rpedia": null,
   "preference": null,
@@ -1151,7 +1199,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.6,
    "tension_loss_pct": 44.2,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1214,7 +1266,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.6,
    "tension_loss_pct": 44.2,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1277,7 +1333,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.6,
    "tension_loss_pct": 36.7,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.9,
@@ -1346,7 +1406,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.6,
    "tension_loss_pct": 36.7,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1409,7 +1473,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.6,
    "tension_loss_pct": 36.7,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1472,7 +1540,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.6,
    "tension_loss_pct": 36.7,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.85,
@@ -1541,7 +1613,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.6,
    "tension_loss_pct": 36.7,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1604,7 +1680,11 @@
    "swing": "Fast",
    "stiffness_lbin": 258.9,
    "tension_loss_pct": 21.3,
-   "spin_potential": 3.9
+   "spin_potential": 3.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1667,7 +1747,11 @@
    "swing": "Fast",
    "stiffness_lbin": 209.2,
    "tension_loss_pct": 46.6,
-   "spin_potential": 5.8
+   "spin_potential": 5.8,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1730,7 +1814,11 @@
    "swing": "Fast",
    "stiffness_lbin": 209.2,
    "tension_loss_pct": 46.6,
-   "spin_potential": 5.8
+   "spin_potential": 5.8,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1793,7 +1881,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.7,
    "tension_loss_pct": 43.7,
-   "spin_potential": 7.0
+   "spin_potential": 7.0,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -1856,7 +1948,11 @@
    "swing": "Fast",
    "stiffness_lbin": 258.9,
    "tension_loss_pct": 21.3,
-   "spin_potential": 3.9
+   "spin_potential": 3.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -2262,7 +2358,11 @@
    "swing": "Fast",
    "stiffness_lbin": 224.6,
    "tension_loss_pct": 25.2,
-   "spin_potential": 6.2
+   "spin_potential": 6.2,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.087,
+   "cof_string_ball": 0.536,
+   "twu_pcode": "SIGX17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.07,
@@ -2385,7 +2485,11 @@
    "swing": "Fast",
    "stiffness_lbin": 194.9,
    "tension_loss_pct": 25.7,
-   "spin_potential": 6.1
+   "spin_potential": 6.1,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.088,
+   "cof_string_ball": 0.541,
+   "twu_pcode": "SHG17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1,
@@ -2454,7 +2558,11 @@
    "swing": "Fast",
    "stiffness_lbin": 172.0,
    "tension_loss_pct": 28.7,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -2517,7 +2625,11 @@
    "swing": "Fast",
    "stiffness_lbin": 172.0,
    "tension_loss_pct": 28.7,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -2580,7 +2692,11 @@
    "swing": "Fast",
    "stiffness_lbin": 181.2,
    "tension_loss_pct": 48.6,
-   "spin_potential": 6.3
+   "spin_potential": 6.3,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.079,
+   "cof_string_ball": 0.499,
+   "twu_pcode": "STB17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.97,
@@ -2649,7 +2765,11 @@
    "swing": "Fast",
    "stiffness_lbin": 222.3,
    "tension_loss_pct": 22.2,
-   "spin_potential": 6.4
+   "spin_potential": 6.4,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.1,
+   "cof_string_ball": 0.637,
+   "twu_pcode": "SLNC16LS"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.15,
@@ -2719,7 +2839,11 @@
    "swing": "Fast",
    "stiffness_lbin": 222.3,
    "tension_loss_pct": 22.2,
-   "spin_potential": 6.4
+   "spin_potential": 6.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 1,
@@ -2799,7 +2923,11 @@
    "swing": "Fast",
    "stiffness_lbin": 222.3,
    "tension_loss_pct": 22.2,
-   "spin_potential": 6.4
+   "spin_potential": 6.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 1,
@@ -2877,7 +3005,11 @@
    "swing": "Fast",
    "stiffness_lbin": 212.6,
    "tension_loss_pct": 28.4,
-   "spin_potential": 8.0
+   "spin_potential": 8.0,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.068,
+   "cof_string_ball": 0.542,
+   "twu_pcode": "SREV16L"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.15,
@@ -2954,7 +3086,11 @@
    "swing": "Fast",
    "stiffness_lbin": 229.2,
    "tension_loss_pct": 29.6,
-   "spin_potential": 5.6
+   "spin_potential": 5.6,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.086,
+   "cof_string_ball": 0.48,
+   "twu_pcode": "TFRC17B"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.28,
@@ -3023,7 +3159,11 @@
    "swing": "Fast",
    "stiffness_lbin": 180.6,
    "tension_loss_pct": 47.1,
-   "spin_potential": 9.3
+   "spin_potential": 9.3,
+   "energy_return_pct": 82.0,
+   "cof_string_string": 0.063,
+   "cof_string_ball": 0.589,
+   "twu_pcode": "T7ABS"
   },
   "rpedia": null,
   "preference": null,
@@ -3686,7 +3826,11 @@
    "swing": "Fast",
    "stiffness_lbin": 189.7,
    "tension_loss_pct": 34.7,
-   "spin_potential": 7.8
+   "spin_potential": 7.8,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.076,
+   "cof_string_ball": 0.594,
+   "twu_pcode": "T7SUPT"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.9,
@@ -3762,7 +3906,11 @@
    "swing": "Fast",
    "stiffness_lbin": 165.7,
    "tension_loss_pct": 44.4,
-   "spin_potential": 9.4
+   "spin_potential": 9.4,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.064,
+   "cof_string_ball": 0.601,
+   "twu_pcode": "TOTORO7"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.95,
@@ -4021,7 +4169,11 @@
    "swing": "Fast",
    "stiffness_lbin": 172.6,
    "tension_loss_pct": 54.5,
-   "spin_potential": 5.0
+   "spin_potential": 5.0,
+   "energy_return_pct": 36.0,
+   "cof_string_string": 0.092,
+   "cof_string_ball": 0.457,
+   "twu_pcode": "WRS16"
   },
   "rpedia": null,
   "preference": null,
@@ -4093,7 +4245,11 @@
    "swing": "Fast",
    "stiffness_lbin": 172.6,
    "tension_loss_pct": 54.5,
-   "spin_potential": 5.0
+   "spin_potential": 5.0,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -4156,7 +4312,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.0,
    "tension_loss_pct": 36.2,
-   "spin_potential": 7.7
+   "spin_potential": 7.7,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.066,
+   "cof_string_ball": 0.507,
+   "twu_pcode": "WRV17"
   },
   "rpedia": null,
   "preference": null,
@@ -4226,7 +4386,11 @@
    "swing": "Fast",
    "stiffness_lbin": 188.6,
    "tension_loss_pct": 33.3,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.093,
+   "cof_string_ball": 0.481,
+   "twu_pcode": "YPTP120"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.05,
@@ -4295,7 +4459,11 @@
    "swing": "Fast",
    "stiffness_lbin": 188.6,
    "tension_loss_pct": 33.3,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.093,
+   "cof_string_ball": 0.481,
+   "twu_pcode": "YPTP120"
   },
   "rpedia": null,
   "preference": null,
@@ -4358,7 +4526,11 @@
    "swing": "Fast",
    "stiffness_lbin": 193.2,
    "tension_loss_pct": 34.4,
-   "spin_potential": 7.2
+   "spin_potential": 7.2,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.074,
+   "cof_string_ball": 0.533,
+   "twu_pcode": "YPTR16L"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.85,
@@ -4427,7 +4599,11 @@
    "swing": "Fast",
    "stiffness_lbin": 213.7,
    "tension_loss_pct": 27.2,
-   "spin_potential": 6.3
+   "spin_potential": 6.3,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.08,
@@ -4459,7 +4635,11 @@
    "swing": "Fast",
    "stiffness_lbin": 196.0,
    "tension_loss_pct": 35.7,
-   "spin_potential": 9.9
+   "spin_potential": 9.9,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.057,
+   "cof_string_ball": 0.564,
+   "twu_pcode": "BRPMBRS"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.83,
@@ -4500,7 +4680,11 @@
    "swing": "Fast",
    "stiffness_lbin": 164.6,
    "tension_loss_pct": 41.7,
-   "spin_potential": 8.7
+   "spin_potential": 8.7,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.061,
+   "cof_string_ball": 0.529,
+   "twu_pcode": "TOROS7"
   },
   "rpedia": null,
   "preference": null,
@@ -4535,7 +4719,11 @@
    "swing": "Fast",
    "stiffness_lbin": 222.3,
    "tension_loss_pct": 26.5,
-   "spin_potential": 8.6
+   "spin_potential": 8.6,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.072,
+   "cof_string_ball": 0.622,
+   "twu_pcode": "RZRSP25"
   },
   "rpedia": null,
   "preference": null,
@@ -4561,7 +4749,11 @@
    "swing": "Fast",
    "stiffness_lbin": 209.7,
    "tension_loss_pct": 29.5,
-   "spin_potential": 8.2
+   "spin_potential": 8.2,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.07,
+   "cof_string_ball": 0.577,
+   "twu_pcode": "BRPMBR3"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.83,
@@ -4603,7 +4795,11 @@
    "swing": "Fast",
    "stiffness_lbin": 173.2,
    "tension_loss_pct": 38.3,
-   "spin_potential": 8.2
+   "spin_potential": 8.2,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.084,
+   "cof_string_ball": 0.687,
+   "twu_pcode": "T7TOROS"
   },
   "rpedia": null,
   "preference": null,
@@ -4637,7 +4833,11 @@
    "swing": "Fast",
    "stiffness_lbin": 210.3,
    "tension_loss_pct": 34.3,
-   "spin_potential": 8.2
+   "spin_potential": 8.2,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.066,
+   "cof_string_ball": 0.544,
+   "twu_pcode": "GM8S7"
   },
   "rpedia": null,
   "preference": null,
@@ -4673,7 +4873,11 @@
    "swing": "Fast",
    "stiffness_lbin": 216.6,
    "tension_loss_pct": 25.0,
-   "spin_potential": 7.7
+   "spin_potential": 7.7,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.079,
+   "cof_string_ball": 0.608,
+   "twu_pcode": "T7TOROT"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.1,
@@ -4714,7 +4918,11 @@
    "swing": "Fast",
    "stiffness_lbin": 182.9,
    "tension_loss_pct": 34.8,
-   "spin_potential": 7.6
+   "spin_potential": 7.6,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.068,
+   "cof_string_ball": 0.518,
+   "twu_pcode": "TCASH25"
   },
   "rpedia": null,
   "preference": null,
@@ -4748,7 +4956,11 @@
    "swing": "Fast",
    "stiffness_lbin": 216.0,
    "tension_loss_pct": 47.4,
-   "spin_potential": 7.5
+   "spin_potential": 7.5,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.072,
+   "cof_string_ball": 0.541,
+   "twu_pcode": "SHARK16"
   },
   "rpedia": null,
   "preference": null,
@@ -4774,7 +4986,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.7,
    "tension_loss_pct": 53.5,
-   "spin_potential": 7.4
+   "spin_potential": 7.4,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.072,
+   "cof_string_ball": 0.533,
+   "twu_pcode": "SHARK17"
   },
   "rpedia": null,
   "preference": null,
@@ -4800,7 +5016,11 @@
    "swing": "Fast",
    "stiffness_lbin": 212.0,
    "tension_loss_pct": 33.3,
-   "spin_potential": 7.4
+   "spin_potential": 7.4,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.07,
+   "cof_string_ball": 0.517,
+   "twu_pcode": "TRSB17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.15,
@@ -4832,7 +5052,11 @@
    "swing": "Fast",
    "stiffness_lbin": 225.7,
    "tension_loss_pct": 24.8,
-   "spin_potential": 7.3
+   "spin_potential": 7.3,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.081,
+   "cof_string_ball": 0.594,
+   "twu_pcode": "SIGPHEX16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.1,
@@ -4864,7 +5088,11 @@
    "swing": "Fast",
    "stiffness_lbin": 226.3,
    "tension_loss_pct": 32.3,
-   "spin_potential": 7.3
+   "spin_potential": 7.3,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.066,
+   "cof_string_ball": 0.484,
+   "twu_pcode": "SHGR16G"
   },
   "rpedia": null,
   "preference": null,
@@ -4898,7 +5126,11 @@
    "swing": "Fast",
    "stiffness_lbin": 190.9,
    "tension_loss_pct": 35.9,
-   "spin_potential": 7.3
+   "spin_potential": 7.3,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.077,
+   "cof_string_ball": 0.56,
+   "twu_pcode": "T7SNAP"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.85,
@@ -4930,7 +5162,11 @@
    "swing": "Fast",
    "stiffness_lbin": 184.0,
    "tension_loss_pct": 45.2,
-   "spin_potential": 7.2
+   "spin_potential": 7.2,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.06,
+   "cof_string_ball": 0.43,
+   "twu_pcode": "WRV16"
   },
   "rpedia": null,
   "preference": null,
@@ -4956,7 +5192,11 @@
    "swing": "Fast",
    "stiffness_lbin": 185.7,
    "tension_loss_pct": 41.4,
-   "spin_potential": 7.1
+   "spin_potential": 7.1,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.082,
+   "cof_string_ball": 0.585,
+   "twu_pcode": "XS17"
   },
   "rpedia": null,
   "preference": null,
@@ -4982,7 +5222,11 @@
    "swing": "Fast",
    "stiffness_lbin": 217.7,
    "tension_loss_pct": 24.6,
-   "spin_potential": 7.1
+   "spin_potential": 7.1,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.079,
+   "cof_string_ball": 0.564,
+   "twu_pcode": "LTR17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.05,
@@ -5014,7 +5258,11 @@
    "swing": "Fast",
    "stiffness_lbin": 219.5,
    "tension_loss_pct": 26.3,
-   "spin_potential": 7.0
+   "spin_potential": 7.0,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.09,
+   "cof_string_ball": 0.631,
+   "twu_pcode": "SHG16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.02,
@@ -5054,7 +5302,11 @@
    "swing": "Fast",
    "stiffness_lbin": 198.3,
    "tension_loss_pct": 34.9,
-   "spin_potential": 7.0
+   "spin_potential": 7.0,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.07,
+   "cof_string_ball": 0.487,
+   "twu_pcode": "LER130"
   },
   "rpedia": null,
   "preference": null,
@@ -5080,7 +5332,11 @@
    "swing": "Fast",
    "stiffness_lbin": 210.3,
    "tension_loss_pct": 38.9,
-   "spin_potential": 7.0
+   "spin_potential": 7.0,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.071,
+   "cof_string_ball": 0.496,
+   "twu_pcode": "BRPMB03"
   },
   "rpedia": null,
   "preference": null,
@@ -5106,7 +5362,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.7,
    "tension_loss_pct": 43.7,
-   "spin_potential": 7.0
+   "spin_potential": 7.0,
+   "energy_return_pct": 83.0,
+   "cof_string_string": 0.072,
+   "cof_string_ball": 0.503,
+   "twu_pcode": "LEIR27S"
   },
   "rpedia": null,
   "preference": null,
@@ -5132,7 +5392,11 @@
    "swing": "Fast",
    "stiffness_lbin": 184.0,
    "tension_loss_pct": 50.3,
-   "spin_potential": 6.9
+   "spin_potential": 6.9,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.08,
+   "cof_string_ball": 0.549,
+   "twu_pcode": "STBS16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.5,
@@ -5164,7 +5428,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.7,
    "tension_loss_pct": 36.6,
-   "spin_potential": 6.9
+   "spin_potential": 6.9,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.074,
+   "cof_string_ball": 0.514,
+   "twu_pcode": "ALUPRSFT16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.73,
@@ -5196,7 +5464,11 @@
    "swing": "Fast",
    "stiffness_lbin": 202.9,
    "tension_loss_pct": 47.1,
-   "spin_potential": 6.7
+   "spin_potential": 6.7,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.085,
+   "cof_string_ball": 0.573,
+   "twu_pcode": "STB16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1,
@@ -5228,7 +5500,11 @@
    "swing": "Fast",
    "stiffness_lbin": 217.2,
    "tension_loss_pct": 25.4,
-   "spin_potential": 6.7
+   "spin_potential": 6.7,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.078,
+   "cof_string_ball": 0.522,
+   "twu_pcode": "LUX4GS16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.13,
@@ -5260,7 +5536,11 @@
    "swing": "Fast",
    "stiffness_lbin": 218.3,
    "tension_loss_pct": 29.4,
-   "spin_potential": 6.7
+   "spin_potential": 6.7,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.079,
+   "cof_string_ball": 0.532,
+   "twu_pcode": "GALP125"
   },
   "rpedia": null,
   "preference": null,
@@ -5296,7 +5576,11 @@
    "swing": "Fast",
    "stiffness_lbin": 188.6,
    "tension_loss_pct": 50.0,
-   "spin_potential": 6.6
+   "spin_potential": 6.6,
+   "energy_return_pct": 83.0,
+   "cof_string_string": 0.072,
+   "cof_string_ball": 0.476,
+   "twu_pcode": "SREV17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.07,
@@ -5329,7 +5613,11 @@
    "swing": "Fast",
    "stiffness_lbin": 191.5,
    "tension_loss_pct": 44.3,
-   "spin_potential": 6.6
+   "spin_potential": 6.6,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.068,
+   "cof_string_ball": 0.446,
+   "twu_pcode": "LE130"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.8,
@@ -5361,7 +5649,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.0,
    "tension_loss_pct": 28.8,
-   "spin_potential": 6.5
+   "spin_potential": 6.5,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.073,
+   "cof_string_ball": 0.474,
+   "twu_pcode": "SOUT16L"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.08,
@@ -5393,7 +5685,11 @@
    "swing": "Fast",
    "stiffness_lbin": 209.2,
    "tension_loss_pct": 39.6,
-   "spin_potential": 6.5
+   "spin_potential": 6.5,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.077,
+   "cof_string_ball": 0.498,
+   "twu_pcode": "ALUPR16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.72,
@@ -5425,7 +5721,11 @@
    "swing": "Fast",
    "stiffness_lbin": 194.3,
    "tension_loss_pct": 27.7,
-   "spin_potential": 6.5
+   "spin_potential": 6.5,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.081,
+   "cof_string_ball": 0.525,
+   "twu_pcode": "CONSF25"
   },
   "rpedia": null,
   "preference": "disliked",
@@ -5459,7 +5759,11 @@
    "swing": "Fast",
    "stiffness_lbin": 215.5,
    "tension_loss_pct": 47.4,
-   "spin_potential": 6.4
+   "spin_potential": 6.4,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.07,
+   "cof_string_ball": 0.451,
+   "twu_pcode": "SREV16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.15,
@@ -5492,7 +5796,11 @@
    "swing": "Fast",
    "stiffness_lbin": 213.7,
    "tension_loss_pct": 27.2,
-   "spin_potential": 6.3
+   "spin_potential": 6.3,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.1,
+   "cof_string_ball": 0.632,
+   "twu_pcode": "YPTS125"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.08,
@@ -5524,7 +5832,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.7,
    "tension_loss_pct": 32.6,
-   "spin_potential": 6.3
+   "spin_potential": 6.3,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.097,
+   "cof_string_ball": 0.614,
+   "twu_pcode": "SPYJ17"
   },
   "rpedia": null,
   "preference": null,
@@ -5550,7 +5862,11 @@
    "swing": "Fast",
    "stiffness_lbin": 218.3,
    "tension_loss_pct": 24.7,
-   "spin_potential": 6.1
+   "spin_potential": 6.1,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.09,
+   "cof_string_ball": 0.55,
+   "twu_pcode": "SHG16L"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.1,
@@ -5590,7 +5906,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.0,
    "tension_loss_pct": 47.3,
-   "spin_potential": 6.0
+   "spin_potential": 6.0,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.069,
+   "cof_string_ball": 0.416,
+   "twu_pcode": "SOUT16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.93,
@@ -5622,7 +5942,11 @@
    "swing": "Fast",
    "stiffness_lbin": 230.9,
    "tension_loss_pct": 28.3,
-   "spin_potential": 6.0
+   "spin_potential": 6.0,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.078,
+   "cof_string_ball": 0.468,
+   "twu_pcode": "KMAXPWRR16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.03,
@@ -5654,7 +5978,11 @@
    "swing": "Fast",
    "stiffness_lbin": 222.3,
    "tension_loss_pct": 26.3,
-   "spin_potential": 6.0
+   "spin_potential": 6.0,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.081,
+   "cof_string_ball": 0.486,
+   "twu_pcode": "SM10130"
   },
   "rpedia": null,
   "preference": null,
@@ -5689,7 +6017,11 @@
    "swing": "Fast",
    "stiffness_lbin": 204.6,
    "tension_loss_pct": 41.5,
-   "spin_potential": 5.9
+   "spin_potential": 5.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.1,
@@ -5721,7 +6053,11 @@
    "swing": "Fast",
    "stiffness_lbin": 237.7,
    "tension_loss_pct": 25.2,
-   "spin_potential": 5.9
+   "spin_potential": 5.9,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.085,
+   "cof_string_ball": 0.505,
+   "twu_pcode": "STB16L"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.12,
@@ -5762,7 +6098,11 @@
    "swing": "Fast",
    "stiffness_lbin": 233.2,
    "tension_loss_pct": 20.9,
-   "spin_potential": 5.9
+   "spin_potential": 5.9,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.078,
+   "cof_string_ball": 0.46,
+   "twu_pcode": "KMAXPWR16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.27,
@@ -5794,7 +6134,11 @@
    "swing": "Fast",
    "stiffness_lbin": 209.2,
    "tension_loss_pct": 46.6,
-   "spin_potential": 5.8
+   "spin_potential": 5.8,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.077,
+   "cof_string_ball": 0.446,
+   "twu_pcode": "ALUSTR"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.78,
@@ -5826,7 +6170,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.0,
    "tension_loss_pct": 29.3,
-   "spin_potential": 5.8
+   "spin_potential": 5.8,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.088,
+   "cof_string_ball": 0.507,
+   "twu_pcode": "STBS16L"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.85,
@@ -5858,7 +6206,11 @@
    "swing": "Fast",
    "stiffness_lbin": 206.3,
    "tension_loss_pct": 32.0,
-   "spin_potential": 5.8
+   "spin_potential": 5.8,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.086,
+   "cof_string_ball": 0.501,
+   "twu_pcode": "GTSS125"
   },
   "rpedia": null,
   "preference": null,
@@ -5894,7 +6246,11 @@
    "swing": "Fast",
    "stiffness_lbin": 209.7,
    "tension_loss_pct": 47.6,
-   "spin_potential": 5.7
+   "spin_potential": 5.7,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.078,
+   "cof_string_ball": 0.444,
+   "twu_pcode": "PL2130"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.75,
@@ -5926,7 +6282,11 @@
    "swing": "Fast",
    "stiffness_lbin": 210.9,
    "tension_loss_pct": 48.0,
-   "spin_potential": 5.7
+   "spin_potential": 5.7,
+   "energy_return_pct": 83.0,
+   "cof_string_string": 0.08,
+   "cof_string_ball": 0.453,
+   "twu_pcode": "SMSH17120"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.97,
@@ -5958,7 +6318,11 @@
    "swing": "Fast",
    "stiffness_lbin": 186.3,
    "tension_loss_pct": 29.2,
-   "spin_potential": 5.7
+   "spin_potential": 5.7,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.092,
+   "cof_string_ball": 0.526,
+   "twu_pcode": "STBS17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.48,
@@ -5990,7 +6354,11 @@
    "swing": "Fast",
    "stiffness_lbin": 193.2,
    "tension_loss_pct": 43.3,
-   "spin_potential": 5.7
+   "spin_potential": 5.7,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.102,
+   "cof_string_ball": 0.577,
+   "twu_pcode": "XS16"
   },
   "rpedia": null,
   "preference": null,
@@ -6016,7 +6384,11 @@
    "swing": "Fast",
    "stiffness_lbin": 221.2,
    "tension_loss_pct": 40.6,
-   "spin_potential": 5.6
+   "spin_potential": 5.6,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.083,
+   "cof_string_ball": 0.467,
+   "twu_pcode": "SIGPPP16LW"
   },
   "rpedia": null,
   "preference": null,
@@ -6042,7 +6414,11 @@
    "swing": "Fast",
    "stiffness_lbin": 223.5,
    "tension_loss_pct": 26.4,
-   "spin_potential": 5.6
+   "spin_potential": 5.6,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.088,
+   "cof_string_ball": 0.496,
+   "twu_pcode": "KMAXPWRR17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.03,
@@ -6074,7 +6450,11 @@
    "swing": "Fast",
    "stiffness_lbin": 182.9,
    "tension_loss_pct": 33.5,
-   "spin_potential": 5.6
+   "spin_potential": 5.6,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.105,
+   "cof_string_ball": 0.59,
+   "twu_pcode": "SBW16L"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.9,
@@ -6106,7 +6486,11 @@
    "swing": "Fast",
    "stiffness_lbin": 229.2,
    "tension_loss_pct": 29.6,
-   "spin_potential": 5.6
+   "spin_potential": 5.6,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.086,
+   "cof_string_ball": 0.48,
+   "twu_pcode": "TFRC17B"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.28,
@@ -6138,7 +6522,11 @@
    "swing": "Fast",
    "stiffness_lbin": 221.2,
    "tension_loss_pct": 35.0,
-   "spin_potential": 5.6
+   "spin_potential": 5.6,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.086,
+   "cof_string_ball": 0.482,
+   "twu_pcode": "TICW16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.9,
@@ -6170,7 +6558,11 @@
    "swing": "Fast",
    "stiffness_lbin": 182.9,
    "tension_loss_pct": 50.4,
-   "spin_potential": 5.5
+   "spin_potential": 5.5,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.074,
+   "cof_string_ball": 0.406,
+   "twu_pcode": "SOUT17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.95,
@@ -6202,7 +6594,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.0,
    "tension_loss_pct": 33.6,
-   "spin_potential": 5.5
+   "spin_potential": 5.5,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.078,
+   "cof_string_ball": 0.431,
+   "twu_pcode": "LE125"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.8,
@@ -6234,7 +6630,11 @@
    "swing": "Fast",
    "stiffness_lbin": 185.7,
    "tension_loss_pct": 43.0,
-   "spin_potential": 5.5
+   "spin_potential": 5.5,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.088,
+   "cof_string_ball": 0.485,
+   "twu_pcode": "SFS16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.85,
@@ -6266,7 +6666,11 @@
    "swing": "Fast",
    "stiffness_lbin": 204.6,
    "tension_loss_pct": 55.3,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6292,7 +6696,11 @@
    "swing": "Fast",
    "stiffness_lbin": 196.0,
    "tension_loss_pct": 48.5,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6318,7 +6726,11 @@
    "swing": "Fast",
    "stiffness_lbin": 223.5,
    "tension_loss_pct": 41.2,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.08,
+   "cof_string_ball": 0.429,
+   "twu_pcode": "SHARK16BK"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.72,
@@ -6350,7 +6762,11 @@
    "swing": "Fast",
    "stiffness_lbin": 240.6,
    "tension_loss_pct": 23.5,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.089,
+   "cof_string_ball": 0.485,
+   "twu_pcode": "KMAXPWR17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.27,
@@ -6382,7 +6798,11 @@
    "swing": "Fast",
    "stiffness_lbin": 191.5,
    "tension_loss_pct": 47.0,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.55,
@@ -6414,7 +6834,11 @@
    "swing": "Fast",
    "stiffness_lbin": 198.3,
    "tension_loss_pct": 26.0,
-   "spin_potential": 5.4
+   "spin_potential": 5.4,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.089,
+   "cof_string_ball": 0.483,
+   "twu_pcode": "SIGPPP170"
   },
   "rpedia": null,
   "preference": null,
@@ -6440,7 +6864,11 @@
    "swing": "Fast",
    "stiffness_lbin": 218.3,
    "tension_loss_pct": 45.7,
-   "spin_potential": 5.3
+   "spin_potential": 5.3,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6466,7 +6894,11 @@
    "swing": "Fast",
    "stiffness_lbin": 221.7,
    "tension_loss_pct": 50.7,
-   "spin_potential": 5.3
+   "spin_potential": 5.3,
+   "energy_return_pct": 81.0,
+   "cof_string_string": 0.08,
+   "cof_string_ball": 0.424,
+   "twu_pcode": "SMASH16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.97,
@@ -6498,7 +6930,11 @@
    "swing": "Fast",
    "stiffness_lbin": 218.9,
    "tension_loss_pct": 38.3,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6524,7 +6960,11 @@
    "swing": "Fast",
    "stiffness_lbin": 199.5,
    "tension_loss_pct": 43.0,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.086,
+   "cof_string_ball": 0.449,
+   "twu_pcode": "SIGPPP170W"
   },
   "rpedia": null,
   "preference": null,
@@ -6550,7 +6990,11 @@
    "swing": "Fast",
    "stiffness_lbin": 203.5,
    "tension_loss_pct": 45.3,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6576,7 +7020,11 @@
    "swing": "Fast",
    "stiffness_lbin": 214.3,
    "tension_loss_pct": 51.0,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6602,7 +7050,11 @@
    "swing": "Fast",
    "stiffness_lbin": 172.0,
    "tension_loss_pct": 28.7,
-   "spin_potential": 5.2
+   "spin_potential": 5.2,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.099,
+   "cof_string_ball": 0.512,
+   "twu_pcode": "SHGS16L"
   },
   "rpedia": null,
   "preference": null,
@@ -6628,7 +7080,11 @@
    "swing": "Fast",
    "stiffness_lbin": 215.5,
    "tension_loss_pct": 47.7,
-   "spin_potential": 5.1
+   "spin_potential": 5.1,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.085,
+   "cof_string_ball": 0.434,
+   "twu_pcode": "SIGTORN160"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.72,
@@ -6660,7 +7116,11 @@
    "swing": "Fast",
    "stiffness_lbin": 205.2,
    "tension_loss_pct": 52.7,
-   "spin_potential": 5.1
+   "spin_potential": 5.1,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6686,7 +7146,11 @@
    "swing": "Fast",
    "stiffness_lbin": 240.0,
    "tension_loss_pct": 27.2,
-   "spin_potential": 5.1
+   "spin_potential": 5.1,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.08,
+   "cof_string_ball": 0.41,
+   "twu_pcode": "PLX16CO"
   },
   "rpedia": null,
   "preference": null,
@@ -6712,7 +7176,11 @@
    "swing": "Fast",
    "stiffness_lbin": 216.6,
    "tension_loss_pct": 54.6,
-   "spin_potential": 5.0
+   "spin_potential": 5.0,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6738,7 +7206,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.2,
    "tension_loss_pct": 40.3,
-   "spin_potential": 5.0
+   "spin_potential": 5.0,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.098,
+   "cof_string_ball": 0.487,
+   "twu_pcode": "SIGPPP17L"
   },
   "rpedia": null,
   "preference": null,
@@ -6764,7 +7236,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.0,
    "tension_loss_pct": 34.3,
-   "spin_potential": 5.0
+   "spin_potential": 5.0,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.107,
+   "cof_string_ball": 0.533,
+   "twu_pcode": "LALUPV"
   },
   "rpedia": null,
   "preference": null,
@@ -6790,7 +7266,11 @@
    "swing": "Fast",
    "stiffness_lbin": 210.3,
    "tension_loss_pct": 47.5,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.082,
+   "cof_string_ball": 0.403,
+   "twu_pcode": "COMPK130"
   },
   "rpedia": null,
   "preference": null,
@@ -6816,7 +7296,11 @@
    "swing": "Fast",
    "stiffness_lbin": 235.5,
    "tension_loss_pct": 33.9,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -6842,7 +7326,11 @@
    "swing": "Fast",
    "stiffness_lbin": 186.3,
    "tension_loss_pct": 42.6,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.113,
+   "cof_string_ball": 0.557,
+   "twu_pcode": "SBW17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.75,
@@ -6874,7 +7362,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.6,
    "tension_loss_pct": 52.0,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": 82.0,
+   "cof_string_string": 0.111,
+   "cof_string_ball": 0.54,
+   "twu_pcode": "STBDR16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.5,
@@ -6906,7 +7398,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.0,
    "tension_loss_pct": 28.9,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": 89.0,
+   "cof_string_string": 0.09,
+   "cof_string_ball": 0.437,
+   "twu_pcode": "PLE2125BLU"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.77,
@@ -6938,7 +7434,11 @@
    "swing": "Fast",
    "stiffness_lbin": 201.2,
    "tension_loss_pct": 23.9,
-   "spin_potential": 4.9
+   "spin_potential": 4.9,
+   "energy_return_pct": 91.0,
+   "cof_string_string": 0.097,
+   "cof_string_ball": 0.476,
+   "twu_pcode": "HHR"
   },
   "rpedia": null,
   "preference": null,
@@ -6964,7 +7464,11 @@
    "swing": "Fast",
    "stiffness_lbin": 213.2,
    "tension_loss_pct": 36.3,
-   "spin_potential": 4.8
+   "spin_potential": 4.8,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.093,
+   "cof_string_ball": 0.447,
+   "twu_pcode": "SIGPPM17L"
   },
   "rpedia": null,
   "preference": null,
@@ -6990,7 +7494,11 @@
    "swing": "Fast",
    "stiffness_lbin": 214.3,
    "tension_loss_pct": 44.3,
-   "spin_potential": 4.8
+   "spin_potential": 4.8,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.091,
+   "cof_string_ball": 0.441,
+   "twu_pcode": "SIGTORN170"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.72,
@@ -7022,7 +7530,11 @@
    "swing": "Fast",
    "stiffness_lbin": 193.2,
    "tension_loss_pct": 46.0,
-   "spin_potential": 4.8
+   "spin_potential": 4.8,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.09,
+   "cof_string_ball": 0.436,
+   "twu_pcode": "PL2120BK"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.75,
@@ -7054,7 +7566,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.2,
    "tension_loss_pct": 41.6,
-   "spin_potential": 4.8
+   "spin_potential": 4.8,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -7080,7 +7596,11 @@
    "swing": "Fast",
    "stiffness_lbin": 218.3,
    "tension_loss_pct": 37.0,
-   "spin_potential": 4.8
+   "spin_potential": 4.8,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.089,
+   "cof_string_ball": 0.423,
+   "twu_pcode": "PLX17CO"
   },
   "rpedia": null,
   "preference": null,
@@ -7106,7 +7626,11 @@
    "swing": "Fast",
    "stiffness_lbin": 197.7,
    "tension_loss_pct": 46.4,
-   "spin_potential": 4.8
+   "spin_potential": 4.8,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.086,
+   "cof_string_ball": 0.413,
+   "twu_pcode": "SFS17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.85,
@@ -7138,7 +7662,11 @@
    "swing": "Fast",
    "stiffness_lbin": 237.2,
    "tension_loss_pct": 25.7,
-   "spin_potential": 4.8
+   "spin_potential": 4.8,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.104,
+   "cof_string_ball": 0.497,
+   "twu_pcode": "YPTSG16LR"
   },
   "rpedia": null,
   "preference": null,
@@ -7164,7 +7692,11 @@
    "swing": "Fast",
    "stiffness_lbin": 225.7,
    "tension_loss_pct": 39.2,
-   "spin_potential": 4.7
+   "spin_potential": 4.7,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.098,
+   "cof_string_ball": 0.465,
+   "twu_pcode": "SIGPPP16L"
   },
   "rpedia": null,
   "preference": null,
@@ -7190,7 +7722,11 @@
    "swing": "Fast",
    "stiffness_lbin": 201.2,
    "tension_loss_pct": 44.9,
-   "spin_potential": 4.7
+   "spin_potential": 4.7,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.101,
+   "cof_string_ball": 0.47,
+   "twu_pcode": "PL2125BK"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.75,
@@ -7222,7 +7758,11 @@
    "swing": "Fast",
    "stiffness_lbin": 204.6,
    "tension_loss_pct": 32.9,
-   "spin_potential": 4.7
+   "spin_potential": 4.7,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.069,
+   "cof_string_ball": 0.323,
+   "twu_pcode": "HAWK17"
   },
   "rpedia": null,
   "preference": null,
@@ -7248,7 +7788,11 @@
    "swing": "Fast",
    "stiffness_lbin": 220.0,
    "tension_loss_pct": 40.9,
-   "spin_potential": 4.6
+   "spin_potential": 4.6,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.096,
+   "cof_string_ball": 0.443,
+   "twu_pcode": "SIGHYP160"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.8,
@@ -7280,7 +7824,11 @@
    "swing": "Fast",
    "stiffness_lbin": 232.6,
    "tension_loss_pct": 45.9,
-   "spin_potential": 4.5
+   "spin_potential": 4.5,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.09,
+   "cof_string_ball": 0.406,
+   "twu_pcode": "BRPMB16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.25,
@@ -7322,7 +7870,11 @@
    "swing": "Fast",
    "stiffness_lbin": 210.3,
    "tension_loss_pct": 47.5,
-   "spin_potential": 4.5
+   "spin_potential": 4.5,
+   "energy_return_pct": 84.0,
+   "cof_string_string": 0.103,
+   "cof_string_ball": 0.463,
+   "twu_pcode": "COMPK125"
   },
   "rpedia": null,
   "preference": null,
@@ -7348,7 +7900,11 @@
    "swing": "Fast",
    "stiffness_lbin": 224.6,
    "tension_loss_pct": 47.8,
-   "spin_potential": 4.4
+   "spin_potential": 4.4,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -7374,7 +7930,11 @@
    "swing": "Fast",
    "stiffness_lbin": 214.3,
    "tension_loss_pct": 40.2,
-   "spin_potential": 4.4
+   "spin_potential": 4.4,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.123,
+   "cof_string_ball": 0.542,
+   "twu_pcode": "SBW16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.05,
@@ -7406,7 +7966,11 @@
    "swing": "Fast",
    "stiffness_lbin": 234.9,
    "tension_loss_pct": 34.9,
-   "spin_potential": 4.3
+   "spin_potential": 4.3,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.097,
+   "cof_string_ball": 0.42,
+   "twu_pcode": "SIGPPM16"
   },
   "rpedia": null,
   "preference": null,
@@ -7432,7 +7996,11 @@
    "swing": "Fast",
    "stiffness_lbin": 246.3,
    "tension_loss_pct": 40.9,
-   "spin_potential": 4.3
+   "spin_potential": 4.3,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.112,
+   "cof_string_ball": 0.48,
+   "twu_pcode": "SIGPSS16"
   },
   "rpedia": null,
   "preference": null,
@@ -7458,7 +8026,11 @@
    "swing": "Fast",
    "stiffness_lbin": 181.7,
    "tension_loss_pct": 43.5,
-   "spin_potential": 4.3
+   "spin_potential": 4.3,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.119,
+   "cof_string_ball": 0.516,
+   "twu_pcode": "STBDR17"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.55,
@@ -7490,7 +8062,11 @@
    "swing": "Fast",
    "stiffness_lbin": 202.3,
    "tension_loss_pct": 42.6,
-   "spin_potential": 4.2
+   "spin_potential": 4.2,
+   "energy_return_pct": 85.0,
+   "cof_string_string": 0.104,
+   "cof_string_ball": 0.442,
+   "twu_pcode": "SIGHYP170"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.8,
@@ -7522,7 +8098,11 @@
    "swing": "Fast",
    "stiffness_lbin": 242.9,
    "tension_loss_pct": 32.7,
-   "spin_potential": 4.2
+   "spin_potential": 4.2,
+   "energy_return_pct": 88.0,
+   "cof_string_string": 0.09,
+   "cof_string_ball": 0.376,
+   "twu_pcode": "TFRC16B"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.28,
@@ -7554,7 +8134,11 @@
    "swing": "Fast",
    "stiffness_lbin": 216.0,
    "tension_loss_pct": 32.8,
-   "spin_potential": 4.2
+   "spin_potential": 4.2,
+   "energy_return_pct": 90.0,
+   "cof_string_string": 0.094,
+   "cof_string_ball": 0.399,
+   "twu_pcode": "LUX4GR125"
   },
   "rpedia": null,
   "preference": null,
@@ -7580,7 +8164,11 @@
    "swing": "Fast",
    "stiffness_lbin": 204.6,
    "tension_loss_pct": 50.8,
-   "spin_potential": 4.1
+   "spin_potential": 4.1,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -7606,7 +8194,11 @@
    "swing": "Fast",
    "stiffness_lbin": 190.3,
    "tension_loss_pct": 45.0,
-   "spin_potential": 4.1
+   "spin_potential": 4.1,
+   "energy_return_pct": 86.0,
+   "cof_string_string": 0.103,
+   "cof_string_ball": 0.422,
+   "twu_pcode": "COMPK17"
   },
   "rpedia": null,
   "preference": null,
@@ -7632,7 +8224,11 @@
    "swing": "Fast",
    "stiffness_lbin": 194.9,
    "tension_loss_pct": 52.2,
-   "spin_potential": 3.9
+   "spin_potential": 3.9,
+   "energy_return_pct": null,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": null
   },
   "rpedia": null,
   "preference": null,
@@ -7658,7 +8254,11 @@
    "swing": "Fast",
    "stiffness_lbin": 258.9,
    "tension_loss_pct": 21.3,
-   "spin_potential": 3.9
+   "spin_potential": 3.9,
+   "energy_return_pct": 91.0,
+   "cof_string_string": 0.095,
+   "cof_string_ball": 0.366,
+   "twu_pcode": "LUX4G125"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.18,
@@ -7690,7 +8290,11 @@
    "swing": "Fast",
    "stiffness_lbin": 191.5,
    "tension_loss_pct": 44.5,
-   "spin_potential": 3.4
+   "spin_potential": 3.4,
+   "energy_return_pct": 87.0,
+   "cof_string_string": 0.111,
+   "cof_string_ball": 0.374,
+   "twu_pcode": "YPTP130"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.05,
@@ -7722,7 +8326,11 @@
    "swing": "Fast",
    "stiffness_lbin": 196.0,
    "tension_loss_pct": 44.3,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": 85.0,
+   "cof_string_string": null,
+   "cof_string_ball": 0.391,
+   "twu_pcode": "SIGPPP17LW"
   },
   "rpedia": null,
   "preference": null,
@@ -7748,7 +8356,11 @@
    "swing": "Fast",
    "stiffness_lbin": 181.2,
    "tension_loss_pct": 46.3,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": 86.0,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": "YPTP125"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.05,
@@ -7780,7 +8392,11 @@
    "swing": "Fast",
    "stiffness_lbin": 286.9,
    "tension_loss_pct": 23.5,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": 90.0,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": "LUX4G130"
   },
   "rpedia": {
    "static_stiffness_kgmm": 1.18,
@@ -7812,7 +8428,11 @@
    "swing": "Fast",
    "stiffness_lbin": 208.6,
    "tension_loss_pct": 33.3,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": 86.0,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": "YPTR16"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.85,
@@ -7844,7 +8464,11 @@
    "swing": "Fast",
    "stiffness_lbin": 192.6,
    "tension_loss_pct": 36.7,
-   "spin_potential": null
+   "spin_potential": null,
+   "energy_return_pct": 88.0,
+   "cof_string_string": null,
+   "cof_string_ball": null,
+   "twu_pcode": "KFLASH"
   },
   "rpedia": {
    "static_stiffness_kgmm": 0.9,

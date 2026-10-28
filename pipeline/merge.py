@@ -1,7 +1,9 @@
 """Fusione Excel + TWU + Racketpedia in un record per corda (spec §5, modello dati)."""
 import json
+import os
 
 from pipeline.scope import is_target
+from pipeline.twu_compare import merge_compare
 
 LIKED = {"solinco-confidential-16l", "toroline-o-toro-17"}
 DISLIKED_MODELS = {("Solinco", "Confidential Soft"), ("Babolat", "RPM Blast")}
@@ -81,6 +83,10 @@ if __name__ == "__main__":
     recs = merge(_load("data/raw/excel.json"), _load("data/raw/twu.json"),
                  _load("data/agents/matches.json"), _load("data/agents/rpedia.json"))
     recs = apply_crosscheck(recs, _load("data/crosscheck_overrides.json"))
+    cmp = _load("data/raw/twu_compare.json") if os.path.exists("data/raw/twu_compare.json") else {}
+    recs, anomalies = merge_compare(recs, cmp)
+    print("Compare TWU:", sum(1 for r in recs if (r["twu"] or {}).get("twu_pcode")), "righe con le misure nuove;",
+          "anomalie (rigidità o spin diversi tra i due strumenti):", anomalies)
     with open("data/merged.json", "w", encoding="utf-8") as f:
         json.dump(recs, f, ensure_ascii=False, indent=1)
     cov = {}

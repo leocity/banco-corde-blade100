@@ -1,0 +1,1142 @@
+{
+ "Babolat RPM Blast 16": {
+  "cof_string_ball": 0.406,
+  "cof_string_string": 0.09,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "BRPMB16",
+  "spin_potential": 4.5,
+  "stiffness_lbin": 233.0,
+  "tension_loss_pct": 46.0
+ },
+ "Babolat RPM Blast 17/1.25": {
+  "cof_string_ball": 0.406,
+  "cof_string_string": 0.088,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "BRPMB17",
+  "spin_potential": 4.6,
+  "stiffness_lbin": 234.0,
+  "tension_loss_pct": 33.0
+ },
+ "Babolat RPM Blast Orange 16 (1.30)": {
+  "cof_string_ball": 0.496,
+  "cof_string_string": 0.071,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "BRPMB03",
+  "spin_potential": 7.0,
+  "stiffness_lbin": 210.0,
+  "tension_loss_pct": 39.0
+ },
+ "Babolat RPM Blast Rough 16": {
+  "cof_string_ball": 0.577,
+  "cof_string_string": 0.07,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "BRPMBR3",
+  "spin_potential": 8.2,
+  "stiffness_lbin": 210.0,
+  "tension_loss_pct": 30.0
+ },
+ "Babolat RPM Blast Rough 17": {
+  "cof_string_ball": 0.564,
+  "cof_string_string": 0.057,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "BRPMBRS",
+  "spin_potential": 9.9,
+  "stiffness_lbin": 196.0,
+  "tension_loss_pct": 36.0
+ },
+ "Grapplesnake Alpha 17 (1.25)": {
+  "cof_string_ball": 0.532,
+  "cof_string_string": 0.079,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "GALP125",
+  "spin_potential": 6.7,
+  "stiffness_lbin": 218.0,
+  "tension_loss_pct": 30.0
+ },
+ "Grapplesnake Tour M8 17 (1.25)": {
+  "cof_string_ball": 0.544,
+  "cof_string_string": 0.066,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "GM8S7",
+  "spin_potential": 8.2,
+  "stiffness_lbin": 210.0,
+  "tension_loss_pct": 34.0
+ },
+ "Grapplesnake Tour Sniper 1.25": {
+  "cof_string_ball": 0.501,
+  "cof_string_string": 0.086,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "GTSS125",
+  "spin_potential": 5.8,
+  "stiffness_lbin": 206.0,
+  "tension_loss_pct": 32.0
+ },
+ "Head Hawk 16 (1.30)": {
+  "cof_string_ball": 0.454,
+  "cof_string_string": 0.071,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "HAWK16",
+  "spin_potential": 6.4,
+  "stiffness_lbin": 230.0,
+  "tension_loss_pct": 29.0
+ },
+ "Head Hawk 17 (1.25)": {
+  "cof_string_ball": 0.323,
+  "cof_string_string": 0.069,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "HAWK17",
+  "spin_potential": 4.7,
+  "stiffness_lbin": 205.0,
+  "tension_loss_pct": 33.0
+ },
+ "Head Hawk Power 17 (1.25)": {
+  "cof_string_ball": 0.545,
+  "cof_string_string": 0.073,
+  "energy_return_pct": 82.0,
+  "material": "Polyester",
+  "pcode": "HAWKP17",
+  "spin_potential": 7.5,
+  "stiffness_lbin": 203.0,
+  "tension_loss_pct": 48.0
+ },
+ "Head Hawk Rough 17": {
+  "cof_string_ball": 0.476,
+  "cof_string_string": 0.097,
+  "energy_return_pct": 91.0,
+  "material": "Polyester",
+  "pcode": "HHR",
+  "spin_potential": 4.9,
+  "stiffness_lbin": 201.0,
+  "tension_loss_pct": 24.0
+ },
+ "Head Lynx Tour 16 (1.30)": {
+  "cof_string_ball": 0.519,
+  "cof_string_string": 0.085,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "LT16CH",
+  "spin_potential": 6.1,
+  "stiffness_lbin": 229.0,
+  "tension_loss_pct": 30.0
+ },
+ "Head Lynx Tour 17 (1.25)": {
+  "cof_string_ball": 0.564,
+  "cof_string_string": 0.079,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "LTR17",
+  "spin_potential": 7.1,
+  "stiffness_lbin": 218.0,
+  "tension_loss_pct": 24.0
+ },
+ "Kirschbaum Black Shark 16 (1.30)": {
+  "cof_string_ball": 0.429,
+  "cof_string_string": 0.08,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "SHARK16BK",
+  "spin_potential": 5.4,
+  "stiffness_lbin": 223.0,
+  "tension_loss_pct": 41.0
+ },
+ "Kirschbaum Competition 16/1.30": {
+  "cof_string_ball": 0.403,
+  "cof_string_string": 0.082,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "COMPK130",
+  "spin_potential": 4.9,
+  "stiffness_lbin": 210.0,
+  "tension_loss_pct": 47.0
+ },
+ "Kirschbaum Competition 17 (1.25)": {
+  "cof_string_ball": 0.463,
+  "cof_string_string": 0.103,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "COMPK125",
+  "spin_potential": 4.5,
+  "stiffness_lbin": 210.0,
+  "tension_loss_pct": 47.0
+ },
+ "Kirschbaum Competition 17L (1.20)": {
+  "cof_string_ball": 0.422,
+  "cof_string_string": 0.103,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "COMPK17",
+  "spin_potential": 4.1,
+  "stiffness_lbin": 190.0,
+  "tension_loss_pct": 45.0
+ },
+ "Kirschbaum Flash 16 (1.30)": {
+  "cof_string_ball": null,
+  "cof_string_string": null,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "KFLASH",
+  "spin_potential": null,
+  "stiffness_lbin": 193.0,
+  "tension_loss_pct": 37.0
+ },
+ "Kirschbaum Max Power 16 (1.30)": {
+  "cof_string_ball": 0.46,
+  "cof_string_string": 0.078,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "KMAXPWR16",
+  "spin_potential": 5.9,
+  "stiffness_lbin": 233.0,
+  "tension_loss_pct": 21.0
+ },
+ "Kirschbaum Max Power 17 (1.25)": {
+  "cof_string_ball": 0.485,
+  "cof_string_string": 0.089,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "KMAXPWR17",
+  "spin_potential": 5.4,
+  "stiffness_lbin": 241.0,
+  "tension_loss_pct": 23.0
+ },
+ "Kirschbaum Max Power Rough 16 (1.30)": {
+  "cof_string_ball": 0.468,
+  "cof_string_string": 0.078,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "KMAXPWRR16",
+  "spin_potential": 6.0,
+  "stiffness_lbin": 231.0,
+  "tension_loss_pct": 28.0
+ },
+ "Kirschbaum Max Power Rough 17 (1.25)": {
+  "cof_string_ball": 0.496,
+  "cof_string_string": 0.088,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "KMAXPWRR17",
+  "spin_potential": 5.6,
+  "stiffness_lbin": 223.0,
+  "tension_loss_pct": 27.0
+ },
+ "Kirschbaum Pro Line Evolution 17 (1.25)": {
+  "cof_string_ball": 0.437,
+  "cof_string_string": 0.09,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "PLE2125BLU",
+  "spin_potential": 4.9,
+  "stiffness_lbin": 208.0,
+  "tension_loss_pct": 29.0
+ },
+ "Kirschbaum Pro Line II 1.30": {
+  "cof_string_ball": 0.444,
+  "cof_string_string": 0.078,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "PL2130",
+  "spin_potential": 5.7,
+  "stiffness_lbin": 210.0,
+  "tension_loss_pct": 47.0
+ },
+ "Kirschbaum Pro Line II 17 (1.25)": {
+  "cof_string_ball": 0.47,
+  "cof_string_string": 0.101,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "PL2125BK",
+  "spin_potential": 4.7,
+  "stiffness_lbin": 201.0,
+  "tension_loss_pct": 45.0
+ },
+ "Kirschbaum Pro Line II 17L (1.20)": {
+  "cof_string_ball": 0.436,
+  "cof_string_string": 0.09,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "PL2120BK",
+  "spin_potential": 4.8,
+  "stiffness_lbin": 193.0,
+  "tension_loss_pct": 46.0
+ },
+ "Kirschbaum Pro Line X 16 (1.30)": {
+  "cof_string_ball": 0.41,
+  "cof_string_string": 0.08,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "PLX16CO",
+  "spin_potential": 5.1,
+  "stiffness_lbin": 240.0,
+  "tension_loss_pct": 27.0
+ },
+ "Kirschbaum Pro Line X 17 (1.25)": {
+  "cof_string_ball": 0.423,
+  "cof_string_string": 0.089,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "PLX17CO",
+  "spin_potential": 4.8,
+  "stiffness_lbin": 218.0,
+  "tension_loss_pct": 37.0
+ },
+ "Kirschbaum Spiky Shark 16": {
+  "cof_string_ball": 0.541,
+  "cof_string_string": 0.072,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "SHARK16",
+  "spin_potential": 7.5,
+  "stiffness_lbin": 216.0,
+  "tension_loss_pct": 47.0
+ },
+ "Kirschbaum Spiky Shark 17": {
+  "cof_string_ball": 0.533,
+  "cof_string_string": 0.072,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "SHARK17",
+  "spin_potential": 7.4,
+  "stiffness_lbin": 198.0,
+  "tension_loss_pct": 53.0
+ },
+ "Kirschbaum Super Smash 16/1.30": {
+  "cof_string_ball": 0.424,
+  "cof_string_string": 0.08,
+  "energy_return_pct": 81.0,
+  "material": "Polyester",
+  "pcode": "SMASH16",
+  "spin_potential": 5.3,
+  "stiffness_lbin": 222.0,
+  "tension_loss_pct": 50.0
+ },
+ "Kirschbaum Super Smash 17 (1.25)": {
+  "cof_string_ball": 0.453,
+  "cof_string_string": 0.08,
+  "energy_return_pct": 83.0,
+  "material": "Polyester",
+  "pcode": "SMSH17120",
+  "spin_potential": 5.7,
+  "stiffness_lbin": 211.0,
+  "tension_loss_pct": 48.0
+ },
+ "Kirschbaum Xplosive Speed 1.25": {
+  "cof_string_ball": 0.585,
+  "cof_string_string": 0.082,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "XS17",
+  "spin_potential": 7.1,
+  "stiffness_lbin": 186.0,
+  "tension_loss_pct": 41.0
+ },
+ "Kirschbaum Xplosive Speed 1.30": {
+  "cof_string_ball": 0.577,
+  "cof_string_string": 0.102,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "XS16",
+  "spin_potential": 5.7,
+  "stiffness_lbin": 193.0,
+  "tension_loss_pct": 43.0
+ },
+ "Luxilon 4G 16 (1.30)": {
+  "cof_string_ball": null,
+  "cof_string_string": null,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "LUX4G130",
+  "spin_potential": null,
+  "stiffness_lbin": 287.0,
+  "tension_loss_pct": 23.0
+ },
+ "Luxilon 4G 16L (1.25)": {
+  "cof_string_ball": 0.366,
+  "cof_string_string": 0.095,
+  "energy_return_pct": 91.0,
+  "material": "Polyester",
+  "pcode": "LUX4G125",
+  "spin_potential": 3.9,
+  "stiffness_lbin": 259.0,
+  "tension_loss_pct": 21.0
+ },
+ "Luxilon 4G Rough 16L": {
+  "cof_string_ball": 0.399,
+  "cof_string_string": 0.094,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "LUX4GR125",
+  "spin_potential": 4.2,
+  "stiffness_lbin": 216.0,
+  "tension_loss_pct": 33.0
+ },
+ "Luxilon 4G Soft 1.25": {
+  "cof_string_ball": 0.522,
+  "cof_string_string": 0.078,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "LUX4GS16",
+  "spin_potential": 6.7,
+  "stiffness_lbin": 217.0,
+  "tension_loss_pct": 26.0
+ },
+ "Luxilon ALU Power 125/16L": {
+  "cof_string_ball": 0.446,
+  "cof_string_string": 0.077,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "ALUSTR",
+  "spin_potential": 5.8,
+  "stiffness_lbin": 209.0,
+  "tension_loss_pct": 47.0
+ },
+ "Luxilon ALU Power Rough 16L (1.25)": {
+  "cof_string_ball": 0.498,
+  "cof_string_string": 0.077,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "ALUPR16",
+  "spin_potential": 6.5,
+  "stiffness_lbin": 209.0,
+  "tension_loss_pct": 40.0
+ },
+ "Luxilon Alu Power Soft 1.25": {
+  "cof_string_ball": 0.514,
+  "cof_string_string": 0.074,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "ALUPRSFT16",
+  "spin_potential": 6.9,
+  "stiffness_lbin": 198.0,
+  "tension_loss_pct": 37.0
+ },
+ "Luxilon Alu Power Vibe 16 (1.25)": {
+  "cof_string_ball": 0.533,
+  "cof_string_string": 0.107,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "LALUPV",
+  "spin_potential": 5.0,
+  "stiffness_lbin": 208.0,
+  "tension_loss_pct": 34.0
+ },
+ "Luxilon Element 1.30": {
+  "cof_string_ball": 0.446,
+  "cof_string_string": 0.068,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "LE130",
+  "spin_potential": 6.6,
+  "stiffness_lbin": 191.0,
+  "tension_loss_pct": 44.0
+ },
+ "Luxilon Element 16L (1.25)": {
+  "cof_string_ball": 0.431,
+  "cof_string_string": 0.078,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "LE125",
+  "spin_potential": 5.5,
+  "stiffness_lbin": 208.0,
+  "tension_loss_pct": 33.0
+ },
+ "Luxilon Element Rough 16 (1.30)": {
+  "cof_string_ball": 0.487,
+  "cof_string_string": 0.07,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "LER130",
+  "spin_potential": 7.0,
+  "stiffness_lbin": 198.0,
+  "tension_loss_pct": 35.0
+ },
+ "Luxilon Element Soft IR 1.27": {
+  "cof_string_ball": 0.503,
+  "cof_string_string": 0.072,
+  "energy_return_pct": 83.0,
+  "material": "Polyester",
+  "pcode": "LEIR27S",
+  "spin_potential": 7.0,
+  "stiffness_lbin": 198.0,
+  "tension_loss_pct": 44.0
+ },
+ "Signum Pro Firestorm 1.25": {
+  "cof_string_ball": 0.413,
+  "cof_string_string": 0.086,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "SFS17",
+  "spin_potential": 4.8,
+  "stiffness_lbin": 198.0,
+  "tension_loss_pct": 47.0
+ },
+ "Signum Pro Firestorm 16 (1.30)": {
+  "cof_string_ball": 0.485,
+  "cof_string_string": 0.088,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "SFS16",
+  "spin_potential": 5.5,
+  "stiffness_lbin": 186.0,
+  "tension_loss_pct": 43.0
+ },
+ "Signum Pro Hyperion 16": {
+  "cof_string_ball": 0.443,
+  "cof_string_string": 0.096,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "SIGHYP160",
+  "spin_potential": 4.6,
+  "stiffness_lbin": 220.0,
+  "tension_loss_pct": 41.0
+ },
+ "Signum Pro Hyperion 17 (1.24)": {
+  "cof_string_ball": 0.442,
+  "cof_string_string": 0.104,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "SIGHYP170",
+  "spin_potential": 4.2,
+  "stiffness_lbin": 202.0,
+  "tension_loss_pct": 43.0
+ },
+ "Signum Pro Plasma HEXtreme 16 (1.30)": {
+  "cof_string_ball": 0.594,
+  "cof_string_string": 0.081,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "SIGPHEX16",
+  "spin_potential": 7.3,
+  "stiffness_lbin": 226.0,
+  "tension_loss_pct": 25.0
+ },
+ "Signum Pro Plasma HEXtreme 16L/1.25": {
+  "cof_string_ball": 0.594,
+  "cof_string_string": 0.081,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "SIGPHEX16",
+  "spin_potential": 7.3,
+  "stiffness_lbin": 226.0,
+  "tension_loss_pct": 25.0
+ },
+ "Signum Pro Poly Megaforce 16": {
+  "cof_string_ball": 0.42,
+  "cof_string_string": 0.097,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "SIGPPM16",
+  "spin_potential": 4.3,
+  "stiffness_lbin": 235.0,
+  "tension_loss_pct": 35.0
+ },
+ "Signum Pro Poly Megaforce 17 (1.19)": {
+  "cof_string_ball": 0.447,
+  "cof_string_string": 0.093,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "SIGPPM17L",
+  "spin_potential": 4.8,
+  "stiffness_lbin": 213.0,
+  "tension_loss_pct": 37.0
+ },
+ "Signum Pro Poly Plasma 17 (1.23)": {
+  "cof_string_ball": 0.483,
+  "cof_string_string": 0.089,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "SIGPPP170",
+  "spin_potential": 5.4,
+  "stiffness_lbin": 198.0,
+  "tension_loss_pct": 26.0
+ },
+ "Signum Pro Poly Speed Spin 1.28": {
+  "cof_string_ball": 0.48,
+  "cof_string_string": 0.112,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "SIGPSS16",
+  "spin_potential": 4.3,
+  "stiffness_lbin": 246.0,
+  "tension_loss_pct": 41.0
+ },
+ "Signum Pro Poly-Plasma 16L": {
+  "cof_string_ball": 0.465,
+  "cof_string_string": 0.098,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "SIGPPP16L",
+  "spin_potential": 4.7,
+  "stiffness_lbin": 226.0,
+  "tension_loss_pct": 39.0
+ },
+ "Signum Pro Poly-Plasma 17L (1.18)": {
+  "cof_string_ball": 0.487,
+  "cof_string_string": 0.098,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "SIGPPP17L",
+  "spin_potential": 5.0,
+  "stiffness_lbin": 197.0,
+  "tension_loss_pct": 40.0
+ },
+ "Signum Pro Poly-Plasma Pure 16L": {
+  "cof_string_ball": 0.467,
+  "cof_string_string": 0.083,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "SIGPPP16LW",
+  "spin_potential": 5.6,
+  "stiffness_lbin": 221.0,
+  "tension_loss_pct": 40.0
+ },
+ "Signum Pro Poly-Plasma Pure 17 (1.23)": {
+  "cof_string_ball": 0.449,
+  "cof_string_string": 0.086,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "SIGPPP170W",
+  "spin_potential": 5.2,
+  "stiffness_lbin": 199.0,
+  "tension_loss_pct": 43.0
+ },
+ "Signum Pro Poly-Plasma Pure 17L (1.18)": {
+  "cof_string_ball": 0.391,
+  "cof_string_string": null,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "SIGPPP17LW",
+  "spin_potential": null,
+  "stiffness_lbin": 196.0,
+  "tension_loss_pct": 44.0
+ },
+ "Signum Pro Tornado 16": {
+  "cof_string_ball": 0.434,
+  "cof_string_string": 0.085,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "SIGTORN160",
+  "spin_potential": 5.1,
+  "stiffness_lbin": 215.0,
+  "tension_loss_pct": 48.0
+ },
+ "Signum Pro Tornado 17 (1.23)": {
+  "cof_string_ball": 0.441,
+  "cof_string_string": 0.091,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "SIGTORN170",
+  "spin_potential": 4.8,
+  "stiffness_lbin": 214.0,
+  "tension_loss_pct": 44.0
+ },
+ "Signum Pro X-Perience 17 (1.24)": {
+  "cof_string_ball": 0.536,
+  "cof_string_string": 0.087,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "SIGX17",
+  "spin_potential": 6.2,
+  "stiffness_lbin": 225.0,
+  "tension_loss_pct": 25.0
+ },
+ "Signum Pro Yellow Jacket 17g (1.22)": {
+  "cof_string_ball": 0.614,
+  "cof_string_string": 0.097,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "SPYJ17",
+  "spin_potential": 6.3,
+  "stiffness_lbin": 198.0,
+  "tension_loss_pct": 33.0
+ },
+ "Solinco Barb Wire 16": {
+  "cof_string_ball": 0.542,
+  "cof_string_string": 0.123,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "SBW16",
+  "spin_potential": 4.4,
+  "stiffness_lbin": 214.0,
+  "tension_loss_pct": 40.0
+ },
+ "Solinco Barb Wire 16L (1.25)": {
+  "cof_string_ball": 0.59,
+  "cof_string_string": 0.105,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "SBW16L",
+  "spin_potential": 5.6,
+  "stiffness_lbin": 183.0,
+  "tension_loss_pct": 33.0
+ },
+ "Solinco Barb Wire 17 (1.20)": {
+  "cof_string_ball": 0.557,
+  "cof_string_string": 0.113,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "SBW17",
+  "spin_potential": 4.9,
+  "stiffness_lbin": 186.0,
+  "tension_loss_pct": 43.0
+ },
+ "Solinco Confidential 16 (1.30)": {
+  "cof_string_ball": 0.637,
+  "cof_string_string": 0.1,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "SLNC16LS",
+  "spin_potential": 6.4,
+  "stiffness_lbin": 222.0,
+  "tension_loss_pct": 22.0
+ },
+ "Solinco Confidential Soft 16L (1.25)": {
+  "cof_string_ball": 0.525,
+  "cof_string_string": 0.081,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "CONSF25",
+  "spin_potential": 6.5,
+  "stiffness_lbin": 194.0,
+  "tension_loss_pct": 28.0
+ },
+ "Solinco Hyper-G 16": {
+  "cof_string_ball": 0.631,
+  "cof_string_string": 0.09,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "SHG16",
+  "spin_potential": 7.0,
+  "stiffness_lbin": 219.0,
+  "tension_loss_pct": 26.0
+ },
+ "Solinco Hyper-G 16 Round (1.30)": {
+  "cof_string_ball": 0.484,
+  "cof_string_string": 0.066,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "SHGR16G",
+  "spin_potential": 7.3,
+  "stiffness_lbin": 226.0,
+  "tension_loss_pct": 32.0
+ },
+ "Solinco Hyper-G 16L (1.25)": {
+  "cof_string_ball": 0.55,
+  "cof_string_string": 0.09,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "SHG16L",
+  "spin_potential": 6.1,
+  "stiffness_lbin": 218.0,
+  "tension_loss_pct": 25.0
+ },
+ "Solinco Hyper-G 17 (1.20)": {
+  "cof_string_ball": 0.541,
+  "cof_string_string": 0.088,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "SHG17",
+  "spin_potential": 6.1,
+  "stiffness_lbin": 195.0,
+  "tension_loss_pct": 26.0
+ },
+ "Solinco Hyper-G-Soft 16L (1.25)": {
+  "cof_string_ball": 0.512,
+  "cof_string_string": 0.099,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "SHGS16L",
+  "spin_potential": 5.2,
+  "stiffness_lbin": 172.0,
+  "tension_loss_pct": 29.0
+ },
+ "Solinco Mach 10 16 (1.30)": {
+  "cof_string_ball": 0.486,
+  "cof_string_string": 0.081,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "SM10130",
+  "spin_potential": 6.0,
+  "stiffness_lbin": 222.0,
+  "tension_loss_pct": 27.0
+ },
+ "Solinco Outlast 16": {
+  "cof_string_ball": 0.416,
+  "cof_string_string": 0.069,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "SOUT16",
+  "spin_potential": 6.0,
+  "stiffness_lbin": 208.0,
+  "tension_loss_pct": 47.0
+ },
+ "Solinco Outlast 16L (1.25)": {
+  "cof_string_ball": 0.474,
+  "cof_string_string": 0.073,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "SOUT16L",
+  "spin_potential": 6.5,
+  "stiffness_lbin": 208.0,
+  "tension_loss_pct": 29.0
+ },
+ "Solinco Outlast 17": {
+  "cof_string_ball": 0.406,
+  "cof_string_string": 0.074,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "SOUT17",
+  "spin_potential": 5.5,
+  "stiffness_lbin": 183.0,
+  "tension_loss_pct": 50.0
+ },
+ "Solinco Revolution 16": {
+  "cof_string_ball": 0.451,
+  "cof_string_string": 0.07,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "SREV16",
+  "spin_potential": 6.4,
+  "stiffness_lbin": 215.0,
+  "tension_loss_pct": 47.0
+ },
+ "Solinco Revolution 16L (1.25)": {
+  "cof_string_ball": 0.542,
+  "cof_string_string": 0.068,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "SREV16L",
+  "spin_potential": 8.0,
+  "stiffness_lbin": 213.0,
+  "tension_loss_pct": 28.0
+ },
+ "Solinco Revolution 17": {
+  "cof_string_ball": 0.476,
+  "cof_string_string": 0.072,
+  "energy_return_pct": 83.0,
+  "material": "Polyester",
+  "pcode": "SREV17",
+  "spin_potential": 6.6,
+  "stiffness_lbin": 189.0,
+  "tension_loss_pct": 50.0
+ },
+ "Solinco Tour Bite 16": {
+  "cof_string_ball": 0.573,
+  "cof_string_string": 0.085,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "STB16",
+  "spin_potential": 6.7,
+  "stiffness_lbin": 203.0,
+  "tension_loss_pct": 47.0
+ },
+ "Solinco Tour Bite 16 Soft": {
+  "cof_string_ball": 0.549,
+  "cof_string_string": 0.08,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "STBS16",
+  "spin_potential": 6.9,
+  "stiffness_lbin": 184.0,
+  "tension_loss_pct": 50.0
+ },
+ "Solinco Tour Bite 16L (1.25)": {
+  "cof_string_ball": 0.505,
+  "cof_string_string": 0.085,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "STB16L",
+  "spin_potential": 5.9,
+  "stiffness_lbin": 238.0,
+  "tension_loss_pct": 25.0
+ },
+ "Solinco Tour Bite 17": {
+  "cof_string_ball": 0.499,
+  "cof_string_string": 0.079,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "STB17",
+  "spin_potential": 6.3,
+  "stiffness_lbin": 181.0,
+  "tension_loss_pct": 49.0
+ },
+ "Solinco Tour Bite Diamond Rough 16 (1.30)": {
+  "cof_string_ball": 0.54,
+  "cof_string_string": 0.111,
+  "energy_return_pct": 82.0,
+  "material": "Polyester",
+  "pcode": "STBDR16",
+  "spin_potential": 4.9,
+  "stiffness_lbin": 193.0,
+  "tension_loss_pct": 52.0
+ },
+ "Solinco Tour Bite Diamond Rough 17 (1.20)": {
+  "cof_string_ball": 0.516,
+  "cof_string_string": 0.119,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "STBDR17",
+  "spin_potential": 4.3,
+  "stiffness_lbin": 182.0,
+  "tension_loss_pct": 43.0
+ },
+ "Solinco Tour Bite Soft 16L (1.25)": {
+  "cof_string_ball": 0.507,
+  "cof_string_string": 0.088,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "STBS16L",
+  "spin_potential": 5.8,
+  "stiffness_lbin": 192.0,
+  "tension_loss_pct": 30.0
+ },
+ "Solinco Tour Bite Soft 17 (1.20)": {
+  "cof_string_ball": 0.526,
+  "cof_string_string": 0.092,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "STBS17",
+  "spin_potential": 5.7,
+  "stiffness_lbin": 186.0,
+  "tension_loss_pct": 29.0
+ },
+ "Tecnifibre Ice Code 16 (1.30)": {
+  "cof_string_ball": 0.482,
+  "cof_string_string": 0.086,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "TICW16",
+  "spin_potential": 5.6,
+  "stiffness_lbin": 221.0,
+  "tension_loss_pct": 35.0
+ },
+ "Tecnifibre Razor Code 16 (1.30)": {
+  "cof_string_ball": 0.376,
+  "cof_string_string": 0.09,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "TFRC16B",
+  "spin_potential": 4.2,
+  "stiffness_lbin": 243.0,
+  "tension_loss_pct": 33.0
+ },
+ "Tecnifibre Razor Code 17 (1.25)": {
+  "cof_string_ball": 0.48,
+  "cof_string_string": 0.086,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "TFRC17B",
+  "spin_potential": 5.6,
+  "stiffness_lbin": 229.0,
+  "tension_loss_pct": 30.0
+ },
+ "Tecnifibre Razor Soft 17 (1.25)": {
+  "cof_string_ball": 0.517,
+  "cof_string_string": 0.07,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "TRSB17",
+  "spin_potential": 7.4,
+  "stiffness_lbin": 212.0,
+  "tension_loss_pct": 33.0
+ },
+ "Tecnifibre Razor Spin 17/1.25": {
+  "cof_string_ball": 0.622,
+  "cof_string_string": 0.072,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "RZRSP25",
+  "spin_potential": 8.6,
+  "stiffness_lbin": 222.0,
+  "tension_loss_pct": 27.0
+ },
+ "Toroline Absolute 17 (1.20)": {
+  "cof_string_ball": 0.589,
+  "cof_string_string": 0.063,
+  "energy_return_pct": 82.0,
+  "material": "Polyester",
+  "pcode": "T7ABS",
+  "spin_potential": 9.3,
+  "stiffness_lbin": 181.0,
+  "tension_loss_pct": 47.0
+ },
+ "Toroline Cash 16L (1.25)": {
+  "cof_string_ball": 0.518,
+  "cof_string_string": 0.068,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "TCASH25",
+  "spin_potential": 7.6,
+  "stiffness_lbin": 183.0,
+  "tension_loss_pct": 35.0
+ },
+ "Toroline O-TORO Snap 16L (1.25)": {
+  "cof_string_ball": 0.529,
+  "cof_string_string": 0.061,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "TOROS7",
+  "spin_potential": 8.7,
+  "stiffness_lbin": 165.0,
+  "tension_loss_pct": 42.0
+ },
+ "Toroline O-Toro 17 (1.23)": {
+  "cof_string_ball": 0.601,
+  "cof_string_string": 0.064,
+  "energy_return_pct": 84.0,
+  "material": "Polyester",
+  "pcode": "TOTORO7",
+  "spin_potential": 9.4,
+  "stiffness_lbin": 166.0,
+  "tension_loss_pct": 44.0
+ },
+ "Toroline O-Toro Spin 17 (1.23)": {
+  "cof_string_ball": 0.687,
+  "cof_string_string": 0.084,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "T7TOROS",
+  "spin_potential": 8.2,
+  "stiffness_lbin": 173.0,
+  "tension_loss_pct": 38.0
+ },
+ "Toroline O-Toro Tour 17 (1.23)": {
+  "cof_string_ball": 0.608,
+  "cof_string_string": 0.079,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "T7TOROT",
+  "spin_potential": 7.7,
+  "stiffness_lbin": 217.0,
+  "tension_loss_pct": 25.0
+ },
+ "Toroline Snapper 17 (1.23)": {
+  "cof_string_ball": 0.56,
+  "cof_string_string": 0.077,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "T7SNAP",
+  "spin_potential": 7.3,
+  "stiffness_lbin": 191.0,
+  "tension_loss_pct": 36.0
+ },
+ "Toroline Super Toro 17 (1.23)": {
+  "cof_string_ball": 0.594,
+  "cof_string_string": 0.076,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "T7SUPT",
+  "spin_potential": 7.8,
+  "stiffness_lbin": 190.0,
+  "tension_loss_pct": 35.0
+ },
+ "Wilson Revolve 16 (1.30)": {
+  "cof_string_ball": 0.43,
+  "cof_string_string": 0.06,
+  "energy_return_pct": 85.0,
+  "material": "Polyester",
+  "pcode": "WRV16",
+  "spin_potential": 7.2,
+  "stiffness_lbin": 184.0,
+  "tension_loss_pct": 45.0
+ },
+ "Wilson Revolve 17 (1.25)": {
+  "cof_string_ball": 0.507,
+  "cof_string_string": 0.066,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "WRV17",
+  "spin_potential": 7.7,
+  "stiffness_lbin": 192.0,
+  "tension_loss_pct": 36.0
+ },
+ "Wilson Revolve Spin 16": {
+  "cof_string_ball": 0.457,
+  "cof_string_string": 0.092,
+  "energy_return_pct": 36.0,
+  "material": "Polyester",
+  "pcode": "WRS16",
+  "spin_potential": 5.0,
+  "stiffness_lbin": 173.0,
+  "tension_loss_pct": 54.0
+ },
+ "Yonex Poly Tour Pro 17 (1.20)": {
+  "cof_string_ball": 0.481,
+  "cof_string_string": 0.093,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "YPTP120",
+  "spin_potential": 5.2,
+  "stiffness_lbin": 189.0,
+  "tension_loss_pct": 33.0
+ },
+ "Yonex Poly Tour Pro Yellow 16 (1.30)": {
+  "cof_string_ball": 0.374,
+  "cof_string_string": 0.111,
+  "energy_return_pct": 87.0,
+  "material": "Polyester",
+  "pcode": "YPTP130",
+  "spin_potential": 3.4,
+  "stiffness_lbin": 191.0,
+  "tension_loss_pct": 44.0
+ },
+ "Yonex Poly Tour Pro Yellow 16L (1.25)": {
+  "cof_string_ball": null,
+  "cof_string_string": null,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "YPTP125",
+  "spin_potential": null,
+  "stiffness_lbin": 181.0,
+  "tension_loss_pct": 47.0
+ },
+ "Yonex Poly Tour Spin 16L (1.25)": {
+  "cof_string_ball": 0.632,
+  "cof_string_string": 0.1,
+  "energy_return_pct": 89.0,
+  "material": "Polyester",
+  "pcode": "YPTS125",
+  "spin_potential": 6.3,
+  "stiffness_lbin": 214.0,
+  "tension_loss_pct": 27.0
+ },
+ "Yonex Poly Tour Spin G 1.25": {
+  "cof_string_ball": 0.497,
+  "cof_string_string": 0.104,
+  "energy_return_pct": 90.0,
+  "material": "Polyester",
+  "pcode": "YPTSG16LR",
+  "spin_potential": 4.8,
+  "stiffness_lbin": 237.0,
+  "tension_loss_pct": 26.0
+ },
+ "Yonex PolyTour REV 16 (1.30)": {
+  "cof_string_ball": null,
+  "cof_string_string": null,
+  "energy_return_pct": 86.0,
+  "material": "Polyester",
+  "pcode": "YPTR16",
+  "spin_potential": null,
+  "stiffness_lbin": 209.0,
+  "tension_loss_pct": 33.0
+ },
+ "Yonex Polytour Rev 16L (1.25)": {
+  "cof_string_ball": 0.533,
+  "cof_string_string": 0.074,
+  "energy_return_pct": 88.0,
+  "material": "Polyester",
+  "pcode": "YPTR16L",
+  "spin_potential": 7.2,
+  "stiffness_lbin": 193.0,
+  "tension_loss_pct": 34.0
+ }
+}
