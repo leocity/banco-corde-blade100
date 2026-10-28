@@ -111,3 +111,66 @@ def test_run_compare_anomaly_reported(tmp_path):
     assert run(root=root, fetchers=_fetchers(root, compare=cmp), rebuild=False, today="2026-10-28") == 1
     md = (root / "data" / "changes" / "2026-10-28.md").read_text(encoding="utf-8")
     assert "Solinco Hyper-G 16L (1.25)" in md.split("## Anomalie")[1].split("## Da abbinare")[0]
+
+
+def test_empty_or_shrunken_source_is_an_error(tmp_path, capsys):
+    root, rows = _root(tmp_path)
+    before = _snapshot(root)
+    assert run(root=root, fetchers=_fetchers(root, rp=[]), rebuild=False, today="2026-10-28") == 2
+    assert run(root=root, fetchers=_fetchers(root, compare={}), rebuild=False, today="2026-10-28") == 2
+    assert run(root=root, fetchers=_fetchers(root, twu_rows=[]), rebuild=False, today="2026-10-28") == 2
+    assert _snapshot(root) == before
+    assert "vuota" in capsys.readouterr().out
+
+
+def test_shrunk_by_more_than_a_third_is_an_error(tmp_path):
+    root, rows = _root(tmp_path)
+    many = [twu_row(f"Solinco X{i} 16L", f"solinco-x{i}-16l") for i in range(10)]
+    (root / "data" / "raw" / "twu.json").write_text(json.dumps(many), encoding="utf-8")
+    before = _snapshot(root)
+    assert run(root=root, fetchers=_fetchers(root, twu_rows=many[:6]), rebuild=False, today="2026-10-28") == 2
+    assert _snapshot(root) == before
+
+
+def test_failed_rebuild_restores_everything(tmp_path):
+    root, rows = _root(tmp_path)
+    before = _snapshot(root)
+    def broken(root_):
+        (root_ / "data" / "strings.json").write_text("rotto", encoding="utf-8")  # una ricostruzione a metà
+        raise RuntimeError("validate_agents: twu_name sconosciuto")
+    new_rows = [twu_row("Solinco Hyper-G 16L (1.25)", "solinco-hyper-g-16l", stiff=203.0)]
+    assert run(root=root, fetchers=_fetchers(root, twu_rows=new_rows), rebuild=broken, today="2026-10-28") == 2
+    assert _snapshot(root) == before
+
+
+def test_resaved_excel_with_same_name(tmp_path):
+    root, rows = _root(tmp_path)
+    same = ("a.xlsx", "2026-10-28", [{"id": "solinco-hyper-g-16l", "excel": {"tl6": 10.0}}])
+    before = _snapshot(root)
+    assert run(root=root, fetchers=_fetchers(root, excel=same), rebuild=False, today="2026-10-28") == 0
+    assert _snapshot(root) == before
+    edited = ("a.xlsx", "2026-10-28", [{"id": "solinco-hyper-g-16l", "excel": {"tl6": 14.0}}])
+    assert run(root=root, fetchers=_fetchers(root, excel=edited), rebuild=False, today="2026-10-28") == 1
+    assert "tl6 10.0 → 14.0" in (root / "data" / "changes" / "2026-10-28.md").read_text(encoding="utf-8")
+
+
+def test_new_racketpedia_rows_wait_for_review_and_out_of_scope_are_ignored(tmp_path):
+    root, rows = _root(tmp_path)
+    old = json.loads((root / "data" / "raw" / "racketpedia.json").read_text())
+    new = old + [{"url": "https://rp/b", "name": "Hyper-G Pink 125", "gauge_mm": 1.25, "kgmm": 1.0},
+                 {"url": "https://rp/c", "name": "Hyper-G Pink 115", "gauge_mm": 1.15, "kgmm": 0.9}]
+    assert run(root=root, fetchers=_fetchers(root, rp=new), rebuild=False, today="2026-10-28") == 1
+    pending = json.loads((root / "data" / "pending_matches.json").read_text(encoding="utf-8"))
+    assert [p.get("url") for p in pending] == ["https://rp/b"]
+    md = (root / "data" / "changes" / "2026-10-28.md").read_text(encoding="utf-8")
+    assert "Hyper-G Pink 125" in md.split("## Da abbinare")[1] and "115" not in md
+
+
+def test_effects_on_recommendations_listed():
+    from pipeline.refresh import effects
+    before = {"strings": [{"id": "a", "derived": {"profile_score": 68, "disliked_warning": False}},
+                          {"id": "b", "derived": {"profile_score": 50, "disliked_warning": False}}]}
+    after = {"strings": [{"id": "a", "derived": {"profile_score": 53, "disliked_warning": True}},
+                         {"id": "b", "derived": {"profile_score": 50, "disliked_warning": False}}]}
+    lines = effects(before, after)
+    assert lines == ["- a: punteggio 68 → 53; ora «simile a una non gradita»"]

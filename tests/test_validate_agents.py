@@ -75,3 +75,20 @@ def test_drop_pending_skips_rows_waiting_for_review():
     twu = [{"twu_name": "A", "id": "a"}, {"twu_name": "B", "id": "b"}]
     assert drop_pending(twu, [{"twu_name": "B", "id": "b"}]) == [{"twu_name": "A", "id": "a"}]
     assert drop_pending(twu, []) == twu
+
+
+def test_vanished_twu_row_becomes_none_instead_of_failing():
+    from pipeline.validate_agents import assemble_matches, validate_matches
+    excel = [{"id": "x-17"}]
+    twu = [{"twu_name": "Altra 17", "id": "altra-17"}]
+    agent = [{"id": "x-17", "twu_name": "Sparita 17 (1.20)", "match": "probable", "note": "agente"}]
+    m = assemble_matches(excel, twu, agent)
+    row = next(r for r in m if r["id"] == "x-17")
+    assert row["match"] == "none" and row["twu_name"] is None and "sparita" in row["note"]
+    assert validate_matches(m, excel, twu) == []
+
+
+def test_drop_pending_ignores_racketpedia_entries():
+    from pipeline.validate_agents import drop_pending
+    twu = [{"twu_name": "A", "id": "a"}]
+    assert drop_pending(twu, [{"source": "racketpedia", "url": "https://rp/x"}]) == twu

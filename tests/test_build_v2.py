@@ -45,3 +45,11 @@ def test_model_id_groups_colours_and_keeps_families():
     assert model_id("Toroline", "O-Toro") != model_id("Toroline", "O-Toro Tour")
     out = build([lab(i) for i in range(6)], {})
     assert all(r["model_id"] == model_id(r["brand"], r["model"]) for r in out["strings"])
+
+
+def test_pending_racketpedia_rows_are_not_used():
+    from pipeline.build import skip_pending
+    rows = [{"url": "https://rp/a"}, {"url": "https://rp/b"}]
+    pending = [{"source": "racketpedia", "url": "https://rp/b"}, {"twu_name": "T", "id": "t"}]
+    assert skip_pending(rows, pending) == [{"url": "https://rp/a"}]
+    assert skip_pending(rows, []) == rows

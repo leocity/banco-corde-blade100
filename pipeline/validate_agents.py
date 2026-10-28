@@ -11,13 +11,18 @@ RPEDIA_PREFIX = "https://www.racketpedia.com/"
 def assemble_matches(excel, twu, agent_rows):
     """Match automatici per id + righe degli agenti + record solo-TWU."""
     twu_ids = {r["id"]: r for r in twu}
+    twu_names = {r["twu_name"] for r in twu}
     agent = {r["id"]: r for r in agent_rows}
     out = []
     for e in excel:
         if e["id"] in twu_ids:
             out.append({"id": e["id"], "twu_name": twu_ids[e["id"]]["twu_name"], "match": "exact", "note": "id identico"})
         elif e["id"] in agent:
-            out.append(agent[e["id"]])
+            m = agent[e["id"]]
+            if m.get("match") != "none" and m.get("twu_name") not in twu_names:
+                # la riga TWU non c'è più (sparita dal sito): la corda resta, senza dati TWU, invece di bloccare tutto
+                m = {"id": m["id"], "twu_name": None, "match": "none", "note": f"riga TWU sparita: {m.get('twu_name')}"}
+            out.append(m)
         else:
             out.append({"id": e["id"], "twu_name": None, "match": "none", "note": "nessun risultato agente"})
     # più varianti colore sulla stessa riga TWU: la prima resta exact, le altre diventano probable
@@ -93,7 +98,7 @@ def project_rpedia(rows, matches, twu):
 
 def drop_pending(twu, pending):
     """Le righe TWU nuove ancora da rivedere (data/pending_matches.json, scritto da pipeline.refresh) non diventano record."""
-    skip = {p["twu_name"] for p in pending}
+    skip = {p["twu_name"] for p in pending if p.get("twu_name")}
     return [t for t in twu if t["twu_name"] not in skip]
 
 

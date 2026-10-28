@@ -69,6 +69,14 @@ for (const vp of [{ width: 375, height: 812 }, { width: 1280, height: 900 }]) {
 }
 
 {
+  const { p, ctx } = await open({ width: 1280, height: 900 }, 'casa');
+  const opts = await p.$$eval('#cur-id option', (x) => x.map((o) => o.textContent));
+  const dup = opts.filter((t, i) => opts.indexOf(t) !== i);
+  check(!dup.length, 'nomi delle corde tutti distinti nel selettore', dup.join(', ') || 'nessun doppione');
+  await ctx.close();
+}
+
+{
   const { p, errors, ctx } = await open({ width: 390, height: 844 }, 'casa', { 'banco-corde:current': '{"id":"sparita","kg":[22,21]}', 'banco-corde:compare': '["sparita", 7]' });
   const id = await p.$eval('#cur-id', (s) => s.value);
   await p.click('#tab-confronta');

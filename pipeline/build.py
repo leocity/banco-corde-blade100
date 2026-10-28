@@ -112,6 +112,12 @@ def _load(p, default=None):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
 
 
+def skip_pending(site_rows, pending):
+    """Le righe Racketpedia nuove ancora da rivedere (data/pending_matches.json) non si abbinano a nessuna corda."""
+    skip = {p["url"] for p in pending if p.get("source") == "racketpedia"}
+    return [r for r in site_rows if r["url"] not in skip]
+
+
 def build_from_repo():
     """Stesse fonti di `py -m pipeline.build`, senza scrivere: serve anche ai test di regressione."""
     records = _load("data/merged.json")
@@ -128,7 +134,7 @@ def build_from_repo():
                   for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     years = [row for f in sorted(glob.glob(str(ROOT / "data/agents/year_p*.json")))
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
-    site_rows = _load("data/raw/racketpedia.json", [])
+    site_rows = skip_pending(_load("data/raw/racketpedia.json", []), _load("data/pending_matches.json", []))
     return build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
                  sources=_load("data/raw/sources.json", {}))
 

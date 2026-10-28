@@ -16,7 +16,10 @@ export const fmt = (v, d = 1) => (v === null || v === undefined || Number.isNaN(
 export const SHAPES = { RND: 'tonda', HEX: 'esagonale', PENT: 'pentagonale', SQ: 'quadrata', OCT: 'ottagonale', GEAR: 'a ingranaggio', TWST: 'ritorta', STAR: 'a stella', TRI: 'triangolare', HEP: 'eptagonale' };
 export const nameOf = (r) => `${r.brand} ${r.model}`;
 export const mmOf = (r) => (r.gauge_mm ? NF(2).format(r.gauge_mm) : r.gauge_label || '');
-export const fullName = (r) => `${nameOf(r)} ${mmOf(r)}`;
+const baseName = (r) => `${nameOf(r)} ${mmOf(r)}`;
+// stesse mm per due righe (es. RPM Blast "16L" del tuo file e "17" del sito, entrambe 1,25): si aggiunge l'etichetta
+const DUP_NAMES = new Set(ALL.map(baseName).filter((n, i, a) => a.indexOf(n) !== i));
+export const fullName = (r) => (DUP_NAMES.has(baseName(r)) && r.gauge_label ? `${baseName(r)} (${r.gauge_label})` : baseName(r));
 export const subline = (r) => [r.gauge_mm ? `${NF(2).format(r.gauge_mm)} mm` : r.gauge_label, SHAPES[r.shape] || r.shape].filter(Boolean).join(' · ');
 export const SPIN_KIND = { misurato: 'misurato (TWU)', parente: 'da calibro o colore gemello', modello: 'stima da modello (rigidità e forma): bassa affidabilità' };
 export const STIFF_KIND = { misurata: 'misurata (TWU)', parente: 'da calibro gemello TWU, corretta per il diametro', 'da Racketpedia': 'da Racketpedia convertita sulla scala TWU', modello: 'stima dal solo calibro: bassa affidabilità' };
