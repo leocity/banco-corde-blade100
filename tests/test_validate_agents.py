@@ -68,3 +68,10 @@ def test_colour_variants_claiming_same_exact_are_downgraded():
     m = assemble_matches(excel, twu, agent)
     assert sorted(x["match"] for x in m) == ["exact", "probable"]
     assert validate_matches(m, excel, twu) == []
+
+
+def test_drop_pending_skips_rows_waiting_for_review():
+    from pipeline.validate_agents import drop_pending
+    twu = [{"twu_name": "A", "id": "a"}, {"twu_name": "B", "id": "b"}]
+    assert drop_pending(twu, [{"twu_name": "B", "id": "b"}]) == [{"twu_name": "A", "id": "a"}]
+    assert drop_pending(twu, []) == twu

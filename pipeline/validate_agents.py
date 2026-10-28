@@ -91,6 +91,12 @@ def project_rpedia(rows, matches, twu):
     return out
 
 
+def drop_pending(twu, pending):
+    """Le righe TWU nuove ancora da rivedere (data/pending_matches.json, scritto da pipeline.refresh) non diventano record."""
+    skip = {p["twu_name"] for p in pending}
+    return [t for t in twu if t["twu_name"] not in skip]
+
+
 def _load(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
@@ -98,6 +104,10 @@ def _load(path):
 
 if __name__ == "__main__":
     excel, twu = _load("data/raw/excel.json"), _load("data/raw/twu.json")
+    try:
+        twu = drop_pending(twu, _load("data/pending_matches.json"))
+    except FileNotFoundError:
+        pass
     agent = [r for p in sorted(glob.glob("data/agents/matches_*.json")) for r in _load(p)]
     matches = assemble_matches(excel, twu, agent)
     with open("data/agents/matches.json", "w", encoding="utf-8") as f:

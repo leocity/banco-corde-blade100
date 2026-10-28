@@ -22,10 +22,10 @@
   "model_key": "zero"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-120",
-  "name": "ReString Sync Silver 120",
-  "gauge_mm": 1.2,
-  "kgmm": 0.85,
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-125",
+  "name": "ReString Sync Silver 125",
+  "gauge_mm": 1.25,
+  "kgmm": 0.95,
   "shape": "round",
   "composition": "copolyester",
   "brand": "Re-String",
@@ -33,10 +33,10 @@
   "model_key": "sync"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-125",
-  "name": "ReString Sync Silver 125",
-  "gauge_mm": 1.25,
-  "kgmm": 0.95,
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-120",
+  "name": "ReString Sync Silver 120",
+  "gauge_mm": 1.2,
+  "kgmm": 0.85,
   "shape": "round",
   "composition": "copolyester",
   "brand": "Re-String",
@@ -506,6 +506,17 @@
   "model_key": "pro tour control"
  },
  {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-black-shark-black-130",
+  "name": "Kirschbaum Black Shark Black 130",
+  "gauge_mm": 1.3,
+  "kgmm": 0.76,
+  "shape": "hexagonal",
+  "composition": "copolyester",
+  "brand": "Kirschbaum",
+  "brand_slug": "kirschbaum",
+  "model_key": "shark"
+ },
+ {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125",
   "name": "Head Lynx Tour Grey 125",
   "gauge_mm": 1.25,
@@ -671,17 +682,6 @@
   "model_key": "hawk touch"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-edge-blue-125",
-  "name": "Head Lynx Edge Blue 125",
-  "gauge_mm": 1.25,
-  "kgmm": 0.68,
-  "shape": "heptagonal",
-  "composition": "copolyester",
-  "brand": "Head",
-  "brand_slug": "head",
-  "model_key": "lynx edge"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-hawk-touch-red-120",
   "name": "Head Hawk Touch Red 120",
   "gauge_mm": 1.2,
@@ -691,6 +691,17 @@
   "brand": "Head",
   "brand_slug": "head",
   "model_key": "hawk touch"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-edge-blue-125",
+  "name": "Head Lynx Edge Blue 125",
+  "gauge_mm": 1.25,
+  "kgmm": 0.68,
+  "shape": "heptagonal",
+  "composition": "copolyester",
+  "brand": "Head",
+  "brand_slug": "head",
+  "model_key": "lynx edge"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-black-120",
@@ -825,6 +836,17 @@
   "model_key": "fxp"
  },
  {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-champagne-120",
+  "name": "Head Lynx Tour Champagne 120",
+  "gauge_mm": 1.2,
+  "kgmm": 0.95,
+  "shape": "hexagonal",
+  "composition": "copolyester",
+  "brand": "Head",
+  "brand_slug": "head",
+  "model_key": "lynx tour champagne"
+ },
+ {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-rip-control-natural-120",
   "name": "Head Rip Control Natural 120",
   "gauge_mm": 1.2,
@@ -845,17 +867,6 @@
   "brand": "Head",
   "brand_slug": "head",
   "model_key": "gravity mains"
- },
- {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-champagne-120",
-  "name": "Head Lynx Tour Champagne 120",
-  "gauge_mm": 1.2,
-  "kgmm": 0.95,
-  "shape": "hexagonal",
-  "composition": "copolyester",
-  "brand": "Head",
-  "brand_slug": "head",
-  "model_key": "lynx tour champagne"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/head-sonic-pro-edge-anthracite-130",
@@ -1386,17 +1397,6 @@
   "model_key": "outlast"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-x-natural-natural-120",
-  "name": "Solinco X-Natural Natural 120",
-  "gauge_mm": 1.2,
-  "kgmm": 0.5,
-  "shape": "rough",
-  "composition": "polyamide",
-  "brand": "Solinco",
-  "brand_slug": "solinco",
-  "model_key": "xnatural"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-vanquish-natural-120",
   "name": "Solinco Vanquish Natural 120",
   "gauge_mm": 1.2,
@@ -1406,6 +1406,17 @@
   "brand": "Solinco",
   "brand_slug": "solinco",
   "model_key": "vanquish"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-x-natural-natural-120",
+  "name": "Solinco X-Natural Natural 120",
+  "gauge_mm": 1.2,
+  "kgmm": 0.5,
+  "shape": "rough",
+  "composition": "polyamide",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "xnatural"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-grey-115",
@@ -1507,17 +1518,6 @@
   "model_key": "tour bite diamond rough"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-grey-105",
-  "name": "Solinco Tour Bite Grey 105",
-  "gauge_mm": 1.05,
-  "kgmm": 0.55,
-  "shape": "pentagonal",
-  "composition": "copolyester",
-  "brand": "Solinco",
-  "brand_slug": "solinco",
-  "model_key": "tour bite"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-mach-10-cyan-115",
   "name": "Solinco Mach-10 Cyan 115",
   "gauge_mm": 1.15,
@@ -1549,6 +1549,17 @@
   "brand": "Solinco",
   "brand_slug": "solinco",
   "model_key": "tour bite soft"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-tour-bite-grey-105",
+  "name": "Solinco Tour Bite Grey 105",
+  "gauge_mm": 1.05,
+  "kgmm": 0.55,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "tour bite"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-green-105",
@@ -1637,6 +1648,83 @@
   "brand": "Solinco",
   "brand_slug": "solinco",
   "model_key": "confidential"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-round-green-115",
+  "name": "Solinco Hyper-G Round Green 115",
+  "gauge_mm": 1.15,
+  "kgmm": 0.8,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "hyperg round"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-round-green-125",
+  "name": "Solinco Hyper-G Round Green 125",
+  "gauge_mm": 1.25,
+  "kgmm": 1.0,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "hyperg round"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-round-green-120",
+  "name": "Solinco Hyper-G Round Green 120",
+  "gauge_mm": 1.2,
+  "kgmm": 0.95,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "hyperg round"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-round-green-130",
+  "name": "Solinco Hyper-G Round Green 130",
+  "gauge_mm": 1.3,
+  "kgmm": 1.0,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "hyperg round"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-soft-pink-125",
+  "name": "Solinco Confidential Soft Pink 125",
+  "gauge_mm": 1.25,
+  "kgmm": 0.85,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "confidential soft"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-soft-pink-120",
+  "name": "Solinco Confidential Soft Pink 120",
+  "gauge_mm": 1.2,
+  "kgmm": 0.85,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "confidential soft"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-soft-pink-130",
+  "name": "Solinco Confidential Soft Pink 130",
+  "gauge_mm": 1.3,
+  "kgmm": 0.9,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "brand": "Solinco",
+  "brand_slug": "solinco",
+  "model_key": "confidential soft"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/grapplesnake-tour-m8-olive-green-125",
@@ -2167,17 +2255,6 @@
   "model_key": "element forest"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-ace-gold-112",
-  "name": "Luxilon Ace Gold 112",
-  "gauge_mm": 1.12,
-  "kgmm": 0.85,
-  "shape": "round",
-  "composition": "copolyester",
-  "brand": "Luxilon",
-  "brand_slug": "luxilon",
-  "model_key": "ace"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-ocean-blue-125",
   "name": "Luxilon ALU Power Ocean Blue 125",
   "gauge_mm": 1.25,
@@ -2187,6 +2264,17 @@
   "brand": "Luxilon",
   "brand_slug": "luxilon",
   "model_key": "alu power ocean"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-ace-gold-112",
+  "name": "Luxilon Ace Gold 112",
+  "gauge_mm": 1.12,
+  "kgmm": 0.85,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Luxilon",
+  "brand_slug": "luxilon",
+  "model_key": "ace"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-eco-spin-black-125",
@@ -2607,17 +2695,6 @@
   "model_key": "rpm soft"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-vs-team-natural-gut-natural-125",
-  "name": "Babolat VS Team Natural Gut Natural 125",
-  "gauge_mm": 1.25,
-  "kgmm": 0.6,
-  "shape": "round",
-  "composition": "natural gut",
-  "brand": "Babolat",
-  "brand_slug": "babolat",
-  "model_key": "vs team gut"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-discovery-gut-natural-135",
   "name": "Babolat Discovery Gut Natural 135",
   "gauge_mm": 1.35,
@@ -2627,6 +2704,17 @@
   "brand": "Babolat",
   "brand_slug": "babolat",
   "model_key": "discovery gut"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-vs-team-natural-gut-natural-125",
+  "name": "Babolat VS Team Natural Gut Natural 125",
+  "gauge_mm": 1.25,
+  "kgmm": 0.6,
+  "shape": "round",
+  "composition": "natural gut",
+  "brand": "Babolat",
+  "brand_slug": "babolat",
+  "model_key": "vs team gut"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-power-blue-125",
@@ -2838,17 +2926,6 @@
   "model_key": "m7"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-pro-hurricane-feel-blue-130",
-  "name": "Babolat Pro Hurricane Feel Blue 130",
-  "gauge_mm": 1.3,
-  "kgmm": 1.45,
-  "shape": "round",
-  "composition": "copolyester",
-  "brand": "Babolat",
-  "brand_slug": "babolat",
-  "model_key": "pro hurricane feel"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-power-blue-130",
   "name": "Babolat RPM Power Blue 130",
   "gauge_mm": 1.3,
@@ -2858,6 +2935,17 @@
   "brand": "Babolat",
   "brand_slug": "babolat",
   "model_key": "rpm power"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-pro-hurricane-feel-blue-130",
+  "name": "Babolat Pro Hurricane Feel Blue 130",
+  "gauge_mm": 1.3,
+  "kgmm": 1.45,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Babolat",
+  "brand_slug": "babolat",
+  "model_key": "pro hurricane feel"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-m7-natural-130",
@@ -3014,17 +3102,6 @@
   "model_key": "hdmx"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-x-one-biphase-natural-124",
-  "name": "Tecnifibre X-One Biphase Natural 124",
-  "gauge_mm": 1.24,
-  "kgmm": 0.65,
-  "shape": "round",
-  "composition": "copolyamide",
-  "brand": "Tecnifibre",
-  "brand_slug": "tecnifibre",
-  "model_key": "xone biphase"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-black-code-orange-124",
   "name": "Tecnifibre Black Code Orange 124",
   "gauge_mm": 1.24,
@@ -3034,6 +3111,17 @@
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
   "model_key": "code"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-x-one-biphase-natural-124",
+  "name": "Tecnifibre X-One Biphase Natural 124",
+  "gauge_mm": 1.24,
+  "kgmm": 0.65,
+  "shape": "round",
+  "composition": "copolyamide",
+  "brand": "Tecnifibre",
+  "brand_slug": "tecnifibre",
+  "model_key": "xone biphase"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-code-azur-120",
@@ -3080,17 +3168,6 @@
   "model_key": "code"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-black-code-black-118",
-  "name": "Tecnifibre Black Code Black 118",
-  "gauge_mm": 1.18,
-  "kgmm": 0.95,
-  "shape": "pentagonal",
-  "composition": "copolyester",
-  "brand": "Tecnifibre",
-  "brand_slug": "tecnifibre",
-  "model_key": "code"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-multifeel-natural-125",
   "name": "Tecnifibre Multifeel Natural 125",
   "gauge_mm": 1.25,
@@ -3100,6 +3177,17 @@
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
   "model_key": "multifeel"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-black-code-black-118",
+  "name": "Tecnifibre Black Code Black 118",
+  "gauge_mm": 1.18,
+  "kgmm": 0.95,
+  "shape": "pentagonal",
+  "composition": "copolyester",
+  "brand": "Tecnifibre",
+  "brand_slug": "tecnifibre",
+  "model_key": "code"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-black-code-lime-128",
@@ -3190,17 +3278,6 @@
   "model_key": "hdx tour"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-hdx-tour-124",
-  "name": "Tecnifibre HDX Tour 124",
-  "gauge_mm": 1.24,
-  "kgmm": 0.62,
-  "shape": "round",
-  "composition": "copolyamide",
-  "brand": "Tecnifibre",
-  "brand_slug": "tecnifibre",
-  "model_key": "hdx tour"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-black-code-4s-black-120",
   "name": "Tecnifibre Black Code 4S Black 120",
   "gauge_mm": 1.2,
@@ -3212,15 +3289,15 @@
   "model_key": "code 4s"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-wax-red-125",
-  "name": "Tecnifibre Pro Red Code WAX Red 125",
-  "gauge_mm": 1.25,
-  "kgmm": 0.98,
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-hdx-tour-124",
+  "name": "Tecnifibre HDX Tour 124",
+  "gauge_mm": 1.24,
+  "kgmm": 0.62,
   "shape": "round",
-  "composition": "copolyester",
+  "composition": "copolyamide",
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
-  "model_key": "pro code wax"
+  "model_key": "hdx tour"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-red-125",
@@ -3232,6 +3309,17 @@
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
   "model_key": "pro code"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-wax-red-125",
+  "name": "Tecnifibre Pro Red Code WAX Red 125",
+  "gauge_mm": 1.25,
+  "kgmm": 0.98,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Tecnifibre",
+  "brand_slug": "tecnifibre",
+  "model_key": "pro code wax"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-xr1-125",
@@ -3289,17 +3377,6 @@
   "model_key": "duramix hd"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-xr1-130",
-  "name": "Tecnifibre XR1 130",
-  "gauge_mm": 1.3,
-  "kgmm": 0.55,
-  "shape": "round",
-  "composition": "copolyamide",
-  "brand": "Tecnifibre",
-  "brand_slug": "tecnifibre",
-  "model_key": "xr1"
- },
- {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-x-one-biphase-natural-134",
   "name": "Tecnifibre X-One Biphase Natural 134",
   "gauge_mm": 1.34,
@@ -3311,15 +3388,15 @@
   "model_key": "xone biphase"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-black-code-4s-black-130",
-  "name": "Tecnifibre Black Code 4S Black 130",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-xr1-130",
+  "name": "Tecnifibre XR1 130",
   "gauge_mm": 1.3,
-  "kgmm": 1.12,
-  "shape": "square",
-  "composition": "copolyester",
+  "kgmm": 0.55,
+  "shape": "round",
+  "composition": "copolyamide",
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
-  "model_key": "code 4s"
+  "model_key": "xr1"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-tgv-natural-125",
@@ -3333,15 +3410,15 @@
   "model_key": "tgv"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-red-130",
-  "name": "Tecnifibre Pro Red Code Red 130",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-black-code-4s-black-130",
+  "name": "Tecnifibre Black Code 4S Black 130",
   "gauge_mm": 1.3,
-  "kgmm": 1.07,
-  "shape": "round",
+  "kgmm": 1.12,
+  "shape": "square",
   "composition": "copolyester",
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
-  "model_key": "pro code"
+  "model_key": "code 4s"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-nrg2-natural-124",
@@ -3355,15 +3432,15 @@
   "model_key": "nrg2"
  },
  {
-  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-wax-red-130",
-  "name": "Tecnifibre Pro Red Code WAX Red 130",
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-red-130",
+  "name": "Tecnifibre Pro Red Code Red 130",
   "gauge_mm": 1.3,
-  "kgmm": 1.02,
+  "kgmm": 1.07,
   "shape": "round",
   "composition": "copolyester",
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
-  "model_key": "pro code wax"
+  "model_key": "pro code"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-red-120",
@@ -3386,6 +3463,17 @@
   "brand": "Tecnifibre",
   "brand_slug": "tecnifibre",
   "model_key": "nrg2"
+ },
+ {
+  "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-pro-red-code-wax-red-130",
+  "name": "Tecnifibre Pro Red Code WAX Red 130",
+  "gauge_mm": 1.3,
+  "kgmm": 1.02,
+  "shape": "round",
+  "composition": "copolyester",
+  "brand": "Tecnifibre",
+  "brand_slug": "tecnifibre",
+  "model_key": "pro code wax"
  },
  {
   "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-hdx-tour-135",
