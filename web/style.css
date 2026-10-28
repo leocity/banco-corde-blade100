@@ -248,12 +248,27 @@ dialog#sheet::backdrop { background: rgb(10 16 15 / .45); }
 .pop .kv { grid-template-columns: auto minmax(0, 1fr); }
 .pop-close { position: absolute; top: 0; right: 0; min-width: 44px; min-height: 44px; border: 0; background: none; color: var(--fg-2); font-size: 1.5rem; cursor: pointer; }
 
+/* La tua corda: schede dei consigli */
+.pick .why { font-weight: 600; }
+.deltas { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.delta { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) 1.4em; gap: 6px; align-items: baseline; font-size: .92rem; }
+.delta .dl { color: var(--fg-2); }
+.delta .dm { text-align: center; font-weight: 700; }
+.delta.up .dm { color: var(--court); }
+.delta.down .dm { color: var(--accent); }
+.delta.same .dm, .delta.none .dm { color: var(--muted); }
+.rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.rows li { padding: 9px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.advanced h3 { margin-top: 12px; }
+
 /* corda attuale */
 .current { background: var(--surface); border: 1px solid var(--court); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 8px; }
 .current-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: end; }
-.cur-pick { flex: 1 1 260px; min-width: 0; }
+.cur-pick { flex: 1 1 100%; min-width: 0; }
 .cur-pick select { width: 100%; min-height: 44px; font-weight: 600; }
 .kg { display: grid; gap: 2px; font-size: .82rem; color: var(--fg-2); }
+.kg-in { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.tkg { white-space: nowrap; }
 .kg input { width: 5.5em; min-height: 44px; font: inherit; font-size: .95rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--fg); }
 
 @media (max-width: 760px) {
