@@ -147,6 +147,9 @@ details[open] > summary { margin-bottom: 10px; }
 #scatter .err { stroke-width: 1.5; opacity: .6; }
 #scatter .dot:hover, #scatter .dot.sel { stroke: var(--fg); }
 #scatter .lbl { fill: var(--fg); font-weight: 700; font-size: 11px; }
+#scatter.narrow text { font-size: 15px; }
+#scatter.narrow .axis-title, #scatter.narrow .lbl { font-size: 16px; }
+#scatter .hit { cursor: pointer; }
 .tip { position: absolute; pointer-events: none; background: var(--fg); color: var(--bg); padding: 6px 9px; border-radius: 5px; font-size: .82rem; max-width: 240px; line-height: 1.35; }
 .controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
 .controls label { display: grid; gap: 3px; font-size: .85rem; color: var(--fg-2); }

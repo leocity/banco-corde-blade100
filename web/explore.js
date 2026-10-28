@@ -55,7 +55,10 @@ export function drawScatter() {
   const pts = ALL.filter((r) => vis(r) && (exF.est || !est(r) || r.id === cur.id));
   const hidden = ALL.filter((r) => vis(r) && !pts.includes(r)).length, noData = ALL.filter((r) => sx0(r) == null || sy0(r) == null).length;
   $('#map-note').textContent = `${pts.length} corde nel grafico${hidden ? `; ${hidden} con valori stimati nascoste (attiva "Mostra le stime")` : ''}${noData ? `; ${noData} senza rigidità o spin` : ''}.`;
-  const W = 900, H = 560, L = 64, R = 18, T = 18, B = 52;
+  // su telefono il disegno si restringe in proporzione: viewBox più stretto e testi più grandi (dalla v2 pubblicata)
+  const narrow = (svg.parentElement?.clientWidth || 900) < 560;
+  const W = narrow ? 520 : 900, H = narrow ? 600 : 560, L = narrow ? 70 : 64, R = 18, T = 18, B = 56;
+  svg.classList.toggle('narrow', narrow);
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   if (!pts.length) { svg.innerHTML = `<text x="${W / 2}" y="${H / 2}" text-anchor="middle">Nessuna corda con questi filtri</text>`; return; }
   const xs = pts.map(sx0), ys = pts.map(sy0);
@@ -73,17 +76,19 @@ export function drawScatter() {
       if (isEst(r.spin, 'misurato')) s += `<line class="err" x1="${x}" x2="${x}" y1="${sy(r.spin.low)}" y2="${sy(r.spin.high)}" style="stroke:${c}"/>`;
       if (isEst(r.stiffness, 'misurata')) s += `<line class="err" x1="${sx(r.stiffness.low)}" x2="${sx(r.stiffness.high)}" y1="${y}" y2="${y}" style="stroke:${c}"/>`;
     }
-    s += `<circle class="dot${e ? ' hollow' : ''}" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.id === cur.id || r.preference ? 8 : 6}" style="${e ? `stroke:${c}` : `fill:${c}`}" tabindex="0" role="button" aria-label="${esc(fullName(r))}: rigidità ${fmt(sx0(r), 0)}, spin ${fmt(sy0(r), 1)}${e ? ' (stima)' : ''}"/>`;
+    if (narrow) s += `<circle class="hit" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="20" fill="transparent" aria-hidden="true"/>`;
+    s += `<circle class="dot${e ? ' hollow' : ''}" data-id="${esc(r.id)}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${narrow ? (r.id === cur.id || r.preference ? 11 : 9) : (r.id === cur.id || r.preference ? 8 : 6)}" style="${e ? `stroke:${c}` : `fill:${c}`}" tabindex="0" role="button" aria-label="${esc(fullName(r))}: rigidità ${fmt(sx0(r), 0)}, spin ${fmt(sy0(r), 1)}${e ? ' (stima)' : ''}"/>`;
   }
   for (const r of pts.filter((r) => r.id === cur.id || r.preference === 'liked')) {
-    const x = sx(sx0(r)), y = sy(sy0(r)), right = x < W - 220;
+    const x = sx(sx0(r)), y = sy(sy0(r)), right = x < W - (narrow ? 200 : 220);
     s += `<text class="lbl" x="${x + (right ? 11 : -11)}" y="${y - 9}" text-anchor="${right ? 'start' : 'end'}">${r.id === cur.id ? 'La tua: ' : '★ '}${esc(r.model)} ${esc(r.gauge_label || '')}</text>`;
   }
   svg.innerHTML = s;
-  svg.querySelectorAll('.dot').forEach((d) => {
+  svg.querySelectorAll('.dot, .hit').forEach((d) => {
     const pick = () => {
       const m = document.querySelector(`details.model[data-model="${CSS.escape(modelId(BY_ID[d.dataset.id]))}"]`);
-      svg.querySelectorAll('.dot.sel').forEach((x) => x.classList.remove('sel')); d.classList.add('sel');
+      svg.querySelectorAll('.dot.sel').forEach((x) => x.classList.remove('sel'));
+      svg.querySelector(`.dot[data-id="${CSS.escape(d.dataset.id)}"]`)?.classList.add('sel');
       if (!m) { $('#map-note').textContent = `${fullName(BY_ID[d.dataset.id])} è nascosta dai filtri dell'elenco.`; return; }
       m.open = true; m.classList.add('flash'); setTimeout(() => m.classList.remove('flash'), 1200);
       m.scrollIntoView({ block: 'center', behavior: 'smooth' });
@@ -102,7 +107,7 @@ function exHow() {
       <li>I consigli e l'ordine usano <b>solo dati di laboratorio</b>: TWU, Racketpedia e il tuo test Ektelon. Le recensioni sono solo link.</li>
       <li><b>≈</b> vuol dire stima (calibro gemello, Racketpedia convertita o modello). Tocca un numero sottolineato per vedere fonte, data, condizioni e margine.</li>
       <li>▲ ▼ = più alto o più basso della tua corda oltre la soglia; = vuol dire simile.</li>
-      <li>La tensione di partenza è una regola empirica non validata: usala come punto di partenza.</li>
+      <li>La tensione di partenza è una stima: parte dalla tua corda e corregge per la rigidità con la pendenza ricavata dalle tue due preferite. Usala come punto di partenza.</li>
     </ol>
     <p class="badges">${BADGE_LEGEND.map(([cls, label, text]) => `<span class="${cls}">${label}</span> <span class="small">${esc(text)}</span>`).join('<br>')}</p>
   </details>`;
@@ -127,6 +132,10 @@ function exMethod() {
     </ul>
     <h3>Ordine dei consigli</h3>
     <p>Posizione tra le corde del banco su spin (peso 35), tenuta di tensione (20) e somiglianza alle tue preferite (20); −15 se la corda somiglia più a una non gradita. Serve avere spin e tenuta. I pesi si cambiano in "Avanzate".</p>
+    <h3>Tensione di partenza</h3>
+    <p>Parte dalla corda che monti e dalla sua tensione, poi corregge di ${fmt((DATA.tension_slope_kg_per_lbin ?? -0.05) * 15, 2)} kg ogni 15 lb/in di rigidità in più (al massimo ±2 kg). La pendenza viene dalle tue due preferite (Confidential più rigida a 22/21 kg, O-Toro più morbida a 23/22 kg): due soli punti, quindi indicativa. Si mostra come intervallo di ±1 kg.</p>
+    <h3>Tenuta di tensione</h3>
+    <p>Per tutte la stessa base: la perdita misurata da TWU. Il TL6 del tuo file entra solo se TWU manca, perché mescolare le due misure penalizzava le corde che hai testato tu.</p>
     <h3>Lo Stiff Index del tuo file</h3>
     <p>È (allungamento − recupero) / 11,25 × 100: misura quanto la corda non torna indietro, quindi va letto come indice di cedimento, non di rigidità.</p>
     <h3>Restituzione di energia e attriti</h3>

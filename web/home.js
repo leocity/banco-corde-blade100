@@ -29,9 +29,10 @@ export function valueHtml(r, key) {
 }
 const kgRange = ([a, b]) => `${NF(a % 1 ? 1 : 0).format(a)}–${NF(b % 1 ? 1 : 0).format(b)}`;
 export function tensionHtml(r, cur) {
-  const t = tensionFrom(r, cur.r, cur.kg);
+  const slope = DATA.tension_slope_kg_per_lbin ?? -0.75 / 15;
+  const t = tensionFrom(r, cur.r, cur.kg, slope);
   const how = t.corrected
-    ? `Regola empirica non validata: parte dalla tua corda (${fullName(cur.r)} a ${fmt(cur.kg[0], 1)}/${fmt(cur.kg[1], 1)} kg) e corregge di ${fmt(t.delta, 1)} kg (−0,75 kg ogni 15 lb/in di rigidità in più, al massimo ±2 kg). L'intervallo è ±1 kg.`
+    ? `Stima indicativa: parte dalla tua corda (${fullName(cur.r)} a ${fmt(cur.kg[0], 1)}/${fmt(cur.kg[1], 1)} kg) e corregge di ${fmt(t.delta, 1)} kg per la differenza di rigidità (${fmt(slope * 15, 2)} kg ogni 15 lb/in in più, ${DATA.tension_slope_kg_per_lbin != null ? 'ricavati dalle tue due preferite: solo due punti' : 'regola empirica non validata'}; al massimo ±2 kg). L'intervallo è ±1 kg.`
     : `Manca la rigidità di laboratorio di una delle due corde: si parte dalla tensione della tua corda senza correzione. L'intervallo è ±1 kg.`;
   return `<p class="tension-line">Tensione di partenza ${infoButton('badge est', 'stima', how)} <b class="tkg">${kgRange(t.range[0])} / ${kgRange(t.range[1])} kg</b></p>`;
 }

@@ -261,6 +261,20 @@ def fit_gauge_model(records):
             "n_pairs": len(allp), "n_models": len(pairs), "usable": mae < 0.95 * base}
 
 
+def check_gauge_usrsa(rows, slope):
+    """Verifica indipendente della correzione per il calibro su un altro laboratorio (USRSA, via TruPro):
+    errore medio sulle coppie di calibri della stessa corda, senza correzione e con la pendenza data."""
+    groups = {}
+    for r in rows:
+        groups.setdefault(r["name"], []).append((r["gauge_mm"], r["stiffness_lbin"]))
+    pairs = [(gb - ga, sb - sa) for v in groups.values() for ga, sa in v for gb, sb in v if ga < gb]
+    if not pairs or slope is None:
+        return None
+    return {"n_pairs": len(pairs), "n_models": sum(1 for v in groups.values() if len(v) > 1),
+            "mae_no_correction": round(sum(abs(y) for _, y in pairs) / len(pairs), 1),
+            "mae_corrected": round(sum(abs(y - slope * x) for x, y in pairs) / len(pairs), 1)}
+
+
 def fit_stiffness_model(train, lam=3.0):
     """train = [(calibro mm, rigidità TWU misurata)]. Ridge sul solo calibro (più spesso = più rigida).
     'usable' solo se batte la media in leave-one-out. Nessun giudizio personale dei tester."""

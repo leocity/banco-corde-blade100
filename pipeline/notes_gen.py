@@ -1,5 +1,7 @@
 """Note da maestro incordatore: regole applicate ai dati di ogni corda + note scritte a mano che hanno precedenza."""
 
+import re
+
 KEYS = ("feel", "on_blade_100_v9", "for_your_style", "vs_favorites")
 SPIN_KIND_IT = {"parente": "da un calibro o colore gemello", "tester": "dai punteggi dei tester", "qualitativo": "dai giudizi dei tester",
                 "modello": "da un modello su rigidità e forma, bassa affidabilità"}
@@ -122,4 +124,6 @@ def generate_notes(r):
 def apply_notes(records, manual):
     for r in records:
         r["notes"] = {**generate_notes(r), **{k: v for k, v in (manual.get(r["id"]) or {}).items() if k in KEYS}}
+        # punteggiatura italiana: virgola decimale anche nei testi generati
+        r["notes"] = {k: re.sub(r"(?<=\d)\.(?=\d)", ",", v) if isinstance(v, str) else v for k, v in r["notes"].items()}
     return records

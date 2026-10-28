@@ -83,10 +83,11 @@ function rcHalf(x) {
 }
 const rcLabStiff = (r) => (r.stiffness && RC_LAB_STIFF.includes(r.stiffness.kind) ? r.stiffness.value_lbin : null);
 
-export function tensionFrom(cand, cur, kg) {
+// slope: kg per lb/in; la pipeline la ricava dalle due preferite (DATA.tension_slope_kg_per_lbin), altrimenti la regola v2
+export function tensionFrom(cand, cur, kg, slope = -0.75 / 15) {
   const sc = rcLabStiff(cand), sb = rcLabStiff(cur);
   const corrected = sc != null && sb != null;
-  const delta = corrected ? Math.max(-2, Math.min(2, rcHalf((-0.75 * (sc - sb)) / 15))) : 0;
+  const delta = corrected ? Math.max(-2, Math.min(2, rcHalf(slope * (sc - sb)))) : 0;
   const out = [kg[0] + delta, kg[1] + delta];
   return { kg: out, range: out.map((k) => [k - 1, k + 1]), lbs: out.map(kgToLbs), corrected, delta };
 }

@@ -90,7 +90,9 @@ def subscores(rec, pop):
     st = percentile(stiff_lab(rec), pop["stiff_measured"])
     return {
         "spin": percentile(spin_lab(rec), pop["spin_measured"]),
-        "durability": _mean([_inv(pct("twu_tension_loss")), _inv(pct("excel_tl6"))]),
+        # stessa base per tutte: la perdita TWU (c'è per 70 corde); il TL6 del tuo test solo se manca TWU.
+        # Mescolare le due metriche penalizzava chi ha un tuo TL6 "cattivo" rispetto a chi non ce l'ha.
+        "durability": _inv(pct("twu_tension_loss")) if pct("twu_tension_loss") is not None else _inv(pct("excel_tl6")),
         "stiffness": st,  # descrittiva (note e giudizio), non entra nel punteggio
     }
 
@@ -186,20 +188,39 @@ def _half(x):
     return round(x * 2) / 2
 
 
-def tension_start(rec, anchors):
+DEFAULT_TENSION_SLOPE = -0.75 / 15  # kg per lb/in: regola v2 senza fonte, usata solo se le due preferite non bastano
+
+
+def anchor_slope(anchors):
+    """Pendenza kg per lb/in ricavata dalle TUE due preferite (tensione media / rigidità): è l'unico dato personale
+    che lega tensione e rigidità. Due punti soltanto: indicativa. None se non ricavabile."""
+    pts = [(a["stiffness"], sum(a["kg"]) / len(a["kg"])) for a in anchors if a.get("stiffness") is not None]
+    if len(pts) < 2:
+        return None
+    (s1, t1), (s2, t2) = pts[0], pts[1]
+    if abs(s1 - s2) < 20:
+        return None
+    slope = (t2 - t1) / (s2 - s1)
+    return slope if slope < 0 else None
+
+
+def tension_start(rec, anchors, slope=None):
     anchor = max(anchors, key=lambda a: -1 if a.get("sim") is None else a["sim"])
     st = stiff_lab(rec)
+    k = DEFAULT_TENSION_SLOPE if slope is None else slope
     if st is None or anchor.get("stiffness") is None:
         kg = list(anchor["kg"])
         note = f"tensione della preferita più simile ({ANCHOR_NAMES.get(anchor['id'], anchor['id'])}), senza una rigidità misurata per correggerla"
     else:
-        delta = max(-2.0, min(2.0, _half(-0.75 * (st - anchor["stiffness"]) / 15)))
+        delta = max(-2.0, min(2.0, _half(k * (st - anchor["stiffness"]))))
         kg = [anchor["kg"][0] + delta, anchor["kg"][1] + delta]
         src = {"misurata": "TWU", "parente": "TWU di un calibro gemello", "da Racketpedia": "Racketpedia convertita, ±11 lb/in"}.get(
             ((rec.get("stiffness") or {}).get("kind")), "TWU")
-        note = f"da {ANCHOR_NAMES.get(anchor['id'], anchor['id'])} corretta di {delta:+.1f} kg per la differenza di rigidità ({src})"
-    return {"kg": kg, "lbs": [_half(k * KG_TO_LBS) for k in kg], "from": anchor["id"],
-            "indicative": True, "note": note}
+        basis = "dalle tue due preferite" if slope is not None else "regola empirica non validata"
+        note = (f"da {ANCHOR_NAMES.get(anchor['id'], anchor['id'])} corretta di {delta:+.1f} kg per la differenza di rigidità "
+                f"({src}; pendenza {k * 15:+.2f} kg ogni 15 lb/in, {basis})").replace(".", ",")
+    return {"kg": kg, "lbs": [_half(x * KG_TO_LBS) for x in kg], "from": anchor["id"],
+            "indicative": True, "note": note, "slope_kg_per_15": round(k * 15, 2), "slope_kg_per_lbin": k, "range_kg": 1.0}
 
 
 def discriminant_metrics(records, pop):
@@ -221,6 +242,7 @@ def derive_all(records):
     by_id = {r["id"]: r for r in records}
     liked = {k: by_id[k] for k in ANCHOR_TENSIONS if k in by_id}
     disliked = {g: [r for r in records if (r["brand"], r["model"]) == bm] for g, bm in DISLIKED_GROUPS.items()}
+    slope = anchor_slope([{"stiffness": stiff_lab(a), "kg": ANCHOR_TENSIONS[k]} for k, a in liked.items()])
     for r in records:
         sim_l = {("confidential" if "confidential" in k else "otoro"): similarity(r, a, pop) for k, a in liked.items()}
         sim_d = {}
@@ -236,7 +258,16 @@ def derive_all(records):
         j = judgments(r, lab, pop)
         sub = {k: lab[k] for k in ("spin", "durability")}  # punteggio: solo laboratorio, stessi campi letti da score.js
         sub["affinity"] = best  # somiglianza massima con una preferita (0-100)
+        # margine dello spin (gemello ±0,5) propagato nel punteggio: percentile ai due estremi
+        sp = r.get("spin") or {}
+        sub_range = None
+        if sp.get("kind") == "parente" and sp.get("low") is not None and sp["low"] != sp["high"]:
+            lo, hi = (percentile(sp["low"], pop["spin_measured"]), percentile(sp["high"], pop["spin_measured"]))
+            pen = worst if flag else None
+            sub_range = {"spin": [lo, hi],
+                         "score": [profile_score({**sub, "spin": lo}, DEFAULT_WEIGHTS, pen), profile_score({**sub, "spin": hi}, DEFAULT_WEIGHTS, pen)]}
         r["derived"] = {
+            "subscores_range": sub_range,
             "subscores": sub,
             "lab_subscores": lab,
             "judgments": j,
@@ -246,6 +277,6 @@ def derive_all(records):
             "disliked_warning": flag,
             "sources_disagree": sources_disagree(r, pop),
             "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if flag else None),
-            "tension_start": tension_start(r, anchors) if anchors else None,
+            "tension_start": tension_start(r, anchors, slope) if anchors else None,
         }
     return discriminant_metrics(records, pop)

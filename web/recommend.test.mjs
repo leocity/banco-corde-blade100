@@ -99,6 +99,8 @@ test('tensionFrom: correzione, limite, nessuna correzione senza rigidità di lab
   assert.deepEqual(t.range, [[19.5, 21.5], [18.5, 20.5]]);
   assert.equal(t.corrected, true);
   assert.equal(tensionFrom(rec({ stiffness: { value_lbin: 280, kind: 'misurata' } }), base, [22, 21]).delta, -2);
+  // pendenza dalle preferite (es. −0,32 kg ogni 15 lb/in): 30 lb/in più rigida → −0,64 → −0,5
+  assert.equal(tensionFrom(rec({ stiffness: { value_lbin: 230, kind: 'misurata' } }), base, [22, 21], -0.32 / 15).delta, -0.5);
   const nm = tensionFrom(rec({ stiffness: { value_lbin: 260, kind: 'modello' } }), base, [22, 21]);
   assert.equal(nm.corrected, false);
   assert.deepEqual(nm.kg, [22, 21]);
@@ -111,7 +113,7 @@ test('tensionFrom: parità con tension_start della pipeline', () => {
   for (const r of data.strings) {
     const ts = r.derived?.tension_start;
     if (!ts || !data.anchors[ts.from]) continue;
-    assert.deepEqual(tensionFrom(r, by[ts.from], data.anchors[ts.from]).kg, ts.kg, r.id);
+    assert.deepEqual(tensionFrom(r, by[ts.from], data.anchors[ts.from], data.tension_slope_kg_per_lbin).kg, ts.kg, r.id);
     n += 1;
   }
   assert.ok(n > 50);
