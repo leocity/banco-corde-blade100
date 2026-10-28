@@ -9,6 +9,8 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 
 | Fonte | Dove | Cosa |
 |---|---|---|
+| TWU Compare Strings | `data/raw/twu_compare.json` (`py -m pipeline.twu_compare`) | restituzione di energia, attrito corda-corda e corda-palla, solo per le righe TWU misurate (exact/probable) e coerenti con la tabella principale |
+| Date delle fonti | `data/raw/sources.json` | quando è stata scaricata ogni fonte: la pagina lo mostra al tocco su ogni numero |
 | Test Ektelon dell'utente | `data/source/String chart Aug 262026.xlsx` | allungamento/recupero 40–65 lbs, Stiff Index (= indice di cedimento), peso statico 24 h, TL6/TL12 |
 | TWU String Performance Database | `data/raw/twu.html` (snapshot), `data/raw/twu.json` | rigidità dinamica, perdita di tensione, spin potential (51 lbs, swing veloce) |
 | Racketpedia (solo dati gratuiti) | `data/raw/racketpedia.json` (sito, `py -m pipeline.rpedia_site`), `data/agents/rpedia*.json` (agente, verificato sul sito) | rigidità statica kg/mm, con URL della scheda |
@@ -17,6 +19,16 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 | Correzioni curate | `data/crosscheck_overrides.json`, `data/catalog_fixes.json`, `data/agents/*_overrides.json`, `data/notes.json` | forme dai produttori, esiti del controllo web, note da incordatore scritte a mano |
 
 ## Regole attuali (decise dall'utente)
+
+**v3 (2026-10-28, spec `docs/superpowers/specs/2026-10-28-banco-corde-v3-design.md`):**
+- Tutto parte dalla **corda che monti adesso** (default Confidential 1,25 a 22/21 kg, salvata nel browser): consigli, frase "rispetto alla tua corda", tensione di partenza e prima colonna del confronto.
+- Tre schermate: **La tua corda** (3 modelli da provare + altre 9), **Confronta** (tabella affiancata), **Esplora** (mappa con solo valori misurati di default, elenco dei 53 modelli, come leggere, metodo).
+- Nei consigli niente altri calibri/colori della corda attuale e delle preferite, niente non gradite, dati contestati o spin solo da modello; un calibro per modello.
+- Il numero 0–100 non si mostra più: l'ordine resta quello del punteggio di laboratorio, il perché è nella frase e nelle frecce.
+- Ogni numero si tocca e mostra fonte, data, condizioni, tipo e margine. Badge in 3 categorie: *tua*, *stima*, *attenzione*.
+- Solo dati gratuiti (Excel, TWU, Racketpedia gratuito); niente prezzi; aggiornamento solo manuale.
+
+**Regole dalla v2, ancora valide:**
 
 1. **Solo dati di laboratorio** per giudizi, punteggio e classifiche (Ektelon, TWU, Racketpedia, gemelli di calibro misurati). Le recensioni restano solo come link.
 2. **Si tolgono le corde uscite prima del 2020 e quelle fuori produzione**; le 4 corde di riferimento restano sempre. Anno non trovato → badge "anno da verificare".
@@ -31,23 +43,26 @@ Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, e Node per i test
 ```bash
 py -m pip install -r requirements.txt
 py -m pytest -q                          # test Python
-node --test web/score.test.mjs           # test JS (parità punteggio)
+node --test web/*.test.mjs               # test JS (punteggio, consigli, frase, tensione)
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
 py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)
 py -m pipeline.validate_agents           # abbinamenti + Racketpedia -> matches.json / rpedia.json
 py -m pipeline.rpedia_site               # riscarica Racketpedia dal sito (rete) -> data/raw/racketpedia.json
 py -m pipeline.merge                     # -> data/merged.json
 py -m pipeline.build                     # -> data/strings.json
+py -m pipeline.twu_compare               # riscarica TWU Compare (rete) -> data/raw/twu_compare.json
 py -m pipeline.build_page                # -> dist/string-explorer.html (+ dist/preview.html per anteprima locale)
+node tests/ui/check_page.mjs dist/preview.html   # controlla la pagina (criteri della spec v3) e salva gli screenshot in docs/audit/v3/
+py -m pipeline.refresh                   # aggiornamento manuale: riscarica le fonti, dice cosa è cambiato, ricostruisce
 py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/preview.html
 ```
 
 ## Struttura
 
 - `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), metriche (`derive.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
-- `web/` — `template.html`, `style.css`, `app.js` (interfaccia), `score.js` (punteggio, parità con Python).
+- `web/` — `template.html`, `style.css` e moduli concatenati da `build_page` nello stesso script: `score.js` (punteggio, parità con Python), `recommend.js` (logica pura: consigli, frase, tensione), `format.js`, `prov.js` (popover della provenienza), `badges.js`, `current.js` (corda attuale), `home.js`, `compare.js`, `explore.js`, `app.js` (avvio e tab). I nomi in testa ai moduli devono essere unici (c'è un test).
 - `docs/superpowers/specs/` e `plans/` — specifiche e piani (v1 e v2, con le decisioni successive in fondo alla spec v2).
-- `tests/` — 123 test Python.
+- `tests/` — test Python (pytest) e `tests/ui/check_page.mjs` (Playwright).
 - `docs/AUDIT.md` — audit di dati, racconto dei dati e UI (con lo stato delle correzioni).
 
 ## Lavoro aperto
