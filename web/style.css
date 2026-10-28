@@ -86,6 +86,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-v
 .tabs button[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
 .tabs button[aria-selected="true"] .ico { color: var(--accent); }
 
+main, .panel > * { min-width: 0; }
 .panel { display: grid; gap: 14px; min-width: 0; }
 .section-head { display: grid; gap: 2px; }
 
@@ -260,6 +261,25 @@ dialog#sheet::backdrop { background: rgb(10 16 15 / .45); }
 .rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
 .rows li { padding: 9px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
 .advanced h3 { margin-top: 12px; }
+
+/* confronto affiancato */
+.cmp-add input { width: 100%; min-height: 44px; }
+.cmp-sum { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; max-width: 80ch; }
+.cmp-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+table.cmp { border-collapse: separate; border-spacing: 0; width: 100%; font-size: .92rem; }
+.cmp th, .cmp td { padding: 6px 10px; text-align: left; min-width: 9.5em; vertical-align: top; background: var(--surface); }
+.cmp thead th { position: relative; border-bottom: 1px solid var(--line); padding-right: 40px; }
+.cmp thead th.mine { box-shadow: inset 0 -3px 0 var(--court); }
+.cmp .cn { display: block; font: 700 1rem/1.15 var(--font-display); }
+.cmp .cg { display: block; font-size: .8rem; color: var(--muted); }
+.cmp .rm { position: absolute; top: 0; right: 0; min-width: 44px; min-height: 44px; border: 0; background: none; color: var(--fg-2); font-size: 1.3rem; cursor: pointer; }
+.cmp tr.lbl th { font: 600 .74rem var(--font-body); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 8px 10px 0; border-top: 1px solid var(--line); }
+.cmp tr.lbl th span { position: sticky; left: 10px; }
+.cmp td:first-child, .cmp thead th.mine { position: sticky; left: 0; z-index: 1; box-shadow: inset -1px 0 0 var(--line); }
+.cmp thead th.mine { box-shadow: inset -1px 0 0 var(--line), inset 0 -3px 0 var(--court); }
+.cmp .dm { font-weight: 700; margin-left: 2px; }
+.cmp .dm.up { color: var(--court); } .cmp .dm.down { color: var(--accent); } .cmp .dm.same { color: var(--muted); }
+.cmp .dd { font-family: var(--font-data); font-size: .78rem; color: var(--fg-2); margin-left: 4px; }
 
 /* corda attuale */
 .current { background: var(--surface); border: 1px solid var(--court); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 8px; }
