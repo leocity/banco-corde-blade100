@@ -172,3 +172,34 @@ Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostitui
 
 ### Cosa non è stato fatto
 Non ho modificato il codice né il dataset; non ho verificato a campione gli URL delle fonti né rieseguito la pipeline (richiede rete). Il tema scuro è stato controllato solo sui token CSS, non a schermo.
+
+---
+
+## v3 (2026-10-28): "non si capisce" → la pagina parte dalla corda che monti
+
+Spec: `docs/superpowers/specs/2026-10-28-banco-corde-v3-design.md` · Piano: `docs/superpowers/plans/2026-10-28-banco-corde-v3.md`. Numeri misurati con Chromium da `tests/ui/check_page.mjs` (screenshot in `docs/audit/v3/`).
+
+| Criterio (spec §3) | Prima (v2) | Dopo (v3) |
+|---|---|---|
+| 1. Prima schermata a 390 px: corda attuale + nome e perché della 1ª consigliata | prima scheda tagliata, nessuna corda attuale | corda attuale in alto, nome della 1ª a 343 px, frase a 422 px (su 844) |
+| 2. Altezza della schermata principale a 390 px | 6.455 px ("Per te") | 2.399 px ("La tua corda") |
+| 3. Parole del confronto | 2.271 con 3 corde | 245–257 con 4 colonne |
+| 4. Consigli che non sono scoperte | 2ª scelta = Confidential 1,20 (la preferita in un altro calibro); Confidential Soft e una "dati contestati" in lista | esclusi calibri/colori della corda attuale e delle preferite, non gradite, dati contestati, spin solo da modello; un calibro per modello (102 righe → 53 modelli) |
+| 5. Provenienza di ogni numero | nessuna (solo tooltip al passaggio del mouse) | tocco su ogni numero: fonte, data di scaricamento, condizioni, tipo, margine, link |
+| 6. Scroll orizzontale a 375/390 px | no | no (anche con la tabella di confronto a 4 colonne) |
+| 7. Aggiornamento dei dati | a mano, modulo per modulo | `py -m pipeline.refresh`: dice cosa è cambiato, non tocca nulla se non cambia niente |
+
+**Dati.** Dallo strumento TWU Compare arrivano tre misure nuove (restituzione di energia, attrito corda-corda e corda-palla) per 53 corde su 102. Il controllo di coerenza scarta il Compare della Signum Plasma HEXtreme 1,25, che TWU collega al codice del 1,30. Il primo `refresh` ha trovato 8 righe nuove su Racketpedia: la Confidential Soft ha ora la rigidità statica nei 3 calibri, e la conversione Racketpedia→TWU passa a 27 coppie. TWU, riscaricato il 2026-10-28, ha righe identiche allo snapshot. Altre fonti gratuite cercate e scartate: StringSpec (stessi campi di TWU), Cross et al. 2000 (corde di 25 anni fa), forum e riviste (nessun valore misurato), schede dei produttori (solo descrizioni).
+
+**Dall'elenco "Ancora aperto" della v2:**
+- **Fatti:**
+  - etichette della mappa (ora solo la corda attuale e le preferite);
+  - indicatori del confronto su telefono («Corda N di 3»);
+  - legenda dei badge (3 categorie);
+  - spiegazioni che prima esistevano solo al passaggio del mouse;
+  - A6 (fonte accanto a ogni numero);
+  - A8 (codice morto 70/30, Controllo e Comfort stimati).
+- **Ancora aperti:**
+  - i margini dello spin non sono propagati nell'ordine dei consigli;
+  - la regola della tensione resta una stima non validata (ora mostrata come intervallo ±1 kg);
+  - A5: la somiglianza alle preferite pesa nell'ordine ma non si vede come numero.
