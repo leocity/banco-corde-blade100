@@ -121,4 +121,9 @@ if __name__ == "__main__":
     counts = {}
     for r in recs:
         counts[r["brand"]] = counts.get(r["brand"], 0) + 1
+    import datetime
+    import os
+    from pipeline.provenance import record_source
+    mtime = datetime.date.fromtimestamp(os.path.getmtime(sys.argv[1])).isoformat()
+    record_source("excel", file=os.path.basename(sys.argv[1]), modified=mtime)
     print(len(recs), "corde in ambito:", counts)

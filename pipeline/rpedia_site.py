@@ -170,4 +170,6 @@ if __name__ == "__main__":
     rows = fetch_all()
     out = ROOT / "data" / "raw" / "racketpedia.json"
     out.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
+    from pipeline.provenance import record_source
+    record_source("racketpedia", url=f"{BASE}/en-GB/tennis-strings")
     print(f"{len(rows)} righe Racketpedia da {len(BRANDS)} marche -> {out}")

@@ -1,0 +1,18 @@
+{
+ "excel": {
+  "file": "String chart Aug 262026.xlsx",
+  "modified": "2026-08-26"
+ },
+ "racketpedia": {
+  "fetched": "2026-10-09",
+  "url": "https://www.racketpedia.com/en-GB/tennis-strings"
+ },
+ "twu": {
+  "fetched": "2026-10-28",
+  "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+ },
+ "twu_compare": {
+  "fetched": "2026-10-28",
+  "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
+ }
+}

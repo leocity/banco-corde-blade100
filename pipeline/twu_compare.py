@@ -105,4 +105,6 @@ if __name__ == "__main__":
     names = [m["twu_name"] for m in matches if m.get("match") != "none" and m.get("twu_name")]
     rows = fetch_compare(names)
     (ROOT / "data/raw/twu_compare.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+    from pipeline.provenance import record_source
+    record_source("twu_compare", url=LIST_URL)
     print(len(rows), "corde dal Compare TWU su", len(set(names)), "nomi abbinati")

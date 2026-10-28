@@ -117,6 +117,7 @@ def parse_twu(html: str) -> list[dict]:
 
 
 if __name__ == "__main__":
+    from pipeline.provenance import record_source
     html = fetch_twu()
     with open("data/raw/twu.html", "w", encoding="utf-8") as f:
         f.write(html)
@@ -127,4 +128,5 @@ if __name__ == "__main__":
     counts = {}
     for r in rows:
         counts[r["brand"]] = counts.get(r["brand"], 0) + 1
+    record_source("twu", url=URL)
     print(len(rows), "corde TWU in ambito:", counts)

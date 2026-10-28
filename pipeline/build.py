@@ -12,6 +12,7 @@ from pipeline.estimate import (MEASURED, base_model, model_id, backtest_qualitat
 from pipeline.notes_gen import apply_notes
 from pipeline.rpedia_site import apply_site
 from pipeline.production import filter_discontinued
+from pipeline.provenance import apply_provenance
 from pipeline.reviews import add_percentiles, aggregate, validate_reviews
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -32,7 +33,7 @@ def _corr(xs, ys):
 REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
-def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None):
+def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, sources=None):
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
@@ -87,10 +88,12 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     # giudizi e punteggi solo dal laboratorio; le recensioni restano in r["reviews"] come link informativi
     discriminant = derive_all(records)
     apply_notes(records, notes)
+    apply_provenance(records, sources or {}, None)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
     return {
         "generated": datetime.date.today().isoformat(),
+        "sources": sources or {},
         "weights_default": DEFAULT_WEIGHTS,
         "anchors": ANCHOR_TENSIONS,
         "discriminant": discriminant,
@@ -125,7 +128,8 @@ if __name__ == "__main__":
     years = [row for f in sorted(glob.glob(str(ROOT / "data/agents/year_p*.json")))
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     site_rows = _load("data/raw/racketpedia.json", [])
-    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows)
+    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
+                sources=_load("data/raw/sources.json", {}))
     print("Racketpedia dal sito:", len(site_rows), "righe;", len(out["estimates_meta"]["rpedia_site"]["changes"]), "abbinamenti nuovi o corretti")
     print("rimosse:", [(x["name"], x["reason"]) for x in out["removed_discontinued"]])
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
