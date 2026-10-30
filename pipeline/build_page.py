@@ -7,10 +7,18 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 
 
+# Moduli JS inlinati, in ordine: i moduli puri prima, app.js per ultimo. Un file mancante è un errore, non si salta.
+# Tutti finiscono nello stesso scope: niente nomi top-level ripetuti (lo controlla tests/test_build_page.py con node --check).
+MODULES = ["score.js", "app.js"]
+
+
 def _js():
-    score = re.sub(r"^export ", "", (WEB / "score.js").read_text(encoding="utf-8"), flags=re.M)
-    app = re.sub(r"^import .*?;\s*$", "", (WEB / "app.js").read_text(encoding="utf-8"), flags=re.M)
-    return score + "\n" + app
+    parts = []
+    for name in MODULES:
+        src = (WEB / name).read_text(encoding="utf-8")
+        src = re.sub(r"^import .*?;\s*$", "", src, flags=re.M)
+        parts.append(re.sub(r"^export ", "", src, flags=re.M))
+    return "\n".join(parts)
 
 
 def render(data: dict) -> str:
