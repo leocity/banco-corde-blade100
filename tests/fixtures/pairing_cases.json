@@ -1,0 +1,362 @@
+[
+ {
+  "name": "identica",
+  "dims": {
+   "stiffness": 50,
+   "durability": 50,
+   "control": 50,
+   "elasticity": 50,
+   "spin": 50
+  },
+  "liked": [
+   {
+    "id": "r1",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": 100,
+   "band": "Ottimo",
+   "n_dims": 5,
+   "missing": [],
+   "no_spin": false,
+   "best_ref": "r1",
+   "penalized": false
+  }
+ },
+ {
+  "name": "spin_sopra",
+  "dims": {
+   "stiffness": 50,
+   "durability": 50,
+   "control": 50,
+   "elasticity": 50,
+   "spin": 90
+  },
+  "liked": [
+   {
+    "id": "r1",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": 100,
+   "band": "Ottimo",
+   "n_dims": 5,
+   "missing": [],
+   "no_spin": false,
+   "best_ref": "r1",
+   "penalized": false
+  }
+ },
+ {
+  "name": "rigidita_15_oltre",
+  "dims": {
+   "stiffness": 65,
+   "durability": 50,
+   "control": 50,
+   "elasticity": 50,
+   "spin": 50
+  },
+  "liked": [
+   {
+    "id": "r1",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": 90,
+   "band": "Ottimo",
+   "n_dims": 5,
+   "missing": [],
+   "no_spin": false,
+   "best_ref": "r1",
+   "penalized": false
+  }
+ },
+ {
+  "name": "dimensioni_mancanti",
+  "dims": {
+   "stiffness": 65,
+   "durability": null,
+   "control": 50,
+   "elasticity": null,
+   "spin": 50
+  },
+  "liked": [
+   {
+    "id": "r1",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": 85,
+   "band": "Ottimo",
+   "n_dims": 3,
+   "missing": [
+    "durability",
+    "elasticity"
+   ],
+   "no_spin": false,
+   "best_ref": "r1",
+   "penalized": false
+  }
+ },
+ {
+  "name": "meno_di_3",
+  "dims": {
+   "stiffness": 50,
+   "durability": null,
+   "control": null,
+   "elasticity": null,
+   "spin": 50
+  },
+  "liked": [
+   {
+    "id": "r1",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": null,
+   "band": "Non valutabile",
+   "n_dims": 2,
+   "missing": [
+    "durability",
+    "control",
+    "elasticity"
+   ],
+   "no_spin": false,
+   "best_ref": null,
+   "penalized": false
+  }
+ },
+ {
+  "name": "piu_vicino",
+  "dims": {
+   "stiffness": 78,
+   "durability": 78,
+   "control": 78,
+   "elasticity": 78,
+   "spin": 78
+  },
+  "liked": [
+   {
+    "id": "r20",
+    "dims": {
+     "stiffness": 20,
+     "durability": 20,
+     "control": 20,
+     "elasticity": 20,
+     "spin": 20
+    }
+   },
+   {
+    "id": "r80",
+    "dims": {
+     "stiffness": 80,
+     "durability": 80,
+     "control": 80,
+     "elasticity": 80,
+     "spin": 80
+    }
+   }
+  ],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": 100,
+   "band": "Ottimo",
+   "n_dims": 5,
+   "missing": [],
+   "no_spin": false,
+   "best_ref": "r80",
+   "penalized": false
+  }
+ },
+ {
+  "name": "penalita",
+  "dims": {
+   "stiffness": 62,
+   "durability": 62,
+   "control": 62,
+   "elasticity": 62,
+   "spin": 62
+  },
+  "liked": [
+   {
+    "id": "r50",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [
+   {
+    "id": "d70",
+    "dims": {
+     "stiffness": 70,
+     "durability": 70,
+     "control": 70,
+     "elasticity": 70,
+     "spin": 70
+    }
+   }
+  ],
+  "penalize": true,
+  "expect": {
+   "score": 68,
+   "band": "Buono",
+   "n_dims": 5,
+   "missing": [],
+   "no_spin": false,
+   "best_ref": "r50",
+   "penalized": true
+  }
+ },
+ {
+  "name": "senza_penalita_se_mi_piace",
+  "dims": {
+   "stiffness": 62,
+   "durability": 62,
+   "control": 62,
+   "elasticity": 62,
+   "spin": 62
+  },
+  "liked": [
+   {
+    "id": "r50",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [
+   {
+    "id": "d70",
+    "dims": {
+     "stiffness": 70,
+     "durability": 70,
+     "control": 70,
+     "elasticity": 70,
+     "spin": 70
+    }
+   }
+  ],
+  "penalize": false,
+  "expect": {
+   "score": 83,
+   "band": "Ottimo",
+   "n_dims": 5,
+   "missing": [],
+   "no_spin": false,
+   "best_ref": "r50",
+   "penalized": false
+  }
+ },
+ {
+  "name": "nessun_riferimento",
+  "dims": {
+   "stiffness": 50,
+   "durability": 50,
+   "control": 50,
+   "elasticity": 50,
+   "spin": 50
+  },
+  "liked": [],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": null,
+   "band": "Senza riferimenti",
+   "n_dims": 5,
+   "missing": [],
+   "no_spin": false,
+   "best_ref": null,
+   "penalized": false
+  }
+ },
+ {
+  "name": "senza_spin",
+  "dims": {
+   "stiffness": 50,
+   "durability": 50,
+   "control": 50,
+   "elasticity": 50,
+   "spin": null
+  },
+  "liked": [
+   {
+    "id": "r1",
+    "dims": {
+     "stiffness": 50,
+     "durability": 50,
+     "control": 50,
+     "elasticity": 50,
+     "spin": 50
+    }
+   }
+  ],
+  "disliked": [],
+  "penalize": true,
+  "expect": {
+   "score": 100,
+   "band": "Ottimo",
+   "n_dims": 4,
+   "missing": [
+    "spin"
+   ],
+   "no_spin": true,
+   "best_ref": "r1",
+   "penalized": false
+  }
+ }
+]
