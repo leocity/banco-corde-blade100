@@ -35,3 +35,12 @@ def test_build_adds_catalog_estimates_and_meta():
     assert "rp_to_twu" in out["estimates_meta"]
     assert S["b-nuova-17"]["reviews"]["sources"][0]["url"] == "https://tw/n"
     assert S["b-nuova-17"]["derived"]["judgments"]["comfort"]["score"] is None
+
+
+def test_build_exposes_defaults():
+    recs = [lab(i) for i in range(10)]
+    recs[0]["id"] = "solinco-confidential-16l"
+    out = build(recs, {})
+    assert out["defaults"]["equipped"] == {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
+    assert out["defaults"]["liked"] == ["solinco-confidential-16l", "toroline-o-toro-17"]
+    assert "babolat-rpm-blast-16" in out["defaults"]["disliked"]

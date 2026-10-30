@@ -10,6 +10,10 @@ KG_TO_LBS = 2.2046
 ANCHOR_TENSIONS = {"solinco-confidential-16l": [22, 21], "toroline-o-toro-17": [23, 22]}
 ANCHOR_NAMES = {"solinco-confidential-16l": "Confidential 1.25", "toroline-o-toro-17": "O-Toro 1.23"}
 DISLIKED_GROUPS = {"confidential_soft": ("Solinco", "Confidential Soft"), "rpm_blast": ("Babolat", "RPM Blast")}
+# Riferimenti iniziali dell'utente (modificabili nell'app): preferite, non gradite e corda montata con la sua tensione.
+DEFAULT_LIKED = ["solinco-confidential-16l", "toroline-o-toro-17"]
+DEFAULT_DISLIKED = ["solinco-confidential-soft-16", "solinco-confidential-soft-17", "babolat-rpm-blast-16", "babolat-rpm-blast-17"]
+DEFAULT_EQUIPPED = {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
 
 
 def _get(d, *path):
@@ -244,9 +248,16 @@ def discriminant_metrics(records, pop):
 
 
 def derive_all(records, reviews=None):
+    # import locali: dims e pairing importano questo modulo
+    from pipeline.dims import dim_populations, dimensions, excel_measures
+    from pipeline.pairing import pairing
     reviews = reviews or {}
     pop = population(records)
     by_id = {r["id"]: r for r in records}
+    dpop = dim_populations(records)
+    dm = {r["id"]: dimensions(r, dpop) for r in records}
+    refs = lambda ids: [{"id": i, "dims": dm[i]["values"]} for i in ids if i in dm]
+    liked_refs, disliked_refs = refs(DEFAULT_LIKED), refs(DEFAULT_DISLIKED)
     liked = {k: by_id[k] for k in ANCHOR_TENSIONS if k in by_id}
     disliked = {g: [r for r in records if (r["brand"], r["model"]) == bm] for g, bm in DISLIKED_GROUPS.items()}
     for r in records:
@@ -276,5 +287,9 @@ def derive_all(records, reviews=None):
             "sources_disagree": sources_disagree(r, pop),
             "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if flag else None),
             "tension_start": tension_start(r, anchors) if anchors else None,
+            "dims": dm[r["id"]]["values"],
+            "dim_inputs": dm[r["id"]]["inputs"],
+            "excel_measures": excel_measures(r),
+            "pairing": pairing(dm[r["id"]]["values"], liked_refs, disliked_refs, penalize=r["id"] not in DEFAULT_LIKED),
         }
     return discriminant_metrics(records, pop)

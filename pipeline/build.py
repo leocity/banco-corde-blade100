@@ -6,7 +6,7 @@ import math
 import pathlib
 
 from pipeline.catalog import add_catalog_only, clean_catalog
-from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
+from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
 from pipeline.notes_gen import apply_notes
@@ -92,6 +92,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         "generated": datetime.date.today().isoformat(),
         "weights_default": DEFAULT_WEIGHTS,
         "anchors": ANCHOR_TENSIONS,
+        "defaults": {"equipped": DEFAULT_EQUIPPED, "liked": DEFAULT_LIKED, "disliked": DEFAULT_DISLIKED},
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
