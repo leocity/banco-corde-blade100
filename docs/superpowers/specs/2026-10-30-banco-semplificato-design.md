@@ -46,7 +46,7 @@ Quattro schermate più la scheda; la Guida diventa "Metodo".
 | **Scheda** (dialog) | Una sola, aperta da qualunque riga o punto. Vedi §6. Pulsanti "Monta questa" e "Mi piace / Non mi piace". |
 | **Metodo** | Pagina unica con come si leggono i numeri; raggiunta dal "?" accanto a ogni valore (ancora diretta alla sezione). |
 
-Rimossi: pannello pesi sempre visibile (resta in "Personalizza", chiuso), blocco "Cosa dicono i tuoi gusti" (va nel Metodo, dichiarato come ipotesi da 4 corde), colonna "Stiff Idx" (si chiama "Cedimento" nella scheda).
+Rimossi: pannello pesi (i pesi sono fissi e dichiarati nel Metodo: personalizzarli non era tra le richieste), blocco "Cosa dicono i tuoi gusti" (va nel Metodo, dichiarato come ipotesi da 4 corde), colonna "Stiff Idx" (si chiama "Cedimento" nella scheda).
 
 ### Riga/scheda corda (componente unico)
 
@@ -86,23 +86,30 @@ Nessuna stima inventata: se una misura manca, il valore resta "manca" con il mot
 
 ## 5. Pairing Blade 100 v9
 
-Un solo numero 0–100 con fascia, che assorbe il vecchio "Per te" e la vecchia "affinità". Misura quanto la corda sta nell'intervallo delle corde che l'utente ha segnato "mi piace", più il guadagno di spin. Si calcola in `web/score.js` dal vivo (cambia quando l'utente cambia le preferite), con la stessa funzione in Python per test e parità.
+Un solo numero 0–100 con fascia, che assorbe il vecchio "Per te" e la vecchia "affinità". Misura quanto la corda somiglia, sulle dimensioni misurate, alla corda "mi piace" più vicina. Si calcola in `web/score.js` dal vivo (cambia quando l'utente cambia le preferite), con la stessa funzione in Python per test e parità.
 
-**Intervallo di riferimento:** per ogni dimensione `d` ∈ {rigidità, tenuta, controllo, elasticità} il minimo e il massimo (in percentile) delle corde "mi piace" (predefinite: Confidential 1,25 e O-Toro 1,23), allargati di una tolleranza `tol = 10` punti percentile. Dentro l'intervallo `fit_d = 100`; fuori decresce linearmente fino a 0 a 25 punti di distanza. Per **tenuta** e **spin** sopra il massimo non si penalizza (più è meglio).
+**Perché non un intervallo tra le preferite (verificato su dati veri, 2026-10-30):** Confidential (rigidità al 56° percentile) e O-Toro (al 3°) sono opposte; l'intervallo che le contiene copre quasi ogni corda e 22 corde su 96 prendono "Ottimo", Confidential Soft compresa. Il pairing è quindi la somiglianza con **la preferita più vicina**, non con una media dei gusti.
 
-**Punteggio:** media pesata delle dimensioni disponibili, con pesi predefiniti spin 30, tenuta 20, rigidità 20, controllo 15, elasticità 15 (rinormalizzati sulle dimensioni presenti).
+**Somiglianza con una corda di riferimento `x`:** per ogni dimensione `d` ∈ {rigidità, tenuta, controllo, elasticità, spin} con valore (percentile) `v`: `fit_d = 100` se `|v − x_d| ≤ tol`, poi decresce linearmente fino a 0 a `falloff` punti oltre la tolleranza. Per **tenuta** e **spin**, un `v` sopra `x_d` vale sempre 100 (più è meglio). Parametri: `tol = 5`, `falloff = 20`.
 
-**Penalità:** −15 se la corda sta meglio nell'intervallo delle "non mi piace" (calcolato con la stessa formula) di quello delle "mi piace" e il suo fit con le non gradite è ≥ 75. Sostituisce la somiglianza gaussiana opaca dell'audit (A5).
+**Punteggio:** per ogni riferimento "mi piace" la media pesata dei `fit_d` (pesi predefiniti spin 30, tenuta 20, rigidità 20, controllo 15, elasticità 15, rinormalizzati sulle dimensioni in cui sia la corda sia il riferimento hanno un valore); il pairing è il **massimo** tra i riferimenti, arrotondato a metà in su.
+
+**Penalità:** calcolato lo stesso punteggio contro i riferimenti "non mi piace", −15 se il migliore di questi è ≥ 75 e supera il punteggio "mi piace". Non si applica alle corde "mi piace". Sostituisce la somiglianza gaussiana opaca dell'audit (A5).
 
 **Requisiti:**
-- Servono almeno 3 dimensioni di laboratorio (non da modello). Lo spin non è più obbligatorio: Zero 1,23 viene valutata con rigidità, tenuta, controllo ed elasticità e porta l'etichetta "senza spin".
+- Servono almeno 3 dimensioni di laboratorio (non da modello) sulla corda. Lo spin non è più obbligatorio: Zero 1,23 viene valutata con rigidità, tenuta, controllo ed elasticità e porta l'etichetta "senza spin".
 - Le stime da modello (spin, rigidità dal solo calibro) restano escluse dal pairing e dalle top 3, come oggi.
 - Meno di 3 dimensioni → "Non valutabile" con l'elenco di cosa manca.
-- Servono almeno 2 corde "mi piace" per costruire l'intervallo; con una sola l'intervallo è quella corda ± `tol`.
+- Servono almeno una corda "mi piace"; senza, nessun pairing e la schermata invita a segnarne una.
+- Le corde segnate "mi piace" o "non mi piace" mostrano ★ preferita / ✕ non gradita al posto della fascia (la loro opinione l'hai già espressa); il pairing resta calcolato e visibile in scheda.
 
-**Fasce:** ≥ 80 Ottimo · 60–79 Buono · 40–59 Attenzione · < 40 Poco adatta. Ogni fascia ha il motivo in una riga ("rigidità e tenuta dentro il tuo intervallo, spin sopra la tua Zero").
+**Fasce:** ≥ 80 Ottimo · 60–79 Buono · 40–59 Attenzione · < 40 Poco adatta. Ogni fascia ha il motivo in una riga ("rigidità e tenuta in linea con la tua Confidential, controllo più compatto").
 
-**Validazione obbligatoria (test):** con le impostazioni iniziali le due preferite stanno nel 25% migliore; le due non gradite nella metà inferiore. Se non succede, si rivedono pesi e tolleranza prima di procedere, non si adatta il test.
+**Validazione obbligatoria (test sui dati finali), con le impostazioni iniziali:**
+1. non più del 15% delle corde con pairing prende "Ottimo" (il punteggio discrimina);
+2. Babolat RPM Blast 16 e 17 sono nel 10% inferiore;
+3. nessuna corda non gradita (Confidential Soft 16 e 17, RPM Blast 16 e 17) è nel quarto superiore.
+Con `tol = 5`, `falloff = 20` il prototipo dà: 12 Ottimo su 96, RPM Blast agli ultimi posti, Confidential Soft a metà classifica; Re-String Zero 1,23 prende 100, indistinguibile dalla Confidential nelle dimensioni misurate. Se un criterio non regge dopo l'implementazione si rivedono `tol`, `falloff` e pesi (non il test) e si annota qui il motivo.
 
 ## 6. Scheda e recensioni
 
@@ -155,11 +162,14 @@ Un parere AI su richiesta, separato dai dati misurati.
 
 Persistenza con la capability `db` (documenti privati sotto `data/users/<id>/`, con `user` per l'id), così le ore sopravvivono tra dispositivi e ripubblicazioni; senza `db` (anteprima, non autenticato) si ripiega su `localStorage` con l'avviso "salvato solo su questo browser". `downloads` per "Esporta storico" (JSON).
 
-| Documento | Contenuto |
+Un solo documento `data/users/<id>/state` (limite 256 KiB: centinaia di sessioni ci stanno, e si scrive in un colpo solo):
+
+| Campo | Contenuto |
 |---|---|
-| `setup` | corda montata (id, kg verticali/orizzontali, data di montaggio, ore di partenza), elenchi "mi piace" e "non mi piace" |
-| `lives/<ts>` | corde finite: id, kg, dal/al, ore totali, motivo (consumata, rotta, cambiata per prova), nota |
-| `sessions/<ts>` | data, ore, nota breve, riferimento alla corda montata in quel momento |
+| `equipped` | corda montata: id, kg verticali/orizzontali, `since` (data-ora ISO, identifica la vita corrente), ore di partenza |
+| `liked`, `disliked` | elenchi di id "mi piace" e "non mi piace" |
+| `sessions` | `{ts, date, hours, note, life}`: `life` = `since` della corda montata in quel momento |
+| `lives` | corde finite: id, kg, `from`, `to`, ore totali, motivo (consumata, rotta, cambiata per prova), nota |
 
 Predefiniti dalla tabella del §1 quando il documento non esiste.
 
@@ -202,7 +212,7 @@ Un commit per fase sul ramo `claude/adoring-rubin-dm98qp`. La ripubblicazione de
 
 ## 12. Rischi e punti aperti
 
-- L'intervallo di riferimento nasce da due corde preferite (tre se aggiungi la montata): descrive i tuoi gusti, non è una legge.
+- Il pairing nasce da due corde preferite: descrive i tuoi gusti, non è una legge. Con più preferite diventa più affidabile.
 - Controllo e potenza sono un solo indice non validato; la scheda lo dice.
 - La vita attesa in ore è un'ipotesi finché non registri le tue corde finite: la schermata dichiara quale modello usa.
 - Le soglie delle fasce (pairing 60/80, usura 40/70/100) sono scelte di presentazione, da rivedere guardando i risultati reali in fase 1.
