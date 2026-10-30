@@ -2,10 +2,11 @@
 import { $, esc, fmt, fullName, nameOf, SHAPES } from './format.js';
 import { rowHtml } from './cards.js';
 
-const chooseFilters = { q: '', brand: '', gauge: '', shape: '', target: true, measured: false, good: false, limit: 12 };
+export const newFilters = () => ({ q: '', brand: '', gauge: '', shape: '', target: true, measured: false, good: false });
+const chooseFilters = { ...newFilters(), limit: 12 };
 const labSpinKind = (r) => !!r.spin && ['misurato', 'parente'].includes(r.spin.kind);
-const strictlyMeasured = (r) => !r.catalog_only && !!r.spin && r.spin.kind === 'misurato' && !!r.stiffness && r.stiffness.kind === 'misurata';
-const pairScore = (ctx, r) => { const s = ctx.pairingOf(r.id).score; return s === null || s === undefined ? -1 : s; };
+export const strictlyMeasured = (r) => !r.catalog_only && !!r.spin && r.spin.kind === 'misurato' && !!r.stiffness && r.stiffness.kind === 'misurata';
+export const pairScore = (ctx, r) => { const s = ctx.pairingOf(r.id).score; return s === null || s === undefined ? -1 : s; };
 
 // Le 3 da provare: alternative delle marche valutate, non preferite né montata, con spin misurato o da gemello e pairing calcolato.
 export function topIds(ctx) {
@@ -28,8 +29,9 @@ function renderRefs(ctx) {
   $('#myrefs-sum').textContent = `Le tue corde: ${s.liked.filter((id) => by[id]).length} ★ · ${s.disliked.filter((id) => by[id]).length} ✕ (tocca per modificare)`;
 }
 
-function passes(ctx, r) {
-  const f = chooseFilters, q = f.q.trim().toLowerCase();
+// Filtri comuni a Scegli e Banco. Con una ricerca in corso il filtro "marche valutate" non si applica.
+export function passesFilters(ctx, r, f) {
+  const q = f.q.trim().toLowerCase();
   return (!q || fullName(r).toLowerCase().includes(q)) && (q || !f.target || r.is_target) && (!f.brand || r.brand === f.brand) && (!f.gauge || r.gauge_label === f.gauge) && (!f.shape || r.shape === f.shape)
     && (!f.measured || strictlyMeasured(r)) && (!f.good || pairScore(ctx, r) >= 60);
 }
@@ -44,7 +46,7 @@ export function renderChoose(ctx) {
   const brands = [...new Set(ctx.ALL.filter((r) => !chooseFilters.target || r.is_target).map((r) => r.brand))].sort();
   $('#chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${chooseFilters.brand === b}">${esc(b)}</button>`).join('');
   const searching = chooseFilters.q.trim() !== '';
-  const rows = ctx.ALL.filter((r) => passes(ctx, r) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
+  const rows = ctx.ALL.filter((r) => passesFilters(ctx, r, chooseFilters) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
     .sort((a, b) => pairScore(ctx, b) - pairScore(ctx, a) || nameOf(a).localeCompare(nameOf(b)));
   $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => rowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';
   $('#list-count').textContent = `${rows.length} corde${rows.length > chooseFilters.limit ? `, ne mostro ${chooseFilters.limit}` : ''}. ◐ = valore stimato, ○ = dato mancante.`;

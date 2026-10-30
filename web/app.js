@@ -4,13 +4,14 @@ import { defaultState, setPreference, equippedHours, tensionFor } from './state.
 import { createPersistence } from './persist.js';
 import { sheetHtml } from './cards.js';
 import { renderChoose, initChoose } from './choose.js';
+import { renderBank, initBank } from './bank.js';
 import { renderMethod } from './method.js';
 
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
 const TABS = ['scegli', 'mappa', 'banco', 'montata', 'metodo'];
-const RENDERERS = { scegli: renderChoose, metodo: renderMethod };
+const RENDERERS = { scegli: renderChoose, banco: renderBank, metodo: renderMethod };
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -73,6 +74,7 @@ document.addEventListener('click', (e) => {
 });
 
 initChoose(ctx);
+initBank(ctx);
 renderMethod(ctx);
 $('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni solo come link in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
 const hashTab = (location.hash || '').slice(1);

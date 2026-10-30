@@ -56,13 +56,31 @@
     </section>
 
     <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden><p class="muted">La mappa arriva nel prossimo passo.</p></section>
-    <section id="banco" class="panel" role="tabpanel" aria-labelledby="tab-banco" hidden><p class="muted">Il banco arriva nel prossimo passo.</p></section>
+    <section id="banco" class="panel" role="tabpanel" aria-labelledby="tab-banco" hidden>
+      <div class="section-head"><h2>Il banco</h2><p class="muted small">Tutte le corde con i valori affiancati. Spunta da 2 a 4 corde per confrontarle. ● misurato · ◐ stimato · ○ manca.</p></div>
+      <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="b-q" placeholder="Cerca: Hyper-G, Toro, Zero…"></label>
+      <div class="chips" id="b-chips" role="group" aria-label="Filtra per marca"></div>
+      <div class="controls">
+        <label>Calibro <select id="b-gauge"><option value="">Tutti</option></select></label>
+        <label>Forma <select id="b-shape"><option value="">Tutte</option></select></label>
+        <label class="toggle"><input type="checkbox" id="b-target" checked> Solo le marche che stai valutando</label>
+        <label class="toggle"><input type="checkbox" id="b-measured"> Solo dati misurati</label>
+        <label class="toggle"><input type="checkbox" id="b-good"> Pairing Buono o meglio</label>
+      </div>
+      <p class="muted small" id="b-count"></p>
+      <p class="small gaps" id="cmp-msg" role="status"></p>
+      <div class="table-scroll bank-table"><table class="data" id="bank-table"></table></div>
+      <div class="list bank-cards" id="bank-cards"></div>
+      <button class="btn" type="button" id="b-more" hidden>Mostra altre</button>
+    </section>
     <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden><p class="muted">La schermata Montata arriva nel prossimo passo.</p></section>
     <section id="metodo" class="panel prose" hidden></section>
   </main>
 
   <footer class="foot muted small" id="foot"></footer>
 </div>
+
+<aside class="tray" id="tray" aria-label="Confronto" hidden></aside>
 
 <dialog id="sheet" aria-labelledby="sheet-title">
   <div class="sheet-inner">

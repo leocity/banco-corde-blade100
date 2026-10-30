@@ -99,5 +99,5 @@ def review_conflicts(sources, lab_levels, threshold=2):
         level = tester / 25 + 1
         if abs(level - lab) >= threshold:
             out.append({"criterion": c, "testers": round(level, 1), "lab": lab,
-                        "sites": [s["site"] for s in usable if _value(s, c) is not None]})
+                        "sites": list(dict.fromkeys(s["site"] for s in usable if _value(s, c) is not None))})
     return out

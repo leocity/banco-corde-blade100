@@ -11,7 +11,7 @@ const REVIEW_KIND = { lab_playtest: 'playtest', review: 'recensione', brand: 'pr
 const VERDICT = { confirmed: 'confermata', plausible: 'plausibile', questionable: 'dubbia', contradicted: 'contraddetta', no_data: 'nessun dato esterno' };
 const qBtn = (a) => `<button class="q" type="button" data-method="${a}" aria-label="Come si legge">?</button>`;
 
-function pairHtml(ctx) {
+export function pairHtml(ctx) {
   const p = ctx.pairing || {};
   if (ctx.isEquipped) return `<span class="pair equipped" title="La corda che hai montata ora"><b>montata</b>${p.score != null ? ` · pairing ${p.score}` : ''}</span>`;
   if (ctx.pref === 'liked') return '<span class="pair liked">★ preferita</span>';
@@ -29,7 +29,7 @@ function warnHtml(rec, ctx) {
   return w ? `<span class="warn" title="${esc(w[1])}">${esc(w[0])}</span>` : '';
 }
 
-function valHtml(v) {
+export function valHtml(v) {
   const title = v.note || v.why || '';
   return `<div class="val ${v.mark}" data-k="${v.key}"><span class="k">${esc(v.label)}</span><span class="mark" title="${esc(title)}" aria-label="${esc(title)}">${MARK[v.mark]}</span><span class="v">${esc(v.text)}</span>${v.mark === 'missing' ? `<small class="why-miss">${esc(v.why)}</small>` : ''}</div>`;
 }

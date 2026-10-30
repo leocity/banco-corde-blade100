@@ -311,6 +311,28 @@ dialog#sheet::backdrop { background: rgb(10 16 15 / .45); }
 .chipbtn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .short { display: grid; gap: 8px; }
 
+/* banco e confronto */
+.bank-cards { display: none; }
+.data td.v { white-space: normal; min-width: 9em; }
+.data td.v .mark { color: var(--court); margin-right: 3px; cursor: help; }
+.data td.v.estimated { font-style: italic; }
+.data td.v.estimated .mark { color: var(--est-fg); }
+.data td.v.missing { color: var(--muted); }
+.cmp-pick { display: inline-flex; gap: 6px; align-items: center; font-size: .9rem; color: var(--fg-2); min-height: 44px; }
+input.cmp { width: 20px; height: 20px; accent-color: var(--accent); }
+.tray { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; max-height: 38vh; overflow: auto; background: var(--surface); border-top: 2px solid var(--court); box-shadow: 0 -6px 24px rgb(0 0 0 / .18); padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); }
+.tray-head { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-bottom: 8px; }
+.tray-head .summary { flex: 1 1 280px; font-size: .92rem; }
+.tcols { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, 1fr); gap: 10px; overflow-x: auto; }
+.tcol { display: grid; gap: 6px; align-content: start; min-width: 0; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius); }
+.tcol .scard-name { font: 700 1.05rem/1.15 var(--font-display); }
+@media (max-width: 760px) {
+  .bank-table { display: none; }
+  .bank-cards { display: grid; }
+  .tray { bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px)); max-height: 42vh; }
+  .tcols { grid-auto-columns: 82%; }
+}
+
 </style>
 
 <div class="wrap">
@@ -363,13 +385,31 @@ dialog#sheet::backdrop { background: rgb(10 16 15 / .45); }
     </section>
 
     <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden><p class="muted">La mappa arriva nel prossimo passo.</p></section>
-    <section id="banco" class="panel" role="tabpanel" aria-labelledby="tab-banco" hidden><p class="muted">Il banco arriva nel prossimo passo.</p></section>
+    <section id="banco" class="panel" role="tabpanel" aria-labelledby="tab-banco" hidden>
+      <div class="section-head"><h2>Il banco</h2><p class="muted small">Tutte le corde con i valori affiancati. Spunta da 2 a 4 corde per confrontarle. ● misurato · ◐ stimato · ○ manca.</p></div>
+      <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="b-q" placeholder="Cerca: Hyper-G, Toro, Zero…"></label>
+      <div class="chips" id="b-chips" role="group" aria-label="Filtra per marca"></div>
+      <div class="controls">
+        <label>Calibro <select id="b-gauge"><option value="">Tutti</option></select></label>
+        <label>Forma <select id="b-shape"><option value="">Tutte</option></select></label>
+        <label class="toggle"><input type="checkbox" id="b-target" checked> Solo le marche che stai valutando</label>
+        <label class="toggle"><input type="checkbox" id="b-measured"> Solo dati misurati</label>
+        <label class="toggle"><input type="checkbox" id="b-good"> Pairing Buono o meglio</label>
+      </div>
+      <p class="muted small" id="b-count"></p>
+      <p class="small gaps" id="cmp-msg" role="status"></p>
+      <div class="table-scroll bank-table"><table class="data" id="bank-table"></table></div>
+      <div class="list bank-cards" id="bank-cards"></div>
+      <button class="btn" type="button" id="b-more" hidden>Mostra altre</button>
+    </section>
     <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden><p class="muted">La schermata Montata arriva nel prossimo passo.</p></section>
     <section id="metodo" class="panel prose" hidden></section>
   </main>
 
   <footer class="foot muted small" id="foot"></footer>
 </div>
+
+<aside class="tray" id="tray" aria-label="Confronto" hidden></aside>
 
 <dialog id="sheet" aria-labelledby="sheet-title">
   <div class="sheet-inner">
@@ -791,7 +831,8 @@ function sheetHtml(rec, ctx) {
 // Schermata Scegli: striscia della montata, preferite, le 3 da provare e la lista filtrabile.
 
 
-const chooseFilters = { q: '', brand: '', gauge: '', shape: '', target: true, measured: false, good: false, limit: 12 };
+const newFilters = () => ({ q: '', brand: '', gauge: '', shape: '', target: true, measured: false, good: false });
+const chooseFilters = { ...newFilters(), limit: 12 };
 const labSpinKind = (r) => !!r.spin && ['misurato', 'parente'].includes(r.spin.kind);
 const strictlyMeasured = (r) => !r.catalog_only && !!r.spin && r.spin.kind === 'misurato' && !!r.stiffness && r.stiffness.kind === 'misurata';
 const pairScore = (ctx, r) => { const s = ctx.pairingOf(r.id).score; return s === null || s === undefined ? -1 : s; };
@@ -817,8 +858,9 @@ function renderRefs(ctx) {
   $('#myrefs-sum').textContent = `Le tue corde: ${s.liked.filter((id) => by[id]).length} ★ · ${s.disliked.filter((id) => by[id]).length} ✕ (tocca per modificare)`;
 }
 
-function passes(ctx, r) {
-  const f = chooseFilters, q = f.q.trim().toLowerCase();
+// Filtri comuni a Scegli e Banco. Con una ricerca in corso il filtro "marche valutate" non si applica.
+function passesFilters(ctx, r, f) {
+  const q = f.q.trim().toLowerCase();
   return (!q || fullName(r).toLowerCase().includes(q)) && (q || !f.target || r.is_target) && (!f.brand || r.brand === f.brand) && (!f.gauge || r.gauge_label === f.gauge) && (!f.shape || r.shape === f.shape)
     && (!f.measured || strictlyMeasured(r)) && (!f.good || pairScore(ctx, r) >= 60);
 }
@@ -833,7 +875,7 @@ function renderChoose(ctx) {
   const brands = [...new Set(ctx.ALL.filter((r) => !chooseFilters.target || r.is_target).map((r) => r.brand))].sort();
   $('#chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${chooseFilters.brand === b}">${esc(b)}</button>`).join('');
   const searching = chooseFilters.q.trim() !== '';
-  const rows = ctx.ALL.filter((r) => passes(ctx, r) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
+  const rows = ctx.ALL.filter((r) => passesFilters(ctx, r, chooseFilters) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
     .sort((a, b) => pairScore(ctx, b) - pairScore(ctx, a) || nameOf(a).localeCompare(nameOf(b)));
   $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => rowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';
   $('#list-count').textContent = `${rows.length} corde${rows.length > chooseFilters.limit ? `, ne mostro ${chooseFilters.limit}` : ''}. ◐ = valore stimato, ○ = dato mancante.`;
@@ -854,6 +896,134 @@ function initChoose(ctx) {
   $('#only-good').addEventListener('change', (e) => { chooseFilters.good = e.target.checked; redo(); });
   $('#chips').addEventListener('click', (e) => { const b = e.target.closest('[data-brand]'); if (b) { chooseFilters.brand = chooseFilters.brand === b.dataset.brand ? '' : b.dataset.brand; redo(); } });
   $('#more').addEventListener('click', () => { chooseFilters.limit += 12; renderChoose(ctx); });
+}
+
+// Schermata Banco: tabella (o schede su telefono) con filtri e ordinamento, e pannello di confronto da 2 a 4 corde.
+
+
+
+
+
+const bankFilters = newFilters();
+const bankView = { key: 'pairing', dir: -1, limit: 40, picks: [] };
+const BANK_COLS = [['name', 'Corda'], ['spin', 'Spin'], ['stiffness', 'Rigidità'], ['durability', 'Tenuta'], ['control', 'Controllo ◄► potenza'], ['pairing', 'Pairing']];
+const BANK_MAX = 4;
+const bankPhone = () => window.matchMedia('(max-width: 760px)').matches;
+
+function bankSortValue(ctx, r, key) {
+  switch (key) {
+    case 'name': return nameOf(r);
+    case 'spin': return r.spin ? r.spin.value : null;
+    case 'stiffness': return r.stiffness ? r.stiffness.value_lbin : null;
+    case 'durability': return r.derived.dims.durability;
+    case 'control': return r.derived.dims.control;
+    default: { const s = ctx.pairingOf(r.id).score; return s === undefined ? null : s; }
+  }
+}
+
+function bankRows(ctx) {
+  const k = bankView.key;
+  return ctx.ALL.filter((r) => passesFilters(ctx, r, bankFilters)).sort((a, b) => {
+    const va = bankSortValue(ctx, a, k), vb = bankSortValue(ctx, b, k);
+    if ((va === null || va === undefined) && (vb === null || vb === undefined)) return 0;
+    if (va === null || va === undefined) return 1;
+    if (vb === null || vb === undefined) return -1;
+    return (typeof va === 'string' ? va.localeCompare(vb) : va - vb) * bankView.dir;
+  });
+}
+
+const cmpBox = (r) => `<input type="checkbox" class="cmp" data-id="${esc(r.id)}" aria-label="Confronta ${esc(fullName(r))}"${bankView.picks.includes(r.id) ? ' checked' : ''}>`;
+
+function bankTable(ctx, rows) {
+  const head = `<thead><tr><th><span class="sr">Confronta</span></th>${BANK_COLS.map(([k, l]) => `<th class="${k === 'name' ? '' : 'n'}" aria-sort="${k === bankView.key ? (bankView.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-sort="${k}">${esc(l)}${k === bankView.key ? (bankView.dir > 0 ? ' ▲' : ' ▼') : ''}</button></th>`).join('')}</tr></thead>`;
+  const body = rows.map((r) => {
+    const v = Object.fromEntries(rowValues(r).map((x) => [x.key, x]));
+    const cell = (x) => `<td class="v ${x.mark}"><span class="mark" title="${esc(x.note || x.why || '')}">${MARK[x.mark]}</span>${esc(x.text)}</td>`;
+    return `<tr data-id="${esc(r.id)}"><td>${cmpBox(r)}</td><td><button type="button" class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button> <span class="muted small">${esc(subline(r))}</span></td>`
+      + `${cell(v.spin)}${cell(v.stiffness)}${cell(v.durability)}${cell(v.control)}<td>${pairHtml(ctx.cardCtx(r))}</td></tr>`;
+  }).join('');
+  return `${head}<tbody>${body}</tbody>`;
+}
+
+function renderBank(ctx) {
+  const brands = [...new Set(ctx.ALL.filter((r) => !bankFilters.target || r.is_target).map((r) => r.brand))].sort();
+  $('#b-chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${bankFilters.brand === b}">${esc(b)}</button>`).join('');
+  const rows = bankRows(ctx), shown = rows.slice(0, bankView.limit);
+  $('#b-count').textContent = `${rows.length} corde${rows.length > shown.length ? `, ne mostro ${shown.length}` : ''}.`;
+  if (bankPhone()) {
+    $('#bank-table').innerHTML = '';
+    $('#bank-cards').innerHTML = shown.map((r) => `<div class="bank-item">${rowHtml(r, ctx.cardCtx(r))}<label class="cmp-pick">${cmpBox(r)} Confronta</label></div>`).join('');
+  } else {
+    $('#bank-cards').innerHTML = '';
+    $('#bank-table').innerHTML = bankTable(ctx, shown);
+  }
+  $('#b-more').hidden = rows.length <= shown.length;
+  renderTray(ctx);
+}
+
+function compareSummary(a, b) {
+  const gain = [], lose = [];
+  for (const [k, l] of [['spin', 'spin'], ['durability', 'tenuta'], ['control', 'controllo']]) {
+    const va = a.derived.dims[k], vb = b.derived.dims[k];
+    if (va === null || va === undefined || vb === null || vb === undefined) continue;
+    if (vb - va >= 10) gain.push(l); else if (va - vb >= 10) lose.push(l);
+  }
+  const join = (xs) => (xs.length > 1 ? `${xs.slice(0, -1).join(', ')} e ${xs[xs.length - 1]}` : xs[0]);
+  const sa = labStiff(a), sb = labStiff(b);
+  const stiff = sa !== null && sb !== null && Math.abs(sb - sa) >= 10 ? ` La seconda è ${sb > sa ? 'più rigida' : 'più morbida'} di circa ${Math.round(Math.abs(sb - sa))} lb/in.` : '';
+  const head = `Passando da <b>${esc(fullName(a))}</b> a <b>${esc(fullName(b))}</b> `;
+  return head + (!gain.length && !lose.length ? 'il profilo resta simile.' : `${[gain.length ? `guadagni ${join(gain)}` : '', lose.length ? `perdi ${join(lose)}` : ''].filter(Boolean).join(' e ')}.`) + stiff;
+}
+
+function renderTray(ctx) {
+  const picks = bankView.picks.map((id) => ctx.BY_ID[id]).filter(Boolean);
+  $('#tray').hidden = picks.length < 2;
+  if (picks.length < 2) { $('#tray').innerHTML = ''; return; }
+  const first = picks[0];
+  const cols = picks.map((r, i) => `<div class="tcol"><p><i class="sw" style="background:var(--s-c${i + 1})"></i> <b class="scard-name">${esc(nameOf(r))}</b> <span class="muted small">${esc(subline(r))}</span></p>${pairHtml(ctx.cardCtx(r))}`
+    + `<div class="vals">${rowValues(r).map(valHtml).join('')}</div>${i ? (() => { const d = deltaVsEquipped(r, first).text; return d ? `<p class="delta">rispetto alla prima: <b>${esc(d)}</b></p>` : ''; })() : ''}`
+    + `<div class="card-actions"><button class="btn" type="button" data-open="${esc(r.id)}">Scheda</button><button class="btn icon" type="button" data-uncmp="${esc(r.id)}" aria-label="Togli ${esc(fullName(r))} dal confronto">×</button></div></div>`).join('');
+  const gaps = rowValues(first).map((v) => v.key).map((k) => {
+    const who = picks.filter((r) => rowValues(r).find((v) => v.key === k).mark === 'missing').map(nameOf);
+    const label = { spin: 'spin', stiffness: 'rigidità', durability: 'tenuta', control: 'controllo' }[k];
+    return who.length ? `${label} (manca per ${who.map(esc).join(', ')})` : '';
+  }).filter(Boolean);
+  $('#tray').innerHTML = `<div class="tray-head"><b>Confronto</b><p class="summary">${compareSummary(first, picks[1])}${gaps.length ? ` <span class="gaps">⚠ Non confrontabili per dati mancanti: ${gaps.join('; ')}.</span>` : ''}</p><button class="btn" type="button" id="cmp-clear">Azzera</button></div><div class="tcols">${cols}</div>`;
+}
+
+function initBank(ctx) {
+  const gauges = [...new Set(ctx.ALL.map((r) => r.gauge_label).filter(Boolean))].sort();
+  $('#b-gauge').insertAdjacentHTML('beforeend', gauges.map((g) => `<option>${esc(g)}</option>`).join(''));
+  const shapes = [...new Set(ctx.ALL.map((r) => r.shape).filter(Boolean))].sort();
+  $('#b-shape').insertAdjacentHTML('beforeend', shapes.map((x) => `<option value="${esc(x)}">${esc(SHAPES[x] || x)}</option>`).join(''));
+  const redo = () => { bankView.limit = 40; renderBank(ctx); };
+  $('#b-q').addEventListener('input', (e) => { bankFilters.q = e.target.value; redo(); });
+  $('#b-gauge').addEventListener('change', (e) => { bankFilters.gauge = e.target.value; redo(); });
+  $('#b-shape').addEventListener('change', (e) => { bankFilters.shape = e.target.value; redo(); });
+  $('#b-target').addEventListener('change', (e) => { bankFilters.target = e.target.checked; redo(); });
+  $('#b-measured').addEventListener('change', (e) => { bankFilters.measured = e.target.checked; redo(); });
+  $('#b-good').addEventListener('change', (e) => { bankFilters.good = e.target.checked; redo(); });
+  $('#b-chips').addEventListener('click', (e) => { const b = e.target.closest('[data-brand]'); if (b) { bankFilters.brand = bankFilters.brand === b.dataset.brand ? '' : b.dataset.brand; redo(); } });
+  $('#b-more').addEventListener('click', () => { bankView.limit += 40; renderBank(ctx); });
+  $('#banco').addEventListener('click', (e) => {
+    const s = e.target.closest('[data-sort]');
+    if (s) { if (bankView.key === s.dataset.sort) bankView.dir = -bankView.dir; else { bankView.key = s.dataset.sort; bankView.dir = s.dataset.sort === 'name' ? 1 : -1; } renderBank(ctx); }
+  });
+  $('#banco').addEventListener('change', (e) => {
+    const c = e.target.closest('input.cmp'); if (!c) return;
+    const id = c.dataset.id;
+    if (c.checked) {
+      if (bankView.picks.length >= BANK_MAX) { c.checked = false; $('#cmp-msg').textContent = `Al massimo ${BANK_MAX} corde nel confronto: togline una per aggiungerne un'altra.`; return; }
+      bankView.picks.push(id);
+    } else bankView.picks = bankView.picks.filter((x) => x !== id);
+    $('#cmp-msg').textContent = '';
+    renderTray(ctx);
+  });
+  $('#tray').addEventListener('click', (e) => {
+    if (e.target.closest('#cmp-clear')) { bankView.picks = []; $('#cmp-msg').textContent = ''; renderBank(ctx); return; }
+    const u = e.target.closest('[data-uncmp]'); if (u) { bankView.picks = bankView.picks.filter((x) => x !== u.dataset.uncmp); renderBank(ctx); }
+  });
+  window.matchMedia('(max-width: 760px)').addEventListener('change', () => renderBank(ctx));
 }
 
 // Pagina "Metodo": come si leggono i numeri. Ogni sezione ha un'ancora #m-<chiave> raggiunta dal "?" accanto ai valori.
@@ -886,11 +1056,12 @@ function renderMethod(ctx) {
 
 
 
+
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
 const TABS = ['scegli', 'mappa', 'banco', 'montata', 'metodo'];
-const RENDERERS = { scegli: renderChoose, metodo: renderMethod };
+const RENDERERS = { scegli: renderChoose, banco: renderBank, metodo: renderMethod };
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -953,6 +1124,7 @@ document.addEventListener('click', (e) => {
 });
 
 initChoose(ctx);
+initBank(ctx);
 renderMethod(ctx);
 $('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni solo come link in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
 const hashTab = (location.hash || '').slice(1);

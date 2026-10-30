@@ -102,3 +102,10 @@ def test_numeric_scores_count_as_tester_level():
     s = [{**noted("", scores={"durability": 100}), "gauge_mismatch": False}]
     got = review_conflicts(s, {"spin": None, "durability": 2, "stiffness": None})
     assert got[0]["criterion"] == "durability" and got[0]["testers"] == 5.0
+
+
+def test_conflict_sites_are_unique():
+    a = {**noted("", site="tw", levels={"spin": 5}), "gauge_mismatch": False}
+    b = {**noted("", site="tw", levels={"spin": 4}), "gauge_mismatch": False}
+    got = review_conflicts([a, b], {"spin": 1, "durability": None, "stiffness": None})
+    assert got[0]["sites"] == ["tw"]
