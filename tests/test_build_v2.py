@@ -44,3 +44,17 @@ def test_build_exposes_defaults():
     assert out["defaults"]["equipped"] == {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
     assert out["defaults"]["liked"] == ["solinco-confidential-16l", "toroline-o-toro-17"]
     assert "babolat-rpm-blast-16" in out["defaults"]["disliked"]
+
+
+def test_build_adds_review_conflicts_and_gauge_flags():
+    recs = [lab(i) for i in range(10)]
+    recs[0]["id"] = "solinco-confidential-16l"
+    mism = rev(2, 50)
+    mism["sources"][0].update(site="rp", note="Gauge not stated on page; applied to this id")
+    reviews = [rev(1, 95), mism]
+    S = {r["id"]: r for r in build(recs, {}, reviews=reviews, review_overrides={})["strings"]}
+    c = S["b-m1-17"]["reviews"]["conflicts"]
+    assert [x["criterion"] for x in c] == ["spin"] and c[0]["lab"] == 1 and c[0]["testers"] > 4
+    assert S["b-m2-17"]["reviews"]["sources"][0]["gauge_mismatch"] is True
+    assert S["b-m2-17"]["reviews"]["conflicts"] == []
+    assert S["b-m3-17"]["reviews"]["conflicts"] == []

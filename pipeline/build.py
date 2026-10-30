@@ -12,7 +12,7 @@ from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calib
 from pipeline.notes_gen import apply_notes
 from pipeline.rpedia_site import apply_site
 from pipeline.production import filter_discontinued
-from pipeline.reviews import add_percentiles, aggregate, validate_reviews
+from pipeline.reviews import add_percentiles, aggregate, mark_gauge_mismatch, review_conflicts, validate_reviews
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -32,7 +32,7 @@ def _corr(xs, ys):
 REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
-def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None):
+def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, review_overrides=None):
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
@@ -85,6 +85,14 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
 
     # giudizi e punteggi solo dal laboratorio; le recensioni restano in r["reviews"] come link informativi
     discriminant = derive_all(records)
+    for r in records:  # conflitti tester/dati: solo contro livelli di laboratorio misurati (o da gemello)
+        j = r["derived"]["judgments"]
+        lvl = lambda c: (j.get(c) or {}).get("level")
+        lab = {"spin": lvl("spin") if (r.get("spin") or {}).get("kind") in ("misurato", "parente") else None,
+               "stiffness": lvl("stiffness") if (r.get("stiffness") or {}).get("kind") in ("misurata", "parente") else None,
+               "durability": lvl("durability")}
+        r["reviews"]["sources"] = mark_gauge_mismatch(r["reviews"]["sources"], (review_overrides or {}).get(r["id"]))
+        r["reviews"]["conflicts"] = review_conflicts(r["reviews"]["sources"], lab)
     apply_notes(records, notes)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
@@ -125,7 +133,8 @@ if __name__ == "__main__":
     years = [row for f in sorted(glob.glob(str(ROOT / "data/agents/year_p*.json")))
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     site_rows = _load("data/raw/racketpedia.json", [])
-    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows)
+    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
+                review_overrides=_load("data/agents/review_overrides.json", {}))
     print("Racketpedia dal sito:", len(site_rows), "righe;", len(out["estimates_meta"]["rpedia_site"]["changes"]), "abbinamenti nuovi o corretti")
     print("rimosse:", [(x["name"], x["reason"]) for x in out["removed_discontinued"]])
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
