@@ -12,7 +12,7 @@ export const AXES = {
     get: (r) => (r.spin && val(r.spin.value) ? { value: r.spin.value, low: r.spin.low, high: r.spin.high, est: r.spin.kind !== 'misurato', model: r.spin.kind === 'modello' } : null) },
   durability: { label: 'Tenuta (posizione 0–100 tra le corde)', short: 'Tenuta', d: 0, hint: '→ tiene meglio',
     get: (r) => (val(r.derived.dims.durability) ? { value: r.derived.dims.durability, est: false, model: false } : null) },
-  control: { label: 'Controllo ◄► potenza (indice 0–100)', short: 'Controllo', d: 0, hint: '→ più controllo',
+  control: { label: 'Controllo (indice 0–100)', short: 'Controllo', d: 0, hint: '→ più controllo',
     get: (r) => (val(r.derived.dims.control) ? { value: r.derived.dims.control, est: false, model: false } : null) },
 };
 export const PRESETS = { rs: ['stiffness', 'spin'], ts: ['durability', 'spin'], cs: ['control', 'spin'] };

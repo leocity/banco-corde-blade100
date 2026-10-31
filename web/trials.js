@@ -58,7 +58,6 @@ const TR_LAB = [
   { cat: 'spin', label: 'Spin ↔ spin TWU', measure: (r) => (r.twu && trNum(r.twu.spin_potential) ? r.twu.spin_potential : null) },
   { cat: 'control', label: 'Controllo ↔ indice di controllo', measure: (r) => (r.derived && r.derived.dims && trNum(r.derived.dims.control) ? r.derived.dims.control : null) },
   { cat: 'liveness', label: 'Mantenimento ↔ tenuta', measure: (r) => (r.derived && r.derived.dims && trNum(r.derived.dims.durability) ? r.derived.dims.durability : null) },
-  { cat: 'power', label: 'Potenza ↔ 100 − controllo', measure: (r) => (r.derived && r.derived.dims && trNum(r.derived.dims.control) ? 100 - r.derived.dims.control : null) },
   { cat: 'comfort', label: 'Comfort ↔ inverso della rigidità', measure: (r) => { const s = labStiff(r); return s === null ? null : -s; } },
 ];
 

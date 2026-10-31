@@ -7,7 +7,7 @@ import { newFilters, passesFilters, pairScore } from './choose.js';
 
 const bankFilters = newFilters();
 const bankView = { key: 'pairing', dir: -1, limit: 40, picks: [] };
-const BANK_COLS = [['name', 'Corda'], ['spin', 'Spin'], ['stiffness', 'Rigidità'], ['durability', 'Tenuta'], ['control', 'Controllo ◄► potenza'], ['pairing', 'Pairing']];
+const BANK_COLS = [['name', 'Corda'], ['spin', 'Spin'], ['stiffness', 'Rigidità'], ['durability', 'Tenuta'], ['control', 'Controllo'], ['pairing', 'Pairing']];
 const BANK_MAX = 4;
 const bankPhone = () => window.matchMedia('(max-width: 760px)').matches;
 

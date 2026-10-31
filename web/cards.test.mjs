@@ -53,12 +53,13 @@ test('rowValues: tenuta assente è ○ con il motivo', () => {
   assert.match(d.why, /manca/);
 });
 
-test('rowValues: controllo è un indice con potenza come altro estremo', () => {
+test('rowValues: il controllo è un indice a sé, senza potenza', () => {
   const r = BY['toroline-o-toro-17'];
   const c = rowValues(r).find((v) => v.key === 'control');
   assert.equal(c.mark, 'estimated');
   assert.match(c.text, /controllo \d+/);
-  assert.match(c.text, /potenza \d+/);
+  assert.doesNotMatch(c.text, /potenza/);
+  assert.equal(c.label, 'Controllo');
   assert.match(c.note, /di 3 misure/);
 });
 
@@ -234,7 +235,7 @@ test('scheda: le tessere riportano valore, parola e marcatore senza NaN', () => 
   const z = sheetHtml(EQ, ctxFor(EQ)).match(/<div class="tile [\s\S]*?<\/div>/g).map(text).join(' | ');
   assert.match(z, /≈ 7,4/);
   assert.match(z, /53/);
-  assert.match(z, /potenza 47/);
+  assert.doesNotMatch(z, /potenza/);
 });
 
 const withCtl = (id, control, range) => ({ id, derived: { dims: { spin: 50, durability: 50, control }, dim_inputs: { control: 3 }, judgments: {}, control_range: range }, stiffness: null, spin: null });
@@ -256,8 +257,47 @@ test('deltaVsEquipped: senza intervalli (dati vecchi) si comporta come prima', (
   assert.match(deltaVsEquipped(withCtl('a', 20, undefined), withCtl('b', 70, undefined)).text, /−50 controllo/);
 });
 
-test('rowValues: il controllo dichiara l\'intervallo e che la potenza è solo 100 − controllo', () => {
+test('rowValues: il controllo dichiara l\'intervallo e che la potenza è un valore a parte', () => {
   const c = rowValues(withCtl('x', 40, [22.4, 61.2])).find((v) => v.key === 'control');
   assert.match(c.note, /da 22 a 61/);
-  assert.match(c.note, /potenza.*100 − controllo/i);
+  assert.match(c.note, /potenza.*a parte/i);
+  assert.doesNotMatch(c.note, /100 − controllo/);
+});
+
+// ---- controllo e potenza separati: la potenza viene solo dai tester ----
+import { communityRows } from './values.js';
+const COMM = { control: { n: 3, mean: 2.67, word: 'alto', split: false, evidence: [{ url: 'https://tt.example/1', site: 'tt', quote: 'very controllable', level: 'alto' }] },
+  power: { n: 2, mean: 1.5, word: 'basso', split: true, evidence: [] }, scope: 'model' };
+
+test('communityRows: controllo e potenza sono due righe distinte, con numero di pareri e discordanza', () => {
+  const rows = communityRows({ community: COMM });
+  assert.deepEqual(rows.map((r) => r.key), ['control', 'power']);
+  assert.deepEqual([rows[0].word, rows[0].n], ['alto', 3]);
+  assert.equal(rows[1].split, true);
+  assert.deepEqual(communityRows({}).map((r) => r.word), [null, null]);
+});
+
+test('sheetHtml: la sezione «Controllo e potenza dai tester» mostra le due voci, la fonte e che sono opinioni', () => {
+  const r = { ...BY['toroline-o-toro-17'], community: COMM };
+  const h = sheetHtml(r, ctxFor(r));
+  assert.match(h, /community-sec/);
+  const t = text(h.slice(h.indexOf('community-sec')));
+  assert.match(t, /Controllo[^|]*alto[^|]*3 pareri/);
+  assert.match(t, /Potenza[^|]*bassa[^|]*2 pareri/);
+  assert.match(t, /discordi/);
+  assert.match(t, /opinioni, non misure/i);
+  assert.match(h, /href="https:\/\/tt\.example\/1"/);
+  assert.doesNotMatch(t, BAD);
+});
+
+test('sheetHtml: senza pareri raccolti lo dice senza inventare', () => {
+  const r = BY['toroline-o-toro-17'];
+  const t = text(sheetHtml(r, ctxFor(r)));
+  assert.match(t, /nessun parere dei tester raccolto/i);
+});
+
+test('sheetHtml: se i tester contraddicono l\'indice di controllo lo scrive', () => {
+  const base = BY['toroline-o-toro-17'];
+  const low = { ...base, derived: { ...base.derived, judgments: { ...base.derived.judgments, control: { word: 'basso', level: 1 } } }, community: { ...COMM, control: { ...COMM.control, word: 'alto' } } };
+  assert.match(text(sheetHtml(low, ctxFor(low))), /i tester dicono controllo alto, l'indice dice basso/i);
 });

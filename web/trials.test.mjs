@@ -42,10 +42,10 @@ test('labComparison: spin contro spin TWU, r = 1 con ordine identico, n dichiara
   assert.equal(c.pairs.find((x) => x.cat === 'control'), undefined, 'senza voti non c\'è la coppia');
 });
 
-test('labComparison: potenza contro 100 − controllo e comfort contro rigidità inversa', () => {
-  const c = labComparison([...five('power', [5, 4, 3, 2, 1]), ...five('comfort', [5, 4, 3, 2, 1]).map((t) => ({ ...t, lid: `${t.lid}-c` }))].map((t, i) => (i < 5 ? t : { ...t, id: t.id })), recOf);
-  const pw = c.pairs.find((x) => x.cat === 'power'), cf = c.pairs.find((x) => x.cat === 'comfort');
-  assert.equal(pw.r, 1);   // più controllo -> meno potenza: potenza alta dove il controllo è basso
+test('labComparison: la potenza non ha una misura di laboratorio e non entra; il comfort contro la rigidità inversa sì', () => {
+  const c = labComparison([...five('power', [5, 4, 3, 2, 1]), ...five('comfort', [5, 4, 3, 2, 1]).map((t) => ({ ...t, lid: `${t.lid}-c` }))], recOf);
+  const cf = c.pairs.find((x) => x.cat === 'comfort');
+  assert.equal(c.pairs.find((x) => x.cat === 'power'), undefined);
   assert.equal(cf.r, 1);   // più rigida -> meno comfort: comfort alto dove la rigidità è bassa
 });
 

@@ -1,6 +1,6 @@
 // Costruttori HTML puri di riga, scheda corta (mappa) e scheda completa. Ogni dato testuale passa da esc().
 import { esc, fmt, MARK, nameOf, subline, safeUrl, fullName } from './format.js';
-import { rowValues, deltaVsEquipped, miniValues } from './values.js';
+import { rowValues, deltaVsEquipped, miniValues, communityRows } from './values.js';
 import { pairingReason } from './pairing.js';
 import { trialsSectionHtml } from './trials.js';
 
@@ -139,9 +139,27 @@ const TILE_ANCHOR = { spin: 'spin', stiffness: 'rigidita', durability: 'tenuta',
 function tileHtml(v) {
   let big, small;
   if (v.mark === 'missing') { big = '—'; small = v.why; }
-  else if (v.key === 'control') { const c = Number((/controllo (\d+)/.exec(v.text) || [])[1]); big = Number.isFinite(c) ? String(c) : '—'; small = Number.isFinite(c) ? `controllo · potenza ${100 - c}` : ''; }
+  else if (v.key === 'control') { const c = Number((/controllo (\d+)/.exec(v.text) || [])[1]); big = Number.isFinite(c) ? String(c) : '—'; small = Number.isFinite(c) ? 'indice 0–100' : ''; }
   else { const parts = v.text.split(' · '); big = parts[0]; small = parts[1] || (v.mark === 'estimated' ? 'stima' : ''); }
   return `<div class="tile ${v.mark}" data-k="${v.key}"><span class="k">${esc(v.label)} ${qBtn(TILE_ANCHOR[v.key])}</span><b class="big">${esc(big)}</b><span class="s"><span class="mark" title="${esc(v.note || v.why || '')}">${MARK[v.mark]}</span> ${esc(small)}</span></div>`;
+}
+
+// Controllo e potenza dei tester, separati. Sono opinioni: non entrano nei punteggi. Se contraddicono l'indice di controllo lo si dice.
+const WORD3 = { 'molto basso': 'basso', basso: 'basso', medio: 'medio', alto: 'alto', 'molto alto': 'alto' };
+const LV3 = { basso: 1, medio: 2, alto: 3 };
+const FEM = { alto: 'alta', medio: 'media', basso: 'bassa' };
+function communityHtml(rec) {
+  const rows = communityRows(rec), have = rows.filter((r) => r.word);
+  if (!have.length) return '<details class="sheet-section community-sec"><summary>Controllo e potenza dai tester</summary><p class="muted small">Nessun parere dei tester raccolto per questa corda. La potenza non ha una misura di laboratorio.</p></details>';
+  const li = rows.map((r) => {
+    if (!r.word) return `<li><b>${esc(r.label)}</b>: <span class="muted">nessun parere</span></li>`;
+    const w = r.key === 'power' ? FEM[r.word] : r.word;
+    const ev = r.evidence.map((e) => (safeUrl(e.url) ? `<a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.site || 'fonte')}</a>` : '')).filter(Boolean).join(' · ');
+    return `<li><b>${esc(r.label)}</b>: ${esc(w)} · ${r.n} ${r.n === 1 ? 'parere' : 'pareri'}${r.split ? ' · <b>discordi</b>' : ''}${ev ? ` <span class="muted small">(${ev})</span>` : ''}</li>`;
+  }).join('');
+  const ctl = rows[0], idx = WORD3[((rec.derived.judgments || {}).control || {}).word];
+  const clash = ctl.word && idx && Math.abs(LV3[ctl.word] - LV3[idx]) >= 2 ? `<p class="gaps">I tester dicono controllo ${esc(ctl.word)}, l'indice dice ${esc(idx)}: non concordano, fidati di più dei pareri finché l'indice è solo stima.</p>` : '';
+  return `<details class="sheet-section community-sec" open><summary>Controllo e potenza dai tester</summary><ul class="srcnotes">${li}</ul>${clash}<p class="muted small">Opinioni, non misure: valgono per il modello (tutti i calibri) e non entrano nel pairing né nei punteggi.</p></details>`;
 }
 
 export function sheetHtml(rec, ctx) {
@@ -158,6 +176,7 @@ export function sheetHtml(rec, ctx) {
     + `<p class="pair-reason">${esc(pairingReason(ctx.pairing, ctx.nameOf))} ${qBtn('pairing')}</p></div>`
     + `<div class="tiles">${rv.map(tileHtml).join('')}</div>`
     + `<div class="sheet-meta">${deltaHtml(rec, ctx)}${tensionHtml(ctx)}</div>`
+    + communityHtml(rec)
     + `<details class="sheet-section details-sec"><summary>Dettagli e stime</summary>${details}</details>`
     + trialsSectionHtml(ctx.trials || [])
     + reviewsHtml(rec)

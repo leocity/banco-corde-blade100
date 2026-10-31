@@ -82,5 +82,5 @@ def test_control_range_brackets_the_control_index():
 def test_index_validation_is_published_with_n():
     import json
     v = json.load(open("data/strings.json", encoding="utf-8"))["estimates_meta"]["index_validation"]
-    assert set(v) >= {"control", "power", "comfort", "stiffness", "spin", "durability"}
+    assert set(v) >= {"control", "comfort", "stiffness", "spin", "durability"} and "power" not in v
     assert all(x["n"] >= 0 for x in v.values())

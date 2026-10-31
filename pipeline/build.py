@@ -6,6 +6,7 @@ import math
 import pathlib
 
 from pipeline.validate_indices import index_validation
+from pipeline.community import FORUM_ALIASES, build_community
 from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
@@ -33,7 +34,7 @@ def _corr(xs, ys):
 REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
-def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, review_overrides=None):
+def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, review_overrides=None, forum=None):
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
@@ -95,6 +96,9 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         r["reviews"]["sources"] = mark_gauge_mismatch(r["reviews"]["sources"], (review_overrides or {}).get(r["id"]))
         r["reviews"]["conflicts"] = review_conflicts(r["reviews"]["sources"], lab)
     apply_notes(records, notes)
+    comm = build_community(forum or [], records, aliases=FORUM_ALIASES)
+    for r in records:
+        r["community"] = comm.get(r["id"])
     index_check = index_validation(records)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
@@ -136,7 +140,8 @@ if __name__ == "__main__":
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     site_rows = _load("data/raw/racketpedia.json", [])
     out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
-                review_overrides=_load("data/agents/review_overrides.json", {}))
+                review_overrides=_load("data/agents/review_overrides.json", {}),
+                forum=[json.loads(pathlib.Path(f).read_text(encoding="utf-8")) for f in sorted(glob.glob(str(ROOT / "data/agents/forum_*.json")))])
     print("Racketpedia dal sito:", len(site_rows), "righe;", len(out["estimates_meta"]["rpedia_site"]["changes"]), "abbinamenti nuovi o corretti")
     print("rimosse:", [(x["name"], x["reason"]) for x in out["removed_discontinued"]])
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

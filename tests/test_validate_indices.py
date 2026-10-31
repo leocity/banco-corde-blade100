@@ -27,10 +27,8 @@ def test_index_validation_uses_only_independent_same_gauge_sources():
     assert (v["n"], v["rho"]) == (8, 1.0)
 
 
-def test_index_validation_power_is_inverse_of_control_and_small_n_is_none():
+def test_power_is_not_an_index_and_small_n_is_none():
     recs = [rec(i, 10 * i, i) for i in range(1, 9)]
-    for r in recs:
-        r["reviews"]["sources"][0]["levels"]["power"] = 9 - int(r["id"][1:])  # la potenza recensita scende con il controllo
-    assert index_validation(recs)["power"]["rho"] == 1.0
+    assert "power" not in index_validation(recs)  # la potenza non è un indice di laboratorio: viene dai tester
     few = index_validation(recs[:4])["control"]
     assert few["rho"] is None and few["n"] == 4

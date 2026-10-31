@@ -204,10 +204,6 @@
     "rho": 0.48,
     "n": 29
    },
-   "power": {
-    "rho": -0.15,
-    "n": 20
-   },
    "comfort": {
     "rho": 0.56,
     "n": 24
@@ -1028,7 +1024,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Non ti è piaciuta: serve come riferimento negativo per segnalare le corde troppo simili. Parti da 21.5/20.5 kg (47.5/45 lbs). I dati TWU sono di «Babolat RPM Blast 16»."
-   }
+   },
+   "community": null
   },
   {
    "id": "babolat-rpm-blast-17",
@@ -1415,7 +1412,8 @@
     "on_blade_100_v9": "Su un telaio a RA basso la rigidità si sente come piatto 'secco': controllo sì, ma palla corta e poco aiuto sullo spin.",
     "for_your_style": "Non ti è piaciuta: è rigida come la Confidential ma con meno scorrimento delle corde, e il piatto cala prima.",
     "vs_favorites": "Riferimento negativo: segnala le corde rigide e poco 'scorrevoli'."
-   }
+   },
+   "community": null
   },
   {
    "id": "head-hawk-power-17",
@@ -1691,7 +1689,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 20/100 con Confidential e 39/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "head-lynx-tour-16",
@@ -1990,7 +1989,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 60/100 con Confidential e 12/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "head-hawk-seeding-16",
@@ -2259,7 +2259,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 25/100 con Confidential e 1/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-competition-16l",
@@ -2491,7 +2492,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 11/100 con Confidential e 11/100 con O-Toro. Attenzione: assomiglia molto a RPM Blast (76/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Kirschbaum Competition 16/1.30»."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-pro-line-rough-16l",
@@ -2761,7 +2763,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 27/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-helix-white-17",
@@ -2997,7 +3000,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 31/100 con Confidential e 9/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-helix-blue-17",
@@ -3233,7 +3237,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 32/100 con Confidential e 9/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Kirschbaum Helix 17»."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-flash-orange-17",
@@ -3475,7 +3480,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 50/100 con Confidential e 58/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-flash-pink-17",
@@ -3717,7 +3723,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 43/100 con Confidential e 38/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-flash-yellow-17",
@@ -3959,7 +3966,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 52/100 con Confidential e 42/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-flash-green-17",
@@ -4201,7 +4209,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 48/100 con Confidential e 49/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-flash-black-17",
@@ -4443,7 +4452,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 42/100 con Confidential e 19/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Kirschbaum Flash 16 (1.30)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "luxilon-element-soft-ir-17",
@@ -4759,7 +4769,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 28/100 con Confidential e 38/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs). I dati TWU sono di «Luxilon Element Soft IR 1.27»."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-slap-17",
@@ -5082,7 +5093,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 33/100 con Confidential e 46/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-sync-17",
@@ -5405,7 +5417,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 61/100 con Confidential e 89/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21/20 kg (46.5/44 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-vivo-17",
@@ -5753,7 +5766,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 79/100 con Confidential e 15/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-zero-16",
@@ -6100,7 +6114,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 58/100 con Confidential e 20/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-zero-17",
@@ -6445,7 +6460,8 @@
     "on_blade_100_v9": "Sulla Blade dovrebbe comportarsi come una co-poly di controllo medio. Senza dati TWU lo spin non è misurato.",
     "for_your_style": "Candidata interessante sul lato Confidential per la tenuta nel lungo periodo; provala prima di comprare la matassa.",
     "vs_favorites": "Somiglianza 82/100 con Confidential e 37/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-x-perience-17",
@@ -6744,7 +6760,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 57/100 con Confidential e 4/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-polaris-17",
@@ -6971,7 +6988,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 4/100 con Confidential e 34/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-hyper-g-soft-17",
@@ -7299,7 +7317,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 28/100 con Confidential e 17/100 con O-Toro. Parti da 24/23 kg (53/50.5 lbs). I dati TWU sono di «Solinco Hyper-G-Soft 16L (1.25)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-hyper-g-soft-16",
@@ -7627,7 +7646,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 37/100 con Confidential e 12/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Solinco Hyper-G-Soft 16L (1.25)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-confidential-16",
@@ -7950,7 +7970,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 92/100 con Confidential e 7/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-confidential-16l",
@@ -8285,7 +8306,8 @@
     "on_blade_100_v9": "Sulla Blade flessibile a RA basso è l'abbinamento classico: il telaio restituisce la potenza che la corda non dà. I 4 spigoli e il 16×19 aperto danno buona presa sulla palla.",
     "for_your_style": "Ideale quando giochi piatto e cerchi direzione; in rotazione funziona perché tiene a lungo la tensione. Con 4–5 ore a settimana resta stabile per 3–4 settimane.",
     "vs_favorites": "È una delle tue preferite e il riferimento lato controllo. A 22/21 kg (48,5/46,5 lbs) è già calibrata: non scendere sotto 21 kg sulle verticali o perde precisione."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-confidential-17",
@@ -8627,7 +8649,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 100/100 con Confidential e 6/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Solinco Confidential 16 (1.30)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "tecnifibre-razor-17",
@@ -8862,7 +8885,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 60/100 con Confidential e 6/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs). I dati TWU sono di «Tecnifibre Razor Code 17 (1.25)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-absolute-17l",
@@ -9163,7 +9187,8 @@
     "on_blade_100_v9": "Sulla Blade diventa molto potente: tienila a tensione piena.",
     "for_your_style": "Per il topspin è vicina a O-Toro; il calo rapido la rende una corda da 2 settimane con il tuo volume.",
     "vs_favorites": "Somiglianza 13/100 con Confidential e 67/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-caviar-17l",
@@ -9510,7 +9535,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 84/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-caviar-17",
@@ -9864,7 +9890,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 95/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-enso-pro-16",
@@ -10181,7 +10208,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 87/100 con Confidential e 30/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-enso-pro-neon-yl-16l",
@@ -10498,7 +10526,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 84/100 con Confidential e 34/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-enso-pro-neon-pk-17",
@@ -10815,7 +10844,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 65/100 con Confidential e 45/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-wasabi-green-17",
@@ -11139,7 +11169,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 100/100 con Confidential e 39/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-wasabi-x-blue-17",
@@ -11431,7 +11462,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 87/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-wasabi-pom-17",
@@ -11748,7 +11780,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 73/100 con Confidential e 18/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-super-toro-17l",
@@ -12076,7 +12109,8 @@
     "on_blade_100_v9": "Sulla Blade è vivace ma meno estrema di O-Toro: buona via di mezzo sul lato spin.",
     "for_your_style": "Se O-Toro ti sembra troppo morbida a fine incordatura, Super Toro è il passo verso un po' più di controllo.",
     "vs_favorites": "Somiglianza 48/100 con Confidential e 31/100 con O-Toro. Parti da 23/22 kg (50.5/48.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-o-toro-17",
@@ -12430,7 +12464,8 @@
     "on_blade_100_v9": "Su un telaio flessibile dà un piatto molto vivo e potente: per questo la incordavi più alta (23/22 kg). Il prestretch al 10% riduce il calo delle prime ore.",
     "for_your_style": "Il massimo per le rotazioni e la profondità con poco sforzo. Sui colpi piatti va tenuta a tensione piena. Con il tuo volume rincorda ogni 2–3 settimane: il calo si sente.",
     "vs_favorites": "È una delle tue preferite e il riferimento lato spin e potenza. Tienila a 23/22 kg (50,5/48,5 lbs): sotto i 22 kg sulle verticali diventa troppo trampolino."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-toro-toro-orange-17",
@@ -12746,7 +12781,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-toro-toro-pink-17",
@@ -13062,7 +13098,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 96/100 con Confidential e 55/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-toro-toro-matcha-16l",
@@ -13378,7 +13415,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 57/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "yonex-poly-tour-rev-16l",
@@ -13612,7 +13650,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 45/100 con Confidential e 30/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (85/100), che non ti è piaciuta. Parti da 23/22 kg (50.5/48.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "yonex-poly-tour-spin-17",
@@ -13889,7 +13928,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 80/100 con Confidential e 15/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (82/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Yonex Poly Tour Spin 16L (1.25)»."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-o-toro-snap-16l",
@@ -14159,7 +14199,8 @@
     "on_blade_100_v9": "Sulla Blade dovrebbe dare più controllo e meno 'trampolino' della O-Toro.",
     "for_your_style": "Non è la gemella della O-Toro: è più vicina a una corda da controllo tonda. Provala solo se vuoi una O-Toro più tranquilla.",
     "vs_favorites": "Somiglianza 4/100 con Confidential e 94/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "tecnifibre-razor-spin-17",
@@ -14431,7 +14472,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 60/100 con Confidential e 8/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-o-toro-spin-17",
@@ -14735,7 +14777,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 11/100 con Confidential e 77/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "grapplesnake-tour-m8-17",
@@ -15018,7 +15061,8 @@
     "on_blade_100_v9": "Sulla Blade dà un piatto equilibrato: più vivo della Confidential, più controllato di O-Toro.",
     "for_your_style": "Buona per giocare in rotazione senza perdere troppo il colpo piatto. Con il tuo volume, rincorda ogni 3 settimane.",
     "vs_favorites": "Somiglianza 47/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-o-toro-tour-17",
@@ -15307,7 +15351,8 @@
     "on_blade_100_v9": "Sulla Blade è un ponte tra le tue due preferite: piatto compatto come la Confidential, palla che morde come una O-Toro. Racketpedia 1,1 kg/mm.",
     "for_your_style": "Per chi alterna rotazioni e colpi piatti è la candidata più completa del banco. Con 4–5 ore a settimana resta giocabile 3 settimane abbondanti.",
     "vs_favorites": "Somiglianza 80/100 con Confidential e 18/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-cash-16l",
@@ -15566,7 +15611,8 @@
     "on_blade_100_v9": "Sulla Blade, se è rigida come la descrivono, si comporta come una corda da controllo: tensione suggerita senza salire.",
     "for_your_style": "Più vicina al lato Confidential che al lato O-Toro; lo spin è inferiore alle corde profilate.",
     "vs_favorites": "Somiglianza 27/100 con Confidential e 50/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "tecnifibre-razor-soft-17",
@@ -15845,7 +15891,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 60/100 con Confidential e 20/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-plasma-hextreme-16",
@@ -16079,7 +16126,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 86/100 con Confidential e 8/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-hyper-g-round-16",
@@ -16339,7 +16387,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 71/100 con Confidential e 7/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-snapper-17",
@@ -16596,7 +16645,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 38/100 con Confidential e 47/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (79/100), che non ti è piaciuta. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "head-lynx-tour-17",
@@ -16853,7 +16903,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 93/100 con Confidential e 11/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "luxilon-element-soft-ir-16l",
@@ -17125,7 +17176,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 22/100 con Confidential e 35/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "luxilon-alu-power-soft-16l",
@@ -17316,7 +17368,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 31/100 con Confidential e 27/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (80/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "grapplesnake-alpha-17",
@@ -17637,7 +17690,8 @@
     "on_blade_100_v9": "Se è morbida come la descrivono, sulla Blade darà un piatto vivo e confortevole: parti dalla tensione suggerita e alza di 0,5 kg se la palla vola.",
     "for_your_style": "Più adatta al lato O-Toro che al lato Confidential: comfort e potenza più che controllo.",
     "vs_favorites": "Somiglianza 83/100 con Confidential e 13/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-confidential-soft-16l",
@@ -17919,7 +17973,8 @@
     "on_blade_100_v9": "Sulla Blade, già flessibile, la morbidezza in più rende il piatto meno definito: palla meno incisa senza vero guadagno di spin.",
     "for_your_style": "Non ti è piaciuta, ed è coerente: perde la compattezza che ami nella Confidential senza darti lo snapback di O-Toro.",
     "vs_favorites": "Riferimento negativo: le corde che le assomigliano più che alle tue preferite ricevono l'avviso ⚠ e perdono 15 punti."
-   }
+   },
+   "community": null
   },
   {
    "id": "yonex-poly-tour-spin-16l",
@@ -18152,7 +18207,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 88/100 con Confidential e 11/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-max-power-rough-16",
@@ -18387,7 +18443,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 89/100 con Confidential e 5/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-mach-10-16",
@@ -18670,7 +18727,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 94/100 con Confidential e 3/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-plasma-hextreme-16l",
@@ -18863,7 +18921,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 39/100 con Confidential e 20/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "grapplesnake-tour-sniper-16l",
@@ -19155,7 +19214,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 66/100 con Confidential e 9/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a Confidential Soft (85/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-super-smash-17",
@@ -19349,7 +19409,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 25/100 con Confidential e 17/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-poly-plasma-pure-16l",
@@ -19536,7 +19597,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 39/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (78/100), che non ti è piaciuta. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-max-power-rough-17",
@@ -19771,7 +19833,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 92/100 con Confidential e 5/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-barb-wire-16l",
@@ -20081,7 +20144,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 39/100 con Confidential e 25/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (80/100), che non ti è piaciuta. Parti da 23.5/22.5 kg (52/49.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-helix-16",
@@ -20275,7 +20339,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 9/100 con Confidential e 14/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-super-smash-16",
@@ -20469,7 +20534,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 19/100 con Confidential e 9/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-poly-plasma-pure-17",
@@ -20656,7 +20722,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 22/100 con Confidential e 11/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-hyper-g-soft-16l",
@@ -20940,7 +21007,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 22/100 con Confidential e 10/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 24/23 kg (53/50.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-tornado-16",
@@ -21133,7 +21201,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 14/100 con Confidential e 7/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "luxilon-alu-power-vibe-16",
@@ -21320,7 +21389,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 51/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-competition-16",
@@ -21508,7 +21578,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 14/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (76/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-barb-wire-17",
@@ -21818,7 +21889,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 15/100 con Confidential e 15/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-poly-megaforce-17",
@@ -22005,7 +22077,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 45/100 con Confidential e 4/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (79/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-tornado-17",
@@ -22198,7 +22271,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 18/100 con Confidential e 6/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-hyperion-16",
@@ -22391,7 +22465,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 30/100 con Confidential e 5/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "babolat-rpm-blast-16",
@@ -22744,7 +22819,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Non ti è piaciuta: serve come riferimento negativo per segnalare le corde troppo simili. Parti da 21/20 kg (46.5/44 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-competition-17",
@@ -22932,7 +23008,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 13/100 con Confidential e 4/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (77/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-barb-wire-16",
@@ -23242,7 +23319,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 39/100 con Confidential e 6/100 con O-Toro. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-poly-megaforce-16",
@@ -23429,7 +23507,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 40/100 con Confidential e 1/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (98/100), che non ti è piaciuta. Parti da 21/20 kg (46.5/44 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-poly-speed-spin-16",
@@ -23617,7 +23696,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 20/100 con Confidential e 0/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Attenzione: assomiglia molto a RPM Blast (85/100), che non ti è piaciuta. Parti da 20.5/19.5 kg (45/43 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-hyperion-17",
@@ -23810,7 +23890,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 20/100 con Confidential e 8/100 con O-Toro. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-competition-17l",
@@ -23998,7 +24079,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 9/100 con Confidential e 5/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "signum-pro-poly-plasma-pure-17l",
@@ -24185,7 +24267,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
     "vs_favorites": "Somiglianza 9/100 con Confidential e 50/100 con O-Toro. Calcolata su sole 2 misure (mancano test Ektelon e Racketpedia): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "yonex-poly-tour-rev-16",
@@ -24377,7 +24460,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 45/100 con Confidential e 23/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon): prendila come indicazione. Attenzione: assomiglia molto a Confidential Soft (76/100), che non ti è piaciuta. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "kirschbaum-flash-16",
@@ -24574,7 +24658,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 34/100 con Confidential e 58/100 con O-Toro. Calcolata su sole 3 misure (mancano test Ektelon): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-hyper-g-round-16l",
@@ -24861,7 +24946,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-hyper-g-round-17",
@@ -25158,7 +25244,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-mach-10-16l",
@@ -25467,7 +25554,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-mach-10-17",
@@ -25776,7 +25864,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-confidential-soft-16",
@@ -26041,7 +26130,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "solinco-confidential-soft-17",
@@ -26306,7 +26396,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 23.5/22.5 kg (52/49.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-vivo-16",
@@ -26623,7 +26714,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-sync-16",
@@ -26895,7 +26987,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-sync-18",
@@ -27167,7 +27260,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "re-string-slap-16",
@@ -27440,7 +27534,8 @@
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "toroline-a5-17",
@@ -27736,7 +27831,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "grapplesnake-tour-sniper-16",
@@ -28032,7 +28128,8 @@
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
-   }
+   },
+   "community": null
   },
   {
    "id": "grapplesnake-tour-m8-16",
@@ -28340,7 +28437,8 @@
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
     "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Sui colpi piatti dà direzione e stabilità.",
     "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 21.5/20.5 kg (47.5/45 lbs)."
-   }
+   },
+   "community": null
   }
  ]
 }

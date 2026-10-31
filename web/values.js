@@ -1,4 +1,4 @@
-// Quattro valori di riga (spin, rigidità, tenuta, controllo↔potenza) con affidabilità, e differenze rispetto alla montata.
+// Quattro valori di riga (spin, rigidità, tenuta, controllo); la potenza non è un indice di laboratorio e sta a parte (communityRows) con affidabilità, e differenze rispetto alla montata.
 import { fmt } from './format.js';
 import { labStiff } from './state.js';
 
@@ -35,9 +35,9 @@ export function rowValues(rec) {
     const c = Math.round(dims.control);
     const cr = rec.derived.control_range;
     const margin = Array.isArray(cr) ? `; con il margine delle sue basi (rigidità stimata, un gradino dello strumento) va da ${Math.round(cr[0])} a ${Math.round(cr[1])}` : '';
-    out.push({ key: 'control', label: 'Controllo ◄► potenza', mark: 'estimated', text: `controllo ${c} · potenza ${100 - c}`, note: `indice da ${inp.control || 0} di 3 misure (rigidità, allungamento, elasticità): non lo misura nessun laboratorio${margin}. La potenza è solo 100 − controllo, senza una misura propria` });
+    out.push({ key: 'control', label: 'Controllo', mark: 'estimated', text: `controllo ${c}`, note: `indice da ${inp.control || 0} di 3 misure (rigidità, allungamento, elasticità): non lo misura nessun laboratorio${margin}. La potenza è un valore a parte: viene dai tester, non dal laboratorio` });
   } else {
-    out.push({ key: 'control', label: 'Controllo ◄► potenza', mark: 'missing', text: 'manca', note: '', why: 'manca: nessuna delle misure che lo compongono' });
+    out.push({ key: 'control', label: 'Controllo', mark: 'missing', text: 'manca', note: '', why: 'manca: nessuna delle misure che lo compongono' });
   }
   return out;
 }
@@ -77,4 +77,11 @@ function miniText(v) {
 // Versione breve dei quattro valori per la riga compatta: il numero (o la parola), l'unità e il marcatore.
 export function miniValues(rec) {
   return rowValues(rec).map((v) => ({ key: v.key, em: MINI_EM[v.key], mark: v.mark, val: miniText(v), title: v.note || v.why || '' }));
+}
+
+// Controllo e potenza come li raccontano i tester indipendenti (forum, recensioni): due righe distinte, solo opinioni.
+const COMM_ROWS = [['control', 'Controllo'], ['power', 'Potenza']];
+export function communityRows(rec) {
+  const c = rec.community || {};
+  return COMM_ROWS.map(([key, label]) => { const v = c[key]; return { key, label, word: v ? v.word : null, n: v ? v.n : 0, split: !!(v && v.split), evidence: v ? v.evidence || [] : [] }; });
 }

@@ -13,7 +13,7 @@ const EQ = { rec: BY[D.equipped.id], pairing: pair(D.equipped.id), kg: D.equippe
 const REFS = D.liked.map((id) => ({ rec: BY[id], pairing: pair(id), pref: 'liked' }));
 const RICH = ALL.find((r) => r.reviews.conflicts.length && r.reviews.sources.some((s) => s.gauge_mismatch) && r.crosscheck && r.crosscheck.note && r.notes && r.notes.for_your_style);
 const FULL = { descrizione: 'Corda reattiva, buon spin sul 16×19. Sulla Blade 100 v9 mantiene precisione.', fascia: 'Buono', motivo: 'Vicina alla tua Confidential.',
-  rispetto_alla_montata: { spin: { dir: 'più', fiducia: 'media' }, controllo_potenza: { dir: 'simile', fiducia: 'bassa' }, tenuta: { dir: 'meno', fiducia: 'media' }, comfort: { dir: 'simile', fiducia: 'bassa' } },
+  rispetto_alla_montata: { spin: { dir: 'più', fiducia: 'media' }, controllo: { dir: 'simile', fiducia: 'bassa' }, potenza: { dir: 'più', fiducia: 'bassa' }, tenuta: { dir: 'meno', fiducia: 'media' }, comfort: { dir: 'simile', fiducia: 'bassa' } },
   uso_nel_tempo: 'Cala in 2 settimane.', tensione_kg: [22, 21], rischi: ['Perde presto la tensione'], dati_mancanti: ['TWU'], conflitti: [], fiducia: 'media' };
 
 const promptFor = (extra = {}) => buildOpinionPrompt({ kind: 'string', equipped: EQ, refs: REFS, candidate: { rec: RICH, pairing: pair(RICH.id), tension: { kg: [22, 21] } }, ...extra });
@@ -214,4 +214,30 @@ test('prompt: una prova senza voti, tag, note né verdetto non produce nessun bl
   const p = promptFor({ trials: { candidate: [empty], equipped: [{ ...empty, diary: undefined }] } });
   assert.doesNotMatch(p, /TUE SENSAZIONI/);
   assert.equal(p.includes('<<<DATI_UTENTE'), false);
+});
+
+test('validateOpinion: controllo e potenza sono due voci; la vecchia voce unica non passa più', () => {
+  const r = validateOpinion(FULL, 'string');
+  assert.deepEqual(Object.keys(r.value.rispetto_alla_montata).sort(), ['comfort', 'controllo', 'potenza', 'spin', 'tenuta']);
+  const old = validateOpinion({ ...FULL, rispetto_alla_montata: { controllo_potenza: { dir: 'più', fiducia: 'alta' } } }, 'string');
+  assert.deepEqual(old.value.rispetto_alla_montata, {});
+});
+
+test('opinionHtml: controllo e potenza compaiono separati', () => {
+  const h = opinionHtml(validateOpinion(FULL, 'string').value, 'string');
+  assert.match(h, /controllo simile/);
+  assert.match(h, /potenza più/);
+  assert.doesNotMatch(h, /controllo ◄► potenza/);
+});
+
+test('prompt: schema con controllo e potenza separati, e pareri dei tester dichiarati opinioni', () => {
+  const p = promptFor();
+  assert.match(p, /"controllo": \{/);
+  assert.match(p, /"potenza": \{/);
+  assert.doesNotMatch(p, /controllo_potenza/);
+  const withComm = promptFor({ candidate: { rec: { ...RICH, community: { control: { n: 3, word: 'alto', split: false }, power: { n: 2, word: 'basso', split: true } } }, pairing: pair(RICH.id), tension: { kg: [22, 21] } } });
+  assert.match(withComm, /PARERI DEI TESTER/);
+  assert.match(withComm, /controllo alto \(3 pareri\)/);
+  assert.match(withComm, /potenza basso \(2 pareri, discordi\)/);
+  assert.match(withComm, /opinioni, non misure/);
 });

@@ -80,17 +80,19 @@ test('controllo: Re-String Slap contro la Zero montata non dice «meno controllo
   await page.locator('#sheet-body .details-sec summary').click();
   const notes = await page.innerText('#sheet-body');
   assert.match(notes, /va da \d+ a \d+/);
-  assert.match(notes, /100 − controllo/);
+  assert.match(notes, /potenza è un valore a parte/);
+  assert.doesNotMatch(notes, /100 − controllo/);
   await ctx.close();
 });
 
-test('metodo: dichiara quanto controllo, potenza e comfort concordano con i tester indipendenti', async () => {
+test('metodo: dichiara quanto controllo e comfort concordano con i tester e che la potenza sta a parte', async () => {
   const { page, ctx } = await openPage();
   await page.locator('[data-goto="metodo"]').first().click();
   const t = await page.innerText('#m-controllo');
-  assert.match(t, /Potenza \(100 − controllo\)/);
-  assert.match(t, /nessun riscontro/);
-  assert.match(t, /0,48/);
+  assert.match(t, /Controllo[\s\S]*0,48/);
+  assert.match(t, /Comfort/);
+  assert.match(t, /potenza.*non è più «100 − controllo»/i);
+  assert.doesNotMatch(t, /Potenza \(100 − controllo\)/);
   assert.match(t, /margine/i);
   assert.doesNotMatch(t, /NaN|undefined/);
   await ctx.close();

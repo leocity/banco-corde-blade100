@@ -1,7 +1,7 @@
 const { openPage, bodyText, BAD, test, assert } = require('./ui.cjs');
 
 const FULL = { descrizione: 'Corda reattiva con buon spin sul 16×19.', fascia: 'Buono', motivo: 'Vicina alla tua Confidential.',
-  rispetto_alla_montata: { spin: { dir: 'più', fiducia: 'media' }, controllo_potenza: { dir: 'simile', fiducia: 'bassa' }, tenuta: { dir: 'meno', fiducia: 'media' }, comfort: { dir: 'simile', fiducia: 'bassa' } },
+  rispetto_alla_montata: { spin: { dir: 'più', fiducia: 'media' }, controllo: { dir: 'simile', fiducia: 'bassa' }, potenza: { dir: 'più', fiducia: 'bassa' }, tenuta: { dir: 'meno', fiducia: 'media' }, comfort: { dir: 'simile', fiducia: 'bassa' } },
   uso_nel_tempo: 'Cala in due settimane.', tensione_kg: [22, 21], rischi: ['Perde presto la tensione'], dati_mancanti: [], conflitti: [], fiducia: 'media' };
 const WEAR = { stato: 'Da controllare', valutazione: 'La corda sta calando.', consiglio: 'Rincorda entro tre ore.', fiducia: 'media' };
 // window.claude simulato: solo sample (db e downloads assenti)

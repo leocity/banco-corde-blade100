@@ -26,6 +26,11 @@ function aiFacts(rec, pr) {
   if (ex) lines.push(`- Test Excel dell'utente: allungamento a 50 lb ${fmt(ex.stretch50, 1)} %, elasticità ${ex.elasticity === null ? 'n.d.' : `${fmt(ex.elasticity * 100, 0)} % recuperato`}, cedimento ${fmt(ex.cedimento, 2)}, perdita a 6/12 mesi ${fmt(ex.tl6, 0)}/${fmt(ex.tl12, 0)} %, scorrimento 24 h ${fmt(ex.creep24, 2)}″`);
   if (rec.twu) lines.push(`- TWU: rigidità ${fmt(rec.twu.stiffness_lbin, 0)} lb/in, perdita di tensione ${fmt(rec.twu.tension_loss_pct, 1)} %, spin potential ${fmt(rec.twu.spin_potential, 1)}${rec.twu.match !== 'exact' ? ' (dato di un calibro o nome diverso)' : ''}`);
   lines.push(`- Posizione tra le corde del banco (percentile 0–100): rigidità ${fmt(d.stiffness, 0)}, tenuta ${fmt(d.durability, 0)}, controllo ${fmt(d.control, 0)}${Array.isArray(rec.derived.control_range) ? ` (indice con margine ${fmt(rec.derived.control_range[0], 0)}–${fmt(rec.derived.control_range[1], 0)}: due corde con intervalli sovrapposti non si possono distinguere)` : ''}, elasticità ${fmt(d.elasticity, 0)}, spin ${fmt(d.spin, 0)}`);
+  const cm = rec.community;
+  if (cm && (cm.control || cm.power)) {
+    const f = (k, l) => (cm[k] ? `${l} ${cm[k].word} (${cm[k].n} ${cm[k].n === 1 ? 'parere' : 'pareri'}${cm[k].split ? ', discordi' : ''})` : '');
+    lines.push(`- PARERI DEI TESTER (forum e recensioni indipendenti, opinioni, non misure; controllo e potenza sono due cose diverse): ${[f('control', 'controllo'), f('power', 'potenza')].filter(Boolean).join(' · ')}`);
+  }
   if (pr) lines.push(`- Pairing con le preferite: ${pr.score === null ? pr.band : `${pr.score} (${pr.band})`}`);
   const p = rec.production;
   if (p) lines.push(`- Produzione: ${p.status || 'n.d.'}${p.year ? `, anno ${p.year}` : ''}${p.reason ? `, ${p.reason}` : ''}`);
@@ -44,7 +49,7 @@ function aiDescriptions(rec, limitSources) {
 
 const SCHEMA = {
   string: '{"descrizione": "3-5 frasi su come si comporta sulla Blade 100 v9 16×19 con questo stile di gioco", "fascia": "Ottimo|Buono|Attenzione|Poco adatta", "motivo": "una riga", '
-    + '"rispetto_alla_montata": {"spin": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}, "controllo_potenza": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}, "tenuta": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}, "comfort": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}}, '
+    + '"rispetto_alla_montata": {"spin": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}, "controllo": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}, "potenza": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}, "tenuta": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}, "comfort": {"dir": "più|simile|meno", "fiducia": "bassa|media|alta"}}, '
     + '"uso_nel_tempo": "come cala e quando controllarla", "tensione_kg": [verticali, orizzontali], "rischi": ["..."], "dati_mancanti": ["..."], "conflitti": ["dove le descrizioni contraddicono i dati misurati"], "fiducia": "bassa|media|alta"}',
   wear: '{"stato": "Fresca|In uso|Da controllare|Da cambiare", "valutazione": "2-3 frasi", "consiglio": "cosa fare e quando", "fiducia": "bassa|media|alta"}',
 };
@@ -104,7 +109,7 @@ export function validateOpinion(raw, kind) {
   if (!AI_FASCE.includes(raw.fascia) || !aiStr(raw.descrizione)) return { ok: false, reason: 'Mancano la fascia o la descrizione.' };
   const cmp = {};
   const src = raw.rispetto_alla_montata && typeof raw.rispetto_alla_montata === 'object' ? raw.rispetto_alla_montata : {};
-  for (const k of ['spin', 'controllo_potenza', 'tenuta', 'comfort']) {
+  for (const k of ['spin', 'controllo', 'potenza', 'tenuta', 'comfort']) {
     const e = src[k];
     if (e && typeof e === 'object' && AI_DIRS.includes(e.dir)) cmp[k] = { dir: e.dir, fiducia: aiFiducia(e.fiducia) };
   }
@@ -132,7 +137,7 @@ export function opinionErrorText(code) {
   return 'Il parere AI non è disponibile ora, riprova più tardi.';
 }
 
-const AI_CMP_LABEL = { spin: 'spin', controllo_potenza: 'controllo ◄► potenza', tenuta: 'tenuta', comfort: 'comfort' };
+const AI_CMP_LABEL = { spin: 'spin', controllo: 'controllo', potenza: 'potenza', tenuta: 'tenuta', comfort: 'comfort' };
 
 // HTML del parere: ogni testo passa da esc(), quindi anche una risposta con markup resta testo.
 export function opinionHtml(v, kind, when) {
