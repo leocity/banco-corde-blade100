@@ -46,7 +46,7 @@ Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, Node 20+ e Playwr
 ```bash
 py -m pip install -r requirements.txt
 tests/run_all.sh                         # ricostruisce la pagina ed esegue pytest, node --test e Playwright
-py -m pytest -q                          # 210 test Python (pipeline, dati finali, build della pagina)
+py -m pytest -q                          # 211 test Python (pipeline, dati finali, build della pagina)
 node --test web/*.test.mjs               # 190 test JS dei moduli puri (pairing, stato, persistenza, diario, prove, usura, mappa, AI, schede)
 node tests/e2e/ui.cjs                    # 107 test della pagina in Chromium (richiede dist/preview.html)
 node tests/e2e/shots.cjs                 # screenshot in docs/audit/
@@ -65,7 +65,7 @@ py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/prev
 - `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), dimensioni e misure Excel (`dims.py`), pairing (`pairing.py`), metriche (`derive.py`), conflitti tra recensioni (`reviews.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
 - `web/` — `template.html`, `style.css` e i moduli JS inlinati da `pipeline/build_page.py` nell'ordine di `MODULES`: `format`, `pairing`, `diary` (voti, medie, Spearman, CSV), `state` (stato, tensione, vite, prove), `trials` (prove per corda e laboratorio contro sensazioni), `persist` (db a documenti/localStorage, ascolto in tempo reale), `values` e `cards` (righe e schede), `wear`, `ai`, `choose`, `bank`, `diaryui`, `mine`, `map`, `method`, `app` (colla). Regole dei moduli: un `import` per riga, solo `export function|const`, nessun nome top-level ripetuto (lo controlla `tests/test_build_page.py`).
 - `tests/` — `test_*.py` (Python), `fixtures/pairing_cases.json` (parità Python/JS), `e2e/*.cjs` (Playwright).
-- `docs/AUDIT.md` — audit di dati, racconto dei dati e UI, con lo stato v4 (sincronizzazione, schede compatte, diario); `docs/superpowers/` — specifiche e piani.
+- `docs/FISICA.md` — revisione delle ipotesi fisiche (cosa è stabilito, cosa è solo affermato, cosa dicono i dati); `docs/AUDIT.md` — audit di dati, racconto dei dati e UI, con lo stato v4 (sincronizzazione, schede compatte, diario); `docs/superpowers/` — specifiche e piani.
 
 ## Lavoro aperto
 

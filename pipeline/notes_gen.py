@@ -51,17 +51,12 @@ INSUFFICIENT = "Dati insufficienti per giudicarla: non ci sono test di laborator
 
 
 def _blade(r, s):
+    """Nessun dato misura come una corda si comporta su una racchetta precisa (angolo di uscita, profondità, direzione): niente promesse."""
     if all(s.get(k) is None for k in ("control", "spin")):
         return INSUFFICIENT
-    b = _band(s["control"])
-    if b == "hi":
-        return ("La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta "
-                "controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.")
-    if b == "lo":
-        return ("Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, "
-                "quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.")
-    return ("Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 "
-            "lascia scorrere le verticali per lo spin.")
+    return ("Nessun test misura il comportamento di questa corda sulla Blade 100 v9 (angolo di uscita, profondità, direzione): "
+            "i valori sopra sono misure di laboratorio e indici. Parti dalla tensione suggerita, che è una regola empirica, e prova; "
+            "se vuoi un confronto vero registra i voti nel diario.")
 
 
 def _style(r, s):

@@ -204,7 +204,7 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 
 ## Stato v4 (2026-10-31): sincronizzazione, schede compatte, diario
 
-Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 210 test Python, 190 test JS, 107 test Playwright, tutti verdi.
+Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 211 test Python, 190 test JS, 107 test Playwright, tutti verdi.
 
 ### Le segnalazioni dell'utente del 2026-10-31
 
