@@ -204,7 +204,7 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 
 ## Stato v4 (2026-10-31): sincronizzazione, schede compatte, diario
 
-Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 211 test Python, 190 test JS, 107 test Playwright, tutti verdi.
+Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 207 test Python, 184 test JS, 109 test Playwright, tutti verdi.
 
 ### Le segnalazioni dell'utente del 2026-10-31
 
@@ -261,6 +261,32 @@ Richiesta: controllo e potenza sono due cose diverse; verificare sui forum (Talk
 - **Limite dei dati:** i tester dicono quasi sempre «controllo alto» delle poly: il livello da solo distingue poco; contano i confronti diretti. Per le corde con almeno 2 pareri, i tester e l'indice di controllo concordano in 9 casi su 16, differiscono di un livello in 3 e si contraddicono (alto contro basso) in 4, tra cui la O-Toro (indice «molto basso» 17, tre pareri «alto»): la scheda lo segnala. L'indice di controllo resta quindi poco affidabile per le corde morbide.
 - **Copertura:** Re-String quasi vuota (Slap: 1 confronto; Zero: 3 pareri; Vivo 2; Sync 1); Solinco e Toroline e Grapplesnake con 3–10 pareri sui modelli principali; Hyper-G Soft, Barb Wire, Absolute, Snapper, A5, Enso Pro, Toro Toro quasi niente. Passione Tennis /f211 (sezione Toroline) non letta.
 - **Ancora aperto:** altri marchi (Yonex, Luxilon, Babolat, Tecnifibre, Head, Kirschbaum, Signum Pro); il pairing usa ancora il solo indice di controllo; il parere dei tester non corregge l'indice.
+
+### Semplificazione per il telefono (2026-10-31)
+
+Richiesta: tolto il controllo, app che non si blocca e navigabile da telefono (con tasti per navigare), meno testo, mappa più semplice con «filtra», tutto meno complicato.
+
+Misure a 360 px (parole in prima schermata · comandi visibili; prima → dopo):
+
+| Schermata | Prima | Dopo |
+|---|---|---|
+| Scegli | 162 parole · 37 comandi | 106 · 20 |
+| Mappa | 128 parole · 68 comandi | 38 · 3 |
+| Banco | 727 parole in pagina · 92 comandi | tolto (la lista è quella di Scegli) |
+| Montata | 217 parole in pagina · 82 comandi | 158 in pagina (parte secondaria in sezioni chiuse) |
+| Metodo | 1495 parole | 345 |
+
+Test `semplicità: ogni schermata sta nel suo tetto…` fissa questi limiti.
+
+- **Controllo tolto:** niente indice nel pairing (pesi: spin 30, tenuta 20, rigidità 20, elasticità 15), nelle tessere, nelle righe, nel Banco, nella mappa, nel confronto, nel parere AI e nelle note generate. Restano i pareri dei tester su controllo e potenza, con link. Effetto: le fasce del pairing cambiano (alcune corde salgono, altre scendono), e «Ottimo» è ora il 15,5% delle corde.
+- **Tre schede invece di quattro:** il Banco duplicava Scegli (stessa lista, stessi filtri); i filtri erano copiati tre volte (Scegli, Banco, Mappa). Ora un solo pannello **Filtra**, condiviso. Tolti calibro e forma dai filtri (poco usati; ogni calibro ha comunque la sua riga).
+- **Mappa:** un grafico, senza fasce per i dati mancanti, barre d'errore, zone, legenda lunga e tabella; la riga della corda compare sotto al tocco.
+- **Confronto:** il pulsante «Confronta» della scheda **non faceva niente** (nessun gestore): ora aggiunge la corda a una barra compatta in basso che si apre al tocco (prima il pannello copriva il 40% dello schermo e bloccava i tocchi).
+- **Navigazione:** il tasto Indietro del telefono ora chiude la scheda o torna alla schermata precedente (prima usciva dall'app); tasto «‹ Indietro» ben visibile nella scheda e nel Metodo; barra in basso con l'altezza vera misurata.
+- **Blocchi dei tocchi trovati e tolti:** il messaggio «Annulla» (10 s) intercettava i tocchi sulla zona sotto (ora trasparente, 6 s); gli elementi portati in vista dal browser finivano sotto la barra fissa (margine di scorrimento); i dialoghi su telefoni piccoli nascondevano «Monta» (piede fisso con errore e pulsanti).
+- **Prestazioni su telefono lento (CPU 6× più lenta):** nessun errore JS; cambio schermata ≈ 90 ms; formattatori numerici creati una volta sola; tocco senza ritardo del doppio tocco; niente «tira per ricaricare» che riavvia l'app. Resta un'attività di avvio di circa 250 ms.
+
+**Ancora aperto:** il test su un telefono vero (non emulato) è tuo; il desktop non è stato ridisegnato (la lista a due colonne ha righe compatte come su telefono); il Metodo resta una pagina lunga di sezioni, non un percorso guidato.
 
 ## C. Priorità consigliate
 

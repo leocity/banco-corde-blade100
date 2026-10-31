@@ -32,6 +32,8 @@ Il testo ha quindi un punto di sostanza (il controllo reale è traiettoria, non 
 
 ## 3. Cosa è stato cambiato
 
+- **Aggiornamento (2026-10-31, dopo la revisione):** l'indice di controllo è stato **tolto del tutto** dall'app (pairing, schede, mappa, AI). Il controllo non è una misura e non equivale alla rigidità; resta solo come parere dei tester, con fonte.
+
 - Potenza e controllo separati (nessuna formula che le lega); i pareri dei tester stanno a parte e non entrano nei calcoli.
 - Il controllo mostra il suo intervallo e non afferma differenze entro il margine.
 - Le note generate «Per la Blade» non fanno più promesse sul comportamento della palla (test `test_blade_note_makes_no_unmeasured_physical_claims`).

@@ -151,7 +151,9 @@ function communityHtml(rec) {
   const li = rows.map((r) => {
     if (!r.word) return `<li><b>${esc(r.label)}</b>: <span class="muted">nessun parere</span></li>`;
     const w = r.key === 'power' ? FEM[r.word] : r.word;
-    const ev = r.evidence.map((e) => (safeUrl(e.url) ? `<a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.site || 'fonte')}</a>` : '')).filter(Boolean).join(' · ');
+    // un link per sito, con il solo nome del sito (senza «(customer review)» e simili)
+    const seen = new Set();
+    const ev = r.evidence.map((e) => { const name = String(e.site || 'fonte').replace(/\s*\(.*$/, '').trim() || 'fonte'; if (seen.has(name) || safeUrl(e.url) === '#') return ''; seen.add(name); return `<a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(name)}</a>`; }).filter(Boolean).join(' · ');
     return `<li><b>${esc(r.label)}</b>: ${esc(w)} · ${r.n} ${r.n === 1 ? 'parere' : 'pareri'}${r.n < 3 ? ' · <i>pochi pareri</i>' : ''}${r.split ? ' · <b>discordi</b>' : ''}${ev ? ` <span class="muted small">(${ev})</span>` : ''}</li>`;
   }).join('');
   const DIR = { more: 'più', less: 'meno', same: 'lo stesso' }, ATTR = { control: 'controllo', power: 'potenza' };

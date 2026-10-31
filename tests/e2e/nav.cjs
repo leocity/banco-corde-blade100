@@ -143,3 +143,28 @@ test('navigazione: da una scheda «Monta questa» chiude la scheda e apre il cam
   assert.ok(await page.locator('#montata').isVisible() || await page.locator('#scegli').isVisible());
   await ctx.close();
 });
+
+// ---- semplicità: un tetto al testo e ai comandi per schermata (misura da telefono, 360 px) ----
+const measure = (page) => page.evaluate(() => {
+  const root = document.querySelector('main'), vh = innerHeight;
+  const vis = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && el.checkVisibility({ checkVisibilityCSS: true, contentVisibilityAuto: true }); };
+  let first = 0; const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let t;
+  while ((t = w.nextNode())) { const p = t.parentElement; if (!p || !vis(p)) continue; const r = p.getBoundingClientRect(); if (r.top < vh - 70 && r.bottom > 0) first += t.textContent.split(/\s+/).filter(Boolean).length; }
+  return { words: root.innerText.split(/\s+/).filter(Boolean).length, first, controls: [...root.querySelectorAll('button, a[href], input, select, summary, textarea')].filter(vis).length };
+});
+// limiti = misura attuale + circa 25%; prima della semplificazione: Scegli 162 parole in prima schermata e 37 comandi, Banco 727 parole e 92 comandi, Metodo 1495 parole
+const BUDGET = { scegli: { first: 135, words: 310, controls: 26 }, mappa: { first: 60, words: 60, controls: 6 }, montata: { first: 100, words: 200, controls: 70 }, metodo: { first: 160, words: 430, controls: 8 } };
+test('semplicità: ogni schermata sta nel suo tetto di parole e di comandi a 360 px', async () => {
+  const { page, ctx } = await openPage({ width: 360, height: 740, hasTouch: true });
+  for (const tab of ['scegli', 'mappa', 'montata']) {
+    await page.locator(`#tab-${tab}`).click();
+    if (tab === 'mappa') await page.waitForSelector('#scatter circle.dot');
+    if (tab === 'montata') await page.waitForSelector('#diary .rate');
+    const m = await measure(page), b = BUDGET[tab];
+    assert.ok(m.first <= b.first && m.words <= b.words && m.controls <= b.controls, `${tab}: ${JSON.stringify(m)} oltre ${JSON.stringify(b)}`);
+  }
+  await page.locator('[data-goto="metodo"]').first().click();
+  const m = await measure(page), b = BUDGET.metodo;
+  assert.ok(m.first <= b.first && m.words <= b.words && m.controls <= b.controls, `metodo: ${JSON.stringify(m)} oltre ${JSON.stringify(b)}`);
+  await ctx.close();
+});

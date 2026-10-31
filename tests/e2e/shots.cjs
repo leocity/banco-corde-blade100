@@ -20,12 +20,12 @@ const STATE = JSON.stringify({ v: 2, equipped: { id: EQ, kg: [22.5, 21.5], since
 (async () => {
   const browser = await chromium.launch();
   for (const [n, vp] of [['m', { width: 390, height: 844 }], ['d', { width: 1280, height: 900 }]]) {
-    const ctx = await browser.newContext({ viewport: vp, hasTouch: n === 'm' });
+    const ctx = await browser.newContext({ viewport: vp, hasTouch: n === 'm', isMobile: n === 'm', deviceScaleFactor: n === 'm' ? 2 : 1 });
     const page = await ctx.newPage();
     await page.addInitScript((s) => localStorage.setItem('banco-corde:state', s), STATE);
     await page.goto(URL);
     await page.waitForFunction(() => window.__bancoReady === true);
-    const shot = (name, opts = {}) => page.screenshot({ path: path.join(OUT, `v4-${name}-${n}.png`), ...opts });
+    const shot = (name, opts = {}) => page.screenshot({ path: path.join(OUT, `v5-${name}-${n}.png`), ...opts });
     await shot('scegli');
     await page.locator('#tab-mappa').click();
     await page.waitForSelector('#scatter circle.dot');
@@ -33,14 +33,15 @@ const STATE = JSON.stringify({ v: 2, equipped: { id: EQ, kg: [22.5, 21.5], since
     await page.waitForTimeout(200);
     await shot('mappa', { fullPage: n === 'd' });
     await page.mouse.move(2, 2);
-    await page.locator('#tab-banco').click();
-    await page.waitForSelector('input.cmp');
-    for (const i of [0, 1, 2]) await page.locator('input.cmp').nth(i).check();
-    await page.waitForTimeout(150);
-    await shot('banco');
-    await page.locator('#cmp-clear').click();
+    await page.locator('#tab-scegli').click();
+    await page.locator('#filter-btn').click();
+    await page.waitForSelector('#filter-dialog[open]');
+    await shot('filtra');
+    await page.locator('#flt-ok').click();
+    await page.waitForFunction(() => !document.getElementById('filter-dialog').open);
     await page.locator('#tab-montata').click();
     await page.waitForSelector('#wear .wearbar');
+    await page.evaluate(() => document.querySelectorAll('#montata details.more').forEach((d) => { d.open = true; }));
     await shot('montata', { fullPage: true });
     await page.locator('#history [data-past-open]').first().click();
     await page.waitForSelector('#past-dialog[open] .rate');
@@ -53,7 +54,7 @@ const STATE = JSON.stringify({ v: 2, equipped: { id: EQ, kg: [22.5, 21.5], since
     await page.locator('[data-goto="metodo"]').first().click();
     await page.waitForSelector('#m-sensazioni');
     await page.locator('#m-sensazioni').scrollIntoViewIfNeeded();
-    await shot('metodo-sensazioni');
+    await shot('metodo');
     await page.locator('#tab-scegli').click();
     await page.locator('#top3 [data-open]').first().click();
     await page.waitForSelector('dialog#sheet[open]');

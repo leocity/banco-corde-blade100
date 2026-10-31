@@ -557,6 +557,12 @@ html { scroll-padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bot
 .back-row { display: flex; }
 .back-row .btn { min-height: 48px; }
 
+/* risposta al tocco da telefono: niente attesa del doppio tocco, niente riquadro grigio, niente «tira per ricaricare» che riavvia l'app */
+button, a, summary, label, select, input, [role="tab"], .crow2, .rb, .mom, .chipbtn { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+html, body { overscroll-behavior-y: contain; }
+
+.tiles .tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
 </style>
 
 <div class="wrap">
@@ -754,7 +760,11 @@ window.STRINGS_DATA = {"generated": "2026-10-31", "weights_default": {"spin": 35
 // Formati e piccoli helper condivisi. Puri: nessun accesso al DOM all'import.
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const NF = (d) => new Intl.NumberFormat('it-IT', { minimumFractionDigits: d, maximumFractionDigits: d });
+// I formattatori si creano una volta sola: crearne uno a ogni numero costava decine di millisecondi per schermata su un telefono lento.
+const nfCache = new Map();
+const NF = (d) => { if (!nfCache.has(d)) nfCache.set(d, new Intl.NumberFormat('it-IT', { minimumFractionDigits: d, maximumFractionDigits: d })); return nfCache.get(d); };
+const nfMaxCache = new Map();
+const nfMax = (m) => { if (!nfMaxCache.has(m)) nfMaxCache.set(m, new Intl.NumberFormat('it-IT', { maximumFractionDigits: m })); return nfMaxCache.get(m); };
 const fmt = (v, d = 1) => (v === null || v === undefined || Number.isNaN(v) ? '—' : NF(d).format(v));
 const SHAPES = { RND: 'tonda', HEX: 'esagonale', PENT: 'pentagonale', SQ: 'quadrata', OCT: 'ottagonale', GEAR: 'a ingranaggio', TWST: 'ritorta', STAR: 'a stella', TRI: 'triangolare', HEP: 'eptagonale' };
 const MARK = { measured: '●', estimated: '◐', missing: '○' };
@@ -764,7 +774,7 @@ const fullName = (r) => `${nameOf(r)} ${mmOf(r)}`;
 const subline = (r) => [r.gauge_mm ? `${NF(2).format(r.gauge_mm)} mm` : r.gauge_label, SHAPES[r.shape] || r.shape].filter(Boolean).join(' · ');
 const safeUrl = (u) => (/^https?:\/\//i.test(String(u || '')) ? u : '#');
 // Numero con al massimo `max` decimali, senza zeri superflui (ore: "3", "1,5").
-const fmtN = (v, max = 1) => (v === null || v === undefined || Number.isNaN(v) ? '—' : new Intl.NumberFormat('it-IT', { maximumFractionDigits: max }).format(v));
+const fmtN = (v, max = 1) => (v === null || v === undefined || Number.isNaN(v) ? '—' : nfMax(max).format(v));
 
 // Pairing con le corde "mi piace": stesse regole e parametri di pipeline/pairing.py (parità sul fixture condiviso).
 const DIM_KEYS = ['stiffness', 'durability', 'elasticity', 'spin'];
@@ -1591,7 +1601,9 @@ function communityHtml(rec) {
   const li = rows.map((r) => {
     if (!r.word) return `<li><b>${esc(r.label)}</b>: <span class="muted">nessun parere</span></li>`;
     const w = r.key === 'power' ? FEM[r.word] : r.word;
-    const ev = r.evidence.map((e) => (safeUrl(e.url) ? `<a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.site || 'fonte')}</a>` : '')).filter(Boolean).join(' · ');
+    // un link per sito, con il solo nome del sito (senza «(customer review)» e simili)
+    const seen = new Set();
+    const ev = r.evidence.map((e) => { const name = String(e.site || 'fonte').replace(/\s*\(.*$/, '').trim() || 'fonte'; if (seen.has(name) || safeUrl(e.url) === '#') return ''; seen.add(name); return `<a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(name)}</a>`; }).filter(Boolean).join(' · ');
     return `<li><b>${esc(r.label)}</b>: ${esc(w)} · ${r.n} ${r.n === 1 ? 'parere' : 'pareri'}${r.n < 3 ? ' · <i>pochi pareri</i>' : ''}${r.split ? ' · <b>discordi</b>' : ''}${ev ? ` <span class="muted small">(${ev})</span>` : ''}</li>`;
   }).join('');
   const DIR = { more: 'più', less: 'meno', same: 'lo stesso' }, ATTR = { control: 'controllo', power: 'potenza' };

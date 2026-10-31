@@ -551,3 +551,9 @@ html { scroll-padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bot
 .sheet-head { padding-right: 0; padding-top: 44px; }
 .back-row { display: flex; }
 .back-row .btn { min-height: 48px; }
+
+/* risposta al tocco da telefono: niente attesa del doppio tocco, niente riquadro grigio, niente «tira per ricaricare» che riavvia l'app */
+button, a, summary, label, select, input, [role="tab"], .crow2, .rb, .mom, .chipbtn { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+html, body { overscroll-behavior-y: contain; }
+
+.tiles .tile:last-child:nth-child(odd) { grid-column: 1 / -1; }

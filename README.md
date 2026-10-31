@@ -5,14 +5,14 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 - **Pagina pubblicata (Artifact, privata, solo tuo account):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — v4 del 2026-10-31, con `sample`, `db`, `user`, `downloads`. Da telefono: apri il link da loggato e «Aggiungi a schermata Home». Per aggiornarla: `py -m pipeline.build && py -m pipeline.build_page`, poi si ripubblica `dist/preview.html` sullo stesso link.
 - **Corda montata ora:** Re-String Zero 1,23 a 22,5/21,5 kg. **Preferite:** Solinco Confidential 1,25, Toroline O-Toro 1,23. **Non gradite:** Confidential Soft, RPM Blast. Si cambiano dall'app (montata, ★ e ✕ su ogni scheda).
 
-## Le quattro schermate
+## Le tre schermate
 
-- **Scegli:** la montata con ore e usura, le 3 da provare, la lista con filtri (marca, calibro, forma, solo misurate, pairing Buono o meglio) e il riquadro «Valuta una corda che non c'è» (parere AI).
-- **Mappa:** rigidità × spin, tenuta × spin o controllo × spin; scheda al passaggio (al tocco su telefono), filtri, montata e preferite sempre visibili, tabella alternativa.
-- **Banco:** tutte le corde con i valori affiancati e confronto da 2 a 4 corde.
-- **Montata:** corda montata, tensione, registro ore, usura, **diario di prova** (voti 1–5 in tre momenti, tag, sensazioni, verdetto «ricomprerei», setup e tensiometro), cambio corda con voti di fine vita e annulla, storico apribile, «Aggiungi prova passata», esportazione dello storico (JSON) e del diario (CSV).
-- **Scheda corda** (da ogni riga): tessere dei 4 valori, azioni sempre raggiungibili, «Le tue prove» con i tuoi voti per tensione. Su telefono le liste sono righe compatte (8+ corde per schermata).
-- Il **Metodo** (pulsante in alto, e il «?» accanto ai valori) spiega come si leggono i numeri.
+- **Scegli:** la montata, la ricerca con **Filtra** (marca, solo dati misurati, pairing buono, altre marche), le 3 da provare e la lista. Il filtro è lo stesso della mappa.
+- **Mappa:** un solo grafico (spin in verticale; rigidità o tenuta in orizzontale). Si tocca un punto e sotto compare la riga della corda; toccandola si apre la scheda.
+- **Montata:** corda montata e usura, **Cambia corda**, ore rapide (+1 h, +1,5 h, +2 h), diario di prova (voti 1–5 in tre momenti, tag, sensazioni, verdetto «ricomprerei», setup e tensiometro). In sezioni chiuse: sessioni, corde finite con «Aggiungi prova passata», parere AI sull'usura, esportazioni.
+- **Scheda corda** (da ogni riga): spin, rigidità, tenuta, pareri dei tester su controllo e potenza, «Le tue prove», e in fondo Monta, ★, ✕ e **Confronta** (il confronto da 2 a 4 corde sta in una barra in basso che si apre al tocco).
+- Il **Metodo** (pulsante in alto, e il «?» accanto ai valori) spiega in poche righe come si leggono i numeri. Il tasto Indietro del telefono chiude la scheda o torna alla schermata precedente.
+- **Niente indice di controllo:** il controllo non è una misura. Compare solo come parere dei tester (con link alla fonte), insieme alla potenza, e non entra in nessun calcolo.
 
 ## Fonti dei dati
 
@@ -46,9 +46,9 @@ Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, Node 20+ e Playwr
 ```bash
 py -m pip install -r requirements.txt
 tests/run_all.sh                         # ricostruisce la pagina ed esegue pytest, node --test e Playwright
-py -m pytest -q                          # 211 test Python (pipeline, dati finali, build della pagina)
-node --test web/*.test.mjs               # 190 test JS dei moduli puri (pairing, stato, persistenza, diario, prove, usura, mappa, AI, schede)
-node tests/e2e/ui.cjs                    # 107 test della pagina in Chromium (richiede dist/preview.html)
+py -m pytest -q                          # 207 test Python (pipeline, dati finali, build della pagina)
+node --test web/*.test.mjs               # 184 test JS dei moduli puri (pairing, stato, persistenza, diario, prove, usura, mappa, AI, schede)
+node tests/e2e/ui.cjs                    # 109 test della pagina in Chromium (richiede dist/preview.html)
 node tests/e2e/shots.cjs                 # screenshot in docs/audit/
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
 py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)
@@ -63,7 +63,7 @@ py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/prev
 ## Struttura
 
 - `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), dimensioni e misure Excel (`dims.py`), pairing (`pairing.py`), metriche (`derive.py`), conflitti tra recensioni (`reviews.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
-- `web/` — `template.html`, `style.css` e i moduli JS inlinati da `pipeline/build_page.py` nell'ordine di `MODULES`: `format`, `pairing`, `diary` (voti, medie, Spearman, CSV), `state` (stato, tensione, vite, prove), `trials` (prove per corda e laboratorio contro sensazioni), `persist` (db a documenti/localStorage, ascolto in tempo reale), `values` e `cards` (righe e schede), `wear`, `ai`, `choose`, `bank`, `diaryui`, `mine`, `map`, `method`, `app` (colla). Regole dei moduli: un `import` per riga, solo `export function|const`, nessun nome top-level ripetuto (lo controlla `tests/test_build_page.py`).
+- `web/` — `template.html`, `style.css` e i moduli JS inlinati da `pipeline/build_page.py` nell'ordine di `MODULES`: `format`, `pairing`, `diary` (voti, medie, Spearman, CSV), `state` (stato, tensione, vite, prove), `trials` (prove per corda e laboratorio contro sensazioni), `persist` (db a documenti/localStorage, ascolto in tempo reale), `values` e `cards` (righe e schede), `wear`, `ai`, `compare` (confronto), `filter` (il filtro unico), `choose`, `diaryui`, `mine`, `map`, `method`, `app` (colla). Regole dei moduli: un `import` per riga, solo `export function|const`, nessun nome top-level ripetuto (lo controlla `tests/test_build_page.py`).
 - `tests/` — `test_*.py` (Python), `fixtures/pairing_cases.json` (parità Python/JS), `e2e/*.cjs` (Playwright).
 - `docs/FISICA.md` — revisione delle ipotesi fisiche (cosa è stabilito, cosa è solo affermato, cosa dicono i dati); `docs/AUDIT.md` — audit di dati, racconto dei dati e UI, con lo stato v4 (sincronizzazione, schede compatte, diario); `docs/superpowers/` — specifiche e piani.
 
