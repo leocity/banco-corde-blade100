@@ -62,6 +62,8 @@ export function initDiary(ctx) {
   document.addEventListener('click', (e) => {
     const host = e.target.closest('[data-dtarget]'); if (!host) return;
     const target = host.dataset.dtarget;
+    // l'apertura di una sezione si registra al tocco, non all'evento toggle (asincrono): un ridisegno nel mezzo la richiuderebbe
+    const sum = e.target.closest('details[data-dsec] > summary'); if (sum) { const det = sum.parentElement; diaryView.open[det.dataset.dsec] = !det.open; return; }
     const mom = e.target.closest('[data-moment]'); if (mom) { diaryView.moment[target] = mom.dataset.moment; ctx.refresh(); return; }
     const rb = e.target.closest('.rb');
     if (rb) { const cat = rb.closest('.rate').dataset.cat, v = Number(rb.dataset.v), m = diaryMoment(ctx, target); diaryView.moment[target] = m; /* il momento scelto non deve spostarsi da solo al primo voto */ diaryError(''); act(target, (d) => toggleRating(d, m, cat, v)); return; }
