@@ -1,5 +1,5 @@
 // Schermata Scegli: striscia della montata, preferite, le 3 da provare e la lista filtrabile.
-import { $, esc, fmt, fullName, nameOf, SHAPES } from './format.js';
+import { $, esc, fmt, fmtN, fullName, nameOf, SHAPES } from './format.js';
 import { rowHtml } from './cards.js';
 
 export const newFilters = () => ({ q: '', brand: '', gauge: '', shape: '', target: true, measured: false, good: false });
@@ -16,9 +16,9 @@ export function topIds(ctx) {
     .sort((a, b) => pairScore(ctx, b) - pairScore(ctx, a) || b.spin.value - a.spin.value).slice(0, 3).map((r) => r.id);
 }
 
-function renderStrip(ctx) {
+export function renderStrip(ctx) {
   const s = ctx.state(), eq = ctx.equippedRec();
-  $('#strip').innerHTML = `<span class="k">Montata</span><b>${esc(fullName(eq))}</b><span>${fmt(s.equipped.kg[0], 1)}/${fmt(s.equipped.kg[1], 1)} kg · ${fmt(ctx.hours(), 1)} h</span><span id="strip-wear">${ctx.wearLabel ? esc(ctx.wearLabel()) : ''}</span>`;
+  $('#strip').innerHTML = `<span class="k">Montata</span><b>${esc(fullName(eq))}</b><span>${fmt(s.equipped.kg[0], 1)}/${fmt(s.equipped.kg[1], 1)} kg · ${fmtN(ctx.hours())} h</span><span id="strip-wear">${ctx.wearLabel ? esc(ctx.wearLabel()) : ''}</span>`;
 }
 
 function renderRefs(ctx) {

@@ -3,15 +3,17 @@ import { pairing } from './pairing.js';
 import { defaultState, setPreference, equippedHours, tensionFor } from './state.js';
 import { createPersistence } from './persist.js';
 import { sheetHtml } from './cards.js';
-import { renderChoose, initChoose } from './choose.js';
+import { renderChoose, initChoose, renderStrip } from './choose.js';
+import { wearStatus, lifeEstimate } from './wear.js';
 import { renderBank, initBank } from './bank.js';
+import { renderMine, initMine } from './mine.js';
 import { renderMethod } from './method.js';
 
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
 const TABS = ['scegli', 'mappa', 'banco', 'montata', 'metodo'];
-const RENDERERS = { scegli: renderChoose, banco: renderBank, metodo: renderMethod };
+const RENDERERS = { scegli: renderChoose, banco: renderBank, montata: renderMine, metodo: renderMethod };
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -25,16 +27,20 @@ function pairingOf(id) {
   return cache.get(id);
 }
 const equippedRec = () => BY_ID[state.equipped.id];
+const tenutaOf = (id) => (BY_ID[id] ? BY_ID[id].derived.dims.durability : null);
+const lifeFor = (r) => lifeEstimate(tenutaOf(r.id), state.lives, r.id, tenutaOf);
+const wear = () => wearStatus({ state, tenuta: tenutaOf(state.equipped.id), tenutaOf, now: new Date() });
 function cardCtx(r, extra = {}) {
   return { pairing: pairingOf(r.id), pref: state.liked.includes(r.id) ? 'liked' : state.disliked.includes(r.id) ? 'disliked' : null,
-    equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: null,
+    equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: lifeFor(r),
     nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), ...extra };
 }
 
-const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state),
+const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state), wear, tenutaOf,
+  wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
   update, openSheet, showTab, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
 
-function renderAll() { (RENDERERS[current] || (() => {}))(ctx); }
+function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {
   state = fn(state); dirty = true; cache.clear();
   if (persist) persist.save(state);
@@ -75,6 +81,7 @@ document.addEventListener('click', (e) => {
 
 initChoose(ctx);
 initBank(ctx);
+initMine(ctx);
 renderMethod(ctx);
 $('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni solo come link in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
 const hashTab = (location.hash || '').slice(1);
@@ -86,7 +93,8 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
   try {
     persist = await createPersistence({ claude: window.claude, storage: safeStorage(), defaults: DATA.defaults, knownIds: ALL.map((r) => r.id) });
     const loaded = await persist.load();
-    if (!dirty) { state = loaded.state; cache.clear(); renderAll(); } else persist.save(state);
     ctx.warnings = loaded.warnings;
+    if (!dirty) { state = loaded.state; cache.clear(); } else persist.save(state);
+    renderAll();
   } finally { window.__bancoReady = true; }
 })();

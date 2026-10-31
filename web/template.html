@@ -73,7 +73,34 @@
       <div class="list bank-cards" id="bank-cards"></div>
       <button class="btn" type="button" id="b-more" hidden>Mostra altre</button>
     </section>
-    <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden><p class="muted">La schermata Montata arriva nel prossimo passo.</p></section>
+    <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden>
+      <div class="section-head"><h2>La tua corda montata</h2></div>
+      <div id="mine-summary"></div>
+      <div class="wear-box" id="wear"></div>
+      <p class="callout small" id="persist-note" role="status" hidden></p>
+      <div class="log-box">
+        <h3>Segna le ore di gioco</h3>
+        <div class="card-actions">
+          <button class="btn" type="button" data-add-hours="1">+1 h</button>
+          <button class="btn" type="button" data-add-hours="1.5">+1,5 h</button>
+          <button class="btn" type="button" data-add-hours="2">+2 h</button>
+        </div>
+        <div class="controls">
+          <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="6"></label>
+          <label>Data <input type="date" id="hours-date"></label>
+          <label>Nota <input id="hours-note" placeholder="facoltativa"></label>
+          <button class="btn primary" type="button" id="hours-add">Aggiungi</button>
+        </div>
+        <p class="gaps" id="hours-error" role="alert" hidden></p>
+        <ul class="sessions" id="sessions"></ul>
+      </div>
+      <div class="card-actions">
+        <button class="btn primary" type="button" id="equip-btn">Cambia corda</button>
+        <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
+      </div>
+      <h3>Corde finite</h3>
+      <ul class="sessions" id="history"></ul>
+    </section>
     <section id="metodo" class="panel prose" hidden></section>
   </main>
 
@@ -81,6 +108,27 @@
 </div>
 
 <aside class="tray" id="tray" aria-label="Confronto" hidden></aside>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<dialog id="equip-dialog" aria-labelledby="eq-title">
+  <div class="equip-form">
+    <h2 id="eq-title">Cambia corda</h2>
+    <label>Cerca <input type="search" id="eq-q" placeholder="Nome della corda"></label>
+    <label>Nuova corda <select id="eq-pick" size="6"></select></label>
+    <div class="controls">
+      <label>Verticali (kg) <input id="eq-kgv" inputmode="decimal" size="5"></label>
+      <label>Orizzontali (kg) <input id="eq-kgh" inputmode="decimal" size="5"></label>
+      <label>Data <input type="date" id="eq-date"></label>
+    </div>
+    <p class="muted small">Tensione precompilata dalla regola empirica sulla tua montata (non è una misura).</p>
+    <div class="controls">
+      <label>La corda che togli è <select id="eq-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+      <label>Ore giocate <input id="eq-hours" inputmode="decimal" size="5"></label>
+    </div>
+    <p class="gaps" id="eq-error" role="alert" hidden></p>
+    <div class="card-actions"><button class="btn" type="button" id="eq-cancel">Annulla</button><button class="btn primary" type="button" id="eq-ok">Monta</button></div>
+  </div>
+</dialog>
 
 <dialog id="sheet" aria-labelledby="sheet-title">
   <div class="sheet-inner">

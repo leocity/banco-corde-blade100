@@ -10,3 +10,5 @@ export const mmOf = (r) => (r.gauge_mm ? NF(2).format(r.gauge_mm) : r.gauge_labe
 export const fullName = (r) => `${nameOf(r)} ${mmOf(r)}`;
 export const subline = (r) => [r.gauge_mm ? `${NF(2).format(r.gauge_mm)} mm` : r.gauge_label, SHAPES[r.shape] || r.shape].filter(Boolean).join(' · ');
 export const safeUrl = (u) => (/^https?:\/\//i.test(String(u || '')) ? u : '#');
+// Numero con al massimo `max` decimali, senza zeri superflui (ore: "3", "1,5").
+export const fmtN = (v, max = 1) => (v === null || v === undefined || Number.isNaN(v) ? '—' : new Intl.NumberFormat('it-IT', { maximumFractionDigits: max }).format(v));

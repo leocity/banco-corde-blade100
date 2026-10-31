@@ -30,3 +30,12 @@ test('nomi e sottotitolo', () => {
 test('marcatori di affidabilità', () => {
   assert.deepEqual(MARK, { measured: '●', estimated: '◐', missing: '○' });
 });
+
+import { fmtN } from './format.js';
+test('fmtN: decimali solo se servono', () => {
+  assert.equal(fmtN(3), '3');
+  assert.equal(fmtN(1.5), '1,5');
+  assert.equal(fmtN(12), '12');
+  assert.equal(fmtN(null), '—');
+  assert.equal(fmtN(NaN), '—');
+});
