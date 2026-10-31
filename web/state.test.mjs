@@ -164,3 +164,52 @@ test('sameState ignora l\'ordine delle chiavi e delle sessioni', () => {
   assert.ok(sameState(a, b));
   assert.equal(sameState(a, removeSession(a, '1-1')), false);
 });
+
+import { trialsOf, applyVerdict, updateDiary } from './state.js';
+import { setRating, setVerdict, emptyDiary } from './diary.js';
+
+test('sanitizeState: il diario di montata e vite si conserva ripulito; senza diario nessun campo', () => {
+  const raw = { equipped: { id: 'zero', kg: [22.5, 21.5], since: NOW.toISOString(), hours0: 0, diary: { ratings: { first: { spin: 4, control: 9 } }, tags: ['secca', 'boh'] } },
+    lives: [{ lid: '1', id: 'other', kg: [22, 21], from: '2026-09-01T10:00:00.000Z', to: '2026-10-01T10:00:00.000Z', hours: 12, reason: 'consumata', note: '', diary: { verdict: 'no', notes: 'x'.repeat(3000) } },
+      { lid: '2', id: 'conf', kg: [22, 21], from: '2026-08-01T10:00:00.000Z', to: '2026-09-01T10:00:00.000Z', hours: 8, reason: 'rotta', note: '' }] };
+  const s = sanitizeState(raw, DEFAULTS, KNOWN).state;
+  assert.deepEqual(s.equipped.diary.ratings, { first: { spin: 4 } });
+  assert.deepEqual(s.equipped.diary.tags, ['secca']);
+  assert.equal(s.lives.find((l) => l.lid === '1').diary.notes.length, 2000);
+  assert.equal('diary' in s.lives.find((l) => l.lid === '2'), false);
+  assert.equal('diary' in sanitizeState({}, DEFAULTS, KNOWN).state.equipped, false);
+});
+
+test('updateDiary: crea il diario della montata o di una vita chiusa, ignora una vita sconosciuta', () => {
+  let s = defaultState(DEFAULTS, NOW);
+  s = updateDiary(s, 'current', (d) => setRating(d, 'first', 'spin', 5));
+  assert.equal(s.equipped.diary.ratings.first.spin, 5);
+  s = changeString(s, { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'consumata', lid: 'L9' });
+  assert.equal(s.lives[0].diary.ratings.first.spin, 5, 'il diario passa alla vita chiusa');
+  assert.equal(s.equipped.diary, undefined, 'la nuova montata parte senza diario');
+  s = updateDiary(s, 'L9', (d) => setRating(d, 'end', 'comfort', 2));
+  assert.equal(s.lives[0].diary.ratings.end.comfort, 2);
+  assert.deepEqual(updateDiary(s, 'nope', (d) => d), s);
+});
+
+test('trialsOf: la montata per prima, poi le vite dalla più recente, con ore e diario', () => {
+  let s = addSession(defaultState(DEFAULTS, NOW), { date: '2026-10-30', hours: 2, note: '', ts: '1-1' });
+  s = updateDiary(s, 'current', (d) => setVerdict(d, 'si'));
+  s = changeString(s, { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'consumata', lid: 'L1' });
+  s = changeString(s, { id: 'conf', kg: [22, 21], date: '2026-11-20T08:00:00.000Z', endReason: 'rotta', lid: 'L2' });
+  const t = trialsOf(s);
+  assert.deepEqual(t.map((x) => x.lid), ['current', 'L2', 'L1']);
+  assert.equal(t[0].id, 'conf');
+  assert.equal(t[2].diary.verdict, 'si');
+  assert.equal(t[1].hours, 0);
+});
+
+test('applyVerdict: sì -> preferita, no -> non gradita, forse e nessuno non cambiano', () => {
+  const s = defaultState(DEFAULTS, NOW);
+  assert.deepEqual(applyVerdict(s, 'other', 'si').liked, ['conf', 'otoro', 'other']);
+  assert.deepEqual(applyVerdict(applyVerdict(s, 'conf', 'no'), 'conf', 'no').disliked, ['blast', 'conf']);
+  assert.deepEqual(applyVerdict(applyVerdict(s, 'conf', 'no'), 'conf', 'no').liked, ['otoro']);
+  assert.deepEqual(applyVerdict(s, 'conf', 'forse'), s);
+  assert.deepEqual(applyVerdict(s, 'conf', null), s);
+  assert.deepEqual(applyVerdict(s, 'blast', 'si').disliked, []);
+});

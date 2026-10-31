@@ -729,11 +729,149 @@ function pairingReason(res, nameOf = (id) => id) {
   return t + '.';
 }
 
+// Diario di prova: voti 1–5 in tre momenti, setup, tensiometro, tag, note e verdetto. Funzioni pure e immutabili.
+// I voti sono opinioni dell'utente: non entrano in pairing né in punteggi (solo il verdetto aggiorna le preferite, in state.js).
+const CATS = [
+  { key: 'spin', label: 'Spin', hint: 'rotazione che riesci a generare' },
+  { key: 'control', label: 'Controllo', hint: 'profondità e direzione' },
+  { key: 'power', label: 'Potenza', hint: 'profondità senza spingere' },
+  { key: 'touch', label: 'Tocco', hint: 'volée e smorzate' },
+  { key: 'comfort', label: 'Comfort', hint: 'braccio e gomito' },
+  { key: 'stability', label: 'Stabilità', hint: 'sui colpi decentrati' },
+  { key: 'liveness', label: 'Mantenimento', hint: 'quanto resta viva' },
+  { key: 'durability', label: 'Durata', hint: 'resistenza alla rottura' },
+];
+const MOMENTS = [{ key: 'first', label: 'Primo colpo' }, { key: 'mid', label: 'Metà vita' }, { key: 'end', label: 'Fine vita' }];
+const TAGS = ['secca', 'spenta', 'pastosa', 'scivola', 'vibra', 'rimbalza', 'precisa', 'imprecisa-lunga', 'si-spegne-presto', 'resta-viva'];
+const SURFACES = ['terra', 'cemento', 'erba', 'indoor', 'mista'];
+const PRESTRETCH = ['nessuno', 'leggero', '10%', 'altro'];
+const VERDICTS = ['si', 'forse', 'no'];
+
+const MAX_TAGS = 8, MAX_METER = 8, MAX_NOTES = 2000, MAX_STRINGER = 60, MAX_DELTA = 3;
+const isRating = (v) => Number.isInteger(v) && v >= 1 && v <= 5;
+const diaryNum = (v) => typeof v === 'number' && Number.isFinite(v);
+const clip = (s, n) => (typeof s === 'string' ? s.slice(0, n) : '');
+const isDay = (v) => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(v)) && new Date(`${v}T00:00:00Z`).toISOString().slice(0, 10) === v;
+const okMeter = (m) => m && diaryNum(m.hours) && m.hours >= 0 && m.hours <= 5000 && diaryNum(m.value) && m.value > 0 && m.value <= 1000;
+const meterSort = (a, b) => a.hours - b.hours;
+const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
+
+const emptyDiary = () => ({ setup: { strungOn: null, prestretch: null, stringer: '', surface: null }, meter: [], ratings: {}, tags: [], notes: '', verdict: null, nextKgDelta: null });
+
+function setRating(d, moment, cat, value) {
+  if (!MOMENTS.some((m) => m.key === moment) || !CATS.some((c) => c.key === cat) || !isRating(value)) return d;
+  return { ...d, ratings: { ...d.ratings, [moment]: { ...(d.ratings[moment] || {}), [cat]: value } } };
+}
+// Ritoccare lo stesso voto lo toglie.
+function toggleRating(d, moment, cat, value) {
+  if (d.ratings[moment] && d.ratings[moment][cat] === value) {
+    const { [cat]: _gone, ...rest } = d.ratings[moment];
+    const { [moment]: _m, ...others } = d.ratings;
+    return { ...d, ratings: Object.keys(rest).length ? { ...others, [moment]: rest } : others };
+  }
+  return setRating(d, moment, cat, value);
+}
+
+const momentAverage = (d, moment) => mean(Object.values(d.ratings[moment] || {}).filter(isRating));
+function categoryMeans(diaries) {
+  return Object.fromEntries(CATS.map((c) => [c.key, mean(diaries.flatMap((d) => MOMENTS.map((m) => (d.ratings[m.key] || {})[c.key]).filter(isRating)))]));
+}
+
+function setTag(d, tag, on) {
+  if (!TAGS.includes(tag)) return d;
+  if (!on) return { ...d, tags: d.tags.filter((t) => t !== tag) };
+  return d.tags.includes(tag) || d.tags.length >= MAX_TAGS ? d : { ...d, tags: [...d.tags, tag] };
+}
+const setVerdict = (d, v) => (v === null ? { ...d, verdict: null } : VERDICTS.includes(v) ? { ...d, verdict: v } : d);
+const setNotes = (d, text) => ({ ...d, notes: clip(text, MAX_NOTES) });
+const setNextKgDelta = (d, v) => (v === null ? { ...d, nextKgDelta: null } : diaryNum(v) && Math.abs(v) <= MAX_DELTA ? { ...d, nextKgDelta: v } : d);
+function setSetup(d, patch) {
+  const next = { ...d.setup };
+  if ('strungOn' in patch) next.strungOn = isDay(patch.strungOn) ? patch.strungOn : null;
+  if ('prestretch' in patch) next.prestretch = PRESTRETCH.includes(patch.prestretch) ? patch.prestretch : null;
+  if ('stringer' in patch) next.stringer = clip(patch.stringer, MAX_STRINGER);
+  if ('surface' in patch) next.surface = SURFACES.includes(patch.surface) ? patch.surface : null;
+  return { ...d, setup: next };
+}
+
+// Letture del tensiometro: ore giocate e valore (sempre nella stessa unità).
+const addMeter = (d, m) => (okMeter(m) && d.meter.length < MAX_METER ? { ...d, meter: [...d.meter, { hours: m.hours, value: m.value }].sort(meterSort) } : d);
+const removeMeter = (d, i) => ({ ...d, meter: d.meter.filter((_, k) => k !== i) });
+// Perdita rispetto alla lettura a 0 h (senza quella non si calcola).
+function tensionLoss(d) {
+  const t0 = d.meter.find((m) => m.hours === 0);
+  if (!t0) return [];
+  return d.meter.filter((m) => m.hours > 0).map((m) => ({ hours: m.hours, pct: Math.round(((t0.value - m.value) / t0.value) * 1000) / 10 }));
+}
+
+function ranks(xs) {
+  const idx = xs.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]), out = new Array(xs.length);
+  for (let i = 0; i < idx.length;) {
+    let j = i;
+    while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j += 1;
+    const r = (i + j) / 2 + 1;
+    for (let k = i; k <= j; k++) out[idx[k][1]] = r;
+    i = j + 1;
+  }
+  return out;
+}
+// Correlazione di rango di Spearman (parità = rango medio). Meno di 3 coppie: nessun risultato.
+function spearman(xs, ys) {
+  const pairs = xs.map((x, i) => [x, ys[i]]).filter(([x, y]) => diaryNum(x) && diaryNum(y));
+  if (pairs.length < 3) return null;
+  const a = ranks(pairs.map((p) => p[0])), b = ranks(pairs.map((p) => p[1])), n = pairs.length;
+  const ma = mean(a), mb = mean(b);
+  let num = 0, da = 0, db = 0;
+  for (let i = 0; i < n; i++) { num += (a[i] - ma) * (b[i] - mb); da += (a[i] - ma) ** 2; db += (b[i] - mb) ** 2; }
+  return da === 0 || db === 0 ? { r: null, n } : { r: Math.round((num / Math.sqrt(da * db)) * 1000) / 1000, n };
+}
+
+// Tutto ciò che arriva da db o dal browser passa da qui: voti, tag, tensioni e testi fuori norma vengono scartati.
+function sanitizeDiary(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined;
+  const s = raw.setup && typeof raw.setup === 'object' && !Array.isArray(raw.setup) ? raw.setup : {};
+  const ratings = {};
+  for (const m of MOMENTS) {
+    const src = raw.ratings && typeof raw.ratings[m.key] === 'object' && raw.ratings[m.key] ? raw.ratings[m.key] : null;
+    if (!src) continue;
+    const r = {};
+    for (const c of CATS) if (isRating(src[c.key])) r[c.key] = src[c.key];
+    if (Object.keys(r).length) ratings[m.key] = r;
+  }
+  return {
+    setup: { strungOn: isDay(s.strungOn) ? s.strungOn : null, prestretch: PRESTRETCH.includes(s.prestretch) ? s.prestretch : null, stringer: clip(s.stringer, MAX_STRINGER), surface: SURFACES.includes(s.surface) ? s.surface : null },
+    meter: (Array.isArray(raw.meter) ? raw.meter.filter(okMeter) : []).slice(0, MAX_METER).map((m) => ({ hours: m.hours, value: m.value })).sort(meterSort),
+    ratings,
+    tags: [...new Set(Array.isArray(raw.tags) ? raw.tags.filter((t) => TAGS.includes(t)) : [])].slice(0, MAX_TAGS),
+    notes: clip(raw.notes, MAX_NOTES),
+    verdict: VERDICTS.includes(raw.verdict) ? raw.verdict : null,
+    nextKgDelta: diaryNum(raw.nextKgDelta) && Math.abs(raw.nextKgDelta) <= MAX_DELTA ? raw.nextKgDelta : null,
+  };
+}
+
+const csvCell = (v) => { const s = v === null || v === undefined ? '' : String(v); return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+const CSV_HEAD = ['corda', 'tensione_v_kg', 'tensione_h_kg', 'dal', 'al', 'ore', 'motivo', 'momento', ...CATS.map((c) => c.key), 'tag', 'note', 'verdetto', 'prossima_volta_kg', 'montaggio', 'pre_stretch', 'incordatore', 'superficie'];
+// Una riga per prova e momento con voti (una sola riga, senza momento, se la prova non ha voti).
+function diaryCsv(trials, nameOf) {
+  const rows = [CSV_HEAD];
+  for (const t of trials) {
+    const d = t.diary || emptyDiary(), moments = MOMENTS.filter((m) => d.ratings[m.key]);
+    for (const m of moments.length ? moments : [null]) {
+      const r = m ? d.ratings[m.key] : {};
+      rows.push([nameOf(t.id), t.kg[0], t.kg[1], String(t.from || '').slice(0, 10), String(t.to || '').slice(0, 10), t.hours, t.reason, m ? m.label : '', ...CATS.map((c) => r[c.key]),
+        d.tags.join(' '), d.notes, d.verdict, d.nextKgDelta, d.setup.strungOn, d.setup.prestretch, d.setup.stringer, d.setup.surface]);
+    }
+  }
+  return rows.map((row) => row.map(csvCell).join(',')).join('\r\n');
+}
+
 // Stato dell'utente (montata, preferite, ore, corde finite): funzioni pure che restituiscono nuovi oggetti.
+
 const isStr = (v) => typeof v === 'string';
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const isDate = (v) => isStr(v) && !Number.isNaN(Date.parse(v));
 const uniq = (xs) => [...new Set(xs)];
+const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d } : {}; };
 
 const STATE_VERSION = 2;
 // ID dei documenti db: lettere, cifre e _ - . ~ : @ + (nessuna barra né spazio)
@@ -766,7 +904,7 @@ const removeSession = (state, ts) => ({ ...state, sessions: state.sessions.filte
 const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
 
 function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()) }) {
-  const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note };
+  const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note, ...(state.equipped.diary ? { diary: state.equipped.diary } : {}) };
   return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
 }
 
@@ -810,7 +948,7 @@ function sanitizeState(raw, defaults, knownIds) {
   let equipped = base.equipped;
   if (e !== undefined) {
     if (e && isStr(e.id) && known.has(e.id) && Array.isArray(e.kg) && e.kg.length === 2 && e.kg.every(isNum) && isDate(e.since)) {
-      equipped = { id: e.id, kg: [...e.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 ? e.hours0 : 0 };
+      equipped = { id: e.id, kg: [...e.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 ? e.hours0 : 0, ...diaryOf(e.diary) };
     } else warnings.push('La corda montata salvata non esiste più o non è valida: ho ripristinato quella iniziale.');
   }
   const ids = (v, dflt) => (Array.isArray(v) ? uniq(v.filter((x) => isStr(x) && known.has(x))) : dflt);
@@ -819,7 +957,7 @@ function sanitizeState(raw, defaults, knownIds) {
   const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
     .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
   const lives = (Array.isArray(obj.lives) ? obj.lives : []).filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && isStr(l.from) && isStr(l.to) && Array.isArray(l.kg))
-    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '' }));
+    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
   return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
 }
 
@@ -843,6 +981,26 @@ function joinState(core, sessions, lives) {
   const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
   const { sessions: _s, lives: _l, ...rest } = core || {};
   return { ...rest, sessions: merge(old('sessions'), sessions, 'ts').sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
+}
+
+// ---------- diario: prove e verdetto ----------
+// Cambia il diario della montata ('current') o di una vita chiusa (lid); una vita sconosciuta non cambia nulla.
+function updateDiary(state, target, fn) {
+  if (target === 'current') return { ...state, equipped: { ...state.equipped, diary: fn(state.equipped.diary || emptyDiary()) } };
+  if (!state.lives.some((l) => l.lid === target)) return state;
+  return { ...state, lives: state.lives.map((l) => (l.lid === target ? { ...l, diary: fn(l.diary || emptyDiary()) } : l)) };
+}
+
+// Le prove dell'utente: la montata per prima, poi le corde finite dalla più recente.
+function trialsOf(state) {
+  const cur = { lid: 'current', id: state.equipped.id, kg: state.equipped.kg, from: state.equipped.since, to: '', hours: equippedHours(state), reason: '', diary: state.equipped.diary };
+  const past = [...state.lives].sort(byFrom).reverse().map((l) => ({ lid: l.lid, id: l.id, kg: l.kg, from: l.from, to: l.to, hours: l.hours, reason: l.reason, diary: l.diary }));
+  return [cur, ...past];
+}
+
+// «Ricomprerei»: sì -> preferita, no -> non gradita; forse e nessun verdetto non cambiano nulla. I voti per categoria non toccano mai le preferite.
+function applyVerdict(state, stringId, verdict) {
+  return verdict === 'si' ? setPreference(state, stringId, 'liked') : verdict === 'no' ? setPreference(state, stringId, 'disliked') : state;
 }
 
 // Salvataggio dello stato. Con `db`: documenti separati nella raccolta personale data/users/<id> — `state` (montata, preferite),

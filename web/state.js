@@ -1,8 +1,11 @@
 // Stato dell'utente (montata, preferite, ore, corde finite): funzioni pure che restituiscono nuovi oggetti.
+import { sanitizeDiary, emptyDiary } from './diary.js';
+
 const isStr = (v) => typeof v === 'string';
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const isDate = (v) => isStr(v) && !Number.isNaN(Date.parse(v));
 const uniq = (xs) => [...new Set(xs)];
+const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d } : {}; };
 
 export const STATE_VERSION = 2;
 // ID dei documenti db: lettere, cifre e _ - . ~ : @ + (nessuna barra né spazio)
@@ -35,7 +38,7 @@ export const removeSession = (state, ts) => ({ ...state, sessions: state.session
 export const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
 
 export function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()) }) {
-  const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note };
+  const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note, ...(state.equipped.diary ? { diary: state.equipped.diary } : {}) };
   return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
 }
 
@@ -79,7 +82,7 @@ export function sanitizeState(raw, defaults, knownIds) {
   let equipped = base.equipped;
   if (e !== undefined) {
     if (e && isStr(e.id) && known.has(e.id) && Array.isArray(e.kg) && e.kg.length === 2 && e.kg.every(isNum) && isDate(e.since)) {
-      equipped = { id: e.id, kg: [...e.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 ? e.hours0 : 0 };
+      equipped = { id: e.id, kg: [...e.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 ? e.hours0 : 0, ...diaryOf(e.diary) };
     } else warnings.push('La corda montata salvata non esiste più o non è valida: ho ripristinato quella iniziale.');
   }
   const ids = (v, dflt) => (Array.isArray(v) ? uniq(v.filter((x) => isStr(x) && known.has(x))) : dflt);
@@ -88,7 +91,7 @@ export function sanitizeState(raw, defaults, knownIds) {
   const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
     .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
   const lives = (Array.isArray(obj.lives) ? obj.lives : []).filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && isStr(l.from) && isStr(l.to) && Array.isArray(l.kg))
-    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '' }));
+    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
   return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
 }
 
@@ -112,4 +115,24 @@ export function joinState(core, sessions, lives) {
   const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
   const { sessions: _s, lives: _l, ...rest } = core || {};
   return { ...rest, sessions: merge(old('sessions'), sessions, 'ts').sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
+}
+
+// ---------- diario: prove e verdetto ----------
+// Cambia il diario della montata ('current') o di una vita chiusa (lid); una vita sconosciuta non cambia nulla.
+export function updateDiary(state, target, fn) {
+  if (target === 'current') return { ...state, equipped: { ...state.equipped, diary: fn(state.equipped.diary || emptyDiary()) } };
+  if (!state.lives.some((l) => l.lid === target)) return state;
+  return { ...state, lives: state.lives.map((l) => (l.lid === target ? { ...l, diary: fn(l.diary || emptyDiary()) } : l)) };
+}
+
+// Le prove dell'utente: la montata per prima, poi le corde finite dalla più recente.
+export function trialsOf(state) {
+  const cur = { lid: 'current', id: state.equipped.id, kg: state.equipped.kg, from: state.equipped.since, to: '', hours: equippedHours(state), reason: '', diary: state.equipped.diary };
+  const past = [...state.lives].sort(byFrom).reverse().map((l) => ({ lid: l.lid, id: l.id, kg: l.kg, from: l.from, to: l.to, hours: l.hours, reason: l.reason, diary: l.diary }));
+  return [cur, ...past];
+}
+
+// «Ricomprerei»: sì -> preferita, no -> non gradita; forse e nessun verdetto non cambiano nulla. I voti per categoria non toccano mai le preferite.
+export function applyVerdict(state, stringId, verdict) {
+  return verdict === 'si' ? setPreference(state, stringId, 'liked') : verdict === 'no' ? setPreference(state, stringId, 'disliked') : state;
 }
