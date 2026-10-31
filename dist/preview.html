@@ -438,6 +438,24 @@ dialog#sheet { overscroll-behavior: contain; }
 .sheet-actions { position: sticky; bottom: 0; z-index: 2; display: flex; gap: 8px; padding: 10px 0 calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--surface); border-top: 1px solid var(--line); margin-top: 4px; }
 .sheet-actions .btn.primary { flex: 1; }
 
+/* navigazione corta da telefono */
+.filters { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px; }
+.filters > summary { font-weight: 600; min-height: 36px; display: flex; align-items: center; }
+.filters[open] > .chips, .filters[open] > .controls { margin-top: 8px; }
+.sync .dot { font-size: .9rem; }
+@media (max-width: 760px) {
+  .bed, .profile-box { display: none; }
+  header.top { gap: 0; }
+  .brandline { gap: 8px; min-height: 44px; }
+  h1 { font-size: 1.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .guide-btn { min-height: 40px; padding: 4px 12px; }
+  .sync .t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .sync { font-size: 1rem; }
+  .wrap { gap: 12px; padding-block: 8px calc(var(--nav-h) + 24px + env(safe-area-inset-bottom, 0px)); }
+  .section-head h2 { font-size: 1.25rem; }
+}
+@media (max-width: 430px) { .crow2 .r2 { gap: 8px; } .crow2 .m b { font-size: .82rem; } .crow2 .m em { font-size: .66rem; } }
+
 </style>
 
 <div class="wrap">
@@ -471,20 +489,25 @@ dialog#sheet { overscroll-behavior: contain; }
   <main>
     <section id="scegli" class="panel" role="tabpanel" aria-labelledby="tab-scegli">
       <button class="strip" id="strip" type="button" data-goto="montata" aria-label="Apri la schermata Montata"></button>
+      <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="q" placeholder="Cerca: Hyper-G, Toro, Zero…"></label>
       <details class="myrefs" id="myrefs-box"><summary id="myrefs-sum">Le tue corde</summary><div class="chips" id="myrefs" aria-label="Le tue preferite e non gradite"></div></details>
       <div class="callout" id="no-refs" hidden><p><b>Segna almeno una corda «mi piace»</b> (★ su una scheda) per calcolare il pairing: senza una preferita non c'è niente con cui confrontare.</p></div>
-      <div class="section-head"><h2>Le 3 da provare</h2><p class="muted small" id="top3-note"></p></div>
-      <div class="top3" id="top3"></div>
-      <div class="section-head"><h2>Tutte le altre</h2></div>
-      <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="q" placeholder="Cerca: Hyper-G, Toro, Zero…"></label>
-      <div class="chips" id="chips" role="group" aria-label="Filtra per marca"></div>
-      <div class="controls">
-        <label>Calibro <select id="f-gauge"><option value="">Tutti</option></select></label>
-        <label>Forma <select id="f-shape"><option value="">Tutte</option></select></label>
-        <label class="toggle"><input type="checkbox" id="only-target" checked> Solo le marche che stai valutando</label>
-        <label class="toggle"><input type="checkbox" id="only-measured"> Solo dati misurati</label>
-        <label class="toggle"><input type="checkbox" id="only-good"> Pairing Buono o meglio</label>
+      <div id="top3-wrap">
+        <div class="section-head"><h2>Le 3 da provare</h2><p class="muted small" id="top3-note"></p></div>
+        <div class="top3" id="top3"></div>
       </div>
+      <div class="section-head"><h2 id="list-title">Tutte le altre</h2></div>
+      <details class="filters" id="filters">
+        <summary>Filtri</summary>
+        <div class="chips" id="chips" role="group" aria-label="Filtra per marca"></div>
+        <div class="controls">
+          <label>Calibro <select id="f-gauge"><option value="">Tutti</option></select></label>
+          <label>Forma <select id="f-shape"><option value="">Tutte</option></select></label>
+          <label class="toggle"><input type="checkbox" id="only-target" checked> Solo le marche che stai valutando</label>
+          <label class="toggle"><input type="checkbox" id="only-measured"> Solo dati misurati</label>
+          <label class="toggle"><input type="checkbox" id="only-good"> Pairing Buono o meglio</label>
+        </div>
+      </details>
       <p class="muted small" id="list-count"></p>
       <div class="list" id="list"></div>
       <button class="btn" type="button" id="more" hidden>Mostra altre</button>
@@ -542,15 +565,12 @@ dialog#sheet { overscroll-behavior: contain; }
       <div class="section-head"><h2>La tua corda montata</h2></div>
       <div id="mine-summary"></div>
       <div class="wear-box" id="wear"></div>
-      <div class="log-box" id="ai-wear-box" hidden>
-        <h3>Parere AI sull'usura</h3>
-        <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
-        <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
-        <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
-      </div>
-      <p class="callout small" id="persist-note" role="status" hidden></p>
       <div class="log-box">
-        <h3>Segna le ore di gioco</h3>
+        <h3>Segna una sessione</h3>
+        <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
+          <button type="button" class="chipbtn" data-day="0" aria-pressed="true">Oggi</button>
+          <button type="button" class="chipbtn" data-day="1" aria-pressed="false">Ieri</button>
+        </div>
         <div class="card-actions">
           <button class="btn" type="button" data-add-hours="1">+1 h</button>
           <button class="btn" type="button" data-add-hours="1.5">+1,5 h</button>
@@ -565,6 +585,13 @@ dialog#sheet { overscroll-behavior: contain; }
         <p class="gaps" id="hours-error" role="alert" hidden></p>
         <ul class="sessions" id="sessions"></ul>
       </div>
+      <div class="log-box" id="ai-wear-box" hidden>
+        <h3>Parere AI sull'usura</h3>
+        <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
+        <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
+        <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
+      </div>
+      <p class="callout small" id="persist-note" role="status" hidden></p>
       <div class="card-actions">
         <button class="btn primary" type="button" id="equip-btn">Cambia corda</button>
         <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
@@ -1475,11 +1502,15 @@ function renderChoose(ctx) {
   renderStrip(ctx);
   renderRefs(ctx);
   const top = topIds(ctx);
-  $('#top3-note').innerHTML = `Solo corde con spin misurato o da calibro gemello. <b>Il pairing (0–100) dice quanto somiglia alla tua preferita più vicina: non è un voto.</b> <button class="q" type="button" data-method="pairing" aria-label="Come si calcola">?</button>`;
+  $('#top3-note').innerHTML = `Spin misurato o da gemello. <b>Il pairing (0–100) non è un voto.</b> <button class="q" type="button" data-method="pairing" aria-label="Come si calcola">?</button>`;
   $('#top3').innerHTML = top.map((id, i) => compactRowHtml(ctx.BY_ID[id], ctx.cardCtx(ctx.BY_ID[id], { why: true, rankNum: i + 1 }))).join('');
   const brands = [...new Set(ctx.ALL.filter((r) => !chooseFilters.target || r.is_target).map((r) => r.brand))].sort();
   $('#chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${chooseFilters.brand === b}">${esc(b)}</button>`).join('');
   const searching = chooseFilters.q.trim() !== '';
+  $('#top3-wrap').hidden = searching;
+  $('#list-title').textContent = searching ? 'Risultati' : 'Tutte le altre';
+  const active = [chooseFilters.brand, chooseFilters.gauge, chooseFilters.shape, !chooseFilters.target, chooseFilters.measured, chooseFilters.good].filter(Boolean).length;
+  $('#filters summary').textContent = active ? `Filtri (${active})` : 'Filtri';
   const rows = ctx.ALL.filter((r) => passesFilters(ctx, r, chooseFilters) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
     .sort((a, b) => pairScore(ctx, b) - pairScore(ctx, a) || nameOf(a).localeCompare(nameOf(b)));
   $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => compactRowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';
@@ -1652,6 +1683,13 @@ function mineToast(msg, label, onAction) {
   mineToastTimer = setTimeout(() => { t.hidden = true; }, 10000);
 }
 
+const mineDayStr = (back) => { const d = new Date(); d.setDate(d.getDate() - back); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
+// Oggi / Ieri sono scorciatoie per il campo data, che resta (e resta impostato) per le sessioni successive.
+function mineSyncDayChips() {
+  const v = $('#hours-date').value;
+  document.querySelectorAll('#day-chips [data-day]').forEach((b) => b.setAttribute('aria-pressed', String(v === mineDayStr(Number(b.dataset.day)))));
+}
+
 function mineError(msg) { const e = $('#hours-error'); e.textContent = msg || ''; e.hidden = !msg; }
 
 function wearHtml(ctx) {
@@ -1668,9 +1706,10 @@ function wearHtml(ctx) {
 
 function renderMine(ctx) {
   const s = ctx.state(), eq = ctx.equippedRec();
-  $('#mine-summary').innerHTML = rowHtml(eq, ctx.cardCtx(eq));
+  $('#mine-summary').innerHTML = compactRowHtml(eq, ctx.cardCtx(eq));
   $('#wear').innerHTML = wearHtml(ctx);
   if (!$('#hours-date').value) $('#hours-date').value = mineToday();
+  mineSyncDayChips();
   const mine = s.sessions.filter((x) => x.life === s.equipped.since).sort((a, b) => b.date.localeCompare(a.date) || b.ts.localeCompare(a.ts));
   $('#sessions').innerHTML = mine.length ? mine.map((x) => (x.ts === mineEditing
     ? `<li data-ts="${esc(x.ts)}"><form><label>Ore <input name="hours" value="${esc(fmtN(x.hours))}" inputmode="decimal" size="5"></label><label>Nota <input name="note" value="${esc(x.note)}"></label><button class="btn primary" type="button" data-save-ts>Salva</button><button class="btn" type="button" data-cancel-edit>Annulla</button></form></li>`
@@ -1738,6 +1777,8 @@ function confirmEquip(ctx) {
 
 function initMine(ctx) {
   ctx.onEquip = (id) => openEquip(ctx, id);
+  $('#day-chips').addEventListener('click', (e) => { const b = e.target.closest('[data-day]'); if (b) { $('#hours-date').value = mineDayStr(Number(b.dataset.day)); mineSyncDayChips(); } });
+  $('#hours-date').addEventListener('input', mineSyncDayChips);
   $('#hours-add').addEventListener('click', () => addHours(ctx, $('#hours-input').value, $('#hours-note').value.trim()));
   $('#hours-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') addHours(ctx, e.target.value, $('#hours-note').value.trim()); });
   $('#montata').addEventListener('click', (e) => {
@@ -1989,6 +2030,7 @@ function renderMethod(ctx) {
   const sec = (key, title, body) => `<section class="callout" id="m-${key}"><h3>${title}</h3>${body}</section>`;
   const removed = (D.removed_discontinued || []).map((x) => `${esc(x.name)} <span class="muted">(${esc(x.reason || '')}${x.successor ? `, ora ${esc(x.successor)}` : ''})</span>`).join(' · ');
   $('#metodo').innerHTML = `<h2>Come leggere il banco</h2>
+    <p class="muted"><b>Il tuo profilo:</b> Wilson Blade 100 v9 (16×19), giocatore di club tutto campo con rotazioni e colpi piatti, tensione sotto 50 lbs, 4–5 h/settimana, corde poly 1,18–1,30 mm.</p>
     <p>Ogni corda ha fino a quattro fonti: il test Ektelon del tuo file, il laboratorio di Tennis Warehouse University (TWU), Racketpedia e le recensioni dei tester. Valori, pairing e classifiche usano <b>solo dati di laboratorio</b>: le recensioni restano nella scheda come riferimento e non spostano nulla. Il parere AI, quando c'è, è sempre separato e dichiarato.</p>
     <p><b>Marcatori:</b> ● misurato · ◐ stimato (con la fonte nel suggerimento) · ○ dato mancante, con il motivo.</p>
     ${sec('pairing', 'Pairing Blade 100', `<p>È un numero 0–100 che dice quanto la corda somiglia, sulle misure di laboratorio, alla <b>corda «mi piace» più vicina</b>. Non è un voto di qualità. Per ogni dimensione (rigidità, tenuta, controllo, elasticità, spin) si confronta la posizione tra le corde del banco con quella della preferita: entro 5 punti vale 100, poi scende fino a 0 a 20 punti di distanza. Per tenuta e spin, valere di più non penalizza.</p>
@@ -2049,10 +2091,10 @@ const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, card
   wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistError: () => (persist ? persist.lastError : null), persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
   update, openSheet, showTab, refresh: () => { renderAll(); if (dlg.open && sheetId) openSheet(sheetId); }, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
 
-const SYNC_TEXT = { sync: ['● Sincronizzato', 'ok'], local: ['○ Solo su questo browser', 'local'], error: ['⚠ Errore di salvataggio', 'err'] };
+const SYNC_TEXT = { sync: ['●', 'Sincronizzato', 'ok'], local: ['○', 'Solo su questo browser', 'local'], error: ['⚠', 'Errore di salvataggio', 'err'] };
 function renderSyncBadge() {
   const b = $('#sync-badge'), t = SYNC_TEXT[persist ? persist.status : 'pending'];
-  b.textContent = t ? t[0] : ''; b.className = `sync ${t ? t[1] : ''}`; b.title = persist && persist.lastError ? persist.lastError : '';
+  b.innerHTML = t ? `<span class="dot">${t[0]}</span> <span class="t">${t[1]}</span>` : ''; b.className = `sync ${t ? t[2] : ''}`; b.title = persist && persist.lastError ? persist.lastError : (t ? t[1] : '');
 }
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {

@@ -41,11 +41,15 @@ export function renderChoose(ctx) {
   renderStrip(ctx);
   renderRefs(ctx);
   const top = topIds(ctx);
-  $('#top3-note').innerHTML = `Solo corde con spin misurato o da calibro gemello. <b>Il pairing (0–100) dice quanto somiglia alla tua preferita più vicina: non è un voto.</b> <button class="q" type="button" data-method="pairing" aria-label="Come si calcola">?</button>`;
+  $('#top3-note').innerHTML = `Spin misurato o da gemello. <b>Il pairing (0–100) non è un voto.</b> <button class="q" type="button" data-method="pairing" aria-label="Come si calcola">?</button>`;
   $('#top3').innerHTML = top.map((id, i) => compactRowHtml(ctx.BY_ID[id], ctx.cardCtx(ctx.BY_ID[id], { why: true, rankNum: i + 1 }))).join('');
   const brands = [...new Set(ctx.ALL.filter((r) => !chooseFilters.target || r.is_target).map((r) => r.brand))].sort();
   $('#chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${chooseFilters.brand === b}">${esc(b)}</button>`).join('');
   const searching = chooseFilters.q.trim() !== '';
+  $('#top3-wrap').hidden = searching;
+  $('#list-title').textContent = searching ? 'Risultati' : 'Tutte le altre';
+  const active = [chooseFilters.brand, chooseFilters.gauge, chooseFilters.shape, !chooseFilters.target, chooseFilters.measured, chooseFilters.good].filter(Boolean).length;
+  $('#filters summary').textContent = active ? `Filtri (${active})` : 'Filtri';
   const rows = ctx.ALL.filter((r) => passesFilters(ctx, r, chooseFilters) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
     .sort((a, b) => pairScore(ctx, b) - pairScore(ctx, a) || nameOf(a).localeCompare(nameOf(b)));
   $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => compactRowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';

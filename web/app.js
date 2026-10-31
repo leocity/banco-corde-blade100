@@ -43,10 +43,10 @@ const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, card
   wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistError: () => (persist ? persist.lastError : null), persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
   update, openSheet, showTab, refresh: () => { renderAll(); if (dlg.open && sheetId) openSheet(sheetId); }, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
 
-const SYNC_TEXT = { sync: ['● Sincronizzato', 'ok'], local: ['○ Solo su questo browser', 'local'], error: ['⚠ Errore di salvataggio', 'err'] };
+const SYNC_TEXT = { sync: ['●', 'Sincronizzato', 'ok'], local: ['○', 'Solo su questo browser', 'local'], error: ['⚠', 'Errore di salvataggio', 'err'] };
 function renderSyncBadge() {
   const b = $('#sync-badge'), t = SYNC_TEXT[persist ? persist.status : 'pending'];
-  b.textContent = t ? t[0] : ''; b.className = `sync ${t ? t[1] : ''}`; b.title = persist && persist.lastError ? persist.lastError : '';
+  b.innerHTML = t ? `<span class="dot">${t[0]}</span> <span class="t">${t[1]}</span>` : ''; b.className = `sync ${t ? t[2] : ''}`; b.title = persist && persist.lastError ? persist.lastError : (t ? t[1] : '');
 }
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {

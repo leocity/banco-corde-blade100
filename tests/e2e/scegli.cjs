@@ -26,6 +26,7 @@ test('scegli: nessun NaN/undefined/null nel testo', async () => {
 
 test('scegli: filtro marca e solo misurate', async () => {
   const { page, ctx } = await openPage();
+  await page.locator('#filters summary').click();
   const brand = await page.locator('#chips button[data-brand]').first().getAttribute('data-brand');
   await page.locator(`#chips button[data-brand="${brand}"]`).click();
   const names = await page.$$eval('#list .nm', (els) => els.map((e) => e.textContent));
@@ -67,6 +68,7 @@ test('scegli: le 3 da provare sono delle marche valutate; il filtro si toglie', 
   const { page, ctx } = await openPage();
   const flags = await page.evaluate(() => { const D = window.STRINGS_DATA.strings; return [...document.querySelectorAll('#top3 .crow2wrap')].map((e) => D.find((r) => r.id === e.dataset.id).is_target); });
   assert.deepEqual(flags, [true, true, true]);
+  await page.locator('#filters summary').click();
   const before = await page.locator('#chips [data-brand]').count();
   await page.locator('#only-target').uncheck();
   assert.ok((await page.locator('#chips [data-brand]').count()) > before);
@@ -77,7 +79,7 @@ test('scegli: le preferite stanno in un riquadro chiuso e la prima scelta si ved
   const { page, ctx } = await openPage({ width: 390, height: 844 });
   assert.equal(await page.locator('#myrefs-box').evaluate((e) => e.open), false);
   const top = await page.locator('#top3 .crow2wrap').first().boundingBox();
-  assert.ok(top.y < 450, `la prima scheda inizia a ${top.y}px: deve stare nella prima schermata`);
+  assert.ok(top.y < 400, `la prima scheda inizia a ${top.y}px: deve stare nella prima schermata`);
   await ctx.close();
 });
 

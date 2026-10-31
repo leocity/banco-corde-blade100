@@ -6,6 +6,7 @@ export function renderMethod(ctx) {
   const sec = (key, title, body) => `<section class="callout" id="m-${key}"><h3>${title}</h3>${body}</section>`;
   const removed = (D.removed_discontinued || []).map((x) => `${esc(x.name)} <span class="muted">(${esc(x.reason || '')}${x.successor ? `, ora ${esc(x.successor)}` : ''})</span>`).join(' · ');
   $('#metodo').innerHTML = `<h2>Come leggere il banco</h2>
+    <p class="muted"><b>Il tuo profilo:</b> Wilson Blade 100 v9 (16×19), giocatore di club tutto campo con rotazioni e colpi piatti, tensione sotto 50 lbs, 4–5 h/settimana, corde poly 1,18–1,30 mm.</p>
     <p>Ogni corda ha fino a quattro fonti: il test Ektelon del tuo file, il laboratorio di Tennis Warehouse University (TWU), Racketpedia e le recensioni dei tester. Valori, pairing e classifiche usano <b>solo dati di laboratorio</b>: le recensioni restano nella scheda come riferimento e non spostano nulla. Il parere AI, quando c'è, è sempre separato e dichiarato.</p>
     <p><b>Marcatori:</b> ● misurato · ◐ stimato (con la fonte nel suggerimento) · ○ dato mancante, con il motivo.</p>
     ${sec('pairing', 'Pairing Blade 100', `<p>È un numero 0–100 che dice quanto la corda somiglia, sulle misure di laboratorio, alla <b>corda «mi piace» più vicina</b>. Non è un voto di qualità. Per ogni dimensione (rigidità, tenuta, controllo, elasticità, spin) si confronta la posizione tra le corde del banco con quella della preferita: entro 5 punti vale 100, poi scende fino a 0 a 20 punti di distanza. Per tenuta e spin, valere di più non penalizza.</p>

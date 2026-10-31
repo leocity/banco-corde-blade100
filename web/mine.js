@@ -1,6 +1,6 @@
 // Schermata Montata: corda montata, ore di gioco, usura, cambio corda e storico.
 import { $, esc, fmt, fmtN, fullName, nameOf } from './format.js';
-import { rowHtml } from './cards.js';
+import { compactRowHtml } from './cards.js';
 import { changeString, addSession, removeSession, editSession, parseHours, tensionFor } from './state.js';
 
 const WEAR_CLASS = { Fresca: 'ottimo', 'In uso': 'buono', 'Da controllare': 'attenzione', 'Da cambiare': 'poco' };
@@ -20,6 +20,13 @@ function mineToast(msg, label, onAction) {
   mineToastTimer = setTimeout(() => { t.hidden = true; }, 10000);
 }
 
+const mineDayStr = (back) => { const d = new Date(); d.setDate(d.getDate() - back); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
+// Oggi / Ieri sono scorciatoie per il campo data, che resta (e resta impostato) per le sessioni successive.
+function mineSyncDayChips() {
+  const v = $('#hours-date').value;
+  document.querySelectorAll('#day-chips [data-day]').forEach((b) => b.setAttribute('aria-pressed', String(v === mineDayStr(Number(b.dataset.day)))));
+}
+
 function mineError(msg) { const e = $('#hours-error'); e.textContent = msg || ''; e.hidden = !msg; }
 
 function wearHtml(ctx) {
@@ -36,9 +43,10 @@ function wearHtml(ctx) {
 
 export function renderMine(ctx) {
   const s = ctx.state(), eq = ctx.equippedRec();
-  $('#mine-summary').innerHTML = rowHtml(eq, ctx.cardCtx(eq));
+  $('#mine-summary').innerHTML = compactRowHtml(eq, ctx.cardCtx(eq));
   $('#wear').innerHTML = wearHtml(ctx);
   if (!$('#hours-date').value) $('#hours-date').value = mineToday();
+  mineSyncDayChips();
   const mine = s.sessions.filter((x) => x.life === s.equipped.since).sort((a, b) => b.date.localeCompare(a.date) || b.ts.localeCompare(a.ts));
   $('#sessions').innerHTML = mine.length ? mine.map((x) => (x.ts === mineEditing
     ? `<li data-ts="${esc(x.ts)}"><form><label>Ore <input name="hours" value="${esc(fmtN(x.hours))}" inputmode="decimal" size="5"></label><label>Nota <input name="note" value="${esc(x.note)}"></label><button class="btn primary" type="button" data-save-ts>Salva</button><button class="btn" type="button" data-cancel-edit>Annulla</button></form></li>`
@@ -106,6 +114,8 @@ function confirmEquip(ctx) {
 
 export function initMine(ctx) {
   ctx.onEquip = (id) => openEquip(ctx, id);
+  $('#day-chips').addEventListener('click', (e) => { const b = e.target.closest('[data-day]'); if (b) { $('#hours-date').value = mineDayStr(Number(b.dataset.day)); mineSyncDayChips(); } });
+  $('#hours-date').addEventListener('input', mineSyncDayChips);
   $('#hours-add').addEventListener('click', () => addHours(ctx, $('#hours-input').value, $('#hours-note').value.trim()));
   $('#hours-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') addHours(ctx, e.target.value, $('#hours-note').value.trim()); });
   $('#montata').addEventListener('click', (e) => {
