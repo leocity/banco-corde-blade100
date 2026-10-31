@@ -300,3 +300,27 @@ test('diario: esporta il diario in CSV solo con downloads, una riga per prova e 
   assert.match(saved.data, /"a, ""b"""/);
   await o.ctx.close();
 });
+
+test('diario: nel dialogo dei voti di una corda finita i cinque tondi stanno dentro lo schermo a 390 px', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844 });
+  await goMontata(page);
+  await page.locator('#equip-btn').click();
+  await page.locator('#eq-ok').click();
+  await page.locator('#history [data-past-open]').first().click();
+  await page.waitForSelector('#past-dialog[open] .rate');
+  const bad = await page.evaluate(() => [...document.querySelectorAll('#past-diary .rb')].filter((b) => { const r = b.getBoundingClientRect(); return r.right > window.innerWidth - 4 || r.width < 40 || r.height < 40; }).length);
+  assert.equal(bad, 0, 'tondi tagliati o sotto i 40 px');
+  assert.ok(await page.evaluate(() => { const d = document.getElementById('past-dialog'); return d.scrollWidth <= d.clientWidth; }));
+  await ctx.close();
+});
+
+test('diario: le righe di «Le tue prove» non hanno altezze vuote', async () => {
+  const lives = [life('H1', EQ_ID, 22.5, { end: { spin: 4 } }), life('H22', EQ_ID, 23.5, { end: { spin: 3 } })];
+  const { page, ctx } = await openPage({ width: 390, height: 844, storage: { 'banco-corde:state': stateJson(lives) } });
+  await goMontata(page);
+  await page.locator('#mine-summary [data-open]').first().click();
+  await page.waitForSelector('#sheet-body .trials-sec li');
+  const hs = await page.$$eval('#sheet-body .trials-sec li', (els) => els.map((e) => e.getBoundingClientRect().height));
+  assert.ok(hs.every((h) => h < 110), `altezze righe: ${hs}`);
+  await ctx.close();
+});

@@ -163,7 +163,7 @@ Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostitui
 
 ## Stato v3 (2026-10-30)
 
-Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (390 e 1280 px). Verifica: 189 test Python, 112 test JS, 55 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact è aggiornato alla v3 (2026-10-31, privato, runtime 0.2.96, capability `sample`, `db`, `user`, `downloads`).
+Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (sostituiti dai v4, vedi sotto) (390 e 1280 px). Verifica: 189 test Python, 112 test JS, 55 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact è aggiornato alla v3 (2026-10-31, privato, runtime 0.2.96, capability `sample`, `db`, `user`, `downloads`).
 
 ### I sette problemi dell'audit del 2026-10-30
 
@@ -201,6 +201,29 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 - Rinominare o togliere i campi derivati non più usati (A8).
 - Se la pagina viene aperta senza `db` (anteprima, non autenticato), lo stato è solo nel browser: lo dice la schermata Montata.
 - Controllo dal vivo di `db` (le ore restano dopo il reload e sul telefono): non verificabile da qui perché i dati per utente sono privati anche dal proprietario; verificate solo regole di default e versione live.
+
+## Stato v4 (2026-10-31): sincronizzazione, schede compatte, diario
+
+Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 189 test Python, 171 test JS, 92 test Playwright, tutti verdi.
+
+### Le segnalazioni dell'utente del 2026-10-31
+
+| Segnalazione | Stato | Come |
+|---|---|---|
+| «Ho aggiornato sul telefono e al PC non viene misurata tutta la roba messa nella corda montata» | **Corretto nel codice, non verificabile dal vivo** | Causa: un unico documento letto una sola volta all'apertura, quindi il PC non vedeva ciò che il telefono scriveva dopo e una pagina vecchia poteva sovrascrivere. Ora: un documento per sessione e per corda finita, ascolto in tempo reale, scritture solo delle differenze, migrazione del vecchio documento (provata con la forma reale dell'utente: 10 sessioni, 17,5 ore), badge di stato. Provato con un `db` simulato e un secondo dispositivo simulato; **non** con il `db` reale, i cui dati privati non si leggono da qui. |
+| «Non trovo il voto da inserire / fa schifo come vengono registrati i dati» | **Risolto** | Il diario è in Montata, sotto l'usura, con i voti a tocco da 44 px per 8 categorie in 3 momenti; si salva a ogni tocco. Verdetto «ricomprerei» che aggiorna le preferite con annulla. |
+| «L'app si bugga quando apro una nuova scheda» | **Risolto** | La scheda ha tessere, sezioni richiudibili, barra azioni fissa, sfondo fermo; test a 390 px su decine di corde (nessuna etichetta sovrapposta, nessuno scroll orizzontale). |
+| «Le schede occupano tutto lo schermo, difficilissimo navigare» | **Risolto** | Righe compatte (nome, pairing, 4 valori) con 8+ corde per schermata; intestazione corta; ricerca in alto; filtri richiudibili con il conteggio. |
+| Votare dopo l'uso, in più momenti | **Fatto** | Primo colpo, metà vita, fine vita; al cambio corda si propone di dare i voti di fine vita; le corde finite si riaprono e si modificano; «Aggiungi prova passata» per ciò che si è provato prima dell'app. |
+
+Altro corretto durante il lavoro: la tenuta di laboratorio era calcolata in due modi diversi (corretta in `pipeline/derive.py`); un'eco sincrona del `db` faceva sparire una sessione; la montata senza voti finiva nel prompt AI come blocco vuoto; i cinque tondi dei voti uscivano dal dialogo a 390 px e le righe di «Le tue prove» avevano 200 px di altezza vuota (ora con test).
+
+### Limiti dichiarati
+
+- I voti sono soggettivi e non cambiano mai punteggi o pairing. Il «Laboratorio contro sensazioni» con poche corde (sotto 8) dice «troppo poche corde per fidarsi»; non appare sotto 5.
+- Il controllo e la potenza confrontati con i voti restano indici costruiti, non misure.
+- La tensione di una corda già finita si vede ma non si modifica dal diario.
+- Il `db` reale non è stato letto da qui: la sincronizzazione tra dispositivi va controllata a mano.
 
 ## C. Priorità consigliate
 

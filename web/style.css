@@ -476,7 +476,13 @@ dialog#past-dialog, dialog#trial-dialog { max-height: 92vh; overflow: auto; }
 #history .btn { min-height: 44px; }
 
 .trials li { flex-direction: column; align-items: flex-start; gap: 2px; }
+.trials li > span { flex: 0 0 auto; }
 .trials-sec .tsent { margin: 6px 0 0; }
 table.labcmp { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 8px 0; }
 table.labcmp th, table.labcmp td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
 table.labcmp thead th { font-size: .75rem; color: var(--fg-2); text-transform: uppercase; letter-spacing: .04em; }
+
+/* voti di una corda finita: senza doppia cornice, per far stare i cinque tondi a 390 px */
+dialog#past-dialog .equip-form { padding: 14px 12px; }
+#past-diary { border: 0; padding: 0; background: transparent; }
+@media (max-width: 430px) { dialog#past-dialog, dialog#trial-dialog, dialog#equip-dialog { width: calc(100vw - 12px); } }

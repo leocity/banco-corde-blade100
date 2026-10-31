@@ -2,7 +2,7 @@
 
 Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v9 (16×19)**, giocatore di club tutto campo con rotazioni, < 50 lbs, 4–5 h/settimana.
 
-- **Pagina pubblicata (Artifact, privata, solo tuo account):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — v3 del 2026-10-31, con `sample`, `db`, `user`, `downloads`. Da telefono: apri il link da loggato e «Aggiungi a schermata Home». Per aggiornarla: `py -m pipeline.build && py -m pipeline.build_page`, poi si ripubblica `dist/preview.html` sullo stesso link.
+- **Pagina pubblicata (Artifact, privata, solo tuo account):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — v4 del 2026-10-31, con `sample`, `db`, `user`, `downloads`. Da telefono: apri il link da loggato e «Aggiungi a schermata Home». Per aggiornarla: `py -m pipeline.build && py -m pipeline.build_page`, poi si ripubblica `dist/preview.html` sullo stesso link.
 - **Corda montata ora:** Re-String Zero 1,23 a 22,5/21,5 kg. **Preferite:** Solinco Confidential 1,25, Toroline O-Toro 1,23. **Non gradite:** Confidential Soft, RPM Blast. Si cambiano dall'app (montata, ★ e ✕ su ogni scheda).
 
 ## Le quattro schermate
@@ -10,7 +10,8 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 - **Scegli:** la montata con ore e usura, le 3 da provare, la lista con filtri (marca, calibro, forma, solo misurate, pairing Buono o meglio) e il riquadro «Valuta una corda che non c'è» (parere AI).
 - **Mappa:** rigidità × spin, tenuta × spin o controllo × spin; scheda al passaggio (al tocco su telefono), filtri, montata e preferite sempre visibili, tabella alternativa.
 - **Banco:** tutte le corde con i valori affiancati e confronto da 2 a 4 corde.
-- **Montata:** corda montata, tensione, registro ore, usura, cambio corda con annulla, storico, esportazione.
+- **Montata:** corda montata, tensione, registro ore, usura, **diario di prova** (voti 1–5 in tre momenti, tag, sensazioni, verdetto «ricomprerei», setup e tensiometro), cambio corda con voti di fine vita e annulla, storico apribile, «Aggiungi prova passata», esportazione dello storico (JSON) e del diario (CSV).
+- **Scheda corda** (da ogni riga): tessere dei 4 valori, azioni sempre raggiungibili, «Le tue prove» con i tuoi voti per tensione. Su telefono le liste sono righe compatte (8+ corde per schermata).
 - Il **Metodo** (pulsante in alto, e il «?» accanto ai valori) spiega come si leggono i numeri.
 
 ## Fonti dei dati
@@ -34,7 +35,8 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 6. **Tensione consigliata:** regola empirica dalla montata (−0,75 kg ogni +15 lb/in di rigidità, al massimo ±2 kg), mostrata come intervallo ±1 kg con l'etichetta «stima». Non validata.
 7. **Usura:** ore giocate / vita attesa. Vita attesa di partenza `8 + 0,12 × tenuta` ore (±25%), 14 ore (±40%) se la tenuta manca: **un'ipotesi non misurata**. Passa alle tue ore reali dopo la prima corda «consumata» (stessa corda) o dopo 3 corde diverse. Fasce: < 40% Fresca, 40–70% In uso, 70–100% Da controllare, > 100% Da cambiare.
 8. **Parere AI** (capability `sample` dell'Artifact): su richiesta, mai automatico; riceve i dati e tutte le descrizioni disponibili; risposta validata, mostrata come testo, etichettata «Parere AI — non misurato» e mai usata in punteggi, top 3, mappa o confronto. Senza la capability (anteprima locale) i pulsanti non compaiono.
-9. **Stato dell'utente** (montata, preferite, ore, corde finite): un documento `db` privato per utente (`data/users/<id>/state`); senza `db` ripiega su `localStorage` e lo dichiara. Esportazione JSON con `downloads`.
+9. **Stato dell'utente** (montata, preferite, ore, corde finite, diario): documenti `db` privati per utente nella raccolta `data/users/<id>` — `state` (montata e preferite), `s-<ts>` (una per sessione di gioco), `l-<lid>` (una per corda finita) — con ascolto in tempo reale e scritture solo delle differenze, così telefono e PC non si sovrascrivono. Il vecchio documento unico si migra da solo. Il badge in alto dice «Sincronizzato», «Solo su questo browser» o «Errore di salvataggio»; senza `db` si ripiega su `localStorage` e lo dichiara. Esportazione JSON e CSV con `downloads`.
+10. **Diario di prova** (`web/diary.js`, `web/diaryui.js`, `web/trials.js`): i voti sono opinioni dell'utente. **Non cambiano mai punteggi, pairing o classifiche**; solo il verdetto «ricomprerei» sì/no aggiorna preferite e non gradite (annullabile). Servono a «Le tue prove» nella scheda, al «Laboratorio contro sensazioni» nel Metodo (correlazione di rango tra i voti di fine vita e le misure, con n; sotto 8 corde dichiarata inaffidabile, visibile da 5) e al parere AI, che le riceve come «le tue sensazioni, opinioni non misure».
 
 ## Comandi
 
@@ -44,8 +46,8 @@ Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, Node 20+ e Playwr
 py -m pip install -r requirements.txt
 tests/run_all.sh                         # ricostruisce la pagina ed esegue pytest, node --test e Playwright
 py -m pytest -q                          # 189 test Python (pipeline, dati finali, build della pagina)
-node --test web/*.test.mjs               # 112 test JS dei moduli puri (pairing, stato, usura, mappa, AI, schede)
-node tests/e2e/ui.cjs                    # 55 test della pagina in Chromium (richiede dist/preview.html)
+node --test web/*.test.mjs               # 171 test JS dei moduli puri (pairing, stato, persistenza, diario, prove, usura, mappa, AI, schede)
+node tests/e2e/ui.cjs                    # 92 test della pagina in Chromium (richiede dist/preview.html)
 node tests/e2e/shots.cjs                 # screenshot in docs/audit/
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
 py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)
@@ -60,13 +62,14 @@ py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/prev
 ## Struttura
 
 - `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), dimensioni e misure Excel (`dims.py`), pairing (`pairing.py`), metriche (`derive.py`), conflitti tra recensioni (`reviews.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
-- `web/` — `template.html`, `style.css` e i moduli JS inlinati da `pipeline/build_page.py` nell'ordine di `MODULES`: `format`, `pairing`, `state` (stato e tensione), `persist` (db/localStorage), `values` e `cards` (righe e schede), `wear`, `ai`, `choose`, `bank`, `mine`, `map`, `method`, `app` (colla). Regole dei moduli: un `import` per riga, solo `export function|const`, nessun nome top-level ripetuto (lo controlla `tests/test_build_page.py`).
+- `web/` — `template.html`, `style.css` e i moduli JS inlinati da `pipeline/build_page.py` nell'ordine di `MODULES`: `format`, `pairing`, `diary` (voti, medie, Spearman, CSV), `state` (stato, tensione, vite, prove), `trials` (prove per corda e laboratorio contro sensazioni), `persist` (db a documenti/localStorage, ascolto in tempo reale), `values` e `cards` (righe e schede), `wear`, `ai`, `choose`, `bank`, `diaryui`, `mine`, `map`, `method`, `app` (colla). Regole dei moduli: un `import` per riga, solo `export function|const`, nessun nome top-level ripetuto (lo controlla `tests/test_build_page.py`).
 - `tests/` — `test_*.py` (Python), `fixtures/pairing_cases.json` (parità Python/JS), `e2e/*.cjs` (Playwright).
-- `docs/AUDIT.md` — audit di dati, racconto dei dati e UI, con lo stato v3; `docs/superpowers/` — specifiche e piani.
+- `docs/AUDIT.md` — audit di dati, racconto dei dati e UI, con lo stato v4 (sincronizzazione, schede compatte, diario); `docs/superpowers/` — specifiche e piani.
 
 ## Lavoro aperto
 
-- Controllare dal vivo che `db` salvi le ore tra dispositivi (segna 1 ora, ricarica, riapri dal telefono): da qui non si può leggere lo stato privato di un utente.
+- **Controllare dal vivo la sincronizzazione** tra telefono e PC (segna 1 ora sul telefono, ricarica, apri sul PC: il badge deve dire «Sincronizzato» e l'ora comparire senza ricaricare): da qui non si può leggere lo stato privato di un utente, quindi il test su `db` reale è solo manuale. Lo stesso vale per i voti del diario.
+- Il diario non può correggere la tensione di una corda già finita (si vede ma non si modifica); i voti non sono ancora confrontati con più racchette (una sola, per scelta).
 - Lista acquisti su Tennis Warehouse Europe da aggiornare (`data/agents/shopping_*.json` riflette la lista precedente).
 - 47 corde con «anno da verificare».
 - Vita attesa da calibrare con le tue corde finite; regola della tensione non validata.
