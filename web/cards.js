@@ -92,11 +92,11 @@ const stripStart = (s) => String(s || '').replace(/Parti da [\d.,/ ]+kg \([\d.,/
 function conflictsHtml(rec) {
   const c = rec.reviews.conflicts || [];
   if (!c.length) return '';
-  return `<section class="sheet-section conflicts"><h3>Tester e dati non concordano</h3>${c.map((x) => {
+  return `<div class="conflicts"><h3>Tester e dati non concordano</h3>${c.map((x) => {
     const [what, words] = CONFLICT_TEXT[x.criterion] || [x.criterion, LEVEL_WORDS];
     const w = (lv) => words[Math.max(0, Math.min(4, Math.round(lv) - 1))];
     return `<p class="conflict"><b>${esc(what)}:</b> I tester dicono <b>${esc(w(x.testers))}</b>, i dati misurano <b>${esc(w(x.lab))}</b> <span class="muted small">(${esc(x.sites.join(', '))})</span></p>`;
-  }).join('')}<p class="muted small">Le recensioni sono opinioni: non entrano in nessun punteggio.</p></section>`;
+  }).join('')}<p class="muted small">Le recensioni sono opinioni: non entrano in nessun punteggio.</p></div>`;
 }
 
 function labHtml(rec, ctx) {
@@ -117,12 +117,14 @@ function labHtml(rec, ctx) {
   const tw = t ? `${t.match !== 'exact' ? `<p class="proxy small">Dato di «${esc(t.twu_name)}» (${t.match === 'proxy' ? 'stesso modello, altro calibro' : 'stessa corda, nome diverso'}).</p>` : ''}${kv([
     ['Rigidità dinamica', f(t.stiffness_lbin, 1, ' lb/in')], ['Perdita di tensione', f(t.tension_loss_pct, 1, ' %')], ['Spin potential', f(t.spin_potential, 1)]])}` : '<p class="muted small">Non presente.</p>';
   const rp = p ? `${kv([['Rigidità statica', f(p.static_stiffness_kgmm, 2, ' kg/mm')]])}<p class="small"><a href="${esc(safeUrl(p.url))}" target="_blank" rel="noopener">Apri su Racketpedia</a></p>` : '<p class="muted small">Non presente.</p>';
-  return `<details class="sheet-section"><summary>Dati di laboratorio completi</summary><div class="src"><h3>Test Ektelon (il tuo file)</h3>${ex}</div><div class="src"><h3>Tennis Warehouse University</h3>${tw}</div><div class="src"><h3>Racketpedia</h3>${rp}</div></details>`;
+  return `<details class="sheet-section lab-sec"><summary>Dati di laboratorio completi</summary><div class="src"><h3>Test Ektelon (il tuo file)</h3>${ex}</div><div class="src"><h3>Tennis Warehouse University</h3>${tw}</div><div class="src"><h3>Racketpedia</h3>${rp}</div></details>`;
 }
 
+// Recensioni dei tester e conflitti con i dati: aperta da sola quando i tester e le misure non concordano.
 function reviewsHtml(rec) {
-  const revs = rec.reviews.sources || [];
-  return `<details class="sheet-section"><summary>Recensioni dei tester (${revs.length} · solo riferimento)</summary>${revs.length ? revs.map((s) => `<div class="rev"><span><b>${esc(s.site)}</b> <span class="muted small">${esc(REVIEW_KIND[s.kind] || s.kind)}</span>${s.gauge_mismatch ? ' <span class="badge" title="La recensione non dichiara il calibro o riguarda un altro calibro">calibro diverso</span>' : ''}</span>${s.note ? `<span class="muted small">${esc(s.note)}</span>` : ''}<a class="small" href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">Fonte</a></div>`).join('') : '<p class="muted small">Nessuna recensione trovata.</p>'}</details>`;
+  const revs = rec.reviews.sources || [], bad = (rec.reviews.conflicts || []).length > 0;
+  const list = revs.length ? revs.map((s) => `<div class="rev"><span><b>${esc(s.site)}</b> <span class="muted small">${esc(REVIEW_KIND[s.kind] || s.kind)}</span>${s.gauge_mismatch ? ' <span class="badge" title="La recensione non dichiara il calibro o riguarda un altro calibro">calibro diverso</span>' : ''}</span>${s.note ? `<span class="muted small">${esc(s.note)}</span>` : ''}<a class="small" href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">Fonte</a></div>`).join('') : '<p class="muted small">Nessuna recensione trovata.</p>';
+  return `<details class="sheet-section reviews-sec"${bad ? ' open' : ''}><summary>Recensioni dei tester: ${bad ? '⚠ non concordano con i dati' : `${revs.length} · solo riferimento`}</summary>${conflictsHtml(rec)}${list}</details>`;
 }
 
 function crosscheckHtml(rec) {
@@ -132,26 +134,36 @@ function crosscheckHtml(rec) {
   return `<details class="sheet-section"><summary>Controllo incrociato: ${esc(VERDICT[c.verdict] || c.verdict)}</summary>${c.note ? `<p class="small">${esc(c.note)}</p>` : ''}<p class="small muted">Fonti: ${(c.sources || []).map((u) => `<a href="${esc(safeUrl(u))}" target="_blank" rel="noopener">${esc(host(u))}</a>`).join(' · ')}</p></details>`;
 }
 
+const TILE_ANCHOR = { spin: 'spin', stiffness: 'rigidita', durability: 'tenuta', control: 'controllo' };
+function tileHtml(v) {
+  let big, small;
+  if (v.mark === 'missing') { big = '—'; small = v.why; }
+  else if (v.key === 'control') { const c = Number((/controllo (\d+)/.exec(v.text) || [])[1]); big = Number.isFinite(c) ? String(c) : '—'; small = Number.isFinite(c) ? `controllo · potenza ${100 - c}` : ''; }
+  else { const parts = v.text.split(' · '); big = parts[0]; small = parts[1] || (v.mark === 'estimated' ? 'stima' : ''); }
+  return `<div class="tile ${v.mark}" data-k="${v.key}"><span class="k">${esc(v.label)} ${qBtn(TILE_ANCHOR[v.key])}</span><b class="big">${esc(big)}</b><span class="s"><span class="mark" title="${esc(v.note || v.why || '')}">${MARK[v.mark]}</span> ${esc(small)}</span></div>`;
+}
+
 export function sheetHtml(rec, ctx) {
-  const vals = Object.fromEntries(rowValues(rec).map((v) => [v.key, v]));
-  const j = rec.derived.judgments || {}, ex = rec.derived.excel_measures, id = esc(rec.id);
-  const val = (v, a) => `${esc(v.text)} <span class="mark" title="${esc(v.note || v.why || '')}">${MARK[v.mark]}</span> ${qBtn(a)}`;
+  const rv = rowValues(rec), j = rec.derived.judgments || {}, ex = rec.derived.excel_measures, id = esc(rec.id);
   const life = ctx.life ? `≈ ${fmt(ctx.life.hours, 0)} ore (${fmt(ctx.life.low, 0)}–${fmt(ctx.life.high, 0)}) · ${esc(ctx.life.basis)} ${qBtn('usura')}` : `— ${qBtn('usura')}`;
   const comfort = j.comfort && j.comfort.word ? `${esc(j.comfort.word)} <span class="badge est">stima dalla rigidità</span>` : '—';
-  const params = kv([
-    ['Spin', val(vals.spin, 'spin')], ['Rigidità', val(vals.stiffness, 'rigidita')], ['Tenuta', val(vals.durability, 'tenuta')], ['Controllo ◄► potenza', val(vals.control, 'controllo')],
-    ['Comfort', comfort], ['Elasticità', ex && ex.elasticity != null ? `${fmt(ex.elasticity * 100, 0)} % recuperato (test Excel)` : '— (manca il test Excel)'],
-    ['Cedimento', ex && ex.cedimento != null ? `${fmt(ex.cedimento, 2)} (test Excel, più alto = cede di più)` : '— (manca il test Excel)'], ['Vita attesa', life]]);
+  const details = kv([
+    ['Comfort', comfort], ['Elasticità', ex && ex.elasticity != null ? `${fmt(ex.elasticity * 100, 0)} % recuperato` : '— (manca il test Excel)'],
+    ['Cedimento', ex && ex.cedimento != null ? `${fmt(ex.cedimento, 2)} (più alto = cede di più)` : '— (manca il test Excel)'], ['Vita attesa', life]])
+    + `<ul class="srcnotes">${rv.map((v) => `<li><b>${esc(v.label)}:</b> ${esc(v.note || v.why || '')}</li>`).join('')}</ul>`;
   const notes = NOTE_PARTS.map(([k, l]) => [l, stripStart(rec.notes && rec.notes[k])]).filter(([, v]) => v).map(([l, v]) => `<div class="note"><h3>${l}</h3><p>${esc(v)}</p></div>`).join('');
-  const delta = deltaHtml(rec, ctx);
   return `<div class="sheet-head"><p class="eyebrow">${rec.is_target ? 'Marca valutata' : 'Concorrente di riferimento'}</p><h2 id="sheet-title">${esc(nameOf(rec))}</h2>`
     + `<p class="muted">${esc(subline(rec))}${rec.shape_source ? ' (forma dal produttore)' : ''}</p><div class="badges">${pairHtml(ctx)} ${warnHtml(rec, ctx)}</div>`
-    + `<p class="pair-reason">${esc(pairingReason(ctx.pairing, ctx.nameOf))} ${qBtn('pairing')}</p>${delta}</div>`
-    + `${params}${tensionHtml(ctx)}${conflictsHtml(rec)}${notes ? `<details class="sheet-section" open><summary>Note dell'incordatore</summary>${notes}</details>` : ''}`
-    + `${labHtml(rec, ctx)}${reviewsHtml(rec)}${crosscheckHtml(rec)}`
+    + `<p class="pair-reason">${esc(pairingReason(ctx.pairing, ctx.nameOf))} ${qBtn('pairing')}</p></div>`
+    + `<div class="tiles">${rv.map(tileHtml).join('')}</div>`
+    + `<div class="sheet-meta">${deltaHtml(rec, ctx)}${tensionHtml(ctx)}</div>`
+    + `<details class="sheet-section details-sec"><summary>Dettagli e stime</summary>${details}</details>`
+    + reviewsHtml(rec)
+    + (notes ? `<details class="sheet-section notes-sec"><summary>Note dell'incordatore</summary>${notes}</details>` : '')
+    + `${labHtml(rec, ctx)}${crosscheckHtml(rec)}`
     + (ctx.ai ? `<section class="sheet-section ai-section"><h3>Parere AI</h3><p class="muted small">Su richiesta, separato dai dati misurati.</p><button class="btn" type="button" data-ai="string" data-ai-id="${id}">Valuta con AI</button><div class="ai-out" data-ai-out="${id}" aria-live="polite">${ctx.aiCachedHtml || ''}</div></section>` : '')
-    + `<div class="card-actions">${ctx.isEquipped ? '' : `<button class="btn primary" type="button" data-equip="${id}">Monta questa</button>`}`
-    + `<button class="btn${ctx.pref === 'liked' ? ' on' : ''}" type="button" data-like="${id}" aria-pressed="${ctx.pref === 'liked'}">★ Mi piace</button>`
-    + `<button class="btn${ctx.pref === 'disliked' ? ' on' : ''}" type="button" data-dislike="${id}" aria-pressed="${ctx.pref === 'disliked'}">✕ Non mi piace</button>`
-    + `<button class="btn" type="button" data-compare="${id}">Aggiungi al confronto</button></div>`;
+    + `<div class="sheet-actions">${ctx.isEquipped ? '' : `<button class="btn primary" type="button" data-equip="${id}">Monta questa</button>`}`
+    + `<button class="btn icon${ctx.pref === 'liked' ? ' on' : ''}" type="button" data-like="${id}" aria-pressed="${ctx.pref === 'liked'}" aria-label="Mi piace">★</button>`
+    + `<button class="btn icon${ctx.pref === 'disliked' ? ' on' : ''}" type="button" data-dislike="${id}" aria-pressed="${ctx.pref === 'disliked'}" aria-label="Non mi piace">✕</button>`
+    + `<button class="btn" type="button" data-compare="${id}">Confronta</button></div>`;
 }

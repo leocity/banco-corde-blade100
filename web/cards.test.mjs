@@ -201,3 +201,38 @@ test('miniValues: la tenuta è una parola breve per ogni livello', () => {
   for (const w of words) assert.ok(['min', 'bassa', 'media', 'alta', 'max'].includes(w), w);
   assert.ok(words.size >= 3);
 });
+
+test('scheda: riepilogo con quattro tessere, sezioni richiudibili, barra azioni in fondo', () => {
+  const r = ALL.find((x) => x.reviews.conflicts.length && x.is_target) || ALL[0];
+  const html = sheetHtml(r, ctxFor(r));
+  assert.equal((html.match(/class="tile /g) || []).length, 4);
+  const pos = (needle) => html.indexOf(needle);
+  assert.ok(pos('class="sheet-head"') < pos('class="tiles"'));
+  assert.ok(pos('class="tiles"') < pos('Dettagli e stime'));
+  assert.ok(pos('Dettagli e stime') < pos("Note dell'incordatore"));
+  assert.ok(pos("Note dell'incordatore") < pos('Dati di laboratorio'));
+  assert.ok(pos('Dati di laboratorio') < pos('class="sheet-actions"'));
+  const actions = html.slice(pos('class="sheet-actions"'));
+  for (const a of ['data-equip', 'data-like', 'data-dislike', 'data-compare']) assert.match(actions, new RegExp(a));
+  assert.equal(html.slice(0, pos('class="sheet-actions"')).includes('data-equip'), false, 'Monta solo nella barra fissa');
+});
+
+test('scheda: la montata non ha il pulsante Monta; i tester in conflitto aprono la sezione recensioni', () => {
+  assert.doesNotMatch(sheetHtml(EQ, ctxFor(EQ)), /data-equip/);
+  const withC = ALL.find((r) => r.reviews.conflicts.length);
+  assert.match(sheetHtml(withC, ctxFor(withC)), /<details class="sheet-section reviews-sec" open>/);
+  const noC = ALL.find((r) => !r.reviews.conflicts.length);
+  assert.match(sheetHtml(noC, ctxFor(noC)), /<details class="sheet-section reviews-sec">/);
+});
+
+test('scheda: le tessere riportano valore, parola e marcatore senza NaN', () => {
+  for (const r of ALL) {
+    const tiles = sheetHtml(r, ctxFor(r)).match(/<div class="tile [\s\S]*?<\/div>/g) || [];
+    assert.equal(tiles.length, 4, r.id);
+    for (const tl of tiles) assert.doesNotMatch(text(tl), BAD, r.id);
+  }
+  const z = sheetHtml(EQ, ctxFor(EQ)).match(/<div class="tile [\s\S]*?<\/div>/g).map(text).join(' | ');
+  assert.match(z, /≈ 7,4/);
+  assert.match(z, /53/);
+  assert.match(z, /potenza 47/);
+});
