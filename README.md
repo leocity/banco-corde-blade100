@@ -2,36 +2,51 @@
 
 Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v9 (16×19)**, giocatore di club tutto campo con rotazioni, < 50 lbs, 4–5 h/settimana.
 
-- **Pagina pubblicata (Artifact):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne
-- **Corde di riferimento:** ★ Solinco Confidential 1.25 (22/21 kg), ★ Toroline O-Toro 1.23 (23/22 kg); ✕ Confidential Soft, ✕ RPM Blast.
+- **Pagina pubblicata (Artifact):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne (versione v2: la v3 non è ancora ripubblicata)
+- **Corda montata ora:** Re-String Zero 1,23 a 22,5/21,5 kg. **Preferite:** Solinco Confidential 1,25, Toroline O-Toro 1,23. **Non gradite:** Confidential Soft, RPM Blast. Si cambiano dall'app (montata, ★ e ✕ su ogni scheda).
+
+## Le quattro schermate
+
+- **Scegli:** la montata con ore e usura, le 3 da provare, la lista con filtri (marca, calibro, forma, solo misurate, pairing Buono o meglio) e il riquadro «Valuta una corda che non c'è» (parere AI).
+- **Mappa:** rigidità × spin, tenuta × spin o controllo × spin; scheda al passaggio (al tocco su telefono), filtri, montata e preferite sempre visibili, tabella alternativa.
+- **Banco:** tutte le corde con i valori affiancati e confronto da 2 a 4 corde.
+- **Montata:** corda montata, tensione, registro ore, usura, cambio corda con annulla, storico, esportazione.
+- Il **Metodo** (pulsante in alto, e il «?» accanto ai valori) spiega come si leggono i numeri.
 
 ## Fonti dei dati
 
 | Fonte | Dove | Cosa |
 |---|---|---|
-| Test Ektelon dell'utente | `data/source/String chart Aug 262026.xlsx` | allungamento/recupero 40–65 lbs, Stiff Index (= indice di cedimento), peso statico 24 h, TL6/TL12 |
+| Test Ektelon dell'utente | `data/source/String chart Aug 262026.xlsx` | allungamento/recupero 40–65 lbs, cedimento (il «Stiff Index»), peso statico 24 h, TL6/TL12 |
 | TWU String Performance Database | `data/raw/twu.html` (snapshot), `data/raw/twu.json` | rigidità dinamica, perdita di tensione, spin potential (51 lbs, swing veloce) |
 | Racketpedia (solo dati gratuiti) | `data/raw/racketpedia.json` (sito, `py -m pipeline.rpedia_site`), `data/agents/rpedia*.json` (agente, verificato sul sito) | rigidità statica kg/mm, con URL della scheda |
-| Recensioni tester | `data/agents/reviews_r*.json` | **solo link informativi**: non entrano in nessun calcolo |
+| Recensioni dei tester | `data/agents/reviews_r*.json`, `data/agents/review_overrides.json` | **solo link e confronto con i dati**: non entrano in nessun calcolo |
 | Catalogo, produzione, anni di uscita | `data/agents/catalog.json`, `prod_p*.json`, `year_p*.json` | completezza marche, fuori produzione, corde uscite prima del 2020 |
-| Correzioni curate | `data/crosscheck_overrides.json`, `data/catalog_fixes.json`, `data/agents/*_overrides.json`, `data/notes.json` | forme dai produttori, esiti del controllo web, note da incordatore scritte a mano |
+| Correzioni curate | `data/crosscheck_overrides.json`, `data/catalog_fixes.json`, `data/agents/*_overrides.json`, `data/notes.json` | forme dai produttori, esiti del controllo web, note da incordatore |
 
-## Regole attuali (decise dall'utente)
+## Regole attuali
 
-1. **Solo dati di laboratorio** per giudizi, punteggio e classifiche (Ektelon, TWU, Racketpedia, gemelli di calibro misurati). Le recensioni restano solo come link.
-2. **Si tolgono le corde uscite prima del 2020 e quelle fuori produzione**; le 4 corde di riferimento restano sempre. Anno non trovato → badge "anno da verificare".
-3. Punteggio profilo (0–100, posizione tra le corde del banco, non un voto): spin 35, tenuta 20, affinità con le preferite 20; serve almeno spin e tenuta, altrimenti nessun punteggio; −15 se la corda somiglia più a una non gradita che alle preferite (soglia 75). Controllo e comfort sono solo *stime dalla rigidità* e non entrano nel punteggio; "potenza" è stata tolta (era 100 − controllo).
-4. Spin: misurato TWU, oppure da gemello di calibro/colore (±0,5), oppure — solo per posizionare la corda in mappa e confronto — **stima da modello** (rigidità + forma esagonale, ridge; in leave-one-out errore medio 0,99 contro 1,19 della media, intervallo ±1,5 all'80%; senza rigidità solo la forma). Le stime da modello non entrano mai nel punteggio né nelle top 3. Nessuna stima dalle recensioni (verificato: non predicono lo spin TWU).
-5. Rigidità (importante per l'uso): misurata TWU > gemello TWU **corretto per il diametro** (≈ +203 lb/in per mm, 20 coppie, errore 9,2 contro 13,4 del copia-incolla; vale anche per le righe TWU proxy, come la Confidential 1,25 derivata dal 1,30) > Racketpedia convertita (±11 lb/in; anche da gemello, corretta per il diametro) > solo calibro (errore 12,6 contro 14,6 della media, ±22). Le stime da gemello/Racketpedia contano nel punteggio come "parente"; quella dal solo calibro no. I giudizi personali dei tester non entrano mai.
+1. **Solo dati di laboratorio** per valori, pairing e classifiche (Ektelon, TWU, Racketpedia, gemelli di calibro misurati). Le recensioni restano link; dove divergono di 2 o più livelli dai dati misurati la scheda lo dice («I tester dicono X, i dati misurano Y»); le recensioni riferite a un calibro diverso (34 fonti su 144, riconosciute dalle note) non generano conflitti.
+2. **Si tolgono le corde uscite prima del 2020 e quelle fuori produzione**; le corde di riferimento restano sempre. Anno non trovato → «anno da verificare» (47 corde).
+3. **Dimensioni** (percentili tra le corde del banco, `pipeline/dims.py`): *rigidità* (TWU, o stima da gemello/Racketpedia), *tenuta* (media di perdita TWU, TL6, TL12 e scorrimento 24 h, tutte alla pari), *controllo* (media di rigidità, inverso dell'allungamento a 50 lb ed elasticità: un indice da 1–3 misure, non validato; la potenza è 100 − controllo, un solo asse), *elasticità* (recupero/allungamento a 50 lb, solo Excel), *spin* (TWU o gemello). Comfort e cedimento sono solo nella scheda.
+4. **Pairing Blade 100** (0–100, `pipeline/pairing.py` e `web/pairing.js`, stessa regola verificata sul fixture `tests/fixtures/pairing_cases.json`): somiglianza con la corda «mi piace» più vicina. Per dimensione: entro 5 punti percentile vale 100, poi scende fino a 0 a 20 punti; per tenuta e spin valere di più non penalizza. Pesi spin 30, tenuta 20, rigidità 20, controllo 15, elasticità 15, rinormalizzati su ciò che la corda ha. Servono almeno 3 misure di laboratorio (lo spin non è obbligatorio). −15 se somiglia più a una «non mi piace» (≥ 75). Fasce: ≥ 80 Ottimo, 60–79 Buono, 40–59 Attenzione, < 40 Poco adatta. Con le preferite iniziali: 97 corde su 102 hanno un pairing (14 Ottimo), 5 sono non valutabili. Non è un voto di qualità.
+5. **Stime da modello** (spin da rigidità e forma; rigidità dal solo calibro): si vedono con «≈» e ◐ ma non entrano mai nel pairing né nelle 3 da provare. Gemelli di calibro corretti per il diametro (≈ +203 lb/in per mm).
+6. **Tensione consigliata:** regola empirica dalla montata (−0,75 kg ogni +15 lb/in di rigidità, al massimo ±2 kg), mostrata come intervallo ±1 kg con l'etichetta «stima». Non validata.
+7. **Usura:** ore giocate / vita attesa. Vita attesa di partenza `8 + 0,12 × tenuta` ore (±25%), 14 ore (±40%) se la tenuta manca: **un'ipotesi non misurata**. Passa alle tue ore reali dopo la prima corda «consumata» (stessa corda) o dopo 3 corde diverse. Fasce: < 40% Fresca, 40–70% In uso, 70–100% Da controllare, > 100% Da cambiare.
+8. **Parere AI** (capability `sample` dell'Artifact): su richiesta, mai automatico; riceve i dati e tutte le descrizioni disponibili; risposta validata, mostrata come testo, etichettata «Parere AI — non misurato» e mai usata in punteggi, top 3, mappa o confronto. Senza la capability (anteprima locale) i pulsanti non compaiono.
+9. **Stato dell'utente** (montata, preferite, ore, corde finite): un documento `db` privato per utente (`data/users/<id>/state`); senza `db` ripiega su `localStorage` e lo dichiara. Esportazione JSON con `downloads`.
 
 ## Comandi
 
-Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, e Node per i test JS.
+Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, Node 20+ e Playwright per i test della pagina.
 
 ```bash
 py -m pip install -r requirements.txt
-py -m pytest -q                          # test Python
-node --test web/score.test.mjs           # test JS (parità punteggio)
+tests/run_all.sh                         # ricostruisce la pagina ed esegue pytest, node --test e Playwright
+py -m pytest -q                          # 187 test Python (pipeline, dati finali, build della pagina)
+node --test web/*.test.mjs               # 109 test JS dei moduli puri (pairing, stato, usura, mappa, AI, schede)
+node tests/e2e/ui.cjs                    # 52 test della pagina in Chromium (richiede dist/preview.html)
+node tests/e2e/shots.cjs                 # screenshot in docs/audit/
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
 py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)
 py -m pipeline.validate_agents           # abbinamenti + Racketpedia -> matches.json / rpedia.json
@@ -44,15 +59,17 @@ py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/prev
 
 ## Struttura
 
-- `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), metriche (`derive.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
-- `web/` — `template.html`, `style.css`, `app.js` (interfaccia), `score.js` (punteggio, parità con Python).
-- `docs/superpowers/specs/` e `plans/` — specifiche e piani (v1 e v2, con le decisioni successive in fondo alla spec v2).
-- `tests/` — 123 test Python.
-- `docs/AUDIT.md` — audit di dati, racconto dei dati e UI (con lo stato delle correzioni).
+- `pipeline/` — estrazione (Excel, TWU), normalizzazione (`scope.py`), fusione, stime (`estimate.py`), dimensioni e misure Excel (`dims.py`), pairing (`pairing.py`), metriche (`derive.py`), conflitti tra recensioni (`reviews.py`), note (`notes_gen.py`), catalogo, produzione/anni, build.
+- `web/` — `template.html`, `style.css` e i moduli JS inlinati da `pipeline/build_page.py` nell'ordine di `MODULES`: `format`, `pairing`, `state` (stato e tensione), `persist` (db/localStorage), `values` e `cards` (righe e schede), `wear`, `ai`, `choose`, `bank`, `mine`, `map`, `method`, `app` (colla). Regole dei moduli: un `import` per riga, solo `export function|const`, nessun nome top-level ripetuto (lo controlla `tests/test_build_page.py`).
+- `tests/` — `test_*.py` (Python), `fixtures/pairing_cases.json` (parità Python/JS), `e2e/*.cjs` (Playwright).
+- `docs/AUDIT.md` — audit di dati, racconto dei dati e UI, con lo stato v3; `docs/superpowers/` — specifiche e piani.
 
 ## Lavoro aperto
 
-- Lista acquisti su Tennis Warehouse Europe da aggiornare con le nuove candidate (`data/agents/shopping_*.json` riflette la lista precedente).
-- 31 corde con "anno da verificare".
-- Minori noti: le Confidential Soft 16/17 (solo catalogo) non hanno l'avviso "simile a non gradita"; nella mappa gli assi avanzati "Perdita"/"Punteggio" disegnano pieni anche valori stimati; niente indicatori a punti nel confronto su telefono.
-- Dall'audit (vedi `docs/AUDIT.md`, sezione "Stato"): margini d'errore dello spin non propagati nel punteggio, regola della tensione di partenza non validata, etichette sovrapposte nella mappa, anni di uscita da verificare.
+- **Ripubblicare l'Artifact** con `sample`, `db`, `user`, `downloads` e controllare `db` (serve conferma).
+- Lista acquisti su Tennis Warehouse Europe da aggiornare (`data/agents/shopping_*.json` riflette la lista precedente).
+- 47 corde con «anno da verificare».
+- Vita attesa da calibrare con le tue corde finite; regola della tensione non validata.
+- Margini dello spin da gemello (±0,5) non propagati nel pairing; curva di allungamento 40→65 lb e peso statico solo mostrati.
+- Codice derivato non più usato dall'interfaccia (`judgments()` con la miscela 70/30, `profile_score`, somiglianza): da togliere.
+- Dall'audit v3 (`docs/AUDIT.md`): niente popover per numero con fonte e margine, niente indicatori a punti nel confronto su telefono, legenda unica dei badge, «?» da 22 px.

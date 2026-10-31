@@ -370,3 +370,9 @@ dialog#equip-dialog::backdrop { background: rgb(10 16 15 / .45); }
 .ai-out { display: grid; gap: 8px; }
 .ai-new { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; }
 textarea { font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--fg); width: 100%; }
+
+/* banco: la tabella sta nella larghezza della pagina; marcatori con un font che ha le forme geometriche */
+.data td .block { display: block; }
+.data td.v { min-width: 8em; }
+.data .pair { white-space: normal; }
+.mark { font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", "Arial Unicode MS", sans-serif; }

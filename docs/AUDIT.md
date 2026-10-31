@@ -161,6 +161,46 @@ Fatto in questo ramo:
 
 Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
 
+## Stato v3 (2026-10-30)
+
+Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (390 e 1280 px). Verifica: 187 test Python, 109 test JS, 52 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact pubblicato **non è ancora aggiornato**: serve la tua conferma.
+
+### I sette problemi dell'audit del 2026-10-30
+
+| # | Problema | Stato | Come |
+|---|---|---|---|
+| 1 | La montata (Zero 1,23) e 29 corde valutate senza punteggio | **Risolto** | Il pairing richiede almeno 3 misure di laboratorio, non più lo spin: Zero ha pairing 100 «senza spin». 97 corde su 102 hanno un pairing (Ottimo 14, Buono 20, Attenzione 35, Poco adatta 28), 5 sono «non valutabili» con l'elenco di cosa manca. |
+| 2 | L'Excel usato in due soli calcoli | **Parziale** | Tenuta = media di perdita TWU, TL6, TL12 e scorrimento 24 h; il controllo usa allungamento a 50 lb ed elasticità; elasticità, cedimento e lunghezza guadagnata 16×19 sono nella scheda. **Aperto:** la curva di allungamento 40→65 lb e il peso statico sono solo mostrati, non entrano in nessuna dimensione. |
+| 3 | Controllo = percentile della rigidità, nascosto | **Risolto, con un limite dichiarato** | Un indice da 1–3 misure («da N di 3»), mostrato in ogni riga con la potenza come altro estremo dello stesso asse. Nessun laboratorio lo misura e la scheda lo dice. |
+| 4 | Recensioni in conflitto con i dati | **Risolto** | Fuori da ogni numero; la scheda dice «I tester dicono X, i dati misurano Y» quando divergono di 2 o più livelli (20 corde, 22 conflitti). 34 fonti su 144 sono marcate «calibro diverso» dalle note e non generano conflitti (riconoscimento da espressioni nelle note: correggibile in `data/agents/review_overrides.json`). |
+| 5 | Mappa illeggibile | **Risolto** | Scheda al passaggio (o fissata al tocco), filtri per marca, calibro, forma, solo misurate, pairing Buono o meglio; montata e preferite sempre visibili e con etichetta senza sovrapposizioni; barre d'errore solo sul punto attivo; tabella alternativa e frecce da tastiera. |
+| 6 | Troppe schermate, numeri e badge | **Risolto** | 4 schermate (Scegli, Mappa, Banco, Montata) più il Metodo; una sola riga corda con 4 valori marcati ● ◐ ○ e un solo avviso per volta; liste preimpostate e pesi sostituiti da filtri. |
+| 7 | Montata e preferite fisse, nessun registro ore | **Risolto, con un limite dichiarato** | Montata e preferite modificabili, registro ore, storico delle corde finite, usura con fasce. **Limite:** la vita attesa in ore (`8 + 0,12 × tenuta`) è un'ipotesi non misurata finché non registri corde finite. |
+
+Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre etichettato «Parere AI — non misurato» e fuori da punteggi, top 3, mappa e confronto.
+
+### Voci dell'audit precedente
+
+- **A1/A2 (criteri e punteggio relativo):** il vecchio punteggio «Per te» e l'affinità non esistono più; il pairing è dichiarato «non è un voto» accanto al numero e nel Metodo.
+- **A3 (tensione):** ora parte dalla tua montata e mostra un intervallo ±1 kg con l'etichetta «stima»; la regola (−0,75 kg ogni +15 lb/in, ±2 kg) **resta non validata**.
+- **A5 (somiglianza opaca):** sostituita dal pairing, con la formula nel Metodo. **Aperto:** l'ipotesi sui gusti da 4 corde (`DATA.insight`) è ancora un testo statico del dataset, ora nel Metodo e dichiarato come ipotesi.
+- **A6 (provenienza):** ogni valore ha il marcatore e un suggerimento con la fonte; il «?» porta al Metodo. **Aperto:** non c'è un popover per numero con condizioni e margine, e i suggerimenti dei marcatori richiedono il passaggio del mouse (su telefono resta il testo «manca: …»).
+- **A7 (anni e produzione da agenti):** **invariato**, 47 corde senza anno («anno da verificare»).
+- **A8 (codice morto):** **aperto**, `derive.judgments()` ha ancora la miscela 70/30 con le recensioni (mai usata) e restano i campi `profile_score`, somiglianza e `tension_start` anche se l'interfaccia non li legge più.
+- **U1–U3, U5, U9:** risolti (mappa, etichette, prima schermata su telefono con la prima scelta sopra la piega, spiegazioni raggiungibili dal «?»).
+- **U4:** risolto in parte, ogni riga mostra la differenza rispetto alla montata; manca una riga «perché la prima batte la quinta».
+- **U6/U7:** il confronto è un pannello in basso con colonne scorrevoli; **aperto:** niente indicatori a punti, e i badge non hanno una legenda unica.
+- **U10:** **aperto**, l'elenco delle corde tolte resta un paragrafo nel Metodo.
+- **Accessibilità:** misurati a 390 px, pulsanti, chip di filtro e schede sono 44 px; **aperto:** i chip in «Le tue corde» sono 32 px e il «?» accanto ai valori è 22 px.
+
+### Ancora aperto
+
+- Verificare la vita attesa con le tue corde finite; regola della tensione non validata.
+- Propagare i margini dello spin da gemello (±0,5) nel pairing.
+- Rinominare o togliere i campi derivati non più usati (A8).
+- Se la pagina viene aperta senza `db` (anteprima, non autenticato), lo stato è solo nel browser: lo dice la schermata Montata.
+- Ripubblicare l'Artifact con `sample`, `db`, `user`, `downloads` e controllare `db` con `ArtifactData` (non fatto: richiede conferma).
+
 ## C. Priorità consigliate
 
 1. **Sistemare il modello dei criteri (A1)**: togliere Potenza/duplicati, riscrivere Controllo e Comfort come "interpretazioni", ricalcolare il punteggio su assi indipendenti, e rifare le top-3 (cambieranno).

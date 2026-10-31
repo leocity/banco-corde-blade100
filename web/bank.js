@@ -40,7 +40,7 @@ function bankTable(ctx, rows) {
   const body = rows.map((r) => {
     const v = Object.fromEntries(rowValues(r).map((x) => [x.key, x]));
     const cell = (x) => `<td class="v ${x.mark}"><span class="mark" title="${esc(x.note || x.why || '')}">${MARK[x.mark]}</span>${esc(x.text)}</td>`;
-    return `<tr data-id="${esc(r.id)}"><td>${cmpBox(r)}</td><td><button type="button" class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button> <span class="muted small">${esc(subline(r))}</span></td>`
+    return `<tr data-id="${esc(r.id)}"><td>${cmpBox(r)}</td><td><button type="button" class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button> <span class="muted small block">${esc(subline(r))}</span></td>`
       + `${cell(v.spin)}${cell(v.stiffness)}${cell(v.durability)}${cell(v.control)}<td>${pairHtml(ctx.cardCtx(r))}</td></tr>`;
   }).join('');
   return `${head}<tbody>${body}</tbody>`;
