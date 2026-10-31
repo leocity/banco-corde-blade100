@@ -1,6 +1,6 @@
 const { openPage, BAD, test, assert } = require('./ui.cjs');
 
-const goBanco = async (page) => { await page.locator('#tab-banco').click(); await page.waitForSelector('#bank-table thead, #bank-cards .scard', { state: 'attached' }); };
+const goBanco = async (page) => { await page.locator('#tab-banco').click(); await page.waitForSelector('#bank-table thead, #bank-cards .crow2wrap', { state: 'attached' }); };
 
 test('banco: tabella a 6 colonne senza scroll della pagina (desktop)', async () => {
   const { page, ctx } = await openPage();
@@ -14,7 +14,8 @@ test('banco: tabella a 6 colonne senza scroll della pagina (desktop)', async () 
 test('banco: su telefono diventa elenco di schede senza scroll orizzontale', async () => {
   const { page, ctx } = await openPage({ width: 390, height: 844 });
   await goBanco(page);
-  assert.ok((await page.locator('#bank-cards .scard').count()) > 5);
+  assert.ok((await page.locator('#bank-cards .crow2wrap').count()) > 5);
+  assert.ok((await page.locator('#bank-cards input.cmp').count()) > 5, 'ogni riga ha la spunta Confronta');
   assert.equal(await page.locator('#bank-table').count() ? await page.locator('#bank-table').isVisible() : false, false);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
   await ctx.close();

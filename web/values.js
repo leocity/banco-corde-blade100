@@ -57,3 +57,18 @@ export function deltaVsEquipped(rec, equipped) {
   const text = parts.map((p) => `${p.diff > 0 ? '+' : '−'}${Math.abs(p.diff)} ${p.label}`).join(' · ');
   return { text, parts };
 }
+
+const MINI_LEVEL = { 'molto basso': 'min', basso: 'bassa', medio: 'media', alto: 'alta', 'molto alto': 'max' };
+const MINI_EM = { spin: 'spin', stiffness: 'lb/in', durability: 'tenuta', control: 'ctrl' };
+function miniText(v) {
+  if (v.mark === 'missing') return '—';
+  if (v.key === 'control') { const m = /controllo (\d+)/.exec(v.text); return m ? m[1] : '—'; }
+  const head = v.text.split(' · ')[0];
+  if (v.key === 'durability') return MINI_LEVEL[head] || head;
+  return v.key === 'stiffness' ? head.replace(' lb/in', '') : head;
+}
+
+// Versione breve dei quattro valori per la riga compatta: il numero (o la parola), l'unità e il marcatore.
+export function miniValues(rec) {
+  return rowValues(rec).map((v) => ({ key: v.key, em: MINI_EM[v.key], mark: v.mark, val: miniText(v), title: v.note || v.why || '' }));
+}

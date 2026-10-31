@@ -1,6 +1,6 @@
 // Costruttori HTML puri di riga, scheda corta (mappa) e scheda completa. Ogni dato testuale passa da esc().
 import { esc, fmt, MARK, nameOf, subline, safeUrl, fullName } from './format.js';
-import { rowValues, deltaVsEquipped } from './values.js';
+import { rowValues, deltaVsEquipped, miniValues } from './values.js';
 import { pairingReason } from './pairing.js';
 
 const BAND_CLASS = { Ottimo: 'ottimo', Buono: 'buono', Attenzione: 'attenzione', 'Poco adatta': 'poco', 'Non valutabile': 'nv', 'Senza riferimenti': 'nv' };
@@ -19,13 +19,16 @@ export function pairHtml(ctx) {
   return `<span class="pair ${BAND_CLASS[p.band] || 'nv'}" title="Pairing con la tua Blade 100 v9: somiglianza con la preferita più vicina">${p.score != null ? `<b>${p.score}</b> ` : ''}${esc(p.band || '—')}</span>`;
 }
 
-function warnHtml(rec, ctx) {
+function warnInfo(rec, ctx) {
   const pr = rec.production || {};
-  const w = rec.crosscheck && rec.crosscheck.verdict === 'contradicted' ? ['⚑ dati contestati', 'Recensioni e produttori contraddicono i numeri di laboratorio']
+  return rec.crosscheck && rec.crosscheck.verdict === 'contradicted' ? ['⚑ dati contestati', 'Recensioni e produttori contraddicono i numeri di laboratorio']
     : pr.reason ? [pr.reason, 'Resta solo come tuo riferimento']
     : rec.production && (pr.year === null || pr.year === undefined) ? ['anno da verificare', 'Anno di uscita non trovato: verifica che non sia un modello datato']
     : pr.status === 'unclear' ? ['produzione da verificare', 'Non è chiaro se sia ancora in vendita']
     : ctx.pairing && ctx.pairing.penalized ? ['⚠ simile a una non gradita', 'Somiglia più a una corda che non ti è piaciuta che alle tue preferite'] : null;
+}
+function warnHtml(rec, ctx) {
+  const w = warnInfo(rec, ctx);
   return w ? `<span class="warn" title="${esc(w[1])}">${esc(w[0])}</span>` : '';
 }
 
@@ -54,6 +57,25 @@ export function rowHtml(rec, ctx) {
   return `<article class="scard" data-id="${esc(rec.id)}">${ctx.rank ? `<span class="rank-tag">${esc(ctx.rank)}</span>` : ''}`
     + `<div class="scard-head"><span class="scard-name">${esc(nameOf(rec))}</span>${pairHtml(ctx)}<span class="scard-sub">${esc(subline(rec))}</span></div>${why}`
     + `<div class="vals">${rowValues(rec).map(valHtml).join('')}</div>${deltaHtml(rec, ctx)}${tensionHtml(ctx)}<div class="badges">${warnHtml(rec, ctx)}</div>${actionsHtml(rec, ctx)}</article>`;
+}
+
+// Pairing in poco spazio: il colore dice la fascia, il numero il valore, la fascia per esteso sta nel suggerimento e nella scheda.
+function compactPair(ctx) {
+  const p = ctx.pairing || {};
+  if (ctx.isEquipped) return '<span class="pair equipped" title="La corda che hai montata ora">montata</span>';
+  if (ctx.pref === 'liked') return '<span class="pair liked" title="Tua preferita">★</span>';
+  if (ctx.pref === 'disliked') return '<span class="pair disliked" title="Non gradita">✕</span>';
+  return `<span class="pair ${BAND_CLASS[p.band] || 'nv'}" title="${esc(p.band || '—')}${p.score != null ? ` · ${p.score}` : ''}">${p.score != null ? `<b>${p.score}</b>` : '—'}</span>`;
+}
+
+// Riga da liste e Banco: due righe, un solo pulsante (tutta la riga) che apre la scheda. Le azioni stanno nella scheda.
+export function compactRowHtml(rec, ctx) {
+  const id = esc(rec.id), w = warnInfo(rec, ctx), d = ctx.isEquipped ? '' : deltaVsEquipped(rec, ctx.equipped).text;
+  const minis = miniValues(rec).map((m) => `<span class="m ${m.mark}" data-k="${m.key}" title="${esc(m.title)}"><span class="mk">${MARK[m.mark]}</span><b>${esc(m.val)}</b><em>${esc(m.em)}</em></span>`).join('');
+  const why = ctx.why ? `<span class="r3">${esc(pairingReason(ctx.pairing, ctx.nameOf))}</span>` : '';
+  return `<div class="crow2wrap" data-id="${id}"><button type="button" class="crow2" data-open="${id}" aria-label="Apri la scheda di ${esc(fullName(rec))}">`
+    + `<span class="r1">${ctx.rankNum ? `<span class="rk">${ctx.rankNum}</span>` : ''}<span class="nm">${esc(fullName(rec))}</span>${w ? `<span class="wdot" title="${esc(`${w[0]}: ${w[1]}`)}">⚑</span>` : ''}${compactPair(ctx)}</span>`
+    + `<span class="r2">${minis}${d ? `<span class="d">${esc(d)}</span>` : ''}</span>${why}</button>${ctx.after || ''}</div>`;
 }
 
 export function shortCardHtml(rec, ctx) {

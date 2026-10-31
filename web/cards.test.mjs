@@ -4,8 +4,8 @@ import fs from 'node:fs';
 import { pairing } from './pairing.js';
 import { tensionFor } from './state.js';
 import { fullName } from './format.js';
-import { rowValues, deltaVsEquipped } from './values.js';
-import { rowHtml, shortCardHtml, sheetHtml } from './cards.js';
+import { rowValues, deltaVsEquipped, miniValues } from './values.js';
+import { rowHtml, shortCardHtml, sheetHtml, compactRowHtml } from './cards.js';
 
 const DATA = JSON.parse(fs.readFileSync(new URL('../data/strings.json', import.meta.url), 'utf8'));
 const ALL = DATA.strings;
@@ -147,4 +147,57 @@ test('shortCardHtml: valori, pairing e apri scheda', () => {
   const html = shortCardHtml(r, ctxFor(r));
   assert.equal((html.match(/data-k="/g) || []).length, 4);
   assert.match(html, /data-open="toroline-o-toro-17"/);
+});
+
+test('miniValues: quattro valori brevi con marcatore e unità', () => {
+  const m = miniValues(EQ);
+  assert.deepEqual(m.map((x) => x.key), ['spin', 'stiffness', 'durability', 'control']);
+  assert.deepEqual(m.map((x) => x.em), ['spin', 'lb/in', 'tenuta', 'ctrl']);
+  assert.equal(m[0].val, '≈ 7,4');
+  assert.equal(m[1].val, '≈ 214');
+  assert.equal(m[2].val, 'media');
+  assert.equal(m[3].val, '53');
+  const miss = miniValues(ALL.find((x) => x.derived.dims.durability === null)).find((x) => x.key === 'durability');
+  assert.deepEqual([miss.val, miss.mark], ['—', 'missing']);
+  assert.match(miss.title, /manca/);
+});
+
+test('compactRowHtml: un solo pulsante che apre la scheda, quattro mini-valori, nessun pulsante dentro', () => {
+  for (const r of ALL) {
+    const html = compactRowHtml(r, ctxFor(r));
+    assert.equal((html.match(/<button/g) || []).length, 1, r.id);
+    assert.match(html, new RegExp(`data-open="${r.id}"`));
+    assert.equal((html.match(/class="m /g) || []).length, 4, r.id);
+    assert.doesNotMatch(text(html), BAD, r.id);
+    assert.doesNotMatch(html, /data-equip|data-like|data-dislike/);
+  }
+});
+
+test('compactRowHtml: montata, preferita e non gradita al posto del pairing', () => {
+  assert.match(compactRowHtml(EQ, ctxFor(EQ)), /montata/);
+  assert.match(compactRowHtml(BY['toroline-o-toro-17'], ctxFor(BY['toroline-o-toro-17'])), /★/);
+  assert.match(compactRowHtml(BY['babolat-rpm-blast-17'], ctxFor(BY['babolat-rpm-blast-17'])), /✕/);
+});
+
+test('compactRowHtml: pairing con colore e fascia nel suggerimento, differenza dalla montata, rango, avviso come punto', () => {
+  const r = ALL.find((x) => !x.catalog_only && x.derived.pairing.score !== null && x.id !== EQ.id && !D.liked.includes(x.id) && !D.disliked.includes(x.id) && deltaVsEquipped(x, EQ).text);
+  const html = compactRowHtml(r, ctxFor(r, { rankNum: 2 }));
+  assert.match(html, /class="pair /);
+  assert.match(html, new RegExp(`title="${r.derived.pairing.band}`));
+  assert.match(html, /class="d"/);
+  assert.match(html, /class="rk">2</);
+  assert.equal(compactRowHtml(EQ, ctxFor(EQ)).includes('class="d"'), false);
+  const w = ALL.find((x) => x.crosscheck && x.crosscheck.verdict === 'contradicted' && !D.liked.includes(x.id));
+  if (w) assert.match(compactRowHtml(w, ctxFor(w)), /class="wdot"/);
+});
+
+test('compactRowHtml: l\'HTML nei dati resta testo', () => {
+  const evil = { ...EQ, id: 'evil', model: '<img src=x onerror=alert(1)>' };
+  assert.doesNotMatch(compactRowHtml(evil, ctxFor(evil)), /<img/);
+});
+
+test('miniValues: la tenuta è una parola breve per ogni livello', () => {
+  const words = new Set(ALL.map((r) => miniValues(r).find((x) => x.key === 'durability')).filter((x) => x.mark !== 'missing').map((x) => x.val));
+  for (const w of words) assert.ok(['min', 'bassa', 'media', 'alta', 'max'].includes(w), w);
+  assert.ok(words.size >= 3);
 });

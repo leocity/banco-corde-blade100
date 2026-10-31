@@ -83,8 +83,9 @@ test('montata: cambio corda da "Monta", storico con le ore e annulla', async () 
   await goMontata(page);
   await addHours(page, '2');
   await page.locator('#tab-scegli').click();
-  const id = await page.locator('#list .scard').first().getAttribute('data-id');
-  await page.locator(`#list .scard[data-id="${id}"] [data-equip]`).click();
+  const id = await page.locator('#list .crow2wrap').first().getAttribute('data-id');
+  await page.locator(`#list .crow2wrap[data-id="${id}"] .crow2`).click();
+  await page.locator('#sheet-body [data-equip]').click();
   assert.ok(await page.locator('#equip-dialog[open]').count());
   assert.equal(await page.locator('#eq-pick').inputValue(), id);
   await page.locator('#eq-ok').click();
@@ -225,8 +226,7 @@ test('sync: pagina vecchia aperta sul PC, una modifica non cancella ciò che il 
   const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(false), storage: { 'fakedb:state': coreDoc(), 'fakedb:s-100-1': sessionDoc('100-1', 1) } });
   await page.evaluate((d) => window.__external({ set: { 's-tel-1': d['a'], 's-tel-2': d['b'] } }), { a: JSON.parse(sessionDoc('tel-1', 2)), b: JSON.parse(sessionDoc('tel-2', 4)) });
   await page.waitForTimeout(500);
-  const id = await page.locator('#list .scard, #list .crow2').first().getAttribute('data-id') || await page.locator('#list [data-open]').first().getAttribute('data-open');
-  await page.locator('#myrefs-sum').click();
+    await page.locator('#myrefs-sum').click();
   await page.locator('#myrefs .chip.liked').first().click();   // una modifica locale qualunque
   await page.waitForTimeout(700);
   const keys = await dbKeys(page, 's-');
@@ -266,7 +266,7 @@ test('sync: indicatore di stato (sincronizzato, solo browser, errore)', async ()
 
 test('sync: azioni fatte prima che il db risponda non cancellano lo storico salvato', async () => {
   const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(false, { delayGet: 1200 }), storage: { 'fakedb:state': coreDoc(), 'fakedb:s-1-1': sessionDoc('1-1', 2), 'fakedb:s-2-2': sessionDoc('2-2', 2), 'fakedb:s-3-3': sessionDoc('3-3', 2) }, waitReady: false });
-  await page.waitForSelector('#list [data-open]');
+  await page.waitForSelector('#list .crow2wrap');
   await page.locator('#myrefs-sum').click();
   await page.locator('#myrefs .chip.liked').first().click();
   await page.waitForFunction(() => window.__bancoReady === true);

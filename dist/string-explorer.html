@@ -387,6 +387,35 @@ textarea { font: inherit; padding: 8px; border: 1px solid var(--line); border-ra
 .sync.ok { color: var(--court); }
 .sync.err { color: var(--warn-fg); background: var(--warn-bg); padding: 2px 8px; border-radius: 999px; }
 
+/* riga compatta: due righe, tutta la riga è un pulsante */
+.crow2wrap { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); display: flex; align-items: stretch; min-width: 0; }
+.crow2 { all: unset; box-sizing: border-box; flex: 1; min-width: 0; display: grid; gap: 3px; padding: 9px 12px; min-height: 60px; cursor: pointer; align-content: center; }
+.crow2:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: var(--radius); }
+.crow2:active { background: var(--surface-2); }
+.crow2 .r1 { display: flex; gap: 8px; align-items: baseline; min-width: 0; }
+.crow2 .rk { font: 700 .9rem var(--font-display); color: var(--court); min-width: 1ch; }
+.crow2 .nm { flex: 1; min-width: 0; font: 700 1.05rem/1.2 var(--font-display); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.crow2 .wdot { color: var(--warn-fg); font-size: .85rem; }
+.crow2 .pair { flex: none; font-size: .78rem; padding: 1px 8px; }
+.crow2 .r2 { display: flex; gap: 12px; min-width: 0; overflow: hidden; font-size: .85rem; white-space: nowrap; }
+.crow2 .m { display: inline-flex; gap: 3px; align-items: baseline; }
+.crow2 .m .mk { font-size: .8rem; color: var(--court); }
+.crow2 .m.estimated .mk { color: var(--est-fg); }
+.crow2 .m.estimated b { font-style: italic; }
+.crow2 .m.missing, .crow2 .m.missing .mk { color: var(--muted); }
+.crow2 .m b { font: 600 .88rem var(--font-data); }
+.crow2 .m em { font-style: normal; color: var(--muted); font-size: .7rem; }
+.crow2 .d { color: var(--fg-2); font-size: .78rem; overflow: hidden; text-overflow: ellipsis; }
+.crow2 .r3 { font-size: .8rem; color: var(--fg-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cmp-pick2 { display: grid; place-items: center; gap: 2px; padding: 4px 10px; border-left: 1px solid var(--line); font-size: .65rem; color: var(--muted); min-width: 56px; cursor: pointer; }
+.top3 { grid-template-columns: 1fr; }
+.list { grid-template-columns: 1fr; gap: 6px; }
+@media (min-width: 761px) { .list, .bank-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.crow2 .m .mk { font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", "Arial Unicode MS", sans-serif; font-size: .95rem; line-height: 1; }
+.crow2 .r2 { gap: 10px; }
+@media (max-width: 430px) { .crow2 .d { display: none; } }
+
 </style>
 
 <div class="wrap">
@@ -943,6 +972,21 @@ function deltaVsEquipped(rec, equipped) {
   return { text, parts };
 }
 
+const MINI_LEVEL = { 'molto basso': 'min', basso: 'bassa', medio: 'media', alto: 'alta', 'molto alto': 'max' };
+const MINI_EM = { spin: 'spin', stiffness: 'lb/in', durability: 'tenuta', control: 'ctrl' };
+function miniText(v) {
+  if (v.mark === 'missing') return '—';
+  if (v.key === 'control') { const m = /controllo (\d+)/.exec(v.text); return m ? m[1] : '—'; }
+  const head = v.text.split(' · ')[0];
+  if (v.key === 'durability') return MINI_LEVEL[head] || head;
+  return v.key === 'stiffness' ? head.replace(' lb/in', '') : head;
+}
+
+// Versione breve dei quattro valori per la riga compatta: il numero (o la parola), l'unità e il marcatore.
+function miniValues(rec) {
+  return rowValues(rec).map((v) => ({ key: v.key, em: MINI_EM[v.key], mark: v.mark, val: miniText(v), title: v.note || v.why || '' }));
+}
+
 // Costruttori HTML puri di riga, scheda corta (mappa) e scheda completa. Ogni dato testuale passa da esc().
 
 
@@ -963,13 +1007,16 @@ function pairHtml(ctx) {
   return `<span class="pair ${BAND_CLASS[p.band] || 'nv'}" title="Pairing con la tua Blade 100 v9: somiglianza con la preferita più vicina">${p.score != null ? `<b>${p.score}</b> ` : ''}${esc(p.band || '—')}</span>`;
 }
 
-function warnHtml(rec, ctx) {
+function warnInfo(rec, ctx) {
   const pr = rec.production || {};
-  const w = rec.crosscheck && rec.crosscheck.verdict === 'contradicted' ? ['⚑ dati contestati', 'Recensioni e produttori contraddicono i numeri di laboratorio']
+  return rec.crosscheck && rec.crosscheck.verdict === 'contradicted' ? ['⚑ dati contestati', 'Recensioni e produttori contraddicono i numeri di laboratorio']
     : pr.reason ? [pr.reason, 'Resta solo come tuo riferimento']
     : rec.production && (pr.year === null || pr.year === undefined) ? ['anno da verificare', 'Anno di uscita non trovato: verifica che non sia un modello datato']
     : pr.status === 'unclear' ? ['produzione da verificare', 'Non è chiaro se sia ancora in vendita']
     : ctx.pairing && ctx.pairing.penalized ? ['⚠ simile a una non gradita', 'Somiglia più a una corda che non ti è piaciuta che alle tue preferite'] : null;
+}
+function warnHtml(rec, ctx) {
+  const w = warnInfo(rec, ctx);
   return w ? `<span class="warn" title="${esc(w[1])}">${esc(w[0])}</span>` : '';
 }
 
@@ -998,6 +1045,25 @@ function rowHtml(rec, ctx) {
   return `<article class="scard" data-id="${esc(rec.id)}">${ctx.rank ? `<span class="rank-tag">${esc(ctx.rank)}</span>` : ''}`
     + `<div class="scard-head"><span class="scard-name">${esc(nameOf(rec))}</span>${pairHtml(ctx)}<span class="scard-sub">${esc(subline(rec))}</span></div>${why}`
     + `<div class="vals">${rowValues(rec).map(valHtml).join('')}</div>${deltaHtml(rec, ctx)}${tensionHtml(ctx)}<div class="badges">${warnHtml(rec, ctx)}</div>${actionsHtml(rec, ctx)}</article>`;
+}
+
+// Pairing in poco spazio: il colore dice la fascia, il numero il valore, la fascia per esteso sta nel suggerimento e nella scheda.
+function compactPair(ctx) {
+  const p = ctx.pairing || {};
+  if (ctx.isEquipped) return '<span class="pair equipped" title="La corda che hai montata ora">montata</span>';
+  if (ctx.pref === 'liked') return '<span class="pair liked" title="Tua preferita">★</span>';
+  if (ctx.pref === 'disliked') return '<span class="pair disliked" title="Non gradita">✕</span>';
+  return `<span class="pair ${BAND_CLASS[p.band] || 'nv'}" title="${esc(p.band || '—')}${p.score != null ? ` · ${p.score}` : ''}">${p.score != null ? `<b>${p.score}</b>` : '—'}</span>`;
+}
+
+// Riga da liste e Banco: due righe, un solo pulsante (tutta la riga) che apre la scheda. Le azioni stanno nella scheda.
+function compactRowHtml(rec, ctx) {
+  const id = esc(rec.id), w = warnInfo(rec, ctx), d = ctx.isEquipped ? '' : deltaVsEquipped(rec, ctx.equipped).text;
+  const minis = miniValues(rec).map((m) => `<span class="m ${m.mark}" data-k="${m.key}" title="${esc(m.title)}"><span class="mk">${MARK[m.mark]}</span><b>${esc(m.val)}</b><em>${esc(m.em)}</em></span>`).join('');
+  const why = ctx.why ? `<span class="r3">${esc(pairingReason(ctx.pairing, ctx.nameOf))}</span>` : '';
+  return `<div class="crow2wrap" data-id="${id}"><button type="button" class="crow2" data-open="${id}" aria-label="Apri la scheda di ${esc(fullName(rec))}">`
+    + `<span class="r1">${ctx.rankNum ? `<span class="rk">${ctx.rankNum}</span>` : ''}<span class="nm">${esc(fullName(rec))}</span>${w ? `<span class="wdot" title="${esc(`${w[0]}: ${w[1]}`)}">⚑</span>` : ''}${compactPair(ctx)}</span>`
+    + `<span class="r2">${minis}${d ? `<span class="d">${esc(d)}</span>` : ''}</span>${why}</button>${ctx.after || ''}</div>`;
 }
 
 function shortCardHtml(rec, ctx) {
@@ -1376,13 +1442,13 @@ function renderChoose(ctx) {
   renderRefs(ctx);
   const top = topIds(ctx);
   $('#top3-note').innerHTML = `Solo corde con spin misurato o da calibro gemello. <b>Il pairing (0–100) dice quanto somiglia alla tua preferita più vicina: non è un voto.</b> <button class="q" type="button" data-method="pairing" aria-label="Come si calcola">?</button>`;
-  $('#top3').innerHTML = top.map((id, i) => rowHtml(ctx.BY_ID[id], ctx.cardCtx(ctx.BY_ID[id], { why: true, rank: ['Prima scelta', 'Seconda scelta', 'Terza scelta'][i] }))).join('');
+  $('#top3').innerHTML = top.map((id, i) => compactRowHtml(ctx.BY_ID[id], ctx.cardCtx(ctx.BY_ID[id], { why: true, rankNum: i + 1 }))).join('');
   const brands = [...new Set(ctx.ALL.filter((r) => !chooseFilters.target || r.is_target).map((r) => r.brand))].sort();
   $('#chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${chooseFilters.brand === b}">${esc(b)}</button>`).join('');
   const searching = chooseFilters.q.trim() !== '';
   const rows = ctx.ALL.filter((r) => passesFilters(ctx, r, chooseFilters) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
     .sort((a, b) => pairScore(ctx, b) - pairScore(ctx, a) || nameOf(a).localeCompare(nameOf(b)));
-  $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => rowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';
+  $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => compactRowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';
   $('#list-count').textContent = `${rows.length} corde${rows.length > chooseFilters.limit ? `, ne mostro ${chooseFilters.limit}` : ''}. ◐ = valore stimato, ○ = dato mancante.`;
   $('#more').hidden = rows.length <= chooseFilters.limit;
 }
@@ -1457,7 +1523,7 @@ function renderBank(ctx) {
   $('#b-count').textContent = `${rows.length} corde${rows.length > shown.length ? `, ne mostro ${shown.length}` : ''}.`;
   if (bankPhone()) {
     $('#bank-table').innerHTML = '';
-    $('#bank-cards').innerHTML = shown.map((r) => `<div class="bank-item">${rowHtml(r, ctx.cardCtx(r))}<label class="cmp-pick">${cmpBox(r)} Confronta</label></div>`).join('');
+    $('#bank-cards').innerHTML = shown.map((r) => compactRowHtml(r, ctx.cardCtx(r, { after: `<label class="cmp-pick2">${cmpBox(r)}<span>Confronta</span></label>` }))).join('');
   } else {
     $('#bank-cards').innerHTML = '';
     $('#bank-table').innerHTML = bankTable(ctx, shown);

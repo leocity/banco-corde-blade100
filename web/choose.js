@@ -1,6 +1,6 @@
 // Schermata Scegli: striscia della montata, preferite, le 3 da provare e la lista filtrabile.
 import { $, esc, fmt, fmtN, fullName, nameOf, SHAPES } from './format.js';
-import { rowHtml } from './cards.js';
+import { compactRowHtml } from './cards.js';
 
 export const newFilters = () => ({ q: '', brand: '', gauge: '', shape: '', target: true, measured: false, good: false });
 const chooseFilters = { ...newFilters(), limit: 12 };
@@ -42,13 +42,13 @@ export function renderChoose(ctx) {
   renderRefs(ctx);
   const top = topIds(ctx);
   $('#top3-note').innerHTML = `Solo corde con spin misurato o da calibro gemello. <b>Il pairing (0–100) dice quanto somiglia alla tua preferita più vicina: non è un voto.</b> <button class="q" type="button" data-method="pairing" aria-label="Come si calcola">?</button>`;
-  $('#top3').innerHTML = top.map((id, i) => rowHtml(ctx.BY_ID[id], ctx.cardCtx(ctx.BY_ID[id], { why: true, rank: ['Prima scelta', 'Seconda scelta', 'Terza scelta'][i] }))).join('');
+  $('#top3').innerHTML = top.map((id, i) => compactRowHtml(ctx.BY_ID[id], ctx.cardCtx(ctx.BY_ID[id], { why: true, rankNum: i + 1 }))).join('');
   const brands = [...new Set(ctx.ALL.filter((r) => !chooseFilters.target || r.is_target).map((r) => r.brand))].sort();
   $('#chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${chooseFilters.brand === b}">${esc(b)}</button>`).join('');
   const searching = chooseFilters.q.trim() !== '';
   const rows = ctx.ALL.filter((r) => passesFilters(ctx, r, chooseFilters) && (searching || (r.id !== s.equipped.id && !s.liked.includes(r.id) && !s.disliked.includes(r.id) && !top.includes(r.id))))
     .sort((a, b) => pairScore(ctx, b) - pairScore(ctx, a) || nameOf(a).localeCompare(nameOf(b)));
-  $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => rowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';
+  $('#list').innerHTML = rows.slice(0, chooseFilters.limit).map((r) => compactRowHtml(r, ctx.cardCtx(r))).join('') || '<p class="muted">Nessuna corda con questi filtri.</p>';
   $('#list-count').textContent = `${rows.length} corde${rows.length > chooseFilters.limit ? `, ne mostro ${chooseFilters.limit}` : ''}. ◐ = valore stimato, ○ = dato mancante.`;
   $('#more').hidden = rows.length <= chooseFilters.limit;
 }

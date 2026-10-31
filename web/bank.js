@@ -1,6 +1,6 @@
 // Schermata Banco: tabella (o schede su telefono) con filtri e ordinamento, e pannello di confronto da 2 a 4 corde.
 import { $, esc, fullName, nameOf, subline, MARK, SHAPES } from './format.js';
-import { rowHtml, valHtml, pairHtml } from './cards.js';
+import { compactRowHtml, valHtml, pairHtml } from './cards.js';
 import { rowValues, deltaVsEquipped } from './values.js';
 import { labStiff } from './state.js';
 import { newFilters, passesFilters, pairScore } from './choose.js';
@@ -53,7 +53,7 @@ export function renderBank(ctx) {
   $('#b-count').textContent = `${rows.length} corde${rows.length > shown.length ? `, ne mostro ${shown.length}` : ''}.`;
   if (bankPhone()) {
     $('#bank-table').innerHTML = '';
-    $('#bank-cards').innerHTML = shown.map((r) => `<div class="bank-item">${rowHtml(r, ctx.cardCtx(r))}<label class="cmp-pick">${cmpBox(r)} Confronta</label></div>`).join('');
+    $('#bank-cards').innerHTML = shown.map((r) => compactRowHtml(r, ctx.cardCtx(r, { after: `<label class="cmp-pick2">${cmpBox(r)}<span>Confronta</span></label>` }))).join('');
   } else {
     $('#bank-cards').innerHTML = '';
     $('#bank-table').innerHTML = bankTable(ctx, shown);
