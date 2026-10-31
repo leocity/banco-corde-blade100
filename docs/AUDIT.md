@@ -163,7 +163,7 @@ Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostitui
 
 ## Stato v3 (2026-10-30)
 
-Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (390 e 1280 px). Verifica: 189 test Python, 112 test JS, 55 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact pubblicato **non è ancora aggiornato**: serve la tua conferma.
+Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (390 e 1280 px). Verifica: 189 test Python, 112 test JS, 55 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact è aggiornato alla v3 (2026-10-31, privato, runtime 0.2.96, capability `sample`, `db`, `user`, `downloads`).
 
 ### I sette problemi dell'audit del 2026-10-30
 
@@ -200,7 +200,7 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 - Propagare i margini dello spin da gemello (±0,5) nel pairing.
 - Rinominare o togliere i campi derivati non più usati (A8).
 - Se la pagina viene aperta senza `db` (anteprima, non autenticato), lo stato è solo nel browser: lo dice la schermata Montata.
-- Ripubblicare l'Artifact con `sample`, `db`, `user`, `downloads` e controllare `db` con `ArtifactData` (non fatto: richiede conferma).
+- Controllo dal vivo di `db` (le ore restano dopo il reload e sul telefono): non verificabile da qui perché i dati per utente sono privati anche dal proprietario; verificate solo regole di default e versione live.
 
 ## C. Priorità consigliate
 

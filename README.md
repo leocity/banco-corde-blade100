@@ -2,7 +2,7 @@
 
 Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v9 (16×19)**, giocatore di club tutto campo con rotazioni, < 50 lbs, 4–5 h/settimana.
 
-- **Pagina pubblicata (Artifact):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne (versione v2: la v3 non è ancora ripubblicata)
+- **Pagina pubblicata (Artifact, privata, solo tuo account):** https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — v3 del 2026-10-31, con `sample`, `db`, `user`, `downloads`. Da telefono: apri il link da loggato e «Aggiungi a schermata Home». Per aggiornarla: `py -m pipeline.build && py -m pipeline.build_page`, poi si ripubblica `dist/preview.html` sullo stesso link.
 - **Corda montata ora:** Re-String Zero 1,23 a 22,5/21,5 kg. **Preferite:** Solinco Confidential 1,25, Toroline O-Toro 1,23. **Non gradite:** Confidential Soft, RPM Blast. Si cambiano dall'app (montata, ★ e ✕ su ogni scheda).
 
 ## Le quattro schermate
@@ -66,7 +66,7 @@ py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/prev
 
 ## Lavoro aperto
 
-- **Ripubblicare l'Artifact** con `sample`, `db`, `user`, `downloads` e controllare `db` (serve conferma).
+- Controllare dal vivo che `db` salvi le ore tra dispositivi (segna 1 ora, ricarica, riapri dal telefono): da qui non si può leggere lo stato privato di un utente.
 - Lista acquisti su Tennis Warehouse Europe da aggiornare (`data/agents/shopping_*.json` riflette la lista precedente).
 - 47 corde con «anno da verificare».
 - Vita attesa da calibrare con le tue corde finite; regola della tensione non validata.
