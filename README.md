@@ -43,9 +43,9 @@ Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, Node 20+ e Playwr
 ```bash
 py -m pip install -r requirements.txt
 tests/run_all.sh                         # ricostruisce la pagina ed esegue pytest, node --test e Playwright
-py -m pytest -q                          # 187 test Python (pipeline, dati finali, build della pagina)
-node --test web/*.test.mjs               # 109 test JS dei moduli puri (pairing, stato, usura, mappa, AI, schede)
-node tests/e2e/ui.cjs                    # 52 test della pagina in Chromium (richiede dist/preview.html)
+py -m pytest -q                          # 189 test Python (pipeline, dati finali, build della pagina)
+node --test web/*.test.mjs               # 112 test JS dei moduli puri (pairing, stato, usura, mappa, AI, schede)
+node tests/e2e/ui.cjs                    # 55 test della pagina in Chromium (richiede dist/preview.html)
 node tests/e2e/shots.cjs                 # screenshot in docs/audit/
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
 py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)
@@ -71,5 +71,5 @@ py -m http.server 8765 --directory dist  # anteprima: http://localhost:8765/prev
 - 47 corde con «anno da verificare».
 - Vita attesa da calibrare con le tue corde finite; regola della tensione non validata.
 - Margini dello spin da gemello (±0,5) non propagati nel pairing; curva di allungamento 40→65 lb e peso statico solo mostrati.
-- Codice derivato non più usato dall'interfaccia (`judgments()` con la miscela 70/30, `profile_score`, somiglianza): da togliere.
+- Codice derivato non più usato dall'interfaccia (la miscela 70/30 in `judgments()`, `profile_score`, somiglianza, `tension_start`): da togliere.
 - Dall'audit v3 (`docs/AUDIT.md`): niente popover per numero con fonte e margine, niente indicatori a punti nel confronto su telefono, legenda unica dei badge, «?» da 22 px.

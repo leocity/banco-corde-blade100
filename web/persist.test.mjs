@@ -70,3 +70,46 @@ test('exportJson contiene sessioni e corde finite', async () => {
   assert.equal(out.sessions.length, 1);
   assert.ok(Array.isArray(out.lives));
 });
+
+// db con scritture lente e tracciate: serve a verificare che non ce ne siano due insieme e che resti l'ultima
+const slowDb = (docs, log, { delays = [], fail = false } = {}) => ({
+  use: async (n) => (n === 'db' ? { doc: (p) => ({
+    get: async () => ({ exists: docs.has(p), data: () => docs.get(p) }),
+    set: async (d) => { log.active += 1; log.max = Math.max(log.max, log.active); await new Promise((r) => setTimeout(r, delays.shift() ?? 0)); log.active -= 1; log.sets += 1; if (fail) throw { code: 'unavailable', message: 'giù' }; docs.set(p, d); } }) }
+    : n === 'user' ? { id: async () => 'u1' } : null),
+});
+
+test('salvataggi ravvicinati: mai due scritture insieme, resta l\'ultima', async () => {
+  const docs = new Map(), log = { active: 0, max: 0, sets: 0 };
+  const p = await createPersistence({ claude: slowDb(docs, log, { delays: [40, 0, 0] }), storage: storage(), defaults: DEFAULTS, knownIds: KNOWN });
+  const s1 = addSession(defaultState(DEFAULTS), { date: '2026-10-30', hours: 1, note: '', ts: 'a' });
+  const s2 = addSession(s1, { date: '2026-10-30', hours: 2, note: '', ts: 'b' });
+  const s3 = addSession(s2, { date: '2026-10-30', hours: 3, note: '', ts: 'c' });
+  await Promise.all([p.save(s1), p.save(s2), p.save(s3)]);
+  assert.equal(log.max, 1, 'scritture sovrapposte');
+  assert.ok(log.sets <= 2, `scritture inutili: ${log.sets}`);
+  assert.equal(docs.get('data/users/u1/state').sessions.length, 3);
+});
+
+test('un salvataggio dopo la fine della coda riparte', async () => {
+  const docs = new Map(), log = { active: 0, max: 0, sets: 0 };
+  const p = await createPersistence({ claude: slowDb(docs, log), storage: storage(), defaults: DEFAULTS, knownIds: KNOWN });
+  const s1 = addSession(defaultState(DEFAULTS), { date: '2026-10-30', hours: 1, note: '', ts: 'a' });
+  await p.save(s1);
+  await p.save(addSession(s1, { date: '2026-10-30', hours: 2, note: '', ts: 'b' }));
+  assert.equal(docs.get('data/users/u1/state').sessions.length, 2);
+});
+
+test('lastError: impostato da una scrittura fallita e azzerato dalla successiva riuscita', async () => {
+  const docs = new Map(), log = { active: 0, max: 0, sets: 0 };
+  let failing = true;
+  const claude = { use: async (n) => (n === 'db' ? { doc: (path) => ({ get: async () => ({ exists: false }), set: async (d) => { if (failing) throw { code: 'unavailable', message: 'giù' }; docs.set(path, d); } }) } : n === 'user' ? { id: async () => 'u1' } : null) };
+  const st = storage();
+  const p = await createPersistence({ claude, storage: st, defaults: DEFAULTS, knownIds: KNOWN });
+  await p.save(defaultState(DEFAULTS));
+  assert.match(p.lastError, /giù/);
+  assert.ok(st.m.has('banco-corde:state'), 'la copia locale resta');
+  failing = false;
+  await p.save(defaultState(DEFAULTS));
+  assert.equal(p.lastError, null);
+});

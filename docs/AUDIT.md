@@ -163,7 +163,7 @@ Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostitui
 
 ## Stato v3 (2026-10-30)
 
-Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (390 e 1280 px). Verifica: 187 test Python, 109 test JS, 52 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact pubblicato **non è ancora aggiornato**: serve la tua conferma.
+Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (390 e 1280 px). Verifica: 189 test Python, 112 test JS, 55 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact pubblicato **non è ancora aggiornato**: serve la tua conferma.
 
 ### I sette problemi dell'audit del 2026-10-30
 
@@ -186,7 +186,8 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 - **A5 (somiglianza opaca):** sostituita dal pairing, con la formula nel Metodo. **Aperto:** l'ipotesi sui gusti da 4 corde (`DATA.insight`) è ancora un testo statico del dataset, ora nel Metodo e dichiarato come ipotesi.
 - **A6 (provenienza):** ogni valore ha il marcatore e un suggerimento con la fonte; il «?» porta al Metodo. **Aperto:** non c'è un popover per numero con condizioni e margine, e i suggerimenti dei marcatori richiedono il passaggio del mouse (su telefono resta il testo «manca: …»).
 - **A7 (anni e produzione da agenti):** **invariato**, 47 corde senza anno («anno da verificare»).
-- **A8 (codice morto):** **aperto**, `derive.judgments()` ha ancora la miscela 70/30 con le recensioni (mai usata) e restano i campi `profile_score`, somiglianza e `tension_start` anche se l'interfaccia non li legge più.
+- **A8 (codice morto):** **aperto**. `derive.judgments()` serve ancora, perché fornisce le parole mostrate (spin, rigidità, tenuta), ma contiene la miscela 70/30 con le recensioni, mai attiva perché le recensioni non le vengono passate; restano `profile_score`, somiglianza e `tension_start`, che l'interfaccia non legge più.
+- **Revisione finale (2026-10-31):** trovata e corretta una contraddizione, la parola «tenuta» di ogni riga veniva dal vecchio calcolo a 2 fonti mentre pairing, mappa e ordinamenti usavano la dimensione a 4 fonti (25 corde su 89 avevano un livello diverso, compresa la montata): ora c'è una sola tenuta, con un test sui dati veri. Corretti anche tre difetti di salvataggio: azioni fatte prima che `db` risponda cancellavano lo storico, due salvataggi ravvicinati potevano arrivare fuori ordine, e un salvataggio online fallito non veniva dichiarato; e «Annulla» ripristinava una foto vecchia dello stato.
 - **U1–U3, U5, U9:** risolti (mappa, etichette, prima schermata su telefono con la prima scelta sopra la piega, spiegazioni raggiungibili dal «?»).
 - **U4:** risolto in parte, ogni riga mostra la differenza rispetto alla montata; manca una riga «perché la prima batte la quinta».
 - **U6/U7:** il confronto è un pannello in basso con colonne scorrevoli; **aperto:** niente indicatori a punti, e i badge non hanno una legenda unica.

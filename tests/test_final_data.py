@@ -55,3 +55,11 @@ def test_conflicts_shape():
     for r in BY_ID.values():
         for c in r["reviews"]["conflicts"]:
             assert set(c) == {"criterion", "testers", "lab", "sites"} and c["sites"]
+
+
+def test_displayed_durability_word_matches_the_computed_dimension():
+    for i, r in BY_ID.items():
+        d, j = r["derived"]["dims"]["durability"], r["derived"]["judgments"]["durability"]
+        if d is None:
+            continue
+        assert j["level"] == min(5, int(d // 20) + 1), (i, d, j["word"])

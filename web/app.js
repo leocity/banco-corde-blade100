@@ -7,7 +7,7 @@ import { renderChoose, initChoose, renderStrip } from './choose.js';
 import { wearStatus, lifeEstimate } from './wear.js';
 import { initAi, aiAvailable, aiCachedHtml } from './ai.js';
 import { renderBank, initBank } from './bank.js';
-import { renderMine, initMine } from './mine.js';
+import { renderMine, initMine, renderPersistNote } from './mine.js';
 import { renderMap, initMap } from './map.js';
 import { renderMethod } from './method.js';
 
@@ -19,7 +19,8 @@ const RENDERERS = { scegli: renderChoose, banco: renderBank, montata: renderMine
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
-let current = 'scegli', sheetId = null, persist = null, dirty = false;
+let current = 'scegli', sheetId = null, persist = null, loaded = false;
+let pendingFns = []; // modifiche fatte prima che lo stato salvato arrivi: si rieseguono sopra di esso, non lo sostituiscono
 const cache = new Map();
 const dlg = $('#sheet');
 
@@ -39,13 +40,15 @@ function cardCtx(r, extra = {}) {
 }
 
 const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state), wear, tenutaOf,
-  wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
+  wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistError: () => (persist ? persist.lastError : null), persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
   update, openSheet, showTab, refresh: () => { renderAll(); if (dlg.open && sheetId) openSheet(sheetId); }, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
 
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {
-  state = fn(state); dirty = true; cache.clear();
-  if (persist) persist.save(state);
+  $('#toast').hidden = true; // un annulla con una foto vecchia dello stato cancellerebbe questa modifica
+  state = fn(state); cache.clear();
+  if (!loaded) pendingFns.push(fn);
+  else if (persist) persist.save(state).then(() => renderPersistNote(ctx));
   renderAll();
   if (dlg.open && sheetId) openSheet(sheetId);
 }
@@ -92,13 +95,17 @@ const hashTab = (location.hash || '').slice(1);
 showTab(TABS.includes(hashTab) ? hashTab : 'scegli');
 window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (TABS.includes(h)) showTab(h); });
 
-// Lo stato salvato arriva dopo il primo disegno (il db può metterci un po'): se l'utente ha già cambiato qualcosa, vale il suo.
+// Lo stato salvato arriva dopo il primo disegno (il db può metterci un po'): le modifiche già fatte dall'utente si rieseguono sopra di esso.
 (async () => {
   try {
     persist = await createPersistence({ claude: window.claude, storage: safeStorage(), defaults: DATA.defaults, knownIds: ALL.map((r) => r.id) });
-    const loaded = await persist.load();
-    ctx.warnings = loaded.warnings;
-    if (!dirty) { state = loaded.state; cache.clear(); } else persist.save(state);
+    const got = await persist.load();
+    ctx.warnings = got.warnings;
+    state = got.state;
+    for (const fn of pendingFns) state = fn(state);
+    const replayed = pendingFns.length > 0;
+    pendingFns = []; loaded = true; cache.clear();
+    if (replayed) persist.save(state);
     renderAll();
-  } finally { window.__bancoReady = true; }
+  } finally { loaded = true; window.__bancoReady = true; }
 })();

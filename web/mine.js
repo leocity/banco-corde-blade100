@@ -46,10 +46,17 @@ export function renderMine(ctx) {
     : '<li class="muted">Nessuna sessione registrata su questa corda.</li>';
   $('#history').innerHTML = s.lives.length ? [...s.lives].reverse().map((l) => `<li><span><b>${esc(ctx.BY_ID[l.id] ? fullName(ctx.BY_ID[l.id]) : l.id)}</b> · ${esc(mineDate(l.from))}–${esc(mineDate(l.to))} · ${fmtN(l.hours)} h · ${esc(l.reason)}</span></li>`).join('')
     : '<li class="muted">Ancora nessuna corda finita.</li>';
-  const notes = [...(ctx.persistMode() === 'local' ? ['Salvato solo su questo browser: su un altro dispositivo non ci saranno le ore. Puoi esportare lo storico.'] : []), ...(ctx.warnings || [])];
+  renderPersistNote(ctx);
+  $('#export-btn').hidden = !mineDownloads;
+}
+
+// Dove stanno i dati: solo su questo browser, o un salvataggio online fallito (le ultime modifiche restano in locale).
+export function renderPersistNote(ctx) {
+  const err = ctx.persistError();
+  const notes = [...(ctx.persistMode() === 'local' ? ['Salvato solo su questo browser: su un altro dispositivo non ci saranno le ore. Puoi esportare lo storico.'] : []),
+    ...(err ? [`Non sono riuscito a salvare online (${err}): le ultime modifiche sono solo su questo browser. Riprova più tardi.`] : []), ...(ctx.warnings || [])];
   $('#persist-note').textContent = notes.join(' ');
   $('#persist-note').hidden = !notes.length;
-  $('#export-btn').hidden = !mineDownloads;
 }
 
 function addHours(ctx, raw, note = '') {

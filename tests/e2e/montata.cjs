@@ -7,7 +7,7 @@ const goMontata = async (page) => { await page.locator('#tab-montata').click(); 
 const addHours = async (page, value) => { await page.locator('#hours-input').fill(value); await page.locator('#hours-add').click(); };
 const stateWith = (patch) => JSON.stringify({ v: 1, equipped: { id: 're-string-zero-17', kg: [22.5, 21.5], since: '2026-10-01T10:00:00.000Z', hours0: 0 }, liked: ['solinco-confidential-16l', 'toroline-o-toro-17'], disliked: [], sessions: [], lives: [], ...patch });
 // db simulato che sopravvive al reload (usa localStorage) e downloads opzionale
-const FAKE_CLAUDE = (withDownloads) => `(() => { window.claude = { use: async (n) => n === 'db' ? { doc: (p) => ({ get: async () => { const v = localStorage.getItem('fakedb:' + p); return { exists: v !== null, data: () => (v ? JSON.parse(v) : undefined) }; }, set: async (d) => { localStorage.setItem('fakedb:' + p, JSON.stringify(d)); } }) } : n === 'user' ? { id: async () => 'u1' } : (n === 'downloads' && ${withDownloads}) ? { save: async (r) => { window.__saved = r; return { status: 'saved' }; } } : null }; })()`;
+const FAKE_CLAUDE = (withDownloads, { delayGet = 0, failSet = false } = {}) => `(() => { window.claude = { use: async (n) => n === 'db' ? { doc: (p) => ({ get: async () => { await new Promise((r) => setTimeout(r, ${delayGet})); const v = localStorage.getItem('fakedb:' + p); return { exists: v !== null, data: () => (v ? JSON.parse(v) : undefined) }; }, set: async (d) => { if (${failSet}) throw { code: 'unavailable', message: 'giù' }; localStorage.setItem('fakedb:' + p, JSON.stringify(d)); } }) } : n === 'user' ? { id: async () => 'u1' } : (n === 'downloads' && ${withDownloads}) ? { save: async (r) => { window.__saved = r; return { status: 'saved' }; } } : null }; })()`;
 
 test('montata: ore scritte con la virgola', async () => {
   const { page, ctx } = await openPage();
@@ -168,5 +168,40 @@ test('montata: nessun NaN/undefined/null a 390 px e nessuno scroll orizzontale',
   await addHours(page, '1,5');
   assert.doesNotMatch(await bodyText(page), BAD);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
+  await ctx.close();
+});
+
+test('montata: se il salvataggio online fallisce lo dice (non fa credere che sia sincronizzato)', async () => {
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(false, { failSet: true }) });
+  await goMontata(page);
+  await addHours(page, '2');
+  await page.waitForFunction(() => /salvare online/.test(document.querySelector('#persist-note').innerText));
+  assert.ok(await page.locator('#persist-note').isVisible());
+  assert.equal(await page.locator('#sessions li[data-ts]').count(), 1);
+  await ctx.close();
+});
+
+test('montata: azioni fatte prima che il db risponda non cancellano lo storico salvato', async () => {
+  const saved = stateWith({ sessions: [1, 2, 3].map((n) => ({ ts: `s${n}`, date: '2026-10-2' + n, hours: 2, note: '', life: '2026-10-01T10:00:00.000Z' })) });
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(false, { delayGet: 1500 }), storage: { 'fakedb:data/users/u1/state': saved }, waitReady: false });
+  await page.waitForSelector('#list .scard');
+  const id = await page.locator('#list .scard').first().getAttribute('data-id');
+  await page.locator(`#list .scard[data-id="${id}"] [data-dislike]`).click();
+  await page.waitForFunction(() => window.__bancoReady === true);
+  const doc = JSON.parse(await page.evaluate(() => localStorage.getItem('fakedb:data/users/u1/state')));
+  assert.equal(doc.sessions.length, 3, 'lo storico salvato è sparito');
+  assert.ok(doc.disliked.includes(id), 'la modifica fatta prima del caricamento è andata persa');
+  await ctx.close();
+});
+
+test('montata: una nuova modifica chiude "Annulla", così non si ripristina uno stato vecchio', async () => {
+  const { page, ctx } = await openPage();
+  await goMontata(page);
+  await page.locator('#equip-btn').click();
+  await page.locator('#eq-ok').click();
+  assert.ok(await page.locator('#toast').isVisible());
+  await page.locator('[data-add-hours="1"]').click();
+  assert.equal(await page.locator('#toast').isVisible(), false);
+  assert.equal(await page.locator('#sessions li[data-ts]').count(), 1);
   await ctx.close();
 });

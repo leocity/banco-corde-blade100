@@ -15,6 +15,16 @@ export async function createPersistence({ claude, storage, defaults, knownIds })
   const path = `data/users/${uid}/state`;
   const readLocal = () => { try { return storage ? storage.getItem(KEY) : null; } catch { return null; } };
   const writeLocal = (state) => { try { if (storage) storage.setItem(KEY, JSON.stringify(state)); } catch { /* archivio non disponibile */ } };
+  async function write(copy) {
+    if (mode === 'db') {
+      try { await db.doc(path).set(copy); api.lastError = null; return; } catch (e) { api.lastError = String((e && e.message) || (e && e.code) || e); }
+    }
+    writeLocal(copy);
+  }
+  let running = null, latest = null;
+  async function flush() {
+    try { while (latest) { const s = latest; latest = null; await write(s); } } finally { running = null; }
+  }
   const api = {
     get mode() { return mode; },
     lastError: null,
@@ -25,12 +35,11 @@ export async function createPersistence({ claude, storage, defaults, knownIds })
       } else raw = readLocal();
       return sanitizeState(raw, defaults, knownIds);
     },
-    async save(state) {
-      const copy = clone(state);
-      if (mode === 'db') {
-        try { await db.doc(path).set(copy); api.lastError = null; return; } catch (e) { api.lastError = String((e && e.message) || (e && e.code) || e); }
-      }
-      writeLocal(copy);
+    // Una scrittura alla volta (il contratto di db lo chiede) e vince l'ultimo stato: i salvataggi ravvicinati si fondono.
+    save(state) {
+      latest = clone(state);
+      if (!running) running = flush();
+      return running;
     },
     exportJson(state) { return JSON.stringify({ exportedAt: new Date().toISOString(), ...clone(state) }, null, 2); },
   };

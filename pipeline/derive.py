@@ -272,6 +272,7 @@ def derive_all(records, reviews=None):
         anchors = [{"id": k, "kg": ANCHOR_TENSIONS[k], "stiffness": stiff_lab(a),
                     "sim": similarity(r, a, pop)} for k, a in liked.items()]
         lab = subscores(r, pop)
+        lab["durability"] = dm[r["id"]]["values"]["durability"]  # una sola tenuta: quella delle dimensioni (TWU, TL6, TL12, scorrimento)
         j = judgments(r, lab, reviews.get(r["id"]), pop)
         # punteggio profilo sui giudizi misti (laboratorio + recensioni); stessi campi letti da score.js
         sub = {k: lab[k] for k in ("spin", "control", "durability", "comfort")}  # punteggio: solo laboratorio

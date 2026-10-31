@@ -53,3 +53,13 @@ def test_excel_only_string_is_rated_without_spin():
     p = rs[-1]["derived"]["pairing"]
     assert p["n_dims"] >= 3 and p["no_spin"] is True and p["score"] is not None
     assert rs[-1]["derived"]["dims"]["spin"] is None
+
+
+def test_judgments_and_subscores_use_the_same_durability_as_dims():
+    # la parola mostrata in ogni riga viene da judgments: deve descrivere la stessa tenuta che guida pairing, mappa e ordinamenti
+    rs = recs()
+    derive_all(rs)
+    for r in rs:
+        d = r["derived"]
+        assert d["judgments"]["durability"]["score"] == d["dims"]["durability"], r["id"]
+        assert d["subscores"]["durability"] == d["dims"]["durability"], r["id"]

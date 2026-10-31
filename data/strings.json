@@ -864,15 +864,6 @@
        "tennis-warehouse.com (playtest)",
        "tennisnerd.net"
       ]
-     },
-     {
-      "criterion": "durability",
-      "testers": 3.4,
-      "lab": 1,
-      "sites": [
-       "tennis-warehouse.com (playtest)",
-       "tennisnerd.net"
-      ]
      }
     ]
    },
@@ -881,14 +872,14 @@
     "subscores": {
      "spin": 11.1,
      "control": 59.1,
-     "durability": 14.6,
+     "durability": 34.8,
      "comfort": 4.700000000000003,
      "affinity": 26
     },
     "lab_subscores": {
      "spin": 11.1,
      "control": 59.1,
-     "durability": 14.6,
+     "durability": 34.8,
      "comfort": 4.700000000000003
     },
     "judgments": {
@@ -911,9 +902,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 14.6,
-      "level": 1,
-      "word": "molto basso",
+      "score": 34.8,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -937,7 +928,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": true,
-    "profile_score": 16,
+    "profile_score": 21,
     "tension_start": {
      "kg": [
       21.5,
@@ -1264,14 +1255,14 @@
     "subscores": {
      "spin": 14.8,
      "control": 54.6,
-     "durability": 34.6,
+     "durability": 29.7,
      "comfort": 4.700000000000003,
      "affinity": 51
     },
     "lab_subscores": {
      "spin": 14.8,
      "control": 54.6,
-     "durability": 34.6,
+     "durability": 29.7,
      "comfort": 4.700000000000003
     },
     "judgments": {
@@ -1294,7 +1285,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 34.6,
+      "score": 29.7,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -1320,7 +1311,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": true,
-    "profile_score": 30,
+    "profile_score": 28,
     "tension_start": {
      "kg": [
       21.0,
@@ -1536,14 +1527,14 @@
     "subscores": {
      "spin": 82.4,
      "control": 20.5,
-     "durability": 32.2,
+     "durability": 43.6,
      "comfort": 93.0,
      "affinity": 39
     },
     "lab_subscores": {
      "spin": 82.4,
      "control": 20.5,
-     "durability": 32.2,
+     "durability": 43.6,
      "comfort": 93.0
     },
     "judgments": {
@@ -1566,9 +1557,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 32.2,
-      "level": 2,
-      "word": "basso",
+      "score": 43.6,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -1592,7 +1583,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 57,
+    "profile_score": 60,
     "tension_start": {
      "kg": [
       21.0,
@@ -1658,9 +1649,9 @@
     }
    },
    "notes": {
-    "feel": "Poly morbida (204 lb/in), snapback alto (spin 7.5), profilo tonda; cala in fretta (48.3% di perdita su TWU).",
+    "feel": "Poly morbida (204 lb/in), snapback alto (spin 7.5), profilo tonda; cala nella media.",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
-    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 20/100 con Confidential e 39/100 con O-Toro. Parti da 21/20 kg (46.5/44 lbs)."
    }
   },
@@ -1831,14 +1822,14 @@
     "subscores": {
      "spin": 56.5,
      "control": 63.0,
-     "durability": 77.9,
+     "durability": 69.1,
      "comfort": 8.599999999999994,
      "affinity": 60
     },
     "lab_subscores": {
      "spin": 56.5,
      "control": 63.0,
-     "durability": 77.9,
+     "durability": 69.1,
      "comfort": 8.599999999999994
     },
     "judgments": {
@@ -1861,7 +1852,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 77.9,
+      "score": 69.1,
       "level": 4,
       "word": "alto",
       "lab_share": 1.0
@@ -1887,7 +1878,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": true,
-    "profile_score": 63,
+    "profile_score": 61,
     "tension_start": {
      "kg": [
       21.0,
@@ -2091,14 +2082,14 @@
     "subscores": {
      "spin": null,
      "control": 85.2,
-     "durability": 83.8,
+     "durability": 86.2,
      "comfort": null,
      "affinity": 25
     },
     "lab_subscores": {
      "spin": null,
      "control": 85.2,
-     "durability": 83.8,
+     "durability": 86.2,
      "comfort": null
     },
     "judgments": {
@@ -2123,7 +2114,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 83.8,
+      "score": 86.2,
       "level": 5,
       "word": "molto alto",
       "lab_share": 1.0
@@ -2324,14 +2315,14 @@
     "subscores": {
      "spin": 22.2,
      "control": 22.6,
-     "durability": 9.3,
+     "durability": 34.9,
      "comfort": 68.4,
      "affinity": 11
     },
     "lab_subscores": {
      "spin": 22.2,
      "control": 22.6,
-     "durability": 9.3,
+     "durability": 34.9,
      "comfort": 68.4
     },
     "judgments": {
@@ -2354,9 +2345,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 9.3,
-      "level": 1,
-      "word": "molto basso",
+      "score": 34.9,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -2380,7 +2371,7 @@
     },
     "disliked_warning": true,
     "sources_disagree": false,
-    "profile_score": 1,
+    "profile_score": 8,
     "tension_start": {
      "kg": [
       22.5,
@@ -2585,14 +2576,14 @@
     "subscores": {
      "spin": null,
      "control": 37.5,
-     "durability": 95.9,
+     "durability": 75.8,
      "comfort": null,
      "affinity": 27
     },
     "lab_subscores": {
      "spin": null,
      "control": 37.5,
-     "durability": 95.9,
+     "durability": 75.8,
      "comfort": null
     },
     "judgments": {
@@ -2617,9 +2608,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 95.9,
-      "level": 5,
-      "word": "molto alto",
+      "score": 75.8,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "comfort": {
@@ -2822,14 +2813,14 @@
     "subscores": {
      "spin": 36.1,
      "control": 54.2,
-     "durability": 57.4,
+     "durability": 54.8,
      "comfort": 73.4,
      "affinity": 31
     },
     "lab_subscores": {
      "spin": 36.1,
      "control": 54.2,
-     "durability": 57.4,
+     "durability": 54.8,
      "comfort": 73.4
     },
     "judgments": {
@@ -2852,7 +2843,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 57.4,
+      "score": 54.8,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -3054,14 +3045,14 @@
     "subscores": {
      "spin": 36.1,
      "control": 41.1,
-     "durability": 57.4,
+     "durability": 54.8,
      "comfort": 63.3,
      "affinity": 32
     },
     "lab_subscores": {
      "spin": 36.1,
      "control": 41.1,
-     "durability": 57.4,
+     "durability": 54.8,
      "comfort": 63.3
     },
     "judgments": {
@@ -3084,7 +3075,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 57.4,
+      "score": 54.8,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -3110,7 +3101,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 41,
+    "profile_score": 40,
     "tension_start": {
      "kg": [
       22.0,
@@ -3289,14 +3280,14 @@
     "subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 29.4,
      "comfort": 63.3,
      "affinity": 58
     },
     "lab_subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 29.4,
      "comfort": 63.3
     },
     "judgments": {
@@ -3320,7 +3311,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 35.0,
+      "score": 29.4,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -3527,14 +3518,14 @@
     "subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 33.1,
      "comfort": 86.7,
      "affinity": 43
     },
     "lab_subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 33.1,
      "comfort": 86.7
     },
     "judgments": {
@@ -3558,7 +3549,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 35.0,
+      "score": 33.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -3765,14 +3756,14 @@
     "subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 33.1,
      "comfort": 63.3,
      "affinity": 52
     },
     "lab_subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 33.1,
      "comfort": 63.3
     },
     "judgments": {
@@ -3796,7 +3787,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 35.0,
+      "score": 33.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -4003,14 +3994,14 @@
     "subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 33.1,
      "comfort": 78.9,
      "affinity": 49
     },
     "lab_subscores": {
      "spin": null,
      "control": 23.1,
-     "durability": 35.0,
+     "durability": 33.1,
      "comfort": 78.9
     },
     "judgments": {
@@ -4034,7 +4025,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 35.0,
+      "score": 33.1,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -4241,14 +4232,14 @@
     "subscores": {
      "spin": null,
      "control": 47.0,
-     "durability": 53.2,
+     "durability": 38.4,
      "comfort": 63.3,
      "affinity": 42
     },
     "lab_subscores": {
      "spin": null,
      "control": 47.0,
-     "durability": 53.2,
+     "durability": 38.4,
      "comfort": 63.3
     },
     "judgments": {
@@ -4272,9 +4263,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 53.2,
-      "level": 3,
-      "word": "medio",
+      "score": 38.4,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -4556,14 +4547,14 @@
     "subscores": {
      "spin": 69.4,
      "control": 6.7,
-     "durability": 48.0,
+     "durability": 43.8,
      "comfort": 87.7,
      "affinity": 38
     },
     "lab_subscores": {
      "spin": 69.4,
      "control": 6.7,
-     "durability": 48.0,
+     "durability": 43.8,
      "comfort": 87.7
     },
     "judgments": {
@@ -4586,7 +4577,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 48.0,
+      "score": 43.8,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -4612,7 +4603,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 55,
+    "profile_score": 54,
     "tension_start": {
      "kg": [
       22.0,
@@ -4872,14 +4863,14 @@
     "subscores": {
      "spin": null,
      "control": 31.1,
-     "durability": null,
+     "durability": 55.7,
      "comfort": 93.0,
      "affinity": 46
     },
     "lab_subscores": {
      "spin": null,
      "control": 31.1,
-     "durability": null,
+     "durability": 55.7,
      "comfort": 93.0
     },
     "judgments": {
@@ -4903,10 +4894,10 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 55.7,
+      "level": 3,
+      "word": "medio",
+      "lab_share": 1.0
      },
      "comfort": {
       "score": 93.0,
@@ -4999,7 +4990,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.91) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.83 (da un modello su rigidità e forma, bassa affidabilità, tra 6.33 e 9.33).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 33/100 con Confidential e 46/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
@@ -5191,14 +5182,14 @@
     "subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": null,
+     "durability": 90.9,
      "comfort": 49.2,
      "affinity": 89
     },
     "lab_subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": null,
+     "durability": 90.9,
      "comfort": 49.2
     },
     "judgments": {
@@ -5222,10 +5213,10 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 90.9,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 1.0
      },
      "comfort": {
       "score": 49.2,
@@ -5318,7 +5309,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 3.18) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.17 (da un modello su rigidità e forma, bassa affidabilità, tra 4.67 e 7.67).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 61/100 con Confidential e 89/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 21/20 kg (46.5/44 lbs)."
    }
   },
@@ -5535,14 +5526,14 @@
     "subscores": {
      "spin": null,
      "control": 61.2,
-     "durability": null,
+     "durability": 90.9,
      "comfort": 25.799999999999997,
      "affinity": 79
     },
     "lab_subscores": {
      "spin": null,
      "control": 61.2,
-     "durability": null,
+     "durability": 90.9,
      "comfort": 25.799999999999997
     },
     "judgments": {
@@ -5566,10 +5557,10 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": null,
-      "level": null,
-      "word": null,
-      "lab_share": null
+      "score": 90.9,
+      "level": 5,
+      "word": "molto alto",
+      "lab_share": 1.0
      },
      "comfort": {
       "score": 25.8,
@@ -5662,7 +5653,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 1.78) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.36 (da un modello su rigidità e forma, bassa affidabilità, tra 5.86 e 8.86).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 79/100 con Confidential e 15/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -5871,31 +5862,21 @@
       "gauge_mismatch": false
      }
     ],
-    "conflicts": [
-     {
-      "criterion": "durability",
-      "testers": 4.0,
-      "lab": 1,
-      "sites": [
-       "tennisnerd.net",
-       "shoprestring.com (brand)"
-      ]
-     }
-    ]
+    "conflicts": []
    },
    "catalog_only": false,
    "derived": {
     "subscores": {
      "spin": null,
      "control": 76.0,
-     "durability": 2.7,
+     "durability": 23.4,
      "comfort": 14.099999999999994,
      "affinity": 58
     },
     "lab_subscores": {
      "spin": null,
      "control": 76.0,
-     "durability": 2.7,
+     "durability": 23.4,
      "comfort": 14.099999999999994
     },
     "judgments": {
@@ -5919,9 +5900,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 2.7,
-      "level": 1,
-      "word": "molto basso",
+      "score": 23.4,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -6229,14 +6210,14 @@
     "subscores": {
      "spin": null,
      "control": 48.1,
-     "durability": 70.3,
+     "durability": 53.8,
      "comfort": 25.799999999999997,
      "affinity": 82
     },
     "lab_subscores": {
      "spin": null,
      "control": 48.1,
-     "durability": 70.3,
+     "durability": 53.8,
      "comfort": 25.799999999999997
     },
     "judgments": {
@@ -6260,9 +6241,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 70.3,
-      "level": 4,
-      "word": "alto",
+      "score": 53.8,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -6527,14 +6508,14 @@
     "subscores": {
      "spin": 58.3,
      "control": 60.4,
-     "durability": 94.7,
+     "durability": 81.7,
      "comfort": 21.099999999999994,
      "affinity": 57
     },
     "lab_subscores": {
      "spin": 58.3,
      "control": 60.4,
-     "durability": 94.7,
+     "durability": 81.7,
      "comfort": 21.099999999999994
     },
     "judgments": {
@@ -6557,7 +6538,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 94.7,
+      "score": 81.7,
       "level": 5,
       "word": "molto alto",
       "lab_share": 1.0
@@ -6583,7 +6564,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 68,
+    "profile_score": 64,
     "tension_start": {
      "kg": [
       21.5,
@@ -6745,14 +6726,14 @@
     "subscores": {
      "spin": null,
      "control": 3.4,
-     "durability": 60.8,
+     "durability": 68.4,
      "comfort": null,
      "affinity": 34
     },
     "lab_subscores": {
      "spin": null,
      "control": 3.4,
-     "durability": 60.8,
+     "durability": 68.4,
      "comfort": null
     },
     "judgments": {
@@ -6777,7 +6758,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 60.8,
+      "score": 68.4,
       "level": 4,
       "word": "alto",
       "lab_share": 1.0
@@ -6874,7 +6855,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 4.49) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.53 (da un modello su rigidità e forma, bassa affidabilità, tra 4.96 e 8.11).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 4/100 con Confidential e 34/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 23/22 kg (50.5/48.5 lbs)."
    }
   },
@@ -7074,14 +7055,14 @@
     "subscores": {
      "spin": 29.6,
      "control": 18.8,
-     "durability": 77.9,
+     "durability": 66.8,
      "comfort": 100.0,
      "affinity": 28
     },
     "lab_subscores": {
      "spin": 29.6,
      "control": 18.8,
-     "durability": 77.9,
+     "durability": 66.8,
      "comfort": 100.0
     },
     "judgments": {
@@ -7104,7 +7085,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 77.9,
+      "score": 66.8,
       "level": 4,
       "word": "alto",
       "lab_share": 1.0
@@ -7130,7 +7111,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 42,
+    "profile_score": 39,
     "tension_start": {
      "kg": [
       24.0,
@@ -7398,14 +7379,14 @@
     "subscores": {
      "spin": 29.6,
      "control": 23.1,
-     "durability": 77.9,
+     "durability": 48.1,
      "comfort": 91.2,
      "affinity": 37
     },
     "lab_subscores": {
      "spin": 29.6,
      "control": 23.1,
-     "durability": 77.9,
+     "durability": 48.1,
      "comfort": 91.2
     },
     "judgments": {
@@ -7428,9 +7409,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 77.9,
-      "level": 4,
-      "word": "alto",
+      "score": 48.1,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -7454,7 +7435,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 44,
+    "profile_score": 37,
     "tension_start": {
      "kg": [
       23.5,
@@ -7520,9 +7501,9 @@
     }
    },
    "notes": {
-    "feel": "Poly morbida (≈ 182 lb/in), poco spin (5.2), profilo quadrata; tiene bene la tensione.",
+    "feel": "Poly morbida (≈ 182 lb/in), poco spin (5.2), profilo quadrata; cala nella media.",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
-    "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "for_your_style": "Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 37/100 con Confidential e 12/100 con O-Toro. Parti da 23.5/22.5 kg (52/49.5 lbs). I dati TWU sono di «Solinco Hyper-G-Soft 16L (1.25)»."
    }
   },
@@ -7717,14 +7698,14 @@
     "subscores": {
      "spin": 62.0,
      "control": 81.7,
-     "durability": 65.8,
+     "durability": 47.2,
      "comfort": 8.599999999999994,
      "affinity": 92
     },
     "lab_subscores": {
      "spin": 62.0,
      "control": 81.7,
-     "durability": 65.8,
+     "durability": 47.2,
      "comfort": 8.599999999999994
     },
     "judgments": {
@@ -7747,9 +7728,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 65.8,
-      "level": 4,
-      "word": "alto",
+      "score": 47.2,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -7773,7 +7754,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 71,
+    "profile_score": 66,
     "tension_start": {
      "kg": [
       21.5,
@@ -7839,9 +7820,9 @@
     }
    },
    "notes": {
-    "feel": "Poly rigida e compatta (222 lb/in), spin nella media (6.4), profilo quadrata; tiene bene la tensione.",
+    "feel": "Poly rigida e compatta (222 lb/in), spin nella media (6.4), profilo quadrata; cala nella media.",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 92/100 con Confidential e 7/100 con O-Toro. Parti da 21.5/20.5 kg (47.5/45 lbs)."
    }
   },
@@ -8048,14 +8029,14 @@
     "subscores": {
      "spin": 62.0,
      "control": 46.8,
-     "durability": 65.8,
+     "durability": 54.2,
      "comfort": 36.7,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 62.0,
      "control": 46.8,
-     "durability": 65.8,
+     "durability": 54.2,
      "comfort": 36.7
     },
     "judgments": {
@@ -8078,9 +8059,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 65.8,
-      "level": 4,
-      "word": "alto",
+      "score": 54.2,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -8104,7 +8085,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 73,
+    "profile_score": 70,
     "tension_start": {
      "kg": [
       22.0,
@@ -8386,14 +8367,14 @@
     "subscores": {
      "spin": 62.0,
      "control": 22.6,
-     "durability": 97.9,
+     "durability": 76.8,
      "comfort": 36.7,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 62.0,
      "control": 22.6,
-     "durability": 97.9,
+     "durability": 76.8,
      "comfort": 36.7
     },
     "judgments": {
@@ -8416,9 +8397,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 97.9,
-      "level": 5,
-      "word": "molto alto",
+      "score": 76.8,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "comfort": {
@@ -8442,7 +8423,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 82,
+    "profile_score": 76,
     "tension_start": {
      "kg": [
       22.5,
@@ -8617,14 +8598,14 @@
     "subscores": {
      "spin": 42.6,
      "control": 87.8,
-     "durability": 62.5,
+     "durability": 54.2,
      "comfort": 0.7999999999999972,
      "affinity": 60
     },
     "lab_subscores": {
      "spin": 42.6,
      "control": 87.8,
-     "durability": 62.5,
+     "durability": 54.2,
      "comfort": 0.7999999999999972
     },
     "judgments": {
@@ -8647,9 +8628,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 62.5,
-      "level": 4,
-      "word": "alto",
+      "score": 54.2,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -8673,7 +8654,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 53,
+    "profile_score": 50,
     "tension_start": {
      "kg": [
       21.0,
@@ -8914,14 +8895,14 @@
     "subscores": {
      "spin": 97.2,
      "control": 7.3,
-     "durability": 36.4,
+     "durability": 36.9,
      "comfort": 92.1,
      "affinity": 67
     },
     "lab_subscores": {
      "spin": 97.2,
      "control": 7.3,
-     "durability": 36.4,
+     "durability": 36.9,
      "comfort": 92.1
     },
     "judgments": {
@@ -8944,7 +8925,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 36.4,
+      "score": 36.9,
       "level": 2,
       "word": "basso",
       "lab_share": 1.0
@@ -9242,7 +9223,7 @@
      {
       "criterion": "durability",
       "testers": 5.0,
-      "lab": 1,
+      "lab": 2,
       "sites": [
        "toroline.com (brand)"
       ]
@@ -9254,14 +9235,14 @@
     "subscores": {
      "spin": null,
      "control": 68.9,
-     "durability": 6.8,
+     "durability": 24.8,
      "comfort": 36.7,
      "affinity": 84
     },
     "lab_subscores": {
      "spin": null,
      "control": 68.9,
-     "durability": 6.8,
+     "durability": 24.8,
      "comfort": 36.7
     },
     "judgments": {
@@ -9285,9 +9266,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 6.8,
-      "level": 1,
-      "word": "molto basso",
+      "score": 24.8,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -9592,7 +9573,7 @@
      {
       "criterion": "durability",
       "testers": 5.0,
-      "lab": 1,
+      "lab": 2,
       "sites": [
        "toroline.com (brand)"
       ]
@@ -9604,14 +9585,14 @@
     "subscores": {
      "spin": null,
      "control": 68.9,
-     "durability": 14.9,
+     "durability": 36.7,
      "comfort": 36.7,
      "affinity": 95
     },
     "lab_subscores": {
      "spin": null,
      "control": 68.9,
-     "durability": 14.9,
+     "durability": 36.7,
      "comfort": 36.7
     },
     "judgments": {
@@ -9635,9 +9616,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 14.9,
-      "level": 1,
-      "word": "molto basso",
+      "score": 36.7,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -9731,7 +9712,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.22) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.44 (da un modello su rigidità e forma, bassa affidabilità, tra 5.94 e 8.94).",
     "on_blade_100_v9": "La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Sui colpi piatti dà direzione e stabilità. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 95/100 con Confidential e 48/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -9917,14 +9898,14 @@
     "subscores": {
      "spin": null,
      "control": 49.4,
-     "durability": 43.2,
+     "durability": 76.1,
      "comfort": 63.3,
      "affinity": 87
     },
     "lab_subscores": {
      "spin": null,
      "control": 49.4,
-     "durability": 43.2,
+     "durability": 76.1,
      "comfort": 63.3
     },
     "judgments": {
@@ -9948,9 +9929,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 43.2,
-      "level": 3,
-      "word": "medio",
+      "score": 76.1,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "comfort": {
@@ -10044,7 +10025,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.07) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.24 (da un modello su rigidità e forma, bassa affidabilità, tra 4.74 e 7.75).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 87/100 con Confidential e 30/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    }
   },
@@ -10223,30 +10204,21 @@
       "gauge_mismatch": false
      }
     ],
-    "conflicts": [
-     {
-      "criterion": "durability",
-      "testers": 3.0,
-      "lab": 1,
-      "sites": [
-       "tennisnerd.net"
-      ]
-     }
-    ]
+    "conflicts": []
    },
    "catalog_only": false,
    "derived": {
     "subscores": {
      "spin": null,
      "control": 67.0,
-     "durability": 14.9,
+     "durability": 33.3,
      "comfort": 63.3,
      "affinity": 84
     },
     "lab_subscores": {
      "spin": null,
      "control": 67.0,
-     "durability": 14.9,
+     "durability": 33.3,
      "comfort": 63.3
     },
     "judgments": {
@@ -10270,9 +10242,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 14.9,
-      "level": 1,
-      "word": "molto basso",
+      "score": 33.3,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -10552,14 +10524,14 @@
     "subscores": {
      "spin": null,
      "control": 46.7,
-     "durability": 43.2,
+     "durability": 46.6,
      "comfort": 86.7,
      "affinity": 65
     },
     "lab_subscores": {
      "spin": null,
      "control": 46.7,
-     "durability": 43.2,
+     "durability": 46.6,
      "comfort": 86.7
     },
     "judgments": {
@@ -10583,7 +10555,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 43.2,
+      "score": 46.6,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -10872,14 +10844,14 @@
     "subscores": {
      "spin": null,
      "control": 62.8,
-     "durability": 33.8,
+     "durability": 72.2,
      "comfort": 49.2,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": null,
      "control": 62.8,
-     "durability": 33.8,
+     "durability": 72.2,
      "comfort": 49.2
     },
     "judgments": {
@@ -10903,9 +10875,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 33.8,
-      "level": 2,
-      "word": "basso",
+      "score": 72.2,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "comfort": {
@@ -10999,7 +10971,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.20) e su Racketpedia, quindi è meno preciso. Profilo quadrata. Spin stimato ≈ 6.17 (da un modello su rigidità e forma, bassa affidabilità, tra 4.67 e 7.67).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 100/100 con Confidential e 39/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -11158,14 +11130,14 @@
     "subscores": {
      "spin": null,
      "control": 13.6,
-     "durability": 60.8,
+     "durability": 65.3,
      "comfort": null,
      "affinity": 87
     },
     "lab_subscores": {
      "spin": null,
      "control": 13.6,
-     "durability": 60.8,
+     "durability": 65.3,
      "comfort": null
     },
     "judgments": {
@@ -11190,7 +11162,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 60.8,
+      "score": 65.3,
       "level": 4,
       "word": "alto",
       "lab_share": 1.0
@@ -11287,7 +11259,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.36) e su Racketpedia, quindi è meno preciso. Profilo tonda. Spin stimato ≈ 6.34 (da un modello su rigidità e forma, bassa affidabilità, tra 4.76 e 7.91).",
     "on_blade_100_v9": "Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
     "vs_favorites": "Somiglianza 87/100 con Confidential e 21/100 con O-Toro. Calcolata su sole 2 misure (mancano TWU e Racketpedia): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -11473,14 +11445,14 @@
     "subscores": {
      "spin": null,
      "control": 45.0,
-     "durability": 77.0,
+     "durability": 67.7,
      "comfort": 36.7,
      "affinity": 73
     },
     "lab_subscores": {
      "spin": null,
      "control": 45.0,
-     "durability": 77.0,
+     "durability": 67.7,
      "comfort": 36.7
     },
     "judgments": {
@@ -11504,7 +11476,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 77.0,
+      "score": 67.7,
       "level": 4,
       "word": "alto",
       "lab_share": 1.0
@@ -11800,14 +11772,14 @@
     "subscores": {
      "spin": 88.0,
      "control": 50.1,
-     "durability": 54.6,
+     "durability": 44.2,
      "comfort": 63.3,
      "affinity": 48
     },
     "lab_subscores": {
      "spin": 88.0,
      "control": 50.1,
-     "durability": 54.6,
+     "durability": 44.2,
      "comfort": 63.3
     },
     "judgments": {
@@ -11830,7 +11802,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 54.6,
+      "score": 44.2,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -11856,7 +11828,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": true,
-    "profile_score": 68,
+    "profile_score": 66,
     "tension_start": {
      "kg": [
       23.0,
@@ -12143,30 +12115,21 @@
       "gauge_mismatch": false
      }
     ],
-    "conflicts": [
-     {
-      "criterion": "durability",
-      "testers": 3.8,
-      "lab": 1,
-      "sites": [
-       "prostrung.com"
-      ]
-     }
-    ]
+    "conflicts": []
    },
    "catalog_only": false,
    "derived": {
     "subscores": {
      "spin": 99.1,
      "control": 10.9,
-     "durability": 13.7,
+     "durability": 39.4,
      "comfort": 49.2,
      "affinity": 100
     },
     "lab_subscores": {
      "spin": 99.1,
      "control": 10.9,
-     "durability": 13.7,
+     "durability": 39.4,
      "comfort": 49.2
     },
     "judgments": {
@@ -12189,9 +12152,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 13.7,
-      "level": 1,
-      "word": "molto basso",
+      "score": 39.4,
+      "level": 2,
+      "word": "basso",
       "lab_share": 1.0
      },
      "comfort": {
@@ -12215,7 +12178,7 @@
     },
     "disliked_warning": false,
     "sources_disagree": false,
-    "profile_score": 77,
+    "profile_score": 83,
     "tension_start": {
      "kg": [
       23.0,
@@ -12468,14 +12431,14 @@
     "subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": 43.2,
+     "durability": 54.5,
      "comfort": 49.2,
      "affinity": 96
     },
     "lab_subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": 43.2,
+     "durability": 54.5,
      "comfort": 49.2
     },
     "judgments": {
@@ -12499,7 +12462,7 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 43.2,
+      "score": 54.5,
       "level": 3,
       "word": "medio",
       "lab_share": 1.0
@@ -12780,14 +12743,14 @@
     "subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": 43.2,
+     "durability": 64.3,
      "comfort": 49.2,
      "affinity": 96
     },
     "lab_subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": 43.2,
+     "durability": 64.3,
      "comfort": 49.2
     },
     "judgments": {
@@ -12811,9 +12774,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 43.2,
-      "level": 3,
-      "word": "medio",
+      "score": 64.3,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "comfort": {
@@ -13092,14 +13055,14 @@
     "subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": 83.8,
+     "durability": 60.0,
      "comfort": 49.2,
      "affinity": 57
     },
     "lab_subscores": {
      "spin": null,
      "control": 52.0,
-     "durability": 83.8,
+     "durability": 60.0,
      "comfort": 49.2
     },
     "judgments": {
@@ -13123,9 +13086,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 83.8,
-      "level": 5,
-      "word": "molto alto",
+      "score": 60.0,
+      "level": 4,
+      "word": "alto",
       "lab_share": 1.0
      },
      "comfort": {
@@ -13219,7 +13182,7 @@
    "notes": {
     "feel": "Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index 2.49) e su Racketpedia, quindi è meno preciso. Profilo esagonale. Spin stimato ≈ 7.52 (da un modello su rigidità e forma, bassa affidabilità, tra 6.01 e 9.02).",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 57/100 con Confidential e 25/100 con O-Toro. Calcolata su sole 3 misure (mancano TWU): prendila come indicazione. Parti da 22/21 kg (48.5/46.5 lbs)."
    }
   },
@@ -13325,14 +13288,14 @@
     "subscores": {
      "spin": 73.1,
      "control": 53.5,
-     "durability": 71.5,
+     "durability": 59.0,
      "comfort": 78.9,
      "affinity": 45
     },
     "lab_subscores": {
      "spin": 73.1,
      "control": 53.5,
-     "durability": 71.5,
+     "durability": 59.0,
      "comfort": 78.9
     },
     "judgments": {
@@ -13355,9 +13318,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 71.5,
-      "level": 4,
-      "word": "alto",
+      "score": 59.0,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -13381,7 +13344,7 @@
     },
     "disliked_warning": true,
     "sources_disagree": false,
-    "profile_score": 50,
+    "profile_score": 47,
     "tension_start": {
      "kg": [
       23.0,
@@ -13447,9 +13410,9 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (193 lb/in), snapback alto (spin 7.2), profilo esagonale; tiene bene la tensione.",
+    "feel": "Poly di rigidità media (193 lb/in), snapback alto (spin 7.2), profilo esagonale; cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "for_your_style": "Per il gioco in rotazione è un punto di forza: le verticali tornano in sede e aiutano il topspin anche su swing medi. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 45/100 con Confidential e 30/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (85/100), che non ti è piaciuta. Parti da 23/22 kg (50.5/48.5 lbs)."
    }
   },
@@ -13598,14 +13561,14 @@
     "subscores": {
      "spin": 60.2,
      "control": 59.7,
-     "durability": 79.3,
+     "durability": 58.9,
      "comfort": 18.799999999999997,
      "affinity": 80
     },
     "lab_subscores": {
      "spin": 60.2,
      "control": 59.7,
-     "durability": 79.3,
+     "durability": 58.9,
      "comfort": 18.799999999999997
     },
     "judgments": {
@@ -13628,9 +13591,9 @@
       "lab_share": 1.0
      },
      "durability": {
-      "score": 79.3,
-      "level": 4,
-      "word": "alto",
+      "score": 58.9,
+      "level": 3,
+      "word": "medio",
       "lab_share": 1.0
      },
      "comfort": {
@@ -13654,7 +13617,7 @@
     },
     "disliked_warning": true,
     "sources_disagree": false,
-    "profile_score": 56,
+    "profile_score": 50,
     "tension_start": {
      "kg": [
       22.5,
@@ -13720,9 +13683,9 @@
     }
    },
    "notes": {
-    "feel": "Poly di rigidità media (≈ 204 lb/in), spin nella media (6.3), profilo esagonale; tiene bene la tensione.",
+    "feel": "Poly di rigidità media (≈ 204 lb/in), spin nella media (6.3), profilo esagonale; cala nella media.",
     "on_blade_100_v9": "Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 lascia scorrere le verticali per lo spin.",
-    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
+    "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto. Con il tuo volume di gioco, rincorda ogni 3 settimane circa.",
     "vs_favorites": "Somiglianza 80/100 con Confidential e 15/100 con O-Toro. Attenzione: assomiglia molto a Confidential Soft (82/100), che non ti è piaciuta. Parti da 22.5/21.5 kg (49.5/47.5 lbs). I dati TWU sono di «Yonex Poly Tour Spin 16L (1.25)»."
    }
   },

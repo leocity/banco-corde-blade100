@@ -11,7 +11,7 @@ before(async () => { browser = await chromium.launch(); });
 after(async () => { await browser.close(); });
 
 // claude: sorgente di una funzione eseguita prima della pagina per simulare window.claude
-async function openPage({ width = 1280, height = 900, claude, hasTouch = false, storage, clock = false } = {}) {
+async function openPage({ width = 1280, height = 900, claude, hasTouch = false, storage, clock = false, waitReady = true } = {}) {
   const ctx = await browser.newContext({ viewport: { width, height }, hasTouch });
   const page = await ctx.newPage();
   page.setDefaultTimeout(5000);
@@ -21,7 +21,7 @@ async function openPage({ width = 1280, height = 900, claude, hasTouch = false, 
   if (claude) await page.addInitScript(claude);
   if (clock) await page.clock.install();
   await page.goto(URL);
-  await page.waitForFunction(() => window.__bancoReady === true && window.__aiReady === true);
+  if (waitReady) await page.waitForFunction(() => window.__bancoReady === true && window.__aiReady === true);
   return { page, ctx, errors };
 }
 const bodyText = (page) => page.innerText('body');
