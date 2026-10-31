@@ -450,3 +450,21 @@ dialog#sheet { overscroll-behavior: contain; }
   .section-head h2 { font-size: 1.25rem; }
 }
 @media (max-width: 430px) { .crow2 .r2 { gap: 8px; } .crow2 .m b { font-size: .82rem; } .crow2 .m em { font-size: .66rem; } }
+
+/* diario di prova: voti a tocco */
+.diary { background: var(--surface); border: 1px solid var(--court); border-radius: var(--radius); padding: 14px; display: grid; gap: 10px; }
+.moments { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.mom { min-height: 52px; display: grid; gap: 0; place-items: center; font: 600 .85rem var(--font-body); border: 1px solid var(--line); background: var(--surface); color: var(--fg-2); border-radius: var(--radius); cursor: pointer; padding: 4px; }
+.mom b { font: 700 1.05rem var(--font-display); color: var(--fg); }
+.mom[aria-pressed="true"] { background: var(--court); color: var(--accent-ink); border-color: var(--court); }
+.mom[aria-pressed="true"] b { color: var(--accent-ink); }
+.rates { display: grid; gap: 4px; }
+.rate { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 46px; }
+.rl { font-weight: 600; font-size: .95rem; min-width: 0; }
+.rbs { display: inline-flex; gap: 4px; flex: none; }
+.rb { width: 42px; height: 42px; font: 700 1rem var(--font-display); border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 50%; cursor: pointer; padding: 0; }
+.rb[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.rb:focus-visible, .mom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tags .tg { min-height: 36px; font-size: .82rem; padding: 2px 10px; }
+.dn { display: grid; gap: 3px; font-size: .9rem; color: var(--fg-2); }
+.verdict { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 600; }

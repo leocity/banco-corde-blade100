@@ -136,3 +136,9 @@ export function trialsOf(state) {
 export function applyVerdict(state, stringId, verdict) {
   return verdict === 'si' ? setPreference(state, stringId, 'liked') : verdict === 'no' ? setPreference(state, stringId, 'disliked') : state;
 }
+
+// Tensione della corda montata (kg verticali/orizzontali), tra 15 e 35 kg; altrimenti non cambia nulla.
+export function setEquippedKg(state, kg) {
+  const ok = Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35);
+  return ok ? { ...state, equipped: { ...state.equipped, kg: [...kg] } } : state;
+}

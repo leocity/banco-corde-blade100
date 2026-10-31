@@ -456,6 +456,24 @@ dialog#sheet { overscroll-behavior: contain; }
 }
 @media (max-width: 430px) { .crow2 .r2 { gap: 8px; } .crow2 .m b { font-size: .82rem; } .crow2 .m em { font-size: .66rem; } }
 
+/* diario di prova: voti a tocco */
+.diary { background: var(--surface); border: 1px solid var(--court); border-radius: var(--radius); padding: 14px; display: grid; gap: 10px; }
+.moments { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.mom { min-height: 52px; display: grid; gap: 0; place-items: center; font: 600 .85rem var(--font-body); border: 1px solid var(--line); background: var(--surface); color: var(--fg-2); border-radius: var(--radius); cursor: pointer; padding: 4px; }
+.mom b { font: 700 1.05rem var(--font-display); color: var(--fg); }
+.mom[aria-pressed="true"] { background: var(--court); color: var(--accent-ink); border-color: var(--court); }
+.mom[aria-pressed="true"] b { color: var(--accent-ink); }
+.rates { display: grid; gap: 4px; }
+.rate { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 46px; }
+.rl { font-weight: 600; font-size: .95rem; min-width: 0; }
+.rbs { display: inline-flex; gap: 4px; flex: none; }
+.rb { width: 42px; height: 42px; font: 700 1rem var(--font-display); border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 50%; cursor: pointer; padding: 0; }
+.rb[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.rb:focus-visible, .mom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tags .tg { min-height: 36px; font-size: .82rem; padding: 2px 10px; }
+.dn { display: grid; gap: 3px; font-size: .9rem; color: var(--fg-2); }
+.verdict { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 600; }
+
 </style>
 
 <div class="wrap">
@@ -565,6 +583,7 @@ dialog#sheet { overscroll-behavior: contain; }
       <div class="section-head"><h2>La tua corda montata</h2></div>
       <div id="mine-summary"></div>
       <div class="wear-box" id="wear"></div>
+      <section class="diary" id="diary" data-dtarget="current" aria-label="Voti e sensazioni"></section>
       <div class="log-box">
         <h3>Segna una sessione</h3>
         <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
@@ -1001,6 +1020,12 @@ function trialsOf(state) {
 // «Ricomprerei»: sì -> preferita, no -> non gradita; forse e nessun verdetto non cambiano nulla. I voti per categoria non toccano mai le preferite.
 function applyVerdict(state, stringId, verdict) {
   return verdict === 'si' ? setPreference(state, stringId, 'liked') : verdict === 'no' ? setPreference(state, stringId, 'disliked') : state;
+}
+
+// Tensione della corda montata (kg verticali/orizzontali), tra 15 e 35 kg; altrimenti non cambia nulla.
+function setEquippedKg(state, kg) {
+  const ok = Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35);
+  return ok ? { ...state, equipped: { ...state.equipped, kg: [...kg] } } : state;
 }
 
 // Salvataggio dello stato. Con `db`: documenti separati nella raccolta personale data/users/<id> — `state` (montata, preferite),
@@ -1820,7 +1845,109 @@ function initBank(ctx) {
   window.matchMedia('(max-width: 760px)').addEventListener('change', () => renderBank(ctx));
 }
 
+// Interfaccia del diario di prova: voti 1–5 in tre momenti, tag, note, verdetto, setup e tensiometro.
+// Ogni modifica passa da ctx.update (salvataggio automatico). I campi di testo si salvano a fine digitazione (change).
+
+
+
+
+const diaryView = { moment: {}, open: { setup: false, meter: false } };
+const DIARY_NEXT = ['-2', '-1.5', '-1', '-0.5', '0.5', '1', '1.5', '2'];
+const diaryTrial = (ctx, target) => trialsOf(ctx.state()).find((t) => t.lid === target);
+const dkNum = (v) => { const s = String(v ?? '').trim().replace(',', '.'); return s === '' ? NaN : Number(s); };
+const tagLabel = (t) => t.replace(/-/g, ' ');
+
+// Il momento mostrato: quello scelto, altrimenti l'ultimo che ha già dei voti (si vede ciò che si è inserito), altrimenti il primo colpo.
+function diaryMoment(ctx, target) {
+  const t = diaryTrial(ctx, target), d = (t && t.diary) || emptyDiary();
+  return diaryView.moment[target] || ([...MOMENTS].reverse().find((m) => d.ratings[m.key]) || MOMENTS[0]).key;
+}
+
+function diaryHtml(ctx, target) {
+  const t = diaryTrial(ctx, target);
+  if (!t) return '';
+  const d = t.diary || emptyDiary(), moment = diaryMoment(ctx, target), rec = ctx.BY_ID[t.id], current = target === 'current';
+  const moms = MOMENTS.map((m) => { const a = momentAverage(d, m.key); return `<button type="button" class="mom" data-moment="${m.key}" aria-pressed="${m.key === moment}"><span>${esc(m.label)}</span><b>${a === null ? '—' : fmt(a, 1)}</b></button>`; }).join('');
+  const rows = CATS.map((c) => { const cur = (d.ratings[moment] || {})[c.key]; return `<div class="rate" data-cat="${c.key}"><span class="rl" title="${esc(c.hint)}">${esc(c.label)}</span><span class="rbs">${[1, 2, 3, 4, 5].map((v) => `<button type="button" class="rb" data-v="${v}" aria-pressed="${cur === v}" aria-label="${esc(c.label)}: ${v} su 5">${v}</button>`).join('')}</span></div>`; }).join('');
+  const tags = TAGS.map((g) => `<button type="button" class="chipbtn tg" data-tag="${g}" aria-pressed="${d.tags.includes(g)}">${esc(tagLabel(g))}</button>`).join('');
+  const verdict = [['si', 'Sì'], ['forse', 'Forse'], ['no', 'No']].map(([v, l]) => `<button type="button" class="chipbtn" data-verdict="${v}" aria-pressed="${d.verdict === v}">${l}</button>`).join('');
+  const opt = (list, cur) => `<option value="">—</option>${list.map((x) => `<option${x === cur ? ' selected' : ''}>${esc(x)}</option>`).join('')}`;
+  const kgFields = current ? `<label>Verticali (kg) <input data-dkg="v" inputmode="decimal" size="5" value="${esc(fmtN(t.kg[0], 2))}"></label><label>Orizzontali (kg) <input data-dkg="h" inputmode="decimal" size="5" value="${esc(fmtN(t.kg[1], 2))}"></label>`
+    : `<p class="small">Tensione usata: <b>${esc(fmtN(t.kg[0], 2))}/${esc(fmtN(t.kg[1], 2))} kg</b></p>`;
+  const loss = new Map(tensionLoss(d).map((x) => [x.hours, x.pct]));
+  const meter = d.meter.map((m, i) => `<li><span>${esc(fmtN(m.hours))} h · <b>${esc(fmtN(m.value, 2))}</b>${loss.has(m.hours) ? ` <span class="muted">(${loss.get(m.hours) > 0 ? '−' : '+'}${esc(fmtN(Math.abs(loss.get(m.hours))))}%)</span>` : ''}</span><button type="button" class="btn icon" data-dmeter-del="${i}" aria-label="Togli la lettura">×</button></li>`).join('');
+  const lab = rec ? [rec.twu && rec.twu.tension_loss_pct != null ? `perdita TWU ${fmt(rec.twu.tension_loss_pct, 0)}%` : '', rec.excel && rec.excel.tl6 != null ? `TL6 ${fmt(rec.excel.tl6, 0)}%` : '', rec.excel && rec.excel.tl12 != null ? `TL12 ${fmt(rec.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') : '';
+  const open = (k) => (diaryView.open[k] ? ' open' : '');
+  return `<h3>Voti e sensazioni</h3><p class="muted small">${esc(rec ? `${rec.brand} ${rec.model}` : t.id)} · ${esc(fmtN(t.kg[0], 2))}/${esc(fmtN(t.kg[1], 2))} kg · ${esc(fmtN(t.hours))} h</p>`
+    + `<div class="moments" role="group" aria-label="Momento">${moms}</div><div class="rates">${rows}</div>`
+    + `<div class="chips tags" role="group" aria-label="Com'è andata">${tags}</div>`
+    + `<label class="dn">Sensazioni <textarea data-dnotes rows="3" placeholder="Come suona, come risponde, cosa cambieresti…">${esc(d.notes)}</textarea></label>`
+    + `<div class="verdict"><span>Ricomprerei?</span><span class="chips" role="group" aria-label="Ricomprerei">${verdict}</span></div>`
+    + `<details class="sheet-section" data-dsec="setup"${open('setup')}><summary>Setup e tensione usata</summary><div class="controls">${kgFields}`
+    + `<label>Montata il <input type="date" data-dsetup="strungOn" value="${esc(d.setup.strungOn || String(t.from).slice(0, 10))}"></label>`
+    + `<label>Pre-stretch <select data-dsetup="prestretch">${opt(PRESTRETCH, d.setup.prestretch)}</select></label>`
+    + `<label>Incordatore <input data-dsetup="stringer" value="${esc(d.setup.stringer)}" maxlength="60"></label>`
+    + `<label>Superficie <select data-dsetup="surface">${opt(SURFACES, d.setup.surface)}</select></label>`
+    + `<label>La prossima volta <select data-dnext><option value="">—</option>${DIARY_NEXT.map((v) => `<option value="${v}"${d.nextKgDelta === Number(v) ? ' selected' : ''}>${Number(v) > 0 ? '+' : '−'}${esc(String(Math.abs(Number(v))).replace('.', ','))} kg</option>`).join('')}</select></label></div></details>`
+    + `<details class="sheet-section" data-dsec="meter"${open('meter')}><summary>Tensiometro${d.meter.length ? ` (${d.meter.length})` : ''}</summary>`
+    + `<p class="muted small">Scrivi la lettura a 0 h e poi le successive: calcolo quanta tensione perdi nel tuo uso.${lab ? ` Laboratorio: ${esc(lab)}.` : ''}</p>`
+    + `<ul class="sessions">${meter || '<li class="muted">Nessuna lettura.</li>'}</ul>`
+    + `<div class="controls"><label>Ore giocate <input id="d-meter-h" inputmode="decimal" size="5" placeholder="0"></label><label>Valore <input id="d-meter-v" inputmode="decimal" size="6" placeholder="25"></label><button type="button" class="btn" data-dmeter-add>Aggiungi lettura</button></div></details>`
+    + `<p class="gaps" id="d-error" role="alert" hidden></p>`;
+}
+
+function renderDiary(ctx) {
+  const host = $('#diary');
+  if (host) host.innerHTML = diaryHtml(ctx, 'current');
+}
+
+const diaryError = (msg) => { const e = $('#d-error'); if (e) { e.textContent = msg || ''; e.hidden = !msg; } };
+
+function initDiary(ctx) {
+  const act = (target, fn) => ctx.update((s) => updateDiary(s, target, fn));
+  document.addEventListener('click', (e) => {
+    const host = e.target.closest('[data-dtarget]'); if (!host) return;
+    const target = host.dataset.dtarget;
+    const mom = e.target.closest('[data-moment]'); if (mom) { diaryView.moment[target] = mom.dataset.moment; ctx.refresh(); return; }
+    const rb = e.target.closest('.rb');
+    if (rb) { const cat = rb.closest('.rate').dataset.cat, v = Number(rb.dataset.v), m = diaryMoment(ctx, target); diaryView.moment[target] = m; /* il momento scelto non deve spostarsi da solo al primo voto */ diaryError(''); act(target, (d) => toggleRating(d, m, cat, v)); return; }
+    const tg = e.target.closest('[data-tag]'); if (tg) { const g = tg.dataset.tag; act(target, (d) => setTag(d, g, !d.tags.includes(g))); return; }
+    const vb = e.target.closest('[data-verdict]');
+    if (vb) {
+      const t = diaryTrial(ctx, target), prev = ctx.state(), next = t.diary && t.diary.verdict === vb.dataset.verdict ? null : vb.dataset.verdict;
+      ctx.update((s) => applyVerdict(updateDiary(s, target, (d) => setVerdict(d, next)), t.id, next));
+      const now = ctx.state(), name = ctx.BY_ID[t.id] ? `${ctx.BY_ID[t.id].brand} ${ctx.BY_ID[t.id].model}` : t.id;
+      if (next === 'si' && now.liked.includes(t.id) && !prev.liked.includes(t.id)) mineToast(`Segnata come preferita: ${name}`, 'Annulla', () => ctx.update(() => prev));
+      if (next === 'no' && now.disliked.includes(t.id) && !prev.disliked.includes(t.id)) mineToast(`Segnata come non gradita: ${name}`, 'Annulla', () => ctx.update(() => prev));
+      return;
+    }
+    const add = e.target.closest('[data-dmeter-add]');
+    if (add) {
+      const hours = dkNum($('#d-meter-h').value), value = dkNum($('#d-meter-v').value);
+      const t = diaryTrial(ctx, target), before = (t.diary || emptyDiary()).meter.length;
+      if (!(hours >= 0) || !(value > 0) || before >= 8) { diaryError('Lettura non valida: ore da 0 in su, valore maggiore di 0, al massimo 8 letture.'); return; }
+      diaryError(''); act(target, (d) => addMeter(d, { hours, value })); return;
+    }
+    const del = e.target.closest('[data-dmeter-del]'); if (del) act(target, (d) => removeMeter(d, Number(del.dataset.dmeterDel)));
+  });
+  document.addEventListener('change', (e) => {
+    const host = e.target.closest('[data-dtarget]'); if (!host) return;
+    const target = host.dataset.dtarget, el = e.target;
+    if (el.matches('[data-dnotes]')) { act(target, (d) => setNotes(d, el.value)); return; }
+    if (el.matches('[data-dsetup]')) { const k = el.dataset.dsetup; act(target, (d) => setSetup(d, { [k]: el.value === '' ? null : el.value })); return; }
+    if (el.matches('[data-dnext]')) { act(target, (d) => setNextKgDelta(d, el.value === '' ? null : Number(el.value))); return; }
+    if (el.matches('[data-dkg]') && target === 'current') {
+      const v = dkNum(host.querySelector('[data-dkg="v"]').value), h = dkNum(host.querySelector('[data-dkg="h"]').value);
+      const ok = setEquippedKg(ctx.state(), [v, h]);
+      if (ok === ctx.state()) { diaryError('Tensione non valida: scrivi due numeri in kg tra 15 e 35.'); return; }
+      diaryError(''); ctx.update((s) => setEquippedKg(s, [v, h]));
+    }
+  });
+  document.addEventListener('toggle', (e) => { const k = e.target && e.target.dataset && e.target.dataset.dsec; if (k) diaryView.open[k] = e.target.open; }, true);
+}
+
 // Schermata Montata: corda montata, ore di gioco, usura, cambio corda e storico.
+
 
 
 
@@ -1866,6 +1993,7 @@ function renderMine(ctx) {
   const s = ctx.state(), eq = ctx.equippedRec();
   $('#mine-summary').innerHTML = compactRowHtml(eq, ctx.cardCtx(eq));
   $('#wear').innerHTML = wearHtml(ctx);
+  renderDiary(ctx);
   if (!$('#hours-date').value) $('#hours-date').value = mineToday();
   mineSyncDayChips();
   const mine = s.sessions.filter((x) => x.life === s.equipped.since).sort((a, b) => b.date.localeCompare(a.date) || b.ts.localeCompare(a.ts));
@@ -2217,6 +2345,7 @@ function renderMethod(ctx) {
 
 
 
+
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
@@ -2298,6 +2427,7 @@ document.addEventListener('click', (e) => {
 initChoose(ctx);
 initBank(ctx);
 initMine(ctx);
+initDiary(ctx);
 initMap(ctx);
 initAi(ctx);
 renderMethod(ctx);

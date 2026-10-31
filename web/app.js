@@ -8,6 +8,7 @@ import { wearStatus, lifeEstimate } from './wear.js';
 import { initAi, aiAvailable, aiCachedHtml } from './ai.js';
 import { renderBank, initBank } from './bank.js';
 import { renderMine, initMine, renderPersistNote } from './mine.js';
+import { initDiary } from './diaryui.js';
 import { renderMap, initMap } from './map.js';
 import { renderMethod } from './method.js';
 
@@ -92,6 +93,7 @@ document.addEventListener('click', (e) => {
 initChoose(ctx);
 initBank(ctx);
 initMine(ctx);
+initDiary(ctx);
 initMap(ctx);
 initAi(ctx);
 renderMethod(ctx);

@@ -29,5 +29,5 @@ const stateOf = (page) => page.evaluate(() => JSON.parse(localStorage.getItem('b
 module.exports = { openPage, bodyText, stateOf, BAD, test, assert };
 
 if (require.main === module) {
-  for (const f of ['scegli', 'banco', 'montata', 'mappa', 'ai', 'sheet', 'nav']) require(`./${f}.cjs`);
+  for (const f of ['scegli', 'banco', 'montata', 'mappa', 'ai', 'sheet', 'nav', 'diario']) require(`./${f}.cjs`);
 }

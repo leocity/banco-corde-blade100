@@ -165,7 +165,7 @@ test('sameState ignora l\'ordine delle chiavi e delle sessioni', () => {
   assert.equal(sameState(a, removeSession(a, '1-1')), false);
 });
 
-import { trialsOf, applyVerdict, updateDiary } from './state.js';
+import { trialsOf, applyVerdict, updateDiary, setEquippedKg } from './state.js';
 import { setRating, setVerdict, emptyDiary } from './diary.js';
 
 test('sanitizeState: il diario di montata e vite si conserva ripulito; senza diario nessun campo', () => {
@@ -212,4 +212,12 @@ test('applyVerdict: sì -> preferita, no -> non gradita, forse e nessuno non cam
   assert.deepEqual(applyVerdict(s, 'conf', 'forse'), s);
   assert.deepEqual(applyVerdict(s, 'conf', null), s);
   assert.deepEqual(applyVerdict(s, 'blast', 'si').disliked, []);
+});
+
+test('setEquippedKg: tensione tra 15 e 35 kg, il resto della montata non cambia', () => {
+  const s = defaultState(DEFAULTS, NOW);
+  const n = setEquippedKg(s, [23, 22]);
+  assert.deepEqual(n.equipped.kg, [23, 22]);
+  assert.equal(n.equipped.since, s.equipped.since);
+  for (const bad of [[99, 22], [23], [14.9, 22], [23, 35.1], ['a', 22], null, [NaN, 22]]) assert.deepEqual(setEquippedKg(s, bad), s, String(bad));
 });

@@ -1,6 +1,7 @@
 // Schermata Montata: corda montata, ore di gioco, usura, cambio corda e storico.
 import { $, esc, fmt, fmtN, fullName, nameOf } from './format.js';
 import { compactRowHtml } from './cards.js';
+import { renderDiary } from './diaryui.js';
 import { changeString, addSession, removeSession, editSession, parseHours, tensionFor } from './state.js';
 
 const WEAR_CLASS = { Fresca: 'ottimo', 'In uso': 'buono', 'Da controllare': 'attenzione', 'Da cambiare': 'poco' };
@@ -11,7 +12,7 @@ const pad = (n) => String(n).padStart(2, '0');
 const mineToday = () => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
 const mineDate = (s) => new Date(s).toLocaleDateString('it-IT', { day: 'numeric', month: 'short', timeZone: String(s).length === 10 ? 'UTC' : undefined });
 
-function mineToast(msg, label, onAction) {
+export function mineToast(msg, label, onAction) {
   const t = $('#toast');
   t.innerHTML = `<span>${esc(msg)}</span><button class="btn" type="button">${esc(label)}</button>`;
   t.hidden = false;
@@ -45,6 +46,7 @@ export function renderMine(ctx) {
   const s = ctx.state(), eq = ctx.equippedRec();
   $('#mine-summary').innerHTML = compactRowHtml(eq, ctx.cardCtx(eq));
   $('#wear').innerHTML = wearHtml(ctx);
+  renderDiary(ctx);
   if (!$('#hours-date').value) $('#hours-date').value = mineToday();
   mineSyncDayChips();
   const mine = s.sessions.filter((x) => x.life === s.equipped.since).sort((a, b) => b.date.localeCompare(a.date) || b.ts.localeCompare(a.ts));
