@@ -505,6 +505,18 @@ body { overflow-wrap: anywhere; }
 .rl { font-size: .82rem; line-height: 1.15; }
 @media (min-width: 380px) { .rl { font-size: .95rem; } }
 
+/* dialoghi da telefono: il corpo scorre, il piede (errore + pulsanti) resta sempre in vista */
+dialog#equip-dialog, dialog#trial-dialog, dialog#past-dialog { max-height: calc(100vh - 12px); max-height: calc(100dvh - 12px); overflow: hidden; }
+dialog#equip-dialog .equip-form, dialog#trial-dialog .equip-form, dialog#past-dialog .equip-form { padding: 0; display: flex; flex-direction: column; gap: 0; max-height: calc(100vh - 14px); max-height: calc(100dvh - 14px); }
+.dlg-body { display: grid; gap: 12px; padding: 16px 16px 10px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; flex: 1 1 auto; -webkit-overflow-scrolling: touch; }
+.dlg-body label { display: grid; gap: 3px; font-size: .9rem; color: var(--fg-2); }
+.dlg-foot { flex: none; display: grid; gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: var(--surface); }
+.dlg-foot .gaps { margin: 0; }
+.dlg-foot .card-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.dlg-foot .btn { min-height: 48px; flex: 1 1 0; }
+dialog#equip-dialog .equip-form select[size], dialog#trial-dialog .equip-form select[size] { max-height: 28vh; }
+dialog#past-dialog .dlg-body { padding: 14px 12px 8px; }
+
 </style>
 
 <div class="wrap">
@@ -662,6 +674,7 @@ body { overflow-wrap: anywhere; }
 
 <dialog id="equip-dialog" aria-labelledby="eq-title">
   <div class="equip-form">
+    <div class="dlg-body">
     <h2 id="eq-title">Cambia corda</h2>
     <label>Cerca <input type="search" id="eq-q" placeholder="Nome della corda"></label>
     <label>Nuova corda <select id="eq-pick" size="6"></select></label>
@@ -676,13 +689,17 @@ body { overflow-wrap: anywhere; }
       <label>Ore giocate <input id="eq-hours" inputmode="decimal" size="5"></label>
     </div>
     <label class="check"><input type="checkbox" id="eq-rate"> Dai i voti di fine vita alla corda che togli</label>
+    </div>
+    <div class="dlg-foot">
     <p class="gaps" id="eq-error" role="alert" hidden></p>
     <div class="card-actions"><button class="btn" type="button" id="eq-cancel">Annulla</button><button class="btn primary" type="button" id="eq-ok">Monta</button></div>
+    </div>
   </div>
 </dialog>
 
 <dialog id="trial-dialog" aria-labelledby="tr-title">
   <div class="equip-form">
+    <div class="dlg-body">
     <h2 id="tr-title">Aggiungi prova passata</h2>
     <label>Cerca <input type="search" id="tr-q" placeholder="Nome della corda"></label>
     <label>Corda <select id="tr-pick" size="5"></select></label>
@@ -697,16 +714,21 @@ body { overflow-wrap: anywhere; }
       <label>Com'è finita <select id="tr-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
     </div>
     <p class="muted small">Date e ore anche approssimate. Solo le corde «consumata» servono a stimare la vita attesa.</p>
+    </div>
+    <div class="dlg-foot">
     <p class="gaps" id="tr-error" role="alert" hidden></p>
     <div class="card-actions"><button class="btn" type="button" id="tr-cancel">Annulla</button><button class="btn primary" type="button" id="tr-ok">Aggiungi e dai i voti</button></div>
+    </div>
   </div>
 </dialog>
 
 <dialog id="past-dialog" aria-labelledby="past-title">
   <div class="equip-form">
+    <div class="dlg-body">
     <h2 id="past-title">Voti della corda</h2>
     <section class="diary" id="past-diary"></section>
-    <div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div>
+    </div>
+    <div class="dlg-foot"><div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div></div>
   </div>
 </dialog>
 

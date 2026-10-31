@@ -393,3 +393,34 @@ for (const w of [320, 360, 375, 390]) {
     await ctx.close();
   });
 }
+
+// ---- «Cambia corda» su telefoni piccoli: il pulsante Monta e l'errore sono sempre in vista ----
+for (const [w, h] of [[360, 520], [360, 640], [320, 568]]) {
+  test(`mobile ${w}x${h}: nei dialoghi i pulsanti d'azione e gli errori restano in vista senza scorrere`, async () => {
+    const { page, ctx } = await openPage({ width: w, height: h, hasTouch: true });
+    await goMontata(page);
+    const inView = (sel) => page.evaluate((s) => { const r = document.querySelector(s).getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth; }, sel);
+    await page.locator('#equip-btn').click();
+    await page.waitForSelector('#equip-dialog[open]');
+    assert.ok(await inView('#eq-ok'), 'Monta in vista');
+    assert.ok(await inView('#eq-cancel'), 'Annulla in vista');
+    await page.locator('#eq-kgv').fill('99');
+    await page.locator('#eq-ok').tap();
+    assert.ok(await page.locator('#eq-error').isVisible(), 'messaggio di errore mostrato');
+    assert.ok(await inView('#eq-error'), 'il messaggio è in vista, accanto al pulsante');
+    await page.locator('#eq-kgv').fill('22,5');
+    await page.locator('#eq-ok').tap();
+    await page.waitForFunction(() => !document.getElementById('equip-dialog').open);
+    assert.notEqual((await stateOf(page)).lives.length, 0, 'il cambio è avvenuto');
+    // prova passata e voti di una corda finita
+    await page.locator('#past-add').tap();
+    await page.waitForSelector('#trial-dialog[open]');
+    assert.ok(await inView('#tr-ok') && await inView('#tr-cancel'), 'Aggiungi/Annulla in vista');
+    await page.locator('#tr-cancel').tap();
+    await page.locator('#history [data-past-open]').first().tap();
+    await page.waitForSelector('#past-dialog[open]');
+    assert.ok(await inView('#past-close'), 'Fatto in vista');
+    await page.locator('#past-close').tap();
+    await ctx.close();
+  });
+}

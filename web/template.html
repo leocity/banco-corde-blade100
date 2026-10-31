@@ -161,6 +161,7 @@
 
 <dialog id="equip-dialog" aria-labelledby="eq-title">
   <div class="equip-form">
+    <div class="dlg-body">
     <h2 id="eq-title">Cambia corda</h2>
     <label>Cerca <input type="search" id="eq-q" placeholder="Nome della corda"></label>
     <label>Nuova corda <select id="eq-pick" size="6"></select></label>
@@ -175,13 +176,17 @@
       <label>Ore giocate <input id="eq-hours" inputmode="decimal" size="5"></label>
     </div>
     <label class="check"><input type="checkbox" id="eq-rate"> Dai i voti di fine vita alla corda che togli</label>
+    </div>
+    <div class="dlg-foot">
     <p class="gaps" id="eq-error" role="alert" hidden></p>
     <div class="card-actions"><button class="btn" type="button" id="eq-cancel">Annulla</button><button class="btn primary" type="button" id="eq-ok">Monta</button></div>
+    </div>
   </div>
 </dialog>
 
 <dialog id="trial-dialog" aria-labelledby="tr-title">
   <div class="equip-form">
+    <div class="dlg-body">
     <h2 id="tr-title">Aggiungi prova passata</h2>
     <label>Cerca <input type="search" id="tr-q" placeholder="Nome della corda"></label>
     <label>Corda <select id="tr-pick" size="5"></select></label>
@@ -196,16 +201,21 @@
       <label>Com'è finita <select id="tr-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
     </div>
     <p class="muted small">Date e ore anche approssimate. Solo le corde «consumata» servono a stimare la vita attesa.</p>
+    </div>
+    <div class="dlg-foot">
     <p class="gaps" id="tr-error" role="alert" hidden></p>
     <div class="card-actions"><button class="btn" type="button" id="tr-cancel">Annulla</button><button class="btn primary" type="button" id="tr-ok">Aggiungi e dai i voti</button></div>
+    </div>
   </div>
 </dialog>
 
 <dialog id="past-dialog" aria-labelledby="past-title">
   <div class="equip-form">
+    <div class="dlg-body">
     <h2 id="past-title">Voti della corda</h2>
     <section class="diary" id="past-diary"></section>
-    <div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div>
+    </div>
+    <div class="dlg-foot"><div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div></div>
   </div>
 </dialog>
 

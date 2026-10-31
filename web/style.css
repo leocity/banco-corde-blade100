@@ -499,3 +499,15 @@ body { overflow-wrap: anywhere; }
 
 .rl { font-size: .82rem; line-height: 1.15; }
 @media (min-width: 380px) { .rl { font-size: .95rem; } }
+
+/* dialoghi da telefono: il corpo scorre, il piede (errore + pulsanti) resta sempre in vista */
+dialog#equip-dialog, dialog#trial-dialog, dialog#past-dialog { max-height: calc(100vh - 12px); max-height: calc(100dvh - 12px); overflow: hidden; }
+dialog#equip-dialog .equip-form, dialog#trial-dialog .equip-form, dialog#past-dialog .equip-form { padding: 0; display: flex; flex-direction: column; gap: 0; max-height: calc(100vh - 14px); max-height: calc(100dvh - 14px); }
+.dlg-body { display: grid; gap: 12px; padding: 16px 16px 10px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; flex: 1 1 auto; -webkit-overflow-scrolling: touch; }
+.dlg-body label { display: grid; gap: 3px; font-size: .9rem; color: var(--fg-2); }
+.dlg-foot { flex: none; display: grid; gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: var(--surface); }
+.dlg-foot .gaps { margin: 0; }
+.dlg-foot .card-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.dlg-foot .btn { min-height: 48px; flex: 1 1 0; }
+dialog#equip-dialog .equip-form select[size], dialog#trial-dialog .equip-form select[size] { max-height: 28vh; }
+dialog#past-dialog .dlg-body { padding: 14px 12px 8px; }
