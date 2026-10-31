@@ -349,3 +349,15 @@ dialog#equip-dialog::backdrop { background: rgb(10 16 15 / .45); }
 .equip-form select[size] { width: 100%; }
 @media (min-width: 761px) { .toast { bottom: 20px; } }
 .val .mark, .data td.v .mark { font-size: 1.05rem; line-height: 1; }
+
+/* mappa v3 */
+.tip { position: absolute; z-index: 4; width: min(300px, 86%); background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; box-shadow: 0 8px 28px rgb(0 0 0 / .25); pointer-events: none; font-size: .88rem; max-width: none; line-height: 1.4; }
+.tip.pinned { pointer-events: auto; }
+#scatter .ring { fill: none; stroke: var(--fg); stroke-width: 2.5; pointer-events: none; }
+#scatter .dot:focus-visible { outline: none; stroke: var(--accent); stroke-width: 4; }
+#scatter .err { stroke: var(--fg-2); stroke-width: 2; opacity: .8; }
+#scatter .err, #scatter text, #scatter .grid, #scatter .strip { pointer-events: none; }
+@media (max-width: 760px) {
+  /* su telefono la scheda del punto è una scheda fissa in basso: non copre mai il punto toccato */
+  .tip { position: fixed; left: 8px !important; right: 8px; top: auto !important; width: auto; bottom: calc(var(--nav-h) + 8px + env(safe-area-inset-bottom, 0px)); max-height: 48vh; overflow: auto; }
+}

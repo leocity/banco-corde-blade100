@@ -9,7 +9,7 @@ WEB = ROOT / "web"
 
 # Moduli JS inlinati, in ordine: i moduli puri prima, app.js per ultimo. Un file mancante è un errore, non si salta.
 # Tutti finiscono nello stesso scope: niente nomi top-level ripetuti (lo controlla tests/test_build_page.py con node --check).
-MODULES = ["format.js", "pairing.js", "state.js", "persist.js", "values.js", "cards.js", "wear.js", "choose.js", "bank.js", "mine.js", "method.js", "app.js"]
+MODULES = ["format.js", "pairing.js", "state.js", "persist.js", "values.js", "cards.js", "wear.js", "choose.js", "bank.js", "mine.js", "map.js", "method.js", "app.js"]
 
 
 def _js():

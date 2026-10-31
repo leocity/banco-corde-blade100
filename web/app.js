@@ -7,13 +7,14 @@ import { renderChoose, initChoose, renderStrip } from './choose.js';
 import { wearStatus, lifeEstimate } from './wear.js';
 import { renderBank, initBank } from './bank.js';
 import { renderMine, initMine } from './mine.js';
+import { renderMap, initMap } from './map.js';
 import { renderMethod } from './method.js';
 
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
 const TABS = ['scegli', 'mappa', 'banco', 'montata', 'metodo'];
-const RENDERERS = { scegli: renderChoose, banco: renderBank, montata: renderMine, metodo: renderMethod };
+const RENDERERS = { scegli: renderChoose, banco: renderBank, montata: renderMine, mappa: renderMap, metodo: renderMethod };
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -82,6 +83,7 @@ document.addEventListener('click', (e) => {
 initChoose(ctx);
 initBank(ctx);
 initMine(ctx);
+initMap(ctx);
 renderMethod(ctx);
 $('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni solo come link in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
 const hashTab = (location.hash || '').slice(1);
