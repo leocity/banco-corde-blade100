@@ -249,7 +249,7 @@ def discriminant_metrics(records, pop):
 
 def derive_all(records, reviews=None):
     # import locali: dims e pairing importano questo modulo
-    from pipeline.dims import dim_populations, dimensions, excel_measures
+    from pipeline.dims import control_range, dim_populations, dimensions, excel_measures
     from pipeline.pairing import pairing
     reviews = reviews or {}
     pop = population(records)
@@ -290,6 +290,7 @@ def derive_all(records, reviews=None):
             "tension_start": tension_start(r, anchors) if anchors else None,
             "dims": dm[r["id"]]["values"],
             "dim_inputs": dm[r["id"]]["inputs"],
+            "control_range": control_range(r, dpop),
             "excel_measures": excel_measures(r),
             "pairing": pairing(dm[r["id"]]["values"], liked_refs, disliked_refs, penalize=r["id"] not in DEFAULT_LIKED),
         }

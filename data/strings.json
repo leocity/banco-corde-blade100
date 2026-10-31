@@ -199,6 +199,32 @@
     }
    }
   },
+  "index_validation": {
+   "control": {
+    "rho": 0.48,
+    "n": 29
+   },
+   "power": {
+    "rho": -0.15,
+    "n": 20
+   },
+   "comfort": {
+    "rho": 0.56,
+    "n": 24
+   },
+   "stiffness": {
+    "rho": 0.55,
+    "n": 32
+   },
+   "spin": {
+    "rho": -0.17,
+    "n": 14
+   },
+   "durability": {
+    "rho": 0.3,
+    "n": 26
+   }
+  },
   "rpedia_site": {
    "rows": 318,
    "changes": [
@@ -953,6 +979,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     29.7,
+     82.7
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.2973548190939495,
@@ -1336,6 +1366,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     58.4,
+     71.3
+    ],
     "excel_measures": {
      "stretch50": 4.444,
      "elasticity": 0.5,
@@ -1608,6 +1642,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     28.8,
+     46.3
+    ],
     "excel_measures": {
      "stretch50": 5.511,
      "elasticity": 0.4031936127744511,
@@ -1903,6 +1941,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     40.9,
+     59.1
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.0,
@@ -2165,6 +2207,10 @@
      "control": 2,
      "durability": 3
     },
+    "control_range": [
+     59.1,
+     98.8
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.4801980198019802,
@@ -2396,6 +2442,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     17.0,
+     55.2
+    ],
     "excel_measures": {
      "stretch50": 4.444,
      "elasticity": 0.2400990099009901,
@@ -2659,6 +2709,10 @@
      "control": 2,
      "durability": 2
     },
+    "control_range": [
+     17.0,
+     44.3
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.0,
@@ -2894,6 +2948,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     44.4,
+     72.5
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.38715529753265604,
@@ -3126,6 +3184,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     38.0,
+     66.4
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.486470051687443,
@@ -3362,6 +3424,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     12.5,
+     38.3
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.0,
@@ -3600,6 +3666,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     18.2,
+     59.5
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.3244147157190635,
@@ -3838,6 +3908,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     18.2,
+     59.5
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.3244147157190635,
@@ -4076,6 +4150,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     18.2,
+     59.5
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.3244147157190635,
@@ -4314,6 +4392,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     30.3,
+     59.5
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -4628,6 +4710,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     29.2,
+     44.0
+    ],
     "excel_measures": {
      "stretch50": 7.733,
      "elasticity": 0.5746799431009958,
@@ -4945,6 +5031,10 @@
      "control": 3,
      "durability": 1
     },
+    "control_range": [
+     15.5,
+     54.5
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.16205533596837945,
@@ -5264,6 +5354,10 @@
      "control": 3,
      "durability": 1
     },
+    "control_range": [
+     31.9,
+     75.1
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.19339622641509435,
@@ -5608,6 +5702,10 @@
      "control": 3,
      "durability": 1
     },
+    "control_range": [
+     40.6,
+     85.1
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.38715529753265604,
@@ -5951,6 +6049,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     42.3,
+     80.0
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -6292,6 +6394,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     28.1,
+     78.2
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.3244147157190635,
@@ -6589,6 +6695,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     44.0,
+     77.8
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.2973548190939495,
@@ -6809,6 +6919,10 @@
      "control": 2,
      "durability": 2
     },
+    "control_range": [
+     26.1,
+     52.3
+    ],
     "excel_measures": {
      "stretch50": 5.6,
      "elasticity": 0.3967857142857143,
@@ -7136,6 +7250,10 @@
      "control": 3,
      "durability": 2
     },
+    "control_range": [
+     11.4,
+     31.9
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.0,
@@ -7460,6 +7578,10 @@
      "control": 3,
      "durability": 2
     },
+    "control_range": [
+     12.5,
+     38.3
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.0,
@@ -7779,6 +7901,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     55.2,
+     76.8
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -8110,6 +8236,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     25.8,
+     80.0
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.3244147157190635,
@@ -8448,6 +8578,10 @@
      "control": 3,
      "durability": 2
     },
+    "control_range": [
+     31.2,
+     61.6
+    ],
     "excel_measures": {
      "stretch50": 4.444,
      "elasticity": 0.5,
@@ -8679,6 +8813,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     59.3,
+     96.0
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.23987398739873989,
@@ -8976,6 +9114,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     20.1,
+     37.5
+    ],
     "excel_measures": {
      "stretch50": 5.511,
      "elasticity": 0.4031936127744511,
@@ -9317,6 +9459,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     39.7,
+     74.7
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -9667,6 +9813,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     49.9,
+     89.9
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.4801980198019802,
@@ -9980,6 +10130,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     37.1,
+     78.6
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.38715529753265604,
@@ -10293,6 +10447,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     45.1,
+     87.7
+    ],
     "excel_measures": {
      "stretch50": 1.6,
      "elasticity": 0.333125,
@@ -10606,6 +10764,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     27.8,
+     66.3
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.19339622641509435,
@@ -10926,6 +11088,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     37.9,
+     73.5
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -11213,6 +11379,10 @@
      "control": 2,
      "durability": 3
     },
+    "control_range": [
+     46.6,
+     59.1
+    ],
     "excel_measures": {
      "stretch50": 4.444,
      "elasticity": 0.6201620162016201,
@@ -11527,6 +11697,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     27.6,
+     74.7
+    ],
     "excel_measures": {
      "stretch50": 3.289,
      "elasticity": 0.3244147157190635,
@@ -11853,6 +12027,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     34.1,
+     55.7
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -12203,6 +12381,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     11.9,
+     31.5
+    ],
     "excel_measures": {
      "stretch50": 3.822,
      "elasticity": 0.13945578231292519,
@@ -12513,6 +12695,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     31.9,
+     75.1
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.19339622641509435,
@@ -12825,6 +13011,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     31.9,
+     75.1
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.19339622641509435,
@@ -13137,6 +13327,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     31.9,
+     75.1
+    ],
     "excel_measures": {
      "stretch50": 2.756,
      "elasticity": 0.19339622641509435,
@@ -13369,6 +13563,10 @@
      "control": 3,
      "durability": 4
     },
+    "control_range": [
+     36.5,
+     58.0
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -13642,6 +13840,10 @@
      "control": 3,
      "durability": 3
     },
+    "control_range": [
+     33.8,
+     74.1
+    ],
     "excel_measures": {
      "stretch50": 2.222,
      "elasticity": 0.0,
@@ -13913,6 +14115,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     0.9,
+     0.9
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 87,
@@ -14181,6 +14387,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     78.1,
+     78.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 47,
@@ -14481,6 +14691,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     6.1,
+     6.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 73,
@@ -14760,6 +14974,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     50.0,
+     50.0
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 99,
@@ -15045,6 +15263,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     65.8,
+     65.8
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 86,
@@ -15300,6 +15522,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     10.5,
+     10.5
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 63,
@@ -15575,6 +15801,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     55.3,
+     55.3
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 100,
@@ -15805,6 +16035,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     85.1,
+     85.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 44,
@@ -16061,6 +16295,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     86.8,
+     86.8
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 44,
@@ -16314,6 +16552,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     18.4,
+     18.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 44,
@@ -16567,6 +16809,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     67.5,
+     67.5
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 83,
@@ -16835,6 +17081,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     28.1,
+     28.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 22,
@@ -17022,6 +17272,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     28.1,
+     28.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 45,
@@ -17339,6 +17593,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     69.3,
+     69.3
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 79,
@@ -17617,6 +17875,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     23.7,
+     23.7
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 44,
@@ -17846,6 +18108,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     58.8,
+     58.8
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 98,
@@ -18077,6 +18343,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     92.1,
+     92.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 38,
@@ -18356,6 +18626,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     78.1,
+     78.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 42,
@@ -18545,6 +18819,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     36.8,
+     36.8
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 30,
@@ -18833,6 +19111,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     39.5,
+     39.5
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 51,
@@ -19023,6 +19305,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     53.5,
+     53.5
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 59,
@@ -19206,6 +19492,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     72.8,
+     72.8
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 18,
@@ -19437,6 +19727,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     81.6,
+     81.6
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 18,
@@ -19743,6 +20037,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     10.5,
+     10.5
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 60,
@@ -19933,6 +20231,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     36.8,
+     36.8
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 16,
@@ -20123,6 +20425,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     74.6,
+     74.6
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 10,
@@ -20306,6 +20612,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     30.7,
+     30.7
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 26,
@@ -20586,6 +20896,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     4.4,
+     4.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 58,
@@ -20775,6 +21089,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     64.0,
+     64.0
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 31,
@@ -20958,6 +21276,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     41.2,
+     41.2
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 48,
@@ -21142,6 +21464,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     50.0,
+     50.0
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 40,
@@ -21448,6 +21774,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     13.2,
+     13.2
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 53,
@@ -21631,6 +21961,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     57.0,
+     57.0
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 64,
@@ -21820,6 +22154,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     61.4,
+     61.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 37,
@@ -22009,6 +22347,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     71.1,
+     71.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 9,
@@ -22358,6 +22700,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     93.9,
+     93.9
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 0,
@@ -22542,6 +22888,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     50.0,
+     50.0
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 40,
@@ -22848,6 +23198,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     61.4,
+     61.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 49,
@@ -23031,6 +23385,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     97.4,
+     97.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 9,
@@ -23215,6 +23573,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     99.1,
+     99.1
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 9,
@@ -23404,6 +23766,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     32.5,
+     32.5
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 27,
@@ -23588,6 +23954,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     16.7,
+     16.7
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 33,
@@ -23771,6 +24141,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     25.4,
+     25.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 24,
@@ -23959,6 +24333,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     44.7,
+     44.7
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 91,
@@ -24151,6 +24529,10 @@
      "control": 1,
      "durability": 1
     },
+    "control_range": [
+     20.2,
+     20.2
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 62,
@@ -24434,6 +24816,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     31.6,
+     93.0
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 85,
@@ -24727,6 +25113,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     18.4,
+     71.9
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 56,
@@ -25032,6 +25422,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     26.3,
+     87.7
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 92,
@@ -25337,6 +25731,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     14.0,
+     66.7
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 30,
@@ -25598,6 +25996,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     14.0,
+     70.2
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 47,
@@ -25859,6 +26261,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     3.5,
+     29.8
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 31,
@@ -26171,6 +26577,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     33.3,
+     82.5
+    ],
     "excel_measures": null,
     "pairing": {
      "score": null,
@@ -26439,6 +26849,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     26.3,
+     68.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": null,
@@ -26707,6 +27121,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     17.5,
+     54.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": null,
@@ -26976,6 +27394,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     17.5,
+     54.4
+    ],
     "excel_measures": null,
     "pairing": {
      "score": null,
@@ -27268,6 +27690,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     22.8,
+     63.2
+    ],
     "excel_measures": null,
     "pairing": {
      "score": null,
@@ -27561,6 +27987,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     31.6,
+     93.0
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 66,
@@ -27865,6 +28295,10 @@
      "control": 1,
      "durability": 0
     },
+    "control_range": [
+     38.6,
+     98.2
+    ],
     "excel_measures": null,
     "pairing": {
      "score": 66,

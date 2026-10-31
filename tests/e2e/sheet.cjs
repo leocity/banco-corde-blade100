@@ -68,3 +68,30 @@ test('scheda: Monta questa dal telefono porta al cambio corda', async () => {
   assert.ok(await page.locator('#equip-dialog[open]').count());
   await ctx.close();
 });
+
+const openBancoSheet = async (page, id, q) => { await page.locator('#tab-banco').click(); await page.locator('#b-target').uncheck(); await page.locator('#b-q').fill(q); await page.locator(`#bank-table tr[data-id="${id}"] .rowlink`).click(); await page.waitForSelector('dialog#sheet[open]'); };
+
+test('controllo: Re-String Slap contro la Zero montata non dice «meno controllo» come fosse un dato, e mostra il margine', async () => {
+  const { page, ctx } = await openPage();
+  await openBancoSheet(page, 're-string-slap-17', 'slap');
+  const delta = await page.innerText('#sheet-body .delta');
+  assert.match(delta, /controllo: entro il margine/);
+  assert.doesNotMatch(delta, /[−-]\d+ controllo/);
+  await page.locator('#sheet-body .details-sec summary').click();
+  const notes = await page.innerText('#sheet-body');
+  assert.match(notes, /va da \d+ a \d+/);
+  assert.match(notes, /100 − controllo/);
+  await ctx.close();
+});
+
+test('metodo: dichiara quanto controllo, potenza e comfort concordano con i tester indipendenti', async () => {
+  const { page, ctx } = await openPage();
+  await page.locator('[data-goto="metodo"]').first().click();
+  const t = await page.innerText('#m-controllo');
+  assert.match(t, /Potenza \(100 − controllo\)/);
+  assert.match(t, /nessun riscontro/);
+  assert.match(t, /0,48/);
+  assert.match(t, /margine/i);
+  assert.doesNotMatch(t, /NaN|undefined/);
+  await ctx.close();
+});

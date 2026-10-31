@@ -204,7 +204,7 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 
 ## Stato v4 (2026-10-31): sincronizzazione, schede compatte, diario
 
-Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 189 test Python, 177 test JS, 100 test Playwright, tutti verdi.
+Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 199 test Python, 181 test JS, 105 test Playwright, tutti verdi.
 
 ### Le segnalazioni dell'utente del 2026-10-31
 
@@ -238,6 +238,18 @@ Altro corretto durante il lavoro: la tenuta di laboratorio era calcolata in due 
 | 7 | Minore | Tensione 99 kg, motivi e ore assurdi sopravvivevano; formule CSV; `DATI_UTENTE` in maiuscole/minuscole | Intervalli validati in `sanitizeState` (con avviso), motivo ristretto, apostrofo davanti a `= + - @`, sostituzione senza distinzione di maiuscole. |
 
 **Rimandati (dichiarati):** (8) una pagina vecchia (v3) che salva riscrive il documento `state` senza il diario della montata, e riportando gli array vecchi può far riapparire corde cancellate altrove: serve aggiornare tutte le schede aperte; un documento separato per il diario della montata lo eviterebbe. (9) Con un `db` reale che consegna snapshot in ritardo la schermata può mostrare per un attimo uno stato intermedio fino al snapshot successivo: non osservato con il `db` simulato.
+
+### Contraddizioni tra dichiarazioni e punteggi (2026-10-31, caso Slap contro Zero)
+
+Segnalazione: «dici che la Re-String Slap ha meno controllo della Zero, ma recensioni e produttore dicono il contrario». Cosa c'era davvero:
+
+- Il «controllo» non è una misura: è la media dei percentili di rigidità, allungamento a 50 lb e recupero elastico (`pipeline/dims.py`). Slap 1,23 = 31,7, Zero 1,23 = 52,6. La differenza viene da una rigidità convertita da Racketpedia (195 contro 214 lb/in, errore tipico ±10) e da un recupero elastico che differisce di **un solo gradino** dello strumento (0,53 contro 1,07 punti %).
+- Nei dati c'è una sola recensione indipendente su Slap 1,23 (Tennisnerd): «control/predictability below Zero», cioè concorda con l'indice. Il produttore dice il contrario («un po' più di controllo», autovalutazione 8/10), ma è marketing e non entra in nessun numero. Altre recensioni citate dall'utente non sono nel dataset.
+- **Correzione:** ogni indice di controllo ha ora un intervallo (`derived.control_range`: rigidità entro il suo margine, allungamento e recupero di ±1 gradino). Slap 1,23 sta tra 15 e 55, Zero 1,23 tra 28 e 78: si sovrappongono, quindi la scheda scrive «controllo: entro il margine» invece di «−21 controllo». Il Metodo dichiara il margine.
+- **Verifica sulle recensioni indipendenti** (`estimates_meta.index_validation`, calcolata a ogni build, stesso calibro, senza il produttore): controllo ρ 0,48 su 29 corde (concorda moderatamente), comfort 0,56 su 24, rigidità 0,55 su 32, tenuta 0,30 su 26, **potenza (= 100 − controllo) −0,15 su 20 e spin −0,17 su 14: nessun riscontro**. La potenza non ha una misura propria e la scheda lo dice.
+- **Quanto pesa il problema:** 82 corde hanno almeno 5 punti di differenza di controllo dalla Zero 1,23 e per **64 di queste la differenza è entro il margine**; per 58 corde su 98 il controllo è costruito su una sola misura (la rigidità); 21 coppie di calibri dello stesso modello hanno parole di controllo o tenuta distanti due livelli (per esempio Confidential 1,30 «molto alto» contro 1,20 «basso»).
+
+**Ancora aperto (dichiarato):** il pairing usa il valore puntuale del controllo (peso 15) senza margine; le parole («alto», «basso») non hanno ancora il margine; la potenza resta mostrata come 100 − controllo pur senza riscontro (decisione di prodotto: tenerla, toglierla o chiamarla «inverso del controllo»); le 17 corde con conflitto recensioni/dati restano segnalate ma non corrette.
 
 ## C. Priorità consigliate
 

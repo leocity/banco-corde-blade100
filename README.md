@@ -45,9 +45,9 @@ Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, Node 20+ e Playwr
 ```bash
 py -m pip install -r requirements.txt
 tests/run_all.sh                         # ricostruisce la pagina ed esegue pytest, node --test e Playwright
-py -m pytest -q                          # 189 test Python (pipeline, dati finali, build della pagina)
-node --test web/*.test.mjs               # 177 test JS dei moduli puri (pairing, stato, persistenza, diario, prove, usura, mappa, AI, schede)
-node tests/e2e/ui.cjs                    # 100 test della pagina in Chromium (richiede dist/preview.html)
+py -m pytest -q                          # 199 test Python (pipeline, dati finali, build della pagina)
+node --test web/*.test.mjs               # 181 test JS dei moduli puri (pairing, stato, persistenza, diario, prove, usura, mappa, AI, schede)
+node tests/e2e/ui.cjs                    # 105 test della pagina in Chromium (richiede dist/preview.html)
 node tests/e2e/shots.cjs                 # screenshot in docs/audit/
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json
 py -m pipeline.twu_extract data/raw/twu.json      # riscarica TWU (rete)

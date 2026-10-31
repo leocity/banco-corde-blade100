@@ -5,6 +5,7 @@ import json
 import math
 import pathlib
 
+from pipeline.validate_indices import index_validation
 from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, backtest_qualitative, calibrate_tester_spin, estimate_spin, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
@@ -94,6 +95,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         r["reviews"]["sources"] = mark_gauge_mismatch(r["reviews"]["sources"], (review_overrides or {}).get(r["id"]))
         r["reviews"]["conflicts"] = review_conflicts(r["reviews"]["sources"], lab)
     apply_notes(records, notes)
+    index_check = index_validation(records)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
     return {
@@ -105,7 +107,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
         "estimates_meta": {"spin_calibration": calib, "spin_qualitative": qual, "rp_to_twu": rp_meta, "spin_model": spin_model,
-                           "stiffness_gauge": gauge_model, "stiffness_model": stiff_model,
+                           "stiffness_gauge": gauge_model, "stiffness_model": stiff_model, "index_validation": index_check,
                            "rpedia_site": {"rows": len(site_rows or []), "changes": [list(x) for x in rp_log]}},
         "removed_discontinued": [{"name": n, "successor": sc, "reason": rs} for n, sc, rs in removed_list],
         "strings": records,

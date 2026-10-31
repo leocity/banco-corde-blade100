@@ -63,3 +63,24 @@ def test_displayed_durability_word_matches_the_computed_dimension():
         if d is None:
             continue
         assert j["level"] == min(5, int(d // 20) + 1), (i, d, j["word"])
+
+
+def test_control_range_brackets_the_control_index():
+    import json
+    data = json.load(open("data/strings.json", encoding="utf-8"))
+    n = 0
+    for r in data["strings"]:
+        c, rng = r["derived"]["dims"]["control"], r["derived"].get("control_range")
+        if c is None:
+            assert rng is None, r["id"]
+            continue
+        n += 1
+        assert rng and rng[0] <= c <= rng[1], (r["id"], c, rng)
+    assert n > 50
+
+
+def test_index_validation_is_published_with_n():
+    import json
+    v = json.load(open("data/strings.json", encoding="utf-8"))["estimates_meta"]["index_validation"]
+    assert set(v) >= {"control", "power", "comfort", "stiffness", "spin", "durability"}
+    assert all(x["n"] >= 0 for x in v.values())

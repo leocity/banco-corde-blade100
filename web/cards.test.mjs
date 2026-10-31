@@ -236,3 +236,28 @@ test('scheda: le tessere riportano valore, parola e marcatore senza NaN', () => 
   assert.match(z, /53/);
   assert.match(z, /potenza 47/);
 });
+
+const withCtl = (id, control, range) => ({ id, derived: { dims: { spin: 50, durability: 50, control }, dim_inputs: { control: 3 }, judgments: {}, control_range: range }, stiffness: null, spin: null });
+
+test('deltaVsEquipped: una differenza di controllo entro il margine non è presentata come numero', () => {
+  const slap = withCtl('slap', 31.7, [15.5, 54.5]), zero = withCtl('zero', 52.6, [28.1, 78.2]);
+  const t = deltaVsEquipped(slap, zero).text;
+  assert.doesNotMatch(t, /−21|21 controllo/);
+  assert.match(t, /controllo: entro il margine/);
+});
+
+test('deltaVsEquipped: con intervalli separati la differenza di controllo resta un numero', () => {
+  const t = deltaVsEquipped(withCtl('a', 20, [10, 28]), withCtl('b', 70, [60, 80])).text;
+  assert.match(t, /−50 controllo/);
+  assert.doesNotMatch(t, /margine/);
+});
+
+test('deltaVsEquipped: senza intervalli (dati vecchi) si comporta come prima', () => {
+  assert.match(deltaVsEquipped(withCtl('a', 20, undefined), withCtl('b', 70, undefined)).text, /−50 controllo/);
+});
+
+test('rowValues: il controllo dichiara l\'intervallo e che la potenza è solo 100 − controllo', () => {
+  const c = rowValues(withCtl('x', 40, [22.4, 61.2])).find((v) => v.key === 'control');
+  assert.match(c.note, /da 22 a 61/);
+  assert.match(c.note, /potenza.*100 − controllo/i);
+});

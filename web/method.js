@@ -3,6 +3,16 @@ import { $, esc, fmt } from './format.js';
 import { labComparison, labComparisonHtml, LAB_MIN_STRINGS, LAB_TRUST_N } from './trials.js';
 import { trialsOf } from './state.js';
 
+// Quanto gli indici concordano con i tester indipendenti (stesso calibro, non il produttore): calcolato in fase di build dai dati.
+const IDX_LABEL = { control: 'Controllo', power: 'Potenza (100 − controllo)', comfort: 'Comfort (inverso della rigidità)', stiffness: 'Rigidità', spin: 'Spin', durability: 'Tenuta' };
+const idxWord = (r) => (r === null || r === undefined ? 'troppo poche corde' : r >= 0.4 ? 'concorda moderatamente' : r >= 0.2 ? 'concorda poco' : 'nessun riscontro');
+function indexCheckHtml(D) {
+  const v = (D.estimates_meta || {}).index_validation;
+  if (!v) return '';
+  const rows = Object.keys(IDX_LABEL).filter((k) => v[k]).map((k) => `<tr><th scope="row">${IDX_LABEL[k]}</th><td>${v[k].rho === null ? '—' : fmt(v[k].rho, 2)}</td><td>${v[k].n}</td><td>${idxWord(v[k].rho)}</td></tr>`).join('');
+  return `<p><b>Quanto ci si può fidare.</b> Confronto tra ogni indice e i livelli dati dai tester indipendenti (stesso calibro; la copia del produttore è esclusa perché è marketing). Correlazione di rango: 1 = stesso ordine, 0 = nessun legame. Con poche corde è un'indicazione, non una prova.</p><table class="labcmp"><thead><tr><th>Indice</th><th>ρ</th><th>corde</th><th></th></tr></thead><tbody>${rows}</tbody></table><p class="small muted">Dove l'indice e i tester non concordano, la scheda lo segnala; le recensioni non spostano i numeri.</p>`;
+}
+
 // «Laboratorio contro sensazioni»: solo dopo 5 corde con voti di fine vita; mai usato per cambiare punteggi.
 function sensazioniSec(ctx) {
   const c = labComparison(trialsOf(ctx.state()), (id) => ctx.BY_ID[id]);
@@ -21,7 +31,7 @@ export function renderMethod(ctx) {
     ${sec('pairing', 'Pairing Blade 100', `<p>È un numero 0–100 che dice quanto la corda somiglia, sulle misure di laboratorio, alla <b>corda «mi piace» più vicina</b>. Non è un voto di qualità. Per ogni dimensione (rigidità, tenuta, controllo, elasticità, spin) si confronta la posizione tra le corde del banco con quella della preferita: entro 5 punti vale 100, poi scende fino a 0 a 20 punti di distanza. Per tenuta e spin, valere di più non penalizza.</p>
       <p>Pesi: spin 30, tenuta 20, rigidità 20, controllo 15, elasticità 15, rinormalizzati su ciò che la corda ha. Servono almeno 3 misure di laboratorio. −15 punti se somiglia più a una «non mi piace» (≥ 75) che alle preferite. Fasce: ≥ 80 Ottimo, 60–79 Buono, 40–59 Attenzione, sotto 40 Poco adatta. Le stime da modello non entrano mai.</p>
       <p>Con due preferite opposte (una morbida e una compatta) il pairing guarda la più vicina, non la media: per questo molte corde diverse possono andare bene. ${D.insight ? `<span class="muted">Ipotesi sui tuoi gusti, da sole 4 corde: ${esc(D.insight)}</span>` : ''}</p>`)}
-    ${sec('controllo', 'Controllo ◄► potenza', '<p>È un solo asse: potenza = 100 − controllo. L\'indice di controllo è la media di rigidità, inverso dell\'allungamento a 50 lb e recupero elastico (le ultime due dal tuo test Excel); la scheda dice da quante di 3 misure è fatto. Nessun laboratorio misura controllo o potenza: è un indice costruito su misure fisiche, non validato.</p>')}
+    ${sec('controllo', 'Controllo ◄► potenza', '<p>È un solo asse: potenza = 100 − controllo. L\'indice di controllo è la media di rigidità, inverso dell\'allungamento a 50 lb e recupero elastico (le ultime due dal tuo test Excel); la scheda dice da quante di 3 misure è fatto. Nessun laboratorio misura controllo o potenza: è un indice costruito su misure fisiche, non validato. Ogni indice ha un margine: la rigidità stimata (da Racketpedia o dal calibro) sbaglia di circa ±10 lb/in e allungamento e recupero del tuo test si leggono a gradini di circa 0,5 punti, per cui due corde con intervalli sovrapposti non si possono dire diverse e la scheda scrive «entro il margine». La potenza non ha una misura propria: è solo 100 − controllo.</p>' + indexCheckHtml(D))}
     ${sec('tenuta', 'Tenuta', '<p>Media delle fonti indipendenti che ci sono: perdita di tensione TWU (prova breve), TL6 e TL12 del tuo test (6 e 12 mesi da 50 lbs, perdita percentuale) e scorrimento a 24 ore. Excel e TWU pesano uguale; ognuna è un percentile sulla propria popolazione.</p>')}
     ${sec('rigidita', 'Rigidità e stime', `<p>Rigidità dinamica TWU (lb/in). Quando manca la stimiamo: da un calibro gemello TWU corretto per il diametro (circa ${fmt(sg.slope, 0)} lb/in per mm; errore medio ${fmt(sg.mae, 1)} contro ${fmt(sg.copy_mae, 1)} del copia-incolla), da Racketpedia convertita sulla scala TWU (${fmt(rp.mae ?? 11, 0)} lb/in di errore su ${rp.n ?? '—'} coppie) o, per ultima, dal solo calibro (poco meglio della media). Le stime si vedono con «≈» e ◐; quelle dal solo calibro non entrano nel pairing.</p>
       <p>Perché TWU e Racketpedia non coincidono: TWU colpisce la corda in pochi millesimi di secondo, Racketpedia la carica lentamente, e il poliestere cambia rigidità con la velocità.</p>`)}
