@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { defaultState, setPreference, changeString, addSession, removeSession, editSession, equippedHours, parseHours, labStiff, tensionFor, sanitizeState } from './state.js';
+import { defaultState, setPreference, changeString, addSession, removeSession, editSession, equippedHours, parseHours, labStiff, tensionFor, sanitizeState, splitState, joinState, sameState } from './state.js';
 
 const DEFAULTS = { equipped: { id: 'zero', kg: [22.5, 21.5] }, liked: ['conf', 'otoro'], disliked: ['blast'] };
 const KNOWN = ['zero', 'conf', 'otoro', 'blast', 'other'];
@@ -56,8 +56,8 @@ test('removeSession ed editSession', () => {
 
 test('changeString chiude la vita con le ore registrate e azzera', () => {
   let s = addSession(defaultState(DEFAULTS, NOW), { date: '2026-10-30', hours: 4, note: '', ts: 'a' });
-  const next = changeString(s, { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'consumata', note: 'spenta' });
-  assert.deepEqual(next.lives, [{ id: 'zero', kg: [22.5, 21.5], from: NOW.toISOString(), to: '2026-11-10T08:00:00.000Z', hours: 4, reason: 'consumata', note: 'spenta' }]);
+  const next = changeString(s, { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'consumata', note: 'spenta', lid: 'L1' });
+  assert.deepEqual(next.lives, [{ lid: 'L1', id: 'zero', kg: [22.5, 21.5], from: NOW.toISOString(), to: '2026-11-10T08:00:00.000Z', hours: 4, reason: 'consumata', note: 'spenta' }]);
   assert.deepEqual(next.equipped, { id: 'other', kg: [23, 22], since: '2026-11-10T08:00:00.000Z', hours0: 0 });
   assert.equal(equippedHours(next), 0);
   assert.equal(s.lives.length, 0, 'lo stato precedente non è modificato');
@@ -123,4 +123,44 @@ test('sanitizeState: campo assente = predefinito, elenco vuoto = vuoto', () => {
   assert.deepEqual(a.liked, ['conf', 'otoro']);
   const b = sanitizeState({ liked: [] }, DEFAULTS, KNOWN).state;
   assert.deepEqual(b.liked, []);
+});
+
+test('changeString assegna un lid alla vita chiusa', () => {
+  const s = changeString(defaultState(DEFAULTS, NOW), { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'consumata', lid: '777' });
+  assert.equal(s.lives[0].lid, '777');
+  const t = changeString(defaultState(DEFAULTS, NOW), { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'consumata' });
+  assert.match(t.lives[0].lid, /^\d+$/);
+});
+
+test('sanitizeState: le vite senza lid ne ricevono uno stabile dalla data di inizio, lo stato è v2', () => {
+  const raw = { v: 1, lives: [{ id: 'other', kg: [22, 21], from: '2026-09-01T10:00:00.000Z', to: '2026-10-01T10:00:00.000Z', hours: 12, reason: 'consumata', note: '' }] };
+  const a = sanitizeState(raw, DEFAULTS, KNOWN).state, b = sanitizeState(raw, DEFAULTS, KNOWN).state;
+  assert.equal(a.v, 2);
+  assert.match(a.lives[0].lid, /^\d+$/);
+  assert.equal(a.lives[0].lid, b.lives[0].lid);
+});
+
+test('sanitizeState: una sessione con un id che db non accetta viene scartata', () => {
+  const raw = { sessions: [{ ts: 'ok-1', date: '2026-10-30', hours: 1, note: '', life: 'l' }, { ts: 'a/b c', date: '2026-10-30', hours: 1, note: '', life: 'l' }] };
+  assert.deepEqual(sanitizeState(raw, DEFAULTS, KNOWN).state.sessions.map((x) => x.ts), ['ok-1']);
+});
+
+test('splitState / joinState: round-trip e id dei documenti', () => {
+  let s = defaultState(DEFAULTS, NOW);
+  s = addSession(s, { date: '2026-10-30', hours: 1, note: 'a', ts: '5-1' });
+  s = addSession(s, { date: '2026-10-31', hours: 2, note: 'b', ts: '6-2' });
+  s = changeString(s, { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'consumata', lid: '999' });
+  const { core, sessions, lives } = splitState(s);
+  assert.deepEqual(Object.keys(sessions).sort(), ['s-5-1', 's-6-2']);
+  assert.deepEqual(Object.keys(lives), ['l-999']);
+  assert.equal(core.v, 2);
+  assert.equal(core.sessions, undefined);
+  assert.ok(sameState(sanitizeState(joinState(core, sessions, lives), DEFAULTS, KNOWN).state, s));
+});
+
+test('sameState ignora l\'ordine delle chiavi e delle sessioni', () => {
+  const a = addSession(addSession(defaultState(DEFAULTS, NOW), { date: '2026-10-30', hours: 1, note: '', ts: '1-1' }), { date: '2026-10-30', hours: 2, note: '', ts: '2-2' });
+  const b = { ...a, sessions: [...a.sessions].reverse() };
+  assert.ok(sameState(a, b));
+  assert.equal(sameState(a, removeSession(a, '1-1')), false);
 });

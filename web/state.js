@@ -4,9 +4,13 @@ const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const isDate = (v) => isStr(v) && !Number.isNaN(Date.parse(v));
 const uniq = (xs) => [...new Set(xs)];
 
+export const STATE_VERSION = 2;
+// ID dei documenti db: lettere, cifre e _ - . ~ : @ + (nessuna barra né spazio)
+const isDocPart = (v) => isStr(v) && /^[A-Za-z0-9_.~:@+-]{1,150}$/.test(v) && v !== '.' && v !== '..';
+
 export function defaultState(defaults, now = new Date()) {
   return {
-    v: 1,
+    v: STATE_VERSION,
     equipped: { id: defaults.equipped.id, kg: [...defaults.equipped.kg], since: now.toISOString(), hours0: 0 },
     liked: [...defaults.liked], disliked: [...defaults.disliked], sessions: [], lives: [],
   };
@@ -30,8 +34,8 @@ export function addSession(state, { date, hours, note = '', ts }) {
 export const removeSession = (state, ts) => ({ ...state, sessions: state.sessions.filter((s) => s.ts !== ts) });
 export const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
 
-export function changeString(state, { id, kg, date, endReason, endHours, note = '' }) {
-  const life = { id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note };
+export function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()) }) {
+  const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note };
   return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
 }
 
@@ -62,6 +66,9 @@ export function tensionFor(rec, equippedRec, equippedKg) {
   return { kg, lbs: kg.map(kgToLbs), low: kg.map((x) => x - 1), high: kg.map((x) => x + 1), corrected };
 }
 
+// Le vite salvate prima dell'introduzione di `lid` ne ricevono uno stabile dalla data di inizio.
+const legacyLid = (from) => (Number.isFinite(Date.parse(from)) ? String(Date.parse(from)) : `x${String(from).replace(/[^A-Za-z0-9]/g, '').slice(0, 40)}`);
+
 export function sanitizeState(raw, defaults, knownIds) {
   const warnings = [], known = new Set(knownIds), base = defaultState(defaults);
   if (raw === null || raw === undefined) return { state: base, warnings };
@@ -78,9 +85,31 @@ export function sanitizeState(raw, defaults, knownIds) {
   const ids = (v, dflt) => (Array.isArray(v) ? uniq(v.filter((x) => isStr(x) && known.has(x))) : dflt);
   const liked = ids(obj.liked, base.liked);
   const disliked = ids(obj.disliked, base.disliked).filter((x) => !liked.includes(x));
-  const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isStr(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
+  const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
     .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
   const lives = (Array.isArray(obj.lives) ? obj.lives : []).filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && isStr(l.from) && isStr(l.to) && Array.isArray(l.kg))
-    .map((l) => ({ id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '' }));
-  return { state: { v: 1, equipped, liked, disliked, sessions, lives }, warnings };
+    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '' }));
+  return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
+}
+
+// ---------- stato <-> documenti db ----------
+// Chiavi ordinate: due stati uguali danno lo stesso testo, qualunque sia l'ordine con cui db restituisce i campi.
+export const stableJson = (o) => JSON.stringify(o, (k, v) => (v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.keys(v).sort().map((x) => [x, v[x]])) : v));
+const byTs = (a, b) => (a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0);
+const byFrom = (a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : a.lid < b.lid ? -1 : a.lid > b.lid ? 1 : 0);
+export const sameState = (a, b) => stableJson({ ...a, sessions: [...a.sessions].sort(byTs), lives: [...a.lives].sort(byFrom) }) === stableJson({ ...b, sessions: [...b.sessions].sort(byTs), lives: [...b.lives].sort(byFrom) });
+
+export function splitState(state) {
+  const sessions = {}, lives = {};
+  for (const s of state.sessions) sessions[`s-${s.ts}`] = s;
+  for (const l of state.lives) lives[`l-${l.lid}`] = l;
+  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives };
+}
+
+// Stato grezzo da passare a sanitizeState. Se il documento `state` è ancora quello v1 (con gli array), li unisce agli elementi.
+export function joinState(core, sessions, lives) {
+  const old = (k) => (core && Array.isArray(core[k]) ? core[k] : []);
+  const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
+  const { sessions: _s, lives: _l, ...rest } = core || {};
+  return { ...rest, sessions: merge(old('sessions'), sessions, 'ts').sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
 }
