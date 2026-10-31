@@ -19,7 +19,7 @@ export function mineToast(msg, label, onAction) {
   t.hidden = false;
   t.querySelector('button').onclick = () => { clearTimeout(mineToastTimer); t.hidden = true; onAction(); };
   clearTimeout(mineToastTimer);
-  mineToastTimer = setTimeout(() => { t.hidden = true; }, 10000);
+  mineToastTimer = setTimeout(() => { t.hidden = true; }, 6000);
 }
 
 const mineDayStr = (back) => { const d = new Date(); d.setDate(d.getDate() - back); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };

@@ -273,7 +273,7 @@ test('diario: Metodo mostra il laboratorio solo con 5 corde con voti di fine vit
   o = await openPage({ storage: { 'banco-corde:state': stateJson(mk(five)) } });
   await o.page.locator('[data-goto="metodo"]').first().click();
   const t = await o.page.innerText('#m-sensazioni');
-  assert.match(t, /Laboratorio contro sensazioni/);
+  assert.match(t, /I tuoi voti contro le misure/);
   assert.match(t, /Spin ↔ spin TWU/);
   assert.match(t, /0,9\d/);
   assert.match(t, /\b6\b/);

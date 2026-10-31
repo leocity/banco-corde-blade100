@@ -66,7 +66,7 @@ test('metodo: controllo e potenza vengono solo dai tester, nessun indice di cont
   const { page, ctx } = await openPage();
   await page.locator('[data-goto="metodo"]').first().click();
   const t = await page.innerText('#metodo');
-  assert.match(t, /Controllo e potenza dai tester/);
+  assert.match(t, /Controllo e potenza/);
   assert.doesNotMatch(t, /indice di controllo|Controllo ◄► potenza/);
   assert.doesNotMatch(t, /NaN|undefined/);
   await ctx.close();

@@ -12,18 +12,7 @@ test('nav: intestazione a 390 px bassa e su una riga, con lo stato di sincronizz
   assert.match(await page.innerText('#sync-badge'), /Solo su questo browser/);
   const title = await page.locator('header.top h1').boundingBox();
   assert.ok(title.height <= 34, `il titolo va a capo (${title.height}px)`);
-  assert.equal(await page.locator('#profile-box').isVisible(), false, 'il profilo non occupa spazio su telefono');
-  await ctx.close();
-});
-
-test('nav: filtri chiusi con il conteggio dei filtri attivi', async () => {
-  const { page, ctx } = await openPage({ width: 390, height: 844 });
-  assert.equal(await page.locator('#filters').evaluate((d) => d.open), false);
-  assert.equal((await page.innerText('#filters summary')).trim(), 'Filtri');
-  await page.locator('#filters summary').click();
-  await page.locator('#only-measured').check();
-  await page.locator('#only-good').check();
-  assert.equal((await page.innerText('#filters summary')).trim(), 'Filtri (2)');
+  assert.equal(await page.locator('#profile-box').count(), 0, 'il profilo non occupa spazio: sta nel Metodo');
   await ctx.close();
 });
 
@@ -72,7 +61,7 @@ test('nav: il profilo sta nel Metodo', async () => {
   const { page, ctx } = await openPage({ width: 390, height: 844 });
   await page.locator('[data-goto="metodo"]').click();
   assert.match(await page.innerText('#metodo'), /Blade 100 v9/);
-  assert.match(await page.innerText('#metodo'), /4–5 h/);
+  assert.match(await page.innerText('#metodo'), /giocatore di club/);
   await ctx.close();
 });
 

@@ -1,4 +1,7 @@
-const { openPage, bodyText, stateOf, BAD, test, assert } = require('./ui.cjs');
+const { openPage, openSheetById, bodyText, stateOf, BAD, test, assert } = require('./ui.cjs');
+
+const openFilter = async (page) => { await page.locator('#filter-btn').click(); await page.waitForSelector('#filter-dialog[open]'); };
+const closeFilter = async (page) => { await page.locator('#flt-ok').click(); await page.waitForFunction(() => !document.getElementById('filter-dialog').open); };
 
 test('scegli: striscia montata e top 3', async () => {
   const { page, ctx, errors } = await openPage();
@@ -24,21 +27,30 @@ test('scegli: nessun NaN/undefined/null nel testo', async () => {
   await ctx.close();
 });
 
-test('scegli: filtro marca e solo misurate', async () => {
+test('scegli: «Filtra» apre un solo pannello con marca e solo misurate, il conteggio si vede e si azzera', async () => {
   const { page, ctx } = await openPage();
-  await page.locator('#filters summary').click();
-  const brand = await page.locator('#chips button[data-brand]').first().getAttribute('data-brand');
-  await page.locator(`#chips button[data-brand="${brand}"]`).click();
+  assert.equal((await page.innerText('#filter-btn')).trim(), 'Filtra');
+  await openFilter(page);
+  const brand = await page.locator('#flt-brands button[data-brand]').first().getAttribute('data-brand');
+  await page.locator(`#flt-brands button[data-brand="${brand}"]`).click();
+  assert.match(await page.innerText('#flt-ok'), /Mostra \d+ cord/);
+  await closeFilter(page);
+  assert.equal((await page.innerText('#filter-btn')).trim(), 'Filtra (1)');
   const names = await page.$$eval('#list .nm', (els) => els.map((e) => e.textContent));
   assert.ok(names.length > 0 && names.every((n) => n.startsWith(brand)), names.join('|'));
-  await page.locator(`#chips button[data-brand="${brand}"]`).click(); // di nuovo: toglie il filtro
-  await page.locator('#only-measured').check();
+  await openFilter(page);
+  await page.locator('#flt-measured').check();
+  await closeFilter(page);
   const classes = await page.$$eval('#list .crow2wrap .m[data-k="spin"]', (els) => els.map((e) => e.className));
   assert.ok(classes.length > 0 && classes.every((c) => c.includes('measured')), classes.join('|'));
+  await openFilter(page);
+  await page.locator('#flt-reset').click();
+  await closeFilter(page);
+  assert.equal((await page.innerText('#filter-btn')).trim(), 'Filtra');
   await ctx.close();
 });
 
-test('scegli: "non mi piace" cambia lo stato, resta dopo il reload ed è annullabile', async () => {
+test('scegli: "non mi piace" cambia lo stato, resta dopo il reload ed è annullabile dalla scheda', async () => {
   const { page, ctx } = await openPage();
   const id = await page.locator('#list .crow2wrap').first().getAttribute('data-id');
   await page.locator(`#list .crow2wrap[data-id="${id}"] .crow2`).click();
@@ -47,39 +59,40 @@ test('scegli: "non mi piace" cambia lo stato, resta dopo il reload ed è annulla
   await page.waitForFunction((i) => (JSON.parse(localStorage.getItem('banco-corde:state') || '{}').disliked || []).includes(i), id);
   await page.reload();
   await page.waitForFunction(() => window.__bancoReady === true);
-  await page.locator('#myrefs-sum').click();
-  assert.ok(await page.locator(`#myrefs .chip.disliked[data-dislike="${id}"]`).count());
-  await page.locator(`#myrefs .chip.disliked[data-dislike="${id}"]`).click();
+  await openSheetById(page, id);
+  assert.equal(await page.locator('#sheet-body [data-dislike]').getAttribute('aria-pressed'), 'true');
+  await page.locator('#sheet-body [data-dislike]').click();
   assert.equal((await stateOf(page)).disliked.includes(id), false);
   await ctx.close();
 });
 
 test('scegli: senza "mi piace" invita a segnarne una, senza errori', async () => {
-  const { page, ctx, errors } = await openPage();
-  await page.locator('#myrefs-sum').click();
-  while (await page.locator('#myrefs .chip.liked').count()) await page.locator('#myrefs .chip.liked').first().click();
+  const st = JSON.stringify({ v: 2, equipped: { id: 're-string-zero-17', kg: [22.5, 21.5], since: '2026-10-01T10:00:00.000Z', hours0: 0 }, liked: [], disliked: [], sessions: [], lives: [] });
+  const { page, ctx, errors } = await openPage({ storage: { 'banco-corde:state': st } });
   assert.ok(await page.locator('#no-refs').isVisible());
   assert.equal(await page.locator('#top3 .crow2wrap').count(), 0);
   assert.deepEqual(errors, []);
   await ctx.close();
 });
 
-test('scegli: le 3 da provare sono delle marche valutate; il filtro si toglie', async () => {
+test('scegli: le 3 da provare sono delle marche valutate; «Anche altre marche» aggiunge marche', async () => {
   const { page, ctx } = await openPage();
   const flags = await page.evaluate(() => { const D = window.STRINGS_DATA.strings; return [...document.querySelectorAll('#top3 .crow2wrap')].map((e) => D.find((r) => r.id === e.dataset.id).is_target); });
   assert.deepEqual(flags, [true, true, true]);
-  await page.locator('#filters summary').click();
-  const before = await page.locator('#chips [data-brand]').count();
-  await page.locator('#only-target').uncheck();
-  assert.ok((await page.locator('#chips [data-brand]').count()) > before);
+  await openFilter(page);
+  const before = await page.locator('#flt-brands [data-brand]').count();
+  await page.locator('#flt-others').check();
+  assert.ok((await page.locator('#flt-brands [data-brand]').count()) > before);
   await ctx.close();
 });
 
-test('scegli: le preferite stanno in un riquadro chiuso e la prima scelta si vede sul telefono', async () => {
-  const { page, ctx } = await openPage({ width: 390, height: 844 });
-  assert.equal(await page.locator('#myrefs-box').evaluate((e) => e.open), false);
+test('scegli: ricerca e Filtra stanno in cima e la prima scelta si vede subito sul telefono', async () => {
+  const { page, ctx } = await openPage({ width: 360, height: 740 });
+  const q = await page.locator('#q').boundingBox(), f = await page.locator('#filter-btn').boundingBox();
+  assert.ok(q.y < 200 && f.y < 200, `ricerca a ${q.y}, filtra a ${f.y}`);
+  assert.ok(q.height >= 44 && f.height >= 44, 'tocchi da 44 px');
   const top = await page.locator('#top3 .crow2wrap').first().boundingBox();
-  assert.ok(top.y < 400, `la prima scheda inizia a ${top.y}px: deve stare nella prima schermata`);
+  assert.ok(top.y < 330, `la prima scheda inizia a ${top.y}px: deve stare nella prima schermata`);
   await ctx.close();
 });
 

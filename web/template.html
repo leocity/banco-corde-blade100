@@ -9,22 +9,10 @@
 <div class="wrap">
   <header class="top">
     <div class="brandline">
-      <div class="bed" aria-hidden="true"></div>
-      <div class="titles">
-        <p class="eyebrow">Banco di incordatura · full poly · 1.18–1.30 mm</p>
-        <h1>Banco Corde Blade 100</h1>
-      </div>
+      <h1>Banco Corde Blade 100</h1>
       <span class="sync" id="sync-badge" role="status"></span>
       <button class="guide-btn" type="button" data-goto="metodo" aria-label="Apri il Metodo">Metodo</button>
     </div>
-    <details class="profile-box" id="profile-box">
-      <summary>Il tuo profilo: Blade 100 v9 16×19 · rotazioni + piatto · &lt; 50 lbs</summary>
-      <div class="profile">
-        <span class="chip">Wilson Blade 100 v9 · 16×19</span>
-        <span class="chip">Tutto campo, rotazioni + piatto</span>
-        <span class="chip">4–5 h/settimana</span>
-      </div>
-    </details>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Sezioni">
@@ -36,34 +24,24 @@
   <main>
     <section id="scegli" class="panel" role="tabpanel" aria-labelledby="tab-scegli">
       <button class="strip" id="strip" type="button" data-goto="montata" aria-label="Apri la schermata Montata"></button>
-      <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="q" placeholder="Cerca: Hyper-G, Toro, Zero…"></label>
-      <details class="myrefs" id="myrefs-box"><summary id="myrefs-sum">Le tue corde</summary><div class="chips" id="myrefs" aria-label="Le tue preferite e non gradite"></div></details>
-      <div class="callout" id="no-refs" hidden><p><b>Segna almeno una corda «mi piace»</b> (★ su una scheda) per calcolare il pairing: senza una preferita non c'è niente con cui confrontare.</p></div>
+      <div class="searchrow">
+        <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="q" placeholder="Cerca una corda"></label>
+        <button class="btn" type="button" id="filter-btn" data-open-filter>Filtra</button>
+      </div>
+      <p class="callout small" id="no-refs" hidden><b>Segna una corda «mi piace»</b> (★ nella scheda) per vedere il pairing.</p>
       <div id="top3-wrap">
-        <div class="section-head"><h2>Le 3 da provare</h2><p class="muted small" id="top3-note"></p></div>
+        <div class="section-head"><h2>Le 3 da provare</h2><button class="q" type="button" data-method="pairing" aria-label="Come si calcola il pairing">?</button></div>
         <div class="top3" id="top3"></div>
       </div>
-      <div class="section-head"><h2 id="list-title">Tutte le altre</h2></div>
-      <details class="filters" id="filters">
-        <summary>Filtri</summary>
-        <div class="chips" id="chips" role="group" aria-label="Filtra per marca"></div>
-        <div class="controls">
-          <label>Calibro <select id="f-gauge"><option value="">Tutti</option></select></label>
-          <label>Forma <select id="f-shape"><option value="">Tutte</option></select></label>
-          <label class="toggle"><input type="checkbox" id="only-target" checked> Solo le marche che stai valutando</label>
-          <label class="toggle"><input type="checkbox" id="only-measured"> Solo dati misurati</label>
-          <label class="toggle"><input type="checkbox" id="only-good"> Pairing Buono o meglio</label>
-        </div>
-      </details>
-      <p class="muted small" id="list-count"></p>
+      <div class="section-head"><h2 id="list-title">Tutte le altre</h2><span class="muted small" id="list-count"></span></div>
       <div class="list" id="list"></div>
       <button class="btn" type="button" id="more" hidden>Mostra altre</button>
       <details class="ai-new" id="ai-new" hidden>
-        <summary>Valuta una corda che non c'è (parere AI)</summary>
+        <summary>Valuta una corda che non c'è</summary>
         <div class="equip-form">
           <label>Nome <input id="ai-new-name" placeholder="Marca e modello"></label>
           <label>Calibro <input id="ai-new-gauge" size="6" placeholder="1,24"></label>
-          <label>Specifiche o descrizioni incollate (facoltativo) <textarea id="ai-pasted" rows="4"></textarea></label>
+          <label>Descrizioni incollate (facoltativo) <textarea id="ai-pasted" rows="4"></textarea></label>
           <button class="btn primary" type="button" id="ai-new-go">Valuta con AI</button>
           <div class="ai-out" id="ai-new-out" aria-live="polite"></div>
         </div>
@@ -71,23 +49,17 @@
     </section>
 
     <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden>
-      <div class="section-head"><h2>Dove sta ogni corda</h2><p class="muted small">Passa sopra un punto per la scheda; tocca per fissarla, tocca ancora per aprirla. Cerchio pieno = misurato, vuoto = stimato.</p></div>
-      <div class="chips" id="map-presets" role="group" aria-label="Assi del grafico">
-        <button type="button" class="chipbtn" data-axes="rs" aria-pressed="true">Rigidità × Spin</button>
-        <button type="button" class="chipbtn" data-axes="ts" aria-pressed="false">Tenuta × Spin</button>
+      <div class="map-bar">
+        <div class="chips" id="map-presets" role="group" aria-label="Asse orizzontale">
+          <button type="button" class="chipbtn" data-axes="rs" aria-pressed="true">Rigidità</button>
+          <button type="button" class="chipbtn" data-axes="ts" aria-pressed="false">Tenuta</button>
+        </div>
+        <button class="btn" type="button" id="map-filter-btn" data-open-filter>Filtra</button>
       </div>
-      <div class="chips" id="map-chips" role="group" aria-label="Filtra per marca"></div>
-      <div class="controls">
-        <label>Calibro <select id="map-gauge"><option value="">Tutti</option></select></label>
-        <label>Forma <select id="map-shape"><option value="">Tutte</option></select></label>
-        <label class="toggle"><input type="checkbox" id="map-target" checked> Solo le marche che stai valutando</label>
-        <label class="toggle"><input type="checkbox" id="map-measured"> Solo misurate</label>
-        <label class="toggle"><input type="checkbox" id="map-good"> Pairing Buono o meglio</label>
-      </div>
-      <div class="legend" id="map-legend"></div>
-      <p class="map-status" id="map-status"></p>
-      <div class="chart-box"><svg id="scatter" role="img" aria-label="Mappa delle corde"></svg><div class="tip" id="tip" hidden></div></div>
-      <details class="advanced" id="map-table"><summary>Vedi come tabella</summary><div class="table-scroll"><table class="data" id="map-table-body"></table></div></details>
+      <p class="map-status muted small" id="map-status"></p>
+      <p class="map-legend" id="map-legend"><span><i style="background:var(--s-target)"></i>montata</span><span><i style="background:var(--s-liked)"></i>★ preferite</span><span><i style="background:var(--s-disliked)"></i>non gradite</span><span><i style="background:var(--s-other)"></i>altre</span></p>
+      <div class="chart-box"><svg id="scatter" role="img" aria-label="Mappa delle corde: spin in verticale"></svg></div>
+      <div id="map-pick" aria-live="polite"></div>
     </section>
 
     <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden>
@@ -134,11 +106,23 @@
     <section id="metodo" class="panel prose" hidden></section>
   </main>
 
-  <footer class="foot muted small" id="foot"></footer>
 </div>
 
 <aside class="tray" id="tray" aria-label="Confronto" hidden></aside>
 <div class="toast" id="toast" role="status" hidden></div>
+
+<dialog id="filter-dialog" aria-labelledby="flt-title">
+  <div class="equip-form">
+    <div class="dlg-body">
+      <h2 id="flt-title">Filtra</h2>
+      <div class="chips" id="flt-brands" role="group" aria-label="Marca"></div>
+      <label class="check"><input type="checkbox" id="flt-measured"> Solo dati misurati</label>
+      <label class="check"><input type="checkbox" id="flt-good"> Solo pairing buono o meglio</label>
+      <label class="check"><input type="checkbox" id="flt-others"> Anche altre marche</label>
+    </div>
+    <div class="dlg-foot"><div class="card-actions"><button class="btn" type="button" id="flt-reset">Azzera</button><button class="btn primary" type="button" id="flt-ok">Mostra</button></div></div>
+  </div>
+</dialog>
 
 <dialog id="equip-dialog" aria-labelledby="eq-title">
   <div class="equip-form">

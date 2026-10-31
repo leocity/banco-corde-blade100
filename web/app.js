@@ -4,7 +4,8 @@ import { defaultState, setPreference, equippedHours, tensionFor, sameState, tria
 import { trialsForString } from './trials.js';
 import { createPersistence } from './persist.js';
 import { sheetHtml } from './cards.js';
-import { renderChoose, initChoose, renderStrip } from './choose.js';
+import { renderChoose, initChoose, renderStrip, filteredCount } from './choose.js';
+import { initFilter } from './filter.js';
 import { wearStatus, lifeEstimate } from './wear.js';
 import { initAi, aiAvailable, aiCachedHtml } from './ai.js';
 import { initCompare, comparePicks } from './compare.js';
@@ -98,12 +99,12 @@ document.addEventListener('click', (e) => {
 
 initChoose(ctx);
 initCompare(ctx);
+initFilter(ctx, { count: () => filteredCount(ctx), changed: () => renderAll() });
 initMine(ctx);
 initDiary(ctx);
 initMap(ctx);
 initAi(ctx);
 renderMethod(ctx);
-$('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni solo come link in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
 const hashTab = (location.hash || '').slice(1);
 showTab(TABS.includes(hashTab) ? hashTab : 'scegli');
 window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (TABS.includes(h)) showTab(h); });
