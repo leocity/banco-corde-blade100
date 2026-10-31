@@ -1,6 +1,6 @@
 import { $, esc, fullName } from './format.js';
 import { pairing } from './pairing.js';
-import { defaultState, setPreference, equippedHours, tensionFor } from './state.js';
+import { defaultState, setPreference, equippedHours, tensionFor, sameState } from './state.js';
 import { createPersistence } from './persist.js';
 import { sheetHtml } from './cards.js';
 import { renderChoose, initChoose, renderStrip } from './choose.js';
@@ -43,12 +43,17 @@ const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, card
   wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistError: () => (persist ? persist.lastError : null), persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
   update, openSheet, showTab, refresh: () => { renderAll(); if (dlg.open && sheetId) openSheet(sheetId); }, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
 
+const SYNC_TEXT = { sync: ['● Sincronizzato', 'ok'], local: ['○ Solo su questo browser', 'local'], error: ['⚠ Errore di salvataggio', 'err'] };
+function renderSyncBadge() {
+  const b = $('#sync-badge'), t = SYNC_TEXT[persist ? persist.status : 'pending'];
+  b.textContent = t ? t[0] : ''; b.className = `sync ${t ? t[1] : ''}`; b.title = persist && persist.lastError ? persist.lastError : '';
+}
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {
   $('#toast').hidden = true; // un annulla con una foto vecchia dello stato cancellerebbe questa modifica
   state = fn(state); cache.clear();
   if (!loaded) pendingFns.push(fn);
-  else if (persist) persist.save(state).then(() => renderPersistNote(ctx));
+  else if (persist) persist.save(state).then(() => { renderPersistNote(ctx); renderSyncBadge(); });
   renderAll();
   if (dlg.open && sheetId) openSheet(sheetId);
 }
@@ -106,6 +111,12 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
     const replayed = pendingFns.length > 0;
     pendingFns = []; loaded = true; cache.clear();
     if (replayed) persist.save(state);
-    renderAll();
+    renderAll(); renderSyncBadge();
+    // un altro dispositivo ha cambiato qualcosa: si aggiorna da solo, senza ricaricare (l'eco delle proprie scritture è uguale e si ignora)
+    persist.subscribe((remote) => {
+      if (!loaded || sameState(remote, state)) { renderSyncBadge(); return; }
+      state = remote; cache.clear(); renderAll(); renderSyncBadge();
+      if (dlg.open && sheetId) openSheet(sheetId);
+    });
   } finally { loaded = true; window.__bancoReady = true; }
 })();

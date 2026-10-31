@@ -63,9 +63,11 @@ export async function createPersistence({ claude, storage, defaults, knownIds })
     }
     writeLocal(state);
   }
-  let running = null, latest = null;
+  // `writing` si alza prima della prima scrittura: un db che notifica lo snapshot dentro set() non deve far passare per «altrui» l'eco parziale delle nostre scritture.
+  let running = null, latest = null, writing = false;
   async function flush() {
-    try { while (latest) { const s = latest; latest = null; lastWritten = s; await write(s); } } finally { running = null; setTimeout(settle, 300); }
+    writing = true;
+    try { while (latest) { const s = latest; latest = null; lastWritten = s; await write(s); } } finally { writing = false; running = null; setTimeout(settle, 300); }
   }
   const view = () => sanitizeState(assemble(), defaults, knownIds).state;
   function emit() {
@@ -75,7 +77,7 @@ export async function createPersistence({ claude, storage, defaults, knownIds })
   }
   // A coda svuotata, se il server ha qualcosa che lo stato locale non ha, lo consegna (uno snapshot arrivato durante le scritture non si applica a metà).
   function settle() {
-    if (running || latest || !onRemote || !hasData()) return;
+    if (writing || latest || !onRemote || !hasData()) return;
     if (!lastWritten || !sameState(view(), lastWritten)) emit();
   }
 
@@ -106,7 +108,7 @@ export async function createPersistence({ claude, storage, defaults, knownIds })
       if (mode !== 'db') return;
       onRemote = cb;
       try {
-        col().onSnapshot((snap) => { mirror = fromDocs(snap.docs); if (running || latest) return; emit(); }, (e) => { api.lastError = errText(e); status = 'error'; });
+        col().onSnapshot((snap) => { mirror = fromDocs(snap.docs); if (writing || latest) return; emit(); }, (e) => { api.lastError = errText(e); status = 'error'; });
       } catch (e) { api.lastError = errText(e); status = 'error'; }
     },
     exportJson(state) { return JSON.stringify({ exportedAt: new Date().toISOString(), ...clone(state) }, null, 2); },

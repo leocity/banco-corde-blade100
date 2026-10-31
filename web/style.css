@@ -376,3 +376,8 @@ textarea { font: inherit; padding: 8px; border: 1px solid var(--line); border-ra
 .data td.v { min-width: 8em; }
 .data .pair { white-space: normal; }
 .mark { font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", "Arial Unicode MS", sans-serif; }
+
+/* stato di sincronizzazione */
+.sync { font-size: .78rem; font-weight: 600; white-space: nowrap; color: var(--muted); }
+.sync.ok { color: var(--court); }
+.sync.err { color: var(--warn-fg); background: var(--warn-bg); padding: 2px 8px; border-radius: 999px; }

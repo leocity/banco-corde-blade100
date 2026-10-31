@@ -10,7 +10,7 @@ const storage = () => { const m = new Map(); return { getItem: (k) => (m.has(k) 
 const sess = (state, ts, hours = 1) => addSession(state, { date: '2026-10-30', hours, note: '', ts });
 
 // db a raccolta: get/onSnapshot/doc().set/delete; external() simula un altro dispositivo
-function fakeDb({ delay = 0, failSet = false } = {}) {
+function fakeDb({ delay = 0, failSet = false, syncNotify = false } = {}) {
   const docs = new Map(), subs = new Set(), log = { sets: [], deletes: [], active: 0, max: 0 };
   const snapOf = () => ({ docs: [...docs.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([id, d]) => ({ id, exists: true, data: () => d })) });
   const notify = () => { for (const cb of [...subs]) cb(snapOf()); };
@@ -18,7 +18,7 @@ function fakeDb({ delay = 0, failSet = false } = {}) {
     get: async () => snapOf(),
     onSnapshot: (cb) => { subs.add(cb); return () => subs.delete(cb); },
     doc: (id) => ({
-      set: async (d) => { log.active += 1; log.max = Math.max(log.max, log.active); await sleep(delay); log.active -= 1; if (failSet) throw { code: 'unavailable', message: 'giù' }; log.sets.push(id); docs.set(id, JSON.parse(JSON.stringify(d))); notify(); },
+      set: async (d) => { if (syncNotify) { log.sets.push(id); docs.set(id, JSON.parse(JSON.stringify(d))); notify(); return; } log.active += 1; log.max = Math.max(log.max, log.active); await sleep(delay); log.active -= 1; if (failSet) throw { code: 'unavailable', message: 'giù' }; log.sets.push(id); docs.set(id, JSON.parse(JSON.stringify(d))); notify(); },
       delete: async () => { await sleep(delay); log.deletes.push(id); docs.delete(id); notify(); },
     }),
   };
@@ -205,4 +205,15 @@ test('errore di scrittura: status error, copia locale, poi torna sync', async ()
 test('subscribe in locale non fa nulla e non lancia', async () => {
   const p = await createPersistence({ claude: null, storage: storage(), defaults: DEFAULTS, knownIds: KNOWN });
   p.subscribe(() => { throw new Error('non deve essere chiamata'); });
+});
+
+test('eco sincrona durante la scrittura: la sessione appena aggiunta non viene scartata', async () => {
+  // un db che notifica lo snapshot dentro set(), prima che la coda risulti "in corso", mostrava solo lo stato parziale
+  const db = fakeDb({ syncNotify: true }), p = await open(db);
+  const got = [];
+  p.subscribe((s) => got.push(s));
+  const s1 = sess(defaultState(DEFAULTS), '1-1');
+  await p.save(s1);
+  await sleep(450);
+  assert.equal(got.some((s) => s.sessions.length === 0), false, 'è arrivato uno stato senza la sessione appena salvata');
 });

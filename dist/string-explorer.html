@@ -382,6 +382,11 @@ textarea { font: inherit; padding: 8px; border: 1px solid var(--line); border-ra
 .data .pair { white-space: normal; }
 .mark { font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", "Arial Unicode MS", sans-serif; }
 
+/* stato di sincronizzazione */
+.sync { font-size: .78rem; font-weight: 600; white-space: nowrap; color: var(--muted); }
+.sync.ok { color: var(--court); }
+.sync.err { color: var(--warn-fg); background: var(--warn-bg); padding: 2px 8px; border-radius: 999px; }
+
 </style>
 
 <div class="wrap">
@@ -392,6 +397,7 @@ textarea { font: inherit; padding: 8px; border: 1px solid var(--line); border-ra
         <p class="eyebrow">Banco di incordatura · full poly · 1.18–1.30 mm</p>
         <h1>Banco Corde Blade 100</h1>
       </div>
+      <span class="sync" id="sync-badge" role="status"></span>
       <button class="guide-btn" type="button" data-goto="metodo" aria-label="Apri il Metodo">Metodo</button>
     </div>
     <details class="profile-box" id="profile-box">
@@ -651,9 +657,13 @@ const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const isDate = (v) => isStr(v) && !Number.isNaN(Date.parse(v));
 const uniq = (xs) => [...new Set(xs)];
 
+const STATE_VERSION = 2;
+// ID dei documenti db: lettere, cifre e _ - . ~ : @ + (nessuna barra né spazio)
+const isDocPart = (v) => isStr(v) && /^[A-Za-z0-9_.~:@+-]{1,150}$/.test(v) && v !== '.' && v !== '..';
+
 function defaultState(defaults, now = new Date()) {
   return {
-    v: 1,
+    v: STATE_VERSION,
     equipped: { id: defaults.equipped.id, kg: [...defaults.equipped.kg], since: now.toISOString(), hours0: 0 },
     liked: [...defaults.liked], disliked: [...defaults.disliked], sessions: [], lives: [],
   };
@@ -677,8 +687,8 @@ function addSession(state, { date, hours, note = '', ts }) {
 const removeSession = (state, ts) => ({ ...state, sessions: state.sessions.filter((s) => s.ts !== ts) });
 const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
 
-function changeString(state, { id, kg, date, endReason, endHours, note = '' }) {
-  const life = { id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note };
+function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()) }) {
+  const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note };
   return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
 }
 
@@ -709,6 +719,9 @@ function tensionFor(rec, equippedRec, equippedKg) {
   return { kg, lbs: kg.map(kgToLbs), low: kg.map((x) => x - 1), high: kg.map((x) => x + 1), corrected };
 }
 
+// Le vite salvate prima dell'introduzione di `lid` ne ricevono uno stabile dalla data di inizio.
+const legacyLid = (from) => (Number.isFinite(Date.parse(from)) ? String(Date.parse(from)) : `x${String(from).replace(/[^A-Za-z0-9]/g, '').slice(0, 40)}`);
+
 function sanitizeState(raw, defaults, knownIds) {
   const warnings = [], known = new Set(knownIds), base = defaultState(defaults);
   if (raw === null || raw === undefined) return { state: base, warnings };
@@ -725,17 +738,44 @@ function sanitizeState(raw, defaults, knownIds) {
   const ids = (v, dflt) => (Array.isArray(v) ? uniq(v.filter((x) => isStr(x) && known.has(x))) : dflt);
   const liked = ids(obj.liked, base.liked);
   const disliked = ids(obj.disliked, base.disliked).filter((x) => !liked.includes(x));
-  const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isStr(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
+  const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
     .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
   const lives = (Array.isArray(obj.lives) ? obj.lives : []).filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && isStr(l.from) && isStr(l.to) && Array.isArray(l.kg))
-    .map((l) => ({ id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '' }));
-  return { state: { v: 1, equipped, liked, disliked, sessions, lives }, warnings };
+    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '' }));
+  return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
 }
 
-// Salvataggio dello stato: documento `db` privato per utente (data/users/<id>/state) o, in mancanza, localStorage.
+// ---------- stato <-> documenti db ----------
+// Chiavi ordinate: due stati uguali danno lo stesso testo, qualunque sia l'ordine con cui db restituisce i campi.
+const stableJson = (o) => JSON.stringify(o, (k, v) => (v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.keys(v).sort().map((x) => [x, v[x]])) : v));
+const byTs = (a, b) => (a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0);
+const byFrom = (a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : a.lid < b.lid ? -1 : a.lid > b.lid ? 1 : 0);
+const sameState = (a, b) => stableJson({ ...a, sessions: [...a.sessions].sort(byTs), lives: [...a.lives].sort(byFrom) }) === stableJson({ ...b, sessions: [...b.sessions].sort(byTs), lives: [...b.lives].sort(byFrom) });
+
+function splitState(state) {
+  const sessions = {}, lives = {};
+  for (const s of state.sessions) sessions[`s-${s.ts}`] = s;
+  for (const l of state.lives) lives[`l-${l.lid}`] = l;
+  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives };
+}
+
+// Stato grezzo da passare a sanitizeState. Se il documento `state` è ancora quello v1 (con gli array), li unisce agli elementi.
+function joinState(core, sessions, lives) {
+  const old = (k) => (core && Array.isArray(core[k]) ? core[k] : []);
+  const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
+  const { sessions: _s, lives: _l, ...rest } = core || {};
+  return { ...rest, sessions: merge(old('sessions'), sessions, 'ts').sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
+}
+
+// Salvataggio dello stato. Con `db`: documenti separati nella raccolta personale data/users/<id> — `state` (montata, preferite),
+// `s-<ts>` per ogni sessione, `l-<lid>` per ogni vita di corda — con ascolto in tempo reale, così due dispositivi non si
+// sovrascrivono. Senza `db` ripiega su un JSON in localStorage.
 
 const KEY = 'banco-corde:state';
 const clone = (o) => JSON.parse(JSON.stringify(o));
+const errText = (e) => String((e && e.message) || (e && e.code) || e);
+const stripArrays = (core) => { const { sessions, lives, ...rest } = core; return rest; };
+const isLegacy = (core) => !!core && (Array.isArray(core.sessions) || Array.isArray(core.lives));
 
 async function createPersistence({ claude, storage, defaults, knownIds }) {
   let db = null, uid = null, mode = 'local';
@@ -745,34 +785,99 @@ async function createPersistence({ claude, storage, defaults, knownIds }) {
     uid = user ? await user.id() : null;
     if (db && uid) mode = 'db';
   } catch { mode = 'local'; }
-  const path = `data/users/${uid}/state`;
+  const col = () => db.collection(`data/users/${uid}`);
   const readLocal = () => { try { return storage ? storage.getItem(KEY) : null; } catch { return null; } };
   const writeLocal = (state) => { try { if (storage) storage.setItem(KEY, JSON.stringify(state)); } catch { /* archivio non disponibile */ } };
-  async function write(copy) {
-    if (mode === 'db') {
-      try { await db.doc(path).set(copy); api.lastError = null; return; } catch (e) { api.lastError = String((e && e.message) || (e && e.code) || e); }
+
+  // `mirror`: ultimo contenuto del server che conosciamo. `known`: gli elementi che lo stato locale ha già visto: solo quelli
+  // si cancellano dal server quando mancano nello stato locale (una pagina vecchia non cancella ciò che non ha mai visto).
+  let mirror = { core: null, sessions: {}, lives: {} }, known = new Set(), onRemote = null, lastWritten = null, status = mode === 'db' ? 'sync' : 'local';
+  const fromDocs = (docs) => {
+    const m = { core: null, sessions: {}, lives: {} };
+    for (const d of docs) { const data = d.data(); if (d.id === 'state') m.core = data; else if (d.id.startsWith('s-')) m.sessions[d.id] = data; else if (d.id.startsWith('l-')) m.lives[d.id] = data; }
+    return m;
+  };
+  const idsOf = (m) => new Set([...Object.keys(m.sessions), ...Object.keys(m.lives)]);
+  const hasData = () => !!mirror.core || idsOf(mirror).size > 0;
+  const assemble = () => (hasData() ? joinState(mirror.core, mirror.sessions, mirror.lives) : null);
+
+  // Documento unico v1 -> documenti separati: prima gli elementi, poi `state` senza array; ripetibile.
+  async function migrate() {
+    const want = splitState(sanitizeState(mirror.core, defaults, knownIds).state);
+    for (const kind of ['sessions', 'lives']) {
+      for (const [id, v] of Object.entries(want[kind])) if (!mirror[kind][id]) { await col().doc(id).set(v); mirror[kind][id] = v; }
     }
-    writeLocal(copy);
+    await col().doc('state').set(want.core);
+    mirror.core = want.core;
   }
-  let running = null, latest = null;
+
+  async function syncTo(state) {
+    const want = splitState(state), ops = [];
+    if (!mirror.core || stableJson(stripArrays(mirror.core)) !== stableJson(want.core) || isLegacy(mirror.core)) ops.push(['state', want.core, 'core']);
+    for (const kind of ['sessions', 'lives']) {
+      for (const [id, v] of Object.entries(want[kind])) if (!mirror[kind][id] || stableJson(mirror[kind][id]) !== stableJson(v)) ops.push([id, v, kind]);
+      for (const id of Object.keys(mirror[kind])) if (!(id in want[kind]) && known.has(id)) ops.push([id, null, kind]);
+    }
+    for (const [id, v, kind] of ops) {
+      if (v === null) { await col().doc(id).delete(); delete mirror[kind][id]; }
+      else { await col().doc(id).set(clone(v)); if (kind === 'core') mirror.core = clone(v); else mirror[kind][id] = clone(v); }
+    }
+    known = new Set([...Object.keys(want.sessions), ...Object.keys(want.lives)]);
+  }
+
+  async function write(state) {
+    if (mode === 'db') {
+      try { await syncTo(state); api.lastError = null; status = 'sync'; return; } catch (e) { api.lastError = errText(e); status = 'error'; }
+    }
+    writeLocal(state);
+  }
+  // `writing` si alza prima della prima scrittura: un db che notifica lo snapshot dentro set() non deve far passare per «altrui» l'eco parziale delle nostre scritture.
+  let running = null, latest = null, writing = false;
   async function flush() {
-    try { while (latest) { const s = latest; latest = null; await write(s); } } finally { running = null; }
+    writing = true;
+    try { while (latest) { const s = latest; latest = null; lastWritten = s; await write(s); } } finally { writing = false; running = null; setTimeout(settle, 300); }
   }
+  const view = () => sanitizeState(assemble(), defaults, knownIds).state;
+  function emit() {
+    if (!onRemote || !hasData()) return;
+    known = idsOf(mirror);
+    onRemote(view());
+  }
+  // A coda svuotata, se il server ha qualcosa che lo stato locale non ha, lo consegna (uno snapshot arrivato durante le scritture non si applica a metà).
+  function settle() {
+    if (writing || latest || !onRemote || !hasData()) return;
+    if (!lastWritten || !sameState(view(), lastWritten)) emit();
+  }
+
   const api = {
     get mode() { return mode; },
+    get status() { return status; },
     lastError: null,
     async load() {
-      let raw = null;
       if (mode === 'db') {
-        try { const snap = await db.doc(path).get(); raw = snap.exists ? snap.data() : null; } catch { mode = 'local'; raw = readLocal(); }
-      } else raw = readLocal();
-      return sanitizeState(raw, defaults, knownIds);
+        try {
+          mirror = fromDocs((await col().get()).docs);
+          if (isLegacy(mirror.core)) { try { await migrate(); } catch (e) { api.lastError = errText(e); status = 'error'; } }
+          known = idsOf(mirror);
+          const out = sanitizeState(assemble(), defaults, knownIds);
+          lastWritten = out.state;
+          return out;
+        } catch (e) { api.lastError = errText(e); mode = 'local'; status = 'local'; }
+      }
+      return sanitizeState(readLocal(), defaults, knownIds);
     },
     // Una scrittura alla volta (il contratto di db lo chiede) e vince l'ultimo stato: i salvataggi ravvicinati si fondono.
     save(state) {
       latest = clone(state);
       if (!running) running = flush();
       return running;
+    },
+    subscribe(cb) {
+      if (mode !== 'db') return;
+      onRemote = cb;
+      try {
+        col().onSnapshot((snap) => { mirror = fromDocs(snap.docs); if (writing || latest) return; emit(); }, (e) => { api.lastError = errText(e); status = 'error'; });
+      } catch (e) { api.lastError = errText(e); status = 'error'; }
     },
     exportJson(state) { return JSON.stringify({ exportedAt: new Date().toISOString(), ...clone(state) }, null, 2); },
   };
@@ -1844,12 +1949,17 @@ const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, card
   wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistError: () => (persist ? persist.lastError : null), persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
   update, openSheet, showTab, refresh: () => { renderAll(); if (dlg.open && sheetId) openSheet(sheetId); }, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
 
+const SYNC_TEXT = { sync: ['● Sincronizzato', 'ok'], local: ['○ Solo su questo browser', 'local'], error: ['⚠ Errore di salvataggio', 'err'] };
+function renderSyncBadge() {
+  const b = $('#sync-badge'), t = SYNC_TEXT[persist ? persist.status : 'pending'];
+  b.textContent = t ? t[0] : ''; b.className = `sync ${t ? t[1] : ''}`; b.title = persist && persist.lastError ? persist.lastError : '';
+}
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {
   $('#toast').hidden = true; // un annulla con una foto vecchia dello stato cancellerebbe questa modifica
   state = fn(state); cache.clear();
   if (!loaded) pendingFns.push(fn);
-  else if (persist) persist.save(state).then(() => renderPersistNote(ctx));
+  else if (persist) persist.save(state).then(() => { renderPersistNote(ctx); renderSyncBadge(); });
   renderAll();
   if (dlg.open && sheetId) openSheet(sheetId);
 }
@@ -1907,7 +2017,13 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
     const replayed = pendingFns.length > 0;
     pendingFns = []; loaded = true; cache.clear();
     if (replayed) persist.save(state);
-    renderAll();
+    renderAll(); renderSyncBadge();
+    // un altro dispositivo ha cambiato qualcosa: si aggiorna da solo, senza ricaricare (l'eco delle proprie scritture è uguale e si ignora)
+    persist.subscribe((remote) => {
+      if (!loaded || sameState(remote, state)) { renderSyncBadge(); return; }
+      state = remote; cache.clear(); renderAll(); renderSyncBadge();
+      if (dlg.open && sheetId) openSheet(sheetId);
+    });
   } finally { loaded = true; window.__bancoReady = true; }
 })();
 
