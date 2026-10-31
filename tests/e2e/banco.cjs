@@ -63,7 +63,7 @@ test('banco: scheda dal nome, con pairing e Monta questa', async () => {
   await page.locator('#bank-table .rowlink').first().click();
   assert.ok(await page.locator('dialog#sheet[open]').count());
   assert.ok(await page.locator('#sheet-body .pair').count());
-  assert.match(await page.innerText('#sheet-body'), /Monta questa|Aggiungi al confronto/);
+  assert.match(await page.innerText('#sheet-body'), /Monta questa|Confronta/);
   await ctx.close();
 });
 
