@@ -276,3 +276,25 @@ test('sync: azioni fatte prima che il db risponda non cancellano lo storico salv
   assert.equal(core.liked.length, 1, 'la modifica fatta prima del caricamento è andata persa');
   await ctx.close();
 });
+
+test('sync: un annulla in sospeso sparisce quando un altro dispositivo cambia qualcosa (non cancella le sue aggiunte)', async () => {
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(false), storage: { 'fakedb:state': coreDoc(), 'fakedb:s-100-1': sessionDoc('100-1', 2), 'fakedb:s-200-2': sessionDoc('200-2', 3) } });
+  await goMontata(page);
+  await page.locator('#sessions li[data-ts="200-2"] [data-del-ts]').click();
+  assert.equal(await page.locator('#toast').isVisible(), true);
+  await page.evaluate((d) => window.__external({ set: { 's-tel-9': d } }), JSON.parse(sessionDoc('tel-9', 4)));
+  await page.waitForFunction(() => /6 h su/.test(document.querySelector('#wear').innerText));
+  assert.equal(await page.locator('#toast').isVisible(), false, 'il toast di annulla è stato nascosto');
+  assert.deepEqual((await dbKeys(page, 's-')).sort(), ['fakedb:s-100-1', 'fakedb:s-tel-9']);
+  await ctx.close();
+});
+
+test('sync: salvataggio online fallito, la modifica resta a schermo e non viene sostituita dal server', async () => {
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(false, { failSet: true }), storage: { 'fakedb:state': coreDoc(), 'fakedb:s-100-1': sessionDoc('100-1', 2) } });
+  await goMontata(page);
+  await addHours(page, '1,5');
+  await page.waitForTimeout(900);
+  assert.match(await page.innerText('#wear'), /3,5 h su/, 'le 1,5 ore aggiunte sono ancora lì');
+  assert.equal(await page.locator('#sessions li[data-ts]').count(), 2);
+  await ctx.close();
+});

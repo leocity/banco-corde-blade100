@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createPersistence } from './persist.js';
-import { defaultState, addSession, removeSession, sameState } from './state.js';
+import { defaultState, addSession, removeSession, sameState, changeString } from './state.js';
 
 const DEFAULTS = { equipped: { id: 'zero', kg: [22.5, 21.5] }, liked: ['conf'], disliked: [] };
 const KNOWN = ['zero', 'conf', 'other'];
@@ -11,6 +11,7 @@ const sess = (state, ts, hours = 1) => addSession(state, { date: '2026-10-30', h
 
 // db a raccolta: get/onSnapshot/doc().set/delete; external() simula un altro dispositivo
 function fakeDb({ delay = 0, failSet = false, syncNotify = false } = {}) {
+  const cfg = { failSet };
   const docs = new Map(), subs = new Set(), log = { sets: [], deletes: [], active: 0, max: 0 };
   const snapOf = () => ({ docs: [...docs.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([id, d]) => ({ id, exists: true, data: () => d })) });
   const notify = () => { for (const cb of [...subs]) cb(snapOf()); };
@@ -18,12 +19,12 @@ function fakeDb({ delay = 0, failSet = false, syncNotify = false } = {}) {
     get: async () => snapOf(),
     onSnapshot: (cb) => { subs.add(cb); return () => subs.delete(cb); },
     doc: (id) => ({
-      set: async (d) => { if (syncNotify) { log.sets.push(id); docs.set(id, JSON.parse(JSON.stringify(d))); notify(); return; } log.active += 1; log.max = Math.max(log.max, log.active); await sleep(delay); log.active -= 1; if (failSet) throw { code: 'unavailable', message: 'giù' }; log.sets.push(id); docs.set(id, JSON.parse(JSON.stringify(d))); notify(); },
+      set: async (d) => { if (syncNotify) { log.sets.push(id); docs.set(id, JSON.parse(JSON.stringify(d))); notify(); return; } log.active += 1; log.max = Math.max(log.max, log.active); await sleep(delay); log.active -= 1; if (cfg.failSet) throw { code: 'unavailable', message: 'giù' }; log.sets.push(id); docs.set(id, JSON.parse(JSON.stringify(d))); notify(); },
       delete: async () => { await sleep(delay); log.deletes.push(id); docs.delete(id); notify(); },
     }),
   };
   const claude = { use: async (n) => (n === 'db' ? { collection: (p) => { assert.equal(p, 'data/users/u1'); return col; }, doc: () => { throw new Error('doc() diretto non previsto'); } } : n === 'user' ? { id: async () => 'u1' } : null) };
-  return { docs, log, claude, external: (fn) => { fn(docs); notify(); } };
+  return { docs, log, cfg, claude, external: (fn) => { fn(docs); notify(); } };
 }
 const open = (db, st = storage()) => createPersistence({ claude: db.claude, storage: st, defaults: DEFAULTS, knownIds: KNOWN });
 const NOTE = (ts, h) => ({ date: '2026-10-2' + h, hours: h, note: '', life: '2026-10-31T10:39:49.706Z', ts });
@@ -216,4 +217,58 @@ test('eco sincrona durante la scrittura: la sessione appena aggiunta non viene s
   await p.save(s1);
   await sleep(450);
   assert.equal(got.some((s) => s.sessions.length === 0), false, 'è arrivato uno stato senza la sessione appena salvata');
+});
+
+// ---- revisione finale: scritture fallite, riprova, ordine delle scritture ----
+const openFast = (db, st = storage()) => createPersistence({ claude: db.claude, storage: st, defaults: DEFAULTS, knownIds: KNOWN, retryMs: 40 });
+
+test('scrittura fallita con ascolto attivo: la modifica locale non viene sostituita dallo stato vecchio del server', async () => {
+  const db = fakeDb(); const p = await open(db);
+  let st = (await p.load()).state; await p.save(st);
+  const seen = []; p.subscribe((r) => seen.push(r));
+  db.cfg.failSet = true;
+  st = sess(st, '5-0', 2); await p.save(st);
+  assert.equal(p.status, 'error');
+  await sleep(450);
+  assert.equal(seen.length, 0, 'nessuno stato remoto deve cancellare la modifica non salvata');
+});
+
+test('scrittura fallita: si riprova da sola e, tornata la rete, il server riceve la sessione', async () => {
+  const db = fakeDb(); const p = await openFast(db);
+  let st = (await p.load()).state; await p.save(st);
+  p.subscribe(() => {});
+  db.cfg.failSet = true;
+  st = sess(st, '6-0', 3); await p.save(st);
+  assert.equal(p.status, 'error');
+  db.cfg.failSet = false;
+  await sleep(250);
+  assert.ok(db.docs.has('s-6-0'), 'la sessione è arrivata sul server');
+  assert.equal(p.status, 'sync');
+});
+
+test('riapertura dopo un salvataggio fallito: la modifica locale ritorna e si fonde con ciò che c\'è sul server', async () => {
+  const db = fakeDb(); const st1 = storage(); const p = await open(db, st1);
+  let st = (await p.load()).state; await p.save(st);
+  db.cfg.failSet = true;
+  st = sess(st, '7-0', 2); await p.save(st);
+  db.external((docs) => docs.set('s-8-0', { date: '2026-10-29', hours: 5, note: '', life: st.equipped.since, ts: '8-0' }));
+  db.cfg.failSet = false;
+  const q = await open(db, st1);
+  const out = await q.load();
+  assert.equal(out.unsynced, true);
+  assert.deepEqual(out.state.sessions.map((x) => x.ts).sort(), ['7-0', '8-0']);
+  await q.save(out.state);
+  assert.ok(db.docs.has('s-7-0') && db.docs.has('s-8-0'), 'nulla perso, nulla cancellato');
+  const r = await open(db, st1);
+  assert.equal((await r.load()).unsynced, false, 'dopo il salvataggio riuscito il segno sparisce');
+});
+
+test('cambio corda: la vita chiusa si scrive prima del documento state', async () => {
+  const db = fakeDb(); const p = await open(db);
+  let st = (await p.load()).state; await p.save(st);
+  db.log.sets.length = 0;
+  st = changeString(st, { id: 'other', kg: [22, 21], date: '2026-10-31T10:00:00.000Z', endReason: 'consumata', endHours: 5, lid: 'LX' });
+  await p.save(st);
+  const li = db.log.sets.indexOf('l-LX'), si = db.log.sets.indexOf('state');
+  assert.ok(li >= 0 && si >= 0 && li < si, `ordine: ${db.log.sets}`);
 });

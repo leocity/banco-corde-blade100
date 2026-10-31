@@ -7,6 +7,7 @@ const diaryOf = async (page) => (await stateOf(page)).equipped.diary;
 const FAKE = `(() => { const P = 'fakedb:'; const subs = [];
   const all = () => Object.keys(localStorage).filter((k) => k.startsWith(P)).sort().map((k) => { const id = k.slice(P.length); const v = JSON.parse(localStorage.getItem(k)); return { id, exists: true, data: () => v }; });
   const notify = () => subs.forEach((cb) => cb({ docs: all() }));
+  window.__ext = (id, d) => { localStorage.setItem(P + id, JSON.stringify(d)); notify(); };
   const col = { get: async () => ({ docs: all() }), onSnapshot: (cb) => { subs.push(cb); return () => {}; }, doc: (id) => ({ set: async (d) => { localStorage.setItem(P + id, JSON.stringify(d)); notify(); }, delete: async () => { localStorage.removeItem(P + id); notify(); } }) };
   window.claude = { use: async (n) => n === 'db' ? { collection: () => col } : n === 'user' ? { id: async () => 'u1' } : null }; })()`;
 
@@ -324,3 +325,71 @@ test('diario: le righe di «Le tue prove» non hanno altezze vuote', async () =>
   assert.ok(hs.every((h) => h < 110), `altezze righe: ${hs}`);
   await ctx.close();
 });
+
+test('diario: dopo aver scritto una nota, il primo tocco su un voto, un tag o il verdetto non va perso', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844, hasTouch: true });
+  await goMontata(page);
+  await page.locator('#diary [data-dnotes]').fill('suona secca');
+  await page.locator('#diary .rate[data-cat="spin"] .rb[data-v="4"]').click();
+  let d = await diaryOf(page);
+  assert.equal(d.notes, 'suona secca');
+  assert.equal(d.ratings.first && d.ratings.first.spin, 4, 'il tocco sul voto è arrivato');
+  await page.locator('#diary [data-dnotes]').fill('suona secca e vibra');
+  await page.locator('#diary [data-tag="vibra"]').click();
+  d = await diaryOf(page);
+  assert.deepEqual([d.notes, d.tags], ['suona secca e vibra', ['vibra']]);
+  await page.locator('#diary [data-dnotes]').fill('ok');
+  await page.locator('#diary [data-verdict="forse"]').click();
+  assert.equal((await diaryOf(page)).verdict, 'forse');
+  await ctx.close();
+});
+
+test('diario: un aggiornamento da un altro dispositivo non cancella il testo che stai scrivendo', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844, claude: FAKE });
+  await goMontata(page);
+  await rate(page, 'spin', 3);                       // un primo salvataggio crea il documento state nel db simulato
+  await page.waitForFunction(() => localStorage.getItem('fakedb:state'));
+  const since = await page.evaluate(() => JSON.parse(localStorage.getItem('fakedb:state')).equipped.since);
+  await page.locator('#diary [data-dnotes]').focus();
+  await page.keyboard.type('testo non ancora salvato');
+  await page.evaluate((life) => window.__ext('s-9-9', { date: '2026-10-29', hours: 2, note: '', life, ts: '9-9' }), since);
+  await page.waitForFunction(() => document.querySelectorAll('#sessions li[data-ts]').length >= 1);
+  assert.equal(await page.locator('#diary [data-dnotes]').inputValue(), 'testo non ancora salvato');
+  assert.equal(await page.evaluate(() => document.activeElement && document.activeElement.hasAttribute('data-dnotes')), true, 'la tastiera resta aperta');
+  await ctx.close();
+});
+
+// ---- mobile first: si parte da 360 px (la larghezza più comune), non da 390 ----
+const LONG = 'https://esempio.example.com/' + 'a'.repeat(140);
+const hostileState = () => stateJson([life('W1', EQ_ID, 22.5, { end: { spin: 4 } }, { notes: LONG, stringer: LONG })], { sessions: [{ ts: 'w-1', date: '2026-10-20', hours: 2, note: LONG, life: '2026-10-01T10:00:00.000Z' }] });
+const noSideScroll = (page) => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+
+for (const w of [320, 360, 375, 390]) {
+  test(`mobile ${w}px: Montata, diario, dialoghi e scheda senza scroll laterale e con tocchi da 44 px`, async () => {
+    const { page, ctx } = await openPage({ width: w, height: 800, hasTouch: true, storage: { 'banco-corde:state': hostileState() } });
+    await goMontata(page);
+    assert.ok(await noSideScroll(page), `Montata più larga di ${w}px (${await page.evaluate(() => document.documentElement.scrollWidth)})`);
+    const small = await page.evaluate(() => [...document.querySelectorAll('#diary .rb, #diary .mom, #diary .chipbtn, #diary .tg')].filter((b) => { const r = b.getBoundingClientRect(); return r.width < 40 || r.height < 36 || r.right > window.innerWidth; }).length);
+    assert.equal(small, 0, 'pulsanti del diario tagliati o troppo piccoli');
+    assert.ok(await page.evaluate(() => { const r = document.querySelector('.rate .rb:last-child').getBoundingClientRect(); return r.right <= window.innerWidth - 4; }), 'il 5° tondo è dentro lo schermo');
+    // header: il pulsante Metodo non è tagliato
+    assert.ok(await page.evaluate(() => { const b = document.querySelector('.guide-btn'); const r = b.getBoundingClientRect(); return r.right <= window.innerWidth && r.left >= 0; }), 'Metodo visibile');
+    // dialogo dei voti di una corda finita
+    await page.locator('#history [data-past-open]').first().click();
+    await page.waitForSelector('#past-dialog[open] .rate');
+    assert.ok(await page.evaluate(() => { const d = document.getElementById('past-dialog'); return d.scrollWidth <= d.clientWidth && [...d.querySelectorAll('.rb')].every((b) => b.getBoundingClientRect().right <= innerWidth); }), 'dialogo dei voti dentro lo schermo');
+    await page.locator('#past-close').click();
+    // dialogo prova passata e cambio corda
+    for (const [open, dlg] of [['#past-add', '#trial-dialog'], ['#equip-btn', '#equip-dialog']]) {
+      await page.locator(open).click();
+      await page.waitForSelector(`${dlg}[open]`);
+      assert.ok(await page.evaluate((s) => { const d = document.querySelector(s); return d.scrollWidth <= d.clientWidth && d.getBoundingClientRect().right <= innerWidth; }, dlg), `${dlg} dentro lo schermo`);
+      await page.keyboard.press('Escape');
+    }
+    // scheda con «Le tue prove» e testo lunghissimo
+    await page.locator('#mine-summary [data-open]').first().click();
+    await page.waitForSelector('#sheet-body .trials-sec li');
+    assert.ok(await page.evaluate(() => { const d = document.getElementById('sheet'); return d.scrollWidth <= d.clientWidth; }), 'scheda senza scroll laterale');
+    await ctx.close();
+  });
+}

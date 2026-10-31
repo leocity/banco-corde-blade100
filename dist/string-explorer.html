@@ -464,10 +464,10 @@ dialog#sheet { overscroll-behavior: contain; }
 .mom[aria-pressed="true"] { background: var(--court); color: var(--accent-ink); border-color: var(--court); }
 .mom[aria-pressed="true"] b { color: var(--accent-ink); }
 .rates { display: grid; gap: 4px; }
-.rate { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 46px; }
+.rate { display: grid; gap: 0; padding-block: 0; }  /* da telefono: etichetta sopra, cinque tondi a tutta larghezza */
 .rl { font-weight: 600; font-size: .95rem; min-width: 0; }
-.rbs { display: inline-flex; gap: 4px; flex: none; }
-.rb { width: 42px; height: 42px; font: 700 1rem var(--font-display); border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 50%; cursor: pointer; padding: 0; }
+.rbs { display: flex; gap: 6px; }
+.rb { flex: 1 1 0; min-width: 0; max-width: 52px; aspect-ratio: 1; min-height: 44px; font: 700 1rem var(--font-display); border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 50%; cursor: pointer; padding: 0; }
 .rb[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .rb:focus-visible, .mom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .tags .tg { min-height: 36px; font-size: .82rem; padding: 2px 10px; }
@@ -491,6 +491,19 @@ table.labcmp thead th { font-size: .75rem; color: var(--fg-2); text-transform: u
 dialog#past-dialog .equip-form { padding: 14px 12px; }
 #past-diary { border: 0; padding: 0; background: transparent; }
 @media (max-width: 430px) { dialog#past-dialog, dialog#trial-dialog, dialog#equip-dialog { width: calc(100vw - 12px); } }
+
+/* mobile first: il testo scritto dall'utente non allarga mai la pagina; sopra i 380 px etichetta e tondi stanno sulla stessa riga */
+body { overflow-wrap: anywhere; }
+.sessions li > span, .trials li > span, .dn, .diary { min-width: 0; }
+@media (min-width: 380px) {
+  .rate { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 46px; padding-block: 0; }
+  .rbs { flex: none; }
+  .rb { flex: none; width: 42px; height: 42px; min-height: 0; max-width: none; }
+}
+.verdict .chipbtn { min-width: 56px; justify-content: center; }
+
+.rl { font-size: .82rem; line-height: 1.15; }
+@media (min-width: 380px) { .rl { font-size: .95rem; } }
 
 </style>
 
@@ -918,7 +931,8 @@ function sanitizeDiary(raw) {
   };
 }
 
-const csvCell = (v) => { const s = v === null || v === undefined ? '' : String(v); return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+// Un testo (non un numero) che inizia con = + - @ o tabulazione sarebbe una formula per Excel: si antepone un apostrofo.
+const csvCell = (v) => { let s = v === null || v === undefined ? '' : String(v); if (typeof v === 'string' && /^[=+\-@\t]/.test(s)) s = `'${s}`; return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
 const CSV_HEAD = ['corda', 'tensione_v_kg', 'tensione_h_kg', 'dal', 'al', 'ore', 'motivo', 'momento', ...CATS.map((c) => c.key), 'tag', 'note', 'verdetto', 'prossima_volta_kg', 'montaggio', 'pre_stretch', 'incordatore', 'superficie'];
 // Una riga per prova e momento con voti (una sola riga, senza momento, se la prova non ha voti).
 function diaryCsv(trials, nameOf) {
@@ -940,6 +954,7 @@ const isStr = (v) => typeof v === 'string';
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const isDate = (v) => isStr(v) && !Number.isNaN(Date.parse(v));
 const uniq = (xs) => [...new Set(xs)];
+const okKg = (kg) => Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35);
 const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d } : {}; };
 
 const STATE_VERSION = 2;
@@ -1029,7 +1044,9 @@ function sanitizeState(raw, defaults, knownIds) {
   let equipped = base.equipped;
   if (e !== undefined) {
     if (e && isStr(e.id) && known.has(e.id) && Array.isArray(e.kg) && e.kg.length === 2 && e.kg.every(isNum) && isDate(e.since)) {
-      equipped = { id: e.id, kg: [...e.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 ? e.hours0 : 0, ...diaryOf(e.diary) };
+      const kgOk = okKg(e.kg);
+      if (!kgOk) warnings.push('La tensione salvata della corda montata non è valida (15–35 kg): ho rimesso quella iniziale.');
+      equipped = { id: e.id, kg: kgOk ? [...e.kg] : [...base.equipped.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 && e.hours0 <= 500 ? e.hours0 : 0, ...diaryOf(e.diary) };
     } else warnings.push('La corda montata salvata non esiste più o non è valida: ho ripristinato quella iniziale.');
   }
   const ids = (v, dflt) => (Array.isArray(v) ? uniq(v.filter((x) => isStr(x) && known.has(x))) : dflt);
@@ -1037,8 +1054,10 @@ function sanitizeState(raw, defaults, knownIds) {
   const disliked = ids(obj.disliked, base.disliked).filter((x) => !liked.includes(x));
   const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
     .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
-  const lives = (Array.isArray(obj.lives) ? obj.lives : []).filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && isStr(l.from) && isStr(l.to) && Array.isArray(l.kg))
-    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
+  const rawLives = Array.isArray(obj.lives) ? obj.lives : [];
+  const lives = rawLives.filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && l.hours <= 500 && isStr(l.from) && isStr(l.to) && okKg(l.kg))
+    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: !isStr(l.reason) ? 'consumata' : PAST_REASONS.includes(l.reason) ? l.reason : 'cambiata per prova', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
+  if (lives.length < rawLives.length) warnings.push(`${rawLives.length - lives.length} corda/e finita/e con dati non validi sono state ignorate.`);
   return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
 }
 
@@ -1182,12 +1201,14 @@ function labComparisonHtml(c) {
 // sovrascrivono. Senza `db` ripiega su un JSON in localStorage.
 
 const KEY = 'banco-corde:state';
+const UNSYNCED_KEY = 'banco-corde:unsynced'; // '1' = l'ultima copia locale non è arrivata sul server
+const RETRY_MAX = 60000;
 const clone = (o) => JSON.parse(JSON.stringify(o));
 const errText = (e) => String((e && e.message) || (e && e.code) || e);
 const stripArrays = (core) => { const { sessions, lives, ...rest } = core; return rest; };
 const isLegacy = (core) => !!core && (Array.isArray(core.sessions) || Array.isArray(core.lives));
 
-async function createPersistence({ claude, storage, defaults, knownIds }) {
+async function createPersistence({ claude, storage, defaults, knownIds, retryMs = 5000 }) {
   let db = null, uid = null, mode = 'local';
   try {
     db = claude ? await claude.use('db') : null;
@@ -1197,6 +1218,8 @@ async function createPersistence({ claude, storage, defaults, knownIds }) {
   } catch { mode = 'local'; }
   const col = () => db.collection(`data/users/${uid}`);
   const readLocal = () => { try { return storage ? storage.getItem(KEY) : null; } catch { return null; } };
+  const flagUnsynced = (on) => { try { if (storage) storage.setItem(UNSYNCED_KEY, on ? '1' : '0'); } catch { /* archivio non disponibile */ } };
+  const wasUnsynced = () => { try { return !!storage && storage.getItem(UNSYNCED_KEY) === '1'; } catch { return false; } };
   const writeLocal = (state) => { try { if (storage) storage.setItem(KEY, JSON.stringify(state)); } catch { /* archivio non disponibile */ } };
 
   // `mirror`: ultimo contenuto del server che conosciamo. `known`: gli elementi che lo stato locale ha già visto: solo quelli
@@ -1223,9 +1246,12 @@ async function createPersistence({ claude, storage, defaults, knownIds }) {
 
   async function syncTo(state) {
     const want = splitState(state), ops = [];
-    if (!mirror.core || stableJson(stripArrays(mirror.core)) !== stableJson(want.core) || isLegacy(mirror.core)) ops.push(['state', want.core, 'core']);
+    // prima gli elementi (sessioni, vite), poi `state`, per ultime le cancellazioni: se la rete cade a metà non si perde nulla
     for (const kind of ['sessions', 'lives']) {
       for (const [id, v] of Object.entries(want[kind])) if (!mirror[kind][id] || stableJson(mirror[kind][id]) !== stableJson(v)) ops.push([id, v, kind]);
+    }
+    if (!mirror.core || stableJson(stripArrays(mirror.core)) !== stableJson(want.core) || isLegacy(mirror.core)) ops.push(['state', want.core, 'core']);
+    for (const kind of ['sessions', 'lives']) {
       for (const id of Object.keys(mirror[kind])) if (!(id in want[kind]) && known.has(id)) ops.push([id, null, kind]);
     }
     for (const [id, v, kind] of ops) {
@@ -1237,15 +1263,23 @@ async function createPersistence({ claude, storage, defaults, knownIds }) {
 
   async function write(state) {
     if (mode === 'db') {
-      try { await syncTo(state); api.lastError = null; status = 'sync'; return; } catch (e) { api.lastError = errText(e); status = 'error'; }
+      try { await syncTo(state); api.lastError = null; status = 'sync'; unsynced = false; retryDelay = retryMs; flagUnsynced(false); return; } catch (e) { api.lastError = errText(e); status = 'error'; unsynced = true; flagUnsynced(true); }
     }
     writeLocal(state);
+  }
+  // Se il server non ha ricevuto l'ultimo stato lo si riprova da soli, con attesa crescente: nel frattempo lo stato del server non sostituisce quello locale.
+  let unsynced = false, retryTimer = null, retryDelay = retryMs;
+  function scheduleRetry() {
+    if (!unsynced || mode !== 'db' || retryTimer) return;
+    retryTimer = setTimeout(() => { retryTimer = null; if (unsynced && !latest && !running && lastWritten) api.save(lastWritten); }, retryDelay);
+    if (retryTimer && retryTimer.unref) retryTimer.unref(); // in Node (test) non tiene vivo il processo
+    retryDelay = Math.min(retryDelay * 2, RETRY_MAX);
   }
   // `writing` si alza prima della prima scrittura: un db che notifica lo snapshot dentro set() non deve far passare per «altrui» l'eco parziale delle nostre scritture.
   let running = null, latest = null, writing = false;
   async function flush() {
     writing = true;
-    try { while (latest) { const s = latest; latest = null; lastWritten = s; await write(s); } } finally { writing = false; running = null; setTimeout(settle, 300); }
+    try { while (latest) { const s = latest; latest = null; lastWritten = s; await write(s); } } finally { writing = false; running = null; setTimeout(settle, 300); scheduleRetry(); }
   }
   const view = () => sanitizeState(assemble(), defaults, knownIds).state;
   function emit() {
@@ -1255,7 +1289,7 @@ async function createPersistence({ claude, storage, defaults, knownIds }) {
   }
   // A coda svuotata, se il server ha qualcosa che lo stato locale non ha, lo consegna (uno snapshot arrivato durante le scritture non si applica a metà).
   function settle() {
-    if (writing || latest || !onRemote || !hasData()) return;
+    if (writing || latest || unsynced || !onRemote || !hasData()) return;
     if (!lastWritten || !sameState(view(), lastWritten)) emit();
   }
 
@@ -1270,11 +1304,19 @@ async function createPersistence({ claude, storage, defaults, knownIds }) {
           if (isLegacy(mirror.core)) { try { await migrate(); } catch (e) { api.lastError = errText(e); status = 'error'; } }
           known = idsOf(mirror);
           const out = sanitizeState(assemble(), defaults, knownIds);
+          // l'ultima volta il salvataggio online è fallito: la copia locale ritorna e si fonde con il server (nulla perso, nulla cancellato)
+          if (wasUnsynced() && readLocal()) {
+            const loc = sanitizeState(readLocal(), defaults, knownIds).state, srv = out.state;
+            const union = (a, b, key) => Object.values({ ...Object.fromEntries(a.map((x) => [x[key], x])), ...Object.fromEntries(b.map((x) => [x[key], x])) });
+            const merged = { ...loc, sessions: union(srv.sessions, loc.sessions, 'ts'), lives: union(srv.lives, loc.lives, 'lid') };
+            unsynced = true; lastWritten = merged;
+            return { state: merged, warnings: out.warnings, unsynced: true };
+          }
           lastWritten = out.state;
-          return out;
+          return { ...out, unsynced: false };
         } catch (e) { api.lastError = errText(e); mode = 'local'; status = 'local'; }
       }
-      return sanitizeState(readLocal(), defaults, knownIds);
+      return { ...sanitizeState(readLocal(), defaults, knownIds), unsynced: false };
     },
     // Una scrittura alla volta (il contratto di db lo chiede) e vince l'ultimo stato: i salvataggi ravvicinati si fondono.
     save(state) {
@@ -1286,7 +1328,7 @@ async function createPersistence({ claude, storage, defaults, knownIds }) {
       if (mode !== 'db') return;
       onRemote = cb;
       try {
-        col().onSnapshot((snap) => { mirror = fromDocs(snap.docs); if (writing || latest) return; emit(); }, (e) => { api.lastError = errText(e); status = 'error'; });
+        col().onSnapshot((snap) => { mirror = fromDocs(snap.docs); if (writing || latest || unsynced) return; emit(); }, (e) => { api.lastError = errText(e); status = 'error'; });
       } catch (e) { api.lastError = errText(e); status = 'error'; }
     },
     exportJson(state) { return JSON.stringify({ exportedAt: new Date().toISOString(), ...clone(state) }, null, 2); },
@@ -1651,8 +1693,8 @@ function aiTrialBlock(title, given) {
   const lines = list.map((t) => {
     const d = t.diary || {}, r = d.ratings || {};
     const moms = MOMENTS.filter((m) => r[m.key]).map((m) => `${m.label.toLowerCase()}: ${CATS.filter((c) => r[m.key][c.key]).map((c) => `${c.label.toLowerCase()} ${r[m.key][c.key]}`).join(', ')}`);
-    const free = [(d.tags || []).length ? `tag: ${d.tags.join(', ')}` : '', d.notes ? `note: ${aiCut(d.notes, 400).replace(/DATI_UTENTE/g, 'DATI-UTENTE')}` : ''].filter(Boolean).join(' · ');
-    return `- ${fmtN(t.kg[0], 2)}/${fmtN(t.kg[1], 2)} kg, ${fmtN(t.hours)} h${t.reason ? ` (${t.reason})` : ''}${moms.length ? `; voti 1–5 → ${moms.join(' | ')}` : ''}${d.verdict ? `; ricomprerei: ${AI_VERDICT[d.verdict]}` : ''}${free ? `\n  ${free}` : ''}`;
+    const free = [(d.tags || []).length ? `tag: ${d.tags.join(', ')}` : '', d.notes ? `note: ${aiCut(d.notes, 400).replace(/DATI_UTENTE/gi, 'DATI-UTENTE')}` : ''].filter(Boolean).join(' · ');
+    return `- ${fmtN(t.kg[0], 2)}/${fmtN(t.kg[1], 2)} kg, ${fmtN(t.hours)} h${t.reason ? ` (${aiCut(t.reason, 30).replace(/DATI_UTENTE/gi, 'DATI-UTENTE')})` : ''}${moms.length ? `; voti 1–5 → ${moms.join(' | ')}` : ''}${d.verdict ? `; ricomprerei: ${AI_VERDICT[d.verdict]}` : ''}${free ? `\n  ${free}` : ''}`;
   }).slice(0, 8);
   return `${title} (le tue sensazioni: opinioni, non misure)\n<<<DATI_UTENTE\n${lines.join('\n')}\nDATI_UTENTE>>>`;
 }
@@ -1671,7 +1713,7 @@ function buildOpinionPrompt({ kind, equipped, refs, candidate, pasted, wear, tri
       const own = aiTrialBlock('LE TUE SENSAZIONI SU QUESTA CORDA', trials.candidate);
       if (own) head.push(own);
     } else if (pasted) {
-      const text = String(pasted.text || '').slice(0, AI_PASTE_MAX).replace(/DATI_UTENTE/g, 'DATI-UTENTE');
+      const text = String(pasted.text || '').slice(0, AI_PASTE_MAX).replace(/DATI_UTENTE/gi, 'DATI-UTENTE');
       head.push(`CORDA DA VALUTARE (non è nel banco: nessun dato di laboratorio verificato)\nNome: ${aiCut(pasted.name, 120)}\nCalibro: ${aiCut(pasted.gauge, 40) || 'non indicato'}\n<<<DATI_UTENTE\n${text}\nDATI_UTENTE>>>`);
     }
     return head.join('\n\n');
@@ -2028,7 +2070,7 @@ function initBank(ctx) {
 
 
 
-const diaryView = { moment: {}, open: { setup: false, meter: false } };
+const diaryView = { moment: {}, open: { setup: false, meter: false }, quiet: false };
 const DIARY_NEXT = ['-2', '-1.5', '-1', '-0.5', '0.5', '1', '1.5', '2'];
 const diaryTrial = (ctx, target) => trialsOf(ctx.state()).find((t) => t.lid === target);
 const dkNum = (v) => { const s = String(v ?? '').trim().replace(',', '.'); return s === '' ? NaN : Number(s); };
@@ -2086,16 +2128,23 @@ function renderPast(ctx) {
   host.dataset.dtarget = pastTarget || '';
   host.innerHTML = pastTarget ? diaryHtml(ctx, pastTarget) : '';
 }
+// Non si ridisegna ciò che l'utente sta toccando: un campo di testo con il cursore dentro (una modifica arrivata da un altro dispositivo
+// cancellerebbe ciò che scrive e chiuderebbe la tastiera) e le modifiche uscite da un campo che ha appena perso il fuoco (il ridisegno
+// sostituirebbe il pulsante toccato un attimo dopo e il tocco andrebbe perso).
+const typing = (host) => { const a = document.activeElement; return !!a && host.contains(a) && /^(TEXTAREA|INPUT|SELECT)$/.test(a.tagName); };
 function renderDiary(ctx) {
   const host = $('#diary');
-  if (host) host.innerHTML = diaryHtml(ctx, 'current');
-  if (pastTarget && $('#past-dialog') && $('#past-dialog').open) renderPast(ctx);
+  if (host && !diaryView.quiet && !typing(host)) host.innerHTML = diaryHtml(ctx, 'current');
+  const past = $('#past-diary');
+  if (pastTarget && $('#past-dialog') && $('#past-dialog').open && !diaryView.quiet && !(past && typing(past))) renderPast(ctx);
 }
+const quietly = (fn) => { diaryView.quiet = true; try { fn(); } finally { diaryView.quiet = false; } };
 
 const diaryError = (host, msg) => { const e = host.querySelector('.d-error'); if (e) { e.textContent = msg || ''; e.hidden = !msg; } };
 
 function initDiary(ctx) {
   const act = (target, fn) => ctx.update((s) => updateDiary(s, target, fn));
+  const actQuiet = (target, fn) => quietly(() => act(target, fn));
   document.addEventListener('click', (e) => {
     const host = e.target.closest('[data-dtarget]'); if (!host) return;
     const target = host.dataset.dtarget;
@@ -2126,14 +2175,14 @@ function initDiary(ctx) {
   document.addEventListener('change', (e) => {
     const host = e.target.closest('[data-dtarget]'); if (!host) return;
     const target = host.dataset.dtarget, el = e.target;
-    if (el.matches('[data-dnotes]')) { act(target, (d) => setNotes(d, el.value)); return; }
-    if (el.matches('[data-dsetup]')) { const k = el.dataset.dsetup; act(target, (d) => setSetup(d, { [k]: el.value === '' ? null : el.value })); return; }
-    if (el.matches('[data-dnext]')) { act(target, (d) => setNextKgDelta(d, el.value === '' ? null : Number(el.value))); return; }
+    if (el.matches('[data-dnotes]')) { actQuiet(target, (d) => setNotes(d, el.value)); return; }
+    if (el.matches('[data-dsetup]')) { const k = el.dataset.dsetup; actQuiet(target, (d) => setSetup(d, { [k]: el.value === '' ? null : el.value })); return; }
+    if (el.matches('[data-dnext]')) { actQuiet(target, (d) => setNextKgDelta(d, el.value === '' ? null : Number(el.value))); return; }
     if (el.matches('[data-dkg]') && target === 'current') {
       const v = dkNum(host.querySelector('[data-dkg="v"]').value), h = dkNum(host.querySelector('[data-dkg="h"]').value);
       const ok = setEquippedKg(ctx.state(), [v, h]);
       if (ok === ctx.state()) { diaryError(host, 'Tensione non valida: scrivi due numeri in kg tra 15 e 35.'); return; }
-      diaryError(host, ''); ctx.update((s) => setEquippedKg(s, [v, h]));
+      diaryError(host, ''); quietly(() => ctx.update((s) => setEquippedKg(s, [v, h])));
     }
   });
   $('#past-close').addEventListener('click', () => { $('#past-dialog').close(); });
@@ -2690,11 +2739,12 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
     for (const fn of pendingFns) state = fn(state);
     const replayed = pendingFns.length > 0;
     pendingFns = []; loaded = true; cache.clear();
-    if (replayed) persist.save(state);
+    if (replayed || got.unsynced) persist.save(state);
     renderAll(); renderSyncBadge();
     // un altro dispositivo ha cambiato qualcosa: si aggiorna da solo, senza ricaricare (l'eco delle proprie scritture è uguale e si ignora)
     persist.subscribe((remote) => {
       if (!loaded || sameState(remote, state)) { renderSyncBadge(); return; }
+      $('#toast').hidden = true; // un annulla con una foto vecchia cancellerebbe ciò che l'altro dispositivo ha appena aggiunto
       state = remote; cache.clear(); renderAll(); renderSyncBadge();
       if (dlg.open && sheetId) openSheet(sheetId);
     });

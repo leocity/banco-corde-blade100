@@ -131,3 +131,12 @@ test('diaryCsv: una riga per prova e momento, virgolette e a capo correttamente 
   assert.match(csv, /Marca B,23,22,/);
   assert.doesNotMatch(csv, /\b(undefined|null|NaN)\b/);
 });
+
+test('diaryCsv: un testo che inizia con = + - @ non diventa una formula in Excel; i numeri negativi restano numeri', () => {
+  const d = { ...emptyDiary(), notes: '=HYPERLINK("http://x")', setup: { ...emptyDiary().setup, stringer: '+cmd', surface: null }, nextKgDelta: -1, ratings: { end: { spin: 4 } } };
+  const csv = diaryCsv([{ lid: 'x', id: 'a', kg: [22, 21], from: '2026-09-01', to: '2026-09-20', hours: 3, reason: 'consumata', diary: d }], () => '@nome');
+  assert.match(csv, /"'=HYPERLINK\(""http:\/\/x""\)"/);
+  assert.match(csv, /'\+cmd/);
+  assert.match(csv, /'@nome/);
+  assert.match(csv, /,-1,/, 'il -1 numerico non riceve l\'apostrofo');
+});

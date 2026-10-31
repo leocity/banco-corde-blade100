@@ -5,6 +5,7 @@ const isStr = (v) => typeof v === 'string';
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
 const isDate = (v) => isStr(v) && !Number.isNaN(Date.parse(v));
 const uniq = (xs) => [...new Set(xs)];
+const okKg = (kg) => Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35);
 const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d } : {}; };
 
 export const STATE_VERSION = 2;
@@ -94,7 +95,9 @@ export function sanitizeState(raw, defaults, knownIds) {
   let equipped = base.equipped;
   if (e !== undefined) {
     if (e && isStr(e.id) && known.has(e.id) && Array.isArray(e.kg) && e.kg.length === 2 && e.kg.every(isNum) && isDate(e.since)) {
-      equipped = { id: e.id, kg: [...e.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 ? e.hours0 : 0, ...diaryOf(e.diary) };
+      const kgOk = okKg(e.kg);
+      if (!kgOk) warnings.push('La tensione salvata della corda montata non è valida (15–35 kg): ho rimesso quella iniziale.');
+      equipped = { id: e.id, kg: kgOk ? [...e.kg] : [...base.equipped.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 && e.hours0 <= 500 ? e.hours0 : 0, ...diaryOf(e.diary) };
     } else warnings.push('La corda montata salvata non esiste più o non è valida: ho ripristinato quella iniziale.');
   }
   const ids = (v, dflt) => (Array.isArray(v) ? uniq(v.filter((x) => isStr(x) && known.has(x))) : dflt);
@@ -102,8 +105,10 @@ export function sanitizeState(raw, defaults, knownIds) {
   const disliked = ids(obj.disliked, base.disliked).filter((x) => !liked.includes(x));
   const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
     .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
-  const lives = (Array.isArray(obj.lives) ? obj.lives : []).filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && isStr(l.from) && isStr(l.to) && Array.isArray(l.kg))
-    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: isStr(l.reason) ? l.reason : 'consumata', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
+  const rawLives = Array.isArray(obj.lives) ? obj.lives : [];
+  const lives = rawLives.filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && l.hours <= 500 && isStr(l.from) && isStr(l.to) && okKg(l.kg))
+    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: !isStr(l.reason) ? 'consumata' : PAST_REASONS.includes(l.reason) ? l.reason : 'cambiata per prova', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
+  if (lives.length < rawLives.length) warnings.push(`${rawLives.length - lives.length} corda/e finita/e con dati non validi sono state ignorate.`);
   return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
 }
 

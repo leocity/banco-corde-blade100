@@ -61,8 +61,8 @@ function aiTrialBlock(title, given) {
   const lines = list.map((t) => {
     const d = t.diary || {}, r = d.ratings || {};
     const moms = MOMENTS.filter((m) => r[m.key]).map((m) => `${m.label.toLowerCase()}: ${CATS.filter((c) => r[m.key][c.key]).map((c) => `${c.label.toLowerCase()} ${r[m.key][c.key]}`).join(', ')}`);
-    const free = [(d.tags || []).length ? `tag: ${d.tags.join(', ')}` : '', d.notes ? `note: ${aiCut(d.notes, 400).replace(/DATI_UTENTE/g, 'DATI-UTENTE')}` : ''].filter(Boolean).join(' · ');
-    return `- ${fmtN(t.kg[0], 2)}/${fmtN(t.kg[1], 2)} kg, ${fmtN(t.hours)} h${t.reason ? ` (${t.reason})` : ''}${moms.length ? `; voti 1–5 → ${moms.join(' | ')}` : ''}${d.verdict ? `; ricomprerei: ${AI_VERDICT[d.verdict]}` : ''}${free ? `\n  ${free}` : ''}`;
+    const free = [(d.tags || []).length ? `tag: ${d.tags.join(', ')}` : '', d.notes ? `note: ${aiCut(d.notes, 400).replace(/DATI_UTENTE/gi, 'DATI-UTENTE')}` : ''].filter(Boolean).join(' · ');
+    return `- ${fmtN(t.kg[0], 2)}/${fmtN(t.kg[1], 2)} kg, ${fmtN(t.hours)} h${t.reason ? ` (${aiCut(t.reason, 30).replace(/DATI_UTENTE/gi, 'DATI-UTENTE')})` : ''}${moms.length ? `; voti 1–5 → ${moms.join(' | ')}` : ''}${d.verdict ? `; ricomprerei: ${AI_VERDICT[d.verdict]}` : ''}${free ? `\n  ${free}` : ''}`;
   }).slice(0, 8);
   return `${title} (le tue sensazioni: opinioni, non misure)\n<<<DATI_UTENTE\n${lines.join('\n')}\nDATI_UTENTE>>>`;
 }
@@ -81,7 +81,7 @@ export function buildOpinionPrompt({ kind, equipped, refs, candidate, pasted, we
       const own = aiTrialBlock('LE TUE SENSAZIONI SU QUESTA CORDA', trials.candidate);
       if (own) head.push(own);
     } else if (pasted) {
-      const text = String(pasted.text || '').slice(0, AI_PASTE_MAX).replace(/DATI_UTENTE/g, 'DATI-UTENTE');
+      const text = String(pasted.text || '').slice(0, AI_PASTE_MAX).replace(/DATI_UTENTE/gi, 'DATI-UTENTE');
       head.push(`CORDA DA VALUTARE (non è nel banco: nessun dato di laboratorio verificato)\nNome: ${aiCut(pasted.name, 120)}\nCalibro: ${aiCut(pasted.gauge, 40) || 'non indicato'}\n<<<DATI_UTENTE\n${text}\nDATI_UTENTE>>>`);
     }
     return head.join('\n\n');

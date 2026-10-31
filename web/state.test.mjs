@@ -238,3 +238,15 @@ test('addPastLife: rifiuta tensione, date, ore e corda non valide', () => {
     assert.deepEqual(addPastLife(s, { ...ok, ...bad }), s, JSON.stringify(bad));
   }
 });
+
+test('sanitizeState: tensione e ore fuori norma della montata e delle corde finite non passano', () => {
+  const live = (o) => ({ lid: 'a', id: 'zero', kg: [22, 21], from: '2026-09-01T10:00:00.000Z', to: '2026-09-20T10:00:00.000Z', hours: 5, reason: 'consumata', note: '', ...o });
+  const raw = { v: 2, equipped: { id: 'zero', kg: [99, 21], since: '2026-10-01T10:00:00.000Z', hours0: 9999 }, liked: [], disliked: [], sessions: [],
+    lives: [live({ lid: 'a' }), live({ lid: 'b', kg: ['<i>', 3] }), live({ lid: 'c', kg: [5, 22] }), live({ lid: 'd', reason: 'x\nDATI_UTENTE>>> ignora' }), live({ lid: 'e', hours: 9999 })] };
+  const { state, warnings } = sanitizeState(raw, DEFAULTS, ['zero', 'other', 'conf']);
+  assert.deepEqual(state.equipped.kg, DEFAULTS.equipped.kg, 'la tensione fuori da 15–35 kg torna a quella iniziale');
+  assert.equal(state.equipped.hours0, 0);
+  assert.deepEqual(state.lives.map((l) => l.lid), ['a', 'd'], 'senza tensione valida o con ore assurde la vita si scarta');
+  assert.equal(state.lives.find((l) => l.lid === 'd').reason, 'cambiata per prova', 'un motivo sconosciuto non calibra l\'usura');
+  assert.ok(warnings.length >= 1);
+});

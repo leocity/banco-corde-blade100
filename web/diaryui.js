@@ -5,7 +5,7 @@ import { CATS, MOMENTS, TAGS, SURFACES, PRESTRETCH, emptyDiary, toggleRating, se
 import { updateDiary, applyVerdict, setEquippedKg, trialsOf } from './state.js';
 import { mineToast } from './mine.js';
 
-const diaryView = { moment: {}, open: { setup: false, meter: false } };
+const diaryView = { moment: {}, open: { setup: false, meter: false }, quiet: false };
 const DIARY_NEXT = ['-2', '-1.5', '-1', '-0.5', '0.5', '1', '1.5', '2'];
 const diaryTrial = (ctx, target) => trialsOf(ctx.state()).find((t) => t.lid === target);
 const dkNum = (v) => { const s = String(v ?? '').trim().replace(',', '.'); return s === '' ? NaN : Number(s); };
@@ -63,16 +63,23 @@ function renderPast(ctx) {
   host.dataset.dtarget = pastTarget || '';
   host.innerHTML = pastTarget ? diaryHtml(ctx, pastTarget) : '';
 }
+// Non si ridisegna ciò che l'utente sta toccando: un campo di testo con il cursore dentro (una modifica arrivata da un altro dispositivo
+// cancellerebbe ciò che scrive e chiuderebbe la tastiera) e le modifiche uscite da un campo che ha appena perso il fuoco (il ridisegno
+// sostituirebbe il pulsante toccato un attimo dopo e il tocco andrebbe perso).
+const typing = (host) => { const a = document.activeElement; return !!a && host.contains(a) && /^(TEXTAREA|INPUT|SELECT)$/.test(a.tagName); };
 export function renderDiary(ctx) {
   const host = $('#diary');
-  if (host) host.innerHTML = diaryHtml(ctx, 'current');
-  if (pastTarget && $('#past-dialog') && $('#past-dialog').open) renderPast(ctx);
+  if (host && !diaryView.quiet && !typing(host)) host.innerHTML = diaryHtml(ctx, 'current');
+  const past = $('#past-diary');
+  if (pastTarget && $('#past-dialog') && $('#past-dialog').open && !diaryView.quiet && !(past && typing(past))) renderPast(ctx);
 }
+const quietly = (fn) => { diaryView.quiet = true; try { fn(); } finally { diaryView.quiet = false; } };
 
 const diaryError = (host, msg) => { const e = host.querySelector('.d-error'); if (e) { e.textContent = msg || ''; e.hidden = !msg; } };
 
 export function initDiary(ctx) {
   const act = (target, fn) => ctx.update((s) => updateDiary(s, target, fn));
+  const actQuiet = (target, fn) => quietly(() => act(target, fn));
   document.addEventListener('click', (e) => {
     const host = e.target.closest('[data-dtarget]'); if (!host) return;
     const target = host.dataset.dtarget;
@@ -103,14 +110,14 @@ export function initDiary(ctx) {
   document.addEventListener('change', (e) => {
     const host = e.target.closest('[data-dtarget]'); if (!host) return;
     const target = host.dataset.dtarget, el = e.target;
-    if (el.matches('[data-dnotes]')) { act(target, (d) => setNotes(d, el.value)); return; }
-    if (el.matches('[data-dsetup]')) { const k = el.dataset.dsetup; act(target, (d) => setSetup(d, { [k]: el.value === '' ? null : el.value })); return; }
-    if (el.matches('[data-dnext]')) { act(target, (d) => setNextKgDelta(d, el.value === '' ? null : Number(el.value))); return; }
+    if (el.matches('[data-dnotes]')) { actQuiet(target, (d) => setNotes(d, el.value)); return; }
+    if (el.matches('[data-dsetup]')) { const k = el.dataset.dsetup; actQuiet(target, (d) => setSetup(d, { [k]: el.value === '' ? null : el.value })); return; }
+    if (el.matches('[data-dnext]')) { actQuiet(target, (d) => setNextKgDelta(d, el.value === '' ? null : Number(el.value))); return; }
     if (el.matches('[data-dkg]') && target === 'current') {
       const v = dkNum(host.querySelector('[data-dkg="v"]').value), h = dkNum(host.querySelector('[data-dkg="h"]').value);
       const ok = setEquippedKg(ctx.state(), [v, h]);
       if (ok === ctx.state()) { diaryError(host, 'Tensione non valida: scrivi due numeri in kg tra 15 e 35.'); return; }
-      diaryError(host, ''); ctx.update((s) => setEquippedKg(s, [v, h]));
+      diaryError(host, ''); quietly(() => ctx.update((s) => setEquippedKg(s, [v, h])));
     }
   });
   $('#past-close').addEventListener('click', () => { $('#past-dialog').close(); });

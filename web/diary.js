@@ -118,7 +118,8 @@ export function sanitizeDiary(raw) {
   };
 }
 
-const csvCell = (v) => { const s = v === null || v === undefined ? '' : String(v); return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+// Un testo (non un numero) che inizia con = + - @ o tabulazione sarebbe una formula per Excel: si antepone un apostrofo.
+const csvCell = (v) => { let s = v === null || v === undefined ? '' : String(v); if (typeof v === 'string' && /^[=+\-@\t]/.test(s)) s = `'${s}`; return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
 const CSV_HEAD = ['corda', 'tensione_v_kg', 'tensione_h_kg', 'dal', 'al', 'ore', 'motivo', 'momento', ...CATS.map((c) => c.key), 'tag', 'note', 'verdetto', 'prossima_volta_kg', 'montaggio', 'pre_stretch', 'incordatore', 'superficie'];
 // Una riga per prova e momento con voti (una sola riga, senza momento, se la prova non ha voti).
 export function diaryCsv(trials, nameOf) {

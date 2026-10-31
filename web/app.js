@@ -113,11 +113,12 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
     for (const fn of pendingFns) state = fn(state);
     const replayed = pendingFns.length > 0;
     pendingFns = []; loaded = true; cache.clear();
-    if (replayed) persist.save(state);
+    if (replayed || got.unsynced) persist.save(state);
     renderAll(); renderSyncBadge();
     // un altro dispositivo ha cambiato qualcosa: si aggiorna da solo, senza ricaricare (l'eco delle proprie scritture è uguale e si ignora)
     persist.subscribe((remote) => {
       if (!loaded || sameState(remote, state)) { renderSyncBadge(); return; }
+      $('#toast').hidden = true; // un annulla con una foto vecchia cancellerebbe ciò che l'altro dispositivo ha appena aggiunto
       state = remote; cache.clear(); renderAll(); renderSyncBadge();
       if (dlg.open && sheetId) openSheet(sheetId);
     });

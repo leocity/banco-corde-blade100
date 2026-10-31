@@ -204,7 +204,7 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 
 ## Stato v4 (2026-10-31): sincronizzazione, schede compatte, diario
 
-Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 189 test Python, 171 test JS, 92 test Playwright, tutti verdi.
+Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 189 test Python, 177 test JS, 100 test Playwright, tutti verdi.
 
 ### Le segnalazioni dell'utente del 2026-10-31
 
@@ -224,6 +224,20 @@ Altro corretto durante il lavoro: la tenuta di laboratorio era calcolata in due 
 - Il controllo e la potenza confrontati con i voti restano indici costruiti, non misure.
 - La tensione di una corda già finita si vede ma non si modifica dal diario.
 - Il `db` reale non è stato letto da qui: la sincronizzazione tra dispositivi va controllata a mano.
+
+### Revisione finale (2026-10-31): trovati e corretti
+
+| # | Gravità | Problema | Correzione |
+|---|---|---|---|
+| 1 | Critica | Dopo un salvataggio online fallito (telefono offline) lo stato vecchio del server sostituiva la modifica non salvata e nulla riprovava | `unsynced`: finché il server non ha l'ultimo stato non lo si sostituisce; riprova da sola con attesa crescente (5 s fino a 60 s); alla riapertura la copia locale si fonde con il server (nulla perso, nulla cancellato; una cancellazione fatta offline può ricomparire). Test node e Playwright. |
+| 2 | Importante | «Annulla» con una foto vecchia cancellava ciò che un altro dispositivo aveva aggiunto nel frattempo | Il toast sparisce quando arriva una modifica remota. |
+| 3 | Importante | Montata larga 384 px: sotto i 380 px i voti uscivano dallo schermo | Da telefono prima: sotto 380 px etichetta sopra e cinque tondi a tutta larghezza (≥ 44 px); test a 320, 360, 375 e 390 px su Montata, dialoghi e scheda, con testi lunghissimi. |
+| 4 | Importante | Dopo aver scritto una nota il primo tocco su un voto andava perso, e un aggiornamento remoto cancellava il testo in scrittura | Non si ridisegna il diario mentre il cursore è in un campo né subito dopo l'uscita da un campo. |
+| 5 | Minore | `state` si scriveva prima della vita chiusa | Ordine: elementi, poi `state`, poi cancellazioni. |
+| 6 | Minore | Testi lunghi senza spazi allargavano la pagina | `overflow-wrap: anywhere`. |
+| 7 | Minore | Tensione 99 kg, motivi e ore assurdi sopravvivevano; formule CSV; `DATI_UTENTE` in maiuscole/minuscole | Intervalli validati in `sanitizeState` (con avviso), motivo ristretto, apostrofo davanti a `= + - @`, sostituzione senza distinzione di maiuscole. |
+
+**Rimandati (dichiarati):** (8) una pagina vecchia (v3) che salva riscrive il documento `state` senza il diario della montata, e riportando gli array vecchi può far riapparire corde cancellate altrove: serve aggiornare tutte le schede aperte; un documento separato per il diario della montata lo eviterebbe. (9) Con un `db` reale che consegna snapshot in ritardo la schermata può mostrare per un attimo uno stato intermedio fino al snapshot successivo: non osservato con il `db` simulato.
 
 ## C. Priorità consigliate
 
