@@ -28,8 +28,8 @@ const text = (html) => html.replace(/<[^>]*>/g, ' ');
 const withoutReviewNotes = (html) => html.replace(/<div class="rev">[\s\S]*?<\/div>/g, '');
 const BAD = /\b(NaN|undefined|null)\b/;
 
-test('rowValues: quattro valori nell\'ordine spin, rigidità, tenuta, controllo', () => {
-  assert.deepEqual(rowValues(EQ).map((v) => v.key), ['spin', 'stiffness', 'durability', 'control']);
+test('rowValues: tre valori nell\'ordine spin, rigidità, tenuta', () => {
+  assert.deepEqual(rowValues(EQ).map((v) => v.key), ['spin', 'stiffness', 'durability']);
 });
 
 test('rowValues: stima da modello dello spin è ◐ con la dicitura', () => {
@@ -53,16 +53,6 @@ test('rowValues: tenuta assente è ○ con il motivo', () => {
   assert.match(d.why, /manca/);
 });
 
-test('rowValues: il controllo è un indice a sé, senza potenza', () => {
-  const r = BY['toroline-o-toro-17'];
-  const c = rowValues(r).find((v) => v.key === 'control');
-  assert.equal(c.mark, 'estimated');
-  assert.match(c.text, /controllo \d+/);
-  assert.doesNotMatch(c.text, /potenza/);
-  assert.equal(c.label, 'Controllo');
-  assert.match(c.note, /di 3 misure/);
-});
-
 test('deltaVsEquipped: formato e soglie', () => {
   const a = { id: 'a', derived: { dims: { spin: 60, durability: 40, control: 50 } }, stiffness: { value_lbin: 200, kind: 'misurata' } };
   const b = { id: 'b', derived: { dims: { spin: 48, durability: 48, control: 52 } }, stiffness: { value_lbin: 215, kind: 'misurata' } };
@@ -72,11 +62,11 @@ test('deltaVsEquipped: formato e soglie', () => {
   assert.equal(deltaVsEquipped(c, b).text, '−8 tenuta');
 });
 
-test('rowHtml della montata: "montata", quattro valori, niente delta né Monta', () => {
+test('rowHtml della montata: "montata", tre valori, niente delta né Monta', () => {
   const html = rowHtml(EQ, ctxFor(EQ));
   assert.match(html, /data-id="re-string-zero-17"/);
   assert.match(html, /montata/);
-  assert.equal((html.match(/data-k="/g) || []).length, 4);
+  assert.equal((html.match(/data-k="/g) || []).length, 3);
   assert.doesNotMatch(html, /class="delta"/);
   assert.doesNotMatch(html, /data-equip/);
   assert.match(html, /data-open/);
@@ -146,29 +136,28 @@ test('l\'HTML nei dati viene escapato', () => {
 test('shortCardHtml: valori, pairing e apri scheda', () => {
   const r = BY['toroline-o-toro-17'];
   const html = shortCardHtml(r, ctxFor(r));
-  assert.equal((html.match(/data-k="/g) || []).length, 4);
+  assert.equal((html.match(/data-k="/g) || []).length, 3);
   assert.match(html, /data-open="toroline-o-toro-17"/);
 });
 
-test('miniValues: quattro valori brevi con marcatore e unità', () => {
+test('miniValues: tre valori brevi con marcatore e unità', () => {
   const m = miniValues(EQ);
-  assert.deepEqual(m.map((x) => x.key), ['spin', 'stiffness', 'durability', 'control']);
-  assert.deepEqual(m.map((x) => x.em), ['spin', 'lb/in', 'tenuta', 'ctrl']);
+  assert.deepEqual(m.map((x) => x.key), ['spin', 'stiffness', 'durability']);
+  assert.deepEqual(m.map((x) => x.em), ['spin', 'lb/in', 'tenuta']);
   assert.equal(m[0].val, '≈ 7,4');
   assert.equal(m[1].val, '≈ 214');
   assert.equal(m[2].val, 'media');
-  assert.equal(m[3].val, '53');
   const miss = miniValues(ALL.find((x) => x.derived.dims.durability === null)).find((x) => x.key === 'durability');
   assert.deepEqual([miss.val, miss.mark], ['—', 'missing']);
   assert.match(miss.title, /manca/);
 });
 
-test('compactRowHtml: un solo pulsante che apre la scheda, quattro mini-valori, nessun pulsante dentro', () => {
+test('compactRowHtml: un solo pulsante che apre la scheda, tre mini-valori, nessun pulsante dentro', () => {
   for (const r of ALL) {
     const html = compactRowHtml(r, ctxFor(r));
     assert.equal((html.match(/<button/g) || []).length, 1, r.id);
     assert.match(html, new RegExp(`data-open="${r.id}"`));
-    assert.equal((html.match(/class="m /g) || []).length, 4, r.id);
+    assert.equal((html.match(/class="m /g) || []).length, 3, r.id);
     assert.doesNotMatch(text(html), BAD, r.id);
     assert.doesNotMatch(html, /data-equip|data-like|data-dislike/);
   }
@@ -203,10 +192,10 @@ test('miniValues: la tenuta è una parola breve per ogni livello', () => {
   assert.ok(words.size >= 3);
 });
 
-test('scheda: riepilogo con quattro tessere, sezioni richiudibili, barra azioni in fondo', () => {
+test('scheda: riepilogo con tre tessere, sezioni richiudibili, barra azioni in fondo', () => {
   const r = ALL.find((x) => x.reviews.conflicts.length && x.is_target) || ALL[0];
   const html = sheetHtml(r, ctxFor(r));
-  assert.equal((html.match(/class="tile /g) || []).length, 4);
+  assert.equal((html.match(/class="tile /g) || []).length, 3);
   const pos = (needle) => html.indexOf(needle);
   assert.ok(pos('class="sheet-head"') < pos('class="tiles"'));
   assert.ok(pos('class="tiles"') < pos('Dettagli e stime'));
@@ -229,40 +218,14 @@ test('scheda: la montata non ha il pulsante Monta; i tester in conflitto aprono 
 test('scheda: le tessere riportano valore, parola e marcatore senza NaN', () => {
   for (const r of ALL) {
     const tiles = sheetHtml(r, ctxFor(r)).match(/<div class="tile [\s\S]*?<\/div>/g) || [];
-    assert.equal(tiles.length, 4, r.id);
+    assert.equal(tiles.length, 3, r.id);
     for (const tl of tiles) assert.doesNotMatch(text(tl), BAD, r.id);
   }
   const z = sheetHtml(EQ, ctxFor(EQ)).match(/<div class="tile [\s\S]*?<\/div>/g).map(text).join(' | ');
   assert.match(z, /≈ 7,4/);
-  assert.match(z, /53/);
   assert.doesNotMatch(z, /potenza/);
 });
 
-const withCtl = (id, control, range) => ({ id, derived: { dims: { spin: 50, durability: 50, control }, dim_inputs: { control: 3 }, judgments: {}, control_range: range }, stiffness: null, spin: null });
-
-test('deltaVsEquipped: una differenza di controllo entro il margine non è presentata come numero', () => {
-  const slap = withCtl('slap', 31.7, [15.5, 54.5]), zero = withCtl('zero', 52.6, [28.1, 78.2]);
-  const t = deltaVsEquipped(slap, zero).text;
-  assert.doesNotMatch(t, /−21|21 controllo/);
-  assert.match(t, /controllo: entro il margine/);
-});
-
-test('deltaVsEquipped: con intervalli separati la differenza di controllo resta un numero', () => {
-  const t = deltaVsEquipped(withCtl('a', 20, [10, 28]), withCtl('b', 70, [60, 80])).text;
-  assert.match(t, /−50 controllo/);
-  assert.doesNotMatch(t, /margine/);
-});
-
-test('deltaVsEquipped: senza intervalli (dati vecchi) si comporta come prima', () => {
-  assert.match(deltaVsEquipped(withCtl('a', 20, undefined), withCtl('b', 70, undefined)).text, /−50 controllo/);
-});
-
-test('rowValues: il controllo dichiara l\'intervallo e che la potenza è un valore a parte', () => {
-  const c = rowValues(withCtl('x', 40, [22.4, 61.2])).find((v) => v.key === 'control');
-  assert.match(c.note, /da 22 a 61/);
-  assert.match(c.note, /potenza.*a parte/i);
-  assert.doesNotMatch(c.note, /100 − controllo/);
-});
 
 // ---- controllo e potenza separati: la potenza viene solo dai tester ----
 import { communityRows } from './values.js';
@@ -294,12 +257,6 @@ test('sheetHtml: senza pareri raccolti lo dice senza inventare', () => {
   const r = { ...BY['toroline-o-toro-17'], community: null };
   const t = text(sheetHtml(r, ctxFor(r)));
   assert.match(t, /nessun parere dei tester raccolto/i);
-});
-
-test('sheetHtml: se i tester contraddicono l\'indice di controllo lo scrive', () => {
-  const base = BY['toroline-o-toro-17'];
-  const low = { ...base, derived: { ...base.derived, judgments: { ...base.derived.judgments, control: { word: 'basso', level: 1 } } }, community: { ...COMM, control: { ...COMM.control, word: 'alto' } } };
-  assert.match(text(sheetHtml(low, ctxFor(low))), /i tester dicono controllo alto, l'indice dice basso/i);
 });
 
 test('sheetHtml: i confronti diretti tra corde si vedono con il numero di pareri e il link, anche senza livelli', () => {

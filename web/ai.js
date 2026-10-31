@@ -25,7 +25,7 @@ function aiFacts(rec, pr) {
   const ex = rec.derived.excel_measures, d = rec.derived.dims;
   if (ex) lines.push(`- Test Excel dell'utente: allungamento a 50 lb ${fmt(ex.stretch50, 1)} %, elasticità ${ex.elasticity === null ? 'n.d.' : `${fmt(ex.elasticity * 100, 0)} % recuperato`}, cedimento ${fmt(ex.cedimento, 2)}, perdita a 6/12 mesi ${fmt(ex.tl6, 0)}/${fmt(ex.tl12, 0)} %, scorrimento 24 h ${fmt(ex.creep24, 2)}″`);
   if (rec.twu) lines.push(`- TWU: rigidità ${fmt(rec.twu.stiffness_lbin, 0)} lb/in, perdita di tensione ${fmt(rec.twu.tension_loss_pct, 1)} %, spin potential ${fmt(rec.twu.spin_potential, 1)}${rec.twu.match !== 'exact' ? ' (dato di un calibro o nome diverso)' : ''}`);
-  lines.push(`- Posizione tra le corde del banco (percentile 0–100): rigidità ${fmt(d.stiffness, 0)}, tenuta ${fmt(d.durability, 0)}, controllo ${fmt(d.control, 0)}${Array.isArray(rec.derived.control_range) ? ` (indice con margine ${fmt(rec.derived.control_range[0], 0)}–${fmt(rec.derived.control_range[1], 0)}: due corde con intervalli sovrapposti non si possono distinguere)` : ''}, elasticità ${fmt(d.elasticity, 0)}, spin ${fmt(d.spin, 0)}`);
+  lines.push(`- Posizione tra le corde del banco (percentile 0–100): rigidità ${fmt(d.stiffness, 0)}, tenuta ${fmt(d.durability, 0)}, elasticità ${fmt(d.elasticity, 0)}, spin ${fmt(d.spin, 0)}`);
   const cm = rec.community;
   if (cm && (cm.control || cm.power)) {
     const f = (k, l) => (cm[k] ? `${l} ${cm[k].word} (${cm[k].n} ${cm[k].n === 1 ? 'parere' : 'pareri'}${cm[k].split ? ', discordi' : ''})` : '');

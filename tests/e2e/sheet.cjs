@@ -12,7 +12,7 @@ test('scheda a 390 px: Monta questa sempre visibile, tessere, nessuna etichetta 
     await page.locator(`#bank-cards .crow2wrap[data-id="${id}"] .crow2`).tap();
     await page.waitForSelector('dialog#sheet[open]');
     const y0 = await page.evaluate(() => Math.round(scrollY)); // il tocco può far scorrere la pagina: si confronta da scheda aperta a scheda chiusa
-    assert.equal(await page.locator('#sheet-body .tile').count(), 4, id);
+    assert.equal(await page.locator('#sheet-body .tile').count(), 3, id);
     const equip = await page.locator('#sheet-body .sheet-actions button').first().boundingBox();
     assert.ok(equip && equip.y >= 0 && equip.y + equip.height <= 844 + 1, `${id}: la barra azioni non è visibile senza scorrere (${JSON.stringify(equip)})`);
     const overlaps = await page.evaluate(() => {
@@ -71,33 +71,15 @@ test('scheda: Monta questa dal telefono porta al cambio corda', async () => {
 
 const openBancoSheet = async (page, id, q) => { await page.locator('#tab-banco').click(); await page.locator('#b-target').uncheck(); await page.locator('#b-q').fill(q); await page.locator(`#bank-table tr[data-id="${id}"] .rowlink`).click(); await page.waitForSelector('dialog#sheet[open]'); };
 
-test('controllo: Re-String Slap contro la Zero montata non dice «meno controllo» come fosse un dato, e mostra il margine', async () => {
-  const { page, ctx } = await openPage();
-  await openBancoSheet(page, 're-string-slap-17', 'slap');
-  const delta = await page.innerText('#sheet-body .delta');
-  assert.match(delta, /controllo: entro il margine/);
-  assert.doesNotMatch(delta, /[−-]\d+ controllo/);
-  await page.locator('#sheet-body .details-sec summary').click();
-  const notes = await page.innerText('#sheet-body');
-  assert.match(notes, /va da \d+ a \d+/);
-  assert.match(notes, /potenza è un valore a parte/);
-  assert.doesNotMatch(notes, /100 − controllo/);
-  await ctx.close();
-});
-
-test('metodo: dichiara quanto controllo e comfort concordano con i tester e che la potenza sta a parte', async () => {
+test('metodo: controllo e potenza vengono solo dai tester, nessun indice di controllo', async () => {
   const { page, ctx } = await openPage();
   await page.locator('[data-goto="metodo"]').first().click();
-  const t = await page.innerText('#m-controllo');
-  assert.match(t, /Controllo[\s\S]*0,48/);
-  assert.match(t, /Comfort/);
-  assert.match(t, /potenza.*non è più «100 − controllo»/i);
-  assert.doesNotMatch(t, /Potenza \(100 − controllo\)/);
-  assert.match(t, /margine/i);
+  const t = await page.innerText('#metodo');
+  assert.match(t, /Controllo e potenza dai tester/);
+  assert.doesNotMatch(t, /indice di controllo|Controllo ◄► potenza/);
   assert.doesNotMatch(t, /NaN|undefined/);
   await ctx.close();
 });
-
 test('tester: la scheda della Slap riporta il confronto con la Zero e dice che i pareri sono pochi, senza inventare livelli', async () => {
   const { page, ctx } = await openPage();
   await openBancoSheet(page, 're-string-slap-17', 'slap');
@@ -111,12 +93,3 @@ test('tester: la scheda della Slap riporta il confronto con la Zero e dice che i
   await ctx.close();
 });
 
-test('tester: O-Toro, i tester dicono controllo alto e l\'indice dice basso: la scheda lo segnala', async () => {
-  const { page, ctx } = await openPage();
-  await openBancoSheet(page, 'toroline-o-toro-17', 'o-toro');
-  const t = await page.innerText('#sheet-body .community-sec');
-  assert.match(t, /Controllo: alto · \d+ pareri/);
-  assert.match(t, /Potenza: media/);
-  assert.match(t, /i tester dicono controllo alto, l'indice dice basso/i);
-  await ctx.close();
-});

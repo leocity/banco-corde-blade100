@@ -1,7 +1,7 @@
-"""Dimensioni del pairing: percentili di rigidità, tenuta, controllo, elasticità e spin, più le misure del test Excel."""
+"""Dimensioni del pairing: percentili di rigidità, tenuta, elasticità e spin, più le misure del test Excel. Il controllo non è una misura e non c'è."""
 from pipeline.derive import _get, percentile, population, spin_lab, stiff_lab
 
-DIM_KEYS = ("stiffness", "durability", "control", "elasticity", "spin")
+DIM_KEYS = ("stiffness", "durability", "elasticity", "spin")
 
 
 def elasticity(rec):
@@ -36,34 +36,8 @@ def _mean_n(xs):
     return (round(sum(xs) / len(xs), 1), len(xs)) if xs else (None, 0)
 
 
-RECOVER_STEP = 0.533  # un gradino dello strumento del test Ektelon (allungamento e recupero si leggono a scatti di ~0,53 punti percentuali)
-
-
-def control_range(rec, pop, step=RECOVER_STEP):
-    """Intervallo [min, max] dell'indice di controllo se le sue basi sbagliassero di quanto dichiarato: la rigidità stimata entro il suo
-    margine (low/high) e allungamento e recupero di un gradino dello strumento. Estremi presi insieme: è un margine prudente, non una probabilità."""
-    st = rec.get("stiffness")
-    stiff_lo = stiff_hi = None
-    if stiff_lab(rec) is not None:
-        lo_v, hi_v = st.get("low", st["value_lbin"]), st.get("high", st["value_lbin"])
-        stiff_lo, stiff_hi = percentile(lo_v, pop["stiff_measured"]), percentile(hi_v, pop["stiff_measured"])
-    stretch, recover = _get(rec, "excel", "stretch_pct", 50), _get(rec, "excel", "recover_pct", 50)
-    stretch_lo = stretch_hi = el_lo = el_hi = None
-    if stretch is not None:
-        # più allungamento = meno controllo: l'estremo basso è con più allungamento
-        stretch_lo = _inv(percentile(stretch + step, pop["excel_stretch50"]))
-        stretch_hi = _inv(percentile(max(0.0, stretch - step), pop["excel_stretch50"]))
-    if stretch is not None and recover is not None and stretch > 0:
-        el_lo = percentile(max(0.0, recover - step) / (stretch + step), pop["excel_elasticity"])
-        el_hi = percentile(min(1.0, (recover + step) / max(stretch - step, step)), pop["excel_elasticity"])
-    los, his = [x for x in (stiff_lo, stretch_lo, el_lo) if x is not None], [x for x in (stiff_hi, stretch_hi, el_hi) if x is not None]
-    if not los:
-        return None
-    return [round(sum(los) / len(los), 1), round(sum(his) / len(his), 1)]
-
-
 def dimensions(rec, pop):
-    """Percentili 0–100 per dimensione (solo dati di laboratorio) e quante misure compongono tenuta e controllo."""
+    """Percentili 0–100 per dimensione (solo dati di laboratorio) e quante misure compongono la tenuta."""
     stiff = percentile(stiff_lab(rec), pop["stiff_measured"])
     elast = percentile(elasticity(rec), pop["excel_elasticity"])
     durability, n_dur = _mean_n([
@@ -71,7 +45,6 @@ def dimensions(rec, pop):
         _inv(percentile(_get(rec, "excel", "tl6"), pop["excel_tl6"])),
         _inv(percentile(_get(rec, "excel", "tl12"), pop["excel_tl12"])),
         _inv(percentile(_get(rec, "excel", "static_24h_creep"), pop["excel_creep"]))])
-    control, n_ctl = _mean_n([stiff, _inv(percentile(_get(rec, "excel", "stretch_pct", 50), pop["excel_stretch50"])), elast])
-    return {"values": {"stiffness": stiff, "durability": durability, "control": control, "elasticity": elast,
+    return {"values": {"stiffness": stiff, "durability": durability, "elasticity": elast,
                        "spin": percentile(spin_lab(rec), pop["spin_measured"])},
-            "inputs": {"control": n_ctl, "durability": n_dur}}
+            "inputs": {"durability": n_dur}}

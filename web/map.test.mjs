@@ -14,14 +14,13 @@ const ids = (res) => new Set([...res.pts.map((p) => p.r.id), ...res.stripX.map((
 const isRef = (id) => id === D.equipped.id || D.liked.includes(id);
 
 test('assi e preset', () => {
-  assert.deepEqual(PRESETS, { rs: ['stiffness', 'spin'], ts: ['durability', 'spin'], cs: ['control', 'spin'] });
+  assert.deepEqual(PRESETS, { rs: ['stiffness', 'spin'], ts: ['durability', 'spin'] });
   assert.equal(AXES.stiffness.get(BY['toroline-o-toro-17']).est, false);
   const z = AXES.spin.get(BY[D.equipped.id]);
   assert.equal(z.est, true);
   assert.equal(z.model, true);
   assert.ok(z.low < z.value && z.value < z.high);
   assert.equal(AXES.durability.get({ derived: { dims: { durability: null } } }), null);
-  assert.equal(AXES.control.get({ derived: { dims: { control: 61.4 } } }).value, 61.4);
 });
 
 test('senza filtri ogni corda è da qualche parte', () => {

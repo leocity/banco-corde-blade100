@@ -135,18 +135,15 @@ function crosscheckHtml(rec) {
   return `<details class="sheet-section"><summary>Controllo incrociato: ${esc(VERDICT[c.verdict] || c.verdict)}</summary>${c.note ? `<p class="small">${esc(c.note)}</p>` : ''}<p class="small muted">Fonti: ${(c.sources || []).map((u) => `<a href="${esc(safeUrl(u))}" target="_blank" rel="noopener">${esc(host(u))}</a>`).join(' · ')}</p></details>`;
 }
 
-const TILE_ANCHOR = { spin: 'spin', stiffness: 'rigidita', durability: 'tenuta', control: 'controllo' };
+const TILE_ANCHOR = { spin: 'spin', stiffness: 'rigidita', durability: 'tenuta' };
 function tileHtml(v) {
   let big, small;
   if (v.mark === 'missing') { big = '—'; small = v.why; }
-  else if (v.key === 'control') { const c = Number((/controllo (\d+)/.exec(v.text) || [])[1]); big = Number.isFinite(c) ? String(c) : '—'; small = Number.isFinite(c) ? 'indice 0–100' : ''; }
   else { const parts = v.text.split(' · '); big = parts[0]; small = parts[1] || (v.mark === 'estimated' ? 'stima' : ''); }
   return `<div class="tile ${v.mark}" data-k="${v.key}"><span class="k">${esc(v.label)} ${qBtn(TILE_ANCHOR[v.key])}</span><b class="big">${esc(big)}</b><span class="s"><span class="mark" title="${esc(v.note || v.why || '')}">${MARK[v.mark]}</span> ${esc(small)}</span></div>`;
 }
 
-// Controllo e potenza dei tester, separati. Sono opinioni: non entrano nei punteggi. Se contraddicono l'indice di controllo lo si dice.
-const WORD3 = { 'molto basso': 'basso', basso: 'basso', medio: 'medio', alto: 'alto', 'molto alto': 'alto' };
-const LV3 = { basso: 1, medio: 2, alto: 3 };
+// Controllo e potenza dei tester, separati. Sono opinioni: non entrano nei punteggi.
 const FEM = { alto: 'alta', medio: 'media', basso: 'bassa' };
 function communityHtml(rec) {
   const rows = communityRows(rec), have = rows.filter((r) => r.word), cmps = (rec.community && rec.community.comparisons) || [];
@@ -159,9 +156,7 @@ function communityHtml(rec) {
   }).join('');
   const DIR = { more: 'più', less: 'meno', same: 'lo stesso' }, ATTR = { control: 'controllo', power: 'potenza' };
   const cm = cmps.map((c) => { const u = safeUrl(c.url); return `<li>${esc(rec.model || 'Questa')} ha ${esc(DIR[c.direction])} ${esc(ATTR[c.attribute])}${esc(' di ' + c.vs)} · ${c.n} ${c.n === 1 ? 'parere' : 'pareri'}${u ? ` <span class="muted small">(<a href="${esc(u)}" target="_blank" rel="noopener">${esc(c.site || 'fonte')}</a>)</span>` : ''}</li>`; }).join('');
-  const ctl = rows[0], idx = WORD3[((rec.derived.judgments || {}).control || {}).word];
-  const clash = ctl.word && idx && Math.abs(LV3[ctl.word] - LV3[idx]) >= 2 ? `<p class="gaps">I tester dicono controllo ${esc(ctl.word)}, l'indice dice ${esc(idx)}: non concordano, fidati di più dei pareri finché l'indice è solo stima.</p>` : '';
-  return `<details class="sheet-section community-sec" open><summary>Controllo e potenza dai tester</summary><ul class="srcnotes">${li}${cm}</ul>${clash}<p class="muted small">Opinioni, non misure: valgono per il modello (tutti i calibri) e non entrano nel pairing né nei punteggi.</p></details>`;
+  return `<details class="sheet-section community-sec" open><summary>Controllo e potenza dai tester</summary><ul class="srcnotes">${li}${cm}</ul><p class="muted small">Opinioni, non misure: valgono per il modello (tutti i calibri) e non entrano nel pairing né nei punteggi.</p></details>`;
 }
 
 export function sheetHtml(rec, ctx) {

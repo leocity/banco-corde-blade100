@@ -14,6 +14,10 @@ def _band(v, hi=65, lo=35):
     return "hi" if v >= hi else "lo" if v <= lo else "mid"
 
 
+def _stiff_pct(r):
+    return ((r.get("derived") or {}).get("dims") or {}).get("stiffness")
+
+
 def _kg(t):
     return f"{t['kg'][0]:g}/{t['kg'][1]:g} kg ({t['lbs'][0]:g}/{t['lbs'][1]:g} lbs)"
 
@@ -21,7 +25,7 @@ def _kg(t):
 def _feel(r, s):
     t = r.get("twu")
     shape = SHAPE_IT.get(r.get("shape") or "", "")
-    stiff = {"hi": "rigida e compatta", "mid": "di rigidità media", "lo": "morbida"}.get(_band(s["control"]))
+    stiff = {"hi": "rigida", "mid": "di rigidità media", "lo": "morbida"}.get(_band(_stiff_pct(r)))
     sp = r.get("spin")
     if sp and sp.get("kind") not in (None, "misurato") and sp.get("value") is not None:
         est = f" Spin stimato ≈ {sp['value']:g} ({SPIN_KIND_IT.get(sp['kind'], sp['kind'])}, tra {sp['low']:g} e {sp['high']:g})."
@@ -52,7 +56,7 @@ INSUFFICIENT = "Dati insufficienti per giudicarla: non ci sono test di laborator
 
 def _blade(r, s):
     """Nessun dato misura come una corda si comporta su una racchetta precisa (angolo di uscita, profondità, direzione): niente promesse."""
-    if all(s.get(k) is None for k in ("control", "spin")):
+    if all(v is None for v in (s.get("spin"), _stiff_pct(r))):
         return INSUFFICIENT
     return ("Nessun test misura il comportamento di questa corda sulla Blade 100 v9 (angolo di uscita, profondità, direzione): "
             "i valori sopra sono misure di laboratorio e indici. Parti dalla tensione suggerita, che è una regola empirica, e prova; "
@@ -60,7 +64,7 @@ def _blade(r, s):
 
 
 def _style(r, s):
-    if all(s.get(k) is None for k in ("spin", "control", "durability")):
+    if all(s.get(k) is None for k in ("spin", "durability")):
         return INSUFFICIENT
     out = []
     sp = _band(s["spin"])
@@ -70,8 +74,6 @@ def _style(r, s):
         out.append("Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin.")
     else:
         out.append("Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.")
-    if _band(s["control"]) == "hi":
-        out.append("Sui colpi piatti dà direzione e stabilità.")
     d = _band(s["durability"])
     out.append({"lo": "Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
                 "hi": "Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",

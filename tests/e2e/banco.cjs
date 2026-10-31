@@ -2,11 +2,11 @@ const { openPage, BAD, test, assert } = require('./ui.cjs');
 
 const goBanco = async (page) => { await page.locator('#tab-banco').click(); await page.waitForSelector('#bank-table thead, #bank-cards .crow2wrap', { state: 'attached' }); };
 
-test('banco: tabella a 6 colonne senza scroll della pagina (desktop)', async () => {
+test('banco: tabella a 5 colonne senza scroll della pagina (desktop)', async () => {
   const { page, ctx } = await openPage();
   await goBanco(page);
   const heads = await page.$$eval('#bank-table thead th', (els) => els.map((e) => e.innerText.trim().toLowerCase()));
-  for (const h of ['Corda', 'Spin', 'Rigidità', 'Tenuta', 'Controllo', 'Pairing']) assert.ok(heads.some((x) => x.startsWith(h.toLowerCase())), `${h} in ${heads.join('|')}`);
+  for (const h of ['Corda', 'Spin', 'Rigidità', 'Tenuta', 'Pairing']) assert.ok(heads.some((x) => x.startsWith(h.toLowerCase())), `${h} in ${heads.join('|')}`);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
   await ctx.close();
 });

@@ -95,16 +95,15 @@ def subscores(rec, pop):
     rp = METRICS["rpedia_static"](rec)
     return {
         "spin": percentile(spin_lab(rec), pop["spin_measured"]),
-        "control": _mean([st, _inv(pct("excel_stretch50"))]),
         "durability": _mean([_inv(pct("twu_tension_loss")), _inv(pct("excel_tl6"))]),
         "comfort": _inv(pct("rpedia_static") if rp is not None else st),
     }
 
 
-# "control" e "comfort" non sono misurati: seguono la rigidità (e l'allungamento a 50 lb dove c'è l'Excel).
+# "comfort" non è misurato: segue la rigidità. Il controllo è stato tolto (non è una misura).
 # "potenza" è stata tolta: era sempre 100 − controllo.
-PROXY_CRITERIA = ("control", "comfort")
-JUDGE_CRITERIA = ("stiffness", "spin", "control", "durability", "comfort")
+PROXY_CRITERIA = ("comfort",)
+JUDGE_CRITERIA = ("stiffness", "spin", "durability", "comfort")
 LAB_WEIGHT, REVIEW_WEIGHT = 0.7, 0.3
 WORDS = ("molto basso", "basso", "medio", "alto", "molto alto")
 STIFF_WORDS = ("molto morbida", "morbida", "media", "rigida", "molto rigida")
@@ -249,7 +248,7 @@ def discriminant_metrics(records, pop):
 
 def derive_all(records, reviews=None):
     # import locali: dims e pairing importano questo modulo
-    from pipeline.dims import control_range, dim_populations, dimensions, excel_measures
+    from pipeline.dims import dim_populations, dimensions, excel_measures
     from pipeline.pairing import pairing
     reviews = reviews or {}
     pop = population(records)
@@ -275,7 +274,7 @@ def derive_all(records, reviews=None):
         lab["durability"] = dm[r["id"]]["values"]["durability"]  # una sola tenuta: quella delle dimensioni (TWU, TL6, TL12, scorrimento)
         j = judgments(r, lab, reviews.get(r["id"]), pop)
         # punteggio profilo sui giudizi misti (laboratorio + recensioni); stessi campi letti da score.js
-        sub = {k: lab[k] for k in ("spin", "control", "durability", "comfort")}  # punteggio: solo laboratorio
+        sub = {k: lab[k] for k in ("spin", "durability", "comfort")}  # punteggio: solo laboratorio
         sub["affinity"] = best  # somiglianza massima con una preferita (0-100)
         r["derived"] = {
             "subscores": sub,
@@ -290,7 +289,6 @@ def derive_all(records, reviews=None):
             "tension_start": tension_start(r, anchors) if anchors else None,
             "dims": dm[r["id"]]["values"],
             "dim_inputs": dm[r["id"]]["inputs"],
-            "control_range": control_range(r, dpop),
             "excel_measures": excel_measures(r),
             "pairing": pairing(dm[r["id"]]["values"], liked_refs, disliked_refs, penalize=r["id"] not in DEFAULT_LIKED),
         }

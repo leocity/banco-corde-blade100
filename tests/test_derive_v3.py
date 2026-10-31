@@ -39,8 +39,8 @@ def test_derived_has_dims_excel_measures_and_pairing():
     derive_all(rs)
     for r in rs:
         d = r["derived"]
-        assert set(d["dims"]) == {"stiffness", "durability", "control", "elasticity", "spin"}
-        assert set(d["dim_inputs"]) == {"control", "durability"}
+        assert set(d["dims"]) == {"stiffness", "durability", "elasticity", "spin"}
+        assert set(d["dim_inputs"]) == {"durability"}
         assert d["excel_measures"]["elasticity"] is not None
         assert d["pairing"]["band"]
     assert rs[0]["derived"]["pairing"]["score"] == 100  # una preferita combacia con se stessa

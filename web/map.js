@@ -12,10 +12,8 @@ export const AXES = {
     get: (r) => (r.spin && val(r.spin.value) ? { value: r.spin.value, low: r.spin.low, high: r.spin.high, est: r.spin.kind !== 'misurato', model: r.spin.kind === 'modello' } : null) },
   durability: { label: 'Tenuta (posizione 0–100 tra le corde)', short: 'Tenuta', d: 0, hint: '→ tiene meglio',
     get: (r) => (val(r.derived.dims.durability) ? { value: r.derived.dims.durability, est: false, model: false } : null) },
-  control: { label: 'Controllo (indice 0–100)', short: 'Controllo', d: 0, hint: '→ più controllo',
-    get: (r) => (val(r.derived.dims.control) ? { value: r.derived.dims.control, est: false, model: false } : null) },
 };
-export const PRESETS = { rs: ['stiffness', 'spin'], ts: ['durability', 'spin'], cs: ['control', 'spin'] };
+export const PRESETS = { rs: ['stiffness', 'spin'], ts: ['durability', 'spin'] };
 
 // Corde sulla mappa. La montata e le preferite non vengono mai nascoste dai filtri.
 // pts: entrambi gli assi; stripX: solo x (fascia in basso); stripY: solo y (fascia a sinistra); none: nessuno dei due; hidden: nascoste dai filtri.

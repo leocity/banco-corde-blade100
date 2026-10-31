@@ -7,7 +7,7 @@ import { newFilters, passesFilters, pairScore } from './choose.js';
 
 const bankFilters = newFilters();
 const bankView = { key: 'pairing', dir: -1, limit: 40, picks: [] };
-const BANK_COLS = [['name', 'Corda'], ['spin', 'Spin'], ['stiffness', 'Rigidità'], ['durability', 'Tenuta'], ['control', 'Controllo'], ['pairing', 'Pairing']];
+const BANK_COLS = [['name', 'Corda'], ['spin', 'Spin'], ['stiffness', 'Rigidità'], ['durability', 'Tenuta'], ['pairing', 'Pairing']];
 const BANK_MAX = 4;
 const bankPhone = () => window.matchMedia('(max-width: 760px)').matches;
 
@@ -17,7 +17,6 @@ function bankSortValue(ctx, r, key) {
     case 'spin': return r.spin ? r.spin.value : null;
     case 'stiffness': return r.stiffness ? r.stiffness.value_lbin : null;
     case 'durability': return r.derived.dims.durability;
-    case 'control': return r.derived.dims.control;
     default: { const s = ctx.pairingOf(r.id).score; return s === undefined ? null : s; }
   }
 }
@@ -41,7 +40,7 @@ function bankTable(ctx, rows) {
     const v = Object.fromEntries(rowValues(r).map((x) => [x.key, x]));
     const cell = (x) => `<td class="v ${x.mark}"><span class="mark" title="${esc(x.note || x.why || '')}">${MARK[x.mark]}</span>${esc(x.text)}</td>`;
     return `<tr data-id="${esc(r.id)}"><td>${cmpBox(r)}</td><td><button type="button" class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button> <span class="muted small block">${esc(subline(r))}</span></td>`
-      + `${cell(v.spin)}${cell(v.stiffness)}${cell(v.durability)}${cell(v.control)}<td>${pairHtml(ctx.cardCtx(r))}</td></tr>`;
+      + `${cell(v.spin)}${cell(v.stiffness)}${cell(v.durability)}<td>${pairHtml(ctx.cardCtx(r))}</td></tr>`;
   }).join('');
   return `${head}<tbody>${body}</tbody>`;
 }
@@ -64,7 +63,7 @@ export function renderBank(ctx) {
 
 export function compareSummary(a, b) {
   const gain = [], lose = [];
-  for (const [k, l] of [['spin', 'spin'], ['durability', 'tenuta'], ['control', 'controllo']]) {
+  for (const [k, l] of [['spin', 'spin'], ['durability', 'tenuta']]) {
     const va = a.derived.dims[k], vb = b.derived.dims[k];
     if (va === null || va === undefined || vb === null || vb === undefined) continue;
     if (vb - va >= 10) gain.push(l); else if (va - vb >= 10) lose.push(l);
@@ -86,7 +85,7 @@ function renderTray(ctx) {
     + `<div class="card-actions"><button class="btn" type="button" data-open="${esc(r.id)}">Scheda</button><button class="btn icon" type="button" data-uncmp="${esc(r.id)}" aria-label="Togli ${esc(fullName(r))} dal confronto">×</button></div></div>`).join('');
   const gaps = rowValues(first).map((v) => v.key).map((k) => {
     const who = picks.filter((r) => rowValues(r).find((v) => v.key === k).mark === 'missing').map(nameOf);
-    const label = { spin: 'spin', stiffness: 'rigidità', durability: 'tenuta', control: 'controllo' }[k];
+    const label = { spin: 'spin', stiffness: 'rigidità', durability: 'tenuta' }[k];
     return who.length ? `${label} (manca per ${who.map(esc).join(', ')})` : '';
   }).filter(Boolean);
   $('#tray').innerHTML = `<div class="tray-head"><b>Confronto</b><p class="summary">${compareSummary(first, picks[1])}${gaps.length ? ` <span class="gaps">⚠ Non confrontabili per dati mancanti: ${gaps.join('; ')}.</span>` : ''}</p><button class="btn" type="button" id="cmp-clear">Azzera</button></div><div class="tcols">${cols}</div>`;

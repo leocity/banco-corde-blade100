@@ -30,7 +30,7 @@ def test_catalog_only_with_reviews_does_not_crash_and_is_reviews_only():
     derive_all(recs, {"b-new-17": REV_NEW})
     j = recs[-1]["derived"]["judgments"]
     assert j["spin"]["lab_share"] == 0  # stima qualitativa = dai tester, non conta come laboratorio
-    assert j["control"]["lab_share"] == 0 and j["control"]["score"] == 50.0
+    assert "control" not in j  # il controllo non è una misura: nessun giudizio
     assert recs[-1]["derived"]["tension_start"]["kg"]
 
 

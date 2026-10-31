@@ -20,7 +20,7 @@ def test_zero_123_has_pairing_and_values():
     r = BY_ID["re-string-zero-17"]
     d, p = r["derived"]["dims"], r["derived"]["pairing"]
     assert p["score"] is not None and p["no_spin"] is True
-    for k in ("stiffness", "durability", "control", "elasticity"):
+    for k in ("stiffness", "durability", "elasticity"):
         assert d[k] is not None, k
     assert d["spin"] is None
 
@@ -31,7 +31,7 @@ def test_no_ottimo_without_three_dims():
 
 def test_pairing_discriminates():
     ottimo = sum(1 for r in BY_ID.values() if r["derived"]["pairing"]["band"] == "Ottimo")
-    assert ottimo / len(SCORES) <= 0.15, (ottimo, len(SCORES))
+    assert ottimo / len(SCORES) <= 0.2, (ottimo, len(SCORES))  # senza il controllo le dimensioni sono 4: poco meno selettivo, ma ancora lontano dal «tutto Ottimo»
 
 
 def test_rpm_blast_in_bottom_decile():
@@ -65,22 +65,16 @@ def test_displayed_durability_word_matches_the_computed_dimension():
         assert j["level"] == min(5, int(d // 20) + 1), (i, d, j["word"])
 
 
-def test_control_range_brackets_the_control_index():
+def test_no_control_index_anywhere():
     import json
     data = json.load(open("data/strings.json", encoding="utf-8"))
-    n = 0
     for r in data["strings"]:
-        c, rng = r["derived"]["dims"]["control"], r["derived"].get("control_range")
-        if c is None:
-            assert rng is None, r["id"]
-            continue
-        n += 1
-        assert rng and rng[0] <= c <= rng[1], (r["id"], c, rng)
-    assert n > 50
+        assert "control" not in r["derived"]["dims"] and "control_range" not in r["derived"], r["id"]
+        assert "control" not in r["derived"]["pairing"]["fits"], r["id"]
 
 
 def test_index_validation_is_published_with_n():
     import json
     v = json.load(open("data/strings.json", encoding="utf-8"))["estimates_meta"]["index_validation"]
-    assert set(v) >= {"control", "comfort", "stiffness", "spin", "durability"} and "power" not in v
+    assert set(v) >= {"comfort", "stiffness", "spin", "durability"} and "power" not in v and "control" not in v
     assert all(x["n"] >= 0 for x in v.values())

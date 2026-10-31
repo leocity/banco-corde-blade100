@@ -39,7 +39,6 @@ def _inv(v):
 
 # indice -> (livello recensito da confrontare, come si ricava dalle dimensioni)
 INDICES = {
-    "control": ("control", lambda d: d.get("control")),
     "comfort": ("comfort", lambda d: _inv(d.get("stiffness"))),
     "stiffness": ("stiffness", lambda d: d.get("stiffness")),
     "spin": ("spin", lambda d: d.get("spin")),

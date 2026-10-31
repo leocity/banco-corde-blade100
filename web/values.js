@@ -1,4 +1,4 @@
-// Quattro valori di riga (spin, rigidità, tenuta, controllo); la potenza non è un indice di laboratorio e sta a parte (communityRows) con affidabilità, e differenze rispetto alla montata.
+// Quattro valori di riga (spin, rigidità, tenuta); controllo e potenza non è un indice di laboratorio e sta a parte (communityRows) con affidabilità, e differenze rispetto alla montata.
 import { fmt } from './format.js';
 import { labStiff } from './state.js';
 
@@ -31,44 +31,32 @@ export function rowValues(rec) {
   } else {
     out.push({ key: 'durability', label: 'Tenuta', mark: 'missing', text: 'manca', note: '', why: 'manca: né perdita TWU né test Excel' });
   }
-  if (dims.control !== null && dims.control !== undefined) {
-    const c = Math.round(dims.control);
-    const cr = rec.derived.control_range;
-    const margin = Array.isArray(cr) ? `; con il margine delle sue basi (rigidità stimata, un gradino dello strumento) va da ${Math.round(cr[0])} a ${Math.round(cr[1])}` : '';
-    out.push({ key: 'control', label: 'Controllo', mark: 'estimated', text: `controllo ${c}`, note: `indice da ${inp.control || 0} di 3 misure (rigidità, allungamento, elasticità): non lo misura nessun laboratorio${margin}. La potenza è un valore a parte: viene dai tester, non dal laboratorio` });
-  } else {
-    out.push({ key: 'control', label: 'Controllo', mark: 'missing', text: 'manca', note: '', why: 'manca: nessuna delle misure che lo compongono' });
-  }
   return out;
 }
 
-const DELTA_DIMS = [['spin', 'spin'], ['durability', 'tenuta'], ['control', 'controllo']];
+const DELTA_DIMS = [['spin', 'spin'], ['durability', 'tenuta']];
 
-// Differenze con la corda montata: percentili per spin, tenuta e controllo (>= 5 punti), lb/in per la rigidità (>= 10).
+// Differenze con la corda montata: percentili per spin e tenuta (>= 5 punti), lb/in per la rigidità (>= 10).
 export function deltaVsEquipped(rec, equipped) {
   if (!equipped || rec.id === equipped.id) return { text: '', parts: [] };
-  const parts = [], unclear = [];
+  const parts = [];
   for (const [k, label] of DELTA_DIMS) {
     const a = rec.derived.dims[k], b = equipped.derived.dims[k];
     if (a === null || a === undefined || b === null || b === undefined) continue;
     const diff = Math.round(a - b);
     if (Math.abs(diff) < 5) continue;
-    // il controllo è un indice con un margine: se gli intervalli delle due corde si sovrappongono la differenza non si può affermare
-    const ra = rec.derived.control_range, rb = equipped.derived.control_range;
-    if (k === 'control' && Array.isArray(ra) && Array.isArray(rb) && ra[0] <= rb[1] && rb[0] <= ra[1]) { unclear.push(label); continue; }
     parts.push({ key: k, label, diff });
   }
   const sa = labStiff(rec), sb = labStiff(equipped);
   if (sa !== null && sb !== null && Math.abs(sa - sb) >= 10) parts.push({ key: 'stiffness', label: 'lb/in', diff: Math.round(sa - sb) });
-  const text = [...parts.map((p) => `${p.diff > 0 ? '+' : '−'}${Math.abs(p.diff)} ${p.label}`), ...unclear.map((l) => `${l}: entro il margine`)].join(' · ');
-  return { text, parts, unclear };
+  const text = parts.map((p) => `${p.diff > 0 ? '+' : '−'}${Math.abs(p.diff)} ${p.label}`).join(' · ');
+  return { text, parts };
 }
 
 const MINI_LEVEL = { 'molto basso': 'min', basso: 'bassa', medio: 'media', alto: 'alta', 'molto alto': 'max' };
-const MINI_EM = { spin: 'spin', stiffness: 'lb/in', durability: 'tenuta', control: 'ctrl' };
+const MINI_EM = { spin: 'spin', stiffness: 'lb/in', durability: 'tenuta' };
 function miniText(v) {
   if (v.mark === 'missing') return '—';
-  if (v.key === 'control') { const m = /controllo (\d+)/.exec(v.text); return m ? m[1] : '—'; }
   const head = v.text.split(' · ')[0];
   if (v.key === 'durability') return MINI_LEVEL[head] || head;
   return v.key === 'stiffness' ? head.replace(' lb/in', '') : head;

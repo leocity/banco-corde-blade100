@@ -39,7 +39,7 @@ test('labComparison: spin contro spin TWU, r = 1 con ordine identico, n dichiara
   const p = c.pairs.find((x) => x.cat === 'spin');
   assert.deepEqual([p.r, p.n, p.few], [1, 5, true]);
   assert.equal(LAB_TRUST_N, 8);
-  assert.equal(c.pairs.find((x) => x.cat === 'control'), undefined, 'senza voti non c\'è la coppia');
+  assert.equal(c.pairs.find((x) => x.cat === 'liveness'), undefined, 'senza voti non c\'è la coppia');
 });
 
 test('labComparison: la potenza non ha una misura di laboratorio e non entra; il comfort contro la rigidità inversa sì', () => {
@@ -49,11 +49,11 @@ test('labComparison: la potenza non ha una misura di laboratorio e non entra; il
   assert.equal(cf.r, 1);   // più rigida -> meno comfort: comfort alto dove la rigidità è bassa
 });
 
-test('labComparison: controllo e mantenimento seguono indice e tenuta; corde senza misura sono escluse', () => {
-  const trials = [...five('control', [1, 2, 3, 4, 5]), ...five('liveness', [5, 4, 3, 2, 1]).map((t) => ({ ...t, lid: `${t.lid}-l` })), tr('ghost', 22, { end: { control: 5 } })];
+test('labComparison: mantenimento segue la tenuta; corde senza misura sono escluse; il controllo non ha misura e non entra', () => {
+  const trials = [...five('control', [1, 2, 3, 4, 5]), ...five('liveness', [5, 4, 3, 2, 1]).map((t) => ({ ...t, lid: `${t.lid}-l` })), tr('ghost', 22, { end: { liveness: 5 } })];
   const c = labComparison(trials, recOf);
-  assert.equal(c.pairs.find((x) => x.cat === 'control').n, 5);
-  assert.equal(c.pairs.find((x) => x.cat === 'control').r, 1);
+  assert.equal(c.pairs.find((x) => x.cat === 'control'), undefined);
+  assert.equal(c.pairs.find((x) => x.cat === 'liveness').n, 5);
   assert.equal(c.pairs.find((x) => x.cat === 'liveness').r, -1);
 });
 

@@ -2,7 +2,7 @@
 Stesse regole e parametri in web/pairing.js (parità verificata da tests/fixtures/pairing_cases.json)."""
 from pipeline.dims import DIM_KEYS
 
-WEIGHTS = {"spin": 30, "durability": 20, "stiffness": 20, "control": 15, "elasticity": 15}
+WEIGHTS = {"spin": 30, "durability": 20, "stiffness": 20, "elasticity": 15}  # il controllo non è una misura: tolto (2026-10-31)
 UP_ONLY = ("spin", "durability")  # sopra il riferimento non si penalizza: più è meglio
 TOL, FALLOFF = 5, 20
 PENALTY, PENALTY_THRESHOLD = 15, 75

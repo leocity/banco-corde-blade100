@@ -1,6 +1,6 @@
 // Pairing con le corde "mi piace": stesse regole e parametri di pipeline/pairing.py (parità sul fixture condiviso).
-export const DIM_KEYS = ['stiffness', 'durability', 'control', 'elasticity', 'spin'];
-export const WEIGHTS = { spin: 30, durability: 20, stiffness: 20, control: 15, elasticity: 15 };
+export const DIM_KEYS = ['stiffness', 'durability', 'elasticity', 'spin'];
+export const WEIGHTS = { spin: 30, durability: 20, stiffness: 20, elasticity: 15 };
 export const UP_ONLY = ['spin', 'durability'];
 export const TOL = 5;
 export const FALLOFF = 20;
@@ -8,9 +8,9 @@ export const PENALTY = 15;
 export const PENALTY_THRESHOLD = 75;
 export const MIN_DIMS = 3;
 const BANDS = [[80, 'Ottimo'], [60, 'Buono'], [40, 'Attenzione'], [0, 'Poco adatta']];
-const DIM_IT = { stiffness: 'rigidità', durability: 'tenuta', control: 'controllo', elasticity: 'elasticità', spin: 'spin' };
+const DIM_IT = { stiffness: 'rigidità', durability: 'tenuta', elasticity: 'elasticità', spin: 'spin' };
 const OUT_WORD = {
-  stiffness: { above: 'più rigida', below: 'più morbida' }, control: { above: 'più compatta', below: 'più potente' },
+  stiffness: { above: 'più rigida', below: 'più morbida' },
   durability: { above: 'tiene di più', below: 'tiene meno' }, elasticity: { above: 'più elastica', below: 'meno elastica' },
   spin: { above: 'più spin', below: 'meno spin' },
 };
