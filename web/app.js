@@ -1,6 +1,7 @@
 import { $, esc, fullName } from './format.js';
 import { pairing } from './pairing.js';
-import { defaultState, setPreference, equippedHours, tensionFor, sameState } from './state.js';
+import { defaultState, setPreference, equippedHours, tensionFor, sameState, trialsOf } from './state.js';
+import { trialsForString } from './trials.js';
 import { createPersistence } from './persist.js';
 import { sheetHtml } from './cards.js';
 import { renderChoose, initChoose, renderStrip } from './choose.js';
@@ -37,7 +38,7 @@ const wear = () => wearStatus({ state, tenuta: tenutaOf(state.equipped.id), tenu
 function cardCtx(r, extra = {}) {
   return { pairing: pairingOf(r.id), pref: state.liked.includes(r.id) ? 'liked' : state.disliked.includes(r.id) ? 'disliked' : null,
     equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: lifeFor(r), ai: aiAvailable(), aiCachedHtml: aiAvailable() ? aiCachedHtml(r.id) : '',
-    nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), ...extra };
+    nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), trials: trialsForString(trialsOf(state), r.id), ...extra };
 }
 
 const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state), wear, tenutaOf,

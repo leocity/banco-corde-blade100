@@ -1,5 +1,14 @@
 // Pagina "Metodo": come si leggono i numeri. Ogni sezione ha un'ancora #m-<chiave> raggiunta dal "?" accanto ai valori.
 import { $, esc, fmt } from './format.js';
+import { labComparison, labComparisonHtml, LAB_MIN_STRINGS, LAB_TRUST_N } from './trials.js';
+import { trialsOf } from './state.js';
+
+// «Laboratorio contro sensazioni»: solo dopo 5 corde con voti di fine vita; mai usato per cambiare punteggi.
+function sensazioniSec(ctx) {
+  const c = labComparison(trialsOf(ctx.state()), (id) => ctx.BY_ID[id]);
+  if (!c.show) return '';
+  return `<section class="callout" id="m-sensazioni"><h3>Laboratorio contro sensazioni</h3><p>Quanto i tuoi voti di fine vita vanno d'accordo con le misure: correlazione di rango (Spearman) tra il voto medio che hai dato a ogni corda e la misura corrispondente. 1 = stesso ordine, −1 = ordine opposto, vicino a 0 = nessun legame. Con meno di ${LAB_TRUST_N} corde è un'indicazione debole. Non cambia punteggi, pairing o classifiche.</p>${labComparisonHtml(c)}<p class="small muted">Servono almeno ${LAB_MIN_STRINGS} corde con voti di fine vita e misura di laboratorio; il controllo e la potenza sono indici costruiti, non misure dirette.</p></section>`;
+}
 
 export function renderMethod(ctx) {
   const D = ctx.DATA, m = D.estimates_meta || {}, rp = m.rp_to_twu || {}, sg = m.stiffness_gauge || {}, sm = m.spin_model || {};
@@ -19,6 +28,7 @@ export function renderMethod(ctx) {
     ${sec('spin', 'Spin', `<p>Misurato: spin potential TWU (scala 0–10, 51 lbs, swing veloce). Da gemello: stesso modello in un altro calibro o colore, ±0,5. Da modello (rigidità e forma): errore medio ${fmt((sm.stiffness_shape || {}).mae, 2)} contro ${fmt((sm.stiffness_shape || {}).baseline_mae, 2)} della media, intervallo ±${fmt((sm.stiffness_shape || {}).q80, 1)}; vale solo per posizionare la corda e <b>mai entra nel pairing o nelle 3 da provare</b>. Le recensioni e il tuo Excel non predicono lo spin.</p>`)}
     ${sec('usura', 'Usura', '<p>L\'usura è <b>ore giocate / vita attesa</b>. La vita attesa parte da un\'<b>ipotesi non misurata</b>: <code>8 + 0,12 × Tenuta</code> ore (±25%), 14 ore (±40%) se la tenuta manca; i numeri vengono dalle note già nel repository e i dati di laboratorio sono in mesi o prove brevi, non in ore di gioco. Dopo la prima corda che chiudi come «consumata» la vita attesa passa alle tue ore reali. Fasce: sotto 40% Fresca, 40–70% In uso, 70–100% Da controllare, oltre 100% Da cambiare. La tensione consigliata è una regola empirica (−0,75 kg ogni +15 lb/in rispetto alla montata, al massimo ±2 kg) e non è validata.</p>')}
     ${sec('ai', 'Parere AI', '<p>Su richiesta, Claude può dare un parere su una corda o sull\'usura, leggendo i dati e le descrizioni del banco. È un parere, non una misura: è etichettato «Parere AI — non misurato», non entra mai in pairing, classifiche o mappa e dichiara quanta fiducia ha. Usa il tuo account Claude e chiede il consenso alla prima richiesta.</p>')}
+    ${sensazioniSec(ctx)}
     ${sec('fonti', 'Fonti e Excel', '<p>Test Ektelon (il tuo file: 44 corde), TWU, Racketpedia (solo la rigidità statica gratuita), recensioni solo come link. Colonne del file: A–C marca, nome, calibro; H forma; I tensione (40, 50, 60, 65 lbs); J–M lunghezze in tensione e a riposo; O «Stiff Index» = (allungamento − recupero) / 11,25 × 100, che misura quanto la corda non torna indietro (qui lo chiamiamo cedimento); P–Q gain e OLG sul piatto 16×19; T–W peso statico a 40 lbs; X–Y TL6 e TL12.</p>')}
     ${removed ? `<p class="small muted"><b>Corde tolte perché vecchie o fuori produzione:</b> ${removed}. Anni e produzione raccolti da un agente: per molte corde l'anno è solo «già in vendita nel…».</p>` : ''}`;
 }

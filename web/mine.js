@@ -2,7 +2,8 @@
 import { $, esc, fmt, fmtN, fullName, nameOf } from './format.js';
 import { compactRowHtml } from './cards.js';
 import { renderDiary, openPastDiary } from './diaryui.js';
-import { changeString, addPastLife, addSession, removeSession, editSession, parseHours, tensionFor } from './state.js';
+import { changeString, addPastLife, addSession, removeSession, editSession, parseHours, tensionFor, trialsOf } from './state.js';
+import { diaryCsv } from './diary.js';
 
 const WEAR_CLASS = { Fresca: 'ottimo', 'In uso': 'buono', 'Da controllare': 'attenzione', 'Da cambiare': 'poco' };
 const BASIS_TEXT = { ipotesi: 'ipotesi di partenza, non misurata (8 + 0,12 × tenuta ore)', 'tua corda': 'dalle ore reali di questa corda', 'tuo storico': 'scalata sulle ore reali delle tue corde finite' };
@@ -58,6 +59,7 @@ export function renderMine(ctx) {
     : '<li class="muted">Ancora nessuna corda finita.</li>';
   renderPersistNote(ctx);
   $('#export-btn').hidden = !mineDownloads;
+  $('#export-diary').hidden = !mineDownloads;
 }
 
 // Dove stanno i dati: solo su questo browser, o un salvataggio online fallito (le ultime modifiche restano in locale).
@@ -174,6 +176,10 @@ export function initMine(ctx) {
   $('#eq-pick').addEventListener('change', () => eqSuggest(ctx));
   $('#export-btn').addEventListener('click', async () => {
     try { await mineDownloads.save({ filename: 'banco-corde-storico.json', data: ctx.persist().exportJson(ctx.state()) }); } catch { /* rifiutato o non disponibile */ }
+  });
+  $('#export-diary').addEventListener('click', async () => {
+    // BOM davanti: Excel apre così gli accenti in UTF-8
+    try { await mineDownloads.save({ filename: 'banco-corde-diario.csv', data: `\ufeff${diaryCsv(trialsOf(ctx.state()), (id) => (ctx.BY_ID[id] ? fullName(ctx.BY_ID[id]) : id))}` }); } catch { /* rifiutato o non disponibile */ }
   });
   if (window.claude) window.claude.use('downloads').then((d) => { mineDownloads = d; if (d) renderMine(ctx); }).catch(() => {});
 }

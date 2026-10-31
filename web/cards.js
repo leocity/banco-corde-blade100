@@ -2,6 +2,7 @@
 import { esc, fmt, MARK, nameOf, subline, safeUrl, fullName } from './format.js';
 import { rowValues, deltaVsEquipped, miniValues } from './values.js';
 import { pairingReason } from './pairing.js';
+import { trialsSectionHtml } from './trials.js';
 
 const BAND_CLASS = { Ottimo: 'ottimo', Buono: 'buono', Attenzione: 'attenzione', 'Poco adatta': 'poco', 'Non valutabile': 'nv', 'Senza riferimenti': 'nv' };
 const LEVEL_WORDS = ['molto basso', 'basso', 'medio', 'alto', 'molto alto'];
@@ -158,6 +159,7 @@ export function sheetHtml(rec, ctx) {
     + `<div class="tiles">${rv.map(tileHtml).join('')}</div>`
     + `<div class="sheet-meta">${deltaHtml(rec, ctx)}${tensionHtml(ctx)}</div>`
     + `<details class="sheet-section details-sec"><summary>Dettagli e stime</summary>${details}</details>`
+    + trialsSectionHtml(ctx.trials || [])
     + reviewsHtml(rec)
     + (notes ? `<details class="sheet-section notes-sec"><summary>Note dell'incordatore</summary>${notes}</details>` : '')
     + `${labHtml(rec, ctx)}${crosscheckHtml(rec)}`

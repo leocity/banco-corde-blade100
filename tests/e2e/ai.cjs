@@ -160,3 +160,22 @@ test('ai: nessun NaN/undefined/null con la funzione attiva', async () => {
   assert.doesNotMatch(await bodyText(page), BAD);
   await ctx.close();
 });
+
+test('ai: le prove dell\'utente su quella corda arrivano nel prompt come sensazioni, e il pairing non cambia', async () => {
+  const DATA = require('../../data/strings.json');
+  const st = JSON.stringify({ v: 2, equipped: { id: DATA.defaults.equipped.id, kg: DATA.defaults.equipped.kg, since: '2026-10-01T10:00:00.000Z', hours0: 0 }, liked: DATA.defaults.liked, disliked: [], sessions: [],
+    lives: [{ lid: 'T1', id: ID, kg: [22.5, 21.5], from: '2026-09-01T12:00:00.000Z', to: '2026-09-20T12:00:00.000Z', hours: 11, reason: 'consumata', note: '',
+      diary: { setup: {}, meter: [], ratings: { end: { spin: 4, comfort: 2 } }, tags: ['vibra'], notes: 'Vibra dopo 5 ore', verdict: 'forse', nextKgDelta: null } }] });
+  const { page, ctx } = await openPage({ claude: STUB('ok', FULL), storage: { 'banco-corde:state': st } });
+  await openSheetFor(page, ID);
+  const before = await page.locator('#sheet-body .pair').first().innerText();
+  await page.locator('[data-ai="string"]').click();
+  await page.waitForSelector('#sheet-body .ai-box');
+  const prompt = await page.evaluate(() => window.__prompts[0]);
+  assert.match(prompt, /TUE SENSAZIONI SU QUESTA CORDA/);
+  assert.match(prompt, /opinioni, non misure/);
+  assert.match(prompt, /Vibra dopo 5 ore/);
+  assert.match(prompt, /spin 4/);
+  assert.equal(await page.locator('#sheet-body .pair').first().innerText(), before, 'i voti non cambiano il pairing');
+  await ctx.close();
+});

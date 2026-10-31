@@ -228,3 +228,75 @@ test('diario: nello storico nessun NaN e nessuno scroll orizzontale', async () =
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
   await ctx.close();
 });
+
+// ---- Task 9: prove nella scheda, laboratorio contro sensazioni, CSV ----
+const DATA = require('../../data/strings.json');
+const EQ_ID = DATA.defaults.equipped.id;
+const stateJson = (lives, extra = {}) => JSON.stringify({ v: 2, equipped: { id: EQ_ID, kg: [22.5, 21.5], since: '2026-10-01T10:00:00.000Z', hours0: 0 }, liked: DATA.defaults.liked, disliked: [], sessions: [], lives, ...extra });
+const life = (lid, id, kgv, ratings, extra = {}) => ({ lid, id, kg: [kgv, kgv - 1], from: `2026-0${(lid.length % 8) + 1}-01T12:00:00.000Z`, to: `2026-0${(lid.length % 8) + 1}-20T12:00:00.000Z`, hours: 10, reason: 'consumata', note: '', diary: { setup: {}, meter: [], ratings, tags: [], notes: '', verdict: null, nextKgDelta: null, ...extra } });
+const withSpin = DATA.strings.filter((r) => r.twu && typeof r.twu.spin_potential === 'number' && r.id !== EQ_ID);
+const bySpin = (n) => [...new Map(withSpin.map((r) => [r.twu.spin_potential, r])).values()].sort((a, b) => a.twu.spin_potential - b.twu.spin_potential).filter((_, i, a) => i % Math.floor(a.length / n) === 0).slice(0, n);
+
+test('diario: la scheda mostra «Le tue prove» per tensione, con la frase neutra', async () => {
+  const lives = [life('L1', EQ_ID, 23.5, { end: { spin: 3, control: 4 } }, { verdict: 'no' }), life('L22', EQ_ID, 22.5, { end: { spin: 4, control: 3 } }, { verdict: 'si' })];
+  const { page, ctx } = await openPage({ width: 390, height: 844, storage: { 'banco-corde:state': stateJson(lives) } });
+  await goMontata(page);
+  await page.locator('#mine-summary [data-open]').first().click();
+  await page.waitForSelector('dialog#sheet[open] .trials-sec');
+  const t = await page.innerText('#sheet-body .trials-sec');
+  assert.match(t, /Le tue prove \(2\)/);
+  assert.ok(t.indexOf('22,5') < t.indexOf('23,5'), 'ordinate per tensione');
+  assert.match(t, /a 22,5 kg: spin 4, controllo 3 · a 23,5 kg: spin 3, controllo 4/);
+  assert.match(t, /sensazioni, non misure/i);
+  assert.doesNotMatch(t, BAD);
+  assert.ok(await page.evaluate(() => document.getElementById('sheet').scrollWidth <= document.getElementById('sheet').clientWidth));
+  await ctx.close();
+});
+
+test('diario: senza prove la scheda non mostra la sezione', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844, storage: { 'banco-corde:state': stateJson([]) } });
+  await goMontata(page);
+  await page.locator('#mine-summary [data-open]').first().click();
+  await page.waitForSelector('dialog#sheet[open]');
+  assert.equal(await page.locator('#sheet-body .trials-sec').count(), 0);
+  await ctx.close();
+});
+
+test('diario: Metodo mostra il laboratorio solo con 5 corde con voti di fine vita, con n e la cautela', async () => {
+  const five = bySpin(6), ratings = [1, 2, 3, 4, 5, 5];
+  const mk = (strs) => strs.map((r, i) => life(`M${i}`, r.id, 22.5, { end: { spin: ratings[i] } }));
+  let o = await openPage({ storage: { 'banco-corde:state': stateJson(mk(five.slice(0, 4))) } });
+  await o.page.locator('[data-goto="metodo"]').first().click();
+  assert.equal(await o.page.locator('#m-sensazioni').count(), 0, 'con 4 corde non c\'è');
+  await o.ctx.close();
+  o = await openPage({ storage: { 'banco-corde:state': stateJson(mk(five)) } });
+  await o.page.locator('[data-goto="metodo"]').first().click();
+  const t = await o.page.innerText('#m-sensazioni');
+  assert.match(t, /Laboratorio contro sensazioni/);
+  assert.match(t, /Spin ↔ spin TWU/);
+  assert.match(t, /0,9\d/);
+  assert.match(t, /\b6\b/);
+  assert.match(t, /troppo poche corde per fidarsi/);
+  assert.doesNotMatch(t, BAD);
+  await o.ctx.close();
+});
+
+const DL = `(() => { window.claude = { use: async (n) => n === 'downloads' ? { save: async (r) => { window.__saved = r; return { status: 'saved' }; } } : null }; })()`;
+
+test('diario: esporta il diario in CSV solo con downloads, una riga per prova e momento', async () => {
+  const lives = [life('C1', 'solinco-confidential-16l', 22.5, { first: { spin: 4 }, end: { spin: 3 } }, { notes: 'a, "b"', tags: ['secca'] })];
+  let o = await openPage({ storage: { 'banco-corde:state': stateJson(lives) } });
+  await o.page.locator('#tab-montata').click();
+  assert.equal(await o.page.locator('#export-diary').isVisible(), false, 'senza downloads è nascosto');
+  await o.ctx.close();
+  o = await openPage({ claude: DL, storage: { 'banco-corde:state': stateJson(lives) } });
+  await o.page.locator('#tab-montata').click();
+  await o.page.locator('#export-diary').click();
+  const saved = await o.page.evaluate(() => window.__saved);
+  assert.equal(saved.filename, 'banco-corde-diario.csv');
+  const rows = saved.data.replace(/^﻿/, '').split('\r\n');
+  assert.match(rows[0], /^corda,/i);
+  assert.equal(rows.length - 1, 3, 'montata senza voti + 2 momenti della prova passata');
+  assert.match(saved.data, /"a, ""b"""/);
+  await o.ctx.close();
+});
