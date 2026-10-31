@@ -1,4 +1,4 @@
-const { openPage, bodyText, BAD, test, assert } = require('./ui.cjs');
+const { openPage, openSheetById, bodyText, BAD, test, assert } = require('./ui.cjs');
 
 const FULL = { descrizione: 'Corda reattiva con buon spin sul 16×19.', fascia: 'Buono', motivo: 'Vicina alla tua Confidential.',
   rispetto_alla_montata: { spin: { dir: 'più', fiducia: 'media' }, controllo: { dir: 'simile', fiducia: 'bassa' }, potenza: { dir: 'più', fiducia: 'bassa' }, tenuta: { dir: 'meno', fiducia: 'media' }, comfort: { dir: 'simile', fiducia: 'bassa' } },
@@ -16,7 +16,7 @@ const STUB = (mode, payload) => `(() => {
   const sample = async () => ({ text: '' }); sample.json = json;
   window.claude = { use: async (n) => (n === 'sample' ? sample : null) };
 })()`;
-const openSheetFor = async (page, id) => { await page.locator('#tab-banco').click(); await page.locator('#b-target').uncheck(); await page.locator('#b-q').fill(id.split('-').slice(0, 2).join(' ')); await page.locator(`#bank-table tr[data-id="${id}"] .rowlink`).click(); };
+const openSheetFor = (page, id) => openSheetById(page, id);
 const ID = 'toroline-o-toro-spin-17';
 
 test('ai: senza window.claude nessun pulsante né riquadro', async () => {
@@ -54,7 +54,7 @@ test('ai: il parere resta dopo aver chiuso e riaperto la scheda (ultimo parere i
   await page.locator('[data-ai="string"]').click();
   await page.waitForSelector('#sheet-body .ai-box');
   await page.locator('#sheet-close').click();
-  await page.locator(`#bank-table tr[data-id="${ID}"] .rowlink`).click();
+  await openSheetFor(page, ID);
   assert.ok(await page.locator('#sheet-body .ai-box').count());
   await ctx.close();
 });

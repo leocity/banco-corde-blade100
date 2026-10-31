@@ -2,7 +2,7 @@
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-FORBIDDEN = ["web/pairing.js", "web/choose.js", "web/map.js", "web/bank.js", "web/wear.js", "web/state.js", "web/trials.js", "web/persist.js",
+FORBIDDEN = ["web/pairing.js", "web/choose.js", "web/map.js", "web/compare.js", "web/wear.js", "web/state.js", "web/trials.js", "web/persist.js",
              "pipeline/pairing.py", "pipeline/dims.py", "pipeline/derive.py", "pipeline/estimate.py"]
 
 

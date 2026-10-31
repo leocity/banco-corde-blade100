@@ -511,3 +511,13 @@ dialog#equip-dialog .equip-form, dialog#trial-dialog .equip-form, dialog#past-di
 .dlg-foot .btn { min-height: 48px; flex: 1 1 0; }
 dialog#equip-dialog .equip-form select[size], dialog#trial-dialog .equip-form select[size] { max-height: 28vh; }
 dialog#past-dialog .dlg-body { padding: 14px 12px 8px; }
+
+/* confronto: barra compatta in basso, il pannello si apre solo al tocco */
+.tray { max-height: none; padding: 0; overflow: visible; }
+.tray.open { max-height: 58vh; overflow: auto; }
+.tray-bar { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 6px 16px; border: 0; background: var(--court); color: var(--accent-ink); font: 600 .95rem var(--font-body); text-align: left; cursor: pointer; }
+.tray-bar b { font: 700 1.05rem var(--font-display); }
+.tray-bar .chev { margin-left: auto; }
+.tray > .tray-head, .tray > .tcols, .tray > .gaps { margin-inline: 16px; }
+.tray > .tray-head { margin-top: 10px; }
+.tray > .tcols { margin-bottom: 12px; }

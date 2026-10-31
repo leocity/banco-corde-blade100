@@ -76,12 +76,16 @@ test('nav: il profilo sta nel Metodo', async () => {
   await ctx.close();
 });
 
-test('nav: nessuno scroll orizzontale e nessun NaN in nessuna schermata a 390 px', async () => {
-  const { page, ctx } = await openPage({ width: 390, height: 844 });
-  for (const tab of ['scegli', 'mappa', 'banco', 'montata']) {
-    await page.locator(`#tab-${tab}`).click();
-    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), tab);
-    assert.doesNotMatch(await page.innerText('main'), BAD, tab);
-  }
-  await ctx.close();
-});
+for (const w of [320, 360, 390]) {
+  test(`nav: nessuno scroll orizzontale e nessun NaN in nessuna schermata a ${w} px`, async () => {
+    const { page, ctx } = await openPage({ width: w, height: 760 });
+    for (const tab of ['scegli', 'mappa', 'montata']) {
+      await page.locator(`#tab-${tab}`).click();
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `${tab} a ${w}`);
+      assert.doesNotMatch(await page.innerText('main'), BAD, tab);
+    }
+    await page.locator('[data-goto="metodo"]').first().click();
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `metodo a ${w}`);
+    await ctx.close();
+  });
+}

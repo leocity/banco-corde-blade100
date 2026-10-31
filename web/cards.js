@@ -183,5 +183,5 @@ export function sheetHtml(rec, ctx) {
     + `<div class="sheet-actions">${ctx.isEquipped ? '' : `<button class="btn primary" type="button" data-equip="${id}">Monta questa</button>`}`
     + `<button class="btn icon${ctx.pref === 'liked' ? ' on' : ''}" type="button" data-like="${id}" aria-pressed="${ctx.pref === 'liked'}" aria-label="Mi piace">★</button>`
     + `<button class="btn icon${ctx.pref === 'disliked' ? ' on' : ''}" type="button" data-dislike="${id}" aria-pressed="${ctx.pref === 'disliked'}" aria-label="Non mi piace">✕</button>`
-    + `<button class="btn" type="button" data-compare="${id}">Confronta</button></div>`;
+    + `<button class="btn" type="button" data-compare="${id}" aria-pressed="${!!ctx.inCompare}">${ctx.inCompare ? '✓ In confronto' : 'Confronta'}</button></div>`;
 }

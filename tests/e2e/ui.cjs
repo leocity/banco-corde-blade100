@@ -25,9 +25,18 @@ async function openPage({ width = 1280, height = 900, claude, hasTouch = false, 
   return { page, ctx, errors };
 }
 const bodyText = (page) => page.innerText('body');
+// Apre la scheda di una corda dalla ricerca di Scegli (con il nome, non serve conoscere la posizione in lista)
+async function openSheetById(page, id) {
+  const name = await page.evaluate((i) => { const r = window.STRINGS_DATA.strings.find((x) => x.id === i); return `${r.brand} ${r.model}`; }, id);
+  await page.locator('#tab-scegli').click();
+  await page.locator('#q').fill(name);
+  for (let k = 0; k < 6 && !(await page.locator(`#list [data-open="${id}"]`).count()); k++) { if (await page.locator('#more').isVisible()) await page.locator('#more').click(); else break; }
+  await page.locator(`#list [data-open="${id}"]`).first().click();
+  await page.waitForSelector('dialog#sheet[open]');
+}
 const stateOf = (page) => page.evaluate(() => JSON.parse(localStorage.getItem('banco-corde:state') || 'null'));
-module.exports = { openPage, bodyText, stateOf, BAD, test, assert };
+module.exports = { openPage, openSheetById, bodyText, stateOf, BAD, test, assert };
 
 if (require.main === module) {
-  for (const f of ['scegli', 'banco', 'montata', 'mappa', 'ai', 'sheet', 'nav', 'diario']) require(`./${f}.cjs`);
+  for (const f of ['scegli', 'compare', 'montata', 'mappa', 'ai', 'sheet', 'nav', 'diario']) require(`./${f}.cjs`);
 }

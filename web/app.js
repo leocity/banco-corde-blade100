@@ -7,7 +7,7 @@ import { sheetHtml } from './cards.js';
 import { renderChoose, initChoose, renderStrip } from './choose.js';
 import { wearStatus, lifeEstimate } from './wear.js';
 import { initAi, aiAvailable, aiCachedHtml } from './ai.js';
-import { renderBank, initBank } from './bank.js';
+import { initCompare, comparePicks } from './compare.js';
 import { renderMine, initMine, renderPersistNote } from './mine.js';
 import { initDiary } from './diaryui.js';
 import { renderMap, initMap } from './map.js';
@@ -16,8 +16,8 @@ import { renderMethod } from './method.js';
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
-const TABS = ['scegli', 'mappa', 'banco', 'montata', 'metodo'];
-const RENDERERS = { scegli: renderChoose, banco: renderBank, montata: renderMine, mappa: renderMap, metodo: renderMethod };
+const TABS = ['scegli', 'mappa', 'montata', 'metodo'];
+const RENDERERS = { scegli: renderChoose, montata: renderMine, mappa: renderMap, metodo: renderMethod };
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -38,7 +38,7 @@ const wear = () => wearStatus({ state, tenuta: tenutaOf(state.equipped.id), tenu
 function cardCtx(r, extra = {}) {
   return { pairing: pairingOf(r.id), pref: state.liked.includes(r.id) ? 'liked' : state.disliked.includes(r.id) ? 'disliked' : null,
     equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: lifeFor(r), ai: aiAvailable(), aiCachedHtml: aiAvailable() ? aiCachedHtml(r.id) : '',
-    nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), trials: trialsForString(trialsOf(state), r.id), ...extra };
+    nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), trials: trialsForString(trialsOf(state), r.id), inCompare: comparePicks().includes(r.id), ...extra };
 }
 
 const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state), wear, tenutaOf,
@@ -50,6 +50,11 @@ function renderSyncBadge() {
   const b = $('#sync-badge'), t = SYNC_TEXT[persist ? persist.status : 'pending'];
   b.innerHTML = t ? `<span class="dot">${t[0]}</span> <span class="t">${t[1]}</span>` : ''; b.className = `sync ${t ? t[2] : ''}`; b.title = persist && persist.lastError ? persist.lastError : (t ? t[1] : '');
 }
+// L'altezza vera della barra in basso (cambia con font e area sicura): serve a tutto ciò che sta sopra di essa
+const navEl = document.querySelector('.tabs');
+const syncNavH = () => { if (navEl && getComputedStyle(navEl).position === 'fixed') document.documentElement.style.setProperty('--nav-h', `${Math.ceil(navEl.getBoundingClientRect().height)}px`); };
+if (navEl && window.ResizeObserver) new ResizeObserver(syncNavH).observe(navEl);
+syncNavH();
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {
   $('#toast').hidden = true; // un annulla con una foto vecchia dello stato cancellerebbe questa modifica
@@ -92,7 +97,7 @@ document.addEventListener('click', (e) => {
 });
 
 initChoose(ctx);
-initBank(ctx);
+initCompare(ctx);
 initMine(ctx);
 initDiary(ctx);
 initMap(ctx);

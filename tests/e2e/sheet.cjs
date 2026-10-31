@@ -1,16 +1,11 @@
-const { openPage, BAD, test, assert } = require('./ui.cjs');
-
-const goBancoPhone = async (page) => { await page.locator('#tab-banco').click(); await page.waitForSelector('#bank-cards .crow2wrap'); };
+const { openPage, openSheetById, BAD, test, assert } = require('./ui.cjs');
 
 test('scheda a 390 px: Monta questa sempre visibile, tessere, nessuna etichetta sovrapposta', async () => {
   const { page, ctx, errors } = await openPage({ width: 390, height: 844, hasTouch: true });
-  await goBancoPhone(page);
-  const ids = await page.$$eval('#bank-cards .crow2wrap', (els) => els.slice(0, 40).filter((_, i) => i % 8 === 1).map((e) => e.dataset.id));
+  const ids = await page.evaluate(() => window.STRINGS_DATA.strings.filter((r) => r.is_target).filter((_, i) => i % 9 === 1).map((r) => r.id));
   assert.ok(ids.length >= 4);
   for (const id of ids) {
-    await page.locator(`#bank-cards .crow2wrap[data-id="${id}"] .crow2`).first().scrollIntoViewIfNeeded();
-    await page.locator(`#bank-cards .crow2wrap[data-id="${id}"] .crow2`).tap();
-    await page.waitForSelector('dialog#sheet[open]');
+    await openSheetById(page, id);
     const y0 = await page.evaluate(() => Math.round(scrollY)); // il tocco può far scorrere la pagina: si confronta da scheda aperta a scheda chiusa
     assert.equal(await page.locator('#sheet-body .tile').count(), 3, id);
     const equip = await page.locator('#sheet-body .sheet-actions button').first().boundingBox();
@@ -35,8 +30,7 @@ test('scheda a 390 px: Monta questa sempre visibile, tessere, nessuna etichetta 
 
 test('scheda: il pulsante di chiusura resta in vista scorrendo la scheda, Esc chiude', async () => {
   const { page, ctx } = await openPage({ width: 390, height: 844, hasTouch: true });
-  await goBancoPhone(page);
-  await page.locator('#bank-cards .crow2').first().tap();
+  await page.locator('#top3 [data-open]').first().tap();
   await page.waitForSelector('dialog#sheet[open]');
   await page.evaluate(() => { document.querySelector('dialog#sheet').scrollTop = 600; });
   const c = await page.locator('#sheet-close').boundingBox();
@@ -48,10 +42,7 @@ test('scheda: il pulsante di chiusura resta in vista scorrendo la scheda, Esc ch
 
 test('scheda: le sezioni sono chiuse tranne recensioni in conflitto, e si aprono con un tocco', async () => {
   const { page, ctx } = await openPage({ width: 390, height: 844, hasTouch: true });
-  await goBancoPhone(page);
-  await page.locator('#b-q').fill('RPM Blast');
-  await page.locator('#bank-cards .crow2wrap[data-id="babolat-rpm-blast-17"] .crow2').tap();
-  await page.waitForSelector('dialog#sheet[open]');
+  await openSheetById(page, 'babolat-rpm-blast-17');
   assert.equal(await page.locator('#sheet-body details.reviews-sec').evaluate((d) => d.open), true);
   assert.match(await page.innerText('#sheet-body details.reviews-sec'), /I tester dicono/);
   assert.equal(await page.locator('#sheet-body details.lab-sec').evaluate((d) => d.open), false);
@@ -69,7 +60,7 @@ test('scheda: Monta questa dal telefono porta al cambio corda', async () => {
   await ctx.close();
 });
 
-const openBancoSheet = async (page, id, q) => { await page.locator('#tab-banco').click(); await page.locator('#b-target').uncheck(); await page.locator('#b-q').fill(q); await page.locator(`#bank-table tr[data-id="${id}"] .rowlink`).click(); await page.waitForSelector('dialog#sheet[open]'); };
+const openBancoSheet = async (page, id) => openSheetById(page, id);
 
 test('metodo: controllo e potenza vengono solo dai tester, nessun indice di controllo', async () => {
   const { page, ctx } = await openPage();

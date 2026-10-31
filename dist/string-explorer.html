@@ -517,6 +517,16 @@ dialog#equip-dialog .equip-form, dialog#trial-dialog .equip-form, dialog#past-di
 dialog#equip-dialog .equip-form select[size], dialog#trial-dialog .equip-form select[size] { max-height: 28vh; }
 dialog#past-dialog .dlg-body { padding: 14px 12px 8px; }
 
+/* confronto: barra compatta in basso, il pannello si apre solo al tocco */
+.tray { max-height: none; padding: 0; overflow: visible; }
+.tray.open { max-height: 58vh; overflow: auto; }
+.tray-bar { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 6px 16px; border: 0; background: var(--court); color: var(--accent-ink); font: 600 .95rem var(--font-body); text-align: left; cursor: pointer; }
+.tray-bar b { font: 700 1.05rem var(--font-display); }
+.tray-bar .chev { margin-left: auto; }
+.tray > .tray-head, .tray > .tcols, .tray > .gaps { margin-inline: 16px; }
+.tray > .tray-head { margin-top: 10px; }
+.tray > .tcols { margin-bottom: 12px; }
+
 </style>
 
 <div class="wrap">
@@ -543,7 +553,6 @@ dialog#past-dialog .dlg-body { padding: 14px 12px 8px; }
   <nav class="tabs" role="tablist" aria-label="Sezioni">
     <button role="tab" id="tab-scegli" data-tab="scegli" aria-selected="true"><span class="ico" aria-hidden="true">★</span>Scegli</button>
     <button role="tab" id="tab-mappa" data-tab="mappa" aria-selected="false"><span class="ico" aria-hidden="true">◫</span>Mappa</button>
-    <button role="tab" id="tab-banco" data-tab="banco" aria-selected="false"><span class="ico" aria-hidden="true">☰</span>Banco</button>
     <button role="tab" id="tab-montata" data-tab="montata" aria-selected="false"><span class="ico" aria-hidden="true">◴</span>Montata</button>
   </nav>
 
@@ -604,23 +613,6 @@ dialog#past-dialog .dlg-body { padding: 14px 12px 8px; }
       <details class="advanced" id="map-table"><summary>Vedi come tabella</summary><div class="table-scroll"><table class="data" id="map-table-body"></table></div></details>
     </section>
 
-    <section id="banco" class="panel" role="tabpanel" aria-labelledby="tab-banco" hidden>
-      <div class="section-head"><h2>Il banco</h2><p class="muted small">Tutte le corde con i valori affiancati. Spunta da 2 a 4 corde per confrontarle. ● misurato · ◐ stimato · ○ manca.</p></div>
-      <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="b-q" placeholder="Cerca: Hyper-G, Toro, Zero…"></label>
-      <div class="chips" id="b-chips" role="group" aria-label="Filtra per marca"></div>
-      <div class="controls">
-        <label>Calibro <select id="b-gauge"><option value="">Tutti</option></select></label>
-        <label>Forma <select id="b-shape"><option value="">Tutte</option></select></label>
-        <label class="toggle"><input type="checkbox" id="b-target" checked> Solo le marche che stai valutando</label>
-        <label class="toggle"><input type="checkbox" id="b-measured"> Solo dati misurati</label>
-        <label class="toggle"><input type="checkbox" id="b-good"> Pairing Buono o meglio</label>
-      </div>
-      <p class="muted small" id="b-count"></p>
-      <p class="small gaps" id="cmp-msg" role="status"></p>
-      <div class="table-scroll bank-table"><table class="data" id="bank-table"></table></div>
-      <div class="list bank-cards" id="bank-cards"></div>
-      <button class="btn" type="button" id="b-more" hidden>Mostra altre</button>
-    </section>
     <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden>
       <div class="section-head"><h2>La tua corda montata</h2></div>
       <div id="mine-summary"></div>
@@ -1614,7 +1606,7 @@ function sheetHtml(rec, ctx) {
     + `<div class="sheet-actions">${ctx.isEquipped ? '' : `<button class="btn primary" type="button" data-equip="${id}">Monta questa</button>`}`
     + `<button class="btn icon${ctx.pref === 'liked' ? ' on' : ''}" type="button" data-like="${id}" aria-pressed="${ctx.pref === 'liked'}" aria-label="Mi piace">★</button>`
     + `<button class="btn icon${ctx.pref === 'disliked' ? ' on' : ''}" type="button" data-dislike="${id}" aria-pressed="${ctx.pref === 'disliked'}" aria-label="Non mi piace">✕</button>`
-    + `<button class="btn" type="button" data-compare="${id}">Confronta</button></div>`;
+    + `<button class="btn" type="button" data-compare="${id}" aria-pressed="${!!ctx.inCompare}">${ctx.inCompare ? '✓ In confronto' : 'Confronta'}</button></div>`;
 }
 
 // Valutatore di usura: ore giocate / vita attesa. La vita attesa di partenza è un'ipotesi non misurata (spec §9).
@@ -1977,67 +1969,10 @@ function initChoose(ctx) {
   $('#more').addEventListener('click', () => { chooseFilters.limit += 12; renderChoose(ctx); });
 }
 
-// Schermata Banco: tabella (o schede su telefono) con filtri e ordinamento, e pannello di confronto da 2 a 4 corde.
+// Confronto da 2 a 4 corde: si aggiunge dalla scheda («Confronta»), il pannello sta in basso.
 
 
 
-
-
-const bankFilters = newFilters();
-const bankView = { key: 'pairing', dir: -1, limit: 40, picks: [] };
-const BANK_COLS = [['name', 'Corda'], ['spin', 'Spin'], ['stiffness', 'Rigidità'], ['durability', 'Tenuta'], ['pairing', 'Pairing']];
-const BANK_MAX = 4;
-const bankPhone = () => window.matchMedia('(max-width: 760px)').matches;
-
-function bankSortValue(ctx, r, key) {
-  switch (key) {
-    case 'name': return nameOf(r);
-    case 'spin': return r.spin ? r.spin.value : null;
-    case 'stiffness': return r.stiffness ? r.stiffness.value_lbin : null;
-    case 'durability': return r.derived.dims.durability;
-    default: { const s = ctx.pairingOf(r.id).score; return s === undefined ? null : s; }
-  }
-}
-
-function bankRows(ctx) {
-  const k = bankView.key;
-  return ctx.ALL.filter((r) => passesFilters(ctx, r, bankFilters)).sort((a, b) => {
-    const va = bankSortValue(ctx, a, k), vb = bankSortValue(ctx, b, k);
-    if ((va === null || va === undefined) && (vb === null || vb === undefined)) return 0;
-    if (va === null || va === undefined) return 1;
-    if (vb === null || vb === undefined) return -1;
-    return (typeof va === 'string' ? va.localeCompare(vb) : va - vb) * bankView.dir;
-  });
-}
-
-const cmpBox = (r) => `<input type="checkbox" class="cmp" data-id="${esc(r.id)}" aria-label="Confronta ${esc(fullName(r))}"${bankView.picks.includes(r.id) ? ' checked' : ''}>`;
-
-function bankTable(ctx, rows) {
-  const head = `<thead><tr><th><span class="sr">Confronta</span></th>${BANK_COLS.map(([k, l]) => `<th class="${k === 'name' ? '' : 'n'}" aria-sort="${k === bankView.key ? (bankView.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-sort="${k}">${esc(l)}${k === bankView.key ? (bankView.dir > 0 ? ' ▲' : ' ▼') : ''}</button></th>`).join('')}</tr></thead>`;
-  const body = rows.map((r) => {
-    const v = Object.fromEntries(rowValues(r).map((x) => [x.key, x]));
-    const cell = (x) => `<td class="v ${x.mark}"><span class="mark" title="${esc(x.note || x.why || '')}">${MARK[x.mark]}</span>${esc(x.text)}</td>`;
-    return `<tr data-id="${esc(r.id)}"><td>${cmpBox(r)}</td><td><button type="button" class="rowlink" data-open="${esc(r.id)}">${esc(nameOf(r))}</button> <span class="muted small block">${esc(subline(r))}</span></td>`
-      + `${cell(v.spin)}${cell(v.stiffness)}${cell(v.durability)}<td>${pairHtml(ctx.cardCtx(r))}</td></tr>`;
-  }).join('');
-  return `${head}<tbody>${body}</tbody>`;
-}
-
-function renderBank(ctx) {
-  const brands = [...new Set(ctx.ALL.filter((r) => !bankFilters.target || r.is_target).map((r) => r.brand))].sort();
-  $('#b-chips').innerHTML = brands.map((b) => `<button type="button" class="chipbtn" data-brand="${esc(b)}" aria-pressed="${bankFilters.brand === b}">${esc(b)}</button>`).join('');
-  const rows = bankRows(ctx), shown = rows.slice(0, bankView.limit);
-  $('#b-count').textContent = `${rows.length} corde${rows.length > shown.length ? `, ne mostro ${shown.length}` : ''}.`;
-  if (bankPhone()) {
-    $('#bank-table').innerHTML = '';
-    $('#bank-cards').innerHTML = shown.map((r) => compactRowHtml(r, ctx.cardCtx(r, { after: `<label class="cmp-pick2">${cmpBox(r)}<span>Confronta</span></label>` }))).join('');
-  } else {
-    $('#bank-cards').innerHTML = '';
-    $('#bank-table').innerHTML = bankTable(ctx, shown);
-  }
-  $('#b-more').hidden = rows.length <= shown.length;
-  renderTray(ctx);
-}
 
 function compareSummary(a, b) {
   const gain = [], lose = [];
@@ -2053,10 +1988,22 @@ function compareSummary(a, b) {
   return head + (!gain.length && !lose.length ? 'il profilo resta simile.' : `${[gain.length ? `guadagni ${join(gain)}` : '', lose.length ? `perdi ${join(lose)}` : ''].filter(Boolean).join(' e ')}.`) + stiff;
 }
 
+const comparePicks = () => cmpState.picks;
+const cmpState = { picks: [], msg: '', open: false };
+const CMP_MAX = 4;
+
 function renderTray(ctx) {
-  const picks = bankView.picks.map((id) => ctx.BY_ID[id]).filter(Boolean);
-  $('#tray').hidden = picks.length < 2;
-  if (picks.length < 2) { $('#tray').innerHTML = ''; return; }
+  const picks = cmpState.picks.map((id) => ctx.BY_ID[id]).filter(Boolean);
+  $('#tray').hidden = picks.length < 1;
+  $('#tray').classList.toggle('open', cmpState.open && picks.length >= 1);
+  if (picks.length < 1) { $('#tray').innerHTML = ''; cmpState.open = false; return; }
+  // barra compatta (una riga); il confronto si apre solo se lo tocchi, così non copre la lista
+  const bar = `<button type="button" class="tray-bar" id="tray-toggle" aria-expanded="${cmpState.open}"><b>Confronto</b><span>${picks.length} ${picks.length === 1 ? 'corda' : 'corde'}${picks.length < 2 ? ' · aggiungine un\'altra' : ''}</span><span class="chev" aria-hidden="true">${cmpState.open ? '▼' : '▲'}</span></button>`;
+  if (!cmpState.open) { $('#tray').innerHTML = bar + (cmpState.msg ? `<p class="gaps">${esc(cmpState.msg)}</p>` : ''); return; }
+  if (picks.length < 2) {
+    $('#tray').innerHTML = `${bar}<div class="tray-head"><p class="summary">${esc(nameOf(picks[0]))} è nel confronto: apri un'altra corda e tocca «Confronta».</p><button class="btn" type="button" id="cmp-clear">Svuota</button></div>`;
+    return;
+  }
   const first = picks[0];
   const cols = picks.map((r, i) => `<div class="tcol"><p><i class="sw" style="background:var(--s-c${i + 1})"></i> <b class="scard-name">${esc(nameOf(r))}</b> <span class="muted small">${esc(subline(r))}</span></p>${pairHtml(ctx.cardCtx(r))}`
     + `<div class="vals">${rowValues(r).map(valHtml).join('')}</div>${i ? (() => { const d = deltaVsEquipped(r, first).text; return d ? `<p class="delta">rispetto alla prima: <b>${esc(d)}</b></p>` : ''; })() : ''}`
@@ -2066,42 +2013,28 @@ function renderTray(ctx) {
     const label = { spin: 'spin', stiffness: 'rigidità', durability: 'tenuta' }[k];
     return who.length ? `${label} (manca per ${who.map(esc).join(', ')})` : '';
   }).filter(Boolean);
-  $('#tray').innerHTML = `<div class="tray-head"><b>Confronto</b><p class="summary">${compareSummary(first, picks[1])}${gaps.length ? ` <span class="gaps">⚠ Non confrontabili per dati mancanti: ${gaps.join('; ')}.</span>` : ''}</p><button class="btn" type="button" id="cmp-clear">Azzera</button></div><div class="tcols">${cols}</div>`;
+  $('#tray').innerHTML = `${bar}<div class="tray-head">${cmpState.msg ? `<p class="gaps">${esc(cmpState.msg)}</p>` : ''}<p class="summary">${compareSummary(first, picks[1])}${gaps.length ? ` <span class="gaps">⚠ Non confrontabili per dati mancanti: ${gaps.join('; ')}.</span>` : ''}</p><button class="btn" type="button" id="cmp-clear">Azzera</button></div><div class="tcols">${cols}</div>`;
 }
 
-function initBank(ctx) {
-  const gauges = [...new Set(ctx.ALL.map((r) => r.gauge_label).filter(Boolean))].sort();
-  $('#b-gauge').insertAdjacentHTML('beforeend', gauges.map((g) => `<option>${esc(g)}</option>`).join(''));
-  const shapes = [...new Set(ctx.ALL.map((r) => r.shape).filter(Boolean))].sort();
-  $('#b-shape').insertAdjacentHTML('beforeend', shapes.map((x) => `<option value="${esc(x)}">${esc(SHAPES[x] || x)}</option>`).join(''));
-  const redo = () => { bankView.limit = 40; renderBank(ctx); };
-  $('#b-q').addEventListener('input', (e) => { bankFilters.q = e.target.value; redo(); });
-  $('#b-gauge').addEventListener('change', (e) => { bankFilters.gauge = e.target.value; redo(); });
-  $('#b-shape').addEventListener('change', (e) => { bankFilters.shape = e.target.value; redo(); });
-  $('#b-target').addEventListener('change', (e) => { bankFilters.target = e.target.checked; redo(); });
-  $('#b-measured').addEventListener('change', (e) => { bankFilters.measured = e.target.checked; redo(); });
-  $('#b-good').addEventListener('change', (e) => { bankFilters.good = e.target.checked; redo(); });
-  $('#b-chips').addEventListener('click', (e) => { const b = e.target.closest('[data-brand]'); if (b) { bankFilters.brand = bankFilters.brand === b.dataset.brand ? '' : b.dataset.brand; redo(); } });
-  $('#b-more').addEventListener('click', () => { bankView.limit += 40; renderBank(ctx); });
-  $('#banco').addEventListener('click', (e) => {
-    const s = e.target.closest('[data-sort]');
-    if (s) { if (bankView.key === s.dataset.sort) bankView.dir = -bankView.dir; else { bankView.key = s.dataset.sort; bankView.dir = s.dataset.sort === 'name' ? 1 : -1; } renderBank(ctx); }
+
+function toggleCompare(ctx, id) {
+  const has = cmpState.picks.includes(id);
+  if (has) cmpState.picks = cmpState.picks.filter((x) => x !== id);
+  else if (cmpState.picks.length >= CMP_MAX) { cmpState.msg = `Al massimo ${CMP_MAX} corde: togline una dal confronto.`; renderTray(ctx); return false; }
+  else cmpState.picks = [...cmpState.picks, id];
+  cmpState.msg = '';
+  renderTray(ctx);
+  return !has;
+}
+
+function initCompare(ctx) {
+  document.addEventListener('click', (e) => {
+    const c = e.target.closest('[data-compare]');
+    if (c) { const added = toggleCompare(ctx, c.dataset.compare); const d = $('#sheet'); if (added && d && d.open) d.close(); return; }
+    if (e.target.closest('#tray-toggle')) { cmpState.open = !cmpState.open; renderTray(ctx); return; }
+    const u = e.target.closest('[data-uncmp]'); if (u) { cmpState.picks = cmpState.picks.filter((x) => x !== u.dataset.uncmp); renderTray(ctx); return; }
+    if (e.target.closest('#cmp-clear')) { cmpState.picks = []; cmpState.open = false; renderTray(ctx); }
   });
-  $('#banco').addEventListener('change', (e) => {
-    const c = e.target.closest('input.cmp'); if (!c) return;
-    const id = c.dataset.id;
-    if (c.checked) {
-      if (bankView.picks.length >= BANK_MAX) { c.checked = false; $('#cmp-msg').textContent = `Al massimo ${BANK_MAX} corde nel confronto: togline una per aggiungerne un'altra.`; return; }
-      bankView.picks.push(id);
-    } else bankView.picks = bankView.picks.filter((x) => x !== id);
-    $('#cmp-msg').textContent = '';
-    renderTray(ctx);
-  });
-  $('#tray').addEventListener('click', (e) => {
-    if (e.target.closest('#cmp-clear')) { bankView.picks = []; $('#cmp-msg').textContent = ''; renderBank(ctx); return; }
-    const u = e.target.closest('[data-uncmp]'); if (u) { bankView.picks = bankView.picks.filter((x) => x !== u.dataset.uncmp); renderBank(ctx); }
-  });
-  window.matchMedia('(max-width: 760px)').addEventListener('change', () => renderBank(ctx));
 }
 
 // Interfaccia del diario di prova: voti 1–5 in tre momenti, tag, note, verdetto, setup e tensiometro.
@@ -2690,8 +2623,8 @@ function renderMethod(ctx) {
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
-const TABS = ['scegli', 'mappa', 'banco', 'montata', 'metodo'];
-const RENDERERS = { scegli: renderChoose, banco: renderBank, montata: renderMine, mappa: renderMap, metodo: renderMethod };
+const TABS = ['scegli', 'mappa', 'montata', 'metodo'];
+const RENDERERS = { scegli: renderChoose, montata: renderMine, mappa: renderMap, metodo: renderMethod };
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -2712,7 +2645,7 @@ const wear = () => wearStatus({ state, tenuta: tenutaOf(state.equipped.id), tenu
 function cardCtx(r, extra = {}) {
   return { pairing: pairingOf(r.id), pref: state.liked.includes(r.id) ? 'liked' : state.disliked.includes(r.id) ? 'disliked' : null,
     equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: lifeFor(r), ai: aiAvailable(), aiCachedHtml: aiAvailable() ? aiCachedHtml(r.id) : '',
-    nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), trials: trialsForString(trialsOf(state), r.id), ...extra };
+    nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), trials: trialsForString(trialsOf(state), r.id), inCompare: comparePicks().includes(r.id), ...extra };
 }
 
 const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state), wear, tenutaOf,
@@ -2724,6 +2657,11 @@ function renderSyncBadge() {
   const b = $('#sync-badge'), t = SYNC_TEXT[persist ? persist.status : 'pending'];
   b.innerHTML = t ? `<span class="dot">${t[0]}</span> <span class="t">${t[1]}</span>` : ''; b.className = `sync ${t ? t[2] : ''}`; b.title = persist && persist.lastError ? persist.lastError : (t ? t[1] : '');
 }
+// L'altezza vera della barra in basso (cambia con font e area sicura): serve a tutto ciò che sta sopra di essa
+const navEl = document.querySelector('.tabs');
+const syncNavH = () => { if (navEl && getComputedStyle(navEl).position === 'fixed') document.documentElement.style.setProperty('--nav-h', `${Math.ceil(navEl.getBoundingClientRect().height)}px`); };
+if (navEl && window.ResizeObserver) new ResizeObserver(syncNavH).observe(navEl);
+syncNavH();
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {
   $('#toast').hidden = true; // un annulla con una foto vecchia dello stato cancellerebbe questa modifica
@@ -2766,7 +2704,7 @@ document.addEventListener('click', (e) => {
 });
 
 initChoose(ctx);
-initBank(ctx);
+initCompare(ctx);
 initMine(ctx);
 initDiary(ctx);
 initMap(ctx);
