@@ -1,6 +1,6 @@
 // Parere AI su richiesta: costruzione del prompt (con le descrizioni), validazione della risposta e gestione degli errori.
-// Parte pura; il collegamento all'interfaccia (initAi) è nel Task 17. Il parere non entra mai in punteggi, top 3, mappa o confronto.
-import { fmt, fmtN, fullName, SHAPES } from './format.js';
+// Il parere non entra mai in punteggi, top 3, mappa o confronto. Le funzioni pure sono testate in ai.test.mjs; initAi collega i pulsanti.
+import { $, esc, fmt, fmtN, fullName, SHAPES } from './format.js';
 import { rowValues } from './values.js';
 import { pairingReason } from './pairing.js';
 
@@ -109,4 +109,97 @@ export function opinionErrorText(code) {
   if (code === 'cancelled') return 'Richiesta annullata.';
   if (['invalid_opinion', 'invalid_json', 'empty_completion', 'refused'].includes(code)) return 'Parere non utilizzabile, riprova.';
   return 'Il parere AI non è disponibile ora, riprova più tardi.';
+}
+
+const AI_CMP_LABEL = { spin: 'spin', controllo_potenza: 'controllo ◄► potenza', tenuta: 'tenuta', comfort: 'comfort' };
+
+// HTML del parere: ogni testo passa da esc(), quindi anche una risposta con markup resta testo.
+export function opinionHtml(v, kind, when) {
+  const p = (cls, html) => (html ? `<p class="${cls}">${html}</p>` : '');
+  const parts = [`<p class="ai-label">${esc(OPINION_MARK)}</p>`];
+  if (kind === 'wear') {
+    parts.push(p('', `<b>${esc(v.stato)}</b> — ${esc(v.valutazione)}`), p('', v.consiglio ? `<b>Consiglio:</b> ${esc(v.consiglio)}` : ''));
+  } else {
+    const cmp = Object.entries(v.rispetto_alla_montata || {}).map(([k, e]) => `${AI_CMP_LABEL[k]} ${esc(e.dir)} <span class="muted">(${esc(e.fiducia)})</span>`).join(' · ');
+    parts.push(p('', esc(v.descrizione)), p('', `<b>Fascia: ${esc(v.fascia)}</b>${v.motivo ? ` — ${esc(v.motivo)}` : ''}`), p('', cmp ? `<b>Rispetto alla tua montata:</b> ${cmp}` : ''),
+      p('', v.uso_nel_tempo ? `<b>Uso nel tempo:</b> ${esc(v.uso_nel_tempo)}` : ''), p('', v.tensione_kg ? `<b>Tensione:</b> ${fmt(v.tensione_kg[0], 1)}/${fmt(v.tensione_kg[1], 1)} kg` : ''),
+      p('', v.rischi.length ? `<b>Rischi:</b> ${v.rischi.map(esc).join('; ')}` : ''), p('', v.dati_mancanti.length ? `<b>Dati mancanti:</b> ${v.dati_mancanti.map(esc).join('; ')}` : ''),
+      p('', v.conflitti.length ? `<b>Dove le descrizioni contraddicono i dati:</b> ${v.conflitti.map(esc).join('; ')}` : ''));
+  }
+  const date = when ? ` · ${when.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' })}` : '';
+  return `<div class="ai-box">${parts.join('')}<p class="muted small">Fiducia: ${esc(v.fiducia)}${date}. È un parere, non una misura.</p></div>`;
+}
+
+// ---------- interfaccia ----------
+let aiSample = null, aiBusy = false, aiCtl = null;
+const AI_KEY = 'banco-corde:ai:';
+export const aiAvailable = () => aiSample !== null;
+
+export function aiCachedHtml(id) {
+  try {
+    const raw = localStorage.getItem(AI_KEY + id);
+    if (!raw) return '';
+    const o = JSON.parse(raw), v = validateOpinion(o.value, 'string');
+    return v.ok ? opinionHtml(v.value, 'string', new Date(o.at)) : '';
+  } catch { return ''; }
+}
+function aiStore(id, value) { try { localStorage.setItem(AI_KEY + id, JSON.stringify({ value, at: new Date().toISOString() })); } catch { /* archivio non disponibile */ } }
+
+function aiBase(ctx) {
+  const s = ctx.state(), eq = ctx.equippedRec();
+  return { equipped: { rec: eq, pairing: ctx.pairingOf(eq.id), kg: s.equipped.kg, hours: ctx.hours() },
+    refs: s.liked.filter((id) => ctx.BY_ID[id]).map((id) => ({ rec: ctx.BY_ID[id], pairing: ctx.pairingOf(id), pref: 'liked' })) };
+}
+
+// Una richiesta alla volta, solo su clic. Le uscite si cercano di nuovo a fine richiesta: la scheda può essere stata ridisegnata.
+async function aiRun(ctx, o) {
+  if (aiBusy || !aiSample) return;
+  aiBusy = true; aiCtl = new AbortController();
+  const out = () => document.querySelector(o.out), btn = () => document.querySelector(o.btn);
+  if (btn()) btn().disabled = true;
+  if (out()) out().innerHTML = '<p class="ai-wait"><span>Sto pensando…</span> <button type="button" class="btn ai-stop">Annulla</button></p>';
+  let locked = false;
+  try {
+    const { value } = await askOpinion(aiSample, o.args(), { signal: aiCtl.signal });
+    if (o.cacheId) aiStore(o.cacheId, value);
+    if (out()) out().innerHTML = opinionHtml(value, o.kind, new Date());
+  } catch (e) {
+    const code = e && e.code;
+    if (out()) out().textContent = opinionErrorText(code);
+    if (code === 'not_granted') {
+      aiSample = null;
+      document.querySelectorAll('[data-ai], #ai-wear').forEach((b) => b.remove());
+      $('#ai-new').hidden = true; $('#ai-wear-box').hidden = true;
+    }
+    if (code === 'rate_limited') { locked = true; setTimeout(() => { if (btn()) btn().disabled = false; }, 10000); }
+  } finally {
+    aiBusy = false; aiCtl = null;
+    if (!locked && btn()) btn().disabled = false;
+  }
+}
+
+export function initAi(ctx) {
+  const ready = () => { window.__aiReady = true; };
+  if (!window.claude) ready();
+  else Promise.resolve(window.claude.use('sample')).then((s) => { if (s) { aiSample = s; $('#ai-new').hidden = false; $('#ai-wear-box').hidden = false; ctx.refresh(); } }).catch(() => {}).then(ready);
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.ai-stop')) { if (aiCtl) aiCtl.abort(); return; }
+    const b = e.target.closest('[data-ai="string"]');
+    if (b) {
+      const id = b.dataset.aiId, r = ctx.BY_ID[id];
+      aiRun(ctx, { kind: 'string', btn: `[data-ai="string"][data-ai-id="${id}"]`, out: `[data-ai-out="${id}"]`, cacheId: id,
+        args: () => ({ kind: 'string', ...aiBase(ctx), candidate: { rec: r, pairing: ctx.pairingOf(id), tension: ctx.cardCtx(r).tension } }) });
+      return;
+    }
+    if (e.target.closest('#ai-new-go')) {
+      const name = $('#ai-new-name').value.trim();
+      if (!name) { $('#ai-new-out').textContent = 'Scrivi almeno il nome della corda.'; return; }
+      aiRun(ctx, { kind: 'string', btn: '#ai-new-go', out: '#ai-new-out', args: () => ({ kind: 'string', ...aiBase(ctx), candidate: null, pasted: { name, gauge: $('#ai-new-gauge').value, text: $('#ai-pasted').value } }) });
+      return;
+    }
+    if (e.target.closest('#ai-wear')) {
+      aiRun(ctx, { kind: 'wear', btn: '#ai-wear', out: '#ai-wear-out',
+        args: () => { const w = ctx.wear(); return { kind: 'wear', ...aiBase(ctx), wear: { hours: w.hours, days: w.daysSince, perWeek: w.perWeek, band: w.band, life: w.life, note: $('#ai-wear-note').value } }; } });
+    }
+  });
 }

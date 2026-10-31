@@ -5,6 +5,7 @@ import { createPersistence } from './persist.js';
 import { sheetHtml } from './cards.js';
 import { renderChoose, initChoose, renderStrip } from './choose.js';
 import { wearStatus, lifeEstimate } from './wear.js';
+import { initAi, aiAvailable, aiCachedHtml } from './ai.js';
 import { renderBank, initBank } from './bank.js';
 import { renderMine, initMine } from './mine.js';
 import { renderMap, initMap } from './map.js';
@@ -33,13 +34,13 @@ const lifeFor = (r) => lifeEstimate(tenutaOf(r.id), state.lives, r.id, tenutaOf)
 const wear = () => wearStatus({ state, tenuta: tenutaOf(state.equipped.id), tenutaOf, now: new Date() });
 function cardCtx(r, extra = {}) {
   return { pairing: pairingOf(r.id), pref: state.liked.includes(r.id) ? 'liked' : state.disliked.includes(r.id) ? 'disliked' : null,
-    equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: lifeFor(r),
+    equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: lifeFor(r), ai: aiAvailable(), aiCachedHtml: aiAvailable() ? aiCachedHtml(r.id) : '',
     nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), ...extra };
 }
 
 const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state), wear, tenutaOf,
   wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
-  update, openSheet, showTab, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
+  update, openSheet, showTab, refresh: () => { renderAll(); if (dlg.open && sheetId) openSheet(sheetId); }, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
 
 function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
 function update(fn) {
@@ -84,6 +85,7 @@ initChoose(ctx);
 initBank(ctx);
 initMine(ctx);
 initMap(ctx);
+initAi(ctx);
 renderMethod(ctx);
 $('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a> (${esc(DATA.guide?.twu_ref || '51 lbs')}), <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (solo rigidità statica gratuita), recensioni solo come link in ogni scheda.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
 const hashTab = (location.hash || '').slice(1);

@@ -127,6 +127,7 @@ export function sheetHtml(rec, ctx) {
     + `<p class="pair-reason">${esc(pairingReason(ctx.pairing, ctx.nameOf))} ${qBtn('pairing')}</p>${delta}</div>`
     + `${params}${tensionHtml(ctx)}${conflictsHtml(rec)}${notes ? `<details class="sheet-section" open><summary>Note dell'incordatore</summary>${notes}</details>` : ''}`
     + `${labHtml(rec, ctx)}${reviewsHtml(rec)}${crosscheckHtml(rec)}`
+    + (ctx.ai ? `<section class="sheet-section ai-section"><h3>Parere AI</h3><p class="muted small">Su richiesta, separato dai dati misurati.</p><button class="btn" type="button" data-ai="string" data-ai-id="${id}">Valuta con AI</button><div class="ai-out" data-ai-out="${id}" aria-live="polite">${ctx.aiCachedHtml || ''}</div></section>` : '')
     + `<div class="card-actions">${ctx.isEquipped ? '' : `<button class="btn primary" type="button" data-equip="${id}">Monta questa</button>`}`
     + `<button class="btn${ctx.pref === 'liked' ? ' on' : ''}" type="button" data-like="${id}" aria-pressed="${ctx.pref === 'liked'}">★ Mi piace</button>`
     + `<button class="btn${ctx.pref === 'disliked' ? ' on' : ''}" type="button" data-dislike="${id}" aria-pressed="${ctx.pref === 'disliked'}">✕ Non mi piace</button>`

@@ -361,3 +361,12 @@ dialog#equip-dialog::backdrop { background: rgb(10 16 15 / .45); }
   /* su telefono la scheda del punto è una scheda fissa in basso: non copre mai il punto toccato */
   .tip { position: fixed; left: 8px !important; right: 8px; top: auto !important; width: auto; bottom: calc(var(--nav-h) + 8px + env(safe-area-inset-bottom, 0px)); max-height: 48vh; overflow: auto; }
 }
+
+/* parere AI: sempre distinto dai dati misurati */
+.ai-box { background: var(--est-bg); border-left: 4px solid var(--est-fg); border-radius: var(--radius); padding: 10px 12px; display: grid; gap: 6px; }
+.ai-box p { margin: 0; max-width: 65ch; }
+.ai-label { font: 700 .8rem var(--font-display); letter-spacing: .1em; text-transform: uppercase; color: var(--est-fg); }
+.ai-wait { display: flex; gap: 10px; align-items: center; }
+.ai-out { display: grid; gap: 8px; }
+.ai-new { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; }
+textarea { font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--fg); width: 100%; }

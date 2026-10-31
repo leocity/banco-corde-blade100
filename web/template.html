@@ -53,6 +53,16 @@
       <p class="muted small" id="list-count"></p>
       <div class="list" id="list"></div>
       <button class="btn" type="button" id="more" hidden>Mostra altre</button>
+      <details class="ai-new" id="ai-new" hidden>
+        <summary>Valuta una corda che non c'è (parere AI)</summary>
+        <div class="equip-form">
+          <label>Nome <input id="ai-new-name" placeholder="Marca e modello"></label>
+          <label>Calibro <input id="ai-new-gauge" size="6" placeholder="1,24"></label>
+          <label>Specifiche o descrizioni incollate (facoltativo) <textarea id="ai-pasted" rows="4"></textarea></label>
+          <button class="btn primary" type="button" id="ai-new-go">Valuta con AI</button>
+          <div class="ai-out" id="ai-new-out" aria-live="polite"></div>
+        </div>
+      </details>
     </section>
 
     <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden>
@@ -97,6 +107,12 @@
       <div class="section-head"><h2>La tua corda montata</h2></div>
       <div id="mine-summary"></div>
       <div class="wear-box" id="wear"></div>
+      <div class="log-box" id="ai-wear-box" hidden>
+        <h3>Parere AI sull'usura</h3>
+        <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
+        <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
+        <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
+      </div>
       <p class="callout small" id="persist-note" role="status" hidden></p>
       <div class="log-box">
         <h3>Segna le ore di gioco</h3>

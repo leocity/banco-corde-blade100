@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { pairing } from './pairing.js';
-import { buildOpinionPrompt, validateOpinion, askOpinion, opinionErrorText, OPINION_MARK } from './ai.js';
+import { buildOpinionPrompt, validateOpinion, askOpinion, opinionErrorText, OPINION_MARK, opinionHtml } from './ai.js';
 
 const DATA = JSON.parse(fs.readFileSync(new URL('../data/strings.json', import.meta.url), 'utf8'));
 const ALL = DATA.strings, BY = Object.fromEntries(ALL.map((r) => [r.id, r]));
@@ -158,4 +158,22 @@ test('opinionErrorText', () => {
   assert.match(opinionErrorText('invalid_opinion'), /non utilizzabile/);
   assert.equal(opinionErrorText('invalid_json'), opinionErrorText('invalid_opinion'));
   assert.equal(OPINION_MARK, 'Parere AI — non misurato');
+});
+
+test('opinionHtml: etichetta fissa, campi e HTML escapato', () => {
+  const evil = validateOpinion({ ...FULL, descrizione: '<img src=x onerror=alert(1)> ok', rischi: ['<script>x</script>'] }, 'string').value;
+  const html = opinionHtml(evil, 'string', new Date('2026-10-30T10:00:00Z'));
+  assert.ok(html.includes(OPINION_MARK));
+  assert.doesNotMatch(html, /<img|<script/);
+  assert.match(html, /&lt;img/);
+  assert.match(html, /Fiducia: media/);
+  assert.doesNotMatch(html.replace(/<[^>]*>/g, ' '), /\b(undefined|null|NaN)\b/);
+});
+
+test('opinionHtml per l\'usura', () => {
+  const v = validateOpinion({ stato: 'Da controllare', valutazione: 'Sta calando.', consiglio: 'Rincorda presto.', fiducia: 'alta' }, 'wear').value;
+  const html = opinionHtml(v, 'wear', new Date('2026-10-30T10:00:00Z'));
+  assert.ok(html.includes(OPINION_MARK));
+  assert.match(html, /Da controllare/);
+  assert.match(html, /Rincorda presto/);
 });
