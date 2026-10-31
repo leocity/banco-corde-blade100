@@ -545,3 +545,9 @@ html { scroll-padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bot
 /* il messaggio con «Annulla» non deve bloccare i tocchi sulla pagina sotto: prende i tocchi solo il suo pulsante */
 .toast { pointer-events: none; }
 .toast button { pointer-events: auto; min-height: 44px; }
+
+/* tasto Indietro ben visibile (non una piccola ×) nella scheda e nel Metodo */
+.close.sheet-back { position: sticky; top: 4px; right: auto; left: 0; justify-self: start; z-index: 3; min-width: 0; min-height: 48px; padding: 0 16px 0 10px; margin: -8px 0 -40px -6px; font: 600 1.05rem var(--font-body); color: var(--fg); border-radius: 999px; background: var(--surface); box-shadow: 0 0 0 4px var(--surface), 0 1px 4px rgb(0 0 0 / .18); }
+.sheet-head { padding-right: 0; padding-top: 44px; }
+.back-row { display: flex; }
+.back-row .btn { min-height: 48px; }

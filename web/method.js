@@ -14,7 +14,7 @@ export function renderMethod(ctx) {
   const D = ctx.DATA, m = D.estimates_meta || {}, rp = m.rp_to_twu || {}, sg = m.stiffness_gauge || {};
   const sec = (key, title, body) => `<section class="callout" id="m-${key}"><h3>${title}</h3>${body}</section>`;
   const removed = (D.removed_discontinued || []).map((x) => `${esc(x.name)} <span class="muted">(${esc(x.reason || '')}${x.successor ? `, ora ${esc(x.successor)}` : ''})</span>`).join(' · ');
-  $('#metodo').innerHTML = `<h2>Come leggere i numeri</h2>
+  $('#metodo').innerHTML = `<div class="back-row"><button class="btn" type="button" data-back>‹ Indietro</button></div><h2>Come leggere i numeri</h2>
     <p class="muted">Per una Blade 100 v9 16×19, giocatore di club, sotto 50 lbs. <b>● misurato · ◐ stimato · ○ manca.</b> Valori, pairing e classifiche usano solo dati di laboratorio.</p>
     ${sec('pairing', 'Pairing', '<p>Da 0 a 100: quanto la corda somiglia, sulle misure di laboratorio, alla tua preferita più vicina (rigidità, tenuta, elasticità, spin; servono 3 misure su 4). <b>Non è un voto di qualità.</b> Da 80 Ottimo, 60 Buono, 40 Attenzione, sotto Poco adatta. Somigliare a una non gradita toglie 15 punti.</p>')}
     ${sec('rigidita', 'Rigidità', `<p>lb/in misurati da TWU. Se mancano sono stimati (≈) da un calibro gemello, da Racketpedia o dal solo calibro, con errore tipico di circa ${fmt(rp.mae ?? sg.mae ?? 11, 0)} lb/in. Le stime dal solo calibro non entrano nel pairing.</p>`)}

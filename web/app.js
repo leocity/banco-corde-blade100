@@ -73,7 +73,37 @@ function showTab(id) {
   try { localStorage.setItem('banco-corde:tab', id); } catch { /* archivio non disponibile */ }
   renderAll();
 }
-function goto(id) { if (dlg.open) dlg.close(); showTab(id); history.replaceState(null, '', '#' + id); scrollTo(0, 0); }
+// Cronologia: ogni scheda corda, pannello o dialogo aperto aggiunge una voce, così il tasto Indietro del telefono lo chiude invece di uscire dall'app;
+// ogni cambio di schermata aggiunge una voce, così Indietro torna alla schermata precedente.
+const dlgStack = [];
+let ignorePop = 0, skipBack = 0, afterPop = [];
+const nativeShowModal = HTMLDialogElement.prototype.showModal;
+HTMLDialogElement.prototype.showModal = function showModalTracked() { nativeShowModal.call(this); dlgStack.push(this); history.pushState({ dlg: true }, ''); };
+document.addEventListener('close', (e) => {
+  const i = dlgStack.indexOf(e.target); if (i < 0) return;
+  dlgStack.splice(i, 1);
+  if (skipBack > 0) { skipBack -= 1; return; }       // chiusa dal tasto Indietro: la voce è già stata tolta
+  ignorePop += 1; history.back();                     // chiusa dall'interfaccia: si toglie la voce che aveva aggiunto
+}, true);
+window.addEventListener('popstate', () => {
+  if (ignorePop > 0) { ignorePop -= 1; const fns = afterPop; afterPop = []; fns.forEach((f) => f()); return; }
+  const top = dlgStack[dlgStack.length - 1];
+  if (top && top.open) { skipBack += 1; top.close(); }
+});
+// esegue fn dopo aver chiuso eventuali dialoghi aperti (e aver tolto le loro voci dalla cronologia)
+function whenDialogsClosed(fn) {
+  const open = dlgStack.filter((d) => d.open);
+  if (!open.length) { fn(); return; }
+  afterPop.push(fn);
+  open.forEach((d) => d.close());
+}
+function goto(id) {
+  whenDialogsClosed(() => {
+    showTab(id);
+    if (location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
+    scrollTo(0, 0);
+  });
+}
 
 function openSheet(id) {
   const r = BY_ID[id]; if (!r) return;
@@ -94,7 +124,8 @@ document.addEventListener('click', (e) => {
   const o = t.closest('[data-open]'); if (o) { openSheet(o.dataset.open); return; }
   const l = t.closest('[data-like]'); if (l) { const id = l.dataset.like; update((s) => setPreference(s, id, s.liked.includes(id) ? null : 'liked')); return; }
   const d = t.closest('[data-dislike]'); if (d) { const id = d.dataset.dislike; update((s) => setPreference(s, id, s.disliked.includes(id) ? null : 'disliked')); return; }
-  const q = t.closest('[data-equip]'); if (q) { if (dlg.open) dlg.close(); ctx.equip(q.dataset.equip); }
+  const q = t.closest('[data-equip]'); if (q) { const id = q.dataset.equip; whenDialogsClosed(() => ctx.equip(id)); return; }
+  const bk = t.closest('[data-back]'); if (bk) { if (history.length > 1) history.back(); else goto('scegli'); return; }
 });
 
 initChoose(ctx);
@@ -107,7 +138,8 @@ initAi(ctx);
 renderMethod(ctx);
 const hashTab = (location.hash || '').slice(1);
 showTab(TABS.includes(hashTab) ? hashTab : 'scegli');
-window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (TABS.includes(h)) showTab(h); });
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); showTab(TABS.includes(h) ? h : 'scegli'); });
+history.replaceState(null, '', `#${current}`);
 
 // Lo stato salvato arriva dopo il primo disegno (il db può metterci un po'): le modifiche già fatte dall'utente si rieseguono sopra di esso.
 (async () => {

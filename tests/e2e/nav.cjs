@@ -78,3 +78,68 @@ for (const w of [320, 360, 390]) {
     await ctx.close();
   });
 }
+
+// ---- navigazione: tasto Indietro del telefono e tasti «Indietro» ----
+test('navigazione: Indietro del telefono chiude la scheda e resta nell\'app', async () => {
+  const { page, ctx } = await openPage({ width: 360, height: 740, hasTouch: true });
+  await page.locator('#top3 [data-open]').first().tap();
+  await page.waitForSelector('dialog#sheet[open]');
+  await page.goBack();
+  await page.waitForFunction(() => !document.getElementById('sheet').open);
+  assert.ok(await page.locator('#top3').isVisible(), 'si è ancora nell\'app');
+  assert.match(page.url(), /banco-corde|preview\.html/);
+  await ctx.close();
+});
+
+test('navigazione: chiudere la scheda con «Indietro» non lascia voci fantasma: un solo Indietro porta alla schermata precedente', async () => {
+  const { page, ctx } = await openPage({ width: 360, height: 740, hasTouch: true });
+  await page.locator('#tab-mappa').tap();
+  await page.waitForSelector('#scatter circle.dot');
+  await page.locator('#tab-scegli').tap();
+  await page.locator('#top3 [data-open]').first().tap();
+  await page.waitForSelector('dialog#sheet[open]');
+  assert.match(await page.innerText('#sheet-close'), /Indietro/);
+  await page.locator('#sheet-close').tap();
+  await page.waitForFunction(() => !document.getElementById('sheet').open && !(history.state && history.state.dlg));
+  await page.goBack();
+  await page.waitForFunction(() => !document.getElementById('mappa').hidden);
+  await ctx.close();
+});
+
+test('navigazione: Indietro del telefono torna alla schermata precedente', async () => {
+  const { page, ctx } = await openPage({ width: 360, height: 740, hasTouch: true });
+  await page.locator('#tab-mappa').tap();
+  await page.waitForSelector('#scatter circle.dot');
+  await page.locator('#tab-montata').tap();
+  await page.waitForSelector('#diary .rate');
+  await page.goBack();
+  await page.waitForFunction(() => !document.getElementById('mappa').hidden);
+  await page.goBack();
+  await page.waitForFunction(() => !document.getElementById('scegli').hidden);
+  await ctx.close();
+});
+
+test('navigazione: dal Metodo il tasto «Indietro» riporta dove eri', async () => {
+  const { page, ctx } = await openPage({ width: 360, height: 740, hasTouch: true });
+  await page.locator('#tab-montata').tap();
+  await page.waitForSelector('#diary .rate');
+  await page.locator('[data-goto="metodo"]').first().tap();
+  await page.waitForFunction(() => !document.getElementById('metodo').hidden);
+  assert.ok(await page.locator('#metodo [data-back]').isVisible());
+  await page.locator('#metodo [data-back]').tap();
+  await page.waitForFunction(() => !document.getElementById('montata').hidden);
+  await ctx.close();
+});
+
+test('navigazione: da una scheda «Monta questa» chiude la scheda e apre il cambio corda, e Indietro chiude anche quello', async () => {
+  const { page, ctx } = await openPage({ width: 360, height: 740, hasTouch: true });
+  await page.locator('#top3 [data-open]').first().tap();
+  await page.waitForSelector('dialog#sheet[open]');
+  await page.locator('#sheet-body [data-equip]').tap();
+  await page.waitForSelector('#equip-dialog[open]');
+  assert.equal(await page.locator('dialog#sheet[open]').count(), 0);
+  await page.goBack();
+  await page.waitForFunction(() => !document.getElementById('equip-dialog').open);
+  assert.ok(await page.locator('#montata').isVisible() || await page.locator('#scegli').isVisible());
+  await ctx.close();
+});

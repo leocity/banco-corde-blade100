@@ -551,6 +551,12 @@ html { scroll-padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bot
 .toast { pointer-events: none; }
 .toast button { pointer-events: auto; min-height: 44px; }
 
+/* tasto Indietro ben visibile (non una piccola ×) nella scheda e nel Metodo */
+.close.sheet-back { position: sticky; top: 4px; right: auto; left: 0; justify-self: start; z-index: 3; min-width: 0; min-height: 48px; padding: 0 16px 0 10px; margin: -8px 0 -40px -6px; font: 600 1.05rem var(--font-body); color: var(--fg); border-radius: 999px; background: var(--surface); box-shadow: 0 0 0 4px var(--surface), 0 1px 4px rgb(0 0 0 / .18); }
+.sheet-head { padding-right: 0; padding-top: 44px; }
+.back-row { display: flex; }
+.back-row .btn { min-height: 48px; }
+
 </style>
 
 <div class="wrap">
@@ -610,45 +616,48 @@ html { scroll-padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bot
     </section>
 
     <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden>
-      <div class="section-head"><h2>La tua corda montata</h2></div>
       <div id="mine-summary"></div>
       <div class="wear-box" id="wear"></div>
-      <section class="diary" id="diary" data-dtarget="current" aria-label="Voti e sensazioni"></section>
+      <div class="card-actions"><button class="btn primary" type="button" id="equip-btn">Cambia corda</button></div>
       <div class="log-box">
-        <h3>Segna una sessione</h3>
-        <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
-          <button type="button" class="chipbtn" data-day="0" aria-pressed="true">Oggi</button>
-          <button type="button" class="chipbtn" data-day="1" aria-pressed="false">Ieri</button>
-        </div>
+        <h3>Segna le ore</h3>
         <div class="card-actions">
           <button class="btn" type="button" data-add-hours="1">+1 h</button>
           <button class="btn" type="button" data-add-hours="1.5">+1,5 h</button>
           <button class="btn" type="button" data-add-hours="2">+2 h</button>
         </div>
-        <div class="controls">
-          <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="6"></label>
-          <label>Data <input type="date" id="hours-date"></label>
-          <label>Nota <input id="hours-note" placeholder="facoltativa"></label>
-          <button class="btn primary" type="button" id="hours-add">Aggiungi</button>
+        <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
+          <button type="button" class="chipbtn" data-day="0" aria-pressed="true">Oggi</button>
+          <button type="button" class="chipbtn" data-day="1" aria-pressed="false">Ieri</button>
         </div>
+        <details class="more" id="hours-more">
+          <summary>Altre ore, data o nota</summary>
+          <div class="controls">
+            <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="6"></label>
+            <label>Data <input type="date" id="hours-date"></label>
+            <label>Nota <input id="hours-note" placeholder="facoltativa"></label>
+            <button class="btn primary" type="button" id="hours-add">Aggiungi</button>
+          </div>
+        </details>
         <p class="gaps" id="hours-error" role="alert" hidden></p>
-        <ul class="sessions" id="sessions"></ul>
       </div>
-      <div class="log-box" id="ai-wear-box" hidden>
-        <h3>Parere AI sull'usura</h3>
-        <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
-        <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
-        <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
-      </div>
+      <section class="diary" id="diary" data-dtarget="current" aria-label="Voti e sensazioni"></section>
+      <details class="more" id="sessions-box"><summary id="sessions-sum">Sessioni</summary><ul class="sessions" id="sessions"></ul></details>
+      <details class="more" id="history-box"><summary id="history-sum">Corde finite</summary><ul class="sessions" id="history"></ul><div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div></details>
+      <details class="more" id="other-box">
+        <summary>Altro</summary>
+        <div class="log-box" id="ai-wear-box" hidden>
+          <h3>Parere AI sull'usura</h3>
+          <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
+          <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
+          <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
+        </div>
+        <div class="card-actions">
+          <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
+          <button class="btn" type="button" id="export-diary" hidden>Esporta il diario (CSV)</button>
+        </div>
+      </details>
       <p class="callout small" id="persist-note" role="status" hidden></p>
-      <div class="card-actions">
-        <button class="btn primary" type="button" id="equip-btn">Cambia corda</button>
-        <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
-        <button class="btn" type="button" id="export-diary" hidden>Esporta il diario (CSV)</button>
-      </div>
-      <h3>Corde finite</h3>
-      <ul class="sessions" id="history"></ul>
-      <div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div>
     </section>
     <section id="metodo" class="panel prose" hidden></section>
   </main>
@@ -733,7 +742,7 @@ html { scroll-padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bot
 
 <dialog id="sheet" aria-labelledby="sheet-title">
   <div class="sheet-inner">
-    <button class="close" id="sheet-close" type="button" aria-label="Chiudi scheda">×</button>
+    <button class="close sheet-back" id="sheet-close" type="button">‹ Indietro</button>
     <div id="sheet-body"></div>
   </div>
 </dialog>
@@ -2081,7 +2090,10 @@ function diaryHtml(ctx, target) {
   if (!t) return '';
   const d = t.diary || emptyDiary(), moment = diaryMoment(ctx, target), rec = ctx.BY_ID[t.id], current = target === 'current';
   const moms = MOMENTS.map((m) => { const a = momentAverage(d, m.key); return `<button type="button" class="mom" data-moment="${m.key}" aria-pressed="${m.key === moment}"><span>${esc(m.label)}</span><b>${a === null ? '—' : fmt(a, 1)}</b></button>`; }).join('');
-  const rows = CATS.map((c) => { const cur = (d.ratings[moment] || {})[c.key]; return `<div class="rate" data-cat="${c.key}"><span class="rl" title="${esc(c.hint)}">${esc(c.label)}</span><span class="rbs">${[1, 2, 3, 4, 5].map((v) => `<button type="button" class="rb" data-v="${v}" aria-pressed="${cur === v}" aria-label="${esc(c.label)}: ${v} su 5">${v}</button>`).join('')}</span></div>`; }).join('');
+  const rowOf = (c) => { const cur = (d.ratings[moment] || {})[c.key]; return `<div class="rate" data-cat="${c.key}"><span class="rl" title="${esc(c.hint)}">${esc(c.label)}</span><span class="rbs">${[1, 2, 3, 4, 5].map((v) => `<button type="button" class="rb" data-v="${v}" aria-pressed="${cur === v}" aria-label="${esc(c.label)}: ${v} su 5">${v}</button>`).join('')}</span></div>`; };
+  const RARE = ['touch', 'stability', 'durability'];
+  const rows = CATS.filter((c) => !RARE.includes(c.key)).map(rowOf).join('');
+  const rowsRare = CATS.filter((c) => RARE.includes(c.key)).map(rowOf).join('');
   const tags = TAGS.map((g) => `<button type="button" class="chipbtn tg" data-tag="${g}" aria-pressed="${d.tags.includes(g)}">${esc(tagLabel(g))}</button>`).join('');
   const verdict = [['si', 'Sì'], ['forse', 'Forse'], ['no', 'No']].map(([v, l]) => `<button type="button" class="chipbtn" data-verdict="${v}" aria-pressed="${d.verdict === v}">${l}</button>`).join('');
   const opt = (list, cur) => `<option value="">—</option>${list.map((x) => `<option${x === cur ? ' selected' : ''}>${esc(x)}</option>`).join('')}`;
@@ -2092,7 +2104,7 @@ function diaryHtml(ctx, target) {
   const lab = rec ? [rec.twu && rec.twu.tension_loss_pct != null ? `perdita TWU ${fmt(rec.twu.tension_loss_pct, 0)}%` : '', rec.excel && rec.excel.tl6 != null ? `TL6 ${fmt(rec.excel.tl6, 0)}%` : '', rec.excel && rec.excel.tl12 != null ? `TL12 ${fmt(rec.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') : '';
   const open = (k) => (diaryView.open[k] ? ' open' : '');
   return `<h3>Voti e sensazioni</h3><p class="muted small">${esc(rec ? `${rec.brand} ${rec.model}` : t.id)} · ${esc(fmtN(t.kg[0], 2))}/${esc(fmtN(t.kg[1], 2))} kg · ${esc(fmtN(t.hours))} h</p>`
-    + `<div class="moments" role="group" aria-label="Momento">${moms}</div><div class="rates">${rows}</div>`
+    + `<div class="moments" role="group" aria-label="Momento">${moms}</div><div class="rates">${rows}<details class="more" data-dsec="morecats"${open('morecats')}><summary>Altre categorie (${CATS.filter((c) => RARE.includes(c.key)).map((c) => c.label.toLowerCase()).join(', ')})</summary>${rowsRare}</details></div>`
     + `<div class="chips tags" role="group" aria-label="Com'è andata">${tags}</div>`
     + `<label class="dn">Sensazioni <textarea data-dnotes rows="3" placeholder="Come suona, come risponde, cosa cambieresti…">${esc(d.notes)}</textarea></label>`
     + `<div class="verdict"><span>Ricomprerei?</span><span class="chips" role="group" aria-label="Ricomprerei">${verdict}</span></div>`
@@ -2191,7 +2203,6 @@ function initDiary(ctx) {
 
 
 const WEAR_CLASS = { Fresca: 'ottimo', 'In uso': 'buono', 'Da controllare': 'attenzione', 'Da cambiare': 'poco' };
-const BASIS_TEXT = { ipotesi: 'ipotesi di partenza, non misurata (8 + 0,12 × tenuta ore)', 'tua corda': 'dalle ore reali di questa corda', 'tuo storico': 'scalata sulle ore reali delle tue corde finite' };
 let mineEditing = null, mineToastTimer = null, mineDownloads = null;
 
 const pad = (n) => String(n).padStart(2, '0');
@@ -2217,15 +2228,12 @@ function mineSyncDayChips() {
 function mineError(msg) { const e = $('#hours-error'); e.textContent = msg || ''; e.hidden = !msg; }
 
 function wearHtml(ctx) {
-  const w = ctx.wear(), eq = ctx.equippedRec(), pct = Math.min(100, Math.round(w.ratio * 100)), cls = WEAR_CLASS[w.band];
-  const lab = [eq.twu && eq.twu.tension_loss_pct != null ? `perdita TWU ${fmt(eq.twu.tension_loss_pct, 0)}%` : '', eq.excel && eq.excel.tl6 != null ? `TL6 ${fmt(eq.excel.tl6, 0)}%` : '',
-    eq.excel && eq.excel.tl12 != null ? `TL12 ${fmt(eq.excel.tl12, 0)}%` : '', eq.excel && eq.excel.static_24h_creep != null ? `scorrimento ${fmt(eq.excel.static_24h_creep, 2)}″` : ''].filter(Boolean);
-  const when = w.hoursLeft <= 0 ? '<b>Da cambiare ora.</b>' : `Ore residue ≈ <b>${fmtN(w.hoursLeft)} h</b>${w.changeBy ? ` · cambio stimato verso il ${esc(mineDate(w.changeBy))} (a ${fmtN(w.perWeek)} h/settimana)` : ''}.`;
-  const n = w.life.n ? ` (${w.life.n})` : '';
-  return `<div class="wear-head"><span class="pair ${cls}"><b>${esc(w.band)}</b></span><span>${fmtN(w.hours)} h su ≈ ${fmtN(w.life.hours, 0)} h <span class="muted small">(${fmtN(w.life.low, 0)}–${fmtN(w.life.high, 0)} h)</span></span></div>`
+  const w = ctx.wear(), pct = Math.min(100, Math.round(w.ratio * 100)), cls = WEAR_CLASS[w.band];
+  const when = w.hoursLeft <= 0 ? '<b>Da cambiare ora.</b>' : `Ore residue ≈ <b>${fmtN(w.hoursLeft)} h</b>${w.changeBy ? ` · cambio verso il ${esc(mineDate(w.changeBy))}` : ''}.`;
+  const guess = w.life.basis === 'ipotesi' ? ' <span class="muted">(vita attesa: ipotesi)</span>' : '';
+  return `<div class="wear-head"><span class="pair ${cls}"><b>${esc(w.band)}</b></span><span>${fmtN(w.hours)} h su ≈ ${fmtN(w.life.hours, 0)} h</span></div>`
     + `<div class="wearbar" role="progressbar" aria-label="Usura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><div class="fill f-${cls}" style="width:${pct}%"></div></div>`
-    + `<p>${when}</p><p class="muted small">Vita attesa: ${esc(BASIS_TEXT[w.life.basis])}${esc(n)}. <button class="q" type="button" data-method="usura" aria-label="Come si calcola">?</button></p>`
-    + `<p class="muted small">Montata da ${w.daysSince} giorni${lab.length ? ` · laboratorio: ${esc(lab.join(', '))}` : ''}. Anche ferma una poly perde tensione.</p>`;
+    + `<p class="small">${when}${guess} <button class="q" type="button" data-method="usura" aria-label="Come si calcola">?</button></p>`;
 }
 
 function renderMine(ctx) {
@@ -2240,6 +2248,8 @@ function renderMine(ctx) {
     ? `<li data-ts="${esc(x.ts)}"><form><label>Ore <input name="hours" value="${esc(fmtN(x.hours))}" inputmode="decimal" size="5"></label><label>Nota <input name="note" value="${esc(x.note)}"></label><button class="btn primary" type="button" data-save-ts>Salva</button><button class="btn" type="button" data-cancel-edit>Annulla</button></form></li>`
     : `<li data-ts="${esc(x.ts)}"><span><b>${esc(mineDate(x.date))}</b> · ${fmtN(x.hours)} h${x.note ? ` · ${esc(x.note)}` : ''}</span><button class="btn" type="button" data-edit-ts>Modifica</button><button class="btn" type="button" data-del-ts>Togli</button></li>`)).join('')
     : '<li class="muted">Nessuna sessione registrata su questa corda.</li>';
+  $('#sessions-sum').textContent = `Sessioni (${mine.length})`;
+  $('#history-sum').textContent = `Corde finite (${s.lives.length})`;
   $('#history').innerHTML = s.lives.length ? [...s.lives].reverse().map((l) => `<li><span><b>${esc(ctx.BY_ID[l.id] ? fullName(ctx.BY_ID[l.id]) : l.id)}</b> · ${esc(fmtN(l.kg[0], 2))}/${esc(fmtN(l.kg[1], 2))} kg · ${esc(mineDate(l.from))}–${esc(mineDate(l.to))} · ${fmtN(l.hours)} h · ${esc(l.reason)}${l.diary ? ' · con voti' : ''}</span><button class="btn" type="button" data-past-open="${esc(l.lid)}">Voti e note</button></li>`).join('')
     : '<li class="muted">Ancora nessuna corda finita.</li>';
   renderPersistNote(ctx);
@@ -2546,7 +2556,7 @@ function renderMethod(ctx) {
   const D = ctx.DATA, m = D.estimates_meta || {}, rp = m.rp_to_twu || {}, sg = m.stiffness_gauge || {};
   const sec = (key, title, body) => `<section class="callout" id="m-${key}"><h3>${title}</h3>${body}</section>`;
   const removed = (D.removed_discontinued || []).map((x) => `${esc(x.name)} <span class="muted">(${esc(x.reason || '')}${x.successor ? `, ora ${esc(x.successor)}` : ''})</span>`).join(' · ');
-  $('#metodo').innerHTML = `<h2>Come leggere i numeri</h2>
+  $('#metodo').innerHTML = `<div class="back-row"><button class="btn" type="button" data-back>‹ Indietro</button></div><h2>Come leggere i numeri</h2>
     <p class="muted">Per una Blade 100 v9 16×19, giocatore di club, sotto 50 lbs. <b>● misurato · ◐ stimato · ○ manca.</b> Valori, pairing e classifiche usano solo dati di laboratorio.</p>
     ${sec('pairing', 'Pairing', '<p>Da 0 a 100: quanto la corda somiglia, sulle misure di laboratorio, alla tua preferita più vicina (rigidità, tenuta, elasticità, spin; servono 3 misure su 4). <b>Non è un voto di qualità.</b> Da 80 Ottimo, 60 Buono, 40 Attenzione, sotto Poco adatta. Somigliare a una non gradita toglie 15 punti.</p>')}
     ${sec('rigidita', 'Rigidità', `<p>lb/in misurati da TWU. Se mancano sono stimati (≈) da un calibro gemello, da Racketpedia o dal solo calibro, con errore tipico di circa ${fmt(rp.mae ?? sg.mae ?? 11, 0)} lb/in. Le stime dal solo calibro non entrano nel pairing.</p>`)}
@@ -2634,7 +2644,37 @@ function showTab(id) {
   try { localStorage.setItem('banco-corde:tab', id); } catch { /* archivio non disponibile */ }
   renderAll();
 }
-function goto(id) { if (dlg.open) dlg.close(); showTab(id); history.replaceState(null, '', '#' + id); scrollTo(0, 0); }
+// Cronologia: ogni scheda corda, pannello o dialogo aperto aggiunge una voce, così il tasto Indietro del telefono lo chiude invece di uscire dall'app;
+// ogni cambio di schermata aggiunge una voce, così Indietro torna alla schermata precedente.
+const dlgStack = [];
+let ignorePop = 0, skipBack = 0, afterPop = [];
+const nativeShowModal = HTMLDialogElement.prototype.showModal;
+HTMLDialogElement.prototype.showModal = function showModalTracked() { nativeShowModal.call(this); dlgStack.push(this); history.pushState({ dlg: true }, ''); };
+document.addEventListener('close', (e) => {
+  const i = dlgStack.indexOf(e.target); if (i < 0) return;
+  dlgStack.splice(i, 1);
+  if (skipBack > 0) { skipBack -= 1; return; }       // chiusa dal tasto Indietro: la voce è già stata tolta
+  ignorePop += 1; history.back();                     // chiusa dall'interfaccia: si toglie la voce che aveva aggiunto
+}, true);
+window.addEventListener('popstate', () => {
+  if (ignorePop > 0) { ignorePop -= 1; const fns = afterPop; afterPop = []; fns.forEach((f) => f()); return; }
+  const top = dlgStack[dlgStack.length - 1];
+  if (top && top.open) { skipBack += 1; top.close(); }
+});
+// esegue fn dopo aver chiuso eventuali dialoghi aperti (e aver tolto le loro voci dalla cronologia)
+function whenDialogsClosed(fn) {
+  const open = dlgStack.filter((d) => d.open);
+  if (!open.length) { fn(); return; }
+  afterPop.push(fn);
+  open.forEach((d) => d.close());
+}
+function goto(id) {
+  whenDialogsClosed(() => {
+    showTab(id);
+    if (location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
+    scrollTo(0, 0);
+  });
+}
 
 function openSheet(id) {
   const r = BY_ID[id]; if (!r) return;
@@ -2655,7 +2695,8 @@ document.addEventListener('click', (e) => {
   const o = t.closest('[data-open]'); if (o) { openSheet(o.dataset.open); return; }
   const l = t.closest('[data-like]'); if (l) { const id = l.dataset.like; update((s) => setPreference(s, id, s.liked.includes(id) ? null : 'liked')); return; }
   const d = t.closest('[data-dislike]'); if (d) { const id = d.dataset.dislike; update((s) => setPreference(s, id, s.disliked.includes(id) ? null : 'disliked')); return; }
-  const q = t.closest('[data-equip]'); if (q) { if (dlg.open) dlg.close(); ctx.equip(q.dataset.equip); }
+  const q = t.closest('[data-equip]'); if (q) { const id = q.dataset.equip; whenDialogsClosed(() => ctx.equip(id)); return; }
+  const bk = t.closest('[data-back]'); if (bk) { if (history.length > 1) history.back(); else goto('scegli'); return; }
 });
 
 initChoose(ctx);
@@ -2668,7 +2709,8 @@ initAi(ctx);
 renderMethod(ctx);
 const hashTab = (location.hash || '').slice(1);
 showTab(TABS.includes(hashTab) ? hashTab : 'scegli');
-window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (TABS.includes(h)) showTab(h); });
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); showTab(TABS.includes(h) ? h : 'scegli'); });
+history.replaceState(null, '', `#${current}`);
 
 // Lo stato salvato arriva dopo il primo disegno (il db può metterci un po'): le modifiche già fatte dall'utente si rieseguono sopra di esso.
 (async () => {

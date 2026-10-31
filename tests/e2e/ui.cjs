@@ -35,7 +35,9 @@ async function openSheetById(page, id) {
   await page.waitForSelector('dialog#sheet[open]');
 }
 const stateOf = (page) => page.evaluate(() => JSON.parse(localStorage.getItem('banco-corde:state') || 'null'));
-module.exports = { openPage, openSheetById, bodyText, stateOf, BAD, test, assert };
+// In Montata le parti secondarie stanno in sezioni chiuse: i test che le usano le aprono tutte
+const expandMontata = (page) => page.evaluate(() => document.querySelectorAll('#montata details.more').forEach((d) => { d.open = true; }));
+module.exports = { openPage, openSheetById, expandMontata, bodyText, stateOf, BAD, test, assert };
 
 if (require.main === module) {
   for (const f of ['scegli', 'compare', 'montata', 'mappa', 'ai', 'sheet', 'nav', 'diario']) require(`./${f}.cjs`);

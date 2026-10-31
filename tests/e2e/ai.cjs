@@ -1,4 +1,4 @@
-const { openPage, openSheetById, bodyText, BAD, test, assert } = require('./ui.cjs');
+const { openPage, openSheetById, expandMontata, bodyText, BAD, test, assert } = require('./ui.cjs');
 
 const FULL = { descrizione: 'Corda reattiva con buon spin sul 16×19.', fascia: 'Buono', motivo: 'Vicina alla tua Confidential.',
   rispetto_alla_montata: { spin: { dir: 'più', fiducia: 'media' }, controllo: { dir: 'simile', fiducia: 'bassa' }, potenza: { dir: 'più', fiducia: 'bassa' }, tenuta: { dir: 'meno', fiducia: 'media' }, comfort: { dir: 'simile', fiducia: 'bassa' } },
@@ -141,6 +141,7 @@ test('ai: nome mancante nel riquadro "corda che non c\'è" non chiama Claude', a
 test('ai: parere sull\'usura con ore e nota libera nel prompt', async () => {
   const { page, ctx } = await openPage({ claude: STUB('ok', WEAR) });
   await page.locator('#tab-montata').click();
+  await expandMontata(page);
   await page.locator('[data-add-hours="2"]').click();
   await page.locator('#ai-wear-note').fill('suona spenta sul rovescio');
   await page.locator('#ai-wear').click();

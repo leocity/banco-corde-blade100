@@ -6,7 +6,6 @@ import { changeString, addPastLife, addSession, removeSession, editSession, pars
 import { diaryCsv } from './diary.js';
 
 const WEAR_CLASS = { Fresca: 'ottimo', 'In uso': 'buono', 'Da controllare': 'attenzione', 'Da cambiare': 'poco' };
-const BASIS_TEXT = { ipotesi: 'ipotesi di partenza, non misurata (8 + 0,12 × tenuta ore)', 'tua corda': 'dalle ore reali di questa corda', 'tuo storico': 'scalata sulle ore reali delle tue corde finite' };
 let mineEditing = null, mineToastTimer = null, mineDownloads = null;
 
 const pad = (n) => String(n).padStart(2, '0');
@@ -32,15 +31,12 @@ function mineSyncDayChips() {
 function mineError(msg) { const e = $('#hours-error'); e.textContent = msg || ''; e.hidden = !msg; }
 
 function wearHtml(ctx) {
-  const w = ctx.wear(), eq = ctx.equippedRec(), pct = Math.min(100, Math.round(w.ratio * 100)), cls = WEAR_CLASS[w.band];
-  const lab = [eq.twu && eq.twu.tension_loss_pct != null ? `perdita TWU ${fmt(eq.twu.tension_loss_pct, 0)}%` : '', eq.excel && eq.excel.tl6 != null ? `TL6 ${fmt(eq.excel.tl6, 0)}%` : '',
-    eq.excel && eq.excel.tl12 != null ? `TL12 ${fmt(eq.excel.tl12, 0)}%` : '', eq.excel && eq.excel.static_24h_creep != null ? `scorrimento ${fmt(eq.excel.static_24h_creep, 2)}″` : ''].filter(Boolean);
-  const when = w.hoursLeft <= 0 ? '<b>Da cambiare ora.</b>' : `Ore residue ≈ <b>${fmtN(w.hoursLeft)} h</b>${w.changeBy ? ` · cambio stimato verso il ${esc(mineDate(w.changeBy))} (a ${fmtN(w.perWeek)} h/settimana)` : ''}.`;
-  const n = w.life.n ? ` (${w.life.n})` : '';
-  return `<div class="wear-head"><span class="pair ${cls}"><b>${esc(w.band)}</b></span><span>${fmtN(w.hours)} h su ≈ ${fmtN(w.life.hours, 0)} h <span class="muted small">(${fmtN(w.life.low, 0)}–${fmtN(w.life.high, 0)} h)</span></span></div>`
+  const w = ctx.wear(), pct = Math.min(100, Math.round(w.ratio * 100)), cls = WEAR_CLASS[w.band];
+  const when = w.hoursLeft <= 0 ? '<b>Da cambiare ora.</b>' : `Ore residue ≈ <b>${fmtN(w.hoursLeft)} h</b>${w.changeBy ? ` · cambio verso il ${esc(mineDate(w.changeBy))}` : ''}.`;
+  const guess = w.life.basis === 'ipotesi' ? ' <span class="muted">(vita attesa: ipotesi)</span>' : '';
+  return `<div class="wear-head"><span class="pair ${cls}"><b>${esc(w.band)}</b></span><span>${fmtN(w.hours)} h su ≈ ${fmtN(w.life.hours, 0)} h</span></div>`
     + `<div class="wearbar" role="progressbar" aria-label="Usura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><div class="fill f-${cls}" style="width:${pct}%"></div></div>`
-    + `<p>${when}</p><p class="muted small">Vita attesa: ${esc(BASIS_TEXT[w.life.basis])}${esc(n)}. <button class="q" type="button" data-method="usura" aria-label="Come si calcola">?</button></p>`
-    + `<p class="muted small">Montata da ${w.daysSince} giorni${lab.length ? ` · laboratorio: ${esc(lab.join(', '))}` : ''}. Anche ferma una poly perde tensione.</p>`;
+    + `<p class="small">${when}${guess} <button class="q" type="button" data-method="usura" aria-label="Come si calcola">?</button></p>`;
 }
 
 export function renderMine(ctx) {
@@ -55,6 +51,8 @@ export function renderMine(ctx) {
     ? `<li data-ts="${esc(x.ts)}"><form><label>Ore <input name="hours" value="${esc(fmtN(x.hours))}" inputmode="decimal" size="5"></label><label>Nota <input name="note" value="${esc(x.note)}"></label><button class="btn primary" type="button" data-save-ts>Salva</button><button class="btn" type="button" data-cancel-edit>Annulla</button></form></li>`
     : `<li data-ts="${esc(x.ts)}"><span><b>${esc(mineDate(x.date))}</b> · ${fmtN(x.hours)} h${x.note ? ` · ${esc(x.note)}` : ''}</span><button class="btn" type="button" data-edit-ts>Modifica</button><button class="btn" type="button" data-del-ts>Togli</button></li>`)).join('')
     : '<li class="muted">Nessuna sessione registrata su questa corda.</li>';
+  $('#sessions-sum').textContent = `Sessioni (${mine.length})`;
+  $('#history-sum').textContent = `Corde finite (${s.lives.length})`;
   $('#history').innerHTML = s.lives.length ? [...s.lives].reverse().map((l) => `<li><span><b>${esc(ctx.BY_ID[l.id] ? fullName(ctx.BY_ID[l.id]) : l.id)}</b> · ${esc(fmtN(l.kg[0], 2))}/${esc(fmtN(l.kg[1], 2))} kg · ${esc(mineDate(l.from))}–${esc(mineDate(l.to))} · ${fmtN(l.hours)} h · ${esc(l.reason)}${l.diary ? ' · con voti' : ''}</span><button class="btn" type="button" data-past-open="${esc(l.lid)}">Voti e note</button></li>`).join('')
     : '<li class="muted">Ancora nessuna corda finita.</li>';
   renderPersistNote(ctx);

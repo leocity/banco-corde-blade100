@@ -22,7 +22,10 @@ export function diaryHtml(ctx, target) {
   if (!t) return '';
   const d = t.diary || emptyDiary(), moment = diaryMoment(ctx, target), rec = ctx.BY_ID[t.id], current = target === 'current';
   const moms = MOMENTS.map((m) => { const a = momentAverage(d, m.key); return `<button type="button" class="mom" data-moment="${m.key}" aria-pressed="${m.key === moment}"><span>${esc(m.label)}</span><b>${a === null ? '—' : fmt(a, 1)}</b></button>`; }).join('');
-  const rows = CATS.map((c) => { const cur = (d.ratings[moment] || {})[c.key]; return `<div class="rate" data-cat="${c.key}"><span class="rl" title="${esc(c.hint)}">${esc(c.label)}</span><span class="rbs">${[1, 2, 3, 4, 5].map((v) => `<button type="button" class="rb" data-v="${v}" aria-pressed="${cur === v}" aria-label="${esc(c.label)}: ${v} su 5">${v}</button>`).join('')}</span></div>`; }).join('');
+  const rowOf = (c) => { const cur = (d.ratings[moment] || {})[c.key]; return `<div class="rate" data-cat="${c.key}"><span class="rl" title="${esc(c.hint)}">${esc(c.label)}</span><span class="rbs">${[1, 2, 3, 4, 5].map((v) => `<button type="button" class="rb" data-v="${v}" aria-pressed="${cur === v}" aria-label="${esc(c.label)}: ${v} su 5">${v}</button>`).join('')}</span></div>`; };
+  const RARE = ['touch', 'stability', 'durability'];
+  const rows = CATS.filter((c) => !RARE.includes(c.key)).map(rowOf).join('');
+  const rowsRare = CATS.filter((c) => RARE.includes(c.key)).map(rowOf).join('');
   const tags = TAGS.map((g) => `<button type="button" class="chipbtn tg" data-tag="${g}" aria-pressed="${d.tags.includes(g)}">${esc(tagLabel(g))}</button>`).join('');
   const verdict = [['si', 'Sì'], ['forse', 'Forse'], ['no', 'No']].map(([v, l]) => `<button type="button" class="chipbtn" data-verdict="${v}" aria-pressed="${d.verdict === v}">${l}</button>`).join('');
   const opt = (list, cur) => `<option value="">—</option>${list.map((x) => `<option${x === cur ? ' selected' : ''}>${esc(x)}</option>`).join('')}`;
@@ -33,7 +36,7 @@ export function diaryHtml(ctx, target) {
   const lab = rec ? [rec.twu && rec.twu.tension_loss_pct != null ? `perdita TWU ${fmt(rec.twu.tension_loss_pct, 0)}%` : '', rec.excel && rec.excel.tl6 != null ? `TL6 ${fmt(rec.excel.tl6, 0)}%` : '', rec.excel && rec.excel.tl12 != null ? `TL12 ${fmt(rec.excel.tl12, 0)}%` : ''].filter(Boolean).join(' · ') : '';
   const open = (k) => (diaryView.open[k] ? ' open' : '');
   return `<h3>Voti e sensazioni</h3><p class="muted small">${esc(rec ? `${rec.brand} ${rec.model}` : t.id)} · ${esc(fmtN(t.kg[0], 2))}/${esc(fmtN(t.kg[1], 2))} kg · ${esc(fmtN(t.hours))} h</p>`
-    + `<div class="moments" role="group" aria-label="Momento">${moms}</div><div class="rates">${rows}</div>`
+    + `<div class="moments" role="group" aria-label="Momento">${moms}</div><div class="rates">${rows}<details class="more" data-dsec="morecats"${open('morecats')}><summary>Altre categorie (${CATS.filter((c) => RARE.includes(c.key)).map((c) => c.label.toLowerCase()).join(', ')})</summary>${rowsRare}</details></div>`
     + `<div class="chips tags" role="group" aria-label="Com'è andata">${tags}</div>`
     + `<label class="dn">Sensazioni <textarea data-dnotes rows="3" placeholder="Come suona, come risponde, cosa cambieresti…">${esc(d.notes)}</textarea></label>`
     + `<div class="verdict"><span>Ricomprerei?</span><span class="chips" role="group" aria-label="Ricomprerei">${verdict}</span></div>`

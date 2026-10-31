@@ -56,7 +56,7 @@ test('scheda: Monta questa dal telefono porta al cambio corda', async () => {
   const { page, ctx } = await openPage({ width: 390, height: 844, hasTouch: true });
   await page.locator('#list .crow2').first().tap();
   await page.locator('#sheet-body .sheet-actions [data-equip]').tap();
-  assert.ok(await page.locator('#equip-dialog[open]').count());
+  await page.waitForSelector('#equip-dialog[open]');
   await ctx.close();
 });
 

@@ -1,9 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { openPage, openSheetById, bodyText, stateOf, BAD, test, assert } = require('./ui.cjs');
+const { openPage, openSheetById, expandMontata, bodyText, stateOf, BAD, test, assert } = require('./ui.cjs');
 
 const DATA = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../data/strings.json'), 'utf8'));
-const goMontata = async (page) => { await page.locator('#tab-montata').click(); await page.waitForSelector('#hours-input'); };
+const goMontata = async (page) => { await page.locator('#tab-montata').click(); await page.waitForSelector('#diary .rate'); await expandMontata(page); };
 const unlikeFirst = async (page) => { const id = await page.evaluate(() => window.STRINGS_DATA.defaults.liked[0]); await openSheetById(page, id); await page.locator('#sheet-body [data-like]').click(); await page.locator('#sheet-close').click(); };
 const addHours = async (page, value) => { await page.locator('#hours-input').fill(value); await page.locator('#hours-add').click(); };
 const stateWith = (patch) => JSON.stringify({ v: 1, equipped: { id: 're-string-zero-17', kg: [22.5, 21.5], since: '2026-10-01T10:00:00.000Z', hours0: 0 }, liked: ['solinco-confidential-16l', 'toroline-o-toro-17'], disliked: [], sessions: [], lives: [], ...patch });
@@ -87,7 +87,7 @@ test('montata: cambio corda da "Monta", storico con le ore e annulla', async () 
   const id = await page.locator('#list .crow2wrap').first().getAttribute('data-id');
   await page.locator(`#list .crow2wrap[data-id="${id}"] .crow2`).click();
   await page.locator('#sheet-body [data-equip]').click();
-  assert.ok(await page.locator('#equip-dialog[open]').count());
+  await page.waitForSelector('#equip-dialog[open]');
   assert.equal(await page.locator('#eq-pick').inputValue(), id);
   await page.locator('#eq-ok').click();
   const name = await page.evaluate((i) => { const r = window.STRINGS_DATA.strings.find((x) => x.id === i); return `${r.brand} ${r.model}`; }, id);

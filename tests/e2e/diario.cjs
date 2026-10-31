@@ -1,6 +1,6 @@
-const { openPage, stateOf, bodyText, BAD, test, assert } = require('./ui.cjs');
+const { openPage, stateOf, expandMontata, bodyText, BAD, test, assert } = require('./ui.cjs');
 
-const goMontata = async (page) => { await page.locator('#tab-montata').click(); await page.waitForSelector('#diary .rate'); };
+const goMontata = async (page) => { await page.locator('#tab-montata').click(); await page.waitForSelector('#diary .rate'); await expandMontata(page); };
 const rate = (page, cat, v) => page.locator(`#diary .rate[data-cat="${cat}"] .rb[data-v="${v}"]`).click();
 const diaryOf = async (page) => (await stateOf(page)).equipped.diary;
 // db a raccolta simulato (stesso schema degli altri test)
@@ -288,10 +288,12 @@ test('diario: esporta il diario in CSV solo con downloads, una riga per prova e 
   const lives = [life('C1', 'solinco-confidential-16l', 22.5, { first: { spin: 4 }, end: { spin: 3 } }, { notes: 'a, "b"', tags: ['secca'] })];
   let o = await openPage({ storage: { 'banco-corde:state': stateJson(lives) } });
   await o.page.locator('#tab-montata').click();
+  await expandMontata(o.page);
   assert.equal(await o.page.locator('#export-diary').isVisible(), false, 'senza downloads è nascosto');
   await o.ctx.close();
   o = await openPage({ claude: DL, storage: { 'banco-corde:state': stateJson(lives) } });
   await o.page.locator('#tab-montata').click();
+  await expandMontata(o.page);
   await o.page.locator('#export-diary').click();
   const saved = await o.page.evaluate(() => window.__saved);
   assert.equal(saved.filename, 'banco-corde-diario.csv');

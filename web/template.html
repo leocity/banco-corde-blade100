@@ -63,45 +63,48 @@
     </section>
 
     <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden>
-      <div class="section-head"><h2>La tua corda montata</h2></div>
       <div id="mine-summary"></div>
       <div class="wear-box" id="wear"></div>
-      <section class="diary" id="diary" data-dtarget="current" aria-label="Voti e sensazioni"></section>
+      <div class="card-actions"><button class="btn primary" type="button" id="equip-btn">Cambia corda</button></div>
       <div class="log-box">
-        <h3>Segna una sessione</h3>
-        <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
-          <button type="button" class="chipbtn" data-day="0" aria-pressed="true">Oggi</button>
-          <button type="button" class="chipbtn" data-day="1" aria-pressed="false">Ieri</button>
-        </div>
+        <h3>Segna le ore</h3>
         <div class="card-actions">
           <button class="btn" type="button" data-add-hours="1">+1 h</button>
           <button class="btn" type="button" data-add-hours="1.5">+1,5 h</button>
           <button class="btn" type="button" data-add-hours="2">+2 h</button>
         </div>
-        <div class="controls">
-          <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="6"></label>
-          <label>Data <input type="date" id="hours-date"></label>
-          <label>Nota <input id="hours-note" placeholder="facoltativa"></label>
-          <button class="btn primary" type="button" id="hours-add">Aggiungi</button>
+        <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
+          <button type="button" class="chipbtn" data-day="0" aria-pressed="true">Oggi</button>
+          <button type="button" class="chipbtn" data-day="1" aria-pressed="false">Ieri</button>
         </div>
+        <details class="more" id="hours-more">
+          <summary>Altre ore, data o nota</summary>
+          <div class="controls">
+            <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="6"></label>
+            <label>Data <input type="date" id="hours-date"></label>
+            <label>Nota <input id="hours-note" placeholder="facoltativa"></label>
+            <button class="btn primary" type="button" id="hours-add">Aggiungi</button>
+          </div>
+        </details>
         <p class="gaps" id="hours-error" role="alert" hidden></p>
-        <ul class="sessions" id="sessions"></ul>
       </div>
-      <div class="log-box" id="ai-wear-box" hidden>
-        <h3>Parere AI sull'usura</h3>
-        <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
-        <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
-        <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
-      </div>
+      <section class="diary" id="diary" data-dtarget="current" aria-label="Voti e sensazioni"></section>
+      <details class="more" id="sessions-box"><summary id="sessions-sum">Sessioni</summary><ul class="sessions" id="sessions"></ul></details>
+      <details class="more" id="history-box"><summary id="history-sum">Corde finite</summary><ul class="sessions" id="history"></ul><div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div></details>
+      <details class="more" id="other-box">
+        <summary>Altro</summary>
+        <div class="log-box" id="ai-wear-box" hidden>
+          <h3>Parere AI sull'usura</h3>
+          <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
+          <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
+          <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
+        </div>
+        <div class="card-actions">
+          <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
+          <button class="btn" type="button" id="export-diary" hidden>Esporta il diario (CSV)</button>
+        </div>
+      </details>
       <p class="callout small" id="persist-note" role="status" hidden></p>
-      <div class="card-actions">
-        <button class="btn primary" type="button" id="equip-btn">Cambia corda</button>
-        <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
-        <button class="btn" type="button" id="export-diary" hidden>Esporta il diario (CSV)</button>
-      </div>
-      <h3>Corde finite</h3>
-      <ul class="sessions" id="history"></ul>
-      <div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div>
     </section>
     <section id="metodo" class="panel prose" hidden></section>
   </main>
@@ -186,7 +189,7 @@
 
 <dialog id="sheet" aria-labelledby="sheet-title">
   <div class="sheet-inner">
-    <button class="close" id="sheet-close" type="button" aria-label="Chiudi scheda">×</button>
+    <button class="close sheet-back" id="sheet-close" type="button">‹ Indietro</button>
     <div id="sheet-body"></div>
   </div>
 </dialog>
