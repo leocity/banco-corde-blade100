@@ -49,3 +49,25 @@ def test_build_community_alias_maps_generic_name_to_listed_models():
     forum = [{"brand": "Solinco", "models": [{"model": "Hyper-G", "sources": [src("a", control="alto"), src("b", control="alto")]}]}]
     out = build_community(forum, recs, aliases={("Solinco", "Hyper-G"): ["Hyper-G Round"]})
     assert set(out) == {"s-hg-round"}
+
+
+def cmp_src(author, vs, attr, direction, kind="review", url=None):
+    s = src(author, kind=kind, url=url)
+    s["comparisons"] = [{"vs": vs, "attribute": attr, "direction": direction}]
+    return s
+
+
+def test_comparisons_group_by_pair_attribute_and_direction_counting_authors():
+    from pipeline.community import comparisons
+    out = comparisons([cmp_src("a", "Re-String Zero", "control", "less"), cmp_src("a", "re-string zero", "control", "less"),
+                       cmp_src("b", "Re-String Zero", "control", "less"), cmp_src("c", "Re-String Zero", "control", "more", kind="brand"),
+                       cmp_src("d", "Zero", "spin", "more")])
+    assert len(out) == 1 and out[0]["attribute"] == "control" and out[0]["direction"] == "less" and out[0]["n"] == 2
+    assert out[0]["url"].startswith("https://x/")
+
+
+def test_build_community_keeps_comparisons_even_without_levels():
+    recs = [{"id": "re-string-slap-17", "brand": "Re-String", "model": "Slap"}]
+    forum = [{"brand": "Re-String", "models": [{"model": "Slap", "sources": [cmp_src("nash", "Zero", "control", "less", url="https://tn/61581")]}]}]
+    c = build_community(forum, recs)["re-string-slap-17"]
+    assert "control" not in c and c["comparisons"][0]["vs"] == "Zero" and c["comparisons"][0]["direction"] == "less"

@@ -204,7 +204,7 @@ Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre eti
 
 ## Stato v4 (2026-10-31): sincronizzazione, schede compatte, diario
 
-Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 199 test Python, 181 test JS, 105 test Playwright, tutti verdi.
+Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 210 test Python, 190 test JS, 107 test Playwright, tutti verdi.
 
 ### Le segnalazioni dell'utente del 2026-10-31
 
@@ -250,6 +250,17 @@ Segnalazione: «dici che la Re-String Slap ha meno controllo della Zero, ma rece
 - **Quanto pesa il problema:** 82 corde hanno almeno 5 punti di differenza di controllo dalla Zero 1,23 e per **64 di queste la differenza è entro il margine**; per 58 corde su 98 il controllo è costruito su una sola misura (la rigidità); 21 coppie di calibri dello stesso modello hanno parole di controllo o tenuta distanti due livelli (per esempio Confidential 1,30 «molto alto» contro 1,20 «basso»).
 
 **Ancora aperto (dichiarato):** il pairing usa il valore puntuale del controllo (peso 15) senza margine; le parole («alto», «basso») non hanno ancora il margine; la potenza resta mostrata come 100 − controllo pur senza riscontro (decisione di prodotto: tenerla, toglierla o chiamarla «inverso del controllo»); le 17 corde con conflitto recensioni/dati restano segnalate ma non corrette.
+
+### Controllo e potenza separati, pareri dei forum (2026-10-31)
+
+Richiesta: controllo e potenza sono due cose diverse; verificare sui forum (TalkTennis, Passione Tennis) le corde principali: Solinco, Re-String, Toroline, Grapplesnake.
+
+- **Separati:** la potenza non è più «100 − controllo» (sulle recensioni indipendenti dava ρ −0,15 su 20 corde, nessun riscontro). Non ha un indice di laboratorio: ha una voce propria, «Controllo e potenza dai tester» nella scheda, e due chiavi distinte nel parere AI. Le opinioni dei tester non entrano mai in pairing, punteggi, classifiche, mappa o usura (test `tests/test_community_isolation.py`).
+- **Ricerca:** 4 agenti Haiku (uno per marchio) hanno aperto le pagine e riportato citazione letterale, link e autore (`data/agents/forum_*.json`); 40 corde del banco hanno almeno un parere o un confronto. Un parere vale una persona; il marketing del produttore non conta; Reddit non era raggiungibile (rete). Ho ricontrollato a mano 11 citazioni su 11 sulle pagine vere (Passione Tennis, TalkTennis, Tennis Warehouse, Tennisnerd): tutte autentiche. I livelli alto/medio/basso sono assegnati leggendo il testo (interpretazione dell'agente, non punteggi dei tester).
+- **Slap contro Zero:** nessun thread su Slap né su TalkTennis né su Passione Tennis (corda recentissima). Le uniche fonti indipendenti sono la recensione di Chris Nash su Tennisnerd (26/11/2025: «the control was not there in comparison to Zero», «Zero is the clear best choice» per la prevedibilità), verificata sulla pagina, e un commento di un lettore (maggio 2026) che dice che la Slap non è stata più stabile e controllata nella sua esperienza. Il «più controllo» viene solo dal produttore. **Non ho trovato nessuna fonte indipendente che dica che la Slap ha più controllo della Zero**; resta un punto aperto, da chiudere con link che l'utente conosce.
+- **Limite dei dati:** i tester dicono quasi sempre «controllo alto» delle poly: il livello da solo distingue poco; contano i confronti diretti. Per le corde con almeno 2 pareri, i tester e l'indice di controllo concordano in 9 casi su 16, differiscono di un livello in 3 e si contraddicono (alto contro basso) in 4, tra cui la O-Toro (indice «molto basso» 17, tre pareri «alto»): la scheda lo segnala. L'indice di controllo resta quindi poco affidabile per le corde morbide.
+- **Copertura:** Re-String quasi vuota (Slap: 1 confronto; Zero: 3 pareri; Vivo 2; Sync 1); Solinco e Toroline e Grapplesnake con 3–10 pareri sui modelli principali; Hyper-G Soft, Barb Wire, Absolute, Snapper, A5, Enso Pro, Toro Toro quasi niente. Passione Tennis /f211 (sezione Toroline) non letta.
+- **Ancora aperto:** altri marchi (Yonex, Luxilon, Babolat, Tecnifibre, Head, Kirschbaum, Signum Pro); il pairing usa ancora il solo indice di controllo; il parere dei tester non corregge l'indice.
 
 ## C. Priorità consigliate
 

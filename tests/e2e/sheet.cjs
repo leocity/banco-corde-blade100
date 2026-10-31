@@ -97,3 +97,26 @@ test('metodo: dichiara quanto controllo e comfort concordano con i tester e che 
   assert.doesNotMatch(t, /NaN|undefined/);
   await ctx.close();
 });
+
+test('tester: la scheda della Slap riporta il confronto con la Zero e dice che i pareri sono pochi, senza inventare livelli', async () => {
+  const { page, ctx } = await openPage();
+  await openBancoSheet(page, 're-string-slap-17', 'slap');
+  const t = await page.innerText('#sheet-body .community-sec');
+  assert.match(t, /meno controllo di Zero/);
+  assert.match(t, /1 parere/);
+  assert.match(t, /Controllo[^\n]*nessun parere/);
+  assert.match(t, /Opinioni, non misure/i);
+  assert.ok(await page.locator('#sheet-body .community-sec a[href*="tennisnerd.net"]').count() >= 1, 'link alla fonte');
+  assert.doesNotMatch(t, /NaN|undefined/);
+  await ctx.close();
+});
+
+test('tester: O-Toro, i tester dicono controllo alto e l\'indice dice basso: la scheda lo segnala', async () => {
+  const { page, ctx } = await openPage();
+  await openBancoSheet(page, 'toroline-o-toro-17', 'o-toro');
+  const t = await page.innerText('#sheet-body .community-sec');
+  assert.match(t, /Controllo: alto · \d+ pareri/);
+  assert.match(t, /Potenza: media/);
+  assert.match(t, /i tester dicono controllo alto, l'indice dice basso/i);
+  await ctx.close();
+});

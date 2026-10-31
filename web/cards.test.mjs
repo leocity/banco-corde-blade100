@@ -291,7 +291,7 @@ test('sheetHtml: la sezione «Controllo e potenza dai tester» mostra le due voc
 });
 
 test('sheetHtml: senza pareri raccolti lo dice senza inventare', () => {
-  const r = BY['toroline-o-toro-17'];
+  const r = { ...BY['toroline-o-toro-17'], community: null };
   const t = text(sheetHtml(r, ctxFor(r)));
   assert.match(t, /nessun parere dei tester raccolto/i);
 });
@@ -300,4 +300,21 @@ test('sheetHtml: se i tester contraddicono l\'indice di controllo lo scrive', ()
   const base = BY['toroline-o-toro-17'];
   const low = { ...base, derived: { ...base.derived, judgments: { ...base.derived.judgments, control: { word: 'basso', level: 1 } } }, community: { ...COMM, control: { ...COMM.control, word: 'alto' } } };
   assert.match(text(sheetHtml(low, ctxFor(low))), /i tester dicono controllo alto, l'indice dice basso/i);
+});
+
+test('sheetHtml: i confronti diretti tra corde si vedono con il numero di pareri e il link, anche senza livelli', () => {
+  const r = { ...BY['toroline-o-toro-17'], community: { comparisons: [{ vs: 'Zero', attribute: 'control', direction: 'less', n: 1, url: 'https://tn.example/61581', site: 'tennisnerd.net', quote: 'less in control' }], scope: 'model' } };
+  const h = sheetHtml(r, ctxFor(r));
+  const t = text(h.slice(h.indexOf('community-sec')));
+  assert.match(t, /meno controllo di Zero/);
+  assert.match(t, /1 parere/);
+  assert.match(h, /href="https:\/\/tn\.example\/61581"/);
+  assert.match(t, /Controllo[^|]*nessun parere/);
+});
+
+test('sheetHtml: con meno di 3 pareri lo dice («pochi pareri»)', () => {
+  const r = { ...BY['toroline-o-toro-17'], community: { control: { n: 1, word: 'alto', split: false, evidence: [] }, power: { n: 4, word: 'medio', split: false, evidence: [] } } };
+  const t = text(sheetHtml(r, ctxFor(r)));
+  assert.match(t, /Controllo[^|]*1 parere[^|]*pochi pareri/);
+  assert.doesNotMatch(t.slice(t.indexOf('Potenza'), t.indexOf('Potenza') + 60), /pochi pareri/);
 });

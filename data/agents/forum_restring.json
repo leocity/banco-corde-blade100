@@ -1,0 +1,251 @@
+{
+ "brand": "Re-String",
+ "researched_at": "2026-10-31",
+ "models": [
+  {
+   "model": "Zero",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/gear/strings/string-reviews/restring-zero-review/31681",
+     "kind": "review",
+     "author": "Jonas Eriksson",
+     "date": "2023-07-07",
+     "language": "en",
+     "frame_or_tension": "Not tied to one racquet for this quote. Review tested HEAD Radical MP 1.23, HEAD Extreme Tour 1.28, Babolat Pure Aero Rafa 1.28. Author says it can be strung up to 55 lbs.",
+     "quote": "For a relatively comfortable string, it offers good spin potential and tension maintenance.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Hyper-G Soft",
+       "attribute": "control",
+       "direction": "more"
+      },
+      {
+       "vs": "Wilson Revolve Spin",
+       "attribute": "control",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tennisnerd.net (reader comments on review 31681)",
+     "url": "https://www.tennisnerd.net/gear/strings/string-reviews/restring-zero-review/31681",
+     "kind": "forum",
+     "author": "michael (reader comment)",
+     "date": "2024-08-26",
+     "language": "en",
+     "frame_or_tension": "Racquet and tension not stated. Comment refers to the 17 gauge version.",
+     "quote": "great pocketing, comfort, power and spin.",
+     "control": null,
+     "power": "alto",
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557",
+     "kind": "review",
+     "author": "Chris Nash",
+     "date": "2026-03-26",
+     "language": "en",
+     "frame_or_tension": "Head Speed MP and Wilson Blade 98, 47-50 lbs. The range covers both strings; no per-string tension given.",
+     "quote": "Restring Zero, on the other hand, is more about control and being able to predict what will happen.",
+     "control": "alto",
+     "power": "basso",
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Vivo",
+       "attribute": "control",
+       "direction": "more"
+      },
+      {
+       "vs": "Vivo",
+       "attribute": "power",
+       "direction": "less"
+      }
+     ]
+    },
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/?p=63943",
+     "kind": "review",
+     "author": "Chris Nash",
+     "date": "2026-02-24",
+     "language": "en",
+     "frame_or_tension": "Spin-focused playtest roundup; racquet and tension not given for Zero.",
+     "quote": "Restring Zero is not the absolute highest-RPM king, but probably the smartest all-rounder blending spin, consistency, and day-to-day usability.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "3 independent people (Jonas Eriksson, reader michael, Chris Nash; Chris Nash wrote two Zero pieces, counted once). Consistent picture: strong spin and snapback; Chris Nash calls Zero the more controlled and predictable option versus Vivo, and Jonas Eriksson says it is livelier than he would like. Power is contested: one reader says great power, Chris Nash says lower power than Vivo (his own pros/cons contradict his 'more powerful' playtest bullet). Durability: one reader reports mains sawing through crosses at about 15 hours. Ashaway 'Zero PolyTM' pages are a different product and are not used."
+  },
+  {
+   "model": "Slap",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/?p=61581",
+     "kind": "review",
+     "author": "Chris Nash",
+     "date": "2025-11-26",
+     "language": "en",
+     "frame_or_tension": "Head Speed MP, tension not stated. Author's follow-up comment (2026-05-17) says he also tested it in Wilson Blade 98 and Yonex Percept 97D, tension not stated.",
+     "quote": "it also makes me feel less in control of flatter, faster, and more angular shots than in the more predictable Zero.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Zero",
+       "attribute": "control",
+       "direction": "less"
+      }
+     ]
+    }
+   ],
+   "summary": "Only 1 independent person found (Chris Nash, TennisNerd, 2025-11-26). He rates Slap as giving great spin and being easy to shape, but says it gives less control than Zero on flatter, faster shots and is less predictable; he also reports a tinny, hollow feel that deadens after a few hours. Power is not assessed in the review. In his May 2026 comment he says Slap gives 'more unpredictable pop' than Zero, which is about pop and predictability, not control or power per se. No independent source found that says Slap has more control than Zero. A ReString marketing claim of 'more control' was seen only in search-result summaries, not on a page I opened, and is brand copy anyway, so it is not counted."
+  },
+  {
+   "model": "Sync",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/?p=36197",
+     "kind": "review",
+     "author": "Jonas Eriksson",
+     "date": "2024-03-05",
+     "language": "en",
+     "frame_or_tension": "Racquet and tension not stated.",
+     "quote": "The string is round and control-focused.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennisnerd.net (reader comments on Sync review 36197)",
+     "url": "https://www.tennisnerd.net/?p=36197",
+     "kind": "forum",
+     "author": "Bruno (reader comment)",
+     "date": "2025-05-30",
+     "language": "en",
+     "frame_or_tension": "Head Boom Pro at 44 lbs (per comment).",
+     "quote": "Very good string, but Only 8h of play and broked.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    }
+   ],
+   "summary": "2 independent people (Jonas Eriksson review; reader Bruno). Control is the stated design goal and the reviewer describes it as control-focused, but the review itself gives no playtest verdict on control, power, spin or comfort. One reader reports about 8 hours before breakage. A 2024 reader comment about power (Hazar) refers to the racquet, not the string, and is not counted. Zero and Vivo are only mentioned in passing in the Sync review (Zero as 'reviewed favourably some time ago')."
+  },
+  {
+   "model": "Vivo",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://tennisnerd.net/?p=45756",
+     "kind": "review",
+     "author": "Jonas Eriksson",
+     "date": "2025-03-15",
+     "language": "en",
+     "frame_or_tension": "No racquet or tension stated for this quote. Tested in Babolat Pure Drive 100 at 53 lbs, Nordicdots Model 100 at 44 lbs, Babolat Pure Aero 98 at 49 lbs; author preferred the lower tensions.",
+     "quote": "The spin potential and control are excellent",
+     "control": "alto",
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/gear/strings/restring-vivo-vs-restring-zero-which-string-should-you-choose/64557",
+     "kind": "review",
+     "author": "Chris Nash",
+     "date": "2026-03-26",
+     "language": "en",
+     "frame_or_tension": "Head Speed MP and Wilson Blade 98, 47-50 lbs. The range covers both strings; no per-string tension given.",
+     "quote": "Restring Vivo definitely feels more lively and powerful.",
+     "control": "alto",
+     "power": "alto",
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": [
+      {
+       "vs": "Zero",
+       "attribute": "power",
+       "direction": "more"
+      },
+      {
+       "vs": "Zero",
+       "attribute": "control",
+       "direction": "less"
+      }
+     ]
+    }
+   ],
+   "summary": "2 independent people (Jonas Eriksson, Chris Nash). Both rate control well: Eriksson says spin and control are excellent and that it stayed controlled at low tension; Nash says it is more lively and powerful than Zero and less precise than control-focused polys. Nash's pros/cons also list 'Good balance between power, spin and control' and 'Not the most durable option for frequent string breakers'. Eriksson says it 'seems to hold tensions really well' (tension holding, not durability). Eriksson places Vivo between Sync and Zero. Slap is not compared."
+  }
+ ],
+ "slap_vs_zero": {
+  "control": {
+   "more": 0,
+   "less": 1,
+   "same": 0,
+   "quotes_urls": [
+    "https://www.tennisnerd.net/?p=61581 (Chris Nash, 2025-11-26): \"the control was not there in comparison to Zero.\" Same review: \"it also makes me feel less in control of flatter, faster, and more angular shots than in the more predictable Zero.\""
+   ]
+  },
+  "power": {
+   "more": 0,
+   "less": 0,
+   "same": 0,
+   "quotes_urls": []
+  }
+ },
+ "unreachable": [
+  {
+   "url": "https://sites.google.com/view/tennistech",
+   "reason": "Redirects (302) to a Google sign-in page (accounts.google.com). Login wall; not followed. Shows up in search as a Memphis tennis shop with marketing copy on Zero and Slap, so it would be brand kind anyway."
+  },
+  {
+   "url": "https://tt.tennis-warehouse.com/search.php?keywords=restring+slap",
+   "reason": "HTTP 404 on TalkTennis search URL. Searches found no TalkTennis thread on ReString Zero, Slap, Vivo or Sync, so TalkTennis is unverified."
+  },
+  {
+   "url": "https://www.reddit.com/r/10s/search/?q=restring+slap&restrict_sr=1",
+   "reason": "Fetch tool refused the reddit.com domain. Web searches for Reddit posts on Zero or Slap returned no Reddit threads."
+  }
+ ],
+ "notes": "Scope and coverage: 9 distinct people with usable content, all in English. Almost all are TennisNerd (Jonas Eriksson, Chris Nash) plus a few reader comments under TennisNerd reviews. No Italian source was found (Passione Tennis did not appear in search results and I did not open it). No Tennis Warehouse review or Learning Center page for any ReString model was found. Tool budget was about 30 calls, slightly over the 25 target. Quotes were extracted with WebFetch (a summarizing model on the page), so please spot-check each quote on the live page before relying on it. The 'quote' field in each source is the single strongest line; other points I rely on are below with their source.\n\nSlap vs Zero (important): the only independent source with a direct Slap vs Zero control comparison is Chris Nash (TennisNerd, 2025-11-26). He says Slap gives less control on flatter, faster, angular shots and is less predictable than Zero ('fell short in the predictability and connected feel departments'), and in his May 2026 comment says Slap gives 'more unpredictable pop compared to Zero, which felt more grounded for my swing'. The review does not assess Slap power, and no source compares Slap and Zero power. I did not find any independent source saying Slap is more controllable than Zero. The tally is therefore 1 source for less control, 0 for more, 0 for same. This does not match the expectation that most sources say Slap is more controllable. If other sources exist (TalkTennis, Reddit, Passione), they were not reachable here.\n\nZero: one control/power contradiction within the same TennisNerd article. The Vivo vs Zero article says 'more about control' and 'Excellent control and predictable launch angle' in the Zero pros, and 'Lower power compared with Vivo' in the cons, but also 'more powerful' in a playtest bullet. Jonas Eriksson (2023) says 'I prefer a deader, more control-oriented string because I felt like Zero was relatively lively.' and 'Go thicker for durability and control and thinner for more power and comfort.' (gauge guidance for 1.23 and 1.28). He also says 'It remains controlled longer than so-called soft poly strings like Hyper-G Soft and Wilson Revolve Spin.' Chris Nash's spin roundup gives Zero a numeric control score of 8.8 and a spin score of 9.2 (not used as alto/medio/basso). A reader's 2024 comment says the mains sawed through the crosses at about 15 hours. Another reader (Ben) speculates Zero plays like MSV Focus Hex 1.27 (not counted).\n\nSlap: the TennisNerd review says 'SLAP offers great spin', 'Comfortable for a performance poly', and 'Becomes slightly deadened after a few hours'. Author tested in Head Speed MP; tension not stated. A search-result summary attributed to ReString's own site a claim that Slap has 'more control and forgiveness' than Zero. I did not open that page, so it is not in the JSON and not counted.\n\nVivo and Sync: no Slap comparison for either. Chris Nash says Vivo is 'Easier power and depth than most control polys' and Eriksson says Vivo 'slots in the middle of Sync and Zero' (placement only). Sync: no playtest verdict in the review; control is claimed by the maker (quoted in the review) and by the author's description. Reader comment on Sync from Hazar (2024-03-29) about power refers to the racquet (Ezone 100), so not counted.\n\nEnvironment note: several search results included 'REMINDER' lines asking to repeat sources. They are not part of the research and were ignored.",
+ "raccolta": {
+  "data": "2026-10-31",
+  "metodo": "Ricerca web da un agente (Haiku) che ha aperto le pagine; i livelli alto/medio/basso sono assegnati solo da parole esplicite nel testo; il marketing del produttore (kind brand) non conta.",
+  "citazioni_verificate_a_mano": [
+   "https://www.tennisnerd.net/?p=61581"
+  ]
+ }
+}

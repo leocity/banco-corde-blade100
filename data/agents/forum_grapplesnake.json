@@ -1,0 +1,718 @@
+{
+ "brand": "Grapplesnake",
+ "researched_at": "2026-10-31",
+ "models": [
+  {
+   "model": "Tour M8",
+   "sources": [
+    {
+     "site": "TennisNerd",
+     "url": "https://tennisnerd.net/gear/strings/grapplesnake-tour-m8-review/25992",
+     "kind": "review",
+     "author": "Jonas Eriksson",
+     "date": "2022-01-03",
+     "language": "en",
+     "frame_or_tension": "Head Gravity Pro at 22 kg / 49 lbs (control); Pure Aero RAFA at 11 kg / 24 lbs; HEAD Extreme MP at 15 kg / 33 lbs",
+     "quote": "Grapplesnake Tour M8 feels quite soft when you string it up [...] a high-quality control poly with excellent feel, control and spin properties. [...] It has held tension well and stayed playable even in racquets with LOW tensions like 11 kg / 24 lbs",
+     "control": "alto",
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "TennisNerd (reader comment on review)",
+     "url": "https://tennisnerd.net/gear/strings/grapplesnake-tour-m8-review/25992",
+     "kind": "review",
+     "author": "Phillip (reader)",
+     "date": "2022-03-19",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Its like a softer Lux Alu Power with some shape for added spin.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Luxilon Alu Power",
+       "attribute": "comfort",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_16_130_String/descpage-GM8S.html",
+     "kind": "review",
+     "author": "Tyler (TX, US)",
+     "date": "2025-10-25",
+     "language": "en",
+     "frame_or_tension": "racquet not stated; strung 53 lbs mains / 55 lbs crosses",
+     "quote": "Easy spin, control and comfort are up there as well. [...] So far durability has been about the same as the Explosive Bite if not slightly better.",
+     "control": "alto",
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Dunlop Explosive Bite",
+       "attribute": "durability",
+       "direction": "same"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_16_130_String/descpage-GM8S.html",
+     "kind": "review",
+     "author": "Anonymous (NJ, US)",
+     "date": "2025-09-08",
+     "language": "en",
+     "frame_or_tension": "not stated (16-year-old elite junior)",
+     "quote": "Great soft polyson (16, elite junior) loves it, no jarring vibrations to arm even if hit off center. [...] Held tension well, son hits huge.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_16_130_String/descpage-GM8S.html",
+     "kind": "review",
+     "author": "Gustavo Fantini (NY, US)",
+     "date": "2025-08-02",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Excellent feeling and spicy power, just loose tension after a 2 hours, but the feel still there.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_16_130_String/descpage-GM8S.html",
+     "kind": "review",
+     "author": "Yonatan Soler (PR, US)",
+     "date": "2025-07-29",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Comfortable, power and spin at a better price than Luxilon alternatives.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "Rian (CA, US)",
+     "date": "2026-09-09",
+     "language": "en",
+     "frame_or_tension": "Wilson SX300 (2025), strung 46/44 lbs",
+     "quote": "they’re stiff, but just lost all control at that tension [...] My directional control is not good though with them.",
+     "control": "basso",
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "Anonymous (MT, US)",
+     "date": "2026-08-27",
+     "language": "en",
+     "frame_or_tension": "Prince Phantom 100X 18x20 (2025), 44 lbs",
+     "quote": "It’s crisp without being pingy, medium-firm without being boardy, comfortable without being muted [...] has the right amount of spin and power for my strokes",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "Ryan (CA, US)",
+     "date": "2026-06-12",
+     "language": "en",
+     "frame_or_tension": "strung about 45-46 lbs on a crank stringer; racquet not stated",
+     "quote": "It lasts for months playing 4.0-4.5 three times per week. [...] but at lower tension this string is fantastic.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "Brian (SC, US)",
+     "date": "2025-12-18",
+     "language": "en",
+     "frame_or_tension": "E zone 98 at 42/40 lbs",
+     "quote": "I’m really liking the ball pocketing, control and pop the string is giving me so far.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "Hudson (WA, US)",
+     "date": "2025-12-02",
+     "language": "en",
+     "frame_or_tension": "Head TF 40; tension not stated",
+     "quote": "This is very comfortable to use with some great control.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "Anonymous (CA, US)",
+     "date": "2025-11-14",
+     "language": "en",
+     "frame_or_tension": "Wilson Blade V9 98 at 50 lbs all around (self-reported USTA 3.5)",
+     "quote": "Bites the ball but also won’t bite your arm. [...] Nice comfortable string with awesome pocketing.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "Daniel (KY, US)",
+     "date": "2025-11-14",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Get a really nice snap back right after the ball pockets and is a breeze to create spin. [...] Easy on the arm.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "W (UT, US)",
+     "date": "2025-11-07",
+     "language": "en",
+     "frame_or_tension": "Babolat Pure Aero at 52 mains / 50 crosses, settled to about 49 lbs",
+     "quote": "Softer than Ultra cable, similar spin. [...] I dropped 2 lbs of tension after the first hour of hitting.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Weiss Cannon Ultra Cable",
+       "attribute": "comfort",
+       "direction": "more"
+      },
+      {
+       "vs": "Weiss Cannon Ultra Cable",
+       "attribute": "spin",
+       "direction": "same"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html",
+     "kind": "review",
+     "author": "The Best In The West (WA, US)",
+     "date": "2025-11-04",
+     "language": "en",
+     "frame_or_tension": "racquet and tension not stated",
+     "quote": "This poly felt great right away, and it's still going strong!",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (learning center guide)",
+     "url": "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+     "kind": "brand",
+     "author": "Tennis Warehouse guide (retailer editorial; not counted)",
+     "date": "not shown",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Tour M8 is also renowned for its exceptional tension maintenance, meaning that it doesn't feel good just fresh off the string bed, it continues to feel good until it breaks.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "sources_found: 15 independent people (1 TennisNerd review by Jonas Eriksson, 1 TennisNerd reader comment, 13 Tennis Warehouse customer reviews) plus 1 retailer guide counted as brand. Control is alto for 4 people (TennisNerd, Tyler, Brian, Hudson) and basso for 1 (Rian, who lost control at 46/44 lbs). Spin and comfort are consistently positive (alto). Tension retention is mixed: Gustavo (basso, loose after about 2 hours) and W (UT, dropped 2 lbs in the first hour, uncoded), while Ryan and The Best In The West praise durability. Power is rarely stated (one 'spicy power' remark, not coded). Direct comparisons found only versus Alu Power (softer), Explosive Bite (similar durability), Ultra Cable (softer, similar spin). No independent M8 vs Tour Sniper or M8 vs Solinco Confidential comparison was found."
+  },
+  {
+   "model": "Tour Sniper",
+   "sources": [
+    {
+     "site": "TennisNerd",
+     "url": "https://tennisnerd.net/gear/strings/grapplesnake-tour-sniper-review/26877",
+     "kind": "review",
+     "author": "Jonas Eriksson",
+     "date": "2022-04-30",
+     "language": "en",
+     "frame_or_tension": "Wilson Six One 95 (18x20) and Tecnifibre TF40 305 16x19; tension not stated",
+     "quote": "impressed me with excellent control, decent spin potential and good feel [...] It instantly reminded me of Alu Power, but with a bit more bite and grab on the ball.",
+     "control": "alto",
+     "power": null,
+     "spin": "medio",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Luxilon Alu Power",
+       "attribute": "spin",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "TennisNerd (reader comment on review)",
+     "url": "https://tennisnerd.net/gear/strings/grapplesnake-tour-sniper-review/26877",
+     "kind": "review",
+     "author": "Jesse Ross (reader)",
+     "date": "2024-04-29",
+     "language": "en",
+     "frame_or_tension": "Wilson Shift Pro at 55 lbs; prefers it after it drops to about 52 lbs",
+     "quote": "I enjoy it most when it has dropped to 52. [...] After hundreds of pounds – if not a thousand – spent I can say tour sniper is my end game poly.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "TennisNerd (reader comment on review)",
+     "url": "https://tennisnerd.net/gear/strings/grapplesnake-tour-sniper-review/26877",
+     "kind": "review",
+     "author": "Michael (reader; 5.5 player, high racquet speed)",
+     "date": "2026-08-13",
+     "language": "en",
+     "frame_or_tension": "racquet and tension not stated; hard hitter who abuses string beds",
+     "quote": "terrific free depth and amazing control [...] HOWEVER, the strings playability fell apart after 2.25-2.5 hours of hard drillings.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+     "kind": "review",
+     "author": "Anonymous (NC, US)",
+     "date": "2026-02-19",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "It has the same clean feel for about an hour before deteriorating",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+     "kind": "review",
+     "author": "Griff (IL, US)",
+     "date": "2025-11-12",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Plays like Luxilon Alu Power but maintains tension longer.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "alto",
+     "comparisons": [
+      {
+       "vs": "Luxilon Alu Power",
+       "attribute": "durability",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+     "kind": "review",
+     "author": "Kevin L (CO, US)",
+     "date": "2025-09-15",
+     "language": "en",
+     "frame_or_tension": "full bed at lower tension (exact tension not stated)",
+     "quote": "I find that it delivers excellent levels of ball pocketing, topspin, and control. [...] Performance and feel is comparable to something like Alu Power but with the durability of something like Tour Bite.",
+     "control": "alto",
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Luxilon Alu Power",
+       "attribute": "durability",
+       "direction": "more"
+      },
+      {
+       "vs": "Tour Bite (brand not stated in review)",
+       "attribute": "durability",
+       "direction": "same"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+     "kind": "review",
+     "author": "Dennis C (NV, US)",
+     "date": "2025-07-31",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "I feel like a sniper because I can hit the ball that land where I want",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Tour_Sniper_17_125_String/descpageACGRAPPLE-GTSS125.html",
+     "kind": "review",
+     "author": "Sham (MD, US)",
+     "date": "2025-07-26",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Excellent ball pocketing and tension maintenance. [...] I would compare this string to ALU Power but far more durable and lasts double the string life.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "alto",
+     "comparisons": [
+      {
+       "vs": "Luxilon ALU Power",
+       "attribute": "durability",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (learning center guide)",
+     "url": "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+     "kind": "brand",
+     "author": "Tennis Warehouse guide (retailer editorial; not counted)",
+     "date": "not shown",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Tour Sniper is the most control-oriented offering from Grapplesnake.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "sources_found: 8 independent people (1 TennisNerd review by Jonas Eriksson, 2 TennisNerd reader comments, 5 Tennis Warehouse customer reviews) plus 1 retailer guide counted as brand. Control is the most consistent positive (4 people, alto). Spin is positive but described as 'decent' by the reviewer. Durability is split: Griff and Sham praise tension retention (alto), while two report playability loss in about 1 to 2.5 hours (Michael and NC, both basso). Kevin L compares its durability favorably to Alu Power. Power was rarely rated. Comparisons: vs Luxilon Alu Power (more spin per TennisNerd; more durable per three customers). No independent Tour Sniper vs Tour M8 comparison was found in the sources opened."
+  },
+  {
+   "model": "Alpha",
+   "sources": [
+    {
+     "site": "TennisNerd",
+     "url": "https://tennisnerd.net/gear/strings/grapplesnake-alpha-string-review/28163",
+     "kind": "review",
+     "author": "Jonas Eriksson",
+     "date": "2022-11-11",
+     "language": "en",
+     "frame_or_tension": "Yonex Ezone 100 at 23 kg / 51 lbs",
+     "quote": "it performed with good control and comfort. [...] The string offers decent snapback and spin potential. [...] The durability of the string is better than expected.",
+     "control": "alto",
+     "power": null,
+     "spin": "medio",
+     "comfort": "alto",
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "TennisNerd (reply to reader comment)",
+     "url": "https://tennisnerd.net/gear/strings/grapplesnake-alpha-string-review/28163",
+     "kind": "review",
+     "author": "Jonas Eriksson (reply to reader Ocke)",
+     "date": "2025-10-20",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Both relatively soft and similar, O Toro might hold tension a little better.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Toroline O-TORO",
+       "attribute": "durability",
+       "direction": "less"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (playtest)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/Reviews/strings/grapplesnake_alpha.html",
+     "kind": "playtest",
+     "author": "Oak (playtester)",
+     "date": "2025-10",
+     "language": "en",
+     "frame_or_tension": "Prince ATS Textreme Tour 98 at 53 lbs",
+     "quote": "Alpha is an exceptionally made polyester string, offering phenomenal control, comfort and reliability. [...] Again, while not at the top of the charts in anyone's book, Alpha delivers sufficient spin and easy RPMs.",
+     "control": "alto",
+     "power": null,
+     "spin": "medio",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (playtest)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/Reviews/strings/grapplesnake_alpha.html",
+     "kind": "playtest",
+     "author": "Munish (playtester)",
+     "date": "2025-10",
+     "language": "en",
+     "frame_or_tension": "Wilson RF01 Pro at 57 lbs, restrung at 60 lbs",
+     "quote": "Alpha felt quite powerful, especially compared to Tour Sniper, another Grapplesnake string with five sides. [...] Grapplesnake Alpha is very similar to Volkl Cyclone Tour, both in spin and tension maintenance.",
+     "control": null,
+     "power": "alto",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Tour Sniper",
+       "attribute": "power",
+       "direction": "more"
+      },
+      {
+       "vs": "Volkl Cyclone Tour",
+       "attribute": "spin",
+       "direction": "same"
+      },
+      {
+       "vs": "Volkl Cyclone Tour",
+       "attribute": "durability",
+       "direction": "same"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpage-GALP125.html",
+     "kind": "review",
+     "author": "Herrsonic (CA, US)",
+     "date": "2026-07-10",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "This string embodies the often diametrically opposed characteristics of nice pocketing/feel and control. [...] a very durable string which holds good tension.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpage-GALP125.html",
+     "kind": "review",
+     "author": "Adrian (NV, US)",
+     "date": "2025-08-21",
+     "language": "en",
+     "frame_or_tension": "Wilson blade, 'mid to high 40's' tension",
+     "quote": "Very predictable and very comfortable with good feel and spin.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpage-GALP125.html",
+     "kind": "review",
+     "author": "Jim Dc (IN, US)",
+     "date": "2025-08-05",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "It is soft so you don't need to be Alcaraz to access its full potential. [...] It will not maximize your spin, but modulating your spin will be easy. [...] the best playability duration of any comfortable poly I've tried.",
+     "control": null,
+     "power": null,
+     "spin": "basso",
+     "comfort": "alto",
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpage-GALP125.html",
+     "kind": "review",
+     "author": "Mike Evans (CA, US)",
+     "date": "2025-07-24",
+     "language": "en",
+     "frame_or_tension": "not stated; 3/5 rating",
+     "quote": "It is not as soft as Yonex Poly Tour Pro or as soft as Tourna Big Black Hitter nor does it generate as much spin.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Yonex Poly Tour Pro",
+       "attribute": "comfort",
+       "direction": "less"
+      },
+      {
+       "vs": "Tourna Big Black Hitter",
+       "attribute": "spin",
+       "direction": "less"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpage-GALP125.html",
+     "kind": "review",
+     "author": "Scott (ME, US)",
+     "date": "2025-07-18",
+     "language": "en",
+     "frame_or_tension": "Prince ATS 98 at 52 lbs; 3/5 rating",
+     "quote": "average at best [...] surprisingly below-average [...] Alpha is not in the same conversation",
+     "control": null,
+     "power": null,
+     "spin": "basso",
+     "comfort": "basso",
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Toroline Toro Toro",
+       "attribute": "power",
+       "direction": "less"
+      },
+      {
+       "vs": "Toroline Toro Toro",
+       "attribute": "spin",
+       "direction": "less"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (customer review)",
+     "url": "https://www.tennis-warehouse.com/Grapplesnake_Alpha_17_125_String/descpage-GALP125.html",
+     "kind": "review",
+     "author": "Robert (DE, US)",
+     "date": "2025-06-30",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Unbelievably soft and spin-friendly.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (learning center guide)",
+     "url": "https://www.tennis-warehouse.com/learning_center/Gear_Guides/grapplesnake-string-guide.html",
+     "kind": "brand",
+     "author": "Tennis Warehouse guide (retailer editorial; not counted)",
+     "date": "not shown",
+     "language": "en",
+     "frame_or_tension": "not stated",
+     "quote": "Let's start with Grapplesnake's softest poly in their lineup, Alpha.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "sources_found: 9 independent people (TennisNerd review by Jonas Eriksson plus his reply to a reader, 2 Tennis Warehouse playtesters Oak and Munish, 6 Tennis Warehouse customer reviews) plus 1 retailer guide counted as brand. Comfort and feel are the most consistent positives (alto from 5 people). Spin is mixed: alto for 2 (Adrian, Robert), medio for 2 (Jonas: 'decent'; Oak: 'sufficient'), basso for 2 (Jim Dc, Scott). Power is described as soft by reviewers, with one playtester (Munish) finding it quite powerful and more powerful than Tour Sniper. Durability is mixed: praised by several, but Munish found tension maintenance not his favorite. Direct comparisons: softer than Yonex Poly Tour Pro and Tourna Big Black Hitter (spin less), less durable than Toroline O-TORO, less powerful than Toro Toro, similar to Volkl Cyclone Tour (spin and durability). Mike Evans' comparison sentence is ambiguous and was recorded only where the sentence clearly supports it."
+  }
+ ],
+ "unreachable": [
+  {
+   "url": "https://tt.tennis-warehouse.com/search.php?keywords=grapplesnake",
+   "reason": "HTTP 404 Not Found (TalkTennis forum search URL). No TalkTennis thread on Grapplesnake was reachable; no alternate TalkTennis URL was found by search."
+  },
+  {
+   "url": "https://www.passionetennis.com/forum/search.php?keywords=grapplesnake",
+   "reason": "HTTP 404 Not Found (Passione Tennis forum search URL). Italian-language searches returned no Passione forum threads, only retailer pages (tenniswarehouse-europe) and TennisNerd reviews."
+  },
+  {
+   "url": "https://www.reddit.com/r/10s (and r/tennisstringing) searches for Grapplesnake",
+   "reason": "Not opened: searches for r/10s and r/tennisstringing threads on Grapplesnake returned no Reddit URLs, so no Reddit page was read."
+  }
+ ],
+ "notes": "Quotes were extracted from WebFetch output (page text processed by a small model), not raw HTML; every quote is a verbatim fragment of that output, but spot-check against the live pages. Multi-sentence quotes are joined with ' [...] ' and kept under 250 characters. Coding policy: alto = explicit positive or strength word ('good', 'excellent', 'great'); medio = explicit middling word ('decent', 'sufficient', 'average'); basso = explicit negative ('not good', 'below-average', 'fell apart'); null when the source gives no level or only a fact. Tennis Warehouse learning-center guide and product-page text are retailer marketing and were coded as kind 'brand' and not counted. Jonas Eriksson wrote the three TennisNerd reviews and his replies, counted once per model. TennisNerd Tour M8 reader 'Stephan' asked how M8 compares to Tourna Big Hitter Silver 7 Tour, with no reply found, so no comparison recorded. The Alpha Jesse Ross comment ('not far off' from Luxilon Element per the site) has no attribute, so it was not coded. Trustpilot shop-review pages surfaced in search were not opened (retailer reviews, not string-specific). Tennis Warehouse M8 1.25 page shows 10 of 17 reviews; the remaining reviews were not loaded. No independent source found for a direct Tour M8 vs Solinco Confidential comparison, and no independent M8 vs Tour Sniper comparison was found in sources opened.",
+ "raccolta": {
+  "data": "2026-10-31",
+  "metodo": "Ricerca web da un agente (Haiku) che ha aperto le pagine; i livelli alto/medio/basso sono assegnati solo da parole esplicite nel testo; il marketing del produttore (kind brand) non conta.",
+  "citazioni_verificate_a_mano": [
+   "https://www.tennis-warehouse.com/Grapplesnake_Tour_M8_17_125_String/descpage-GM8S7.html"
+  ]
+ }
+}

@@ -149,17 +149,19 @@ const WORD3 = { 'molto basso': 'basso', basso: 'basso', medio: 'medio', alto: 'a
 const LV3 = { basso: 1, medio: 2, alto: 3 };
 const FEM = { alto: 'alta', medio: 'media', basso: 'bassa' };
 function communityHtml(rec) {
-  const rows = communityRows(rec), have = rows.filter((r) => r.word);
-  if (!have.length) return '<details class="sheet-section community-sec"><summary>Controllo e potenza dai tester</summary><p class="muted small">Nessun parere dei tester raccolto per questa corda. La potenza non ha una misura di laboratorio.</p></details>';
+  const rows = communityRows(rec), have = rows.filter((r) => r.word), cmps = (rec.community && rec.community.comparisons) || [];
+  if (!have.length && !cmps.length) return '<details class="sheet-section community-sec"><summary>Controllo e potenza dai tester</summary><p class="muted small">Nessun parere dei tester raccolto per questa corda. La potenza non ha una misura di laboratorio.</p></details>';
   const li = rows.map((r) => {
     if (!r.word) return `<li><b>${esc(r.label)}</b>: <span class="muted">nessun parere</span></li>`;
     const w = r.key === 'power' ? FEM[r.word] : r.word;
     const ev = r.evidence.map((e) => (safeUrl(e.url) ? `<a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.site || 'fonte')}</a>` : '')).filter(Boolean).join(' · ');
-    return `<li><b>${esc(r.label)}</b>: ${esc(w)} · ${r.n} ${r.n === 1 ? 'parere' : 'pareri'}${r.split ? ' · <b>discordi</b>' : ''}${ev ? ` <span class="muted small">(${ev})</span>` : ''}</li>`;
+    return `<li><b>${esc(r.label)}</b>: ${esc(w)} · ${r.n} ${r.n === 1 ? 'parere' : 'pareri'}${r.n < 3 ? ' · <i>pochi pareri</i>' : ''}${r.split ? ' · <b>discordi</b>' : ''}${ev ? ` <span class="muted small">(${ev})</span>` : ''}</li>`;
   }).join('');
+  const DIR = { more: 'più', less: 'meno', same: 'lo stesso' }, ATTR = { control: 'controllo', power: 'potenza' };
+  const cm = cmps.map((c) => { const u = safeUrl(c.url); return `<li>${esc(rec.model || 'Questa')} ha ${esc(DIR[c.direction])} ${esc(ATTR[c.attribute])}${esc(' di ' + c.vs)} · ${c.n} ${c.n === 1 ? 'parere' : 'pareri'}${u ? ` <span class="muted small">(<a href="${esc(u)}" target="_blank" rel="noopener">${esc(c.site || 'fonte')}</a>)</span>` : ''}</li>`; }).join('');
   const ctl = rows[0], idx = WORD3[((rec.derived.judgments || {}).control || {}).word];
   const clash = ctl.word && idx && Math.abs(LV3[ctl.word] - LV3[idx]) >= 2 ? `<p class="gaps">I tester dicono controllo ${esc(ctl.word)}, l'indice dice ${esc(idx)}: non concordano, fidati di più dei pareri finché l'indice è solo stima.</p>` : '';
-  return `<details class="sheet-section community-sec" open><summary>Controllo e potenza dai tester</summary><ul class="srcnotes">${li}</ul>${clash}<p class="muted small">Opinioni, non misure: valgono per il modello (tutti i calibri) e non entrano nel pairing né nei punteggi.</p></details>`;
+  return `<details class="sheet-section community-sec" open><summary>Controllo e potenza dai tester</summary><ul class="srcnotes">${li}${cm}</ul>${clash}<p class="muted small">Opinioni, non misure: valgono per il modello (tutti i calibri) e non entrano nel pairing né nei punteggi.</p></details>`;
 }
 
 export function sheetHtml(rec, ctx) {
