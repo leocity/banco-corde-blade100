@@ -165,7 +165,7 @@ test('sameState ignora l\'ordine delle chiavi e delle sessioni', () => {
   assert.equal(sameState(a, removeSession(a, '1-1')), false);
 });
 
-import { trialsOf, applyVerdict, updateDiary, setEquippedKg } from './state.js';
+import { trialsOf, applyVerdict, updateDiary, setEquippedKg, addPastLife } from './state.js';
 import { setRating, setVerdict, emptyDiary } from './diary.js';
 
 test('sanitizeState: il diario di montata e vite si conserva ripulito; senza diario nessun campo', () => {
@@ -220,4 +220,21 @@ test('setEquippedKg: tensione tra 15 e 35 kg, il resto della montata non cambia'
   assert.deepEqual(n.equipped.kg, [23, 22]);
   assert.equal(n.equipped.since, s.equipped.since);
   for (const bad of [[99, 22], [23], [14.9, 22], [23, 35.1], ['a', 22], null, [NaN, 22]]) assert.deepEqual(setEquippedKg(s, bad), s, String(bad));
+});
+
+test('addPastLife: aggiunge una prova passata con tensione, date e ore; non tocca la montata', () => {
+  const s = defaultState(DEFAULTS, NOW);
+  const n = addPastLife(s, { id: 'other', kg: [23, 22], from: '2026-09-01', to: '2026-09-20', hours: 12, reason: 'consumata', lid: 'P1' });
+  assert.equal(n.lives.length, 1);
+  assert.deepEqual(n.lives[0], { lid: 'P1', id: 'other', kg: [23, 22], from: '2026-09-01T12:00:00.000Z', to: '2026-09-20T12:00:00.000Z', hours: 12, reason: 'consumata', note: '' });
+  assert.deepEqual(n.equipped, s.equipped);
+  assert.deepEqual(trialsOf(n).map((x) => x.lid), ['current', 'P1']);
+});
+
+test('addPastLife: rifiuta tensione, date, ore e corda non valide', () => {
+  const s = defaultState(DEFAULTS, NOW);
+  const ok = { id: 'other', kg: [23, 22], from: '2026-09-01', to: '2026-09-20', hours: 12, reason: 'consumata', lid: 'P1' };
+  for (const bad of [{ kg: [99, 22] }, { kg: [23] }, { from: '2026-13-01' }, { to: '2026-08-01' }, { hours: -1 }, { hours: 900 }, { hours: 'x' }, { id: '' }, { reason: 'boh' }, { lid: 'a/b' }]) {
+    assert.deepEqual(addPastLife(s, { ...ok, ...bad }), s, JSON.stringify(bad));
+  }
 });

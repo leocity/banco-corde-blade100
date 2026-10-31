@@ -80,7 +80,7 @@ test('diario: la tensione usata si modifica, 99 kg viene rifiutata con un messag
   await page.locator('#diary details[data-dsec="setup"] summary').click();
   await page.locator('#diary [data-dkg="v"]').fill('99');
   await page.locator('#diary [data-dkg="v"]').dispatchEvent('change');
-  assert.ok(await page.locator('#d-error').isVisible());
+  assert.ok(await page.locator('#diary .d-error').isVisible());
   assert.deepEqual((await stateOf(page) || { equipped: { kg: [22.5, 21.5] } }).equipped.kg, [22.5, 21.5]);
   await page.locator('#diary [data-dkg="v"]').fill('23,5');
   await page.locator('#diary [data-dkg="v"]').dispatchEvent('change');
@@ -120,10 +120,10 @@ test('diario: tensiometro con la perdita calcolata e letture non valide rifiutat
   const { page, ctx } = await openPage({ width: 390, height: 844 });
   await goMontata(page);
   await page.locator('#diary details[data-dsec="meter"] summary').click();
-  for (const [h, v] of [['0', '25'], ['10', '22,5']]) { await page.locator('#d-meter-h').fill(h); await page.locator('#d-meter-v').fill(v); await page.locator('[data-dmeter-add]').click(); }
+  for (const [h, v] of [['0', '25'], ['10', '22,5']]) { await page.locator('#diary .d-meter-h').fill(h); await page.locator('#diary .d-meter-v').fill(v); await page.locator('#diary [data-dmeter-add]').click(); }
   assert.match(await page.innerText('#diary details[data-dsec="meter"]'), /−10/);
-  await page.locator('#d-meter-h').fill('x'); await page.locator('#d-meter-v').fill('0'); await page.locator('[data-dmeter-add]').click();
-  assert.ok(await page.locator('#d-error').isVisible());
+  await page.locator('#diary .d-meter-h').fill('x'); await page.locator('#diary .d-meter-v').fill('0'); await page.locator('#diary [data-dmeter-add]').click();
+  assert.ok(await page.locator('#diary .d-error').isVisible());
   assert.equal((await diaryOf(page)).meter.length, 2);
   await page.locator('[data-dmeter-del="0"]').click();
   assert.equal((await diaryOf(page)).meter.length, 1);
@@ -147,6 +147,84 @@ test('diario: nessun NaN e nessuno scroll orizzontale a 390 px', async () => {
   await goMontata(page);
   await rate(page, 'spin', 3);
   assert.doesNotMatch(await page.innerText('#diary'), BAD);
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
+  await ctx.close();
+});
+
+const pastRate = (page, cat, v) => page.locator(`#past-diary .rate[data-cat="${cat}"] .rb[data-v="${v}"]`).click();
+
+test('diario: cambiando corda si possono dare i voti di fine vita, che restano nello storico', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844 });
+  await goMontata(page);
+  await rate(page, 'spin', 4);
+  await page.locator('[data-add-hours="2"]').click();
+  await page.locator('#equip-btn').click();
+  await page.locator('#eq-rate').check();
+  await page.locator('#eq-ok').click();
+  await page.waitForSelector('#past-dialog[open]');
+  assert.equal(await page.locator('#past-diary .mom[data-moment="end"]').getAttribute('aria-pressed'), 'true');
+  await pastRate(page, 'spin', 3);
+  await pastRate(page, 'comfort', 2);
+  await page.locator('#past-close').click();
+  const st = await stateOf(page);
+  assert.equal(st.lives.length, 1);
+  assert.deepEqual(st.lives[0].diary.ratings, { first: { spin: 4 }, end: { spin: 3, comfort: 2 } });
+  assert.equal(st.equipped.diary, undefined, 'la nuova montata parte senza diario');
+  assert.match(await page.innerText('#history'), /Re-String Zero/);
+  await ctx.close();
+});
+
+test('diario: dallo storico si riapre e si modifica il diario di una corda finita', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844 });
+  await goMontata(page);
+  await rate(page, 'control', 5);
+  await page.locator('#equip-btn').click();
+  await page.locator('#eq-ok').click();
+  await page.locator('#history [data-past-open]').first().click();
+  await page.waitForSelector('#past-dialog[open]');
+  assert.equal(await page.locator('#past-diary .rate[data-cat="control"] .rb[data-v="5"]').getAttribute('aria-pressed'), 'true');
+  await page.locator('#past-diary [data-verdict="si"]').click();
+  await page.locator('#past-close').click();
+  const st = await stateOf(page);
+  assert.equal(st.lives[0].diary.verdict, 'si');
+  assert.ok(st.liked.includes('re-string-zero-17'), 'il verdetto della corda finita aggiorna le preferite');
+  await ctx.close();
+});
+
+test('diario: aggiungere una prova passata con tensione, date, ore e voti', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844 });
+  await goMontata(page);
+  await page.locator('#past-add').click();
+  await page.locator('#tr-q').fill('Hyper-G');
+  const pick = await page.locator('#tr-pick option').first().getAttribute('value');
+  await page.locator('#tr-pick').selectOption(pick);
+  await page.locator('#tr-kgv').fill('99'); await page.locator('#tr-kgh').fill('22');
+  await page.locator('#tr-from').fill('2026-09-01'); await page.locator('#tr-to').fill('2026-09-20'); await page.locator('#tr-hours').fill('12');
+  await page.locator('#tr-ok').click();
+  assert.ok(await page.locator('#tr-error').isVisible(), 'tensione 99 kg rifiutata');
+  await page.locator('#tr-kgv').fill('23,5');
+  await page.locator('#tr-to').fill('2026-08-01');
+  await page.locator('#tr-ok').click();
+  assert.match(await page.innerText('#tr-error'), /date/i);
+  await page.locator('#tr-to').fill('2026-09-20');
+  await page.locator('#tr-ok').click();
+  await page.waitForSelector('#past-dialog[open]');
+  await pastRate(page, 'spin', 5);
+  await page.locator('#past-close').click();
+  const st = await stateOf(page);
+  const life = st.lives.find((l) => l.id === pick);
+  assert.deepEqual([life.kg, life.hours, life.reason], [[23.5, 22], 12, 'consumata']);
+  assert.equal(life.diary.ratings.end.spin, 5);
+  assert.match(await page.innerText('#history'), /Hyper-G/);
+  await ctx.close();
+});
+
+test('diario: nello storico nessun NaN e nessuno scroll orizzontale', async () => {
+  const { page, ctx } = await openPage({ width: 390, height: 844 });
+  await goMontata(page);
+  await page.locator('#equip-btn').click();
+  await page.locator('#eq-ok').click();
+  assert.doesNotMatch(await page.innerText('#history'), BAD);
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
   await ctx.close();
 });

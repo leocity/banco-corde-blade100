@@ -1,8 +1,8 @@
 // Schermata Montata: corda montata, ore di gioco, usura, cambio corda e storico.
 import { $, esc, fmt, fmtN, fullName, nameOf } from './format.js';
 import { compactRowHtml } from './cards.js';
-import { renderDiary } from './diaryui.js';
-import { changeString, addSession, removeSession, editSession, parseHours, tensionFor } from './state.js';
+import { renderDiary, openPastDiary } from './diaryui.js';
+import { changeString, addPastLife, addSession, removeSession, editSession, parseHours, tensionFor } from './state.js';
 
 const WEAR_CLASS = { Fresca: 'ottimo', 'In uso': 'buono', 'Da controllare': 'attenzione', 'Da cambiare': 'poco' };
 const BASIS_TEXT = { ipotesi: 'ipotesi di partenza, non misurata (8 + 0,12 × tenuta ore)', 'tua corda': 'dalle ore reali di questa corda', 'tuo storico': 'scalata sulle ore reali delle tue corde finite' };
@@ -54,7 +54,7 @@ export function renderMine(ctx) {
     ? `<li data-ts="${esc(x.ts)}"><form><label>Ore <input name="hours" value="${esc(fmtN(x.hours))}" inputmode="decimal" size="5"></label><label>Nota <input name="note" value="${esc(x.note)}"></label><button class="btn primary" type="button" data-save-ts>Salva</button><button class="btn" type="button" data-cancel-edit>Annulla</button></form></li>`
     : `<li data-ts="${esc(x.ts)}"><span><b>${esc(mineDate(x.date))}</b> · ${fmtN(x.hours)} h${x.note ? ` · ${esc(x.note)}` : ''}</span><button class="btn" type="button" data-edit-ts>Modifica</button><button class="btn" type="button" data-del-ts>Togli</button></li>`)).join('')
     : '<li class="muted">Nessuna sessione registrata su questa corda.</li>';
-  $('#history').innerHTML = s.lives.length ? [...s.lives].reverse().map((l) => `<li><span><b>${esc(ctx.BY_ID[l.id] ? fullName(ctx.BY_ID[l.id]) : l.id)}</b> · ${esc(mineDate(l.from))}–${esc(mineDate(l.to))} · ${fmtN(l.hours)} h · ${esc(l.reason)}</span></li>`).join('')
+  $('#history').innerHTML = s.lives.length ? [...s.lives].reverse().map((l) => `<li><span><b>${esc(ctx.BY_ID[l.id] ? fullName(ctx.BY_ID[l.id]) : l.id)}</b> · ${esc(fmtN(l.kg[0], 2))}/${esc(fmtN(l.kg[1], 2))} kg · ${esc(mineDate(l.from))}–${esc(mineDate(l.to))} · ${fmtN(l.hours)} h · ${esc(l.reason)}${l.diary ? ' · con voti' : ''}</span><button class="btn" type="button" data-past-open="${esc(l.lid)}">Voti e note</button></li>`).join('')
     : '<li class="muted">Ancora nessuna corda finita.</li>';
   renderPersistNote(ctx);
   $('#export-btn').hidden = !mineDownloads;
@@ -85,15 +85,15 @@ function eqSuggest(ctx) {
   const t = tensionFor(r, ctx.equippedRec(), ctx.state().equipped.kg);
   $('#eq-kgv').value = fmtN(t.kg[0], 2); $('#eq-kgh').value = fmtN(t.kg[1], 2);
 }
-function eqOptions(ctx, q, keep) {
+function eqOptions(ctx, q, keep, sel = '#eq-pick') {
   const needle = q.trim().toLowerCase();
   const rows = ctx.ALL.filter((r) => !needle || fullName(r).toLowerCase().includes(needle)).sort((a, b) => fullName(a).localeCompare(fullName(b)));
-  $('#eq-pick').innerHTML = rows.map((r) => `<option value="${esc(r.id)}">${esc(fullName(r))}</option>`).join('');
-  if (keep && rows.some((r) => r.id === keep)) $('#eq-pick').value = keep;
+  $(sel).innerHTML = rows.map((r) => `<option value="${esc(r.id)}">${esc(fullName(r))}</option>`).join('');
+  if (keep && rows.some((r) => r.id === keep)) $(sel).value = keep;
 }
 function openEquip(ctx, id) {
   eqOptions(ctx, '', id || ctx.state().equipped.id);
-  $('#eq-q').value = ''; $('#eq-date').value = mineToday(); $('#eq-reason').value = 'consumata'; $('#eq-hours').value = fmtN(ctx.hours());
+  $('#eq-q').value = ''; $('#eq-rate').checked = false; $('#eq-date').value = mineToday(); $('#eq-reason').value = 'consumata'; $('#eq-hours').value = fmtN(ctx.hours());
   $('#eq-error').hidden = true;
   eqSuggest(ctx);
   if (!$('#equip-dialog').open) $('#equip-dialog').showModal();
@@ -109,9 +109,36 @@ function confirmEquip(ctx) {
   if (endHours === null || endHours > 500) return err('Le ore giocate devono essere un numero (anche 0).');
   const prev = ctx.state();
   const since = `${date}T${new Date().toISOString().slice(11)}`;
-  ctx.update((s) => changeString(s, { id, kg: [v, h], date: since, endReason: $('#eq-reason').value, endHours }));
+  const lid = `${Date.now()}`, rate = $('#eq-rate').checked;
+  ctx.update((s) => changeString(s, { id, kg: [v, h], date: since, endReason: $('#eq-reason').value, endHours, lid }));
   $('#equip-dialog').close();
-  mineToast(`Montata: ${fullName(ctx.BY_ID[id])}`, 'Annulla cambio', () => ctx.update(() => prev));
+  mineToast(`Montata: ${fullName(ctx.BY_ID[id])}`, 'Annulla cambio', () => { const d = $('#past-dialog'); if (d.open) d.close(); ctx.update(() => prev); });
+  if (rate) openPastDiary(ctx, lid, 'end');
+}
+
+function openTrial(ctx) {
+  eqOptions(ctx, '', ctx.state().equipped.id, '#tr-pick');
+  $('#tr-q').value = ''; $('#tr-to').value = mineToday(); $('#tr-from').value = ''; $('#tr-hours').value = ''; $('#tr-reason').value = 'consumata';
+  const kg = ctx.state().equipped.kg; $('#tr-kgv').value = fmtN(kg[0], 2); $('#tr-kgh').value = fmtN(kg[1], 2);
+  $('#tr-error').hidden = true;
+  if (!$('#trial-dialog').open) $('#trial-dialog').showModal();
+}
+function confirmTrial(ctx) {
+  const err = (m) => { $('#tr-error').textContent = m; $('#tr-error').hidden = false; };
+  const id = $('#tr-pick').value, v = eqKg($('#tr-kgv').value), h = eqKg($('#tr-kgh').value), from = $('#tr-from').value, to = $('#tr-to').value;
+  const hRaw = $('#tr-hours').value.trim(), hours = /^\d+([.,]\d+)?$/.test(hRaw) ? Number(hRaw.replace(',', '.')) : null;
+  if (!id || !ctx.BY_ID[id]) return err('Scegli la corda dall\'elenco.');
+  if (v === null || h === null) return err('Tensione non valida: scrivi due numeri in kg tra 15 e 35.');
+  if (!from || !to) return err('Scrivi le date di inizio e fine, anche approssimate.');
+  if (to > mineToday()) return err('La data di fine non può essere nel futuro.');
+  if (to < from) return err('Le date non tornano: «Al» deve essere dopo «Dal».');
+  if (hours === null || hours > 500) return err('Le ore giocate devono essere un numero (anche 0), al massimo 500.');
+  const lid = `${Date.now()}`;
+  const next = addPastLife(ctx.state(), { id, kg: [v, h], from, to, hours, reason: $('#tr-reason').value, lid });
+  if (next === ctx.state()) return err('Non riesco ad aggiungere questa prova: controlla i dati.');
+  ctx.update(() => next);
+  $('#trial-dialog').close();
+  openPastDiary(ctx, lid, 'end');
 }
 
 export function initMine(ctx) {
@@ -138,6 +165,11 @@ export function initMine(ctx) {
   $('#equip-btn').addEventListener('click', () => openEquip(ctx));
   $('#eq-cancel').addEventListener('click', () => $('#equip-dialog').close());
   $('#eq-ok').addEventListener('click', () => confirmEquip(ctx));
+  $('#history').addEventListener('click', (e) => { const b = e.target.closest('[data-past-open]'); if (b) openPastDiary(ctx, b.dataset.pastOpen); });
+  $('#past-add').addEventListener('click', () => openTrial(ctx));
+  $('#tr-cancel').addEventListener('click', () => $('#trial-dialog').close());
+  $('#tr-ok').addEventListener('click', () => confirmTrial(ctx));
+  $('#tr-q').addEventListener('input', (e) => eqOptions(ctx, e.target.value, $('#tr-pick').value, '#tr-pick'));
   $('#eq-q').addEventListener('input', (e) => eqOptions(ctx, e.target.value, $('#eq-pick').value));
   $('#eq-pick').addEventListener('change', () => eqSuggest(ctx));
   $('#export-btn').addEventListener('click', async () => {

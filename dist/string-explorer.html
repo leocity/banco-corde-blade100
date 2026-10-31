@@ -347,8 +347,8 @@ input.cmp { width: 20px; height: 20px; accent-color: var(--accent); }
 .sessions form { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--nav-h) + 16px + env(safe-area-inset-bottom, 0px)); z-index: 9; background: var(--fg); color: var(--bg); padding: 8px 8px 8px 16px; border-radius: 999px; display: flex; gap: 10px; align-items: center; max-width: 92vw; }
 .toast .btn { min-height: 36px; }
-dialog#equip-dialog { width: min(540px, 94vw); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--fg); padding: 0; }
-dialog#equip-dialog::backdrop { background: rgb(10 16 15 / .45); }
+dialog#equip-dialog, dialog#trial-dialog, dialog#past-dialog { width: min(540px, 94vw); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--fg); padding: 0; }
+dialog#equip-dialog::backdrop, dialog#trial-dialog::backdrop, dialog#past-dialog::backdrop { background: rgb(10 16 15 / .45); }
 .equip-form { padding: 18px; display: grid; gap: 12px; }
 .equip-form label { display: grid; gap: 3px; font-size: .9rem; color: var(--fg-2); }
 .equip-form select[size] { width: 100%; }
@@ -473,6 +473,12 @@ dialog#sheet { overscroll-behavior: contain; }
 .tags .tg { min-height: 36px; font-size: .82rem; padding: 2px 10px; }
 .dn { display: grid; gap: 3px; font-size: .9rem; color: var(--fg-2); }
 .verdict { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 600; }
+
+dialog#past-dialog, dialog#trial-dialog { max-height: 92vh; overflow: auto; }
+.equip-form label.check { display: flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; color: var(--fg); }
+.equip-form label.check input { width: 22px; height: 22px; }
+#history li { flex-wrap: wrap; }
+#history .btn { min-height: 44px; }
 
 </style>
 
@@ -617,6 +623,7 @@ dialog#sheet { overscroll-behavior: contain; }
       </div>
       <h3>Corde finite</h3>
       <ul class="sessions" id="history"></ul>
+      <div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div>
     </section>
     <section id="metodo" class="panel prose" hidden></section>
   </main>
@@ -642,8 +649,38 @@ dialog#sheet { overscroll-behavior: contain; }
       <label>La corda che togli è <select id="eq-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
       <label>Ore giocate <input id="eq-hours" inputmode="decimal" size="5"></label>
     </div>
+    <label class="check"><input type="checkbox" id="eq-rate"> Dai i voti di fine vita alla corda che togli</label>
     <p class="gaps" id="eq-error" role="alert" hidden></p>
     <div class="card-actions"><button class="btn" type="button" id="eq-cancel">Annulla</button><button class="btn primary" type="button" id="eq-ok">Monta</button></div>
+  </div>
+</dialog>
+
+<dialog id="trial-dialog" aria-labelledby="tr-title">
+  <div class="equip-form">
+    <h2 id="tr-title">Aggiungi prova passata</h2>
+    <label>Cerca <input type="search" id="tr-q" placeholder="Nome della corda"></label>
+    <label>Corda <select id="tr-pick" size="5"></select></label>
+    <div class="controls">
+      <label>Verticali (kg) <input id="tr-kgv" inputmode="decimal" size="5"></label>
+      <label>Orizzontali (kg) <input id="tr-kgh" inputmode="decimal" size="5"></label>
+      <label>Ore giocate <input id="tr-hours" inputmode="decimal" size="5"></label>
+    </div>
+    <div class="controls">
+      <label>Dal <input type="date" id="tr-from"></label>
+      <label>Al <input type="date" id="tr-to"></label>
+      <label>Com'è finita <select id="tr-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+    </div>
+    <p class="muted small">Date e ore anche approssimate. Solo le corde «consumata» servono a stimare la vita attesa.</p>
+    <p class="gaps" id="tr-error" role="alert" hidden></p>
+    <div class="card-actions"><button class="btn" type="button" id="tr-cancel">Annulla</button><button class="btn primary" type="button" id="tr-ok">Aggiungi e dai i voti</button></div>
+  </div>
+</dialog>
+
+<dialog id="past-dialog" aria-labelledby="past-title">
+  <div class="equip-form">
+    <h2 id="past-title">Voti della corda</h2>
+    <section class="diary" id="past-diary"></section>
+    <div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div>
   </div>
 </dialog>
 
@@ -925,6 +962,18 @@ const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.
 function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()) }) {
   const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note, ...(state.equipped.diary ? { diary: state.equipped.diary } : {}) };
   return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
+}
+
+// Prova passata (prima dell'app): una vita chiusa con tensione, date approssimate e ore. Dati non validi: lo stato non cambia.
+const PAST_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const dayIso = (d) => (isStr(d) && PAST_DAY.test(d) && !Number.isNaN(Date.parse(`${d}T12:00:00.000Z`)) && new Date(`${d}T12:00:00.000Z`).toISOString().slice(0, 10) === d ? `${d}T12:00:00.000Z` : null);
+const PAST_REASONS = ['consumata', 'rotta', 'cambiata per prova'];
+function addPastLife(state, { id, kg, from, to, hours, reason = 'consumata', note = '', lid = String(Date.now()) }) {
+  const f = dayIso(from), t = dayIso(to);
+  const ok = isStr(id) && id !== '' && Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35)
+    && f && t && t >= f && isNum(hours) && hours >= 0 && hours <= 500 && PAST_REASONS.includes(reason) && isDocPart(lid);
+  if (!ok) return state;
+  return { ...state, lives: [...state.lives, { lid, id, kg: [...kg], from: f, to: t, hours, reason, note: isStr(note) ? note : '' }] };
 }
 
 function parseHours(input) {
@@ -1892,16 +1941,30 @@ function diaryHtml(ctx, target) {
     + `<details class="sheet-section" data-dsec="meter"${open('meter')}><summary>Tensiometro${d.meter.length ? ` (${d.meter.length})` : ''}</summary>`
     + `<p class="muted small">Scrivi la lettura a 0 h e poi le successive: calcolo quanta tensione perdi nel tuo uso.${lab ? ` Laboratorio: ${esc(lab)}.` : ''}</p>`
     + `<ul class="sessions">${meter || '<li class="muted">Nessuna lettura.</li>'}</ul>`
-    + `<div class="controls"><label>Ore giocate <input id="d-meter-h" inputmode="decimal" size="5" placeholder="0"></label><label>Valore <input id="d-meter-v" inputmode="decimal" size="6" placeholder="25"></label><button type="button" class="btn" data-dmeter-add>Aggiungi lettura</button></div></details>`
-    + `<p class="gaps" id="d-error" role="alert" hidden></p>`;
+    + `<div class="controls"><label>Ore giocate <input class="d-meter-h" inputmode="decimal" size="5" placeholder="0"></label><label>Valore <input class="d-meter-v" inputmode="decimal" size="6" placeholder="25"></label><button type="button" class="btn" data-dmeter-add>Aggiungi lettura</button></div></details>`
+    + `<p class="gaps d-error" role="alert" hidden></p>`;
 }
 
+let pastTarget = null;
+// Diario di una corda finita (o appena tolta) in una finestra: `moment` sceglie il blocco da mostrare (es. «end»).
+function openPastDiary(ctx, lid, moment) {
+  pastTarget = lid;
+  if (moment) diaryView.moment[lid] = moment;
+  renderPast(ctx);
+  const dlg = $('#past-dialog'); if (dlg && !dlg.open) dlg.showModal();
+}
+function renderPast(ctx) {
+  const host = $('#past-diary'); if (!host) return;
+  host.dataset.dtarget = pastTarget || '';
+  host.innerHTML = pastTarget ? diaryHtml(ctx, pastTarget) : '';
+}
 function renderDiary(ctx) {
   const host = $('#diary');
   if (host) host.innerHTML = diaryHtml(ctx, 'current');
+  if (pastTarget && $('#past-dialog') && $('#past-dialog').open) renderPast(ctx);
 }
 
-const diaryError = (msg) => { const e = $('#d-error'); if (e) { e.textContent = msg || ''; e.hidden = !msg; } };
+const diaryError = (host, msg) => { const e = host.querySelector('.d-error'); if (e) { e.textContent = msg || ''; e.hidden = !msg; } };
 
 function initDiary(ctx) {
   const act = (target, fn) => ctx.update((s) => updateDiary(s, target, fn));
@@ -1912,7 +1975,7 @@ function initDiary(ctx) {
     const sum = e.target.closest('details[data-dsec] > summary'); if (sum) { const det = sum.parentElement; diaryView.open[det.dataset.dsec] = !det.open; return; }
     const mom = e.target.closest('[data-moment]'); if (mom) { diaryView.moment[target] = mom.dataset.moment; ctx.refresh(); return; }
     const rb = e.target.closest('.rb');
-    if (rb) { const cat = rb.closest('.rate').dataset.cat, v = Number(rb.dataset.v), m = diaryMoment(ctx, target); diaryView.moment[target] = m; /* il momento scelto non deve spostarsi da solo al primo voto */ diaryError(''); act(target, (d) => toggleRating(d, m, cat, v)); return; }
+    if (rb) { const cat = rb.closest('.rate').dataset.cat, v = Number(rb.dataset.v), m = diaryMoment(ctx, target); diaryView.moment[target] = m; /* il momento scelto non deve spostarsi da solo al primo voto */ diaryError(host, ''); act(target, (d) => toggleRating(d, m, cat, v)); return; }
     const tg = e.target.closest('[data-tag]'); if (tg) { const g = tg.dataset.tag; act(target, (d) => setTag(d, g, !d.tags.includes(g))); return; }
     const vb = e.target.closest('[data-verdict]');
     if (vb) {
@@ -1925,10 +1988,10 @@ function initDiary(ctx) {
     }
     const add = e.target.closest('[data-dmeter-add]');
     if (add) {
-      const hours = dkNum($('#d-meter-h').value), value = dkNum($('#d-meter-v').value);
+      const hours = dkNum(host.querySelector('.d-meter-h').value), value = dkNum(host.querySelector('.d-meter-v').value);
       const t = diaryTrial(ctx, target), before = (t.diary || emptyDiary()).meter.length;
-      if (!(hours >= 0) || !(value > 0) || before >= 8) { diaryError('Lettura non valida: ore da 0 in su, valore maggiore di 0, al massimo 8 letture.'); return; }
-      diaryError(''); act(target, (d) => addMeter(d, { hours, value })); return;
+      if (!(hours >= 0) || !(value > 0) || before >= 8) { diaryError(host, 'Lettura non valida: ore da 0 in su, valore maggiore di 0, al massimo 8 letture.'); return; }
+      diaryError(host, ''); act(target, (d) => addMeter(d, { hours, value })); return;
     }
     const del = e.target.closest('[data-dmeter-del]'); if (del) act(target, (d) => removeMeter(d, Number(del.dataset.dmeterDel)));
   });
@@ -1941,10 +2004,12 @@ function initDiary(ctx) {
     if (el.matches('[data-dkg]') && target === 'current') {
       const v = dkNum(host.querySelector('[data-dkg="v"]').value), h = dkNum(host.querySelector('[data-dkg="h"]').value);
       const ok = setEquippedKg(ctx.state(), [v, h]);
-      if (ok === ctx.state()) { diaryError('Tensione non valida: scrivi due numeri in kg tra 15 e 35.'); return; }
-      diaryError(''); ctx.update((s) => setEquippedKg(s, [v, h]));
+      if (ok === ctx.state()) { diaryError(host, 'Tensione non valida: scrivi due numeri in kg tra 15 e 35.'); return; }
+      diaryError(host, ''); ctx.update((s) => setEquippedKg(s, [v, h]));
     }
   });
+  $('#past-close').addEventListener('click', () => { $('#past-dialog').close(); });
+  $('#past-dialog').addEventListener('close', () => { pastTarget = null; });
   document.addEventListener('toggle', (e) => { const k = e.target && e.target.dataset && e.target.dataset.dsec; if (k) diaryView.open[k] = e.target.open; }, true);
 }
 
@@ -2003,7 +2068,7 @@ function renderMine(ctx) {
     ? `<li data-ts="${esc(x.ts)}"><form><label>Ore <input name="hours" value="${esc(fmtN(x.hours))}" inputmode="decimal" size="5"></label><label>Nota <input name="note" value="${esc(x.note)}"></label><button class="btn primary" type="button" data-save-ts>Salva</button><button class="btn" type="button" data-cancel-edit>Annulla</button></form></li>`
     : `<li data-ts="${esc(x.ts)}"><span><b>${esc(mineDate(x.date))}</b> · ${fmtN(x.hours)} h${x.note ? ` · ${esc(x.note)}` : ''}</span><button class="btn" type="button" data-edit-ts>Modifica</button><button class="btn" type="button" data-del-ts>Togli</button></li>`)).join('')
     : '<li class="muted">Nessuna sessione registrata su questa corda.</li>';
-  $('#history').innerHTML = s.lives.length ? [...s.lives].reverse().map((l) => `<li><span><b>${esc(ctx.BY_ID[l.id] ? fullName(ctx.BY_ID[l.id]) : l.id)}</b> · ${esc(mineDate(l.from))}–${esc(mineDate(l.to))} · ${fmtN(l.hours)} h · ${esc(l.reason)}</span></li>`).join('')
+  $('#history').innerHTML = s.lives.length ? [...s.lives].reverse().map((l) => `<li><span><b>${esc(ctx.BY_ID[l.id] ? fullName(ctx.BY_ID[l.id]) : l.id)}</b> · ${esc(fmtN(l.kg[0], 2))}/${esc(fmtN(l.kg[1], 2))} kg · ${esc(mineDate(l.from))}–${esc(mineDate(l.to))} · ${fmtN(l.hours)} h · ${esc(l.reason)}${l.diary ? ' · con voti' : ''}</span><button class="btn" type="button" data-past-open="${esc(l.lid)}">Voti e note</button></li>`).join('')
     : '<li class="muted">Ancora nessuna corda finita.</li>';
   renderPersistNote(ctx);
   $('#export-btn').hidden = !mineDownloads;
@@ -2034,15 +2099,15 @@ function eqSuggest(ctx) {
   const t = tensionFor(r, ctx.equippedRec(), ctx.state().equipped.kg);
   $('#eq-kgv').value = fmtN(t.kg[0], 2); $('#eq-kgh').value = fmtN(t.kg[1], 2);
 }
-function eqOptions(ctx, q, keep) {
+function eqOptions(ctx, q, keep, sel = '#eq-pick') {
   const needle = q.trim().toLowerCase();
   const rows = ctx.ALL.filter((r) => !needle || fullName(r).toLowerCase().includes(needle)).sort((a, b) => fullName(a).localeCompare(fullName(b)));
-  $('#eq-pick').innerHTML = rows.map((r) => `<option value="${esc(r.id)}">${esc(fullName(r))}</option>`).join('');
-  if (keep && rows.some((r) => r.id === keep)) $('#eq-pick').value = keep;
+  $(sel).innerHTML = rows.map((r) => `<option value="${esc(r.id)}">${esc(fullName(r))}</option>`).join('');
+  if (keep && rows.some((r) => r.id === keep)) $(sel).value = keep;
 }
 function openEquip(ctx, id) {
   eqOptions(ctx, '', id || ctx.state().equipped.id);
-  $('#eq-q').value = ''; $('#eq-date').value = mineToday(); $('#eq-reason').value = 'consumata'; $('#eq-hours').value = fmtN(ctx.hours());
+  $('#eq-q').value = ''; $('#eq-rate').checked = false; $('#eq-date').value = mineToday(); $('#eq-reason').value = 'consumata'; $('#eq-hours').value = fmtN(ctx.hours());
   $('#eq-error').hidden = true;
   eqSuggest(ctx);
   if (!$('#equip-dialog').open) $('#equip-dialog').showModal();
@@ -2058,9 +2123,36 @@ function confirmEquip(ctx) {
   if (endHours === null || endHours > 500) return err('Le ore giocate devono essere un numero (anche 0).');
   const prev = ctx.state();
   const since = `${date}T${new Date().toISOString().slice(11)}`;
-  ctx.update((s) => changeString(s, { id, kg: [v, h], date: since, endReason: $('#eq-reason').value, endHours }));
+  const lid = `${Date.now()}`, rate = $('#eq-rate').checked;
+  ctx.update((s) => changeString(s, { id, kg: [v, h], date: since, endReason: $('#eq-reason').value, endHours, lid }));
   $('#equip-dialog').close();
-  mineToast(`Montata: ${fullName(ctx.BY_ID[id])}`, 'Annulla cambio', () => ctx.update(() => prev));
+  mineToast(`Montata: ${fullName(ctx.BY_ID[id])}`, 'Annulla cambio', () => { const d = $('#past-dialog'); if (d.open) d.close(); ctx.update(() => prev); });
+  if (rate) openPastDiary(ctx, lid, 'end');
+}
+
+function openTrial(ctx) {
+  eqOptions(ctx, '', ctx.state().equipped.id, '#tr-pick');
+  $('#tr-q').value = ''; $('#tr-to').value = mineToday(); $('#tr-from').value = ''; $('#tr-hours').value = ''; $('#tr-reason').value = 'consumata';
+  const kg = ctx.state().equipped.kg; $('#tr-kgv').value = fmtN(kg[0], 2); $('#tr-kgh').value = fmtN(kg[1], 2);
+  $('#tr-error').hidden = true;
+  if (!$('#trial-dialog').open) $('#trial-dialog').showModal();
+}
+function confirmTrial(ctx) {
+  const err = (m) => { $('#tr-error').textContent = m; $('#tr-error').hidden = false; };
+  const id = $('#tr-pick').value, v = eqKg($('#tr-kgv').value), h = eqKg($('#tr-kgh').value), from = $('#tr-from').value, to = $('#tr-to').value;
+  const hRaw = $('#tr-hours').value.trim(), hours = /^\d+([.,]\d+)?$/.test(hRaw) ? Number(hRaw.replace(',', '.')) : null;
+  if (!id || !ctx.BY_ID[id]) return err('Scegli la corda dall\'elenco.');
+  if (v === null || h === null) return err('Tensione non valida: scrivi due numeri in kg tra 15 e 35.');
+  if (!from || !to) return err('Scrivi le date di inizio e fine, anche approssimate.');
+  if (to > mineToday()) return err('La data di fine non può essere nel futuro.');
+  if (to < from) return err('Le date non tornano: «Al» deve essere dopo «Dal».');
+  if (hours === null || hours > 500) return err('Le ore giocate devono essere un numero (anche 0), al massimo 500.');
+  const lid = `${Date.now()}`;
+  const next = addPastLife(ctx.state(), { id, kg: [v, h], from, to, hours, reason: $('#tr-reason').value, lid });
+  if (next === ctx.state()) return err('Non riesco ad aggiungere questa prova: controlla i dati.');
+  ctx.update(() => next);
+  $('#trial-dialog').close();
+  openPastDiary(ctx, lid, 'end');
 }
 
 function initMine(ctx) {
@@ -2087,6 +2179,11 @@ function initMine(ctx) {
   $('#equip-btn').addEventListener('click', () => openEquip(ctx));
   $('#eq-cancel').addEventListener('click', () => $('#equip-dialog').close());
   $('#eq-ok').addEventListener('click', () => confirmEquip(ctx));
+  $('#history').addEventListener('click', (e) => { const b = e.target.closest('[data-past-open]'); if (b) openPastDiary(ctx, b.dataset.pastOpen); });
+  $('#past-add').addEventListener('click', () => openTrial(ctx));
+  $('#tr-cancel').addEventListener('click', () => $('#trial-dialog').close());
+  $('#tr-ok').addEventListener('click', () => confirmTrial(ctx));
+  $('#tr-q').addEventListener('input', (e) => eqOptions(ctx, e.target.value, $('#tr-pick').value, '#tr-pick'));
   $('#eq-q').addEventListener('input', (e) => eqOptions(ctx, e.target.value, $('#eq-pick').value));
   $('#eq-pick').addEventListener('change', () => eqSuggest(ctx));
   $('#export-btn').addEventListener('click', async () => {

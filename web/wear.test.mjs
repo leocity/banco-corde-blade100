@@ -89,3 +89,11 @@ test('wearStatus: tenuta mancante usa 14 ore', () => {
   assert.equal(w.life.hours, 14);
   assert.equal(w.life.basis, 'ipotesi');
 });
+
+test('lifeEstimate: una prova passata «rotta» o «cambiata per prova» non calibra la vita attesa', () => {
+  const lives = [life('a', 30, 'rotta'), life('a', 2, 'cambiata per prova')];
+  const e = lifeEstimate(50, lives, 'a', () => 50);
+  assert.equal(e.basis, 'ipotesi');
+  assert.equal(e.n, 0);
+  assert.equal(lifeEstimate(50, [...lives, life('a', 20, 'consumata')], 'a', () => 50).hours, 20);
+});

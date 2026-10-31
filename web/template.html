@@ -147,6 +147,7 @@
       </div>
       <h3>Corde finite</h3>
       <ul class="sessions" id="history"></ul>
+      <div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div>
     </section>
     <section id="metodo" class="panel prose" hidden></section>
   </main>
@@ -172,8 +173,38 @@
       <label>La corda che togli è <select id="eq-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
       <label>Ore giocate <input id="eq-hours" inputmode="decimal" size="5"></label>
     </div>
+    <label class="check"><input type="checkbox" id="eq-rate"> Dai i voti di fine vita alla corda che togli</label>
     <p class="gaps" id="eq-error" role="alert" hidden></p>
     <div class="card-actions"><button class="btn" type="button" id="eq-cancel">Annulla</button><button class="btn primary" type="button" id="eq-ok">Monta</button></div>
+  </div>
+</dialog>
+
+<dialog id="trial-dialog" aria-labelledby="tr-title">
+  <div class="equip-form">
+    <h2 id="tr-title">Aggiungi prova passata</h2>
+    <label>Cerca <input type="search" id="tr-q" placeholder="Nome della corda"></label>
+    <label>Corda <select id="tr-pick" size="5"></select></label>
+    <div class="controls">
+      <label>Verticali (kg) <input id="tr-kgv" inputmode="decimal" size="5"></label>
+      <label>Orizzontali (kg) <input id="tr-kgh" inputmode="decimal" size="5"></label>
+      <label>Ore giocate <input id="tr-hours" inputmode="decimal" size="5"></label>
+    </div>
+    <div class="controls">
+      <label>Dal <input type="date" id="tr-from"></label>
+      <label>Al <input type="date" id="tr-to"></label>
+      <label>Com'è finita <select id="tr-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+    </div>
+    <p class="muted small">Date e ore anche approssimate. Solo le corde «consumata» servono a stimare la vita attesa.</p>
+    <p class="gaps" id="tr-error" role="alert" hidden></p>
+    <div class="card-actions"><button class="btn" type="button" id="tr-cancel">Annulla</button><button class="btn primary" type="button" id="tr-ok">Aggiungi e dai i voti</button></div>
+  </div>
+</dialog>
+
+<dialog id="past-dialog" aria-labelledby="past-title">
+  <div class="equip-form">
+    <h2 id="past-title">Voti della corda</h2>
+    <section class="diary" id="past-diary"></section>
+    <div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div>
   </div>
 </dialog>
 

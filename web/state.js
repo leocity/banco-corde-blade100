@@ -42,6 +42,18 @@ export function changeString(state, { id, kg, date, endReason, endHours, note = 
   return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
 }
 
+// Prova passata (prima dell'app): una vita chiusa con tensione, date approssimate e ore. Dati non validi: lo stato non cambia.
+const PAST_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const dayIso = (d) => (isStr(d) && PAST_DAY.test(d) && !Number.isNaN(Date.parse(`${d}T12:00:00.000Z`)) && new Date(`${d}T12:00:00.000Z`).toISOString().slice(0, 10) === d ? `${d}T12:00:00.000Z` : null);
+export const PAST_REASONS = ['consumata', 'rotta', 'cambiata per prova'];
+export function addPastLife(state, { id, kg, from, to, hours, reason = 'consumata', note = '', lid = String(Date.now()) }) {
+  const f = dayIso(from), t = dayIso(to);
+  const ok = isStr(id) && id !== '' && Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35)
+    && f && t && t >= f && isNum(hours) && hours >= 0 && hours <= 500 && PAST_REASONS.includes(reason) && isDocPart(lid);
+  if (!ok) return state;
+  return { ...state, lives: [...state.lives, { lid, id, kg: [...kg], from: f, to: t, hours, reason, note: isStr(note) ? note : '' }] };
+}
+
 export function parseHours(input) {
   const s = typeof input === 'number' ? String(input) : isStr(input) ? input.trim() : '';
   if (!/^\d+([.,]\d+)?$/.test(s)) return { ok: false, reason: 'Scrivi le ore come numero, per esempio 1,5.' };

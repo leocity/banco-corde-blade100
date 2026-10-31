@@ -46,16 +46,30 @@ export function diaryHtml(ctx, target) {
     + `<details class="sheet-section" data-dsec="meter"${open('meter')}><summary>Tensiometro${d.meter.length ? ` (${d.meter.length})` : ''}</summary>`
     + `<p class="muted small">Scrivi la lettura a 0 h e poi le successive: calcolo quanta tensione perdi nel tuo uso.${lab ? ` Laboratorio: ${esc(lab)}.` : ''}</p>`
     + `<ul class="sessions">${meter || '<li class="muted">Nessuna lettura.</li>'}</ul>`
-    + `<div class="controls"><label>Ore giocate <input id="d-meter-h" inputmode="decimal" size="5" placeholder="0"></label><label>Valore <input id="d-meter-v" inputmode="decimal" size="6" placeholder="25"></label><button type="button" class="btn" data-dmeter-add>Aggiungi lettura</button></div></details>`
-    + `<p class="gaps" id="d-error" role="alert" hidden></p>`;
+    + `<div class="controls"><label>Ore giocate <input class="d-meter-h" inputmode="decimal" size="5" placeholder="0"></label><label>Valore <input class="d-meter-v" inputmode="decimal" size="6" placeholder="25"></label><button type="button" class="btn" data-dmeter-add>Aggiungi lettura</button></div></details>`
+    + `<p class="gaps d-error" role="alert" hidden></p>`;
 }
 
+let pastTarget = null;
+// Diario di una corda finita (o appena tolta) in una finestra: `moment` sceglie il blocco da mostrare (es. «end»).
+export function openPastDiary(ctx, lid, moment) {
+  pastTarget = lid;
+  if (moment) diaryView.moment[lid] = moment;
+  renderPast(ctx);
+  const dlg = $('#past-dialog'); if (dlg && !dlg.open) dlg.showModal();
+}
+function renderPast(ctx) {
+  const host = $('#past-diary'); if (!host) return;
+  host.dataset.dtarget = pastTarget || '';
+  host.innerHTML = pastTarget ? diaryHtml(ctx, pastTarget) : '';
+}
 export function renderDiary(ctx) {
   const host = $('#diary');
   if (host) host.innerHTML = diaryHtml(ctx, 'current');
+  if (pastTarget && $('#past-dialog') && $('#past-dialog').open) renderPast(ctx);
 }
 
-const diaryError = (msg) => { const e = $('#d-error'); if (e) { e.textContent = msg || ''; e.hidden = !msg; } };
+const diaryError = (host, msg) => { const e = host.querySelector('.d-error'); if (e) { e.textContent = msg || ''; e.hidden = !msg; } };
 
 export function initDiary(ctx) {
   const act = (target, fn) => ctx.update((s) => updateDiary(s, target, fn));
@@ -66,7 +80,7 @@ export function initDiary(ctx) {
     const sum = e.target.closest('details[data-dsec] > summary'); if (sum) { const det = sum.parentElement; diaryView.open[det.dataset.dsec] = !det.open; return; }
     const mom = e.target.closest('[data-moment]'); if (mom) { diaryView.moment[target] = mom.dataset.moment; ctx.refresh(); return; }
     const rb = e.target.closest('.rb');
-    if (rb) { const cat = rb.closest('.rate').dataset.cat, v = Number(rb.dataset.v), m = diaryMoment(ctx, target); diaryView.moment[target] = m; /* il momento scelto non deve spostarsi da solo al primo voto */ diaryError(''); act(target, (d) => toggleRating(d, m, cat, v)); return; }
+    if (rb) { const cat = rb.closest('.rate').dataset.cat, v = Number(rb.dataset.v), m = diaryMoment(ctx, target); diaryView.moment[target] = m; /* il momento scelto non deve spostarsi da solo al primo voto */ diaryError(host, ''); act(target, (d) => toggleRating(d, m, cat, v)); return; }
     const tg = e.target.closest('[data-tag]'); if (tg) { const g = tg.dataset.tag; act(target, (d) => setTag(d, g, !d.tags.includes(g))); return; }
     const vb = e.target.closest('[data-verdict]');
     if (vb) {
@@ -79,10 +93,10 @@ export function initDiary(ctx) {
     }
     const add = e.target.closest('[data-dmeter-add]');
     if (add) {
-      const hours = dkNum($('#d-meter-h').value), value = dkNum($('#d-meter-v').value);
+      const hours = dkNum(host.querySelector('.d-meter-h').value), value = dkNum(host.querySelector('.d-meter-v').value);
       const t = diaryTrial(ctx, target), before = (t.diary || emptyDiary()).meter.length;
-      if (!(hours >= 0) || !(value > 0) || before >= 8) { diaryError('Lettura non valida: ore da 0 in su, valore maggiore di 0, al massimo 8 letture.'); return; }
-      diaryError(''); act(target, (d) => addMeter(d, { hours, value })); return;
+      if (!(hours >= 0) || !(value > 0) || before >= 8) { diaryError(host, 'Lettura non valida: ore da 0 in su, valore maggiore di 0, al massimo 8 letture.'); return; }
+      diaryError(host, ''); act(target, (d) => addMeter(d, { hours, value })); return;
     }
     const del = e.target.closest('[data-dmeter-del]'); if (del) act(target, (d) => removeMeter(d, Number(del.dataset.dmeterDel)));
   });
@@ -95,9 +109,11 @@ export function initDiary(ctx) {
     if (el.matches('[data-dkg]') && target === 'current') {
       const v = dkNum(host.querySelector('[data-dkg="v"]').value), h = dkNum(host.querySelector('[data-dkg="h"]').value);
       const ok = setEquippedKg(ctx.state(), [v, h]);
-      if (ok === ctx.state()) { diaryError('Tensione non valida: scrivi due numeri in kg tra 15 e 35.'); return; }
-      diaryError(''); ctx.update((s) => setEquippedKg(s, [v, h]));
+      if (ok === ctx.state()) { diaryError(host, 'Tensione non valida: scrivi due numeri in kg tra 15 e 35.'); return; }
+      diaryError(host, ''); ctx.update((s) => setEquippedKg(s, [v, h]));
     }
   });
+  $('#past-close').addEventListener('click', () => { $('#past-dialog').close(); });
+  $('#past-dialog').addEventListener('close', () => { pastTarget = null; });
   document.addEventListener('toggle', (e) => { const k = e.target && e.target.dataset && e.target.dataset.dsec; if (k) diaryView.open[k] = e.target.open; }, true);
 }
