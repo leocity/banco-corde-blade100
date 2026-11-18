@@ -43,7 +43,7 @@ def _feel(r, s):
         base = f"Senza dati TWU: il giudizio si basa sul test Ektelon (Stiff Index {si:.2f}) e su Racketpedia, quindi è meno preciso." if si else "Senza dati TWU né test completi: considera la scheda un'indicazione di massima."
         return base + (f" Profilo {shape}." if shape else "") + est
     sv = t.get("spin_potential")
-    spin = "spin non misurato da TWU" if sv is None else {"hi": f"snapback alto (spin {sv:g})", "mid": f"spin nella media ({sv:g})",
+    spin = "spin non misurato da TWU" if sv is None else {"hi": f"spin alto ({sv:g})", "mid": f"spin nella media ({sv:g})",
                                                          "lo": f"poco spin ({sv:g})"}.get(_band(s["spin"]), f"spin {sv:g}")
     dur = {"hi": "tiene bene la tensione", "mid": "cala nella media", "lo": f"cala in fretta ({t['tension_loss_pct'] or 0:g}% di perdita su TWU)"}.get(_band(s["durability"]), "")
     rs = r.get("stiffness")
@@ -75,9 +75,9 @@ def _style(r, s):
     else:
         out.append("Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.")
     d = _band(s["durability"])
-    out.append({"lo": "Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
-                "hi": "Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
-                "mid": "Con il tuo volume di gioco, rincorda ogni 3 settimane circa."}.get(d, ""))
+    out.append({"lo": "Perde tensione più della media: rincordala prima delle altre, appena senti il piatto spegnersi.",
+                "hi": "Tiene bene la tensione: resta giocabile più a lungo della media.",
+                "mid": "Cala come la media delle poliestere."}.get(d, ""))
     return " ".join(x for x in out if x)
 
 

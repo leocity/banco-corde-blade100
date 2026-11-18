@@ -1,0 +1,23 @@
+{
+ "source": "docs/audit/2026-11-18/D-fonti.md §4 (classi dedotte solo dai feed RSS pubblici, ultimi 15 video, 2026-11-18)",
+ "criterion": "indipendente solo se, sulle ultime 15 descrizioni: nessun link affiliato/codice sconto proprio; nessuna sponsorizzazione di marche/negozi di corde; dichiara se le corde sono acquistate, regalate o fornite; non e' un rivenditore ne' un partner; verifica registrata con data. Se manca la dichiarazione: non verificabile. Da ripetere ogni 90 giorni.",
+ "keywords": ["slap", "zero", "o-toro", "otoro", "confidential", "restring", "re-string", "toroline", "solinco"],
+ "channels": [
+  {"id": "UCOALtFUP8ZKqYt9E4_o7L0g", "name": "TK Tennis", "class": "indipendente", "verified": "2026-11-18", "note": "dichiara di evitare programmi di affiliazione; verificare il tipo di corde ricevute"},
+  {"id": "UCVv6LfqroAevyl7nbWN_UBQ", "name": "Sweet Spot", "class": "indipendente con riserva", "verified": "2026-11-18", "note": "scrive (Not sponsored); un link a un prodotto Grapplesnake"},
+  {"id": "UCPMTuuIioSG4_R1WVVxsVfA", "name": "TennisTroll", "class": "non verificabile", "verified": "2026-11-18", "note": "nessun codice nel feed, nessuna dichiarazione"},
+  {"id": "UC5kJKicXzPV0y_t_0xwmyYA", "name": "HOMECOURT", "class": "non verificabile", "verified": "2026-11-18", "note": "nessun codice nel feed, nessuna dichiarazione"},
+  {"id": "UC05c1oLWlEIIi9EPQowBmkw", "name": "Brody Taylor", "class": "non verificabile", "verified": "2026-11-18", "note": "nessun codice nel feed, nessuna dichiarazione"},
+  {"id": "UCV2GcjyKcFd0-QB36Y1yqDw", "name": "Trash Bin Tennis", "class": "con affiliazioni", "verified": "2026-11-18", "note": "ringrazia un negozio che fornisce il prodotto, link affiliati dichiarati"},
+  {"id": "UCLjfPt84uuBIWEmJ-ocw-OQ", "name": "Tennisnerd", "class": "con affiliazioni", "verified": "2026-11-18", "note": "codici su Toroline, TW Europe, Nordic Dots (sponsor Toroline)"},
+  {"id": "UCR_J5swRE-l-8t0p9WrNIfw", "name": "TennCom", "class": "con affiliazioni", "verified": "2026-11-18", "note": "sezione affiliate e sconti, link Toroline"},
+  {"id": "UC4h5FHD1LFwXbuZWWgbvE_w", "name": "ZeroLove", "class": "con affiliazioni", "verified": "2026-11-18", "note": "10% su ReString e Toroline con ref/codice"},
+  {"id": "UCFxH4IPA7ItHuiIsChplWLQ", "name": "MPTennis", "class": "con affiliazioni", "verified": "2026-11-18", "note": "codici sconto, link affiliati"},
+  {"id": "UCJG8i2wPP4euR2XJkydndBQ", "name": "Tennis Spin", "class": "con affiliazioni", "verified": "2026-11-18", "note": "codici sconto/affiliati in quasi tutti i video"},
+  {"id": "UCY6pOJ0SpVaxY1MM8wZT0Tg", "name": "OpenCourt", "class": "con affiliazioni", "verified": "2026-11-18", "note": "codici sconto/affiliati in quasi tutti i video"},
+  {"id": "UCf1ihZHHmL2WV7YLgTtNTaA", "name": "Dandan Tennis", "class": "con affiliazioni", "verified": "2026-11-18", "note": "codici sconto/affiliati in quasi tutti i video"},
+  {"id": "UCtLeV7A0HOL1ze2_SR6Mb0Q", "name": "James Strings", "class": "con affiliazioni", "verified": "2026-11-18", "note": "codici sconto/affiliati in quasi tutti i video"},
+  {"id": "UCmgyIibKmFosnm-LyZEB7uQ", "name": "Tennis Warehouse", "class": "commerciale", "verified": "2026-11-18", "note": "rivenditore"},
+  {"id": "UCrg2cfpZrVyy9r0cZ1sgX8w", "name": "PH Tennis", "class": "commerciale", "verified": "2026-11-18", "note": "rivenditore (vende racchette su ph-tennis.co.uk)"}
+ ]
+}

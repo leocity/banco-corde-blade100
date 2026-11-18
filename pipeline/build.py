@@ -11,10 +11,12 @@ from pipeline.catalog import add_catalog_only, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, model_id, backtest_qualitative, calibrate_tester_spin, estimate_spin, check_gauge_usrsa, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
+from pipeline.lab import lab_block, lab_meta
 from pipeline.notes_gen import apply_notes
 from pipeline.rpedia_site import apply_site
 from pipeline.production import filter_discontinued
 from pipeline.provenance import apply_provenance
+from pipeline.reviews_indep import validate_indep
 from pipeline.reviews import add_percentiles, aggregate, mark_gauge_mismatch, review_conflicts, validate_reviews
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -35,7 +37,8 @@ def _corr(xs, ys):
 REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
-def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, review_overrides=None, forum=None, sources=None, usrsa=None):
+def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, review_overrides=None, forum=None, sources=None, usrsa=None,
+          indep=None):
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
@@ -101,10 +104,14 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         r["reviews"]["conflicts"] = review_conflicts(r["reviews"]["sources"], lab)
     apply_notes(records, notes)
     apply_provenance(records, sources or {}, None)
+    for r in records:
+        r["lab"] = lab_block(r, sources or {})
+        r["indep_reviews"] = [x for x in (indep or []) if x["string_id"] == r["id"]]
     comm = build_community(forum or [], records, aliases=FORUM_ALIASES)
     for r in records:
         r["community"] = comm.get(r["id"])
     index_check = index_validation(records)
+    ids = {r["id"] for r in records}
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
     return {
@@ -115,7 +122,8 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         "tension_slope_kg_per_lbin": next((r["derived"]["tension_start"]["slope_kg_per_lbin"] for r in records
                                            if (r.get("derived") or {}).get("tension_start")), None),
         "anchors": ANCHOR_TENSIONS,
-        "defaults": {"equipped": DEFAULT_EQUIPPED, "liked": DEFAULT_LIKED, "disliked": DEFAULT_DISLIKED},
+        "lab_meta": lab_meta(records),
+        "defaults": {"equipped": DEFAULT_EQUIPPED, "liked": [i for i in DEFAULT_LIKED if i in ids], "disliked": [i for i in DEFAULT_DISLIKED if i in ids]},
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
@@ -155,11 +163,16 @@ def build_from_repo():
     years = [row for f in sorted(glob.glob(str(ROOT / "data/agents/year_p*.json")))
              for row in json.loads(pathlib.Path(f).read_text(encoding="utf-8-sig"))]
     site_rows = skip_pending(_load("data/raw/racketpedia.json", []), _load("data/pending_matches.json", []))
+    indep = _load("data/reviews_indep.json", [])
     usrsa = (_load("data/raw/usrsa_trupro.json", {}) or {}).get("rows")
-    return build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
+    out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
                  review_overrides=_load("data/agents/review_overrides.json", {}),
                  forum=[json.loads(pathlib.Path(f).read_text(encoding="utf-8")) for f in sorted(glob.glob(str(ROOT / "data/agents/forum_*.json")))],
-                 sources=_load("data/raw/sources.json", {}), usrsa=usrsa)
+                 sources=_load("data/raw/sources.json", {}), usrsa=usrsa, indep=indep)
+    errs = validate_indep(indep, {r["id"] for r in out["strings"]})
+    if errs:
+        raise SystemExit("recensioni indipendenti non valide: " + "; ".join(errs))
+    return out
 
 
 if __name__ == "__main__":
