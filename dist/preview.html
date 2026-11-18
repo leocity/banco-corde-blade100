@@ -227,9 +227,12 @@ details.sci[open] { padding-bottom: 10px; }
 .rl.sel { color: var(--s-liked); }
 .legend { margin: 8px 0; }
 .mtable { display: grid; gap: 8px; margin: 10px 0; }
-.mrow { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
+.mrow { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; display: grid; grid-template-columns: 1fr; gap: 0 16px; }
+@media (min-width: 560px) { .mrow { grid-template-columns: 1fr 1fr; } }
 .mname { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.mcell { display: flex; justify-content: space-between; gap: 6px; font-size: .9rem; border-bottom: 1px solid var(--line); min-height: 32px; align-items: center; }
+.mcell { display: flex; justify-content: space-between; gap: 8px; font-size: .95rem; border-bottom: 1px solid var(--line); padding: 6px 0; align-items: center; }
+.mcell .mlab { color: var(--fg-2); }
+.mcell .num { white-space: nowrap; }
 .mcell .mk { color: var(--fg-2); }
 .mcell:last-child { border-bottom: 0; }
 .num.est { font-style: italic; }
@@ -370,10 +373,10 @@ const fmtN = (v, max = 1) => (v === null || v === undefined || Number.isNaN(v) ?
 // Testi dei tooltip: cosa significa, da dove viene, se è una misura o un'ipotesi. Puro.
 // kind: 'misura' (laboratorio), 'ipotesi' (regola del progetto, non validata), 'concetto' (spiegazione), 'tuo' (dati tuoi).
 const GLOSS = {
-  'twu.stiffness': { title: 'Rigidità in gioco (TWU)', kind: 'misura',
+  'twu.stiffness': { title: 'Rigidità in campo (TWU)', kind: 'misura',
     text: 'Quanto il letto di corde cede quando la palla lo colpisce a velocità di gioco. Più alta = più rigida. Misurata da TWU (Tennis Warehouse University) a 51 lb (circa 23 kg) con swing veloce, una prova per corda.',
     src: 'TWU String Performance Database', url: 'https://twu.tennis-warehouse.com/learning_center/reporter2.php' },
-  'rp.kgmm': { title: 'Rigidità a riposo (Racketpedia)', kind: 'misura',
+  'rp.kgmm': { title: 'Rigidità da ferma (Racketpedia)', kind: 'misura',
     text: 'Quanto la corda si oppone a uno stiramento lento, a riposo. Più alta = più rigida. Misura statica a passi di 0,05 kg/mm: dice com\'è la corda ferma, non come reagisce all\'impatto.',
     src: 'Racketpedia (schede gratuite)', url: 'https://www.racketpedia.com/en-GB/tennis-strings' },
   'twu.loss': { title: 'Perdita di tensione (TWU)', kind: 'misura',
@@ -904,12 +907,12 @@ const CMP_KEYS = {
   'twu.stiffness': {
     get: (l) => l.twu && l.twu.stiffness, source: 'TWU', group: 'stiffness', unit: 'lb/in', dec: 0, decides: true,
     diff: (a, b) => ((a - b) / b) * 100, bands: [10, 15], diffUnit: '%',
-    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità in gioco',
+    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità in campo',
   },
   'rp.kgmm': {
     get: (l) => l.rp && l.rp.kgmm, source: 'Racketpedia', group: 'stiffness', unit: 'kg/mm', dec: 2, decides: true,
     diff: (a, b) => a - b, bands: [0.1, 0.2], diffUnit: 'kg/mm',
-    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità a riposo',
+    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità da ferma',
   },
   'twu.loss': {
     get: (l) => l.twu && l.twu.loss, source: 'TWU', group: 'loss', unit: '%', dec: 0, decides: true,
@@ -1824,10 +1827,10 @@ function initHybrid(ctx) {
 
 
 const MAP_RULERS = [
-  { key: 'twu.stiffness', ends: ['più morbida', 'più rigida'], field: 'In campo: più a destra = il letto cede meno, palla più ferma e diretta, più dura sul braccio. Sotto il 10% di differenza non la senti.' },
-  { key: 'twu.loss', ends: ['tiene di più', 'perde di più'], field: 'In campo: più a sinistra = la sensazione resta uguale più a lungo dopo l\'incordatura.' },
-  { key: 'twu.spin', ends: ['meno spin', 'più spin'], field: 'In campo: più a destra = le verticali scivolano e tornano di più, la corda ti aiuta a far girare la palla. Lo spin vero lo fa il tuo colpo.' },
-  { key: 'rp.kgmm', ends: ['più morbida', 'più rigida'], field: 'Misura da ferma (Racketpedia): conferma o smentisce la rigidità in campo.' },
+  { key: 'twu.stiffness', short: 'Rigidità in campo', ends: ['più morbida', 'più rigida'], field: 'In campo: più a destra = il letto cede meno, palla più ferma e diretta, più dura sul braccio. Sotto il 10% di differenza non la senti.' },
+  { key: 'twu.loss', short: 'Perdita di tensione', ends: ['tiene di più', 'perde di più'], field: 'In campo: più a sinistra = la sensazione resta uguale più a lungo dopo l\'incordatura.' },
+  { key: 'twu.spin', short: 'Spin', ends: ['meno spin', 'più spin'], field: 'In campo: più a destra = le verticali scivolano e tornano di più, la corda ti aiuta a far girare la palla. Lo spin vero lo fa il tuo colpo.' },
+  { key: 'rp.kgmm', short: 'Rigidità da ferma', ends: ['più morbida', 'più rigida'], field: 'Misura da ferma (Racketpedia): conferma o smentisce la rigidità in campo.' },
 ];
 let mapSel = []; // corde scelte dall'utente (oltre alla montata), al massimo 4
 let mapPick = {}; // per righello: ultimo tocco
@@ -1867,11 +1870,11 @@ function rulerHtml(ctx, R, width) {
 function tableHtml(ctx) {
   const ref = ctx.equippedRec();
   const ids = [ref.id, ...mapSel.filter((id) => id !== ref.id)];
-  const keys = MAP_RULERS.map((R) => R.key);
+  const keys = MAP_RULERS;
   const cell = (r, key) => { const v = valueOf(r, key); return v ? `${mk(v.est)}${esc(fmtV(key, v.v))}` : '<span class="nm">nessun valore</span>'; };
   return `<div class="mtable" role="table" aria-label="Le corde scelte">
     ${ids.map((id) => { const r = ctx.BY_ID[id]; return `<div class="mrow" role="row"><div class="mname" role="cell"><button type="button" class="linkish" data-open="${esc(id)}">${esc(fullName(r))}</button>${id === ref.id ? ' <span class="tag ok">montata</span>' : ` <button type="button" class="btn sq ghost" data-map-del="${esc(id)}" aria-label="Togli ${esc(fullName(r))} dalla mappa">✕</button>`}</div>
-      ${keys.map((k) => `<div class="mcell" role="cell"><span class="mk">${esc(CMP_KEYS[k].label)}</span> <span class="num">${cell(r, k)}</span></div>`).join('')}
+      ${keys.map((R) => `<div class="mcell" role="cell"><span class="mlab">${esc(R.short)}</span> <span class="num">${cell(r, R.key)}</span></div>`).join('')}
       ${id === ref.id ? '' : `<div class="mcell" role="cell"><button type="button" class="btn" data-cmp="${esc(id)}">Confronta con la tua</button></div>`}</div>`; }).join('')}
   </div>`;
 }

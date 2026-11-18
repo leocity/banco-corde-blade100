@@ -10,12 +10,12 @@ export const CMP_KEYS = {
   'twu.stiffness': {
     get: (l) => l.twu && l.twu.stiffness, source: 'TWU', group: 'stiffness', unit: 'lb/in', dec: 0, decides: true,
     diff: (a, b) => ((a - b) / b) * 100, bands: [10, 15], diffUnit: '%',
-    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità in gioco',
+    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità in campo',
   },
   'rp.kgmm': {
     get: (l) => l.rp && l.rp.kgmm, source: 'Racketpedia', group: 'stiffness', unit: 'kg/mm', dec: 2, decides: true,
     diff: (a, b) => a - b, bands: [0.1, 0.2], diffUnit: 'kg/mm',
-    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità a riposo',
+    up: 'più rigida', down: 'più morbida', whyUp: STIFF_WHY_UP, whyDown: STIFF_WHY_DOWN, label: 'Rigidità da ferma',
   },
   'twu.loss': {
     get: (l) => l.twu && l.twu.loss, source: 'TWU', group: 'loss', unit: '%', dec: 0, decides: true,

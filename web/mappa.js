@@ -9,10 +9,10 @@ import { diaryCsv } from './diary.js';
 import { itMonth } from './sheet.js';
 
 const MAP_RULERS = [
-  { key: 'twu.stiffness', ends: ['più morbida', 'più rigida'], field: 'In campo: più a destra = il letto cede meno, palla più ferma e diretta, più dura sul braccio. Sotto il 10% di differenza non la senti.' },
-  { key: 'twu.loss', ends: ['tiene di più', 'perde di più'], field: 'In campo: più a sinistra = la sensazione resta uguale più a lungo dopo l\'incordatura.' },
-  { key: 'twu.spin', ends: ['meno spin', 'più spin'], field: 'In campo: più a destra = le verticali scivolano e tornano di più, la corda ti aiuta a far girare la palla. Lo spin vero lo fa il tuo colpo.' },
-  { key: 'rp.kgmm', ends: ['più morbida', 'più rigida'], field: 'Misura da ferma (Racketpedia): conferma o smentisce la rigidità in campo.' },
+  { key: 'twu.stiffness', short: 'Rigidità in campo', ends: ['più morbida', 'più rigida'], field: 'In campo: più a destra = il letto cede meno, palla più ferma e diretta, più dura sul braccio. Sotto il 10% di differenza non la senti.' },
+  { key: 'twu.loss', short: 'Perdita di tensione', ends: ['tiene di più', 'perde di più'], field: 'In campo: più a sinistra = la sensazione resta uguale più a lungo dopo l\'incordatura.' },
+  { key: 'twu.spin', short: 'Spin', ends: ['meno spin', 'più spin'], field: 'In campo: più a destra = le verticali scivolano e tornano di più, la corda ti aiuta a far girare la palla. Lo spin vero lo fa il tuo colpo.' },
+  { key: 'rp.kgmm', short: 'Rigidità da ferma', ends: ['più morbida', 'più rigida'], field: 'Misura da ferma (Racketpedia): conferma o smentisce la rigidità in campo.' },
 ];
 let mapSel = []; // corde scelte dall'utente (oltre alla montata), al massimo 4
 let mapPick = {}; // per righello: ultimo tocco
@@ -52,11 +52,11 @@ function rulerHtml(ctx, R, width) {
 function tableHtml(ctx) {
   const ref = ctx.equippedRec();
   const ids = [ref.id, ...mapSel.filter((id) => id !== ref.id)];
-  const keys = MAP_RULERS.map((R) => R.key);
+  const keys = MAP_RULERS;
   const cell = (r, key) => { const v = valueOf(r, key); return v ? `${mk(v.est)}${esc(fmtV(key, v.v))}` : '<span class="nm">nessun valore</span>'; };
   return `<div class="mtable" role="table" aria-label="Le corde scelte">
     ${ids.map((id) => { const r = ctx.BY_ID[id]; return `<div class="mrow" role="row"><div class="mname" role="cell"><button type="button" class="linkish" data-open="${esc(id)}">${esc(fullName(r))}</button>${id === ref.id ? ' <span class="tag ok">montata</span>' : ` <button type="button" class="btn sq ghost" data-map-del="${esc(id)}" aria-label="Togli ${esc(fullName(r))} dalla mappa">✕</button>`}</div>
-      ${keys.map((k) => `<div class="mcell" role="cell"><span class="mk">${esc(CMP_KEYS[k].label)}</span> <span class="num">${cell(r, k)}</span></div>`).join('')}
+      ${keys.map((R) => `<div class="mcell" role="cell"><span class="mlab">${esc(R.short)}</span> <span class="num">${cell(r, R.key)}</span></div>`).join('')}
       ${id === ref.id ? '' : `<div class="mcell" role="cell"><button type="button" class="btn" data-cmp="${esc(id)}">Confronta con la tua</button></div>`}</div>`; }).join('')}
   </div>`;
 }

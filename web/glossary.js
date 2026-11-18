@@ -1,10 +1,10 @@
 // Testi dei tooltip: cosa significa, da dove viene, se è una misura o un'ipotesi. Puro.
 // kind: 'misura' (laboratorio), 'ipotesi' (regola del progetto, non validata), 'concetto' (spiegazione), 'tuo' (dati tuoi).
 export const GLOSS = {
-  'twu.stiffness': { title: 'Rigidità in gioco (TWU)', kind: 'misura',
+  'twu.stiffness': { title: 'Rigidità in campo (TWU)', kind: 'misura',
     text: 'Quanto il letto di corde cede quando la palla lo colpisce a velocità di gioco. Più alta = più rigida. Misurata da TWU (Tennis Warehouse University) a 51 lb (circa 23 kg) con swing veloce, una prova per corda.',
     src: 'TWU String Performance Database', url: 'https://twu.tennis-warehouse.com/learning_center/reporter2.php' },
-  'rp.kgmm': { title: 'Rigidità a riposo (Racketpedia)', kind: 'misura',
+  'rp.kgmm': { title: 'Rigidità da ferma (Racketpedia)', kind: 'misura',
     text: 'Quanto la corda si oppone a uno stiramento lento, a riposo. Più alta = più rigida. Misura statica a passi di 0,05 kg/mm: dice com\'è la corda ferma, non come reagisce all\'impatto.',
     src: 'Racketpedia (schede gratuite)', url: 'https://www.racketpedia.com/en-GB/tennis-strings' },
   'twu.loss': { title: 'Perdita di tensione (TWU)', kind: 'misura',

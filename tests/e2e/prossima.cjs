@@ -77,7 +77,7 @@ test('Prossima: ibridi con letto solo nella stessa fonte; nessun prezzo', async 
   await page.locator('#hybrid [data-hy-load="A"]').click();
   const txt = await page.innerText('#hybrid');
   assert.match(txt, /letto/);
-  assert.match(txt, /Rigidità in gioco/);
+  assert.match(txt, /Rigidità in campo/);
   assert.doesNotMatch(await page.content(), /€/);
   await ctx.close();
 });
