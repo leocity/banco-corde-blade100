@@ -1,7 +1,7 @@
 // Piccoli pezzi di interfaccia condivisi: tooltip, valori misurati, nomi. Nessun accesso al DOM all'import.
 import { esc, NF, SHAPES, fullName } from './format.js';
 import { GLOSS, KIND_LABEL } from './glossary.js';
-import { CMP_KEYS } from './cmp.js';
+import { CMP_KEYS, valueOf } from './cmp.js';
 
 // Bottone tooltip: `key` è una voce del glossario; `extra` aggiunge valore, fonte e data della singola cifra.
 export function tip(key, label, extra = null, aria = '') {
@@ -9,6 +9,9 @@ export function tip(key, label, extra = null, aria = '') {
   const a = aria ? ` aria-label="${esc(aria)}"` : '';
   return `<button type="button" class="tip${aria ? ' i' : ''}" data-tip="${esc(key)}"${x}${a}>${label}</button>`;
 }
+// Segno del tipo di valore, disegnato in CSS (i simboli ◐ non ci sono in tutti i caratteri): misurata, ricavata dai dati, dalla fisica.
+const MK_WORD = { meas: 'misurata', der: 'ricavata da altri dati', phys: 'ricavata dalla fisica' };
+export const mk = (est) => { const k = est === 'modello' ? 'phys' : est ? 'der' : 'meas'; return `<i class="mk mk-${k}" role="img" aria-label="${MK_WORD[k]}" title="${MK_WORD[k]}"></i>`; };
 export const infoTip = (key, aria) => tip(key, 'ⓘ', null, aria);
 export const misure = (n) => (n === 1 ? '1 misura' : `${n} misure`);
 
@@ -34,9 +37,13 @@ const SRC_OF = { twu: 'TWU String Performance Database', rp: 'Racketpedia', exce
 export function labValue(rec, key) {
   const k = CMP_KEYS[key];
   const v = rec && rec.lab ? k.get(rec.lab) : null;
-  if (typeof v !== 'number') return tip('nonmisurato', '<span class="nm">non misurato</span>');
+  if (typeof v !== 'number') {
+    const e = valueOf(rec, key);
+    if (!e) return tip('nonmisurato', '<span class="nm">nessun valore</span>');
+    return tip(key, `${mk(e.est)}<b class="num est">${esc(fmtV(key, e.v))}</b>`, { v: `${fullName(rec)}: ≈ ${fmtV(key, e.v)}${e.margin ? ` (± ${String(e.margin).replace('.', ',')})` : ''}, ${e.how}`, src: e.est === 'modello' ? 'Ricavata dalla fisica' : 'Ricavata da altri dati' });
+  }
   const part = rec.lab[key.split('.')[0]] || {};
-  return tip(key, `<b class="num">${esc(fmtV(key, v))}</b>`, { v: `${fullName(rec)}: ${fmtV(key, v)}`, src: SRC_OF[key.split('.')[0]], url: part.url, date: part.date });
+  return tip(key, `${mk(null)}<b class="num">${esc(fmtV(key, v))}</b>`, { v: `${fullName(rec)}: ${fmtV(key, v)}`, src: SRC_OF[key.split('.')[0]], url: part.url, date: part.date });
 }
 
 export const shapeOf = (r) => SHAPES[r.shape] || (r.shape ? r.shape.toLowerCase() : 'forma non indicata');

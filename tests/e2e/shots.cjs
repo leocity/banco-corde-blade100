@@ -16,9 +16,9 @@ const OUT = path.resolve(__dirname, '../../docs/audit');
     await p.locator('#next-list [data-cmp]').first().click(); await p.waitForTimeout(150);
     await p.screenshot({ path: `${OUT}/v6-confronto-${s}.png` });
     await p.keyboard.press('Escape');
-    await p.locator('#tab-scienza').click(); await p.waitForTimeout(150);
-    await p.locator('#scienza .ruler').first().scrollIntoViewIfNeeded();
-    await p.screenshot({ path: `${OUT}/v6-scienza-${s}.png` });
+    await p.locator('#tab-mappa').click(); await p.waitForTimeout(150);
+    await p.fill('#map-q', 'o-toro tour 1,20'); await p.locator('#map-results [data-map-add]').first().click();
+    await p.screenshot({ path: `${OUT}/v6-mappa-${s}.png` });
     await p.close();
   }
   await b.close();

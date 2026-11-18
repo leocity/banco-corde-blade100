@@ -7,7 +7,7 @@ import pathlib
 
 from pipeline.validate_indices import index_validation
 from pipeline.community import FORUM_ALIASES, build_community
-from pipeline.catalog import add_catalog_only, clean_catalog
+from pipeline.catalog import add_catalog_only, add_extra, apply_rpedia_fixes, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, model_id, backtest_qualitative, calibrate_tester_spin, estimate_spin, check_gauge_usrsa, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
@@ -38,12 +38,14 @@ REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
 def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, review_overrides=None, forum=None, sources=None, usrsa=None,
-          indep=None):
+          indep=None, extra=None):
+    records = add_extra(records, extra)
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
     # Racketpedia dal sito (fonte primaria): verifica, riempie e corregge gli abbinamenti scritti dall'agente
     rp_log = apply_site(records, site_rows or [], base_model) if site_rows else []
+    apply_rpedia_fixes(records, extra)  # dopo il sito: le schede trovate a mano hanno l'ultima parola
     removed_list = sorted({(f"{r['brand']} {r['model']}", (r.get("production") or {}).get("successor"),
                             (r.get("production") or {}).get("reason")) for r in removed})
     agg = add_percentiles({row["id"]: aggregate(row) for row in (reviews or [])})
@@ -170,7 +172,8 @@ def build_from_repo():
     out = build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
                  review_overrides=_load("data/agents/review_overrides.json", {}),
                  forum=[json.loads(pathlib.Path(f).read_text(encoding="utf-8")) for f in sorted(glob.glob(str(ROOT / "data/agents/forum_*.json")))],
-                 sources=_load("data/raw/sources.json", {}), usrsa=usrsa, indep=indep)
+                 sources=_load("data/raw/sources.json", {}), usrsa=usrsa, indep=indep,
+                 extra=_load("data/catalog_extra.json", {}))
     errs = validate_indep(indep, {r["id"] for r in out["strings"]})
     if errs:
         raise SystemExit("recensioni indipendenti non valide: " + "; ".join(errs))

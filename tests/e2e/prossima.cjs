@@ -20,8 +20,8 @@ test('Prossima: le domande cambiano la lista e restano salvate', async () => {
   assert.ok(sums.length >= 1 && sums.length <= 3);
   for (const s of sums) assert.match(s, /più rigida/);
   await page.locator('[data-goal="holds"]').click();
-  assert.match(await page.innerText('#next-q'), /non è misurata da TWU/);
-  assert.match(await page.innerText('#next-list'), /su 55 corde misurate da TWU/);
+  assert.match(await page.innerText('#next-q'), /Metro di paragone/);
+  assert.match(await page.innerText('#next-list'), /corde/);
   await ctx.close();
 });
 

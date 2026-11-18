@@ -1,0 +1,354 @@
+{
+ "_origine": "ricerca cataloghi Re-String, Toroline, Solinco del 18/11/2026 (siti dei produttori, TW Europe, data/raw/racketpedia.json, data/raw/twu.json). Escluse le Solinco uscite prima del 2020 (Hyper-G, Tour Bite, Tour Bite Soft, Tour Bite Diamond Rough, Revolution, Outlast).",
+ "add": [
+  {
+   "brand": "Solinco",
+   "model": "Confidential",
+   "gauge_mm": 1.15,
+   "gauge_label": "18",
+   "shape": "PENT",
+   "material": "copoly",
+   "year": null,
+   "year_source": "nessuna fonte gratuita raggiungibile: solincosports.com risponde 403 dal proxy; a catalogo su TWE (pagina maker_url)",
+   "maker_url": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "rpedia": {
+    "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-black-115",
+    "kgmm": 0.85
+   },
+   "twu": null,
+   "note": null
+  },
+  {
+   "brand": "Solinco",
+   "model": "Mach-10",
+   "gauge_mm": 1.15,
+   "gauge_label": "18",
+   "shape": "PENT",
+   "material": "copoly",
+   "year": null,
+   "year_source": "nessuna fonte gratuita raggiungibile: solincosports.com risponde 403 dal proxy; a catalogo su TWE (pagina maker_url)",
+   "maker_url": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "rpedia": {
+    "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-mach-10-cyan-115",
+    "kgmm": 0.7
+   },
+   "twu": null,
+   "note": null
+  },
+  {
+   "brand": "Solinco",
+   "model": "Hyper-G Round",
+   "gauge_mm": 1.15,
+   "gauge_label": "18",
+   "shape": "RND",
+   "material": "copoly",
+   "year": null,
+   "year_source": "nessuna fonte gratuita raggiungibile: solincosports.com risponde 403 dal proxy; a catalogo su TWE (pagina maker_url)",
+   "maker_url": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "rpedia": {
+    "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-round-green-115",
+    "kgmm": 0.8
+   },
+   "twu": null,
+   "note": null
+  },
+  {
+   "brand": "Solinco",
+   "model": "Hyper-G Soft",
+   "gauge_mm": 1.15,
+   "gauge_label": "18",
+   "shape": "PENT",
+   "material": "copoly",
+   "year": null,
+   "year_source": "nessuna fonte gratuita raggiungibile: solincosports.com risponde 403 dal proxy; a catalogo su TWE (pagina maker_url)",
+   "maker_url": "https://www.tenniswarehouse-europe.com/catpage-SOLINCOSTRI-EN.html",
+   "rpedia": null,
+   "twu": null,
+   "note": "scheda Racketpedia solinco-hyper-g-soft-green-115 riporta 0 kg/mm (non valido)"
+  },
+  {
+   "brand": "Toroline",
+   "model": "O-Toro Tour",
+   "gauge_mm": 1.2,
+   "gauge_label": "17",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": 2025,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2025-02-17; variante Neon Green 1.20MM",
+   "maker_url": "https://toroline.com/products/o-toro-tour",
+   "rpedia": null,
+   "twu": null,
+   "note": "nessuna scheda RP/TWU a 1,20 (TWU ha solo 1,23)"
+  },
+  {
+   "brand": "Toroline",
+   "model": "O-Toro Tour",
+   "gauge_mm": 1.15,
+   "gauge_label": "18",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-11-17",
+   "maker_url": "https://toroline.com/products/o-toro-tour-115",
+   "rpedia": null,
+   "twu": null,
+   "note": "appena uscita (17/11/2026); sito: Gauge 1.15mm / 18, Flex Tour"
+  },
+  {
+   "brand": "Toroline",
+   "model": "O-Toro Octa",
+   "gauge_mm": 1.25,
+   "gauge_label": "16L",
+   "shape": "OCT",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-01-01",
+   "maker_url": "https://toroline.com/products/o-toro-octa",
+   "rpedia": null,
+   "twu": null,
+   "note": "colore Mint; stessa formula O-Toro Tour, flex Tour"
+  },
+  {
+   "brand": "Toroline",
+   "model": "O-Toro Snap Tour Flex",
+   "gauge_mm": 1.25,
+   "gauge_label": "16L",
+   "shape": "RND",
+   "material": "copoly",
+   "year": 2025,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2025-10-30",
+   "maker_url": "https://toroline.com/products/o-toro-snap-tour-flex",
+   "rpedia": null,
+   "twu": null,
+   "note": "colori Black/Mint; flex Tour/Firm. Non confondere con O-Toro Snap 16L gia nel dataset"
+  },
+  {
+   "brand": "Toroline",
+   "model": "O-Toro Max",
+   "gauge_mm": 1.23,
+   "gauge_label": "17",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-10-08",
+   "maker_url": "https://toroline.com/products/o-toro-max-prototype",
+   "rpedia": null,
+   "twu": null,
+   "note": "handle del sito \"o-toro-max-prototype\": verificare se e in vendita regolare; colore White"
+  },
+  {
+   "brand": "Toroline",
+   "model": "Truffle X",
+   "gauge_mm": 1.3,
+   "gauge_label": "16",
+   "shape": "RND",
+   "material": "polimero",
+   "year": 2025,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2025-09-09",
+   "maker_url": "https://toroline.com/products/truffle-x",
+   "rpedia": {
+    "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-truffle-x-purple-130",
+    "kgmm": 0.2
+   },
+   "twu": null,
+   "note": "polimero ad alte prestazioni, NON poliestere (sito); rigidita statica dichiarata 0,20 kg/mm (sito); scheda RP 0,2 kg/mm; avvertenza di incordatura sul sito"
+  },
+  {
+   "brand": "Toroline",
+   "model": "A5",
+   "gauge_mm": 1.25,
+   "gauge_label": "16L",
+   "shape": "RND",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-02-24",
+   "maker_url": "https://toroline.com/products/a5",
+   "rpedia": {
+    "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-a5-carbon-gray-125",
+    "kgmm": 0.9
+   },
+   "twu": null,
+   "note": "il sito dà A5 solo 1.25mm/16L (colore Carbon Gray): nel dataset toroline-a5-17 e etichettato 1,23, probabile errore di calibro"
+  },
+  {
+   "brand": "Toroline",
+   "model": "A5 Infrared",
+   "gauge_mm": 1.2,
+   "gauge_label": "17",
+   "shape": "RND",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-01-03",
+   "maker_url": "https://toroline.com/products/a5-infrared",
+   "rpedia": null,
+   "twu": null,
+   "note": "sito: 1.20mm/17, profilo tondo, colore Infrared"
+  },
+  {
+   "brand": "Toroline",
+   "model": "A5 Spin",
+   "gauge_mm": 1.23,
+   "gauge_label": "17",
+   "shape": "PENT",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-09-03",
+   "maker_url": "https://toroline.com/products/a5-spin-carbon",
+   "rpedia": null,
+   "twu": null,
+   "note": "colori Carbon Gray e Infrared; \"evoluzione sagomata di A5\""
+  },
+  {
+   "brand": "Toroline",
+   "model": "Vamos",
+   "gauge_mm": 1.23,
+   "gauge_label": "17",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-05-31",
+   "maker_url": "https://toroline.com/products/vamos",
+   "rpedia": null,
+   "twu": null,
+   "note": "sviluppata con Jonas Eriksson (Tennisnerd); colore Latte"
+  },
+  {
+   "brand": "Toroline",
+   "model": "Enso Pro",
+   "gauge_mm": 1.27,
+   "gauge_label": "16L",
+   "shape": "RND",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-04-10",
+   "maker_url": "https://toroline.com/products/enso-pro-copy",
+   "rpedia": null,
+   "twu": null,
+   "note": "Matcha Green 1.27MM/16L; nessuna scheda RP a 1,27"
+  },
+  {
+   "brand": "Toroline",
+   "model": "Toro Toro",
+   "gauge_mm": 1.27,
+   "gauge_label": "16L",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": 2026,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2026-04-10",
+   "maker_url": "https://toroline.com/products/toro-toro-1-27",
+   "rpedia": null,
+   "twu": null,
+   "note": "Matcha Green 1.27MM; nel dataset toroline-toro-toro-matcha-16l e etichettato 1,25 (il sito dice 1,27): probabile errore di calibro"
+  },
+  {
+   "brand": "Toroline",
+   "model": "Caviar",
+   "gauge_mm": 1.2,
+   "gauge_label": "17",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": 2019,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2019-10-01 (precedente al 2020 ma ancora a catalogo)",
+   "maker_url": "https://toroline.com/products/caviar",
+   "rpedia": null,
+   "twu": null,
+   "note": "sito: 3 calibri 1.24/16L, 1.20/17, 1.16/18; nel dataset Caviar e a 1,23; nessuna scheda RP a 1,20"
+  },
+  {
+   "brand": "Toroline",
+   "model": "Caviar",
+   "gauge_mm": 1.16,
+   "gauge_label": "18",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": 2019,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2019-10-01 (precedente al 2020 ma ancora a catalogo)",
+   "maker_url": "https://toroline.com/products/caviar",
+   "rpedia": null,
+   "twu": null,
+   "note": "calibro 18 / 1.16MM; nessuna scheda RP"
+  },
+  {
+   "brand": "Toroline",
+   "model": "Ether",
+   "gauge_mm": 1.2,
+   "gauge_label": "17",
+   "shape": "SQ",
+   "material": "copoly",
+   "year": 2021,
+   "year_source": "Shopify created_at del prodotto (data di pubblicazione sul sito, non uscita dichiarata) 2021-08-29",
+   "maker_url": "https://toroline.com/products/ether",
+   "rpedia": {
+    "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-ether-blue-120",
+    "kgmm": 1.0
+   },
+   "twu": null,
+   "note": "sito: 1.20MM/17 quadrata, Firm; scheda RP ether-blue-120 1,0 kg/mm (pubblicata 22/03/2024)"
+  }
+ ],
+ "fix_rpedia": [
+  {
+   "id": "solinco-hyper-g-round-16l",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-round-green-125",
+   "kgmm": 1.0,
+   "match": "exact",
+   "note": "scheda pubblicata 19/10/2026"
+  },
+  {
+   "id": "solinco-hyper-g-round-17",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-round-green-120",
+   "kgmm": 0.95,
+   "match": "exact",
+   "note": "colore Green"
+  },
+  {
+   "id": "solinco-mach-10-16l",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-mach-10-cyan-125",
+   "kgmm": 0.75,
+   "match": "exact",
+   "note": "colore Cyan"
+  },
+  {
+   "id": "solinco-hyper-g-soft-16l",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-soft-green-125",
+   "kgmm": 1.1,
+   "match": "exact",
+   "note": "colore Green"
+  },
+  {
+   "id": "solinco-hyper-g-soft-17",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-hyper-g-soft-green-120",
+   "kgmm": 1.0,
+   "match": "exact",
+   "note": "colore Green"
+  },
+  {
+   "id": "toroline-a5-17",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-a5-carbon-gray-125",
+   "kgmm": 0.9,
+   "match": "exact",
+   "note": "esatta solo per A5 1,25 (Carbon Gray); il dataset dice 1,23 ma il sito Toroline vende A5 solo a 1,25"
+  },
+  {
+   "id": "toroline-enso-pro-neon-yl-16l",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125",
+   "kgmm": 0.9,
+   "match": "altro colore",
+   "note": "stesso calibro 1,25; scheda Carbon Gray, il dataset e Neon Yellow (RP ha anche neon-pink-125 a 0,8)"
+  },
+  {
+   "id": "toroline-enso-pro-neon-pk-17",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-neon-pink-125",
+   "kgmm": 0.8,
+   "match": "exact",
+   "note": "stesso colore; RP indica 125 mentre il sito Toroline dice Neon Pink 1.24MM/16L; dataset 1,23"
+  },
+  {
+   "id": "toroline-toro-toro-orange-17",
+   "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
+   "kgmm": 0.95,
+   "match": "altro colore",
+   "note": "nessuna scheda Orange trovata (slug neon-orange-123 = 404); Neon Pink stesso calibro"
+  }
+ ]
+}

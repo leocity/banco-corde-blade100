@@ -8,9 +8,9 @@ const goalOf = (st) => st.nextGoal || 'same';
 
 function card(c, ctx, inStockInfo, goal) {
   const r = c.rec;
-  const common = [...new Set(c.rows.filter((x) => x.decides).map((x) => x.source))].join(', ');
+  const common = [...new Set(c.rows.filter((x) => x.decides).map((x) => `${x.source}${x.est ? ' (≈ ricavato)' : ''}`))].join(', ');
   const why = c.rows.filter((x) => x.decides && x.dir).slice(0, 2).map((x) => `<li>${esc(x.why)}</li>`).join('');
-  const rank = c.rank ? `<p class="small">${c.rank.pos}ª su ${c.rank.n} corde misurate da TWU (${esc(fmtRank(c, goal))}).</p>` : '';
+  const rank = c.rank ? `<p class="small">${c.rank.pos}ª su ${c.rank.n} corde con il valore TWU (${esc(fmtRank(c, goal))}).</p>` : '';
   const lk = c.likeness && c.likeness.id ? `<p class="small muted">Simile alla ${esc(ctx.BY_ID[c.likeness.id].model)} (ti piace) in ${misure(c.likeness.similar)} su ${c.likeness.total}.</p>` : '';
   const warn = c.likeness && c.likeness.warn ? `<p class="small warn-t">Somiglia alla ${esc(ctx.BY_ID[c.likeness.warn].model)}, che non ti piace.</p>` : '';
   const stockTag = (inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '') + (c.equipped ? ' <span class="tag">è la tua montata</span>' : '') + (c.disliked ? ' <span class="tag warn">non ti piace</span>' : '');
@@ -19,7 +19,7 @@ function card(c, ctx, inStockInfo, goal) {
     <h3>${nameBtn(r)} ${stockTag}</h3>
     <p class="muted small">${specLine(r)}</p>
     <p class="summary">${esc(c.summary.text)} ${infoTip('soglie', 'Come decidiamo simile, un po\' o nettamente')}</p>
-    ${common ? `<p class="small muted common">Misure in comune con la tua: ${esc(common)}.</p>` : ''}
+    ${common ? `<p class="small muted common">Confrontata con la tua su: ${esc(common)}.</p>` : ''}
     ${why ? `<ul class="why">${why}</ul>` : ''}${rank}${lk}${warn}${off}
     <div class="actions"><button type="button" class="btn" data-cmp="${esc(r.id)}">Confronta</button>
       <button type="button" class="btn" data-equip="${esc(r.id)}">Monta</button></div>

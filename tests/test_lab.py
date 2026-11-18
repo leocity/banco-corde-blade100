@@ -73,4 +73,22 @@ def test_built_data_matches_raw_sources():
             assert s["twu"]["match"] == "exact" and t["stiffness"] == s["twu"]["stiffness_lbin"]
         else:
             assert (s["twu"] or {}).get("match") != "exact"
-    assert d["lab_meta"]["n"] == {"twu": 55, "rp": 48, "excel": 44}
+    assert d["lab_meta"]["n"] == {"twu": 55, "rp": 60, "excel": 44}
+
+
+def test_est_only_where_measure_missing_and_always_labelled():
+    import json
+    data = json.loads((pathlib.Path(__file__).resolve().parent.parent / "data/strings.json").read_text(encoding="utf-8"))
+    S = {r["id"]: r for r in data["strings"]}
+    for r in data["strings"]:
+        lab = r["lab"]
+        for key, e in lab["est"].items():
+            src, field = key.split(".")
+            assert not (lab.get(src) and lab[src].get(field if src != "rp" else "kgmm") is not None), (r["id"], key)
+            assert e["kind"] in ("ricavata", "modello") and e["how"] and e["v"] is not None, (r["id"], key)
+    slap = S["re-string-slap-17"]["lab"]["est"]
+    assert slap["twu.stiffness"]["kind"] == "ricavata" and slap["twu.stiffness"]["from"] == "rp"
+    assert slap["twu.spin"]["kind"] == "modello"
+    conf = S["solinco-confidential-16l"]["lab"]["est"]
+    assert conf["twu.loss"]["v"] == 22.2 and conf["twu.stiffness"]["from"] == "twu"
+    assert S["toroline-enso-pro-neon-yl-16l"]["lab"]["est"]["rp.kgmm"]["kind"] == "ricavata"  # scheda di altro colore

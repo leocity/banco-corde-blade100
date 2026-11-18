@@ -54,7 +54,7 @@ test('al massimo 3 da comprare', () => {
 test('tiene di più: la Slap non ha TWU, quindi classifica assoluta dichiarata', () => {
   const r = candidates(st(), ALL, 'holds', meta);
   assert.equal(r.mode, 'absolute');
-  assert.match(r.note, /non è misurata da TWU/);
+  assert.match(r.note, /Metro di paragone/);
   assert.equal(ids(r.toBuy)[0], 'holder');
   assert.ok(r.toBuy[0].rank && r.toBuy[0].rank.n >= 4);
 });
@@ -67,7 +67,7 @@ test('tiene di più: con la montata misurata da TWU il confronto è diretto', ()
 
 test('montata senza misure: simile usa le preferite come riferimento', () => {
   const r = candidates(st({ equipped: { id: 'none', kg: [22, 21] }, liked: ['twin'] }), ALL, 'same', meta);
-  assert.match(r.note, /nessuna misura/);
+  assert.match(r.note, /nessun valore/);
   assert.ok(ids(r.toBuy).includes('slap'));
 });
 
@@ -97,4 +97,12 @@ test('somiglianza alle preferite: con meno di metà misure simili non si dice «
   const q = S('q', { twu: { stiffness: 260, loss: 50, spin: 6 }, rp: { kgmm: 0.92 } });
   const l = likeness(q, ['p'], [], [p, q], meta);
   assert.equal(l.id, null);
+});
+
+test('spin: se la montata ha un valore TWU ricavato, il confronto è diretto e la nota lo dice', () => {
+  const eq = S('eq', { rp: { kgmm: 0.8 }, est: { 'twu.spin': { kind: 'modello', v: 7.8, margin: 1.5, how: 'stima dalla fisica (rigidità e forma)', from: 'modello' } } });
+  const r = candidates(st({ equipped: { id: 'eq', kg: [22, 21] } }), [...ALL, eq], 'spin', meta);
+  assert.equal(r.mode, 'relative');
+  assert.match(r.note, /come metro uso il suo valore ricavato/);
+  assert.ok(ids(r.toBuy).includes('soft')); // spin 9,5 contro ≈ 7,8
 });

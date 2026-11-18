@@ -211,3 +211,24 @@ details.sci[open] { padding-bottom: 10px; }
 .r-list li.me { font-weight: 700; color: var(--accent); }
 .tip.i { min-width: 32px; text-decoration: none; color: var(--court); font-weight: 700; }
 .common { margin: 2px 0; }
+
+/* Mappa v6.1: tipi di valore e corde scelte */
+.rdot.e-ricavata { background: var(--surface); border: 2px solid var(--fg-2); }
+.rdot.e-modello { background: var(--surface); border: 2px dashed var(--fg-2); opacity: .7; }
+.rdot.sel { background: var(--s-liked); border-color: var(--s-liked); opacity: 1; width: 14px; height: 14px; margin: -7px 0 0 -7px; z-index: 2; }
+.rdot.me { z-index: 3; }
+.rdot.e-ricavata.sel, .rdot.e-modello.sel { background: var(--surface); border: 3px solid var(--s-liked); }
+.rdot.e-ricavata.me, .rdot.e-modello.me { background: var(--surface); border: 3px solid var(--accent); }
+.rl.sel { color: var(--s-liked); }
+.legend { margin: 8px 0; }
+.mtable { display: grid; gap: 8px; margin: 10px 0; }
+.mrow { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
+.mname { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.mcell { display: flex; justify-content: space-between; gap: 6px; font-size: .9rem; border-bottom: 1px solid var(--line); min-height: 32px; align-items: center; }
+.mcell .mk { color: var(--fg-2); }
+.mcell:last-child { border-bottom: 0; }
+.num.est { font-style: italic; }
+.mk { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; box-sizing: border-box; }
+.mk-meas { background: var(--fg); }
+.mk-der { border: 2px solid var(--fg); background: linear-gradient(90deg, var(--fg) 50%, transparent 50%); }
+.mk-phys { border: 2px dashed var(--fg-2); }

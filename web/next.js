@@ -1,5 +1,5 @@
 // «Prossima»: quali corde proporre per la domanda scelta, prima quelle in casa. Puro, testato (design v6 §5.4, §12.1).
-import { compareTo, summarize } from './cmp.js';
+import { compareTo, summarize, valueOf, CMP_KEYS } from './cmp.js';
 
 export const GOALS = [
   { key: 'same', label: 'Simile', ask: 'simile alla tua' },
@@ -13,7 +13,7 @@ const TWU_GOAL = { holds: { key: 'twu.loss', field: 'loss', want: 'meno', better
   spin: { key: 'twu.spin', field: 'spin', want: 'più', better: (a, b) => b - a, word: 'spin', unit: '' } };
 const STOCK_ORDER = (state) => (state.stock || []).map((s) => s.id);
 export const shortName = (r) => (r ? r.model : '');
-const hasLab = (r) => !!(r && r.lab && (r.lab.twu || r.lab.rp || r.lab.excel));
+const hasLab = (r) => !!(r && r.lab && Object.keys(CMP_KEYS).some((k) => valueOf(r, k)));
 
 // Preferita più simile: numero di grandezze «simile» nella stessa fonte (decisive + Excel), calibro e forma esclusi.
 export function likeness(rec, likedIds, dislikedIds, ALL, meta) {
@@ -37,18 +37,29 @@ export function likeness(rec, likedIds, dislikedIds, ALL, meta) {
   return { ...(good || { id: null, similar: 0, total: 0 }), warn };
 }
 
+// Peso dell'evidenza di una riga: misura su entrambe 3, con un valore ricavato da dati 2, con una stima dalla fisica 1.
+// Il valore della corda proposta deve essere misurato o ricavato da dati: una stima dalla fisica da sola (vicina alla media
+// per costruzione) non basta mai a proporla.
+const evid = (r) => (!r.est ? 3 : r.est === 'ricavata' ? 2 : 1);
+const solid = (r) => r.estA !== 'modello';
+
 function judge(goal, rows) {
   const dec = rows.filter((r) => r.decides);
-  if (goal === 'same') return { ok: dec.length > 0 && dec.every((r) => r.level === 'simile'), confirm: dec.length };
+  if (goal === 'same') {
+    const ok = dec.some(solid) && dec.every((r) => r.level === 'simile');
+    return { ok, confirm: ok ? dec.reduce((a, r) => a + evid(r), 0) : 0 };
+  }
   if (goal === 'softer' || goal === 'stiffer') {
     const want = goal === 'stiffer' ? 'più' : 'meno';
     const st = dec.filter((r) => r.group === 'stiffness');
-    const yes = st.filter((r) => r.dir === want).length, no = st.filter((r) => r.dir && r.dir !== want).length;
-    return { ok: yes > 0 && no === 0, confirm: yes };
+    const yes = st.filter((r) => r.dir === want), no = st.filter((r) => r.dir && r.dir !== want);
+    const ok = yes.some(solid) && no.length === 0;
+    return { ok, confirm: ok ? yes.reduce((a, r) => a + evid(r), 0) : 0 };
   }
   const g = TWU_GOAL[goal];
   const r = dec.find((x) => x.key === g.key);
-  return { ok: !!r && r.dir === g.want, confirm: r && r.dir === g.want ? 1 : 0 };
+  const ok = !!r && r.dir === g.want && solid(r);
+  return { ok, confirm: ok ? evid(r) : 0 };
 }
 
 export function candidates(state, ALL, goal, meta, limit = 3) {
@@ -62,18 +73,19 @@ export function candidates(state, ALL, goal, meta, limit = 3) {
   let mode = 'relative', note = '';
   let refs = [ref];
   if (!hasLab(ref)) {
-    note = `La ${refName} non ha nessuna misura di laboratorio: `;
-    if (goal === 'same') { refs = (state.liked || []).map((id) => by[id]).filter((r) => hasLab(r) && r.id !== ref.id); note += 'ti mostro le corde simili alle tue preferite.'; }
-    else note += 'il confronto diretto non è possibile.';
+    note = `Per la ${refName} non c'è nessun valore: `;
+    if (goal === 'same') { refs = (state.liked || []).map((id) => by[id]).filter((r) => hasLab(r) && r.id !== ref.id); note += 'il metro di paragone sono le tue preferite.'; }
+    else note += 'il metro di paragone è il banco intero.';
   }
   const g = TWU_GOAL[goal];
-  const refTwu = g && ref && ref.lab && ref.lab.twu && typeof ref.lab.twu[g.field] === 'number';
+  const refV = g ? valueOf(ref, g.key) : null;
   let ranked = null;
-  if (g && !refTwu) {
+  if (g && refV && refV.est) note = `La ${refName} non è misurata da TWU: come metro uso il suo valore ricavato (≈ ${String(refV.v).replace('.', ',')}${g.unit}, ${refV.how}).`;
+  if (g && !refV) {
     mode = 'absolute';
-    note = `La ${refName} non è misurata da TWU: ti mostro le corde ${goal === 'holds' ? 'che perdono meno tensione' : 'con più spin potenziale'} tra quelle misurate da TWU (il quarto migliore).`;
-    const measured = ALL.filter((r) => r.lab && r.lab.twu && typeof r.lab.twu[g.field] === 'number').sort((a, b) => g.better(a.lab.twu[g.field], b.lab.twu[g.field]));
-    ranked = new Map(measured.map((r, i) => [r.id, { pos: i + 1, n: measured.length, value: r.lab.twu[g.field] }]));
+    const withV = ALL.filter((r) => valueOf(r, g.key, { withModel: false })).sort((a, b) => g.better(valueOf(a, g.key).v, valueOf(b, g.key).v));
+    note = `Metro di paragone: le corde ${goal === 'holds' ? 'che perdono meno tensione' : 'con più spin potenziale'} tra le ${withV.length} con il valore TWU, misurato o ricavato (il quarto migliore).`;
+    ranked = new Map(withV.map((r, i) => [r.id, { pos: i + 1, n: withV.length, value: valueOf(r, g.key).v }]));
   }
   const cut = ranked ? Math.ceil(ranked.size / 4) : 0;
   const items = pool.map((rec) => {
@@ -84,7 +96,8 @@ export function candidates(state, ALL, goal, meta, limit = 3) {
       for (const rf of refs) { const j = judge(goal, compareTo(rec, rf, meta)); if (j.ok) { ok = true; confirm = Math.max(confirm, j.confirm); } }
     } else if (refs[0]) { const j = judge(goal, rows); ok = j.ok; confirm = j.confirm; }
     const lk = likeness(rec, (state.liked || []).filter((id) => id !== state.equipped.id), state.disliked || [], ALL, meta);
-    const value = g && rec.lab && rec.lab.twu && typeof rec.lab.twu[g.field] === 'number' ? rec.lab.twu[g.field] : null;
+    const gv = g ? valueOf(rec, g.key) : null;
+    const value = gv ? gv.v : null;
     return { rec, rows, summary: summarize(rows, refName), compatible: ok, confirm, likeness: lk, rank, value, inStock: stockIds.includes(rec.id),
       equipped: rec.id === state.equipped.id, disliked: (state.disliked || []).includes(rec.id) };
   });

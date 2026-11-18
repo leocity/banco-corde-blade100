@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { compareTo, levelOf, CMP_KEYS, summarize, agreement } from './cmp.js';
+import { compareTo, levelOf, CMP_KEYS, summarize, agreement, valueOf } from './cmp.js';
 
 const meta = { excel_stretch50_sd: 1.0 };
 const S = (id, lab, extra = {}) => ({ id, brand: 'B', model: id, gauge_mm: 1.23, shape: 'HEX', lab, ...extra });
@@ -37,10 +37,30 @@ test('si confrontano solo le grandezze presenti in entrambe, nella stessa fonte'
   assert.equal(rows[1].decides, false); // Excel: solo informativo
 });
 
-test('nessuna stima: i campi stiffness/spin stimati della corda non entrano mai', () => {
-  const est = S('est', { twu: null, rp: null, excel: null }, { stiffness: { value_lbin: 300, kind: 'parente' }, spin: { value: 9, kind: 'modello' } });
-  assert.deepEqual(compareTo(est, slap, meta), []);
-  assert.match(summarize(compareTo(est, slap, meta), 'Slap').text, /Non confrontabile/);
+test('i vecchi campi stiffness/spin non contano: vale solo il blocco lab (misure ed est)', () => {
+  const old = S('old', { twu: null, rp: null, excel: null }, { stiffness: { value_lbin: 300, kind: 'parente' } });
+  assert.deepEqual(compareTo(old, slap, meta), []);
+  assert.match(summarize(compareTo(old, slap, meta), 'Slap').text, /Non confrontabile/);
+});
+
+test('valori ricavati e dalla fisica: entrano marcati ≈ e danno sempre una direzione', () => {
+  const ref = S('ref', { twu: { stiffness: 200, loss: 40, spin: 8 } });
+  const der = S('der', { est: { 'twu.loss': { kind: 'ricavata', v: 22, margin: 5, how: 'altro calibro', from: 'twu' }, 'twu.spin': { kind: 'modello', v: 9.2, margin: 1.5, from: 'modello' } } });
+  const rows = compareTo(der, ref, meta);
+  const loss = rows.find((r) => r.key === 'twu.loss');
+  assert.equal(loss.est, 'ricavata');
+  assert.equal(loss.level, 'nettamente');
+  const spin = rows.find((r) => r.key === 'twu.spin');
+  assert.equal(spin.est, 'modello');
+  assert.equal(spin.dir, 'più');
+  assert.match(summarize(rows, 'Ref').text, /TWU ≈/);
+  assert.equal(valueOf(S('m', { est: { 'twu.spin': { kind: 'modello', v: 7 } } }), 'twu.spin').est, 'modello');
+});
+
+test('la rigidità TWU ricavata da Racketpedia non duplica la riga Racketpedia', () => {
+  const a = S('a', { rp: { kgmm: 0.75 }, est: { 'twu.stiffness': { kind: 'ricavata', v: 194, margin: 10, from: 'rp' } } });
+  const b = S('b', { rp: { kgmm: 1.05 }, twu: { stiffness: 166 } });
+  assert.deepEqual(compareTo(b, a, meta).map((r) => r.key), ['rp.kgmm']);
 });
 
 test('frase riassuntiva: con in comune solo l\'Excel lo dice e non conclude', () => {

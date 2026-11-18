@@ -5,7 +5,7 @@ import { initTips } from './tip.js';
 import { renderToday, initToday } from './today.js';
 import { renderNext, initNext } from './nextui.js';
 import { renderHybrid, initHybrid } from './hybrid.js';
-import { renderScience, initScience } from './science.js';
+import { renderMap, initMap } from './mappa.js';
 import { sheetHtml, compareHtml } from './sheet.js';
 import { askBoxHtml, initAsk } from './ask.js';
 
@@ -13,7 +13,7 @@ const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
 const META = DATA.lab_meta || {};
-const TABS = ['oggi', 'prossima', 'scienza'];
+const TABS = ['oggi', 'prossima', 'mappa'];
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -37,7 +37,7 @@ function renderSyncBadge() {
 function renderAll() {
   if (current === 'oggi') renderToday(ctx);
   if (current === 'prossima') { renderNext(ctx); renderHybrid(ctx); renderAskMain(); }
-  if (current === 'scienza') renderScience(ctx);
+  if (current === 'mappa') renderMap(ctx);
 }
 function update(fn) {
   hideToast();
@@ -156,7 +156,7 @@ initTips();
 initToday(ctx);
 initNext(ctx);
 initHybrid(ctx);
-initScience(ctx);
+initMap(ctx);
 initAsk(ctx);
 const hashTab = (location.hash || '').slice(1);
 showTab(TABS.includes(hashTab) ? hashTab : 'oggi');

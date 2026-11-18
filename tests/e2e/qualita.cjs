@@ -1,7 +1,7 @@
 // Obiettivi misurabili del design v6 (O2, O4, O5, O7): gergo, tocchi da 44 px, contrasto, nessuno scroll orizzontale, niente prezzi.
 const { openPage, tab, BAD, test, assert } = require('./ui.cjs');
 
-const TABS = ['oggi', 'prossima', 'scienza'];
+const TABS = ['oggi', 'prossima', 'mappa'];
 const JARGON = /\b(percentil\w*|gemell\w*|parente|pairing|snapback|TL6|TL12)\b/i;
 
 async function eachView(fn, opts = {}) {
@@ -19,7 +19,7 @@ async function eachView(fn, opts = {}) {
 
 test('O2: tre schede in basso, con frecce da tastiera', async () => {
   const { page, ctx } = await openPage();
-  assert.deepEqual(await page.locator('.tabs [role="tab"]').allInnerTexts(), ['◴\nOggi', '→\nProssima', '≡\nScienza']);
+  assert.deepEqual(await page.locator('.tabs [role="tab"]').allInnerTexts(), ['◴\nOggi', '→\nProssima', '⇹\nMappa']);
   await page.locator('#tab-oggi').focus();
   await page.keyboard.press('ArrowRight');
   assert.equal(await page.locator('#tab-prossima').getAttribute('aria-selected'), 'true');
@@ -99,13 +99,13 @@ test(`O7: contrasto del testo almeno 4,5:1 (3:1 per testo grande), tema ${scheme
 
 test('O7: il tasto Indietro chiude la scheda, poi torna alla schermata precedente', async () => {
   const { page, ctx } = await openPage();
-  await tab(page, 'scienza');
-  await page.locator('#scienza [data-ruler="rp.kgmm"] details summary').click();
-  await page.locator('#scienza [data-ruler="rp.kgmm"] .r-list [data-open]').first().click();
+  await tab(page, 'mappa');
+  await page.locator('#mappa [data-ruler="rp.kgmm"] details summary').click();
+  await page.locator('#mappa [data-ruler="rp.kgmm"] .r-list [data-open]').first().click();
   await page.waitForSelector('#sheet[open]');
   await page.goBack();
   await page.waitForSelector('#sheet:not([open])', { state: 'attached' });
-  assert.ok(await page.locator('#scienza').isVisible());
+  assert.ok(await page.locator('#mappa').isVisible());
   await page.goBack();
   await page.waitForSelector('#oggi:not([hidden])');
   await ctx.close();

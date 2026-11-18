@@ -51,20 +51,38 @@ export function levelOf(key, a, b, meta = {}) {
 }
 
 // Una riga per grandezza misurata in entrambe le corde. `a` è la corda in esame, `b` il riferimento (la montata).
+// Valore di una grandezza: la misura se c'è, altrimenti il valore ricavato dai dati o dalla fisica (calibro, forma), sempre marcato.
+// Ritorna { v, est, margin, how, from } oppure null.
+export function valueOf(rec, key, { withModel = true } = {}) {
+  const l = rec && rec.lab;
+  if (!l) return null;
+  const v = CMP_KEYS[key].get(l);
+  if (typeof v === 'number' && Number.isFinite(v)) return { v, est: null, margin: 0 };
+  const e = l.est && l.est[key];
+  if (e && typeof e.v === 'number' && (e.kind === 'ricavata' || (withModel && e.kind === 'modello'))) return { v: e.v, est: e.kind, margin: e.margin || 0, how: e.how, from: e.from };
+  return null;
+}
+
+// Una riga per grandezza presente in entrambe le corde. `a` è la corda in esame, `b` il riferimento (la montata).
+// Con un valore ricavato la riga è marcata (est) e se la differenza sta dentro il margine non decide nulla.
 export function compareTo(a, b, meta = {}) {
-  const la = a && a.lab, lb = b && b.lab;
-  if (!la || !lb) return [];
+  if (!a || !b || !a.lab || !b.lab) return [];
   const rows = [];
+  const rpBoth = !!(valueOf(a, 'rp.kgmm') && valueOf(b, 'rp.kgmm') && !valueOf(a, 'rp.kgmm').est && !valueOf(b, 'rp.kgmm').est);
   for (const key of ORDER) {
     const k = CMP_KEYS[key];
-    const va = k.get(la), vb = k.get(lb);
-    if (typeof va !== 'number' || typeof vb !== 'number' || !Number.isFinite(va) || !Number.isFinite(vb)) continue;
-    const level = levelOf(key, va, vb, meta);
-    const raw = k.diff(va, vb);
+    const A = valueOf(a, key), B = valueOf(b, key);
+    if (!A || !B) continue;
+    const est = A.est || B.est;
+    // la rigidità TWU ricavata da Racketpedia ripeterebbe la riga Racketpedia: non si conta due volte
+    if (key === 'twu.stiffness' && est && rpBoth && (A.from === 'rp' || B.from === 'rp')) continue;
+    const level = levelOf(key, A.v, B.v, meta);
+    const raw = k.diff(A.v, B.v);
     const dir = level === 'simile' ? null : raw > 0 ? 'più' : 'meno';
-    rows.push({ key, source: k.source, group: k.group, label: k.label, a: va, b: vb, unit: k.unit, dec: k.dec, delta: raw, diffUnit: k.diffUnit,
-      level, dir, decides: k.decides, word: dir === null ? 'simile' : dir === 'più' ? k.up : k.down,
-      why: dir === 'meno' ? k.whyDown : dir === 'più' ? k.whyUp : 'Differenza sotto la soglia: nelle misure non si distinguono.' });
+    rows.push({ key, source: k.source, group: k.group, label: k.label, a: A.v, b: B.v, unit: k.unit, dec: k.dec, delta: raw, diffUnit: k.diffUnit,
+      level, dir, decides: k.decides, est: est ? (A.est === 'modello' || B.est === 'modello' ? 'modello' : 'ricavata') : null, estA: A.est, estB: B.est, howA: A.how, howB: B.how,
+      word: dir === null ? 'simile' : dir === 'più' ? k.up : k.down,
+      why: dir === 'meno' ? k.whyDown : dir === 'più' ? k.whyUp : 'Differenza sotto la soglia: in campo non la distingui.' });
   }
   return rows;
 }
@@ -98,7 +116,7 @@ export function summarize(rows, refName) {
     if (g === 'stiffness' && ag.stiffness === 'disaccordo') { parts.push('rigidità: le fonti non concordano'); continue; }
     const best = rs.sort((x, y) => LEVEL_RANK[y.level] - LEVEL_RANK[x.level])[0];
     const lv = best.level === 'nettamente' ? 'nettamente ' : "un po' ";
-    parts.push(`${lv}${best.word} (${rs.map((r) => `${r.source} ${r.dir === 'più' ? '+' : '−'}${fmtDelta(r)}`).join(', ')})`);
+    parts.push(`${lv}${best.word} (${rs.map((r) => `${r.source}${r.est ? ' ≈' : ''} ${r.dir === 'più' ? '+' : '−'}${fmtDelta(r)}`).join(', ')})`);
   }
   if (!parts.length) return { kind: 'same', text: `Nelle misure in comune è simile alla ${refName}.` };
   return { kind: 'diff', text: `Rispetto alla ${refName}: ${parts.join('; ')}.` };
