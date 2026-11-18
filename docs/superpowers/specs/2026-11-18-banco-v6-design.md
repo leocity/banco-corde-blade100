@@ -206,3 +206,20 @@ Struttura interna dei moduli, CSS, icone, testi esatti dei tooltip (dentro i vin
 - 47 corde con «anno da verificare» (45 con anno solo «non oltre»): la regola pre-2020 resta, la scheda dice «anno non verificato».
 - Default della pipeline (preferite, non gradite, montata) allineati allo stato reale dell'utente.
 - UX (audit B): mappa a 390 px con 54 punti su 55 a meno di 44 px dal vicino; delta nascosto sulle righe del telefono (`style.css:412`); confronto a 7 tocchi; «Ricomprerei sì» cambia le preferite in silenzio; avvio con scroll automatico; Esc lascia il focus su `body`; 70 bottoni da 42 px. Tutti coperti dalle §6 e O1–O7.
+
+## 12. Decisioni prese dopo la revisione del costruttore (scelte mie, l'utente ha chiesto di procedere)
+
+1. **Cosa usa ogni domanda di «Prossima».**
+   - *Più morbida / Più rigida*: rigidità Racketpedia (kg/mm) e rigidità TWU (lb/in), ciascuna contro la montata se la montata ce l'ha. Compatibile se almeno una fonte comune va nella direzione chiesta di almeno «un po'» e nessuna fonte comune va nella direzione opposta di almeno «un po'». L'allungamento Excel non decide direzioni (non concorda con TWU né con Racketpedia): si mostra solo nella scheda.
+   - *Simile*: almeno una grandezza misurata in comune e tutte «simile».
+   - *Tiene di più la tensione / Più spin*: sono solo misure TWU. Se la montata ha TWU, confronto diretto. Se non ce l'ha (la Slap), la risposta lo dice («la Slap non è misurata da TWU») e mostra le corde nel quarto migliore delle misurate TWU per quella grandezza, con il valore e il rango («perde 22%: tra le 14 migliori di 55»). È un confronto con le altre corde, non con la montata, e la frase lo dichiara.
+   - Fonti in disaccordo (una dice più rigida, l'altra più morbida): la corda non è proposta; la scheda mostra il disaccordo.
+   - Ordine: in casa → numero di fonti che confermano → somiglianza alle preferite → valore (per le domande TWU) → nome.
+2. **Somiglianza alle preferite (5.3)**: si contano solo grandezze misurate nella stessa fonte (TWU rigidità, perdita, spin; Racketpedia kg/mm; Excel allungamento a 50 lb). Calibro e forma non contano: compaiono nella frase come etichette. Deviazione standard dell'allungamento: sul campione delle corde con Excel nel dataset finale.
+3. **Scorta**: parte vuota, la inserisce l'utente. Può contenere solo corde del dataset. «Ce l'hai in casa» mostra tutte le corde in scorta (anche non compatibili con la domanda, che vanno in fondo con la loro frase), le compatibili prima.
+4. **Recensioni e watch**: solo le voci dell'audit D, `verified_by_viewing:false`, nessuna frase; `channels.json` dall'audit D.
+5. **Ibridi**: letto = (16·V + 19·O)/35 per grandezza e fonte, solo se V e O hanno quella grandezza nella stessa fonte; confronto con la montata solo nella stessa fonte. I setup A–G restano come «Idee da provare (non calcolate)», con la fiducia originale dichiarata come giudizio del progetto; testi riferiti all'O-Toro come «tua corda» riscritti, prezzi tolti.
+6. **Pubblicazione**: fa parte del lavoro. Test di compatibilità su una copia anonimizzata dello stato reale (`tests/fixtures/state_real_2026-11-18.json`).
+7. **Corda montata senza misure**: «Prossima» lo dice in alto e usa le preferite come riferimento per *Simile*; le altre domande mostrano il motivo per cui sono vuote. Nel dialogo «Cambia corda» le corde senza misure hanno l'etichetta «nessuna misura».
+8. **Default della pipeline**: valgono solo se non c'è uno stato salvato.
+9. **+ Uscita**: aggiunge 1,5 h oggi e mostra subito, sotto, il voto 1–5 per quella stessa uscita (secondo tocco = voto) e un «Annulla» per 8 s.
