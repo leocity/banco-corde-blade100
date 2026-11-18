@@ -17,12 +17,13 @@ const TABS = ['oggi', 'prossima', 'scienza'];
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
+let epoch = 0; // sale quando lo stato arriva dal server: un annulla di un'epoca vecchia non vale più
 let current = 'oggi', sheetId = null, cmpId = null, persist = null, loaded = false;
 let pendingFns = []; // modifiche fatte prima che lo stato salvato arrivi: si rieseguono sopra di esso
 const sheet = $('#sheet'), cmpDlg = $('#cmp-dialog');
 
 const ctx = { DATA, ALL, BY_ID, META, state: () => state, equippedRec: () => BY_ID[state.equipped.id], persist: () => persist, downloads: null,
-  update, openSheet, openCompare, goto, toast, askBox: (id) => askBoxHtml(id),
+  update, openSheet, openCompare, goto, toast, askBox: (id) => askBoxHtml(id), epoch: () => epoch, loaded: () => loaded,
   refresh: () => { renderAll(); if (sheet.open && sheetId) openSheet(sheetId); },
   equip: (id) => { if (ctx.onEquip) whenDialogsClosed(() => ctx.onEquip(id)); } };
 
@@ -53,6 +54,7 @@ let toastTimer = null;
 function hideToast() { const t = $('#toast'); t.hidden = true; clearTimeout(toastTimer); }
 function toast(msg, onUndo) {
   const t = $('#toast');
+  if (!loaded) onUndo = null; // prima che arrivi lo stato salvato non si offre nessun annulla
   t.innerHTML = `<span>${msg.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))}</span>${onUndo ? '<button type="button" class="btn" id="toast-undo">Annulla</button>' : ''}`;
   t.hidden = false;
   if (onUndo) $('#toast-undo').onclick = () => { hideToast(); onUndo(); };
@@ -166,14 +168,14 @@ if (window.claude && window.claude.use) Promise.resolve(window.claude.use('downl
     state = got.state;
     for (const fn of pendingFns) state = fn(state);
     const replayed = pendingFns.length > 0;
-    pendingFns = []; loaded = true;
+    pendingFns = []; loaded = true; epoch += 1;
     if (replayed || got.unsynced) persist.save(state);
     if (got.warnings && got.warnings.length) toast(got.warnings.join(' '));
     renderAll(); renderSyncBadge();
     persist.subscribe((remote) => {
       if (!loaded || sameState(remote, state)) { renderSyncBadge(); return; }
       hideToast(); // un annulla con una foto vecchia cancellerebbe ciò che l'altro dispositivo ha appena aggiunto
-      state = remote; renderAll(); renderSyncBadge();
+      state = remote; epoch += 1; renderAll(); renderSyncBadge();
       if (sheet.open && sheetId) openSheet(sheetId);
     });
   } finally { loaded = true; window.__bancoReady = true; }

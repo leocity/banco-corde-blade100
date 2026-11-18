@@ -1,6 +1,6 @@
 // Schermata «Oggi»: corda montata, + Uscita in un tocco, voto in un secondo tocco, scorta, cambio corda.
 import { $, esc, NF, fullName, fmtN } from './format.js';
-import { addSession, rateSession, removeSession, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours } from './state.js';
+import { addSession, rateSession, removeSession, restoreSession, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours } from './state.js';
 import { setVerdict } from './diary.js';
 import { tip, nameBtn, specLine, hasMeasures, itDate } from './ui.js';
 
@@ -138,9 +138,10 @@ export function initToday(ctx) {
   root.addEventListener('click', (e) => {
     const t = e.target;
     if (t.closest('#quick-add')) {
-      const ts = `${Date.now()}-q`, before = ctx.state();
+      const ts = `${Date.now()}-q`;
       ctx.update((s) => addSession(s, { date: todayIso(), hours: QUICK_HOURS, ts }));
-      ctx.toast(`Uscita di ${fmtN(QUICK_HOURS, 1)} h aggiunta. Com'era? Tocca una faccina.`, () => ctx.update(() => before));
+      // annullare = togliere proprio questa uscita (mai rimettere una copia vecchia dello stato)
+      ctx.toast(`Uscita di ${fmtN(QUICK_HOURS, 1)} h aggiunta. Com'era? Tocca una faccina.`, () => ctx.update((s) => removeSession(s, ts)));
       const f = $('#oggi .face'); if (f) f.focus();
       return;
     }
@@ -158,7 +159,13 @@ export function initToday(ctx) {
     const tg = t.closest('[data-stag]');
     if (tg) { const v = tg.dataset.stag, ts = tg.dataset.ts; ctx.update((s) => { const cur = s.sessions.find((x) => x.ts === ts); return rateSession(s, ts, { tag: cur && cur.tag === v ? null : v }); }); return; }
     const del = t.closest('[data-del-session]');
-    if (del) { const before = ctx.state(); ctx.update((s) => removeSession(s, del.dataset.delSession)); ctx.toast('Uscita tolta.', () => ctx.update(() => before)); return; }
+    if (del) {
+      const gone = ctx.state().sessions.find((x) => x.ts === del.dataset.delSession);
+      if (!gone) return;
+      ctx.update((s) => removeSession(s, gone.ts));
+      ctx.toast('Uscita tolta.', () => ctx.update((s) => restoreSession(s, gone)));
+      return;
+    }
     const inc = t.closest('[data-stock-inc]'); if (inc) { ctx.update((s) => addStock(s, inc.dataset.stockInc, inc.dataset.size)); return; }
     const dec = t.closest('[data-stock-dec]');
     if (dec) { const it = (ctx.state().stock || []).find((x) => x.id === dec.dataset.stockDec && x.size === dec.dataset.size); if (it) ctx.update((s) => setStockCount(s, it.id, it.size, it.n - 1)); return; }
@@ -172,14 +179,15 @@ export function initToday(ctx) {
   ctx.onEquip = (preset) => {
     openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', withChange: true,
       onOk: ({ id, kg, reason, verdict, fromStock }) => {
-        const before = ctx.state(), old = ctx.equippedRec();
+        const before = ctx.state(), old = ctx.equippedRec(), ep = ctx.epoch();
         ctx.update((s) => {
           let n = verdict ? updateDiary(s, 'current', (d) => setVerdict(d, verdict)) : s;
           n = applyVerdict(n, s.equipped.id, verdict);
           return changeString(n, { id, kg, date: new Date().toISOString(), endReason: reason, fromStock });
         });
         const vtxt = verdict === 'si' ? ` La ${old.model} va tra le preferite.` : verdict === 'no' ? ` La ${old.model} va tra quelle che non ti piacciono.` : '';
-        ctx.toast(`Montata ${fullName(ctx.BY_ID[id])}.${vtxt}`, () => ctx.update(() => before));
+        // il cambio corda tocca molte cose: si annulla solo se nel frattempo non è arrivato nulla dal server
+        ctx.toast(`Montata ${fullName(ctx.BY_ID[id])}.${vtxt}`, ctx.loaded() ? () => { if (ctx.epoch() === ep) ctx.update(() => before); else ctx.toast('Non si può più annullare: sono arrivati dati da un altro dispositivo.'); } : null);
         ctx.goto('oggi');
       } });
     if (preset) { const b = $(`#pk-list [data-pick="${CSS.escape(preset)}"]`); if (b) b.click(); }

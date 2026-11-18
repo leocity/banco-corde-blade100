@@ -69,6 +69,8 @@ export function addSession(state, { date, hours, note = '', ts }) {
   return { ...state, sessions: [...state.sessions, session] };
 }
 export const removeSession = (state, ts) => ({ ...state, sessions: state.sessions.filter((s) => s.ts !== ts) });
+// Rimette un'uscita tolta (annulla): solo se non c'è già.
+export const restoreSession = (state, session) => (state.sessions.some((s) => s.ts === session.ts) ? state : { ...state, sessions: [...state.sessions, { ...session }] });
 export const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
 
 export function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()), fromStock = null }) {
@@ -157,20 +159,30 @@ const byTs = (a, b) => (a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0);
 const byFrom = (a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : a.lid < b.lid ? -1 : a.lid > b.lid ? 1 : 0);
 export const sameState = (a, b) => stableJson({ ...a, sessions: [...a.sessions].sort(byTs), lives: [...a.lives].sort(byFrom) }) === stableJson({ ...b, sessions: [...b.sessions].sort(byTs), lives: [...b.lives].sort(byFrom) });
 
+// v6: scorta e domanda vanno nel documento `prefs`, voto e parola delle uscite nei documenti `r-<ts>`.
+// Una pagina v5 ancora aperta altrove legge e riscrive solo `state`, `s-*` e `l-*`: così non cancella i dati v6.
 export function splitState(state) {
-  const sessions = {}, lives = {};
-  for (const s of state.sessions) sessions[`s-${s.ts}`] = s;
+  const sessions = {}, lives = {}, rates = {};
+  for (const s of state.sessions) {
+    const { feel, tag, ...base } = s;
+    sessions[`s-${s.ts}`] = base;
+    if (feel !== undefined || tag !== undefined) rates[`r-${s.ts}`] = { ts: s.ts, ...(feel !== undefined ? { feel } : {}), ...(tag !== undefined ? { tag } : {}) };
+  }
   for (const l of state.lives) lives[`l-${l.lid}`] = l;
-  const extra = { ...(state.stock && state.stock.length ? { stock: state.stock } : {}), ...(state.nextGoal ? { nextGoal: state.nextGoal } : {}) };
-  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked, ...extra }, sessions, lives };
+  const prefs = { ...(state.stock && state.stock.length ? { stock: state.stock } : {}), ...(state.nextGoal ? { nextGoal: state.nextGoal } : {}) };
+  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives, prefs, rates };
 }
 
 // Stato grezzo da passare a sanitizeState. Se il documento `state` è ancora quello v1 (con gli array), li unisce agli elementi.
-export function joinState(core, sessions, lives) {
+export function joinState(core, sessions, lives, prefs = null, rates = {}) {
   const old = (k) => (core && Array.isArray(core[k]) ? core[k] : []);
   const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
   const { sessions: _s, lives: _l, ...rest } = core || {};
-  return { ...rest, sessions: merge(old('sessions'), sessions, 'ts').sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
+  const rateOf = Object.fromEntries(Object.values(rates || {}).filter((r) => r && isStr(r.ts)).map((r) => [r.ts, r]));
+  const withRates = merge(old('sessions'), sessions, 'ts').map((x) => { const r = x && rateOf[x.ts]; return r ? { ...x, ...(r.feel !== undefined ? { feel: r.feel } : {}), ...(r.tag !== undefined ? { tag: r.tag } : {}) } : x; });
+  const p = prefs && typeof prefs === 'object' ? prefs : {};
+  return { ...rest, ...(p.stock !== undefined ? { stock: p.stock } : {}), ...(p.nextGoal !== undefined ? { nextGoal: p.nextGoal } : {}),
+    sessions: withRates.sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
 }
 
 // ---------- diario: prove e verdetto ----------

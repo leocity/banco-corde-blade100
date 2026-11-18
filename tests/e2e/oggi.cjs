@@ -86,10 +86,39 @@ test('Oggi: lo stato reale salvato si legge (Slap, 10 h, 6 uscite) e i documenti
   await page.locator('#oggi .face[data-feel="3"]').click();
   await page.waitForTimeout(150);
   const docs = await dbDocs(page);
-  for (const [k, v] of Object.entries(REAL.sessions)) assert.deepEqual(docs[k], { ts: v.ts, date: v.date, hours: v.hours, note: v.note, life: v.life }, k);
+  for (const [k, v] of Object.entries(REAL.sessions)) assert.deepEqual(docs[k], v, k);
+  assert.equal(Object.keys(docs).filter((k) => k.startsWith('r-')).length, 1, 'il voto va in un documento r-* separato');
   assert.deepEqual(docs['l-1793453383457'].diary, REAL.lives['l-1793453383457'].diary);
   assert.deepEqual(docs.state.equipped.diary, REAL.core.equipped.diary);
   assert.equal(Object.keys(docs).filter((k) => k.startsWith('s-')).length, 17);
   assert.deepEqual(errors, []);
+  await ctx.close();
+});
+
+test('Oggi: «+ Uscita» toccato prima che arrivi lo stato e «Annulla» dopo non cancellano nulla dal db', async () => {
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE('', 1500), storage: realStorage(), noWait: true });
+  await page.locator('#quick-add').click();             // stato salvato non ancora arrivato
+  assert.equal(await page.locator('#toast-undo').count(), 0, 'nessun annulla prima del caricamento');
+  await page.waitForFunction(() => window.__bancoReady === true);
+  await page.waitForFunction(() => /11,5 h/.test(document.querySelector('#oggi').innerText));
+  await page.locator('#quick-add').click();
+  await page.locator('#toast-undo').click();
+  await page.waitForTimeout(200);
+  const docs = await dbDocs(page);
+  assert.equal(Object.keys(docs).filter((k) => k.startsWith('s-')).length, 17, 'le 16 uscite reali più quella tenuta');
+  assert.ok(docs['l-1793453383457']);
+  assert.deepEqual(docs.state.equipped, REAL.core.equipped);
+  assert.match(await page.innerText('#oggi'), /11,5 h/);
+  await ctx.close();
+});
+
+test('Oggi: togliere un\'uscita e annullare la rimette uguale', async () => {
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(), storage: realStorage() });
+  await page.waitForFunction(() => /10 h/.test(document.querySelector('#oggi').innerText));
+  await page.locator('#oggi [data-del-session]').first().click();
+  await page.locator('#toast-undo').click();
+  await page.waitForTimeout(200);
+  const docs = await dbDocs(page);
+  for (const [k, v] of Object.entries(REAL.sessions)) assert.deepEqual(docs[k], v, k);
   await ctx.close();
 });

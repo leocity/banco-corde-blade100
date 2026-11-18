@@ -57,15 +57,31 @@ test('sanitize: scorta, voti e domanda sopravvivono; valori sporchi scartati', (
   assert.equal('feel' in state.sessions[1], false);
 });
 
-test('db: scorta e domanda viaggiano nel documento state; il giro split/join è stabile', () => {
+test('db: scorta e domanda nel documento prefs, voto in r-<ts>; state e s-* restano come nella v5', () => {
   let s = addStock(base(), 'otoro', 'mezza');
   s = setNextGoal(s, 'spin');
   s = addSession(s, { date: '2026-11-18', hours: 1.5, ts: 't1' });
-  s = rateSession(s, 't1', { feel: 5 });
-  const { core, sessions, lives } = splitState(s);
-  assert.deepEqual(core.stock, s.stock);
-  assert.equal(core.nextGoal, 'spin');
-  const back = sanitizeState(joinState(core, sessions, lives), DEFAULTS, KNOWN).state;
+  s = rateSession(s, 't1', { feel: 5, tag: 'viva' });
+  const { core, sessions, lives, prefs, rates } = splitState(s);
+  assert.equal('stock' in core, false);
+  assert.deepEqual(prefs, { stock: s.stock, nextGoal: 'spin' });
+  assert.deepEqual(sessions['s-t1'], { ts: 't1', date: '2026-11-18', hours: 1.5, note: '', life: s.equipped.since });
+  assert.deepEqual(rates, { 'r-t1': { ts: 't1', feel: 5, tag: 'viva' } });
+  const back = sanitizeState(joinState(core, sessions, lives, prefs, rates), DEFAULTS, KNOWN).state;
+  assert.ok(sameState(back, s));
+});
+
+test('una pagina v5 aperta altrove riscrive solo state, s-* e l-*: i dati v6 sopravvivono', () => {
+  let s = addStock(base(), 'otoro', 'mezza');
+  s = addSession(s, { date: '2026-11-18', hours: 1.5, ts: 't1' });
+  s = rateSession(s, 't1', { feel: 4 });
+  const docs = splitState(s);
+  // la v5 legge solo state, s-*, l-* e riscrive quelli: gli stessi contenuti, senza campi v6
+  const v5 = sanitizeState(joinState(docs.core, docs.sessions, docs.lives), DEFAULTS, KNOWN).state;
+  const v5docs = splitState(v5);
+  assert.deepEqual(v5docs.core, docs.core);
+  assert.deepEqual(v5docs.sessions, docs.sessions);
+  const back = sanitizeState(joinState(v5docs.core, v5docs.sessions, v5docs.lives, docs.prefs, docs.rates), DEFAULTS, KNOWN).state;
   assert.ok(sameState(back, s));
 });
 
@@ -93,6 +109,6 @@ test('stato reale salvato (2026-11-18): si legge senza avvisi e senza perdere nu
   assert.equal(state.disliked.length, 6);
   // il giro di salvataggio non cambia nulla dei documenti esistenti
   const { core, sessions } = splitState(state);
-  for (const [k, v] of Object.entries(fx.sessions)) assert.deepEqual(sessions[k], { ts: v.ts, date: v.date, hours: v.hours, note: v.note, life: v.life }, k);
+  for (const [k, v] of Object.entries(fx.sessions)) assert.deepEqual(sessions[k], v, k);
   assert.deepEqual(core.equipped.kg, fx.core.equipped.kg);
 });

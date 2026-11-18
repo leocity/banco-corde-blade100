@@ -581,6 +581,8 @@ function addSession(state, { date, hours, note = '', ts }) {
   return { ...state, sessions: [...state.sessions, session] };
 }
 const removeSession = (state, ts) => ({ ...state, sessions: state.sessions.filter((s) => s.ts !== ts) });
+// Rimette un'uscita tolta (annulla): solo se non c'è già.
+const restoreSession = (state, session) => (state.sessions.some((s) => s.ts === session.ts) ? state : { ...state, sessions: [...state.sessions, { ...session }] });
 const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
 
 function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()), fromStock = null }) {
@@ -669,20 +671,30 @@ const byTs = (a, b) => (a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0);
 const byFrom = (a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : a.lid < b.lid ? -1 : a.lid > b.lid ? 1 : 0);
 const sameState = (a, b) => stableJson({ ...a, sessions: [...a.sessions].sort(byTs), lives: [...a.lives].sort(byFrom) }) === stableJson({ ...b, sessions: [...b.sessions].sort(byTs), lives: [...b.lives].sort(byFrom) });
 
+// v6: scorta e domanda vanno nel documento `prefs`, voto e parola delle uscite nei documenti `r-<ts>`.
+// Una pagina v5 ancora aperta altrove legge e riscrive solo `state`, `s-*` e `l-*`: così non cancella i dati v6.
 function splitState(state) {
-  const sessions = {}, lives = {};
-  for (const s of state.sessions) sessions[`s-${s.ts}`] = s;
+  const sessions = {}, lives = {}, rates = {};
+  for (const s of state.sessions) {
+    const { feel, tag, ...base } = s;
+    sessions[`s-${s.ts}`] = base;
+    if (feel !== undefined || tag !== undefined) rates[`r-${s.ts}`] = { ts: s.ts, ...(feel !== undefined ? { feel } : {}), ...(tag !== undefined ? { tag } : {}) };
+  }
   for (const l of state.lives) lives[`l-${l.lid}`] = l;
-  const extra = { ...(state.stock && state.stock.length ? { stock: state.stock } : {}), ...(state.nextGoal ? { nextGoal: state.nextGoal } : {}) };
-  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked, ...extra }, sessions, lives };
+  const prefs = { ...(state.stock && state.stock.length ? { stock: state.stock } : {}), ...(state.nextGoal ? { nextGoal: state.nextGoal } : {}) };
+  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives, prefs, rates };
 }
 
 // Stato grezzo da passare a sanitizeState. Se il documento `state` è ancora quello v1 (con gli array), li unisce agli elementi.
-function joinState(core, sessions, lives) {
+function joinState(core, sessions, lives, prefs = null, rates = {}) {
   const old = (k) => (core && Array.isArray(core[k]) ? core[k] : []);
   const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
   const { sessions: _s, lives: _l, ...rest } = core || {};
-  return { ...rest, sessions: merge(old('sessions'), sessions, 'ts').sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
+  const rateOf = Object.fromEntries(Object.values(rates || {}).filter((r) => r && isStr(r.ts)).map((r) => [r.ts, r]));
+  const withRates = merge(old('sessions'), sessions, 'ts').map((x) => { const r = x && rateOf[x.ts]; return r ? { ...x, ...(r.feel !== undefined ? { feel: r.feel } : {}), ...(r.tag !== undefined ? { tag: r.tag } : {}) } : x; });
+  const p = prefs && typeof prefs === 'object' ? prefs : {};
+  return { ...rest, ...(p.stock !== undefined ? { stock: p.stock } : {}), ...(p.nextGoal !== undefined ? { nextGoal: p.nextGoal } : {}),
+    sessions: withRates.sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
 }
 
 // ---------- diario: prove e verdetto ----------
@@ -712,7 +724,7 @@ function setEquippedKg(state, kg) {
 }
 
 // Salvataggio dello stato. Con `db`: documenti separati nella raccolta personale data/users/<id> — `state` (montata, preferite),
-// `s-<ts>` per ogni sessione, `l-<lid>` per ogni vita di corda — con ascolto in tempo reale, così due dispositivi non si
+// `s-<ts>` per ogni sessione, `l-<lid>` per ogni vita di corda, `prefs` (scorta, domanda) e `r-<ts>` (voto dell'uscita) — con ascolto in tempo reale, così due dispositivi non si
 // sovrascrivono. Senza `db` ripiega su un JSON in localStorage.
 
 const KEY = 'banco-corde:state';
@@ -739,15 +751,19 @@ async function createPersistence({ claude, storage, defaults, knownIds, retryMs 
 
   // `mirror`: ultimo contenuto del server che conosciamo. `known`: gli elementi che lo stato locale ha già visto: solo quelli
   // si cancellano dal server quando mancano nello stato locale (una pagina vecchia non cancella ciò che non ha mai visto).
-  let mirror = { core: null, sessions: {}, lives: {} }, known = new Set(), onRemote = null, lastWritten = null, status = mode === 'db' ? 'sync' : 'local';
+  let mirror = { core: null, sessions: {}, lives: {}, prefs: null, rates: {} }, known = new Set(), onRemote = null, lastWritten = null, status = mode === 'db' ? 'sync' : 'local';
   const fromDocs = (docs) => {
-    const m = { core: null, sessions: {}, lives: {} };
-    for (const d of docs) { const data = d.data(); if (d.id === 'state') m.core = data; else if (d.id.startsWith('s-')) m.sessions[d.id] = data; else if (d.id.startsWith('l-')) m.lives[d.id] = data; }
+    const m = { core: null, sessions: {}, lives: {}, prefs: null, rates: {} };
+    for (const d of docs) {
+      const data = d.data();
+      if (d.id === 'state') m.core = data; else if (d.id === 'prefs') m.prefs = data;
+      else if (d.id.startsWith('s-')) m.sessions[d.id] = data; else if (d.id.startsWith('l-')) m.lives[d.id] = data; else if (d.id.startsWith('r-')) m.rates[d.id] = data;
+    }
     return m;
   };
-  const idsOf = (m) => new Set([...Object.keys(m.sessions), ...Object.keys(m.lives)]);
+  const idsOf = (m) => new Set([...Object.keys(m.sessions), ...Object.keys(m.lives), ...Object.keys(m.rates)]);
   const hasData = () => !!mirror.core || idsOf(mirror).size > 0;
-  const assemble = () => (hasData() ? joinState(mirror.core, mirror.sessions, mirror.lives) : null);
+  const assemble = () => (hasData() ? joinState(mirror.core, mirror.sessions, mirror.lives, mirror.prefs, mirror.rates) : null);
 
   // Documento unico v1 -> documenti separati: prima gli elementi, poi `state` senza array; ripetibile.
   async function migrate() {
@@ -762,18 +778,20 @@ async function createPersistence({ claude, storage, defaults, knownIds, retryMs 
   async function syncTo(state) {
     const want = splitState(state), ops = [];
     // prima gli elementi (sessioni, vite), poi `state`, per ultime le cancellazioni: se la rete cade a metà non si perde nulla
-    for (const kind of ['sessions', 'lives']) {
+    for (const kind of ['sessions', 'lives', 'rates']) {
       for (const [id, v] of Object.entries(want[kind])) if (!mirror[kind][id] || stableJson(mirror[kind][id]) !== stableJson(v)) ops.push([id, v, kind]);
     }
     if (!mirror.core || stableJson(stripArrays(mirror.core)) !== stableJson(want.core) || isLegacy(mirror.core)) ops.push(['state', want.core, 'core']);
-    for (const kind of ['sessions', 'lives']) {
+    // `prefs` si scrive solo se cambia; un documento prefs vuoto si scrive comunque se esisteva (scorta svuotata)
+    if (stableJson(mirror.prefs || {}) !== stableJson(want.prefs) && (mirror.prefs || Object.keys(want.prefs).length)) ops.push(['prefs', want.prefs, 'prefs']);
+    for (const kind of ['sessions', 'lives', 'rates']) {
       for (const id of Object.keys(mirror[kind])) if (!(id in want[kind]) && known.has(id)) ops.push([id, null, kind]);
     }
     for (const [id, v, kind] of ops) {
       if (v === null) { await col().doc(id).delete(); delete mirror[kind][id]; }
-      else { await col().doc(id).set(clone(v)); if (kind === 'core') mirror.core = clone(v); else mirror[kind][id] = clone(v); }
+      else { await col().doc(id).set(clone(v)); if (kind === 'core') mirror.core = clone(v); else if (kind === 'prefs') mirror.prefs = clone(v); else mirror[kind][id] = clone(v); }
     }
-    known = new Set([...Object.keys(want.sessions), ...Object.keys(want.lives)]);
+    known = new Set([...Object.keys(want.sessions), ...Object.keys(want.lives), ...Object.keys(want.rates)]);
   }
 
   async function write(state) {
@@ -1297,9 +1315,10 @@ function initToday(ctx) {
   root.addEventListener('click', (e) => {
     const t = e.target;
     if (t.closest('#quick-add')) {
-      const ts = `${Date.now()}-q`, before = ctx.state();
+      const ts = `${Date.now()}-q`;
       ctx.update((s) => addSession(s, { date: todayIso(), hours: QUICK_HOURS, ts }));
-      ctx.toast(`Uscita di ${fmtN(QUICK_HOURS, 1)} h aggiunta. Com'era? Tocca una faccina.`, () => ctx.update(() => before));
+      // annullare = togliere proprio questa uscita (mai rimettere una copia vecchia dello stato)
+      ctx.toast(`Uscita di ${fmtN(QUICK_HOURS, 1)} h aggiunta. Com'era? Tocca una faccina.`, () => ctx.update((s) => removeSession(s, ts)));
       const f = $('#oggi .face'); if (f) f.focus();
       return;
     }
@@ -1317,7 +1336,13 @@ function initToday(ctx) {
     const tg = t.closest('[data-stag]');
     if (tg) { const v = tg.dataset.stag, ts = tg.dataset.ts; ctx.update((s) => { const cur = s.sessions.find((x) => x.ts === ts); return rateSession(s, ts, { tag: cur && cur.tag === v ? null : v }); }); return; }
     const del = t.closest('[data-del-session]');
-    if (del) { const before = ctx.state(); ctx.update((s) => removeSession(s, del.dataset.delSession)); ctx.toast('Uscita tolta.', () => ctx.update(() => before)); return; }
+    if (del) {
+      const gone = ctx.state().sessions.find((x) => x.ts === del.dataset.delSession);
+      if (!gone) return;
+      ctx.update((s) => removeSession(s, gone.ts));
+      ctx.toast('Uscita tolta.', () => ctx.update((s) => restoreSession(s, gone)));
+      return;
+    }
     const inc = t.closest('[data-stock-inc]'); if (inc) { ctx.update((s) => addStock(s, inc.dataset.stockInc, inc.dataset.size)); return; }
     const dec = t.closest('[data-stock-dec]');
     if (dec) { const it = (ctx.state().stock || []).find((x) => x.id === dec.dataset.stockDec && x.size === dec.dataset.size); if (it) ctx.update((s) => setStockCount(s, it.id, it.size, it.n - 1)); return; }
@@ -1331,14 +1356,15 @@ function initToday(ctx) {
   ctx.onEquip = (preset) => {
     openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', withChange: true,
       onOk: ({ id, kg, reason, verdict, fromStock }) => {
-        const before = ctx.state(), old = ctx.equippedRec();
+        const before = ctx.state(), old = ctx.equippedRec(), ep = ctx.epoch();
         ctx.update((s) => {
           let n = verdict ? updateDiary(s, 'current', (d) => setVerdict(d, verdict)) : s;
           n = applyVerdict(n, s.equipped.id, verdict);
           return changeString(n, { id, kg, date: new Date().toISOString(), endReason: reason, fromStock });
         });
         const vtxt = verdict === 'si' ? ` La ${old.model} va tra le preferite.` : verdict === 'no' ? ` La ${old.model} va tra quelle che non ti piacciono.` : '';
-        ctx.toast(`Montata ${fullName(ctx.BY_ID[id])}.${vtxt}`, () => ctx.update(() => before));
+        // il cambio corda tocca molte cose: si annulla solo se nel frattempo non è arrivato nulla dal server
+        ctx.toast(`Montata ${fullName(ctx.BY_ID[id])}.${vtxt}`, ctx.loaded() ? () => { if (ctx.epoch() === ep) ctx.update(() => before); else ctx.toast('Non si può più annullare: sono arrivati dati da un altro dispositivo.'); } : null);
         ctx.goto('oggi');
       } });
     if (preset) { const b = $(`#pk-list [data-pick="${CSS.escape(preset)}"]`); if (b) b.click(); }
@@ -1815,12 +1841,13 @@ const TABS = ['oggi', 'prossima', 'scienza'];
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
+let epoch = 0; // sale quando lo stato arriva dal server: un annulla di un'epoca vecchia non vale più
 let current = 'oggi', sheetId = null, cmpId = null, persist = null, loaded = false;
 let pendingFns = []; // modifiche fatte prima che lo stato salvato arrivi: si rieseguono sopra di esso
 const sheet = $('#sheet'), cmpDlg = $('#cmp-dialog');
 
 const ctx = { DATA, ALL, BY_ID, META, state: () => state, equippedRec: () => BY_ID[state.equipped.id], persist: () => persist, downloads: null,
-  update, openSheet, openCompare, goto, toast, askBox: (id) => askBoxHtml(id),
+  update, openSheet, openCompare, goto, toast, askBox: (id) => askBoxHtml(id), epoch: () => epoch, loaded: () => loaded,
   refresh: () => { renderAll(); if (sheet.open && sheetId) openSheet(sheetId); },
   equip: (id) => { if (ctx.onEquip) whenDialogsClosed(() => ctx.onEquip(id)); } };
 
@@ -1851,6 +1878,7 @@ let toastTimer = null;
 function hideToast() { const t = $('#toast'); t.hidden = true; clearTimeout(toastTimer); }
 function toast(msg, onUndo) {
   const t = $('#toast');
+  if (!loaded) onUndo = null; // prima che arrivi lo stato salvato non si offre nessun annulla
   t.innerHTML = `<span>${msg.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))}</span>${onUndo ? '<button type="button" class="btn" id="toast-undo">Annulla</button>' : ''}`;
   t.hidden = false;
   if (onUndo) $('#toast-undo').onclick = () => { hideToast(); onUndo(); };
@@ -1964,14 +1992,14 @@ if (window.claude && window.claude.use) Promise.resolve(window.claude.use('downl
     state = got.state;
     for (const fn of pendingFns) state = fn(state);
     const replayed = pendingFns.length > 0;
-    pendingFns = []; loaded = true;
+    pendingFns = []; loaded = true; epoch += 1;
     if (replayed || got.unsynced) persist.save(state);
     if (got.warnings && got.warnings.length) toast(got.warnings.join(' '));
     renderAll(); renderSyncBadge();
     persist.subscribe((remote) => {
       if (!loaded || sameState(remote, state)) { renderSyncBadge(); return; }
       hideToast(); // un annulla con una foto vecchia cancellerebbe ciò che l'altro dispositivo ha appena aggiunto
-      state = remote; renderAll(); renderSyncBadge();
+      state = remote; epoch += 1; renderAll(); renderSyncBadge();
       if (sheet.open && sheetId) openSheet(sheetId);
     });
   } finally { loaded = true; window.__bancoReady = true; }

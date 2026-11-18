@@ -1,5 +1,5 @@
 // Salvataggio dello stato. Con `db`: documenti separati nella raccolta personale data/users/<id> — `state` (montata, preferite),
-// `s-<ts>` per ogni sessione, `l-<lid>` per ogni vita di corda — con ascolto in tempo reale, così due dispositivi non si
+// `s-<ts>` per ogni sessione, `l-<lid>` per ogni vita di corda, `prefs` (scorta, domanda) e `r-<ts>` (voto dell'uscita) — con ascolto in tempo reale, così due dispositivi non si
 // sovrascrivono. Senza `db` ripiega su un JSON in localStorage.
 import { sanitizeState, splitState, joinState, sameState, stableJson } from './state.js';
 
@@ -27,15 +27,19 @@ export async function createPersistence({ claude, storage, defaults, knownIds, r
 
   // `mirror`: ultimo contenuto del server che conosciamo. `known`: gli elementi che lo stato locale ha già visto: solo quelli
   // si cancellano dal server quando mancano nello stato locale (una pagina vecchia non cancella ciò che non ha mai visto).
-  let mirror = { core: null, sessions: {}, lives: {} }, known = new Set(), onRemote = null, lastWritten = null, status = mode === 'db' ? 'sync' : 'local';
+  let mirror = { core: null, sessions: {}, lives: {}, prefs: null, rates: {} }, known = new Set(), onRemote = null, lastWritten = null, status = mode === 'db' ? 'sync' : 'local';
   const fromDocs = (docs) => {
-    const m = { core: null, sessions: {}, lives: {} };
-    for (const d of docs) { const data = d.data(); if (d.id === 'state') m.core = data; else if (d.id.startsWith('s-')) m.sessions[d.id] = data; else if (d.id.startsWith('l-')) m.lives[d.id] = data; }
+    const m = { core: null, sessions: {}, lives: {}, prefs: null, rates: {} };
+    for (const d of docs) {
+      const data = d.data();
+      if (d.id === 'state') m.core = data; else if (d.id === 'prefs') m.prefs = data;
+      else if (d.id.startsWith('s-')) m.sessions[d.id] = data; else if (d.id.startsWith('l-')) m.lives[d.id] = data; else if (d.id.startsWith('r-')) m.rates[d.id] = data;
+    }
     return m;
   };
-  const idsOf = (m) => new Set([...Object.keys(m.sessions), ...Object.keys(m.lives)]);
+  const idsOf = (m) => new Set([...Object.keys(m.sessions), ...Object.keys(m.lives), ...Object.keys(m.rates)]);
   const hasData = () => !!mirror.core || idsOf(mirror).size > 0;
-  const assemble = () => (hasData() ? joinState(mirror.core, mirror.sessions, mirror.lives) : null);
+  const assemble = () => (hasData() ? joinState(mirror.core, mirror.sessions, mirror.lives, mirror.prefs, mirror.rates) : null);
 
   // Documento unico v1 -> documenti separati: prima gli elementi, poi `state` senza array; ripetibile.
   async function migrate() {
@@ -50,18 +54,20 @@ export async function createPersistence({ claude, storage, defaults, knownIds, r
   async function syncTo(state) {
     const want = splitState(state), ops = [];
     // prima gli elementi (sessioni, vite), poi `state`, per ultime le cancellazioni: se la rete cade a metà non si perde nulla
-    for (const kind of ['sessions', 'lives']) {
+    for (const kind of ['sessions', 'lives', 'rates']) {
       for (const [id, v] of Object.entries(want[kind])) if (!mirror[kind][id] || stableJson(mirror[kind][id]) !== stableJson(v)) ops.push([id, v, kind]);
     }
     if (!mirror.core || stableJson(stripArrays(mirror.core)) !== stableJson(want.core) || isLegacy(mirror.core)) ops.push(['state', want.core, 'core']);
-    for (const kind of ['sessions', 'lives']) {
+    // `prefs` si scrive solo se cambia; un documento prefs vuoto si scrive comunque se esisteva (scorta svuotata)
+    if (stableJson(mirror.prefs || {}) !== stableJson(want.prefs) && (mirror.prefs || Object.keys(want.prefs).length)) ops.push(['prefs', want.prefs, 'prefs']);
+    for (const kind of ['sessions', 'lives', 'rates']) {
       for (const id of Object.keys(mirror[kind])) if (!(id in want[kind]) && known.has(id)) ops.push([id, null, kind]);
     }
     for (const [id, v, kind] of ops) {
       if (v === null) { await col().doc(id).delete(); delete mirror[kind][id]; }
-      else { await col().doc(id).set(clone(v)); if (kind === 'core') mirror.core = clone(v); else mirror[kind][id] = clone(v); }
+      else { await col().doc(id).set(clone(v)); if (kind === 'core') mirror.core = clone(v); else if (kind === 'prefs') mirror.prefs = clone(v); else mirror[kind][id] = clone(v); }
     }
-    known = new Set([...Object.keys(want.sessions), ...Object.keys(want.lives)]);
+    known = new Set([...Object.keys(want.sessions), ...Object.keys(want.lives), ...Object.keys(want.rates)]);
   }
 
   async function write(state) {
