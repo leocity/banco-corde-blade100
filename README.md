@@ -29,7 +29,7 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 | Test Ektelon dell'utente | `data/source/String chart Aug 262026.xlsx` | allungamento/recupero 40–65 lbs, cedimento (il «Stiff Index»), peso statico 24 h, TL6/TL12 |
 | TWU String Performance Database | `data/raw/twu.html` (snapshot), `data/raw/twu.json` | rigidità dinamica, perdita di tensione, spin potential (51 lbs, swing veloce) |
 | Racketpedia (solo dati gratuiti) | `data/raw/racketpedia.json` (sito, `py -m pipeline.rpedia_site`), `data/agents/rpedia*.json` (agente, verificato sul sito) | rigidità statica kg/mm, con URL della scheda |
-| Pareri dei forum (controllo e potenza, solo opinioni) | `data/agents/forum_*.json` (citazione letterale, link, autore; `pipeline/community.py`) | **mai in nessun calcolo**: solo una sezione della scheda e il parere AI |
+| Pareri dei forum (controllo e potenza, solo opinioni) | `data/agents/forum_*.json` (citazione letterale, link, autore; `pipeline/community.py`) | **mai in nessun calcolo**: solo una sezione chiusa della scheda («Pareri dei forum») |
 | Recensioni dei tester | `data/agents/reviews_r*.json`, `data/agents/review_overrides.json` | **solo link e confronto con i dati**: non entrano in nessun calcolo |
 | Catalogo, produzione, anni di uscita | `data/agents/catalog.json`, `prod_p*.json`, `year_p*.json` | completezza marche, fuori produzione, corde uscite prima del 2020 |
 | Correzioni curate | `data/crosscheck_overrides.json`, `data/catalog_fixes.json`, `data/agents/*_overrides.json`, `data/notes.json` | forme dai produttori, esiti del controllo web, note da incordatore |

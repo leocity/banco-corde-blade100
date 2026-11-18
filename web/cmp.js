@@ -88,6 +88,7 @@ const fmtDelta = (r) => {
 // Frase per il giocatore. `refName` è il nome breve della montata (es. «Slap»).
 export function summarize(rows, refName) {
   const dec = rows.filter((r) => r.decides);
+  if (!dec.length && rows.length) return { kind: 'none', text: `Non confrontabile: in comune con la ${refName} c'è solo l'allungamento del tuo Excel, che non decide.` };
   if (!dec.length) return { kind: 'none', text: `Non confrontabile con le misure: nessuna misura di laboratorio in comune con la ${refName}.` };
   const ag = agreement(rows);
   const parts = [];

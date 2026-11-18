@@ -1,4 +1,4 @@
-import { $, fullName } from './format.js';
+import { $, esc, fullName } from './format.js';
 import { defaultState, setPreference, sameState, addStock } from './state.js';
 import { createPersistence } from './persist.js';
 import { initTips } from './tip.js';
@@ -36,7 +36,7 @@ function renderSyncBadge() {
 }
 function renderAll() {
   if (current === 'oggi') renderToday(ctx);
-  if (current === 'prossima') { renderNext(ctx); renderHybrid(ctx); const a = $('#ask-main'); if (a) a.innerHTML = askBoxHtml(''); }
+  if (current === 'prossima') { renderNext(ctx); renderHybrid(ctx); renderAskMain(); }
   if (current === 'scienza') renderScience(ctx);
 }
 function update(fn) {
@@ -108,17 +108,21 @@ function goto(id) {
     window.scrollTo(0, 0);
   });
 }
+// La casella AI non si ridisegna: un ridisegno (☆, un dato da un altro dispositivo) cancellerebbe domanda e risposta in arrivo.
+function renderAskMain() { const a = $('#ask-main'); if (a && !a.querySelector('[data-ask]')) a.innerHTML = askBoxHtml(''); }
 function openSheet(id) {
   const r = BY_ID[id]; if (!r) return;
+  const keep = sheetId === id ? $('#sheet-body [data-ask]') : null;
   sheetId = id;
   $('#sheet-body').innerHTML = sheetHtml(r, ctx);
+  if (keep) { const fresh = $('#sheet-body [data-ask]'); if (fresh) fresh.replaceWith(keep); }
   if (!sheet.open) { sheet.showModal(); sheet.scrollTop = 0; $('#sheet-close').focus(); }
 }
 function openCompare(id) {
   const r = BY_ID[id], ref = BY_ID[state.equipped.id]; if (!r || !ref) return;
   cmpId = id;
   $('#cmp-title').textContent = `${r.model} contro la tua ${ref.model}`;
-  $('#cmp-body').innerHTML = `<p class="muted small">${fullName(ref)} (montata) → ${fullName(r)}</p>${compareHtml(r, ref, META)}`;
+  $('#cmp-body').innerHTML = `<p class="muted small">${esc(fullName(ref))} (montata) → ${esc(fullName(r))}</p>${compareHtml(r, ref, META)}`;
   $('#cmp-open').dataset.open = id;
   if (!cmpDlg.open) { cmpDlg.showModal(); $('#cmp-close').focus(); }
 }

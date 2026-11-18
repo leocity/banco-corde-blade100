@@ -28,7 +28,8 @@ test('O2: tre schede in basso, con frecce da tastiera', async () => {
 
 test('O4: niente gergo nel testo visibile; nessun NaN/undefined; nessun prezzo', async () => {
   await eachView(async (page, where) => {
-    const txt = await page.evaluate(() => document.body.innerText);
+    // anche dentro le sezioni chiuse; le citazioni letterali dei forum (in inglese) sono escluse
+    const txt = await page.evaluate(() => { document.querySelectorAll('details').forEach((d) => { d.open = true; }); const c = document.body.cloneNode(true); c.querySelectorAll('.quote, script, style').forEach((q) => q.remove()); document.body.appendChild(c); c.style.position = 'absolute'; const t = c.innerText; c.remove(); return t; });
     const m = txt.match(JARGON);
     assert.equal(m, null, `${where}: «${m && m[0]}»`);
     assert.doesNotMatch(txt, BAD, where);

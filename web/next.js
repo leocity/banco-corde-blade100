@@ -32,7 +32,9 @@ export function likeness(rec, likedIds, dislikedIds, ALL, meta) {
   const l = best(likedIds), d = best(dislikedIds);
   if (!l && !d) return null;
   const warn = d && d.similar >= 1 && d.similar === d.total && (!l || d.similar > l.similar) ? d.id : null;
-  return { ...(l || { id: null, similar: 0, total: 0 }), warn };
+  // «simile alla X» solo se almeno metà delle misure in comune sono simili: 1 su 5 non è somiglianza
+  const good = l && l.similar * 2 >= l.total ? l : null;
+  return { ...(good || { id: null, similar: 0, total: 0 }), warn };
 }
 
 function judge(goal, rows) {
@@ -55,7 +57,8 @@ export function candidates(state, ALL, goal, meta, limit = 3) {
   const refName = shortName(ref);
   const excluded = new Set([state.equipped.id, ...(state.disliked || [])]);
   const stockIds = STOCK_ORDER(state);
-  const pool = ALL.filter((r) => !excluded.has(r.id));
+  // la scorta comprende anche la montata (rifare la stessa corda) e le non gradite (segnalate)
+  const pool = ALL.filter((r) => !excluded.has(r.id) || stockIds.includes(r.id));
   let mode = 'relative', note = '';
   let refs = [ref];
   if (!hasLab(ref)) {
@@ -82,13 +85,14 @@ export function candidates(state, ALL, goal, meta, limit = 3) {
     } else if (refs[0]) { const j = judge(goal, rows); ok = j.ok; confirm = j.confirm; }
     const lk = likeness(rec, (state.liked || []).filter((id) => id !== state.equipped.id), state.disliked || [], ALL, meta);
     const value = g && rec.lab && rec.lab.twu && typeof rec.lab.twu[g.field] === 'number' ? rec.lab.twu[g.field] : null;
-    return { rec, rows, summary: summarize(rows, refName), compatible: ok, confirm, likeness: lk, rank, value, inStock: stockIds.includes(rec.id) };
+    return { rec, rows, summary: summarize(rows, refName), compatible: ok, confirm, likeness: lk, rank, value, inStock: stockIds.includes(rec.id),
+      equipped: rec.id === state.equipped.id, disliked: (state.disliked || []).includes(rec.id) };
   });
   const sorter = (a, b) => (b.compatible - a.compatible) || (b.confirm - a.confirm)
-    || (g && a.value !== null && b.value !== null ? g.better(a.value, b.value) : 0)
     || ((b.likeness ? b.likeness.similar : 0) - (a.likeness ? a.likeness.similar : 0))
+    || (g && a.value !== null && b.value !== null ? g.better(a.value, b.value) : 0)
     || `${a.rec.brand} ${a.rec.model} ${a.rec.gauge_mm}`.localeCompare(`${b.rec.brand} ${b.rec.model} ${b.rec.gauge_mm}`);
   const inStock = items.filter((x) => x.inStock).sort(sorter);
-  const toBuy = items.filter((x) => !x.inStock && x.compatible).sort(sorter).slice(0, limit);
+  const toBuy = items.filter((x) => !x.inStock && x.compatible && !excluded.has(x.rec.id)).sort(sorter).slice(0, limit);
   return { mode, note, inStock, toBuy, refName };
 }

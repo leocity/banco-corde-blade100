@@ -57,12 +57,26 @@
         <p class="small">Che cosa hai?</p>
         <div class="chips" role="group" aria-label="Intera o mezza"><button type="button" class="chipbtn" data-size="intera" aria-pressed="true">Intera (un set)</button><button type="button" class="chipbtn" data-size="mezza" aria-pressed="false">Mezza (per ibrido)</button></div>
       </div>
-      <div id="pk-change">
+      <div id="pk-kg">
         <div class="row">
           <label>Verticali (kg) <input id="pk-kgv" inputmode="decimal" size="5"></label>
           <label>Orizzontali (kg) <input id="pk-kgh" inputmode="decimal" size="5"></label>
         </div>
-        <p class="small muted">Precompilate con la tensione della corda che togli.</p>
+        <p class="small muted" id="pk-kg-note">Precompilate con la tensione della corda che togli.</p>
+      </div>
+      <div id="pk-past">
+        <div class="row">
+          <label>Dal <input type="date" id="pk-from"></label>
+          <label>Al <input type="date" id="pk-to"></label>
+        </div>
+        <div class="row">
+          <label>Ore giocate <input id="pk-hours" inputmode="decimal" size="5"></label>
+          <label>Com'è finita <select id="pk-past-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+        </div>
+        <p class="small muted">Date e ore anche approssimate.</p>
+      </div>
+      <div id="pk-change">
+        <label>Montata il <input type="date" id="pk-date"></label>
         <label id="pk-from-stock" hidden>La prendi da quelle in casa? <select id="pk-from-stock-sel"></select></label>
         <label>La <span id="pk-old"></span> che togli è <select id="pk-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
         <p class="small">La ricompreresti?</p>

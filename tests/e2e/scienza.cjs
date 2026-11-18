@@ -8,7 +8,7 @@ test('Scienza: schede con livello di prova, 4 righelli, fonti e verifiche a mano
   assert.match(txt, /Dimostrata/);
   assert.match(txt, /Ipotesi/);
   assert.match(txt, /Verifiche a mano del 17\/11\/2026/);
-  assert.match(txt, /Slap: \d+ª più morbida a riposo/);
+  assert.match(txt, /Slap \(0,75 kg\/mm\): solo \d+ su \d+ corde misurate da Racketpedia sono più morbide/);
   assert.deepEqual(errors, []);
   await ctx.close();
 });

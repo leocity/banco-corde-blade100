@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { defaultState, setPreference, changeString, addSession, removeSession, editSession, equippedHours, parseHours, labStiff, tensionFor, sanitizeState, splitState, joinState, sameState } from './state.js';
+import { defaultState, setPreference, changeString, addSession, removeSession, editSession, equippedHours, parseHours, sanitizeState, splitState, joinState, sameState } from './state.js';
 
 const DEFAULTS = { equipped: { id: 'zero', kg: [22.5, 21.5] }, liked: ['conf', 'otoro'], disliked: ['blast'] };
 const KNOWN = ['zero', 'conf', 'otoro', 'blast', 'other'];
@@ -66,29 +66,6 @@ test('changeString chiude la vita con le ore registrate e azzera', () => {
 test('changeString usa endHours se indicato', () => {
   const s = changeString(defaultState(DEFAULTS, NOW), { id: 'other', kg: [23, 22], date: '2026-11-10T08:00:00.000Z', endReason: 'rotta', endHours: 7.5 });
   assert.equal(s.lives[0].hours, 7.5);
-});
-
-test('tensionFor: +15 lb/in rispetto alla montata toglie 1 kg', () => {
-  const t = tensionFor(stiff(230), stiff(215), [22.5, 21.5]);
-  assert.deepEqual(t.kg, [21.5, 20.5]);
-  assert.equal(t.corrected, true);
-  assert.deepEqual([t.low, t.high], [[20.5, 19.5], [22.5, 21.5]]);
-  assert.deepEqual(t.lbs, [47.5, 45]);
-});
-
-test('tensionFor: delta limitato a ±2 kg', () => {
-  assert.deepEqual(tensionFor(stiff(400), stiff(200), [22.5, 21.5]).kg, [20.5, 19.5]);
-  assert.deepEqual(tensionFor(stiff(100), stiff(200), [22.5, 21.5]).kg, [24.5, 23.5]);
-});
-
-test('tensionFor: senza rigidità resta la tensione della montata, mai NaN', () => {
-  for (const [a, b] of [[{ stiffness: null }, stiff(215)], [stiff(215), { stiffness: null }], [stiff(300, 'modello'), stiff(215)], [stiff(215), null]]) {
-    const t = tensionFor(a, b, [22.5, 21.5]);
-    assert.deepEqual(t.kg, [22.5, 21.5]);
-    assert.equal(t.corrected, false);
-    assert.ok(t.lbs.every(Number.isFinite));
-  }
-  assert.equal(labStiff(stiff(215, 'da Racketpedia')), 215);
 });
 
 test('sanitizeState: JSON illeggibile -> stato iniziale', () => {

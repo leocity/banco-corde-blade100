@@ -122,3 +122,40 @@ test('Oggi: togliere un\'uscita e annullare la rimette uguale', async () => {
   for (const [k, v] of Object.entries(REAL.sessions)) assert.deepEqual(docs[k], v, k);
   await ctx.close();
 });
+
+test('Oggi: il diario salvato si legge nella scheda della montata e della Zero (nota, voti, verdetto, parole)', async () => {
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(), storage: realStorage() });
+  await page.waitForFunction(() => /10 h/.test(document.querySelector('#oggi').innerText));
+  await page.locator('#oggi .hero-name [data-open]').click();
+  await page.waitForSelector('#sheet[open]');
+  await page.evaluate(() => document.querySelectorAll('#sheet details').forEach((d) => { d.open = true; }));
+  const txt = await page.innerText('#sheet');
+  assert.match(txt, /Forse ha perso un po' rispetto alla restring zero/);
+  assert.match(txt, /Primo colpo: Spin 4\/5/);
+  assert.match(txt, /pastosa/);
+  assert.match(txt, /forse la ricompreresti/);
+  await ctx.close();
+});
+
+test('Oggi: storico completo, corda passata aggiunta, tensione corretta', async () => {
+  const { page, ctx } = await openPage({ claude: FAKE_CLAUDE(), storage: realStorage() });
+  await page.waitForFunction(() => /10 h/.test(document.querySelector('#oggi').innerText));
+  assert.match(await page.innerText('#oggi'), /Tutte le uscite su questa corda \(6\)/);
+  assert.match(await page.innerText('#oggi'), /Corde finite \(1\)/);
+  await page.locator('#past-add').click();
+  await page.locator('#pk-q').fill('O-Toro 1,23');
+  await page.locator('#pk-list [data-pick="toroline-o-toro-17"]').click();
+  await page.locator('#pk-from').fill('2026-06-01');
+  await page.locator('#pk-to').fill('2026-07-15');
+  await page.locator('#pk-hours').fill('20');
+  await page.locator('#pk-ok').click();
+  assert.match(await page.innerText('#oggi'), /Corde finite \(2\)/);
+  await page.locator('#kg-fix').click();
+  await page.locator('#kg-v').fill('22,5');
+  await page.locator('#kg-save').click();
+  assert.match(await page.innerText('#oggi .hero'), /22,5\/21,0 kg/);
+  const docs = await dbDocs(page);
+  assert.deepEqual(docs.state.equipped.kg, [22.5, 21]);
+  assert.equal(Object.keys(docs).filter((k) => k.startsWith('l-')).length, 2);
+  await ctx.close();
+});

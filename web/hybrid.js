@@ -5,12 +5,13 @@ import { CMP_KEYS, levelOf } from './cmp.js';
 import { tip, fmtV, infoTip } from './ui.js';
 
 const HY_KEY = 'banco-corde:ibrido';
-const HY_KG = Array.from({ length: 17 }, (_, i) => 20 + i * 0.5);
+const HY_KG = Array.from({ length: 25 }, (_, i) => 18 + i * 0.5);
+const hyOkKg = (k) => typeof k === 'number' && HY_KG.includes(k);
 // Idee da provare: giudizio del progetto (fiducia dichiarata), non calcoli. Recuperate dalla scheda online del 17/11/2026.
 export const HY_IDEAS = [
   { k: 'A', v: 'toroline-o-toro-tour-17', o: 'toroline-o-toro-17', kv: 23, ko: 22, conf: 'alta', why: 'Verticale più rigida (TWU: 217 contro 166 lb/in) e che perde meno tensione (25% contro 44%); O-Toro in orizzontale.' },
   { k: 'B', v: 'toroline-o-toro-tour-17', o: 'toroline-o-toro-snap-16l', kv: 23, ko: 22, conf: 'media', why: 'Come A con un\'orizzontale tonda (il set «Dreddy» di Toroline). Il dato TWU della Snap è in dubbio: va provato.' },
-  { k: 'C', v: 'solinco-confidential-16l', o: 'toroline-o-toro-17', kv: 23, ko: 22, conf: 'media', why: 'In verticale la corda con la perdita di tensione misurata più bassa del gruppo (22%, sul calibro 1,30); O-Toro in orizzontale.' },
+  { k: 'C', v: 'solinco-confidential-16l', o: 'toroline-o-toro-17', kv: 23, ko: 22, conf: 'bassa', why: 'Confidential 1,25 in verticale, O-Toro in orizzontale. La 1,25 non è misurata da TWU: che tenga bene la tensione lo si sa solo dal calibro 1,30 (stima, non usata nei calcoli).' },
   { k: 'F', v: 'toroline-caviar-17l', o: 'toroline-o-toro-snap-16l', kv: 23, ko: 22, conf: 'media', why: 'Caviar 1,24 è tra le Toroline più rigide a riposo (Racketpedia 1,00 kg/mm).' },
   { k: 'G', v: 'toroline-o-toro-tour-17', o: 'toroline-o-toro-17', kv: 22.5, ko: 21.5, conf: 'bassa', why: 'Come A ma senza alzare i kg: cambia una cosa sola (la corda verticale).' },
 ];
@@ -19,7 +20,11 @@ const hyMean = (a, b) => (16 * a + 19 * b) / 35;
 function hyLoad(ctx) {
   const eq = ctx.state().equipped;
   let s = { v: eq.id, o: eq.id, kv: eq.kg[0], ko: eq.kg[1] };
-  try { const x = JSON.parse(localStorage.getItem(HY_KEY) || 'null'); if (x && ctx.BY_ID[x.v] && ctx.BY_ID[x.o]) s = { ...s, ...x }; } catch { /* nessun archivio */ }
+  try {
+    const x = JSON.parse(localStorage.getItem(HY_KEY) || 'null');
+    if (x && ctx.BY_ID[x.v] && ctx.BY_ID[x.o]) s = { ...s, v: x.v, o: x.o, ...(hyOkKg(x.kv) ? { kv: x.kv } : {}), ...(hyOkKg(x.ko) ? { ko: x.ko } : {}) };
+  } catch { /* nessun archivio */ }
+  if (!hyOkKg(s.kv)) s.kv = 22; if (!hyOkKg(s.ko)) s.ko = 21;
   return s;
 }
 const hySave = (s) => { try { localStorage.setItem(HY_KEY, JSON.stringify({ v: s.v, o: s.o, kv: s.kv, ko: s.ko })); } catch { /* nessun archivio */ } };
@@ -65,13 +70,13 @@ export function renderHybrid(ctx) {
   const table = rows.length ? `<ul class="cmp-rows">${rows.map((r) => `<li><p class="cmp-q">${tip(r.key, esc(CMP_KEYS[r.key].label))} <span class="muted small">· ${esc(CMP_KEYS[r.key].source)}</span></p>
     <p class="cmp-v">V ${esc(fmtV(r.key, r.v))} · O ${esc(fmtV(r.key, r.o))} → ${tip('letto', 'letto')} <b class="num">${esc(fmtV(r.key, r.bed))}</b></p>
     <p class="small">${esc(r.cmp)}${typeof r.b === 'number' ? ` (${esc(ref.model)}: ${esc(fmtV(r.key, r.b))})` : ''}</p></li>`).join('')}</ul>` : '<p class="muted">Nessuna misura per queste due corde.</p>';
-  const kgNote = `Tensione media del letto ${NF(1).format(hyMean(s.kv, s.ko))} kg contro ${NF(1).format(hyMean(...ctx.state().equipped.kg))} kg della montata. Un kg in più o in meno pesa poco: la maggior parte dei giocatori non sente 2–3 kg (Bower e Cross 2008).`;
+  const kgNote = `Tensione media del letto ${NF(1).format(hyMean(s.kv, s.ko))} kg contro ${NF(1).format(hyMean(...ctx.state().equipped.kg))} kg della montata.`;
   box.innerHTML = `<div class="hy-form">
       <label>Verticali (16) <select id="hy-v">${hyOptions(ctx, s.v)}</select></label><label>kg ${kgSel('hy-kv', s.kv)}</label>
       <label>Orizzontali (19) <select id="hy-o">${hyOptions(ctx, s.o)}</select></label><label>kg ${kgSel('hy-ko', s.ko)}</label>
     </div>
     ${table}
-    <p class="small">${esc(kgNote)}</p>
+    <p class="small">${esc(kgNote)} ${tip('tensione', 'Quanto conta un kg?')}</p>
     <details class="more"><summary>Idee da provare (non calcolate)</summary>
       <p class="small muted">Idee del progetto, con la fiducia che gli diamo noi: non sono consigli calcolati.</p>
       <ul class="ideas">${HY_IDEAS.filter((x) => ctx.BY_ID[x.v] && ctx.BY_ID[x.o]).map((x) => `<li><b>${esc(x.k)}</b> · ${esc(ctx.BY_ID[x.v].model)} in verticale, ${esc(ctx.BY_ID[x.o].model)} in orizzontale, ${NF(1).format(x.kv)}/${NF(1).format(x.ko)} kg <span class="tag">fiducia ${esc(x.conf)}</span><br><span class="small">${esc(x.why)}</span>${/lb\/in/.test(x.why) ? ` ${infoTip('twu.stiffness', 'Cos\'è la rigidità in gioco')}` : ''}${/kg\/mm/.test(x.why) ? ` ${infoTip('rp.kgmm', 'Cos\'è la rigidità a riposo')}` : ''}<br><button type="button" class="btn" data-hy-load="${esc(x.k)}">Prova questa</button></li>`).join('')}</ul>

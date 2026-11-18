@@ -1,6 +1,6 @@
 // Schermata «Oggi»: corda montata, + Uscita in un tocco, voto in un secondo tocco, scorta, cambio corda.
 import { $, esc, NF, fullName, fmtN } from './format.js';
-import { addSession, rateSession, removeSession, restoreSession, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours } from './state.js';
+import { addSession, rateSession, removeSession, restoreSession, addPastLife, setEquippedKg, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours } from './state.js';
 import { setVerdict } from './diary.js';
 import { tip, nameBtn, specLine, hasMeasures, itDate } from './ui.js';
 
@@ -10,6 +10,13 @@ const FEEL_WORD = ['', 'pessima', 'così così', 'normale', 'bene', 'benissimo']
 const todayIso = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 const lifeSessions = (st) => st.sessions.filter((s) => s.life === st.equipped.since).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.ts < b.ts ? 1 : -1));
 const hoursTxt = (h) => `${fmtN(h, 1)} h`;
+
+function historyHtml(st, BY_ID) {
+  if (!st.lives.length) return '';
+  const lives = [...st.lives].sort((a, b) => (a.to < b.to ? 1 : -1));
+  const v = { si: 'la ricompreresti', no: 'non la ricompreresti', forse: 'forse' };
+  return `<details class="more"><summary>Corde finite (${lives.length})</summary><ul class="sessions lives">${lives.map((l) => `<li><span>${BY_ID[l.id] ? nameBtn(BY_ID[l.id]) : esc(l.id)}</span><span class="small">${esc(itDate(l.from))} → ${esc(itDate(l.to))} · ${hoursTxt(l.hours)} · ${esc(l.reason)}${l.diary && l.diary.verdict ? ` · ${v[l.diary.verdict]}` : ''}</span></li>`).join('')}</ul></details>`;
+}
 
 function lastLifeLine(st, BY_ID) {
   const done = st.lives.filter((l) => l.reason === 'consumata');
@@ -55,7 +62,13 @@ export function renderToday(ctx) {
     <div class="hero">
       <p class="eyebrow">Montata ora</p>
       <h2 class="hero-name">${nameBtn(r)}</h2>
-      <p class="muted">${specLine(r)} · ${tip('tensione', `${NF(1).format(st.equipped.kg[0])}/${NF(1).format(st.equipped.kg[1])} kg`)}</p>
+      <p class="muted">${specLine(r)} · ${tip('tensione', `${NF(1).format(st.equipped.kg[0])}/${NF(1).format(st.equipped.kg[1])} kg`)} <button type="button" class="btn ghost" id="kg-fix" aria-controls="kg-form">Correggi</button></p>
+      <div class="hours-form" id="kg-form" hidden>
+        <label>Verticali (kg) <input id="kg-v" inputmode="decimal" size="5" value="${NF(1).format(st.equipped.kg[0])}"></label>
+        <label>Orizzontali (kg) <input id="kg-h" inputmode="decimal" size="5" value="${NF(1).format(st.equipped.kg[1])}"></label>
+        <button type="button" class="btn primary" id="kg-save">Salva</button>
+        <p class="err" id="kg-err" role="alert" hidden>Tensioni tra 15 e 35 kg.</p>
+      </div>
       <p class="hero-hours">${tip('ore', `<b class="num">${hoursTxt(hours)}</b>`)} su questa corda · ${ss.length} ${ss.length === 1 ? 'uscita' : 'uscite'}</p>
       <div class="actions"><button type="button" class="btn primary big" id="quick-add">+ Uscita ${fmtN(QUICK_HOURS, 1)} h</button>
         <button type="button" class="btn" id="other-hours" aria-expanded="false" aria-controls="hours-form">Altre ore</button></div>
@@ -71,11 +84,14 @@ export function renderToday(ctx) {
     <section class="block">${stockHtml(st, ctx.BY_ID)}</section>
     <section class="block">
       <div class="section-head"><h2>Uscite</h2></div>
-      ${ss.length ? `<ul class="sessions">${ss.slice(0, 5).map((s) => `<li><span>${esc(itDate(s.date))}</span><span>${hoursTxt(s.hours)}</span><span>${s.feel ? `${FACES[s.feel]} ${s.feel}/5` : '<span class="muted">senza voto</span>'}${s.tag ? ` · ${esc(s.tag)}` : ''}${s.note ? ` · ${esc(s.note)}` : ''}</span><button type="button" class="btn sq ghost" data-del-session="${esc(s.ts)}" aria-label="Togli l'uscita del ${esc(itDate(s.date))}">✕</button></li>`).join('')}</ul>` : '<p class="muted">Nessuna uscita su questa corda.</p>'}
+      ${ss.length ? `<ul class="sessions">${ss.slice(0, 5).map(sessionLi).join('')}</ul>` : '<p class="muted">Nessuna uscita su questa corda.</p>'}
+      ${ss.length > 5 ? `<details class="more"><summary>Tutte le uscite su questa corda (${ss.length})</summary><ul class="sessions">${ss.slice(5).map(sessionLi).join('')}</ul></details>` : ''}
+      ${historyHtml(st, ctx.BY_ID)}
       ${lastLifeLine(st, ctx.BY_ID)}
-      <button type="button" class="btn" id="change-btn">Cambia corda</button>
+      <div class="actions"><button type="button" class="btn" id="change-btn">Cambia corda</button><button type="button" class="btn" id="past-add">Aggiungi una corda finita prima</button></div>
     </section>`;
 }
+const sessionLi = (s) => `<li><span>${esc(itDate(s.date))}</span><span>${hoursTxt(s.hours)}</span><span>${s.feel ? `${FACES[s.feel]} ${s.feel}/5` : '<span class="muted">senza voto</span>'}${s.tag ? ` · ${esc(s.tag)}` : ''}${s.note ? ` · ${esc(s.note)}` : ''}</span><button type="button" class="btn sq ghost" data-del-session="${esc(s.ts)}" aria-label="Togli l'uscita del ${esc(itDate(s.date))}">✕</button></li>`;
 
 // ---------- dialogo per scegliere una corda (cambio corda e scorta) ----------
 function pickList(ctx, q, selected) {
@@ -88,22 +104,29 @@ function pickList(ctx, q, selected) {
     <span>${esc(fullName(r))}</span>${stockIds.includes(r.id) ? '<span class="tag ok">in casa</span>' : ''}${hasMeasures(r) ? '' : '<span class="tag">nessuna misura</span>'}</button></li>`).join('') || '<li class="muted">Nessuna corda trovata.</li>';
 }
 
-function openPicker(ctx, { title, okLabel, withChange, onOk }) {
+// mode: 'stock' (aggiungi in casa), 'change' (cambia corda), 'past' (corda finita prima dell'app)
+function openPicker(ctx, { title, okLabel, mode, onOk }) {
   const dlg = $('#pick-dialog');
   const st = ctx.state();
+  const withChange = mode === 'change';
   let selected = null, verdict = null, size = 'intera';
   $('#pk-title').textContent = title;
   $('#pk-ok').textContent = okLabel;
   $('#pk-q').value = '';
   $('#pk-change').hidden = !withChange;
-  $('#pk-stock').hidden = withChange;
+  $('#pk-stock').hidden = mode !== 'stock';
+  $('#pk-past').hidden = mode !== 'past';
+  $('#pk-kg').hidden = mode === 'stock';
+  $('#pk-kg-note').hidden = !withChange;
   $('#pk-err').hidden = true;
+  $('#pk-kgv').value = NF(1).format(st.equipped.kg[0]); $('#pk-kgh').value = NF(1).format(st.equipped.kg[1]);
   if (withChange) {
-    $('#pk-kgv').value = NF(1).format(st.equipped.kg[0]); $('#pk-kgh').value = NF(1).format(st.equipped.kg[1]);
     $('#pk-old').textContent = ctx.equippedRec().model;
     $('#pk-reason').value = 'consumata';
+    $('#pk-date').value = todayIso();
     for (const b of dlg.querySelectorAll('[data-verdict]')) b.setAttribute('aria-pressed', 'false');
   }
+  if (mode === 'past') { $('#pk-from').value = ''; $('#pk-to').value = ''; $('#pk-hours').value = ''; $('#pk-past-reason').value = 'consumata'; }
   for (const b of dlg.querySelectorAll('[data-size]')) b.setAttribute('aria-pressed', String(b.dataset.size === size));
   const draw = () => {
     $('#pk-list').innerHTML = pickList(ctx, $('#pk-q').value, selected);
@@ -120,11 +143,21 @@ function openPicker(ctx, { title, okLabel, withChange, onOk }) {
     if (e.target.closest('#pk-ok')) {
       const err = (m) => { $('#pk-err').textContent = m; $('#pk-err').hidden = false; };
       if (!selected) { err('Scegli una corda dall\'elenco.'); return; }
+      if (mode === 'stock') { onOk({ id: selected, size }); dlg.close(); return; }
+      const kv = Number(String($('#pk-kgv').value).replace(',', '.')), kh = Number(String($('#pk-kgh').value).replace(',', '.'));
+      if (![kv, kh].every((k) => Number.isFinite(k) && k >= 15 && k <= 35)) { err('Tensioni tra 15 e 35 kg.'); return; }
       if (withChange) {
-        const kv = Number(String($('#pk-kgv').value).replace(',', '.')), kh = Number(String($('#pk-kgh').value).replace(',', '.'));
-        if (![kv, kh].every((k) => Number.isFinite(k) && k >= 15 && k <= 35)) { err('Tensioni tra 15 e 35 kg.'); return; }
-        onOk({ id: selected, kg: [kv, kh], reason: $('#pk-reason').value, verdict, fromStock: $('#pk-from-stock').hidden ? null : ($('#pk-from-stock-sel').value || null) });
-      } else onOk({ id: selected, size });
+        const d = $('#pk-date').value || todayIso();
+        if (d < ctx.state().equipped.since.slice(0, 10)) { err('La data non può essere prima di quando hai montato la corda attuale.'); return; }
+        const date = d === todayIso() ? new Date().toISOString() : `${d}T12:00:00.000Z`;
+        onOk({ id: selected, kg: [kv, kh], reason: $('#pk-reason').value, verdict, date, fromStock: $('#pk-from-stock').hidden ? null : ($('#pk-from-stock-sel').value || null) });
+      } else {
+        const h = parseHours($('#pk-hours').value);
+        const from = $('#pk-from').value, to = $('#pk-to').value;
+        if (!from || !to || to < from) { err('Metti le due date (anche approssimate), la seconda dopo la prima.'); return; }
+        if (!h.ok) { err(h.reason); return; }
+        onOk({ id: selected, kg: [kv, kh], from, to, hours: h.value, reason: $('#pk-past-reason').value });
+      }
       dlg.close();
     }
   };
@@ -170,20 +203,36 @@ export function initToday(ctx) {
     const dec = t.closest('[data-stock-dec]');
     if (dec) { const it = (ctx.state().stock || []).find((x) => x.id === dec.dataset.stockDec && x.size === dec.dataset.size); if (it) ctx.update((s) => setStockCount(s, it.id, it.size, it.n - 1)); return; }
     if (t.closest('#stock-add')) {
-      openPicker(ctx, { title: 'Aggiungi una corda che hai', okLabel: 'Aggiungi', withChange: false,
+      openPicker(ctx, { title: 'Aggiungi una corda che hai', okLabel: 'Aggiungi', mode: 'stock',
         onOk: ({ id, size }) => { ctx.update((s) => addStock(s, id, size)); ctx.toast(`${fullName(ctx.BY_ID[id])} (${size}) aggiunta alle corde in casa.`); } });
       return;
     }
-    if (t.closest('#change-btn')) ctx.equip(null);
+    if (t.closest('#change-btn')) { ctx.equip(null); return; }
+    if (t.closest('#past-add')) {
+      openPicker(ctx, { title: 'Aggiungi una corda finita prima', okLabel: 'Aggiungi', mode: 'past',
+        onOk: (p) => {
+          const n = ctx.state().lives.length;
+          ctx.update((s) => addPastLife(s, { ...p, lid: String(Date.now()) }));
+          ctx.toast(ctx.state().lives.length > n ? 'Corda passata aggiunta.' : 'Dati non validi: niente aggiunto.');
+        } });
+      return;
+    }
+    if (t.closest('#kg-fix')) { const f = $('#kg-form'); f.hidden = !f.hidden; if (!f.hidden) $('#kg-v').focus(); return; }
+    if (t.closest('#kg-save')) {
+      const kv = Number(String($('#kg-v').value).replace(',', '.')), kh = Number(String($('#kg-h').value).replace(',', '.'));
+      if (![kv, kh].every((k) => Number.isFinite(k) && k >= 15 && k <= 35)) { $('#kg-err').hidden = false; return; }
+      ctx.update((s) => setEquippedKg(s, [kv, kh]));
+      ctx.toast('Tensione corretta.');
+    }
   });
   ctx.onEquip = (preset) => {
-    openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', withChange: true,
-      onOk: ({ id, kg, reason, verdict, fromStock }) => {
+    openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', mode: 'change',
+      onOk: ({ id, kg, reason, verdict, fromStock, date }) => {
         const before = ctx.state(), old = ctx.equippedRec(), ep = ctx.epoch();
         ctx.update((s) => {
           let n = verdict ? updateDiary(s, 'current', (d) => setVerdict(d, verdict)) : s;
           n = applyVerdict(n, s.equipped.id, verdict);
-          return changeString(n, { id, kg, date: new Date().toISOString(), endReason: reason, fromStock });
+          return changeString(n, { id, kg, date, endReason: reason, fromStock });
         });
         const vtxt = verdict === 'si' ? ` La ${old.model} va tra le preferite.` : verdict === 'no' ? ` La ${old.model} va tra quelle che non ti piacciono.` : '';
         // il cambio corda tocca molte cose: si annulla solo se nel frattempo non è arrivato nulla dal server

@@ -223,3 +223,9 @@ Struttura interna dei moduli, CSS, icone, testi esatti dei tooltip (dentro i vin
 7. **Corda montata senza misure**: «Prossima» lo dice in alto e usa le preferite come riferimento per *Simile*; le altre domande mostrano il motivo per cui sono vuote. Nel dialogo «Cambia corda» le corde senza misure hanno l'etichetta «nessuna misura».
 8. **Default della pipeline**: valgono solo se non c'è uno stato salvato.
 9. **+ Uscita**: aggiunge 1,5 h oggi e mostra subito, sotto, il voto 1–5 per quella stessa uscita (secondo tocco = voto) e un «Annulla» per 8 s.
+
+## 13. Dopo la revisione indipendente (18/11/2026)
+
+Corretto: «Annulla» ora è sempre l'operazione inversa (toglie l'uscita aggiunta, rimette quella tolta) e non c'è annulla prima che arrivi lo stato salvato: prima poteva cancellare tutto il db. Scorta e domanda vanno nel documento `prefs`, voto e parola delle uscite in `r-<ts>`: una pagina v5 ancora aperta altrove non li cancella. Il diario salvato si legge nella scheda («Il tuo diario»). Tornano: storico di tutte le uscite e delle corde finite, «Aggiungi una corda finita prima», data nel cambio corda, «Correggi» la tensione, note da incordatore e pareri dei forum (chiusi, marcati opinioni). La casella AI non si cancella ai ridisegni. Le stime nella scheda sono descritte a parole; l'idea C degli ibridi dichiara la stima. «Simile alla X» solo se almeno metà delle misure sono simili. La montata e le non gradite in casa compaiono in «Ce l'hai in casa». Tensione di partenza nella scheda (§5.5).
+
+Rimandato, per scelta: confronto di 3 corde insieme (il confronto resta 1 contro la montata); l'ingresso «cosa senti in campo» degli ibridi e le «9 regole» (le regole con dati sono confluite nelle schede di Scienza, quelle a soglia inventata sono tolte).

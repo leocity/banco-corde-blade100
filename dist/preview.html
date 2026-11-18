@@ -148,6 +148,10 @@ input, select, textarea { min-height: 44px; padding: 8px 10px; border: 1px solid
 .stock-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-bottom: 1px solid var(--line); padding: 2px 0; }
 .stepper { display: flex; align-items: center; gap: 6px; }
 .stepper .n { min-width: 2ch; text-align: center; font-family: var(--font-data); font-weight: 600; }
+.sessions.lives li { grid-template-columns: 1fr; gap: 0; padding: 4px 0; }
+.trials { list-style: none; padding: 0; }
+.trials > li { border-bottom: 1px solid var(--line); padding: 4px 0; }
+.diary-votes { padding-left: 20px; font-size: .95rem; }
 .sessions li { display: grid; grid-template-columns: auto auto 1fr auto; gap: 4px 12px; align-items: center; border-bottom: 1px solid var(--line); min-height: 44px; }
 .reviews li, .results li, .ideas li, .sources li { border-bottom: 1px solid var(--line); padding: 6px 0; }
 
@@ -266,12 +270,26 @@ details.sci[open] { padding-bottom: 10px; }
         <p class="small">Che cosa hai?</p>
         <div class="chips" role="group" aria-label="Intera o mezza"><button type="button" class="chipbtn" data-size="intera" aria-pressed="true">Intera (un set)</button><button type="button" class="chipbtn" data-size="mezza" aria-pressed="false">Mezza (per ibrido)</button></div>
       </div>
-      <div id="pk-change">
+      <div id="pk-kg">
         <div class="row">
           <label>Verticali (kg) <input id="pk-kgv" inputmode="decimal" size="5"></label>
           <label>Orizzontali (kg) <input id="pk-kgh" inputmode="decimal" size="5"></label>
         </div>
-        <p class="small muted">Precompilate con la tensione della corda che togli.</p>
+        <p class="small muted" id="pk-kg-note">Precompilate con la tensione della corda che togli.</p>
+      </div>
+      <div id="pk-past">
+        <div class="row">
+          <label>Dal <input type="date" id="pk-from"></label>
+          <label>Al <input type="date" id="pk-to"></label>
+        </div>
+        <div class="row">
+          <label>Ore giocate <input id="pk-hours" inputmode="decimal" size="5"></label>
+          <label>Com'è finita <select id="pk-past-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+        </div>
+        <p class="small muted">Date e ore anche approssimate.</p>
+      </div>
+      <div id="pk-change">
+        <label>Montata il <input type="date" id="pk-date"></label>
         <label id="pk-from-stock" hidden>La prendi da quelle in casa? <select id="pk-from-stock-sel"></select></label>
         <label>La <span id="pk-old"></span> che togli è <select id="pk-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
         <p class="small">La ricompreresti?</p>
@@ -613,22 +631,7 @@ function parseHours(input) {
 }
 
 // Rigidità usata per correggere la tensione: solo dati di laboratorio, non le stime dal solo calibro.
-function labStiff(rec) {
-  const s = rec && rec.stiffness;
-  return s && ['misurata', 'parente', 'da Racketpedia'].includes(s.kind) && isNum(s.value_lbin) ? s.value_lbin : null;
-}
-
-const halfAway = (x) => Math.sign(x) * Math.round(Math.abs(x));
 const kgToLbs = (kg) => Math.round(kg * 2.2046 * 2) / 2;
-
-// Tensione di partenza dalla montata: −0,75 kg ogni +15 lb/in di rigidità in più, al massimo ±2 kg (regola empirica, non validata).
-function tensionFor(rec, equippedRec, equippedKg) {
-  const a = labStiff(rec), b = labStiff(equippedRec);
-  const corrected = a !== null && b !== null;
-  const delta = corrected ? Math.max(-2, Math.min(2, halfAway(-0.75 * (a - b) / 15 * 2) / 2)) : 0;
-  const kg = equippedKg.map((x) => x + delta);
-  return { kg, lbs: kg.map(kgToLbs), low: kg.map((x) => x - 1), high: kg.map((x) => x + 1), corrected };
-}
 
 // Le vite salvate prima dell'introduzione di `lid` ne ricevono uno stabile dalla data di inizio.
 const legacyLid = (from) => (Number.isFinite(Date.parse(from)) ? String(Date.parse(from)) : `x${String(from).replace(/[^A-Za-z0-9]/g, '').slice(0, 40)}`);
@@ -958,6 +961,7 @@ const fmtDelta = (r) => {
 // Frase per il giocatore. `refName` è il nome breve della montata (es. «Slap»).
 function summarize(rows, refName) {
   const dec = rows.filter((r) => r.decides);
+  if (!dec.length && rows.length) return { kind: 'none', text: `Non confrontabile: in comune con la ${refName} c'è solo l'allungamento del tuo Excel, che non decide.` };
   if (!dec.length) return { kind: 'none', text: `Non confrontabile con le misure: nessuna misura di laboratorio in comune con la ${refName}.` };
   const ag = agreement(rows);
   const parts = [];
@@ -1008,7 +1012,9 @@ function likeness(rec, likedIds, dislikedIds, ALL, meta) {
   const l = best(likedIds), d = best(dislikedIds);
   if (!l && !d) return null;
   const warn = d && d.similar >= 1 && d.similar === d.total && (!l || d.similar > l.similar) ? d.id : null;
-  return { ...(l || { id: null, similar: 0, total: 0 }), warn };
+  // «simile alla X» solo se almeno metà delle misure in comune sono simili: 1 su 5 non è somiglianza
+  const good = l && l.similar * 2 >= l.total ? l : null;
+  return { ...(good || { id: null, similar: 0, total: 0 }), warn };
 }
 
 function judge(goal, rows) {
@@ -1031,7 +1037,8 @@ function candidates(state, ALL, goal, meta, limit = 3) {
   const refName = shortName(ref);
   const excluded = new Set([state.equipped.id, ...(state.disliked || [])]);
   const stockIds = STOCK_ORDER(state);
-  const pool = ALL.filter((r) => !excluded.has(r.id));
+  // la scorta comprende anche la montata (rifare la stessa corda) e le non gradite (segnalate)
+  const pool = ALL.filter((r) => !excluded.has(r.id) || stockIds.includes(r.id));
   let mode = 'relative', note = '';
   let refs = [ref];
   if (!hasLab(ref)) {
@@ -1058,14 +1065,15 @@ function candidates(state, ALL, goal, meta, limit = 3) {
     } else if (refs[0]) { const j = judge(goal, rows); ok = j.ok; confirm = j.confirm; }
     const lk = likeness(rec, (state.liked || []).filter((id) => id !== state.equipped.id), state.disliked || [], ALL, meta);
     const value = g && rec.lab && rec.lab.twu && typeof rec.lab.twu[g.field] === 'number' ? rec.lab.twu[g.field] : null;
-    return { rec, rows, summary: summarize(rows, refName), compatible: ok, confirm, likeness: lk, rank, value, inStock: stockIds.includes(rec.id) };
+    return { rec, rows, summary: summarize(rows, refName), compatible: ok, confirm, likeness: lk, rank, value, inStock: stockIds.includes(rec.id),
+      equipped: rec.id === state.equipped.id, disliked: (state.disliked || []).includes(rec.id) };
   });
   const sorter = (a, b) => (b.compatible - a.compatible) || (b.confirm - a.confirm)
-    || (g && a.value !== null && b.value !== null ? g.better(a.value, b.value) : 0)
     || ((b.likeness ? b.likeness.similar : 0) - (a.likeness ? a.likeness.similar : 0))
+    || (g && a.value !== null && b.value !== null ? g.better(a.value, b.value) : 0)
     || `${a.rec.brand} ${a.rec.model} ${a.rec.gauge_mm}`.localeCompare(`${b.rec.brand} ${b.rec.model} ${b.rec.gauge_mm}`);
   const inStock = items.filter((x) => x.inStock).sort(sorter);
-  const toBuy = items.filter((x) => !x.inStock && x.compatible).sort(sorter).slice(0, limit);
+  const toBuy = items.filter((x) => !x.inStock && x.compatible && !excluded.has(x.rec.id)).sort(sorter).slice(0, limit);
   return { mode, note, inStock, toBuy, refName };
 }
 
@@ -1096,7 +1104,7 @@ function tipHtml(key, extra) {
 const itDate = (iso) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || '')); return m ? `${m[3]}/${m[2]}/${m[1]}` : String(iso || ''); };
 const fmtV = (key, v) => {
   const k = CMP_KEYS[key];
-  return v === null || v === undefined ? '—' : `${NF(k.dec).format(v)}${k.unit ? ` ${k.unit}` : ''}`;
+  return v === null || v === undefined ? '—' : `${NF(k.dec).format(v)}${k.unit === '%' ? '%' : k.unit ? ` ${k.unit}` : ''}`;
 };
 
 const SRC_OF = { twu: 'TWU String Performance Database', rp: 'Racketpedia', excel: 'Il tuo Excel (test Ektelon)' };
@@ -1188,6 +1196,13 @@ const todayIso = () => { const d = new Date(); return `${d.getFullYear()}-${Stri
 const lifeSessions = (st) => st.sessions.filter((s) => s.life === st.equipped.since).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.ts < b.ts ? 1 : -1));
 const hoursTxt = (h) => `${fmtN(h, 1)} h`;
 
+function historyHtml(st, BY_ID) {
+  if (!st.lives.length) return '';
+  const lives = [...st.lives].sort((a, b) => (a.to < b.to ? 1 : -1));
+  const v = { si: 'la ricompreresti', no: 'non la ricompreresti', forse: 'forse' };
+  return `<details class="more"><summary>Corde finite (${lives.length})</summary><ul class="sessions lives">${lives.map((l) => `<li><span>${BY_ID[l.id] ? nameBtn(BY_ID[l.id]) : esc(l.id)}</span><span class="small">${esc(itDate(l.from))} → ${esc(itDate(l.to))} · ${hoursTxt(l.hours)} · ${esc(l.reason)}${l.diary && l.diary.verdict ? ` · ${v[l.diary.verdict]}` : ''}</span></li>`).join('')}</ul></details>`;
+}
+
 function lastLifeLine(st, BY_ID) {
   const done = st.lives.filter((l) => l.reason === 'consumata');
   if (!done.length) return '';
@@ -1232,7 +1247,13 @@ function renderToday(ctx) {
     <div class="hero">
       <p class="eyebrow">Montata ora</p>
       <h2 class="hero-name">${nameBtn(r)}</h2>
-      <p class="muted">${specLine(r)} · ${tip('tensione', `${NF(1).format(st.equipped.kg[0])}/${NF(1).format(st.equipped.kg[1])} kg`)}</p>
+      <p class="muted">${specLine(r)} · ${tip('tensione', `${NF(1).format(st.equipped.kg[0])}/${NF(1).format(st.equipped.kg[1])} kg`)} <button type="button" class="btn ghost" id="kg-fix" aria-controls="kg-form">Correggi</button></p>
+      <div class="hours-form" id="kg-form" hidden>
+        <label>Verticali (kg) <input id="kg-v" inputmode="decimal" size="5" value="${NF(1).format(st.equipped.kg[0])}"></label>
+        <label>Orizzontali (kg) <input id="kg-h" inputmode="decimal" size="5" value="${NF(1).format(st.equipped.kg[1])}"></label>
+        <button type="button" class="btn primary" id="kg-save">Salva</button>
+        <p class="err" id="kg-err" role="alert" hidden>Tensioni tra 15 e 35 kg.</p>
+      </div>
       <p class="hero-hours">${tip('ore', `<b class="num">${hoursTxt(hours)}</b>`)} su questa corda · ${ss.length} ${ss.length === 1 ? 'uscita' : 'uscite'}</p>
       <div class="actions"><button type="button" class="btn primary big" id="quick-add">+ Uscita ${fmtN(QUICK_HOURS, 1)} h</button>
         <button type="button" class="btn" id="other-hours" aria-expanded="false" aria-controls="hours-form">Altre ore</button></div>
@@ -1248,11 +1269,14 @@ function renderToday(ctx) {
     <section class="block">${stockHtml(st, ctx.BY_ID)}</section>
     <section class="block">
       <div class="section-head"><h2>Uscite</h2></div>
-      ${ss.length ? `<ul class="sessions">${ss.slice(0, 5).map((s) => `<li><span>${esc(itDate(s.date))}</span><span>${hoursTxt(s.hours)}</span><span>${s.feel ? `${FACES[s.feel]} ${s.feel}/5` : '<span class="muted">senza voto</span>'}${s.tag ? ` · ${esc(s.tag)}` : ''}${s.note ? ` · ${esc(s.note)}` : ''}</span><button type="button" class="btn sq ghost" data-del-session="${esc(s.ts)}" aria-label="Togli l'uscita del ${esc(itDate(s.date))}">✕</button></li>`).join('')}</ul>` : '<p class="muted">Nessuna uscita su questa corda.</p>'}
+      ${ss.length ? `<ul class="sessions">${ss.slice(0, 5).map(sessionLi).join('')}</ul>` : '<p class="muted">Nessuna uscita su questa corda.</p>'}
+      ${ss.length > 5 ? `<details class="more"><summary>Tutte le uscite su questa corda (${ss.length})</summary><ul class="sessions">${ss.slice(5).map(sessionLi).join('')}</ul></details>` : ''}
+      ${historyHtml(st, ctx.BY_ID)}
       ${lastLifeLine(st, ctx.BY_ID)}
-      <button type="button" class="btn" id="change-btn">Cambia corda</button>
+      <div class="actions"><button type="button" class="btn" id="change-btn">Cambia corda</button><button type="button" class="btn" id="past-add">Aggiungi una corda finita prima</button></div>
     </section>`;
 }
+const sessionLi = (s) => `<li><span>${esc(itDate(s.date))}</span><span>${hoursTxt(s.hours)}</span><span>${s.feel ? `${FACES[s.feel]} ${s.feel}/5` : '<span class="muted">senza voto</span>'}${s.tag ? ` · ${esc(s.tag)}` : ''}${s.note ? ` · ${esc(s.note)}` : ''}</span><button type="button" class="btn sq ghost" data-del-session="${esc(s.ts)}" aria-label="Togli l'uscita del ${esc(itDate(s.date))}">✕</button></li>`;
 
 // ---------- dialogo per scegliere una corda (cambio corda e scorta) ----------
 function pickList(ctx, q, selected) {
@@ -1265,22 +1289,29 @@ function pickList(ctx, q, selected) {
     <span>${esc(fullName(r))}</span>${stockIds.includes(r.id) ? '<span class="tag ok">in casa</span>' : ''}${hasMeasures(r) ? '' : '<span class="tag">nessuna misura</span>'}</button></li>`).join('') || '<li class="muted">Nessuna corda trovata.</li>';
 }
 
-function openPicker(ctx, { title, okLabel, withChange, onOk }) {
+// mode: 'stock' (aggiungi in casa), 'change' (cambia corda), 'past' (corda finita prima dell'app)
+function openPicker(ctx, { title, okLabel, mode, onOk }) {
   const dlg = $('#pick-dialog');
   const st = ctx.state();
+  const withChange = mode === 'change';
   let selected = null, verdict = null, size = 'intera';
   $('#pk-title').textContent = title;
   $('#pk-ok').textContent = okLabel;
   $('#pk-q').value = '';
   $('#pk-change').hidden = !withChange;
-  $('#pk-stock').hidden = withChange;
+  $('#pk-stock').hidden = mode !== 'stock';
+  $('#pk-past').hidden = mode !== 'past';
+  $('#pk-kg').hidden = mode === 'stock';
+  $('#pk-kg-note').hidden = !withChange;
   $('#pk-err').hidden = true;
+  $('#pk-kgv').value = NF(1).format(st.equipped.kg[0]); $('#pk-kgh').value = NF(1).format(st.equipped.kg[1]);
   if (withChange) {
-    $('#pk-kgv').value = NF(1).format(st.equipped.kg[0]); $('#pk-kgh').value = NF(1).format(st.equipped.kg[1]);
     $('#pk-old').textContent = ctx.equippedRec().model;
     $('#pk-reason').value = 'consumata';
+    $('#pk-date').value = todayIso();
     for (const b of dlg.querySelectorAll('[data-verdict]')) b.setAttribute('aria-pressed', 'false');
   }
+  if (mode === 'past') { $('#pk-from').value = ''; $('#pk-to').value = ''; $('#pk-hours').value = ''; $('#pk-past-reason').value = 'consumata'; }
   for (const b of dlg.querySelectorAll('[data-size]')) b.setAttribute('aria-pressed', String(b.dataset.size === size));
   const draw = () => {
     $('#pk-list').innerHTML = pickList(ctx, $('#pk-q').value, selected);
@@ -1297,11 +1328,21 @@ function openPicker(ctx, { title, okLabel, withChange, onOk }) {
     if (e.target.closest('#pk-ok')) {
       const err = (m) => { $('#pk-err').textContent = m; $('#pk-err').hidden = false; };
       if (!selected) { err('Scegli una corda dall\'elenco.'); return; }
+      if (mode === 'stock') { onOk({ id: selected, size }); dlg.close(); return; }
+      const kv = Number(String($('#pk-kgv').value).replace(',', '.')), kh = Number(String($('#pk-kgh').value).replace(',', '.'));
+      if (![kv, kh].every((k) => Number.isFinite(k) && k >= 15 && k <= 35)) { err('Tensioni tra 15 e 35 kg.'); return; }
       if (withChange) {
-        const kv = Number(String($('#pk-kgv').value).replace(',', '.')), kh = Number(String($('#pk-kgh').value).replace(',', '.'));
-        if (![kv, kh].every((k) => Number.isFinite(k) && k >= 15 && k <= 35)) { err('Tensioni tra 15 e 35 kg.'); return; }
-        onOk({ id: selected, kg: [kv, kh], reason: $('#pk-reason').value, verdict, fromStock: $('#pk-from-stock').hidden ? null : ($('#pk-from-stock-sel').value || null) });
-      } else onOk({ id: selected, size });
+        const d = $('#pk-date').value || todayIso();
+        if (d < ctx.state().equipped.since.slice(0, 10)) { err('La data non può essere prima di quando hai montato la corda attuale.'); return; }
+        const date = d === todayIso() ? new Date().toISOString() : `${d}T12:00:00.000Z`;
+        onOk({ id: selected, kg: [kv, kh], reason: $('#pk-reason').value, verdict, date, fromStock: $('#pk-from-stock').hidden ? null : ($('#pk-from-stock-sel').value || null) });
+      } else {
+        const h = parseHours($('#pk-hours').value);
+        const from = $('#pk-from').value, to = $('#pk-to').value;
+        if (!from || !to || to < from) { err('Metti le due date (anche approssimate), la seconda dopo la prima.'); return; }
+        if (!h.ok) { err(h.reason); return; }
+        onOk({ id: selected, kg: [kv, kh], from, to, hours: h.value, reason: $('#pk-past-reason').value });
+      }
       dlg.close();
     }
   };
@@ -1347,20 +1388,36 @@ function initToday(ctx) {
     const dec = t.closest('[data-stock-dec]');
     if (dec) { const it = (ctx.state().stock || []).find((x) => x.id === dec.dataset.stockDec && x.size === dec.dataset.size); if (it) ctx.update((s) => setStockCount(s, it.id, it.size, it.n - 1)); return; }
     if (t.closest('#stock-add')) {
-      openPicker(ctx, { title: 'Aggiungi una corda che hai', okLabel: 'Aggiungi', withChange: false,
+      openPicker(ctx, { title: 'Aggiungi una corda che hai', okLabel: 'Aggiungi', mode: 'stock',
         onOk: ({ id, size }) => { ctx.update((s) => addStock(s, id, size)); ctx.toast(`${fullName(ctx.BY_ID[id])} (${size}) aggiunta alle corde in casa.`); } });
       return;
     }
-    if (t.closest('#change-btn')) ctx.equip(null);
+    if (t.closest('#change-btn')) { ctx.equip(null); return; }
+    if (t.closest('#past-add')) {
+      openPicker(ctx, { title: 'Aggiungi una corda finita prima', okLabel: 'Aggiungi', mode: 'past',
+        onOk: (p) => {
+          const n = ctx.state().lives.length;
+          ctx.update((s) => addPastLife(s, { ...p, lid: String(Date.now()) }));
+          ctx.toast(ctx.state().lives.length > n ? 'Corda passata aggiunta.' : 'Dati non validi: niente aggiunto.');
+        } });
+      return;
+    }
+    if (t.closest('#kg-fix')) { const f = $('#kg-form'); f.hidden = !f.hidden; if (!f.hidden) $('#kg-v').focus(); return; }
+    if (t.closest('#kg-save')) {
+      const kv = Number(String($('#kg-v').value).replace(',', '.')), kh = Number(String($('#kg-h').value).replace(',', '.'));
+      if (![kv, kh].every((k) => Number.isFinite(k) && k >= 15 && k <= 35)) { $('#kg-err').hidden = false; return; }
+      ctx.update((s) => setEquippedKg(s, [kv, kh]));
+      ctx.toast('Tensione corretta.');
+    }
   });
   ctx.onEquip = (preset) => {
-    openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', withChange: true,
-      onOk: ({ id, kg, reason, verdict, fromStock }) => {
+    openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', mode: 'change',
+      onOk: ({ id, kg, reason, verdict, fromStock, date }) => {
         const before = ctx.state(), old = ctx.equippedRec(), ep = ctx.epoch();
         ctx.update((s) => {
           let n = verdict ? updateDiary(s, 'current', (d) => setVerdict(d, verdict)) : s;
           n = applyVerdict(n, s.equipped.id, verdict);
-          return changeString(n, { id, kg, date: new Date().toISOString(), endReason: reason, fromStock });
+          return changeString(n, { id, kg, date, endReason: reason, fromStock });
         });
         const vtxt = verdict === 'si' ? ` La ${old.model} va tra le preferite.` : verdict === 'no' ? ` La ${old.model} va tra quelle che non ti piacciono.` : '';
         // il cambio corda tocca molte cose: si annulla solo se nel frattempo non è arrivato nulla dal server
@@ -1377,12 +1434,15 @@ function initToday(ctx) {
 
 
 
+
 const SRC_ROWS = [
   ['TWU (in gioco, 51 lb)', ['twu.stiffness', 'twu.loss', 'twu.spin']],
   ['Racketpedia (a riposo)', ['rp.kgmm']],
   ['Il tuo test Excel', ['excel.stretch50']],
 ];
 const CLASS_OK = { indipendente: 'ok', 'indipendente con riserva': 'ok' };
+const EST_KIND = { parente: 'dallo stesso modello in un altro calibro', 'da Racketpedia': 'convertita dalla misura Racketpedia', modello: 'da un modello statistico', calibro: 'dal solo calibro', tester: 'dai punteggi dei tester', qualitativo: 'dai giudizi dei tester' };
+const estKind = (k) => EST_KIND[k] || 'stima';
 const yearTxt = (r) => { const p = r.production || {}; if (!p.year) return 'anno non verificato'; return p.year_confidence === 'exact' ? `uscita nel ${p.year}` : `in vendita almeno dal ${p.year} (anno non verificato)`; };
 
 function measuresHtml(r) {
@@ -1392,9 +1452,9 @@ function measuresHtml(r) {
 function estimatesHtml(r) {
   const out = [];
   const st = r.stiffness;
-  if (st && st.value_lbin != null && st.kind !== 'misurata') out.push(`rigidità ≈ ${NF(0).format(st.value_lbin)} lb/in (${esc(st.kind)}${st.low != null ? `, tra ${NF(0).format(st.low)} e ${NF(0).format(st.high)}` : ''})`);
+  if (st && st.value_lbin != null && st.kind !== 'misurata') out.push(`rigidità ≈ ${NF(0).format(st.value_lbin)} lb/in (${esc(estKind(st.kind))}${st.low != null ? `, tra ${NF(0).format(st.low)} e ${NF(0).format(st.high)}` : ''})`);
   const sp = r.spin;
-  if (sp && sp.value != null && sp.kind !== 'misurato') out.push(`spin ≈ ${NF(1).format(sp.value)} (${esc(sp.kind)}${sp.low != null ? `, tra ${NF(1).format(sp.low)} e ${NF(1).format(sp.high)}` : ''})`);
+  if (sp && sp.value != null && sp.kind !== 'misurato') out.push(`spin ≈ ${NF(1).format(sp.value)} (${esc(estKind(sp.kind))}${sp.low != null ? `, tra ${NF(1).format(sp.low)} e ${NF(1).format(sp.high)}` : ''})`);
   if (!out.length) return '';
   return `<details class="more est"><summary>${tip('stima', 'Stime')} (non usate nei confronti né nei consigli)</summary><p class="small">${out.join('; ')}.</p></details>`;
 }
@@ -1423,23 +1483,72 @@ function reviewsHtml(r) {
   const rs = r.indep_reviews || [];
   const old = ((r.reviews || {}).sources || []).filter((s) => s.url);
   if (!rs.length && !old.length) return '';
-  const li = rs.map((v) => `<li><span class="tag ${CLASS_OK[v.class] || ''}">${esc(v.class)}</span> <a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.channel)}${v.kind === 'articolo' ? ' (articolo)' : ''}</a>${v.date ? ` <span class="muted small">${esc(v.date)}</span>` : ''}${v.phrase ? `<br><span class="small">«${esc(v.phrase)}»</span>` : '<br><span class="small muted">da guardare: frase non ancora verificata</span>'}</li>`).join('');
-  const oli = old.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.site || s.url)}</a></li>`).join('');
+  const li = rs.map((v) => `<li><span class="tag ${CLASS_OK[v.class] || ''}">${esc(v.class)}</span> <a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(v.channel)}${v.kind === 'articolo' ? ' (articolo)' : ''}</a>${v.date ? ` <span class="muted small">${esc(itMonth(v.date))}</span>` : ''}${v.phrase ? `<br><span class="small">«${esc(v.phrase)}»</span>` : '<br><span class="small muted">da guardare: frase non ancora verificata</span>'}</li>`).join('');
+  const oli = old.map((s) => `<li><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.site || s.url)}</a></li>`).join('');
   return `<section class="block"><h3>${tip('indipendente', 'Recensioni')}</h3>${li ? `<ul class="reviews">${li}</ul>` : ''}
     ${oli ? `<details class="more"><summary>Altre recensioni (negozi e siti, non verificate)</summary><ul class="reviews">${oli}</ul></details>` : ''}
     <p class="small muted">Le recensioni sono opinioni: non entrano mai nei confronti né nei consigli.</p></section>`;
 }
 
+const MONTHS = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'];
+const itMonth = (d) => { const m = /^(≈)?(\d{4})-(\d{2})/.exec(String(d || '')); return m ? `${m[1] ? 'circa ' : ''}${MONTHS[Number(m[3]) - 1]} ${m[2]}` : String(d || ''); };
+const VERDICT = { si: 'la ricompreresti', no: 'non la ricompreresti', forse: 'forse la ricompreresti' };
+const tagWord = (t) => String(t).replace(/-/g, ' ');
+
+// Il diario salvato (v5): si legge tutto, non si compila più.
+function diaryHtml(d) {
+  if (!d) return '';
+  const parts = [];
+  if (d.verdict) parts.push(`<p>Verdetto: <b>${esc(VERDICT[d.verdict] || d.verdict)}</b></p>`);
+  if (d.notes) parts.push(`<p>«${esc(d.notes)}»</p>`);
+  if (d.tags && d.tags.length) parts.push(`<p>Parole: ${esc(d.tags.map(tagWord).join(', '))}</p>`);
+  const rows = MOMENTS.filter((m) => d.ratings && d.ratings[m.key] && Object.keys(d.ratings[m.key]).length)
+    .map((m) => `<li><b>${esc(m.label)}</b>: ${CATS.filter((c) => d.ratings[m.key][c.key]).map((c) => `${esc(c.label)} ${d.ratings[m.key][c.key]}/5`).join(', ')}</li>`).join('');
+  if (rows) parts.push(`<ul class="diary-votes">${rows}</ul>`);
+  const su = d.setup || {};
+  const setup = [su.strungOn ? `incordata il ${itDate(su.strungOn)}` : '', su.surface ? `campo: ${su.surface}` : '', su.stringer ? `incordatore: ${su.stringer}` : '', su.prestretch ? `prestretch: ${su.prestretch}` : ''].filter(Boolean);
+  if (setup.length) parts.push(`<p class="small">${esc(setup.join(' · '))}</p>`);
+  if (d.meter && d.meter.length) parts.push(`<p class="small">Tensiometro: ${d.meter.map((m) => `${esc(fmtN(m.value, 1))} dopo ${esc(fmtN(m.hours, 1))} h`).join(', ')}</p>`);
+  return parts.length ? `<details class="more"><summary>Il tuo diario</summary>${parts.join('')}<p class="small muted">Le tue opinioni: non cambiano misure, confronti o consigli.</p></details>` : '';
+}
+
 function trialsHtml(r, st) {
   const lives = st.lives.filter((l) => l.id === r.id);
-  const cur = st.equipped.id === r.id ? st.sessions.filter((s) => s.life === st.equipped.since) : [];
+  const isEq = st.equipped.id === r.id;
+  const cur = isEq ? st.sessions.filter((s) => s.life === st.equipped.since) : [];
   const feels = cur.filter((s) => s.feel).map((s) => s.feel);
-  if (!lives.length && !cur.length) return '';
-  const v = { si: 'la ricompreresti', no: 'non la ricompreresti', forse: 'forse la ricompreresti' };
-  return `<section class="block"><h3>Le tue prove</h3><ul class="sessions">
-    ${cur.length ? `<li>Montata ora: ${cur.length} uscite${feels.length ? `, voto medio ${fmtN(feels.reduce((a, b) => a + b, 0) / feels.length, 1)}/5` : ''}</li>` : ''}
-    ${lives.map((l) => `<li>${esc(itDate(l.from))} → ${esc(itDate(l.to))}: ${fmtN(l.hours, 1)} h, ${esc(l.reason)}${l.diary && l.diary.verdict ? `, ${v[l.diary.verdict]}` : ''}${l.diary && l.diary.tags && l.diary.tags.length ? ` · ${esc(l.diary.tags.join(', '))}` : ''}</li>`).join('')}
+  if (!lives.length && !isEq) return '';
+  return `<section class="block"><h3>Le tue prove</h3><ul class="trials">
+    ${isEq ? `<li><p>Montata ora: ${cur.length} ${cur.length === 1 ? 'uscita' : 'uscite'}${feels.length ? `, voto medio ${fmtN(feels.reduce((a, b) => a + b, 0) / feels.length, 1)}/5` : ''}</p>${diaryHtml(st.equipped.diary)}</li>` : ''}
+    ${lives.map((l) => `<li><p>${esc(itDate(l.from))} → ${esc(itDate(l.to))}: ${fmtN(l.hours, 1)} h, ${esc(l.reason)}${l.diary && l.diary.verdict ? `, ${VERDICT[l.diary.verdict]}` : ''}</p>${diaryHtml(l.diary)}</li>`).join('')}
   </ul></section>`;
+}
+
+const NOTE_TITLES = { feel: 'Sensazione', on_blade_100_v9: 'Sulla Blade 100', for_your_style: 'Per il tuo gioco', vs_favorites: 'Rispetto alle preferite' };
+function notesHtml(r) {
+  const n = r.notes || {};
+  const items = Object.keys(NOTE_TITLES).filter((k) => n[k]).map((k) => `<p><b>${NOTE_TITLES[k]}.</b> ${esc(n[k])}</p>`).join('');
+  return items ? `<details class="more"><summary>Note da incordatore (opinioni e regole pratiche, non misure)</summary>${items}</details>` : '';
+}
+const COMM_LABEL = { control: 'Controllo', power: 'Potenza', spin: 'Spin', comfort: 'Comfort', durability: 'Durata' };
+function communityHtml(r) {
+  const c = r.community || {};
+  const items = Object.keys(COMM_LABEL).filter((k) => c[k] && c[k].evidence && c[k].evidence.length).map((k) => `<li><b>${COMM_LABEL[k]}</b>: ${esc(c[k].word || '')} (${c[k].n} ${c[k].n === 1 ? 'parere' : 'pareri'})
+    <ul>${c[k].evidence.slice(0, 3).map((e) => `<li class="small"><q class="quote" lang="en">${esc(e.quote)}</q> — <a href="${esc(safeUrl(e.url))}" target="_blank" rel="noopener">${esc(e.site)}</a></li>`).join('')}</ul></li>`).join('');
+  return items ? `<details class="more"><summary>${tip('controllo', 'Pareri dei forum')} (opinioni, mai nei calcoli)</summary><ul class="reviews">${items}</ul></details>` : '';
+}
+function twinExcel(r, ALL) {
+  const e = r.lab && r.lab.excel;
+  if (!e) return '';
+  const same = ALL.filter((x) => x.id !== r.id && x.lab && x.lab.excel && x.lab.excel.stretch50 === e.stretch50 && x.lab.excel.recover50 === e.recover50 && x.lab.excel.creep24 === e.creep24);
+  return same.length ? `<p class="small callout warn">I valori del tuo Excel sono identici a quelli della ${esc(same.map((x) => fullName(x)).join(', '))}: forse una riga copiata nel file.</p>` : '';
+}
+function tensionHtml(r, ref, st, meta, rows) {
+  const t = rows.find((x) => x.key === 'twu.stiffness');
+  const kg = st.equipped.kg;
+  const base = `${NF(1).format(kg[0])}/${NF(1).format(kg[1])} kg`;
+  if (t && t.level === 'nettamente' && t.dir === 'più') return `<p class="small">${tip('tensione', 'Tensione')}: parti dalla tua (${base}). Ipotesi: essendo nettamente più rigida in TWU, prova ${NF(1).format(kg[0] - 0.5)}/${NF(1).format(kg[1] - 0.5)} kg.</p>`;
+  return `<p class="small">${tip('tensione', 'Tensione')}: parti dalla tua (${base}).</p>`;
 }
 
 function sheetHtml(r, ctx) {
@@ -1453,10 +1562,11 @@ function sheetHtml(r, ctx) {
   return `<h2 id="sheet-title">${esc(fullName(r))}</h2>
     <p class="muted">${specLine(r)} · ${esc(yearTxt(r))}</p>
     ${isEq ? '<p class="tag ok">montata ora</p>' : ''}${liked ? '<p class="tag ok">★ ti piace</p>' : ''}${disliked ? '<p class="tag warn">non ti piace</p>' : ''}${inStock.length ? `<p class="tag ok">in casa: ${inStock.map((x) => `${x.n} ${esc(x.size)}`).join(', ')}</p>` : ''}
-    ${isEq ? '' : `<section class="block"><h3>Rispetto alla tua (${esc(ref.model)})</h3>${compareHtml(r, ref, meta)}${lkTxt ? `<p class="small">${lkTxt}</p>` : ''}${warn}</section>`}
-    <section class="block"><h3>Misure</h3>${measuresHtml(r)}${estimatesHtml(r)}</section>
+    ${isEq ? '' : `<section class="block"><h3>Rispetto alla tua (${esc(ref.model)})</h3>${compareHtml(r, ref, meta)}${tensionHtml(r, ref, st, meta, compareTo(r, ref, meta))}${lkTxt ? `<p class="small">${lkTxt}</p>` : ''}${warn}</section>`}
+    <section class="block"><h3>Misure</h3>${measuresHtml(r)}${twinExcel(r, ctx.ALL)}${estimatesHtml(r)}</section>
     ${trialsHtml(r, st)}
     ${reviewsHtml(r)}
+    ${notesHtml(r) || communityHtml(r) ? `<section class="block">${notesHtml(r)}${communityHtml(r)}</section>` : ''}
     ${ctx.askBox ? ctx.askBox(r.id) : ''}
     <div class="sheet-actions">
       ${isEq ? '' : `<button type="button" class="btn primary" data-equip="${esc(r.id)}">Monta questa</button>`}
@@ -1476,12 +1586,12 @@ const goalOf = (st) => st.nextGoal || 'same';
 
 function card(c, ctx, inStockInfo, goal) {
   const r = c.rec;
-  const common = [...new Set(c.rows.map((x) => x.source))].join(', ');
+  const common = [...new Set(c.rows.filter((x) => x.decides).map((x) => x.source))].join(', ');
   const why = c.rows.filter((x) => x.decides && x.dir).slice(0, 2).map((x) => `<li>${esc(x.why)}</li>`).join('');
   const rank = c.rank ? `<p class="small">${c.rank.pos}ª su ${c.rank.n} corde misurate da TWU (${esc(fmtRank(c, goal))}).</p>` : '';
   const lk = c.likeness && c.likeness.id ? `<p class="small muted">Simile alla ${esc(ctx.BY_ID[c.likeness.id].model)} (ti piace) in ${misure(c.likeness.similar)} su ${c.likeness.total}.</p>` : '';
   const warn = c.likeness && c.likeness.warn ? `<p class="small warn-t">Somiglia alla ${esc(ctx.BY_ID[c.likeness.warn].model)}, che non ti piace.</p>` : '';
-  const stockTag = inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '';
+  const stockTag = (inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '') + (c.equipped ? ' <span class="tag">è la tua montata</span>' : '') + (c.disliked ? ' <span class="tag warn">non ti piace</span>' : '');
   const off = c.inStock && !c.compatible ? '<p class="small muted">Non va nella direzione che hai chiesto.</p>' : '';
   return `<article class="cand ${c.compatible ? '' : 'dim'}">
     <h3>${nameBtn(r)} ${stockTag}</h3>
@@ -1499,6 +1609,17 @@ function fmtRank(c, goal) {
   return goal === 'holds' ? `perde il ${v}%` : `spin potenziale ${v}`;
 }
 
+// Perché la lista è vuota, in parole: per «più morbida» con la Slap la risposta è che è già tra le più morbide.
+function emptyWhy(ctx, goal, ref) {
+  const g = GOALS.find((x) => x.key === goal);
+  if ((goal === 'softer' || goal === 'stiffer') && ref.lab && ref.lab.rp) {
+    const v = ref.lab.rp.kgmm, rp = ctx.ALL.filter((r) => r.lab && r.lab.rp);
+    const n = rp.filter((r) => (goal === 'softer' ? r.lab.rp.kgmm < v : r.lab.rp.kgmm > v)).length;
+    if (n < 5) return `La ${ref.model} è già tra le più ${goal === 'softer' ? 'morbide' : 'rigide'} a riposo: solo ${n} su ${rp.length} lo sono di più, e nessuna oltre la soglia.`;
+  }
+  return `Nessuna corda misurata è ${g.ask} oltre la soglia.`;
+}
+
 function renderNext(ctx) {
   const st = ctx.state(), goal = goalOf(st), ref = ctx.equippedRec();
   const res = candidates(st, ctx.ALL, goal, ctx.META);
@@ -1509,7 +1630,7 @@ function renderNext(ctx) {
     ${res.note ? `<p class="callout small">${esc(res.note)}</p>` : ''}`;
   const stockHtml = res.inStock.length ? `<div class="section-head"><h2>${tip('scorta', 'Ce l\'hai in casa')}</h2></div>${res.inStock.map((c) => card(c, ctx, stockOf(c.rec.id), goal)).join('')}` : '';
   const buyHtml = `<div class="section-head"><h2>Da comprare</h2><span class="muted small">${esc(g.ask)}, solo con misure</span></div>
-    ${res.toBuy.length ? res.toBuy.map((c) => card(c, ctx, '', goal)).join('') : `<p class="muted">Nessuna corda misurata è ${esc(g.ask)} oltre la soglia. Prova un'altra domanda o cerca una corda qui sotto.</p>`}`;
+    ${res.toBuy.length ? res.toBuy.map((c) => card(c, ctx, '', goal)).join('') : `<p class="muted">${esc(emptyWhy(ctx, goal, ref))} Prova un'altra domanda o cerca una corda qui sotto.</p>`}`;
   $('#next-list').innerHTML = (res.inStock.some((c) => c.compatible) ? stockHtml + buyHtml : buyHtml + stockHtml);
 }
 
@@ -1536,12 +1657,13 @@ function initNext(ctx) {
 
 
 const HY_KEY = 'banco-corde:ibrido';
-const HY_KG = Array.from({ length: 17 }, (_, i) => 20 + i * 0.5);
+const HY_KG = Array.from({ length: 25 }, (_, i) => 18 + i * 0.5);
+const hyOkKg = (k) => typeof k === 'number' && HY_KG.includes(k);
 // Idee da provare: giudizio del progetto (fiducia dichiarata), non calcoli. Recuperate dalla scheda online del 17/11/2026.
 const HY_IDEAS = [
   { k: 'A', v: 'toroline-o-toro-tour-17', o: 'toroline-o-toro-17', kv: 23, ko: 22, conf: 'alta', why: 'Verticale più rigida (TWU: 217 contro 166 lb/in) e che perde meno tensione (25% contro 44%); O-Toro in orizzontale.' },
   { k: 'B', v: 'toroline-o-toro-tour-17', o: 'toroline-o-toro-snap-16l', kv: 23, ko: 22, conf: 'media', why: 'Come A con un\'orizzontale tonda (il set «Dreddy» di Toroline). Il dato TWU della Snap è in dubbio: va provato.' },
-  { k: 'C', v: 'solinco-confidential-16l', o: 'toroline-o-toro-17', kv: 23, ko: 22, conf: 'media', why: 'In verticale la corda con la perdita di tensione misurata più bassa del gruppo (22%, sul calibro 1,30); O-Toro in orizzontale.' },
+  { k: 'C', v: 'solinco-confidential-16l', o: 'toroline-o-toro-17', kv: 23, ko: 22, conf: 'bassa', why: 'Confidential 1,25 in verticale, O-Toro in orizzontale. La 1,25 non è misurata da TWU: che tenga bene la tensione lo si sa solo dal calibro 1,30 (stima, non usata nei calcoli).' },
   { k: 'F', v: 'toroline-caviar-17l', o: 'toroline-o-toro-snap-16l', kv: 23, ko: 22, conf: 'media', why: 'Caviar 1,24 è tra le Toroline più rigide a riposo (Racketpedia 1,00 kg/mm).' },
   { k: 'G', v: 'toroline-o-toro-tour-17', o: 'toroline-o-toro-17', kv: 22.5, ko: 21.5, conf: 'bassa', why: 'Come A ma senza alzare i kg: cambia una cosa sola (la corda verticale).' },
 ];
@@ -1550,7 +1672,11 @@ const hyMean = (a, b) => (16 * a + 19 * b) / 35;
 function hyLoad(ctx) {
   const eq = ctx.state().equipped;
   let s = { v: eq.id, o: eq.id, kv: eq.kg[0], ko: eq.kg[1] };
-  try { const x = JSON.parse(localStorage.getItem(HY_KEY) || 'null'); if (x && ctx.BY_ID[x.v] && ctx.BY_ID[x.o]) s = { ...s, ...x }; } catch { /* nessun archivio */ }
+  try {
+    const x = JSON.parse(localStorage.getItem(HY_KEY) || 'null');
+    if (x && ctx.BY_ID[x.v] && ctx.BY_ID[x.o]) s = { ...s, v: x.v, o: x.o, ...(hyOkKg(x.kv) ? { kv: x.kv } : {}), ...(hyOkKg(x.ko) ? { ko: x.ko } : {}) };
+  } catch { /* nessun archivio */ }
+  if (!hyOkKg(s.kv)) s.kv = 22; if (!hyOkKg(s.ko)) s.ko = 21;
   return s;
 }
 const hySave = (s) => { try { localStorage.setItem(HY_KEY, JSON.stringify({ v: s.v, o: s.o, kv: s.kv, ko: s.ko })); } catch { /* nessun archivio */ } };
@@ -1596,13 +1722,13 @@ function renderHybrid(ctx) {
   const table = rows.length ? `<ul class="cmp-rows">${rows.map((r) => `<li><p class="cmp-q">${tip(r.key, esc(CMP_KEYS[r.key].label))} <span class="muted small">· ${esc(CMP_KEYS[r.key].source)}</span></p>
     <p class="cmp-v">V ${esc(fmtV(r.key, r.v))} · O ${esc(fmtV(r.key, r.o))} → ${tip('letto', 'letto')} <b class="num">${esc(fmtV(r.key, r.bed))}</b></p>
     <p class="small">${esc(r.cmp)}${typeof r.b === 'number' ? ` (${esc(ref.model)}: ${esc(fmtV(r.key, r.b))})` : ''}</p></li>`).join('')}</ul>` : '<p class="muted">Nessuna misura per queste due corde.</p>';
-  const kgNote = `Tensione media del letto ${NF(1).format(hyMean(s.kv, s.ko))} kg contro ${NF(1).format(hyMean(...ctx.state().equipped.kg))} kg della montata. Un kg in più o in meno pesa poco: la maggior parte dei giocatori non sente 2–3 kg (Bower e Cross 2008).`;
+  const kgNote = `Tensione media del letto ${NF(1).format(hyMean(s.kv, s.ko))} kg contro ${NF(1).format(hyMean(...ctx.state().equipped.kg))} kg della montata.`;
   box.innerHTML = `<div class="hy-form">
       <label>Verticali (16) <select id="hy-v">${hyOptions(ctx, s.v)}</select></label><label>kg ${kgSel('hy-kv', s.kv)}</label>
       <label>Orizzontali (19) <select id="hy-o">${hyOptions(ctx, s.o)}</select></label><label>kg ${kgSel('hy-ko', s.ko)}</label>
     </div>
     ${table}
-    <p class="small">${esc(kgNote)}</p>
+    <p class="small">${esc(kgNote)} ${tip('tensione', 'Quanto conta un kg?')}</p>
     <details class="more"><summary>Idee da provare (non calcolate)</summary>
       <p class="small muted">Idee del progetto, con la fiducia che gli diamo noi: non sono consigli calcolati.</p>
       <ul class="ideas">${HY_IDEAS.filter((x) => ctx.BY_ID[x.v] && ctx.BY_ID[x.o]).map((x) => `<li><b>${esc(x.k)}</b> · ${esc(ctx.BY_ID[x.v].model)} in verticale, ${esc(ctx.BY_ID[x.o].model)} in orizzontale, ${NF(1).format(x.kv)}/${NF(1).format(x.ko)} kg <span class="tag">fiducia ${esc(x.conf)}</span><br><span class="small">${esc(x.why)}</span>${/lb\/in/.test(x.why) ? ` ${infoTip('twu.stiffness', 'Cos\'è la rigidità in gioco')}` : ''}${/kg\/mm/.test(x.why) ? ` ${infoTip('rp.kgmm', 'Cos\'è la rigidità a riposo')}` : ''}<br><button type="button" class="btn" data-hy-load="${esc(x.k)}">Prova questa</button></li>`).join('')}</ul>
@@ -1636,6 +1762,7 @@ function initHybrid(ctx) {
 
 
 
+
 const SCI_LV = { D: ['Dimostrata', 'ok'], P: ['Plausibile, non misurata', 'est'], I: ['Ipotesi', 'warn'] };
 const SCI_URL = {
   stiff: 'https://twu.tennis-warehouse.com/learning_center/stringstiffness.php',
@@ -1658,9 +1785,9 @@ const CARDS = [
   { t: 'Perdita di tensione', lv: 'D', claim: 'Le corde perdono tensione subito dopo l\'incordatura e nei primi colpi; il poliestere più del nylon.', data: 'TWU: fino a 15 lb nel primo minuto di colpi; il caldo dopo l\'incordatura aggiunge dal 30 al 76% di perdita, che non si recupera.', you: 'Tra due corde simili in rigidità, quella con la perdita TWU più bassa cambia meno nel tempo. Niente racchetta in auto al sole.', src: [['dead', 'TWU, corde «morte»'], ['heat', 'TWU, temperatura']] },
   { t: 'Come nasce lo spin', lv: 'D', claim: 'Più le verticali scivolano sulla palla e tornano al loro posto, più spin: conta l\'attrito corda-palla alto e corda-corda basso.', data: 'Kawazoe 2012: corde intaccate −40% di spin, lubrificate +30%. TWU: tra le poly le differenze di spin misurate sono piccole (poly circa +4–5% sul nylon in un 16×19).', you: 'Lo spin viene soprattutto dal tuo colpo. Lo «spin potenziale» TWU dice solo quanto la corda aiuta.', src: [['fric', 'TWU, attrito'], ['kaw', 'Kawazoe 2012 (accesso libero)'], ['patt', 'TWU, piatto e spin']] },
   { t: 'Forma della corda', lv: 'P', claim: 'Gli spigoli aumentano l\'attrito sulla palla, ma anche tra le corde.', data: 'TWU non ha trovato un legame prevedibile tra superficie e attrito; i migliori in ogni categoria sono però sagomati o rivestiti.', you: 'Non scegliere dal numero di lati: guarda le misure.', src: [['fric', 'TWU, attrito']] },
-  { t: 'Calibro', lv: 'D', claim: 'Più spessa = più rigida e più durevole, meno morso.', data: 'TWU: Barb Wire 186 lb/in a 1,20 mm e 214 lb/in a 1,30 mm, circa +15% per 0,1 mm. Cambiare corda sposta di più (O-Toro Tour +31% rispetto a O-Toro a parità di calibro).', you: 'Da 1,23 a 1,25 cambia poco: è una regolazione fine, da fare per ultima.', src: [['db', 'TWU, database']] },
+  { t: 'Calibro', lv: 'D', claim: 'In media più spessa = più rigida e più durevole, meno morso.', data: 'Nei dati TWU la rigidità cresce in media di circa 200 lb/in per mm (+4% ogni 0,02 mm), ma con eccezioni: la Barb Wire 1,25 (183 lb/in) è più morbida della 1,20 (186). Cambiare corda sposta di più (O-Toro Tour +31% rispetto a O-Toro a parità di calibro).', you: 'Da 1,23 a 1,25 cambia poco: è una regolazione fine, da fare per ultima.', src: [['db', 'TWU, database']] },
   { t: 'Materiale e mescola', lv: 'P', claim: 'Poli e co-poli cambiano rigidità, elasticità e tenuta; le corde «soft» spesso guadagnano comfort e perdono tenuta.', data: 'Nessuna misura per mescola: il nome non basta, contano gli effetti misurati.', you: 'Giudica dalla rigidità e dalla perdita di tensione, non dal nome.', src: [['types', 'Ashaway, tipi di corda']] },
-  { t: 'Tensione', lv: 'D', claim: 'Più tensione: palla un po\' più lenta e più bassa; meno tensione: più veloce.', data: 'Bower e Cross: +2,7% di velocità passando da circa 28 a 18 kg. Solo l\'11% dei giocatori esperti sente 6 lb (circa 2,7 kg) di differenza.', you: 'Cambiare corda pesa più che cambiare di 1 kg. La regola «se è nettamente più rigida scendi di 0,5 kg» è un\'ipotesi del progetto.', src: [['bc08', 'Bower e Cross 2008'], ['bed', 'TWU, energia del letto']] },
+  { t: 'Tensione', lv: 'P', claim: 'Più tensione: palla un po\' più lenta e più bassa; meno tensione: più veloce.', data: 'Bower e Cross riportano circa +2,7% di velocità passando da 28 a 18 kg, e che pochi giocatori esperti sentono 6 lb (circa 2,7 kg) di differenza. Numeri citati da sintesi: non li abbiamo ancora riletti sul testo completo.', you: 'Cambiare corda pesa più che cambiare di 1 kg. La regola «se è nettamente più rigida scendi di 0,5 kg» è un\'ipotesi del progetto.', src: [['bc08', 'Bower e Cross 2008'], ['bed', 'TWU, energia del letto']] },
   { t: 'Ibridi', lv: 'I', claim: 'In un ibrido la verticale dà il carattere (rigidità, morso), l\'orizzontale lo scorrimento.', data: 'Non abbiamo trovato una fonte di laboratorio gratuita sugli ibridi. Il «letto» (media 16/19) è una semplificazione; TWU dice che letti con la stessa rigidità complessiva giocano in modo simile.', you: 'Usa gli ibridi come prova: cambia una cosa sola alla volta.', src: [['stiff', 'TWU, rigidità delle corde']] },
   { t: 'Il ping come termometro', lv: 'D', claim: 'La frequenza del suono delle corde va con la radice quadrata della tensione.', data: 'Cross: −10% di tensione ≈ −5% di frequenza.', you: 'Con un\'app che misura il ping vedi quando la tua corda ha perso tensione.', src: [['ping', 'Cross, tensione delle corde']] },
   { t: 'Le fonti tra loro', lv: 'D', claim: 'TWU (in gioco) e Racketpedia (a riposo) vanno d\'accordo sulla rigidità; il tuo test Excel no.', data: 'Concordanza di rango sulle corde in comune: TWU–Racketpedia +0,65 (26 corde); Excel con le altre due quasi nulla. Per questo non mescoliamo mai le fonti.', you: 'Quando due fonti dicono cose opposte sulla stessa corda, l\'app lo scrive e non conclude.', src: [] },
@@ -1669,8 +1796,9 @@ const CARDS = [
 function cardsHtml(ctx) {
   const ref = ctx.equippedRec();
   const rp = ctx.ALL.filter((r) => r.lab && r.lab.rp).sort((x, y) => x.lab.rp.kgmm - y.lab.rp.kgmm);
-  const pos = rp.findIndex((r) => r.id === ref.id);
-  const mine = pos >= 0 ? `<p class="small callout">La tua ${esc(ref.model)}: ${pos + 1}ª più morbida a riposo su ${rp.length} corde misurate da Racketpedia (${esc(fmtV('rp.kgmm', ref.lab.rp.kgmm))}).${ref.lab.twu ? '' : ' Non è misurata da TWU.'}</p>` : '';
+  const has = rp.some((r) => r.id === ref.id);
+  const softer = has ? rp.filter((r) => r.lab.rp.kgmm < ref.lab.rp.kgmm).length : 0;
+  const mine = has ? `<p class="small callout">La tua ${esc(ref.model)} (${esc(fmtV('rp.kgmm', ref.lab.rp.kgmm))}): solo ${softer} su ${rp.length} corde misurate da Racketpedia sono più morbide a riposo.${ref.lab.twu ? '' : ' Non è misurata da TWU.'}</p>` : '';
   return mine + CARDS.map((c) => `<details class="sci"><summary><span class="tag ${SCI_LV[c.lv][1]}">${SCI_LV[c.lv][0]}</span> <b>${esc(c.t)}</b></summary>
     <p>${esc(c.claim)}</p><p class="small"><b>Il dato.</b> ${esc(c.data)}</p><p class="small"><b>Per te.</b> ${esc(c.you)}</p>
     ${c.src.length ? `<p class="small muted">Fonti: ${c.src.map(([k, t]) => sciLink(k, t)).join(', ')}</p>` : ''}</details>`).join('');
@@ -1712,7 +1840,7 @@ function sciReviewsHtml(ctx) {
   rows.sort((x, y) => first.has(y.id) - first.has(x.id) || fullName(x).localeCompare(fullName(y)));
   const indep = rows.reduce((n, r) => n + r.indep_reviews.filter((v) => v.class.startsWith('indipendente')).length, 0);
   return `<p class="small">Classificazione dei canali fatta il 18/11/2026 sulle ultime 15 descrizioni di ciascun canale. ${indep} recensioni da canali indipendenti. Nessun video è stato ancora guardato per intero: le frasi chiave mancano finché non lo sono.</p>
-    <ul class="reviews">${rows.map((r) => `<li><button type="button" class="linkish" data-open="${esc(r.id)}">${esc(fullName(r))}</button>: ${r.indep_reviews.map((v) => `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.channel)}</a> <span class="tag ${v.class.startsWith('indipendente') ? 'ok' : ''}">${esc(v.class)}</span>`).join(' · ')}</li>`).join('')}</ul>`;
+    <ul class="reviews">${rows.map((r) => `<li><button type="button" class="linkish" data-open="${esc(r.id)}">${esc(fullName(r))}</button>: ${r.indep_reviews.map((v) => `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(v.channel)}</a>${v.date ? ` <span class="small muted">${esc(itMonth(v.date))}</span>` : ''} <span class="tag ${v.class.startsWith('indipendente') ? 'ok' : ''}">${esc(v.class)}</span>`).join(' · ')}</li>`).join('')}</ul>`;
 }
 
 function sourcesHtml(ctx) {
@@ -1860,7 +1988,7 @@ function renderSyncBadge() {
 }
 function renderAll() {
   if (current === 'oggi') renderToday(ctx);
-  if (current === 'prossima') { renderNext(ctx); renderHybrid(ctx); const a = $('#ask-main'); if (a) a.innerHTML = askBoxHtml(''); }
+  if (current === 'prossima') { renderNext(ctx); renderHybrid(ctx); renderAskMain(); }
   if (current === 'scienza') renderScience(ctx);
 }
 function update(fn) {
@@ -1932,17 +2060,21 @@ function goto(id) {
     window.scrollTo(0, 0);
   });
 }
+// La casella AI non si ridisegna: un ridisegno (☆, un dato da un altro dispositivo) cancellerebbe domanda e risposta in arrivo.
+function renderAskMain() { const a = $('#ask-main'); if (a && !a.querySelector('[data-ask]')) a.innerHTML = askBoxHtml(''); }
 function openSheet(id) {
   const r = BY_ID[id]; if (!r) return;
+  const keep = sheetId === id ? $('#sheet-body [data-ask]') : null;
   sheetId = id;
   $('#sheet-body').innerHTML = sheetHtml(r, ctx);
+  if (keep) { const fresh = $('#sheet-body [data-ask]'); if (fresh) fresh.replaceWith(keep); }
   if (!sheet.open) { sheet.showModal(); sheet.scrollTop = 0; $('#sheet-close').focus(); }
 }
 function openCompare(id) {
   const r = BY_ID[id], ref = BY_ID[state.equipped.id]; if (!r || !ref) return;
   cmpId = id;
   $('#cmp-title').textContent = `${r.model} contro la tua ${ref.model}`;
-  $('#cmp-body').innerHTML = `<p class="muted small">${fullName(ref)} (montata) → ${fullName(r)}</p>${compareHtml(r, ref, META)}`;
+  $('#cmp-body').innerHTML = `<p class="muted small">${esc(fullName(ref))} (montata) → ${esc(fullName(r))}</p>${compareHtml(r, ref, META)}`;
   $('#cmp-open').dataset.open = id;
   if (!cmpDlg.open) { cmpDlg.showModal(); $('#cmp-close').focus(); }
 }

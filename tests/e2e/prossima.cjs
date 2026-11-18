@@ -93,3 +93,13 @@ test('Prossima: con il parere AI disponibile c\'è una casella; la risposta è m
   assert.match(await page.evaluate(() => window.__prompt), /cosa provo dopo\?/);
   await ctx.close();
 });
+
+test('Prossima: la domanda scritta all\'AI resta anche se cambi domanda o tocchi ☆', async () => {
+  const sample = `, sample: Object.assign(async () => ({ text: 'ok' }), { json: async () => ({}) })`;
+  const { page, ctx } = await openPage({ hash: '#prossima', claude: FAKE_CLAUDE(sample) });
+  await page.waitForSelector('#ask-main textarea');
+  await page.locator('#ask-main textarea').fill('la Slap è spenta?');
+  await page.locator('[data-goal="spin"]').click();
+  assert.equal(await page.locator('#ask-main textarea').inputValue(), 'la Slap è spenta?');
+  await ctx.close();
+});

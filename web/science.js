@@ -1,8 +1,9 @@
 // Schermata «Scienza»: cosa conta in una corda (con fonti e livello di prova), righelli delle misure, recensioni, fonti e date.
-import { $, esc, fullName } from './format.js';
+import { $, esc, fullName, safeUrl } from './format.js';
 import { CMP_KEYS } from './cmp.js';
 import { scaleOf, layoutLabels, nearest } from './rulers.js';
 import { tip, fmtV, itDate } from './ui.js';
+import { itMonth } from './sheet.js';
 import { trialsOf } from './state.js';
 import { diaryCsv } from './diary.js';
 
@@ -28,9 +29,9 @@ const CARDS = [
   { t: 'Perdita di tensione', lv: 'D', claim: 'Le corde perdono tensione subito dopo l\'incordatura e nei primi colpi; il poliestere più del nylon.', data: 'TWU: fino a 15 lb nel primo minuto di colpi; il caldo dopo l\'incordatura aggiunge dal 30 al 76% di perdita, che non si recupera.', you: 'Tra due corde simili in rigidità, quella con la perdita TWU più bassa cambia meno nel tempo. Niente racchetta in auto al sole.', src: [['dead', 'TWU, corde «morte»'], ['heat', 'TWU, temperatura']] },
   { t: 'Come nasce lo spin', lv: 'D', claim: 'Più le verticali scivolano sulla palla e tornano al loro posto, più spin: conta l\'attrito corda-palla alto e corda-corda basso.', data: 'Kawazoe 2012: corde intaccate −40% di spin, lubrificate +30%. TWU: tra le poly le differenze di spin misurate sono piccole (poly circa +4–5% sul nylon in un 16×19).', you: 'Lo spin viene soprattutto dal tuo colpo. Lo «spin potenziale» TWU dice solo quanto la corda aiuta.', src: [['fric', 'TWU, attrito'], ['kaw', 'Kawazoe 2012 (accesso libero)'], ['patt', 'TWU, piatto e spin']] },
   { t: 'Forma della corda', lv: 'P', claim: 'Gli spigoli aumentano l\'attrito sulla palla, ma anche tra le corde.', data: 'TWU non ha trovato un legame prevedibile tra superficie e attrito; i migliori in ogni categoria sono però sagomati o rivestiti.', you: 'Non scegliere dal numero di lati: guarda le misure.', src: [['fric', 'TWU, attrito']] },
-  { t: 'Calibro', lv: 'D', claim: 'Più spessa = più rigida e più durevole, meno morso.', data: 'TWU: Barb Wire 186 lb/in a 1,20 mm e 214 lb/in a 1,30 mm, circa +15% per 0,1 mm. Cambiare corda sposta di più (O-Toro Tour +31% rispetto a O-Toro a parità di calibro).', you: 'Da 1,23 a 1,25 cambia poco: è una regolazione fine, da fare per ultima.', src: [['db', 'TWU, database']] },
+  { t: 'Calibro', lv: 'D', claim: 'In media più spessa = più rigida e più durevole, meno morso.', data: 'Nei dati TWU la rigidità cresce in media di circa 200 lb/in per mm (+4% ogni 0,02 mm), ma con eccezioni: la Barb Wire 1,25 (183 lb/in) è più morbida della 1,20 (186). Cambiare corda sposta di più (O-Toro Tour +31% rispetto a O-Toro a parità di calibro).', you: 'Da 1,23 a 1,25 cambia poco: è una regolazione fine, da fare per ultima.', src: [['db', 'TWU, database']] },
   { t: 'Materiale e mescola', lv: 'P', claim: 'Poli e co-poli cambiano rigidità, elasticità e tenuta; le corde «soft» spesso guadagnano comfort e perdono tenuta.', data: 'Nessuna misura per mescola: il nome non basta, contano gli effetti misurati.', you: 'Giudica dalla rigidità e dalla perdita di tensione, non dal nome.', src: [['types', 'Ashaway, tipi di corda']] },
-  { t: 'Tensione', lv: 'D', claim: 'Più tensione: palla un po\' più lenta e più bassa; meno tensione: più veloce.', data: 'Bower e Cross: +2,7% di velocità passando da circa 28 a 18 kg. Solo l\'11% dei giocatori esperti sente 6 lb (circa 2,7 kg) di differenza.', you: 'Cambiare corda pesa più che cambiare di 1 kg. La regola «se è nettamente più rigida scendi di 0,5 kg» è un\'ipotesi del progetto.', src: [['bc08', 'Bower e Cross 2008'], ['bed', 'TWU, energia del letto']] },
+  { t: 'Tensione', lv: 'P', claim: 'Più tensione: palla un po\' più lenta e più bassa; meno tensione: più veloce.', data: 'Bower e Cross riportano circa +2,7% di velocità passando da 28 a 18 kg, e che pochi giocatori esperti sentono 6 lb (circa 2,7 kg) di differenza. Numeri citati da sintesi: non li abbiamo ancora riletti sul testo completo.', you: 'Cambiare corda pesa più che cambiare di 1 kg. La regola «se è nettamente più rigida scendi di 0,5 kg» è un\'ipotesi del progetto.', src: [['bc08', 'Bower e Cross 2008'], ['bed', 'TWU, energia del letto']] },
   { t: 'Ibridi', lv: 'I', claim: 'In un ibrido la verticale dà il carattere (rigidità, morso), l\'orizzontale lo scorrimento.', data: 'Non abbiamo trovato una fonte di laboratorio gratuita sugli ibridi. Il «letto» (media 16/19) è una semplificazione; TWU dice che letti con la stessa rigidità complessiva giocano in modo simile.', you: 'Usa gli ibridi come prova: cambia una cosa sola alla volta.', src: [['stiff', 'TWU, rigidità delle corde']] },
   { t: 'Il ping come termometro', lv: 'D', claim: 'La frequenza del suono delle corde va con la radice quadrata della tensione.', data: 'Cross: −10% di tensione ≈ −5% di frequenza.', you: 'Con un\'app che misura il ping vedi quando la tua corda ha perso tensione.', src: [['ping', 'Cross, tensione delle corde']] },
   { t: 'Le fonti tra loro', lv: 'D', claim: 'TWU (in gioco) e Racketpedia (a riposo) vanno d\'accordo sulla rigidità; il tuo test Excel no.', data: 'Concordanza di rango sulle corde in comune: TWU–Racketpedia +0,65 (26 corde); Excel con le altre due quasi nulla. Per questo non mescoliamo mai le fonti.', you: 'Quando due fonti dicono cose opposte sulla stessa corda, l\'app lo scrive e non conclude.', src: [] },
@@ -39,8 +40,9 @@ const CARDS = [
 function cardsHtml(ctx) {
   const ref = ctx.equippedRec();
   const rp = ctx.ALL.filter((r) => r.lab && r.lab.rp).sort((x, y) => x.lab.rp.kgmm - y.lab.rp.kgmm);
-  const pos = rp.findIndex((r) => r.id === ref.id);
-  const mine = pos >= 0 ? `<p class="small callout">La tua ${esc(ref.model)}: ${pos + 1}ª più morbida a riposo su ${rp.length} corde misurate da Racketpedia (${esc(fmtV('rp.kgmm', ref.lab.rp.kgmm))}).${ref.lab.twu ? '' : ' Non è misurata da TWU.'}</p>` : '';
+  const has = rp.some((r) => r.id === ref.id);
+  const softer = has ? rp.filter((r) => r.lab.rp.kgmm < ref.lab.rp.kgmm).length : 0;
+  const mine = has ? `<p class="small callout">La tua ${esc(ref.model)} (${esc(fmtV('rp.kgmm', ref.lab.rp.kgmm))}): solo ${softer} su ${rp.length} corde misurate da Racketpedia sono più morbide a riposo.${ref.lab.twu ? '' : ' Non è misurata da TWU.'}</p>` : '';
   return mine + CARDS.map((c) => `<details class="sci"><summary><span class="tag ${SCI_LV[c.lv][1]}">${SCI_LV[c.lv][0]}</span> <b>${esc(c.t)}</b></summary>
     <p>${esc(c.claim)}</p><p class="small"><b>Il dato.</b> ${esc(c.data)}</p><p class="small"><b>Per te.</b> ${esc(c.you)}</p>
     ${c.src.length ? `<p class="small muted">Fonti: ${c.src.map(([k, t]) => sciLink(k, t)).join(', ')}</p>` : ''}</details>`).join('');
@@ -82,7 +84,7 @@ function sciReviewsHtml(ctx) {
   rows.sort((x, y) => first.has(y.id) - first.has(x.id) || fullName(x).localeCompare(fullName(y)));
   const indep = rows.reduce((n, r) => n + r.indep_reviews.filter((v) => v.class.startsWith('indipendente')).length, 0);
   return `<p class="small">Classificazione dei canali fatta il 18/11/2026 sulle ultime 15 descrizioni di ciascun canale. ${indep} recensioni da canali indipendenti. Nessun video è stato ancora guardato per intero: le frasi chiave mancano finché non lo sono.</p>
-    <ul class="reviews">${rows.map((r) => `<li><button type="button" class="linkish" data-open="${esc(r.id)}">${esc(fullName(r))}</button>: ${r.indep_reviews.map((v) => `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.channel)}</a> <span class="tag ${v.class.startsWith('indipendente') ? 'ok' : ''}">${esc(v.class)}</span>`).join(' · ')}</li>`).join('')}</ul>`;
+    <ul class="reviews">${rows.map((r) => `<li><button type="button" class="linkish" data-open="${esc(r.id)}">${esc(fullName(r))}</button>: ${r.indep_reviews.map((v) => `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(v.channel)}</a>${v.date ? ` <span class="small muted">${esc(itMonth(v.date))}</span>` : ''} <span class="tag ${v.class.startsWith('indipendente') ? 'ok' : ''}">${esc(v.class)}</span>`).join(' · ')}</li>`).join('')}</ul>`;
 }
 
 function sourcesHtml(ctx) {

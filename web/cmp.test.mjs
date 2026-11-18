@@ -43,6 +43,13 @@ test('nessuna stima: i campi stiffness/spin stimati della corda non entrano mai'
   assert.match(summarize(compareTo(est, slap, meta), 'Slap').text, /Non confrontabile/);
 });
 
+test('frase riassuntiva: con in comune solo l\'Excel lo dice e non conclude', () => {
+  const onlyEx = S('ex', { twu: null, rp: null, excel: { stretch50: 3.0 } });
+  const s = summarize(compareTo(onlyEx, slap, meta), 'Slap');
+  assert.equal(s.kind, 'none');
+  assert.match(s.text, /solo l'allungamento del tuo Excel/);
+});
+
 test('frase riassuntiva: simile se tutte le decisive sono sotto soglia', () => {
   const twin = S('twin', { twu: null, rp: { kgmm: 0.80 }, excel: null });
   const s = summarize(compareTo(twin, slap, meta), 'Slap');

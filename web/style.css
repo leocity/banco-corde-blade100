@@ -143,6 +143,10 @@ input, select, textarea { min-height: 44px; padding: 8px 10px; border: 1px solid
 .stock-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-bottom: 1px solid var(--line); padding: 2px 0; }
 .stepper { display: flex; align-items: center; gap: 6px; }
 .stepper .n { min-width: 2ch; text-align: center; font-family: var(--font-data); font-weight: 600; }
+.sessions.lives li { grid-template-columns: 1fr; gap: 0; padding: 4px 0; }
+.trials { list-style: none; padding: 0; }
+.trials > li { border-bottom: 1px solid var(--line); padding: 4px 0; }
+.diary-votes { padding-left: 20px; font-size: .95rem; }
 .sessions li { display: grid; grid-template-columns: auto auto 1fr auto; gap: 4px 12px; align-items: center; border-bottom: 1px solid var(--line); min-height: 44px; }
 .reviews li, .results li, .ideas li, .sources li { border-bottom: 1px solid var(--line); padding: 6px 0; }
 

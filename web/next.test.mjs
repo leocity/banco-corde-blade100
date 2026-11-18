@@ -83,3 +83,18 @@ test('somiglia a una non gradita: avviso', () => {
   const l = likeness(twin, [], ['slap'], ALL, meta);
   assert.equal(l.warn, 'slap');
 });
+
+test('in casa compare anche la montata (rifare la stessa corda) e una non gradita, segnalata', () => {
+  const r = candidates(st({ stock: [{ id: 'slap', size: 'intera', n: 1 }, { id: 'stiff2', size: 'mezza', n: 1 }], disliked: ['stiff2'] }), ALL, 'same', meta);
+  assert.deepEqual(ids(r.inStock).sort(), ['slap', 'stiff2']);
+  assert.equal(r.inStock.find((c) => c.rec.id === 'stiff2').disliked, true);
+  assert.equal(r.inStock.find((c) => c.rec.id === 'slap').equipped, true);
+  assert.ok(!ids(r.toBuy).includes('slap'));
+});
+
+test('somiglianza alle preferite: con meno di metà misure simili non si dice «simile»', () => {
+  const p = S('p', { twu: { stiffness: 200, loss: 30, spin: 8 }, rp: { kgmm: 0.9 } });
+  const q = S('q', { twu: { stiffness: 260, loss: 50, spin: 6 }, rp: { kgmm: 0.92 } });
+  const l = likeness(q, ['p'], [], [p, q], meta);
+  assert.equal(l.id, null);
+});

@@ -26,7 +26,7 @@ export function tipHtml(key, extra) {
 export const itDate = (iso) => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || '')); return m ? `${m[3]}/${m[2]}/${m[1]}` : String(iso || ''); };
 export const fmtV = (key, v) => {
   const k = CMP_KEYS[key];
-  return v === null || v === undefined ? '—' : `${NF(k.dec).format(v)}${k.unit ? ` ${k.unit}` : ''}`;
+  return v === null || v === undefined ? '—' : `${NF(k.dec).format(v)}${k.unit === '%' ? '%' : k.unit ? ` ${k.unit}` : ''}`;
 };
 
 const SRC_OF = { twu: 'TWU String Performance Database', rp: 'Racketpedia', excel: 'Il tuo Excel (test Ektelon)' };

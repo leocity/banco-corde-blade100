@@ -8,12 +8,12 @@ const goalOf = (st) => st.nextGoal || 'same';
 
 function card(c, ctx, inStockInfo, goal) {
   const r = c.rec;
-  const common = [...new Set(c.rows.map((x) => x.source))].join(', ');
+  const common = [...new Set(c.rows.filter((x) => x.decides).map((x) => x.source))].join(', ');
   const why = c.rows.filter((x) => x.decides && x.dir).slice(0, 2).map((x) => `<li>${esc(x.why)}</li>`).join('');
   const rank = c.rank ? `<p class="small">${c.rank.pos}ª su ${c.rank.n} corde misurate da TWU (${esc(fmtRank(c, goal))}).</p>` : '';
   const lk = c.likeness && c.likeness.id ? `<p class="small muted">Simile alla ${esc(ctx.BY_ID[c.likeness.id].model)} (ti piace) in ${misure(c.likeness.similar)} su ${c.likeness.total}.</p>` : '';
   const warn = c.likeness && c.likeness.warn ? `<p class="small warn-t">Somiglia alla ${esc(ctx.BY_ID[c.likeness.warn].model)}, che non ti piace.</p>` : '';
-  const stockTag = inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '';
+  const stockTag = (inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '') + (c.equipped ? ' <span class="tag">è la tua montata</span>' : '') + (c.disliked ? ' <span class="tag warn">non ti piace</span>' : '');
   const off = c.inStock && !c.compatible ? '<p class="small muted">Non va nella direzione che hai chiesto.</p>' : '';
   return `<article class="cand ${c.compatible ? '' : 'dim'}">
     <h3>${nameBtn(r)} ${stockTag}</h3>
@@ -31,6 +31,17 @@ function fmtRank(c, goal) {
   return goal === 'holds' ? `perde il ${v}%` : `spin potenziale ${v}`;
 }
 
+// Perché la lista è vuota, in parole: per «più morbida» con la Slap la risposta è che è già tra le più morbide.
+function emptyWhy(ctx, goal, ref) {
+  const g = GOALS.find((x) => x.key === goal);
+  if ((goal === 'softer' || goal === 'stiffer') && ref.lab && ref.lab.rp) {
+    const v = ref.lab.rp.kgmm, rp = ctx.ALL.filter((r) => r.lab && r.lab.rp);
+    const n = rp.filter((r) => (goal === 'softer' ? r.lab.rp.kgmm < v : r.lab.rp.kgmm > v)).length;
+    if (n < 5) return `La ${ref.model} è già tra le più ${goal === 'softer' ? 'morbide' : 'rigide'} a riposo: solo ${n} su ${rp.length} lo sono di più, e nessuna oltre la soglia.`;
+  }
+  return `Nessuna corda misurata è ${g.ask} oltre la soglia.`;
+}
+
 export function renderNext(ctx) {
   const st = ctx.state(), goal = goalOf(st), ref = ctx.equippedRec();
   const res = candidates(st, ctx.ALL, goal, ctx.META);
@@ -41,7 +52,7 @@ export function renderNext(ctx) {
     ${res.note ? `<p class="callout small">${esc(res.note)}</p>` : ''}`;
   const stockHtml = res.inStock.length ? `<div class="section-head"><h2>${tip('scorta', 'Ce l\'hai in casa')}</h2></div>${res.inStock.map((c) => card(c, ctx, stockOf(c.rec.id), goal)).join('')}` : '';
   const buyHtml = `<div class="section-head"><h2>Da comprare</h2><span class="muted small">${esc(g.ask)}, solo con misure</span></div>
-    ${res.toBuy.length ? res.toBuy.map((c) => card(c, ctx, '', goal)).join('') : `<p class="muted">Nessuna corda misurata è ${esc(g.ask)} oltre la soglia. Prova un'altra domanda o cerca una corda qui sotto.</p>`}`;
+    ${res.toBuy.length ? res.toBuy.map((c) => card(c, ctx, '', goal)).join('') : `<p class="muted">${esc(emptyWhy(ctx, goal, ref))} Prova un'altra domanda o cerca una corda qui sotto.</p>`}`;
   $('#next-list').innerHTML = (res.inStock.some((c) => c.compatible) ? stockHtml + buyHtml : buyHtml + stockHtml);
 }
 

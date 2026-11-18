@@ -101,22 +101,7 @@ export function parseHours(input) {
 }
 
 // Rigidità usata per correggere la tensione: solo dati di laboratorio, non le stime dal solo calibro.
-export function labStiff(rec) {
-  const s = rec && rec.stiffness;
-  return s && ['misurata', 'parente', 'da Racketpedia'].includes(s.kind) && isNum(s.value_lbin) ? s.value_lbin : null;
-}
-
-const halfAway = (x) => Math.sign(x) * Math.round(Math.abs(x));
 export const kgToLbs = (kg) => Math.round(kg * 2.2046 * 2) / 2;
-
-// Tensione di partenza dalla montata: −0,75 kg ogni +15 lb/in di rigidità in più, al massimo ±2 kg (regola empirica, non validata).
-export function tensionFor(rec, equippedRec, equippedKg) {
-  const a = labStiff(rec), b = labStiff(equippedRec);
-  const corrected = a !== null && b !== null;
-  const delta = corrected ? Math.max(-2, Math.min(2, halfAway(-0.75 * (a - b) / 15 * 2) / 2)) : 0;
-  const kg = equippedKg.map((x) => x + delta);
-  return { kg, lbs: kg.map(kgToLbs), low: kg.map((x) => x - 1), high: kg.map((x) => x + 1), corrected };
-}
 
 // Le vite salvate prima dell'introduzione di `lid` ne ricevono uno stabile dalla data di inizio.
 const legacyLid = (from) => (Number.isFinite(Date.parse(from)) ? String(Date.parse(from)) : `x${String(from).replace(/[^A-Za-z0-9]/g, '').slice(0, 40)}`);
