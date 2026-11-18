@@ -34,6 +34,14 @@
    22
   ]
  },
+ "lab_meta": {
+  "excel_stretch50_sd": 1.163,
+  "n": {
+   "twu": 55,
+   "rp": 48,
+   "excel": 44
+  }
+ },
  "defaults": {
   "equipped": {
    "id": "re-string-zero-17",
@@ -1084,6 +1092,20 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1.18,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.978,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -1513,6 +1535,27 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 233.7,
+     "loss": 33.3,
+     "spin": 4.6,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.18,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-125"
+    },
+    "excel": {
+     "stretch50": 4.444,
+     "recover50": 2.222,
+     "creep24": 0.5,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -1829,6 +1872,27 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 203.5,
+     "loss": 48.3,
+     "spin": 7.5,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.75,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/head-hawk-power-petrol-blue-125"
+    },
+    "excel": {
+     "stretch50": 5.511,
+     "recover50": 2.222,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -2172,6 +2236,27 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 228.6,
+     "loss": 30.5,
+     "spin": 6.1,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.15,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-orange-130"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.0,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -2447,6 +2532,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 1.067,
+     "creep24": 0.13,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -2695,6 +2790,16 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 4.444,
+     "recover50": 1.067,
+     "creep24": 0.5,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -2973,6 +3078,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.0,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -3227,6 +3342,27 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 208.6,
+     "loss": 44.2,
+     "spin": 5.4,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.88,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-helix-white-125"
+    },
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 1.067,
+     "creep24": 0.19,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -3479,6 +3615,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.9,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-helix-blue-125"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 1.6,
+     "creep24": 0.19,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -3741,6 +3891,20 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.9,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-orange-125"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.0,
+     "creep24": 0.38,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -3999,6 +4163,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.8,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-pink-125"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 1.067,
+     "creep24": 0.38,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -4261,6 +4439,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 1.067,
+     "creep24": 0.38,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -4521,6 +4709,20 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.85,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-flash-green-125"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 1.067,
+     "creep24": 0.38,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -4779,6 +4981,16 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.31,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -5115,6 +5327,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 7.733,
+     "recover50": 4.444,
+     "creep24": 0.5,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -5442,6 +5664,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.75,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-slap-black-123"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.533,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -5798,6 +6034,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.95,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-125"
+    },
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 0.533,
+     "creep24": 0.13,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -6182,6 +6432,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1.05,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-vivo-blue-123"
+    },
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 1.067,
+     "creep24": 0.13,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -6619,6 +6883,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1.1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-128"
+    },
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -7072,6 +7350,20 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1.05,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-zero-sky-blue-123"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 1.067,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": {
     "control": {
      "n": 1,
@@ -7513,6 +7805,23 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 224.6,
+     "loss": 25.2,
+     "spin": 6.2,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.978,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -7744,6 +8053,16 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 5.6,
+     "recover50": 2.222,
+     "creep24": 0.24,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -8090,6 +8409,16 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.0,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -8529,6 +8858,16 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 0.0,
+     "creep24": 0.38,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -8989,6 +9328,27 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 222.3,
+     "loss": 22.2,
+     "spin": 6.4,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.15,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-130"
+    },
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": {
     "control": {
      "n": 4,
@@ -9439,6 +9799,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-125"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 1.067,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -9900,6 +10274,20 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-120"
+    },
+    "excel": {
+     "stretch50": 4.444,
+     "recover50": 2.222,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": {
     "control": {
      "n": 4,
@@ -10276,6 +10664,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.533,
+     "creep24": 0.38,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -10617,6 +11015,23 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 180.6,
+     "loss": 47.1,
+     "spin": 9.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": {
+     "stretch50": 5.511,
+     "recover50": 2.222,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -10986,6 +11401,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124"
+    },
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -11455,6 +11884,20 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124"
+    },
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 1.067,
+     "creep24": 0.13,
+     "date": "2026-08-26"
+    }
+   },
    "community": {
     "control": {
      "n": 1,
@@ -11885,6 +12328,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 1.067,
+     "creep24": 0.13,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -12208,6 +12661,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 1.6,
+     "recover50": 0.533,
+     "creep24": 0.56,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -12529,6 +12992,16 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 0.533,
+     "creep24": 0.32,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -12859,6 +13332,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.95,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-wasabi-neon-green-123"
+    },
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.12,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -13278,6 +13765,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 4.444,
+     "recover50": 2.756,
+     "creep24": 0.19,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -13599,6 +14096,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1.0,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-wasabi-pomegranate-red-123"
+    },
+    "excel": {
+     "stretch50": 3.289,
+     "recover50": 1.067,
+     "creep24": 0.13,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -13969,6 +14480,27 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 189.7,
+     "loss": 34.7,
+     "spin": 7.8,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.9,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-super-toro-blue-123"
+    },
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": {
@@ -14451,6 +14983,27 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 165.7,
+     "loss": 44.4,
+     "spin": 9.4,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.95,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-fluo-green-123"
+    },
+    "excel": {
+     "stretch50": 3.822,
+     "recover50": 0.533,
+     "creep24": 0.32,
+     "date": "2026-08-26"
+    }
+   },
    "community": {
     "control": {
      "n": 3,
@@ -14881,6 +15434,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 0.533,
+     "creep24": 0.25,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -15201,6 +15764,20 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.95,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123"
+    },
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 0.533,
+     "creep24": 0.25,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -15525,6 +16102,16 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.756,
+     "recover50": 0.533,
+     "creep24": 0.38,
+     "date": "2026-08-26"
+    }
+   },
    "community": null
   },
   {
@@ -15799,6 +16386,27 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 193.2,
+     "loss": 34.4,
+     "spin": 7.2,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.85,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-rev-purple-125"
+    },
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.37,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -16094,6 +16702,16 @@
      "kind": "misurato",
      "margin": null,
      "url": null
+    }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": {
+     "stretch50": 2.222,
+     "recover50": 0.0,
+     "creep24": 0.38,
+     "date": "2026-08-26"
     }
    },
    "community": null
@@ -16399,6 +17017,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 164.6,
+     "loss": 41.7,
+     "spin": 8.7,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
@@ -16761,6 +17391,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 222.3,
+     "loss": 26.5,
+     "spin": 8.6,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -17098,6 +17740,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 173.2,
+     "loss": 38.3,
+     "spin": 8.2,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": {
     "spin": {
@@ -17474,6 +18128,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 210.3,
+     "loss": 34.3,
+     "spin": 8.2,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
@@ -17904,6 +18570,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 216.6,
+     "loss": 25.0,
+     "spin": 7.7,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-o-toro-tour-neon-mint-123"
+    },
+    "excel": null
+   },
    "community": {
     "control": {
      "n": 2,
@@ -18259,6 +18941,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 182.9,
+     "loss": 34.8,
+     "spin": 7.6,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": {
     "control": {
      "n": 1,
@@ -18602,6 +19296,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 212.0,
+     "loss": 33.3,
+     "spin": 7.4,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.15,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/tecnifibre-razor-soft-black-125"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -18869,6 +19579,22 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 225.7,
+     "loss": 24.8,
+     "spin": 7.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-plasma-hextreme-orange-130"
+    },
+    "excel": null
    },
    "community": null
   },
@@ -19163,6 +19889,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 226.3,
+     "loss": 32.3,
+     "spin": 7.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
@@ -19549,6 +20287,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 190.9,
+     "loss": 35.9,
+     "spin": 7.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.85,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-snapper-lavender-123"
+    },
+    "excel": null
+   },
    "community": {
     "comfort": {
      "n": 1,
@@ -19856,6 +20610,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 217.7,
+     "loss": 24.6,
+     "spin": 7.1,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.05,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/head-lynx-tour-grey-125"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -20162,6 +20932,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 197.7,
+     "loss": 43.7,
+     "spin": 7.0,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -20386,6 +21168,22 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 197.7,
+     "loss": 36.6,
+     "spin": 6.9,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.73,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-alu-power-soft-silver-125"
+    },
+    "excel": null
    },
    "community": null
   },
@@ -20741,6 +21539,22 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 218.3,
+     "loss": 29.4,
+     "spin": 6.7,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.9,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/grapplesnake-alpha-yellow-125"
+    },
+    "excel": null
    },
    "community": {
     "control": {
@@ -21204,6 +22018,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 194.3,
+     "loss": 27.7,
+     "spin": 6.5,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.85,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-soft-pink-125"
+    },
+    "excel": null
+   },
    "community": {
     "power": {
      "n": 3,
@@ -21551,6 +22381,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 213.7,
+     "loss": 27.2,
+     "spin": 6.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.08,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-spin-blue-125"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -21819,6 +22665,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 230.9,
+     "loss": 28.3,
+     "spin": 6.0,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -22137,6 +22995,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 222.3,
+     "loss": 26.3,
+     "spin": 6.0,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": {
     "power": {
      "n": 3,
@@ -22387,6 +23257,22 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 204.6,
+     "loss": 41.5,
+     "spin": 5.9,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.1,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-plasma-hextreme-orange-125"
+    },
+    "excel": null
    },
    "community": null
   },
@@ -22714,6 +23600,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 206.3,
+     "loss": 32.0,
+     "spin": 5.8,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": {
     "control": {
      "n": 4,
@@ -23016,6 +23914,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 210.9,
+     "loss": 48.0,
+     "spin": 5.7,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -23236,6 +24146,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 221.2,
+     "loss": 40.6,
+     "spin": 5.6,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -23505,6 +24427,22 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 223.5,
+     "loss": 26.4,
+     "spin": 5.6,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.03,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/kirschbaum-max-power-rough-grey-125"
+    },
+    "excel": null
    },
    "community": null
   },
@@ -23850,6 +24788,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 182.9,
+     "loss": 33.5,
+     "spin": 5.6,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.9,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-125"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -24053,6 +25007,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 204.6,
+     "loss": 55.3,
+     "spin": 5.4,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -24282,6 +25248,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 221.7,
+     "loss": 50.7,
+     "spin": 5.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -24502,6 +25480,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 199.5,
+     "loss": 43.0,
+     "spin": 5.2,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -24820,6 +25810,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 172.0,
+     "loss": 28.7,
+     "spin": 5.2,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
@@ -25141,6 +26143,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 215.5,
+     "loss": 47.7,
+     "spin": 5.1,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -25361,6 +26375,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 208.0,
+     "loss": 34.3,
+     "spin": 5.0,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -25583,6 +26609,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 210.3,
+     "loss": 47.5,
+     "spin": 4.9,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -25928,6 +26966,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 186.3,
+     "loss": 42.6,
+     "spin": 4.9,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.75,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-120"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -26148,6 +27202,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 213.2,
+     "loss": 36.3,
+     "spin": 4.8,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -26376,6 +27442,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 214.3,
+     "loss": 44.3,
+     "spin": 4.8,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.72,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-tornado-black-123"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -26602,6 +27684,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 220.0,
+     "loss": 40.9,
+     "spin": 4.6,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -26990,6 +28084,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 232.6,
+     "loss": 45.9,
+     "spin": 4.5,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.25,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/babolat-rpm-blast-black-130"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -27211,6 +28321,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 210.3,
+     "loss": 47.5,
+     "spin": 4.5,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -27556,6 +28678,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 214.3,
+     "loss": 40.2,
+     "spin": 4.4,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 1.05,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-barb-wire-130"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -27776,6 +28914,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 234.9,
+     "loss": 34.9,
+     "spin": 4.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -27998,6 +29148,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 246.3,
+     "loss": 40.9,
+     "spin": 4.3,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -28226,6 +29388,22 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 202.3,
+     "loss": 42.6,
+     "spin": 4.2,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.8,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/signum-pro-hyperion-black-124"
+    },
+    "excel": null
+   },
    "community": null
   },
   {
@@ -28448,6 +29626,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 190.3,
+     "loss": 45.0,
+     "spin": 4.1,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -28661,6 +29851,18 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
    },
+   "lab": {
+    "twu": {
+     "stiffness": 196.0,
+     "loss": 44.3,
+     "spin": null,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -28870,6 +30072,22 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 208.6,
+     "loss": 33.3,
+     "spin": null,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": {
+     "kgmm": 0.8,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/yonex-poly-tour-rev-mint-130"
+    },
+    "excel": null
    },
    "community": null
   },
@@ -29085,6 +30303,18 @@
      "margin": null,
      "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
     }
+   },
+   "lab": {
+    "twu": {
+     "stiffness": 192.6,
+     "loss": 36.7,
+     "spin": null,
+     "ref_lbs": 51,
+     "date": "2026-10-28",
+     "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
+    },
+    "rp": null,
+    "excel": null
    },
    "community": null
   },
@@ -29370,6 +30600,11 @@
      "margin": 0.5,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
@@ -29759,6 +30994,11 @@
      "margin": 0.5,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
@@ -30161,6 +31401,11 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
+   },
    "community": {
     "power": {
      "n": 3,
@@ -30516,6 +31761,11 @@
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
+   },
    "community": {
     "power": {
      "n": 3,
@@ -30832,6 +32082,15 @@
      "margin": 0.5,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.9,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-soft-pink-130"
+    },
+    "excel": null
    },
    "community": {
     "power": {
@@ -31181,6 +32440,15 @@
      "margin": 0.5,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.85,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/solinco-confidential-soft-pink-120"
+    },
+    "excel": null
    },
    "community": {
     "power": {
@@ -31577,6 +32845,15 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 1.05,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-vivo-blue-128"
+    },
+    "excel": null
+   },
    "community": {
     "control": {
      "n": 2,
@@ -31931,6 +33208,11 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
+   },
    "community": {
     "control": {
      "n": 1,
@@ -32230,6 +33512,15 @@
      "margin": 1.5,
      "url": null
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.85,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-120"
+    },
+    "excel": null
    },
    "community": {
     "control": {
@@ -32531,6 +33822,15 @@
      "margin": 1.5,
      "url": null
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": {
+     "kgmm": 0.85,
+     "date": "2026-10-28",
+     "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-slap-black-128"
+    },
+    "excel": null
    },
    "community": {
     "spin": {
@@ -32853,6 +34153,11 @@
      "url": null
     }
    },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
+   },
    "community": null
   },
   {
@@ -33146,6 +34451,11 @@
      "margin": 0.5,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
@@ -33526,6 +34836,11 @@
      "margin": 0.5,
      "url": "https://twu.tennis-warehouse.com/learning_center/reporter2.php"
     }
+   },
+   "lab": {
+    "twu": null,
+    "rp": null,
+    "excel": null
    },
    "community": {
     "control": {
