@@ -1,3 +1,5 @@
+> **v6 (18/11/2026):** questa revisione resta come storia. Le affermazioni usate dall'app ora stanno nella schermata Scienza, ognuna marcata Dimostrata / Plausibile / Ipotesi, e la verifica aggiornata è in `docs/audit/2026-11-18/E-fisica.md`. Nessuna stima entra più nei confronti o nei consigli.
+
 # Revisione della fisica del banco (2026-10-31)
 
 Perché: un testo generato da Gemini sostiene che la regola «corda più rigida = meno potenza = più controllo» non vale, e che la Slap è «infinitamente più governabile» della Zero. Qui si separa ciò che è stabilito, ciò che è solo affermato e ciò che l'app assume davvero. Le correlazioni sono di rango (Spearman) tra misure del banco e livelli dati da tester indipendenti dello stesso calibro (non il produttore); con n piccolo sono indicazioni, non prove. Si riproducono con `pipeline/validate_indices.py` e con i dati in `data/strings.json`.

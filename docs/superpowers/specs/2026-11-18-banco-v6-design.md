@@ -54,7 +54,7 @@ Solo dati gratuiti (Excel dell'utente in `data/source`, TWU, Racketpedia gratuit
 ### 5.1 Cos'è una misura
 
 Una **misura** è solo:
-- **TWU** con abbinamento `exact`: rigidità dinamica (lb/in), perdita di tensione (%), spin potential. Condizioni: 51–52 lb, swing veloce (TWU dichiara 52 lb: la pipeline scrive 51 → da correggere, vedi §11).
+- **TWU** con abbinamento `exact`: rigidità dinamica (lb/in), perdita di tensione (%), spin potential. Condizioni: 51 lb, swing veloce (la tabella TWU dice 51; il «52» viene solo da un articolo divulgativo).
 - **Racketpedia** con abbinamento `exact`: rigidità statica (kg/mm).
 - **Excel dell'utente** (test Ektelon): allungamento a 50 lb (%), recupero, scorrimento 24 h.
 
@@ -194,7 +194,7 @@ Struttura interna dei moduli, CSS, icone, testi esatti dei tooltip (dentro i vin
 
 ## 11. Problemi noti da sistemare durante il lavoro (dagli audit)
 
-- TWU dichiara 52 lb, la pipeline scrive 51.
+- TWU: la tabella dice 51 lb (verificato, test `tests/test_twu_ref.py`).
 - Le soglie attuali (`values.js`, `compare.js`) sono sotto l'incertezza: sostituite da §5.2.
 - `notes_gen.py`: frasi con durate e «snapback» da percentile → rigenerare senza.
 - Ibridi: prezzo (14,90 €) e base O-Toro fissa → togliere e partire dalla montata.
