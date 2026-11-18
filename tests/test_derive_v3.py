@@ -23,15 +23,16 @@ def excel_only():
 
 def recs():
     out = [lab(i) for i in range(10)] + [excel_only()]
-    out[0]["id"], out[1]["id"] = DEFAULT_LIKED
+    for i, k in enumerate(DEFAULT_LIKED):
+        out[i]["id"] = k
     return out
 
 
 def test_defaults_constants():
-    assert DEFAULT_LIKED == ["solinco-confidential-16l", "toroline-o-toro-17"]
-    assert DEFAULT_EQUIPPED == {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
-    assert DEFAULT_DISLIKED == ["solinco-confidential-soft-16", "solinco-confidential-soft-17",
-                                "babolat-rpm-blast-16", "babolat-rpm-blast-17"]
+    assert DEFAULT_LIKED == ["solinco-confidential-16l", "toroline-o-toro-17", "re-string-zero-17", "re-string-slap-17"]
+    assert DEFAULT_EQUIPPED == {"id": "re-string-slap-17", "kg": [22, 21]}
+    assert DEFAULT_DISLIKED == ["solinco-confidential-soft-16", "solinco-confidential-soft-17", "solinco-confidential-soft-16l",
+                                "babolat-rpm-blast-16", "babolat-rpm-blast-17", "solinco-barb-wire-16"]
 
 
 def test_derived_has_dims_excel_measures_and_pairing():

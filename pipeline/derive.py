@@ -11,9 +11,10 @@ ANCHOR_TENSIONS = {"solinco-confidential-16l": [22, 21], "toroline-o-toro-17": [
 ANCHOR_NAMES = {"solinco-confidential-16l": "Confidential 1,25", "toroline-o-toro-17": "O-Toro 1,23"}
 DISLIKED_GROUPS = {"confidential_soft": ("Solinco", "Confidential Soft"), "rpm_blast": ("Babolat", "RPM Blast")}
 # Riferimenti iniziali dell'utente (modificabili nell'app): preferite, non gradite e corda montata con la sua tensione.
-DEFAULT_LIKED = ["solinco-confidential-16l", "toroline-o-toro-17"]
-DEFAULT_DISLIKED = ["solinco-confidential-soft-16", "solinco-confidential-soft-17", "babolat-rpm-blast-16", "babolat-rpm-blast-17"]
-DEFAULT_EQUIPPED = {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
+DEFAULT_LIKED = ["solinco-confidential-16l", "toroline-o-toro-17", "re-string-zero-17", "re-string-slap-17"]
+DEFAULT_DISLIKED = ["solinco-confidential-soft-16", "solinco-confidential-soft-17", "solinco-confidential-soft-16l",
+                    "babolat-rpm-blast-16", "babolat-rpm-blast-17", "solinco-barb-wire-16"]
+DEFAULT_EQUIPPED = {"id": "re-string-slap-17", "kg": [22, 21]}
 
 
 def _get(d, *path):

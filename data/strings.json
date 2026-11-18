@@ -44,21 +44,25 @@
  },
  "defaults": {
   "equipped": {
-   "id": "re-string-zero-17",
+   "id": "re-string-slap-17",
    "kg": [
-    22.5,
-    21.5
+    22,
+    21
    ]
   },
   "liked": [
    "solinco-confidential-16l",
-   "toroline-o-toro-17"
+   "toroline-o-toro-17",
+   "re-string-zero-17",
+   "re-string-slap-17"
   ],
   "disliked": [
    "solinco-confidential-soft-16",
    "solinco-confidential-soft-17",
+   "solinco-confidential-soft-16l",
    "babolat-rpm-blast-16",
-   "babolat-rpm-blast-17"
+   "babolat-rpm-blast-17",
+   "solinco-barb-wire-16"
   ]
  },
  "discriminant": [
@@ -1025,29 +1029,29 @@
      "creep24": 0.25
     },
     "pairing": {
-     "score": 12,
+     "score": 22,
      "band": "Poco adatta",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-zero-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 11.0,
        "dir": "above"
       },
       "durability": {
-       "fit": 100.0,
-       "dir": "in"
+       "fit": 30.0,
+       "dir": "below"
       },
       "elasticity": {
-       "fit": 17.0,
-       "dir": "above"
+       "fit": 79.5,
+       "dir": "below"
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -2725,29 +2729,29 @@
      "creep24": 0.5
     },
     "pairing": {
-     "score": 30,
-     "band": "Poco adatta",
+     "score": 51,
+     "band": "Attenzione",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 85.5,
        "dir": "above"
       },
       "durability": {
-       "fit": 100.0,
-       "dir": "in"
+       "fit": 21.0,
+       "dir": "below"
       },
       "elasticity": {
-       "fit": 34.0,
+       "fit": 45.5,
        "dir": "above"
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -3275,16 +3279,16 @@
      "creep24": 0.19
     },
     "pairing": {
-     "score": 51,
-     "band": "Attenzione",
+     "score": 60,
+     "band": "Buono",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "best_ref": "re-string-zero-17",
+     "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 68.0,
+       "fit": 59.0,
        "dir": "below"
       },
       "durability": {
@@ -3296,8 +3300,8 @@
        "dir": "above"
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -3550,16 +3554,16 @@
      "creep24": 0.19
     },
     "pairing": {
-     "score": 25,
-     "band": "Poco adatta",
+     "score": 43,
+     "band": "Attenzione",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 68.0,
+       "fit": 59.0,
        "dir": "below"
       },
       "durability": {
@@ -3571,8 +3575,8 @@
        "dir": "above"
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -5605,23 +5609,23 @@
      "creep24": 0.25
     },
     "pairing": {
-     "score": 71,
-     "band": "Buono",
+     "score": 100,
+     "band": "Ottimo",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 19.5,
-       "dir": "above"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
        "fit": 100.0,
-       "dir": "above"
+       "dir": "in"
       },
       "elasticity": {
        "fit": 100.0,
@@ -5975,18 +5979,18 @@
      "creep24": 0.13
     },
     "pairing": {
-     "score": 43,
-     "band": "Attenzione",
+     "score": 61,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 41.5,
        "dir": "above"
       },
       "durability": {
@@ -5994,7 +5998,7 @@
        "dir": "above"
       },
       "elasticity": {
-       "fit": 79.5,
+       "fit": 91.0,
        "dir": "above"
       },
       "spin": {
@@ -6373,15 +6377,15 @@
      "creep24": 0.13
     },
     "pairing": {
-     "score": 90,
-     "band": "Ottimo",
+     "score": 75,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
      "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "penalized": true,
      "fits": {
       "stiffness": {
        "fit": 100.0,
@@ -6831,19 +6835,19 @@
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-zero-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 81.0,
        "dir": "above"
       },
       "durability": {
-       "fit": 45.0,
+       "fit": 0.0,
        "dir": "below"
       },
       "elasticity": {
-       "fit": 45.5,
+       "fit": 0.0,
        "dir": "below"
       },
       "spin": {
@@ -8793,29 +8797,29 @@
      "creep24": 0.38
     },
     "pairing": {
-     "score": 54,
+     "score": 59,
      "band": "Attenzione",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 94.0,
-       "dir": "above"
+       "fit": 50.5,
+       "dir": "below"
       },
       "durability": {
-       "fit": 100.0,
-       "dir": "above"
+       "fit": 87.0,
+       "dir": "below"
       },
       "elasticity": {
-       "fit": 45.5,
+       "fit": 34.0,
        "dir": "below"
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -10207,17 +10211,17 @@
      "creep24": 0.25
     },
     "pairing": {
-     "score": 44,
+     "score": 52,
      "band": "Attenzione",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 2.5,
-       "dir": "below"
+       "fit": 85.5,
+       "dir": "above"
       },
       "durability": {
        "fit": 100.0,
@@ -10228,8 +10232,8 @@
        "dir": "above"
       },
       "spin": {
-       "fit": 100.0,
-       "dir": "in"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -10573,12 +10577,12 @@
      "creep24": 0.38
     },
     "pairing": {
-     "score": 27,
+     "score": 37,
      "band": "Poco adatta",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
@@ -10590,12 +10594,12 @@
        "dir": "in"
       },
       "elasticity": {
-       "fit": 51.0,
-       "dir": "below"
+       "fit": 57.0,
+       "dir": "above"
       },
       "spin": {
-       "fit": 28.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -11823,15 +11827,15 @@
      "creep24": 0.13
     },
     "pairing": {
-     "score": 48,
-     "band": "Attenzione",
+     "score": 33,
+     "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
      "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "penalized": true,
      "fits": {
       "stiffness": {
        "fit": 94.5,
@@ -12274,19 +12278,19 @@
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 20.0,
-       "dir": "below"
+       "fit": 68.0,
+       "dir": "above"
       },
       "durability": {
        "fit": 100.0,
        "dir": "above"
       },
       "elasticity": {
-       "fit": 62.5,
+       "fit": 0.0,
        "dir": "above"
       },
       "spin": {
@@ -12933,26 +12937,26 @@
      "creep24": 0.32
     },
     "pairing": {
-     "score": 45,
-     "band": "Attenzione",
+     "score": 90,
+     "band": "Ottimo",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "toroline-o-toro-17",
-     "penalized": true,
+     "best_ref": "re-string-slap-17",
+     "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 6.5,
-       "dir": "above"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
-       "fit": 100.0,
-       "dir": "above"
+       "fit": 79.5,
+       "dir": "below"
       },
       "elasticity": {
-       "fit": 79.5,
+       "fit": 91.0,
        "dir": "above"
       },
       "spin": {
@@ -13273,26 +13277,26 @@
      "creep24": 0.12
     },
     "pairing": {
-     "score": 38,
-     "band": "Poco adatta",
+     "score": 46,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 46.5,
-       "dir": "below"
+       "fit": 41.5,
+       "dir": "above"
       },
       "durability": {
        "fit": 100.0,
        "dir": "above"
       },
       "elasticity": {
-       "fit": 0.0,
+       "fit": 34.0,
        "dir": "below"
       },
       "spin": {
@@ -15373,26 +15377,26 @@
      "creep24": 0.25
     },
     "pairing": {
-     "score": 43,
-     "band": "Attenzione",
+     "score": 61,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 41.5,
        "dir": "above"
       },
       "durability": {
        "fit": 100.0,
-       "dir": "above"
+       "dir": "in"
       },
       "elasticity": {
-       "fit": 79.5,
+       "fit": 91.0,
        "dir": "above"
       },
       "spin": {
@@ -15705,18 +15709,18 @@
      "creep24": 0.25
     },
     "pairing": {
-     "score": 43,
-     "band": "Attenzione",
+     "score": 61,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 41.5,
        "dir": "above"
       },
       "durability": {
@@ -15724,7 +15728,7 @@
        "dir": "above"
       },
       "elasticity": {
-       "fit": 79.5,
+       "fit": 91.0,
        "dir": "above"
       },
       "spin": {
@@ -16041,26 +16045,26 @@
      "creep24": 0.38
     },
     "pairing": {
-     "score": 43,
-     "band": "Attenzione",
+     "score": 61,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "spin"
      ],
      "no_spin": true,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 41.5,
        "dir": "above"
       },
       "durability": {
        "fit": 100.0,
-       "dir": "above"
+       "dir": "in"
       },
       "elasticity": {
-       "fit": 79.5,
+       "fit": 91.0,
        "dir": "above"
       },
       "spin": {
@@ -16297,29 +16301,29 @@
      "creep24": 0.37
     },
     "pairing": {
-     "score": 44,
-     "band": "Attenzione",
+     "score": 67,
+     "band": "Buono",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
        "fit": 100.0,
        "dir": "in"
       },
       "elasticity": {
-       "fit": 0.0,
+       "fit": 34.0,
        "dir": "below"
       },
       "spin": {
-       "fit": 100.0,
-       "dir": "above"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -16637,29 +16641,29 @@
      "creep24": 0.38
     },
     "pairing": {
-     "score": 47,
+     "score": 57,
      "band": "Attenzione",
      "n_dims": 4,
      "missing": [],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 15.5,
-       "dir": "below"
+       "fit": 72.5,
+       "dir": "above"
       },
       "durability": {
        "fit": 100.0,
        "dir": "in"
       },
       "elasticity": {
-       "fit": 0.0,
+       "fit": 34.0,
        "dir": "below"
       },
       "spin": {
-       "fit": 100.0,
-       "dir": "in"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -18485,15 +18489,15 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 93,
-     "band": "Ottimo",
+     "score": 78,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
      "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "penalized": true,
      "fits": {
       "stiffness": {
        "fit": 76.5,
@@ -18856,31 +18860,31 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 60,
+     "score": 65,
      "band": "Buono",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 85.5,
-       "dir": "above"
+       "fit": 59.0,
+       "dir": "below"
       },
       "durability": {
        "fit": 100.0,
-       "dir": "above"
+       "dir": "in"
       },
       "elasticity": {
        "fit": null,
        "dir": null
       },
       "spin": {
-       "fit": 51.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -20202,18 +20206,18 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 56,
-     "band": "Attenzione",
+     "score": 99,
+     "band": "Ottimo",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": true,
+     "best_ref": "re-string-slap-17",
+     "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 98.5,
        "dir": "below"
       },
       "durability": {
@@ -20225,8 +20229,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 100.0,
-       "dir": "above"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -20525,15 +20529,15 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 91,
-     "band": "Ottimo",
+     "score": 76,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
      "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "penalized": true,
      "fits": {
       "stiffness": {
        "fit": 68.0,
@@ -20847,19 +20851,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 28,
+     "score": 35,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
        "fit": 0.0,
@@ -20870,8 +20874,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 100.0,
-       "dir": "above"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -21084,19 +21088,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 56,
-     "band": "Attenzione",
+     "score": 100,
+     "band": "Ottimo",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": true,
+     "best_ref": "re-string-slap-17",
+     "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
        "fit": 100.0,
@@ -21107,8 +21111,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 100.0,
-       "dir": "above"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -21455,15 +21459,15 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 88,
-     "band": "Ottimo",
+     "score": 73,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
      "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "penalized": true,
      "fits": {
       "stiffness": {
        "fit": 59.0,
@@ -21933,19 +21937,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 56,
-     "band": "Attenzione",
+     "score": 100,
+     "band": "Ottimo",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": true,
+     "best_ref": "re-string-slap-17",
+     "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
        "fit": 100.0,
@@ -21956,8 +21960,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 100.0,
-       "dir": "in"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -23515,19 +23519,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 67,
-     "band": "Buono",
+     "score": 58,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "best_ref": "re-string-slap-17",
+     "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 42.0,
-       "dir": "below"
+       "fit": 46.0,
+       "dir": "above"
       },
       "durability": {
        "fit": 100.0,
@@ -23538,8 +23542,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 60.5,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -24062,22 +24066,22 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 21,
+     "score": 33,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 41.5,
+       "fit": 50.5,
        "dir": "above"
       },
       "durability": {
-       "fit": 43.5,
+       "fit": 45.5,
        "dir": "below"
       },
       "elasticity": {
@@ -24085,8 +24089,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 28.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -24343,18 +24347,18 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 26,
+     "score": 38,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 6.5,
        "dir": "above"
       },
       "durability": {
@@ -24366,8 +24370,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 28.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -24703,19 +24707,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 53,
-     "band": "Attenzione",
+     "score": 80,
+     "band": "Ottimo",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 85.5,
-       "dir": "above"
+       "fit": 59.0,
+       "dir": "below"
       },
       "durability": {
        "fit": 100.0,
@@ -24726,8 +24730,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -24947,19 +24951,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 8,
+     "score": 30,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 28.5,
-       "dir": "below"
+       "fit": 59.5,
+       "dir": "above"
       },
       "durability": {
        "fit": 0.0,
@@ -24970,8 +24974,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -25163,18 +25167,18 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 9,
+     "score": 21,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 32.5,
+       "fit": 41.5,
        "dir": "above"
       },
       "durability": {
@@ -25186,8 +25190,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -25396,22 +25400,22 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 19,
-     "band": "Poco adatta",
+     "score": 45,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 90.0,
        "dir": "above"
       },
       "durability": {
-       "fit": 67.5,
+       "fit": 0.0,
        "dir": "below"
       },
       "elasticity": {
@@ -25419,8 +25423,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -25726,19 +25730,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 57,
-     "band": "Attenzione",
+     "score": 64,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 100.0,
-       "dir": "in"
+       "fit": 28.5,
+       "dir": "below"
       },
       "durability": {
        "fit": 100.0,
@@ -25749,8 +25753,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -26058,18 +26062,18 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 24,
-     "band": "Poco adatta",
+     "score": 47,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 85.5,
+       "fit": 94.5,
        "dir": "above"
       },
       "durability": {
@@ -26081,8 +26085,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -26291,18 +26295,18 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 43,
+     "score": 56,
      "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "best_ref": "re-string-zero-17",
+     "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 50.5,
+       "fit": 41.5,
        "dir": "below"
       },
       "durability": {
@@ -26314,8 +26318,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -26525,18 +26529,18 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 27,
-     "band": "Poco adatta",
+     "score": 43,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 94.5,
+       "fit": 85.5,
        "dir": "below"
       },
       "durability": {
@@ -26548,8 +26552,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -27118,14 +27122,14 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 57,
-     "band": "Attenzione",
+     "score": 100,
+     "band": "Ottimo",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": false,
      "fits": {
       "stiffness": {
@@ -27141,8 +27145,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -27357,19 +27361,19 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 28,
+     "score": 35,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "best_ref": "re-string-zero-17",
+     "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 98.5,
-       "dir": "above"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
        "fit": 0.0,
@@ -27380,8 +27384,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -27600,31 +27604,31 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 29,
+     "score": 32,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
-     "penalized": false,
+     "best_ref": "re-string-zero-17",
+     "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 59.0,
        "dir": "above"
       },
       "durability": {
-       "fit": 100.0,
-       "dir": "in"
+       "fit": 34.5,
+       "dir": "below"
       },
       "elasticity": {
        "fit": null,
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -28237,18 +28241,18 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 27,
-     "band": "Poco adatta",
+     "score": 43,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 94.5,
+       "fit": 85.5,
        "dir": "below"
       },
       "durability": {
@@ -28260,8 +28264,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -28593,22 +28597,22 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 43,
-     "band": "Attenzione",
+     "score": 61,
+     "band": "Buono",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
-     "penalized": false,
+     "best_ref": "re-string-zero-17",
+     "penalized": true,
      "fits": {
       "stiffness": {
-       "fit": 98.5,
-       "dir": "above"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
-       "fit": 50.5,
+       "fit": 52.5,
        "dir": "below"
       },
       "elasticity": {
@@ -28616,8 +28620,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -28830,14 +28834,14 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 14,
+     "score": 35,
      "band": "Poco adatta",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "solinco-confidential-16l",
+     "best_ref": "re-string-zero-17",
      "penalized": true,
      "fits": {
       "stiffness": {
@@ -28853,8 +28857,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -29303,22 +29307,22 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 22,
-     "band": "Poco adatta",
+     "score": 41,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 0.0,
+       "fit": 81.0,
        "dir": "above"
       },
       "durability": {
-       "fit": 78.0,
+       "fit": 0.0,
        "dir": "below"
       },
       "elasticity": {
@@ -29326,8 +29330,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -29541,22 +29545,22 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 18,
-     "band": "Poco adatta",
+     "score": 45,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 54.5,
-       "dir": "above"
+       "fit": 90.0,
+       "dir": "below"
       },
       "durability": {
-       "fit": 10.0,
+       "fit": 0.0,
        "dir": "below"
       },
       "elasticity": {
@@ -29564,8 +29568,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }
@@ -29774,22 +29778,22 @@
     },
     "excel_measures": null,
     "pairing": {
-     "score": 11,
-     "band": "Poco adatta",
+     "score": 50,
+     "band": "Attenzione",
      "n_dims": 3,
      "missing": [
       "elasticity"
      ],
      "no_spin": false,
-     "best_ref": "toroline-o-toro-17",
+     "best_ref": "re-string-slap-17",
      "penalized": false,
      "fits": {
       "stiffness": {
-       "fit": 11.0,
-       "dir": "above"
+       "fit": 100.0,
+       "dir": "in"
       },
       "durability": {
-       "fit": 28.0,
+       "fit": 0.0,
        "dir": "below"
       },
       "elasticity": {
@@ -29797,8 +29801,8 @@
        "dir": null
       },
       "spin": {
-       "fit": 0.0,
-       "dir": "below"
+       "fit": null,
+       "dir": null
       }
      }
     }

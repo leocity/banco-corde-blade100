@@ -108,6 +108,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     for r in records:
         r["community"] = comm.get(r["id"])
     index_check = index_validation(records)
+    ids = {r["id"] for r in records}
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
     return {
@@ -119,7 +120,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
                                            if (r.get("derived") or {}).get("tension_start")), None),
         "anchors": ANCHOR_TENSIONS,
         "lab_meta": lab_meta(records),
-        "defaults": {"equipped": DEFAULT_EQUIPPED, "liked": DEFAULT_LIKED, "disliked": DEFAULT_DISLIKED},
+        "defaults": {"equipped": DEFAULT_EQUIPPED, "liked": [i for i in DEFAULT_LIKED if i in ids], "disliked": [i for i in DEFAULT_DISLIKED if i in ids]},
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},

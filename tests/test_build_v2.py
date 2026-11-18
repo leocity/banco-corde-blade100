@@ -41,9 +41,19 @@ def test_build_exposes_defaults():
     recs = [lab(i) for i in range(10)]
     recs[0]["id"] = "solinco-confidential-16l"
     out = build(recs, {})
-    assert out["defaults"]["equipped"] == {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
-    assert out["defaults"]["liked"] == ["solinco-confidential-16l", "toroline-o-toro-17"]
-    assert "babolat-rpm-blast-16" in out["defaults"]["disliked"]
+    assert out["defaults"]["equipped"] == {"id": "re-string-slap-17", "kg": [22, 21]}
+    # solo id esistenti: le altre preferite/non gradite non sono in questo campione
+    assert out["defaults"]["liked"] == ["solinco-confidential-16l"]
+    assert out["defaults"]["disliked"] == []
+
+
+def test_real_defaults_all_exist_and_are_complete():
+    import json
+    d = json.load(open("data/strings.json", encoding="utf-8"))
+    ids = {r["id"] for r in d["strings"]}
+    assert d["defaults"]["equipped"]["id"] in ids
+    assert d["defaults"]["liked"] == ["solinco-confidential-16l", "toroline-o-toro-17", "re-string-zero-17", "re-string-slap-17"]
+    assert len(d["defaults"]["disliked"]) == 6 and set(d["defaults"]["disliked"]) <= ids
 
 
 def test_build_adds_review_conflicts_and_gauge_flags():
