@@ -1,4 +1,5 @@
 """Recensioni e punteggi dei tester: validazione e aggregazione pesata per tipo di fonte (spec v2 §4)."""
+import re
 
 CRITERIA = ("spin", "comfort", "control", "power", "durability")
 LEVEL_CRITERIA = CRITERIA + ("stiffness",)
@@ -69,3 +70,34 @@ def add_percentiles(aggs):
                 pct = None if lv is None else round((lv - 1) * 25, 1)
             a.setdefault("pct", {})[c] = pct
     return aggs
+
+
+# Note che dichiarano una recensione scritta per un altro calibro: non deve generare conflitti con i dati misurati.
+GAUGE_MISMATCH_RE = re.compile(r"gauge (is )?not stated|applied to this id|nearby|different gauge|other gauge", re.I)
+CONFLICT_CRITERIA = ("spin", "durability", "stiffness")
+
+
+def mark_gauge_mismatch(sources, overrides=None):
+    """Copia delle fonti con `gauge_mismatch`; `overrides` = {sito: bool} vince sul riconoscimento dalle note."""
+    overrides = overrides or {}
+    out = []
+    for s in sources:
+        flag = overrides[s.get("site")] if s.get("site") in overrides else bool(GAUGE_MISMATCH_RE.search(s.get("note") or ""))
+        out.append({**s, "gauge_mismatch": flag})
+    return out
+
+
+def review_conflicts(sources, lab_levels, threshold=2):
+    """Dove i tester (livello 1–5) si discostano di `threshold` o più livelli dal laboratorio. Ignora le fonti con calibro diverso."""
+    usable = [s for s in sources if not s.get("gauge_mismatch")]
+    raw = aggregate({"sources": usable})["raw"]
+    out = []
+    for c in CONFLICT_CRITERIA:
+        lab, tester = lab_levels.get(c), raw.get(c)
+        if lab is None or tester is None:
+            continue
+        level = tester / 25 + 1
+        if abs(level - lab) >= threshold:
+            out.append({"criterion": c, "testers": round(level, 1), "lab": lab,
+                        "sites": list(dict.fromkeys(s["site"] for s in usable if _value(s, c) is not None))})
+    return out

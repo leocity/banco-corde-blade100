@@ -178,6 +178,133 @@ Fatto in questo ramo:
 
 Ancora aperto: propagare i margini dello spin nel punteggio; validare o sostituire la regola della tensione; U2 (etichette sovrapposte nella mappa); indicatori a punti nel confronto su telefono; U7 legenda dei badge; tooltip solo hover su touch nelle barre (ora c'è almeno il numero visibile); A5 (somiglianza), A6 (fonte accanto a ogni numero), A8 (codice morto 70/30 in `judgments()`).
 
+## Stato v3 (2026-10-30)
+
+Spec: `docs/superpowers/specs/2026-10-30-banco-semplificato-design.md` · piano: `docs/superpowers/plans/2026-10-30-banco-semplificato.md` · screenshot: `docs/audit/v3-*.png` (sostituiti dai v4, vedi sotto) (390 e 1280 px). Verifica: 189 test Python, 112 test JS, 55 test Playwright, tutti verdi (`tests/run_all.sh`). L'Artifact è aggiornato alla v3 (2026-10-31, privato, runtime 0.2.96, capability `sample`, `db`, `user`, `downloads`).
+
+### I sette problemi dell'audit del 2026-10-30
+
+| # | Problema | Stato | Come |
+|---|---|---|---|
+| 1 | La montata (Zero 1,23) e 29 corde valutate senza punteggio | **Risolto** | Il pairing richiede almeno 3 misure di laboratorio, non più lo spin: Zero ha pairing 100 «senza spin». 97 corde su 102 hanno un pairing (Ottimo 14, Buono 20, Attenzione 35, Poco adatta 28), 5 sono «non valutabili» con l'elenco di cosa manca. |
+| 2 | L'Excel usato in due soli calcoli | **Parziale** | Tenuta = media di perdita TWU, TL6, TL12 e scorrimento 24 h; il controllo usa allungamento a 50 lb ed elasticità; elasticità, cedimento e lunghezza guadagnata 16×19 sono nella scheda. **Aperto:** la curva di allungamento 40→65 lb e il peso statico sono solo mostrati, non entrano in nessuna dimensione. |
+| 3 | Controllo = percentile della rigidità, nascosto | **Risolto, con un limite dichiarato** | Un indice da 1–3 misure («da N di 3»), mostrato in ogni riga con la potenza come altro estremo dello stesso asse. Nessun laboratorio lo misura e la scheda lo dice. |
+| 4 | Recensioni in conflitto con i dati | **Risolto** | Fuori da ogni numero; la scheda dice «I tester dicono X, i dati misurano Y» quando divergono di 2 o più livelli (20 corde, 22 conflitti). 34 fonti su 144 sono marcate «calibro diverso» dalle note e non generano conflitti (riconoscimento da espressioni nelle note: correggibile in `data/agents/review_overrides.json`). |
+| 5 | Mappa illeggibile | **Risolto** | Scheda al passaggio (o fissata al tocco), filtri per marca, calibro, forma, solo misurate, pairing Buono o meglio; montata e preferite sempre visibili e con etichetta senza sovrapposizioni; barre d'errore solo sul punto attivo; tabella alternativa e frecce da tastiera. |
+| 6 | Troppe schermate, numeri e badge | **Risolto** | 4 schermate (Scegli, Mappa, Banco, Montata) più il Metodo; una sola riga corda con 4 valori marcati ● ◐ ○ e un solo avviso per volta; liste preimpostate e pesi sostituiti da filtri. |
+| 7 | Montata e preferite fisse, nessun registro ore | **Risolto, con un limite dichiarato** | Montata e preferite modificabili, registro ore, storico delle corde finite, usura con fasce. **Limite:** la vita attesa in ore (`8 + 0,12 × tenuta`) è un'ipotesi non misurata finché non registri corde finite. |
+
+Aggiunto: parere AI su richiesta (scheda, corda che non c'è, usura), sempre etichettato «Parere AI — non misurato» e fuori da punteggi, top 3, mappa e confronto.
+
+### Voci dell'audit precedente
+
+- **A1/A2 (criteri e punteggio relativo):** il vecchio punteggio «Per te» e l'affinità non esistono più; il pairing è dichiarato «non è un voto» accanto al numero e nel Metodo.
+- **A3 (tensione):** ora parte dalla tua montata e mostra un intervallo ±1 kg con l'etichetta «stima»; la regola (−0,75 kg ogni +15 lb/in, ±2 kg) **resta non validata**.
+- **A5 (somiglianza opaca):** sostituita dal pairing, con la formula nel Metodo. **Aperto:** l'ipotesi sui gusti da 4 corde (`DATA.insight`) è ancora un testo statico del dataset, ora nel Metodo e dichiarato come ipotesi.
+- **A6 (provenienza):** ogni valore ha il marcatore e un suggerimento con la fonte; il «?» porta al Metodo. **Aperto:** non c'è un popover per numero con condizioni e margine, e i suggerimenti dei marcatori richiedono il passaggio del mouse (su telefono resta il testo «manca: …»).
+- **A7 (anni e produzione da agenti):** **invariato**, 47 corde senza anno («anno da verificare»).
+- **A8 (codice morto):** **aperto**. `derive.judgments()` serve ancora, perché fornisce le parole mostrate (spin, rigidità, tenuta), ma contiene la miscela 70/30 con le recensioni, mai attiva perché le recensioni non le vengono passate; restano `profile_score`, somiglianza e `tension_start`, che l'interfaccia non legge più.
+- **Revisione finale (2026-10-31):** trovata e corretta una contraddizione, la parola «tenuta» di ogni riga veniva dal vecchio calcolo a 2 fonti mentre pairing, mappa e ordinamenti usavano la dimensione a 4 fonti (25 corde su 89 avevano un livello diverso, compresa la montata): ora c'è una sola tenuta, con un test sui dati veri. Corretti anche tre difetti di salvataggio: azioni fatte prima che `db` risponda cancellavano lo storico, due salvataggi ravvicinati potevano arrivare fuori ordine, e un salvataggio online fallito non veniva dichiarato; e «Annulla» ripristinava una foto vecchia dello stato.
+- **U1–U3, U5, U9:** risolti (mappa, etichette, prima schermata su telefono con la prima scelta sopra la piega, spiegazioni raggiungibili dal «?»).
+- **U4:** risolto in parte, ogni riga mostra la differenza rispetto alla montata; manca una riga «perché la prima batte la quinta».
+- **U6/U7:** il confronto è un pannello in basso con colonne scorrevoli; **aperto:** niente indicatori a punti, e i badge non hanno una legenda unica.
+- **U10:** **aperto**, l'elenco delle corde tolte resta un paragrafo nel Metodo.
+- **Accessibilità:** misurati a 390 px, pulsanti, chip di filtro e schede sono 44 px; **aperto:** i chip in «Le tue corde» sono 32 px e il «?» accanto ai valori è 22 px.
+
+### Ancora aperto
+
+- Verificare la vita attesa con le tue corde finite; regola della tensione non validata.
+- Propagare i margini dello spin da gemello (±0,5) nel pairing.
+- Rinominare o togliere i campi derivati non più usati (A8).
+- Se la pagina viene aperta senza `db` (anteprima, non autenticato), lo stato è solo nel browser: lo dice la schermata Montata.
+- Controllo dal vivo di `db` (le ore restano dopo il reload e sul telefono): non verificabile da qui perché i dati per utente sono privati anche dal proprietario; verificate solo regole di default e versione live.
+
+## Stato v4 (2026-10-31): sincronizzazione, schede compatte, diario
+
+Spec: `docs/superpowers/specs/2026-10-31-diario-prove-design.md` · piano: `docs/superpowers/plans/2026-10-31-sync-ux-diario.md` · screenshot: `docs/audit/v4-*.png` (390 e 1280 px). Verifica: 207 test Python, 184 test JS, 109 test Playwright, tutti verdi.
+
+### Le segnalazioni dell'utente del 2026-10-31
+
+| Segnalazione | Stato | Come |
+|---|---|---|
+| «Ho aggiornato sul telefono e al PC non viene misurata tutta la roba messa nella corda montata» | **Corretto nel codice, non verificabile dal vivo** | Causa: un unico documento letto una sola volta all'apertura, quindi il PC non vedeva ciò che il telefono scriveva dopo e una pagina vecchia poteva sovrascrivere. Ora: un documento per sessione e per corda finita, ascolto in tempo reale, scritture solo delle differenze, migrazione del vecchio documento (provata con la forma reale dell'utente: 10 sessioni, 17,5 ore), badge di stato. Provato con un `db` simulato e un secondo dispositivo simulato; **non** con il `db` reale, i cui dati privati non si leggono da qui. |
+| «Non trovo il voto da inserire / fa schifo come vengono registrati i dati» | **Risolto** | Il diario è in Montata, sotto l'usura, con i voti a tocco da 44 px per 8 categorie in 3 momenti; si salva a ogni tocco. Verdetto «ricomprerei» che aggiorna le preferite con annulla. |
+| «L'app si bugga quando apro una nuova scheda» | **Risolto** | La scheda ha tessere, sezioni richiudibili, barra azioni fissa, sfondo fermo; test a 390 px su decine di corde (nessuna etichetta sovrapposta, nessuno scroll orizzontale). |
+| «Le schede occupano tutto lo schermo, difficilissimo navigare» | **Risolto** | Righe compatte (nome, pairing, 4 valori) con 8+ corde per schermata; intestazione corta; ricerca in alto; filtri richiudibili con il conteggio. |
+| Votare dopo l'uso, in più momenti | **Fatto** | Primo colpo, metà vita, fine vita; al cambio corda si propone di dare i voti di fine vita; le corde finite si riaprono e si modificano; «Aggiungi prova passata» per ciò che si è provato prima dell'app. |
+
+Altro corretto durante il lavoro: la tenuta di laboratorio era calcolata in due modi diversi (corretta in `pipeline/derive.py`); un'eco sincrona del `db` faceva sparire una sessione; la montata senza voti finiva nel prompt AI come blocco vuoto; i cinque tondi dei voti uscivano dal dialogo a 390 px e le righe di «Le tue prove» avevano 200 px di altezza vuota (ora con test).
+
+### Limiti dichiarati
+
+- I voti sono soggettivi e non cambiano mai punteggi o pairing. Il «Laboratorio contro sensazioni» con poche corde (sotto 8) dice «troppo poche corde per fidarsi»; non appare sotto 5.
+- Il controllo e la potenza confrontati con i voti restano indici costruiti, non misure.
+- La tensione di una corda già finita si vede ma non si modifica dal diario.
+- Il `db` reale non è stato letto da qui: la sincronizzazione tra dispositivi va controllata a mano.
+
+### Revisione finale (2026-10-31): trovati e corretti
+
+| # | Gravità | Problema | Correzione |
+|---|---|---|---|
+| 1 | Critica | Dopo un salvataggio online fallito (telefono offline) lo stato vecchio del server sostituiva la modifica non salvata e nulla riprovava | `unsynced`: finché il server non ha l'ultimo stato non lo si sostituisce; riprova da sola con attesa crescente (5 s fino a 60 s); alla riapertura la copia locale si fonde con il server (nulla perso, nulla cancellato; una cancellazione fatta offline può ricomparire). Test node e Playwright. |
+| 2 | Importante | «Annulla» con una foto vecchia cancellava ciò che un altro dispositivo aveva aggiunto nel frattempo | Il toast sparisce quando arriva una modifica remota. |
+| 3 | Importante | Montata larga 384 px: sotto i 380 px i voti uscivano dallo schermo | Da telefono prima: sotto 380 px etichetta sopra e cinque tondi a tutta larghezza (≥ 44 px); test a 320, 360, 375 e 390 px su Montata, dialoghi e scheda, con testi lunghissimi. |
+| 4 | Importante | Dopo aver scritto una nota il primo tocco su un voto andava perso, e un aggiornamento remoto cancellava il testo in scrittura | Non si ridisegna il diario mentre il cursore è in un campo né subito dopo l'uscita da un campo. |
+| 5 | Minore | `state` si scriveva prima della vita chiusa | Ordine: elementi, poi `state`, poi cancellazioni. |
+| 6 | Minore | Testi lunghi senza spazi allargavano la pagina | `overflow-wrap: anywhere`. |
+| 7 | Minore | Tensione 99 kg, motivi e ore assurdi sopravvivevano; formule CSV; `DATI_UTENTE` in maiuscole/minuscole | Intervalli validati in `sanitizeState` (con avviso), motivo ristretto, apostrofo davanti a `= + - @`, sostituzione senza distinzione di maiuscole. |
+
+**Rimandati (dichiarati):** (8) una pagina vecchia (v3) che salva riscrive il documento `state` senza il diario della montata, e riportando gli array vecchi può far riapparire corde cancellate altrove: serve aggiornare tutte le schede aperte; un documento separato per il diario della montata lo eviterebbe. (9) Con un `db` reale che consegna snapshot in ritardo la schermata può mostrare per un attimo uno stato intermedio fino al snapshot successivo: non osservato con il `db` simulato.
+
+### Contraddizioni tra dichiarazioni e punteggi (2026-10-31, caso Slap contro Zero)
+
+Segnalazione: «dici che la Re-String Slap ha meno controllo della Zero, ma recensioni e produttore dicono il contrario». Cosa c'era davvero:
+
+- Il «controllo» non è una misura: è la media dei percentili di rigidità, allungamento a 50 lb e recupero elastico (`pipeline/dims.py`). Slap 1,23 = 31,7, Zero 1,23 = 52,6. La differenza viene da una rigidità convertita da Racketpedia (195 contro 214 lb/in, errore tipico ±10) e da un recupero elastico che differisce di **un solo gradino** dello strumento (0,53 contro 1,07 punti %).
+- Nei dati c'è una sola recensione indipendente su Slap 1,23 (Tennisnerd): «control/predictability below Zero», cioè concorda con l'indice. Il produttore dice il contrario («un po' più di controllo», autovalutazione 8/10), ma è marketing e non entra in nessun numero. Altre recensioni citate dall'utente non sono nel dataset.
+- **Correzione:** ogni indice di controllo ha ora un intervallo (`derived.control_range`: rigidità entro il suo margine, allungamento e recupero di ±1 gradino). Slap 1,23 sta tra 15 e 55, Zero 1,23 tra 28 e 78: si sovrappongono, quindi la scheda scrive «controllo: entro il margine» invece di «−21 controllo». Il Metodo dichiara il margine.
+- **Verifica sulle recensioni indipendenti** (`estimates_meta.index_validation`, calcolata a ogni build, stesso calibro, senza il produttore): controllo ρ 0,48 su 29 corde (concorda moderatamente), comfort 0,56 su 24, rigidità 0,55 su 32, tenuta 0,30 su 26, **potenza (= 100 − controllo) −0,15 su 20 e spin −0,17 su 14: nessun riscontro**. La potenza non ha una misura propria e la scheda lo dice.
+- **Quanto pesa il problema:** 82 corde hanno almeno 5 punti di differenza di controllo dalla Zero 1,23 e per **64 di queste la differenza è entro il margine**; per 58 corde su 98 il controllo è costruito su una sola misura (la rigidità); 21 coppie di calibri dello stesso modello hanno parole di controllo o tenuta distanti due livelli (per esempio Confidential 1,30 «molto alto» contro 1,20 «basso»).
+
+**Ancora aperto (dichiarato):** il pairing usa il valore puntuale del controllo (peso 15) senza margine; le parole («alto», «basso») non hanno ancora il margine; la potenza resta mostrata come 100 − controllo pur senza riscontro (decisione di prodotto: tenerla, toglierla o chiamarla «inverso del controllo»); le 17 corde con conflitto recensioni/dati restano segnalate ma non corrette.
+
+### Controllo e potenza separati, pareri dei forum (2026-10-31)
+
+Richiesta: controllo e potenza sono due cose diverse; verificare sui forum (TalkTennis, Passione Tennis) le corde principali: Solinco, Re-String, Toroline, Grapplesnake.
+
+- **Separati:** la potenza non è più «100 − controllo» (sulle recensioni indipendenti dava ρ −0,15 su 20 corde, nessun riscontro). Non ha un indice di laboratorio: ha una voce propria, «Controllo e potenza dai tester» nella scheda, e due chiavi distinte nel parere AI. Le opinioni dei tester non entrano mai in pairing, punteggi, classifiche, mappa o usura (test `tests/test_community_isolation.py`).
+- **Ricerca:** 4 agenti Haiku (uno per marchio) hanno aperto le pagine e riportato citazione letterale, link e autore (`data/agents/forum_*.json`); 40 corde del banco hanno almeno un parere o un confronto. Un parere vale una persona; il marketing del produttore non conta; Reddit non era raggiungibile (rete). Ho ricontrollato a mano 11 citazioni su 11 sulle pagine vere (Passione Tennis, TalkTennis, Tennis Warehouse, Tennisnerd): tutte autentiche. I livelli alto/medio/basso sono assegnati leggendo il testo (interpretazione dell'agente, non punteggi dei tester).
+- **Slap contro Zero:** nessun thread su Slap né su TalkTennis né su Passione Tennis (corda recentissima). Le uniche fonti indipendenti sono la recensione di Chris Nash su Tennisnerd (26/11/2025: «the control was not there in comparison to Zero», «Zero is the clear best choice» per la prevedibilità), verificata sulla pagina, e un commento di un lettore (maggio 2026) che dice che la Slap non è stata più stabile e controllata nella sua esperienza. Il «più controllo» viene solo dal produttore. **Non ho trovato nessuna fonte indipendente che dica che la Slap ha più controllo della Zero**; resta un punto aperto, da chiudere con link che l'utente conosce.
+- **Limite dei dati:** i tester dicono quasi sempre «controllo alto» delle poly: il livello da solo distingue poco; contano i confronti diretti. Per le corde con almeno 2 pareri, i tester e l'indice di controllo concordano in 9 casi su 16, differiscono di un livello in 3 e si contraddicono (alto contro basso) in 4, tra cui la O-Toro (indice «molto basso» 17, tre pareri «alto»): la scheda lo segnala. L'indice di controllo resta quindi poco affidabile per le corde morbide.
+- **Copertura:** Re-String quasi vuota (Slap: 1 confronto; Zero: 3 pareri; Vivo 2; Sync 1); Solinco e Toroline e Grapplesnake con 3–10 pareri sui modelli principali; Hyper-G Soft, Barb Wire, Absolute, Snapper, A5, Enso Pro, Toro Toro quasi niente. Passione Tennis /f211 (sezione Toroline) non letta.
+- **Ancora aperto:** altri marchi (Yonex, Luxilon, Babolat, Tecnifibre, Head, Kirschbaum, Signum Pro); il pairing usa ancora il solo indice di controllo; il parere dei tester non corregge l'indice.
+
+### Semplificazione per il telefono (2026-10-31)
+
+Richiesta: tolto il controllo, app che non si blocca e navigabile da telefono (con tasti per navigare), meno testo, mappa più semplice con «filtra», tutto meno complicato.
+
+Misure a 360 px (parole in prima schermata · comandi visibili; prima → dopo):
+
+| Schermata | Prima | Dopo |
+|---|---|---|
+| Scegli | 162 parole · 37 comandi | 106 · 20 |
+| Mappa | 128 parole · 68 comandi | 38 · 3 |
+| Banco | 727 parole in pagina · 92 comandi | tolto (la lista è quella di Scegli) |
+| Montata | 217 parole in pagina · 82 comandi | 158 in pagina (parte secondaria in sezioni chiuse) |
+| Metodo | 1495 parole | 345 |
+
+Test `semplicità: ogni schermata sta nel suo tetto…` fissa questi limiti.
+
+- **Controllo tolto:** niente indice nel pairing (pesi: spin 30, tenuta 20, rigidità 20, elasticità 15), nelle tessere, nelle righe, nel Banco, nella mappa, nel confronto, nel parere AI e nelle note generate. Restano i pareri dei tester su controllo e potenza, con link. Effetto: le fasce del pairing cambiano (alcune corde salgono, altre scendono), e «Ottimo» è ora il 15,5% delle corde.
+- **Tre schede invece di quattro:** il Banco duplicava Scegli (stessa lista, stessi filtri); i filtri erano copiati tre volte (Scegli, Banco, Mappa). Ora un solo pannello **Filtra**, condiviso. Tolti calibro e forma dai filtri (poco usati; ogni calibro ha comunque la sua riga).
+- **Mappa:** un grafico, senza fasce per i dati mancanti, barre d'errore, zone, legenda lunga e tabella; la riga della corda compare sotto al tocco.
+- **Confronto:** il pulsante «Confronta» della scheda **non faceva niente** (nessun gestore): ora aggiunge la corda a una barra compatta in basso che si apre al tocco (prima il pannello copriva il 40% dello schermo e bloccava i tocchi).
+- **Navigazione:** il tasto Indietro del telefono ora chiude la scheda o torna alla schermata precedente (prima usciva dall'app); tasto «‹ Indietro» ben visibile nella scheda e nel Metodo; barra in basso con l'altezza vera misurata.
+- **Blocchi dei tocchi trovati e tolti:** il messaggio «Annulla» (10 s) intercettava i tocchi sulla zona sotto (ora trasparente, 6 s); gli elementi portati in vista dal browser finivano sotto la barra fissa (margine di scorrimento); i dialoghi su telefoni piccoli nascondevano «Monta» (piede fisso con errore e pulsanti).
+- **Prestazioni su telefono lento (CPU 6× più lenta):** nessun errore JS; cambio schermata ≈ 90 ms; formattatori numerici creati una volta sola; tocco senza ritardo del doppio tocco; niente «tira per ricaricare» che riavvia l'app. Resta un'attività di avvio di circa 250 ms.
+
+**Ancora aperto:** il test su un telefono vero (non emulato) è tuo; il desktop non è stato ridisegnato (la lista a due colonne ha righe compatte come su telefono); il Metodo resta una pagina lunga di sezioni, non un percorso guidato.
+
 ## C. Priorità consigliate
 
 1. **Sistemare il modello dei criteri (A1)**: togliere Potenza/duplicati, riscrivere Controllo e Comfort come "interpretazioni", ricalcolare il punteggio su assi indipendenti, e rifare le top-3 (cambieranno).

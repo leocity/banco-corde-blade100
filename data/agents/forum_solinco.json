@@ -1,0 +1,632 @@
+{
+ "brand": "Solinco",
+ "researched_at": "2026-10-31",
+ "models": [
+  {
+   "model": "Confidential",
+   "sources": [
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/reviews/strings/Solinco_Confidential.html",
+     "kind": "playtest",
+     "author": "Tennis Warehouse editorial team",
+     "date": "2020",
+     "language": "en",
+     "frame_or_tension": "Editorial scores on page: control 93, power 42. Power basso per the page line 'With its firm construction, Confidential is not designed for the player who wants easy or \"free\" power'.",
+     "quote": "What isn't confidential is the nearly off-the-charts control score our team gave this string",
+     "control": "alto",
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/reviews/strings/Solinco_Confidential.html",
+     "kind": "playtest",
+     "author": "Michelle (TW playtester)",
+     "date": "2020",
+     "language": "en",
+     "frame_or_tension": "Frame per WebFetch summary, not raw-verified: Wilson Pro Staff RF97 Autograph 58 lbs.",
+     "quote": "Confidential's stiff and low-powered response was perfect for my game",
+     "control": null,
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/reviews/strings/Solinco_Confidential.html",
+     "kind": "playtest",
+     "author": "Troy (TW playtester)",
+     "date": "2020",
+     "language": "en",
+     "frame_or_tension": "Yonex EZONE 98+, settled on 47 lbs with a lock-out machine after adjusting. Power impression changed over time: 'My impressions on control and power changed somewhat over time'. Spin: 'Spin was great throughout the playtest, much like I find with Solinco Hyper-G'.",
+     "quote": "Initially, this string felt very control-oriented, somewhat dead and low powered",
+     "control": null,
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "spin",
+       "direction": "same"
+      }
+     ]
+    },
+    {
+     "site": "TennisNerd",
+     "url": "https://www.tennisnerd.net/gear/strings/solinco-confidential-string-review/18882",
+     "kind": "review",
+     "author": "TennisNerd reviewer (name not captured)",
+     "date": "not captured",
+     "language": "en",
+     "frame_or_tension": "Main review body. Also in body: 'Tension maintenance: After settling in after 1-2 hours, this string holds tension and playability extremely well.' and 'not for beginners or lower-level intermediate players'.",
+     "quote": "This string is all about control, so players who are just starting out would be better off with a softer string with a more powerful response.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "TennisNerd",
+     "url": "https://www.tennisnerd.net/gear/strings/solinco-confidential-string-review/18882",
+     "kind": "review",
+     "author": "TennisNerd reader comment (name not captured)",
+     "date": "not captured",
+     "language": "en",
+     "frame_or_tension": "Reader comment on the same page, not the main review. Commenter was coming from Hyper G 16 at 52 lbs in a Prince Classic Graphite 100 at 52 lbs.",
+     "quote": "I find it more predictable than Hyper G, with similar characteristics in the spin and power department.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "spin",
+       "direction": "same"
+      },
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "power",
+       "direction": "same"
+      }
+     ]
+    },
+    {
+     "site": "TennisCompanion",
+     "url": "https://tenniscompanion.org/solinco-confidential/",
+     "kind": "review",
+     "author": "Jon Crim",
+     "date": "not shown (page footer says copyright 2026)",
+     "language": "en",
+     "frame_or_tension": "Frame not stated. Scores on page per WebFetch: control 9.4, power 4.5, spin 9.1, comfort 6.1, durability 9.3.",
+     "quote": "Solinco Confidential excels in many areas, but one tradeoff that comes with its low power and control-centric performance is comfort.",
+     "control": "alto",
+     "power": "basso",
+     "spin": null,
+     "comfort": "basso",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Passione Tennis forum (thread t56628-solinco-confidential)",
+     "url": "https://www.passionetennis.com/t56628-solinco-confidential",
+     "kind": "forum",
+     "author": "Lucasss",
+     "date": "2020-12-26",
+     "language": "it",
+     "frame_or_tension": "Confidential 1.25 in Blade Pro Lab 98 16x19, strung 22/21 as written in the post. Based on the first hour only.",
+     "quote": "Gran pocketing, ottima potenza, tanto spin, non mi causato nessun dolore al braccio. Il controllo, seppur sia solo alla prima ora, è da riferimento.",
+     "control": "alto",
+     "power": "alto",
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Passione Tennis forum (thread t56628-solinco-confidential)",
+     "url": "https://www.passionetennis.com/t56628-solinco-confidential",
+     "kind": "forum",
+     "author": "luigi.filippo",
+     "date": "2020-11-11",
+     "language": "it",
+     "frame_or_tension": "Calibro 1.25. Tried on PA19 (as written) and Blade BLX 16/19. Feel and connection praised; no explicit control level given.",
+     "quote": "Pur essendo una corda orientata al controllo mi ha dato delle buone sensazioni in termini di feel e connessione con la racchetta.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Passione Tennis forum (thread t56628-solinco-confidential)",
+     "url": "https://www.passionetennis.com/t56628-solinco-confidential",
+     "kind": "forum",
+     "author": "zomma1970",
+     "date": "2020-03-01",
+     "language": "it",
+     "frame_or_tension": "Reply to a question asking whether to swap Hyper G 1.20 for Confidential in a T-Fight 305 XTC at 21/20. Comparison direction inferred from that question.",
+     "quote": "Sicuramente come prestazioni è più efficiente, anche se la comodità va un po' a donne di malaffare.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "basso",
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "comfort",
+       "direction": "less"
+      }
+     ]
+    },
+    {
+     "site": "Passione Tennis forum (thread t56628-solinco-confidential)",
+     "url": "https://www.passionetennis.com/t56628-solinco-confidential",
+     "kind": "forum",
+     "author": "nadavin95",
+     "date": "2021-03-23",
+     "language": "it",
+     "frame_or_tension": "Frame not stated. Places Confidential between Hyper-G and Tour Bite Soft; no attribute named.",
+     "quote": "una via di mezzo tra le hyper g e le tour bite soft",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "About 9 distinct people (Michelle and Troy both appear on one Tennis Warehouse page). Consensus is control alto and power basso, with spin high. Power perception varies: Troy says it firmed up and gained power over time, and one Italian poster (Lucasss, Blade 98 frame) says 'ottima potenza'. Comfort is the main complaint (TennisCompanion, zomma1970). Tension retention is praised (TennisNerd). Direct comparisons: spin similar to Hyper-G (TW Troy, TennisNerd reader), more predictable than Hyper-G (TennisNerd reader), placed between Hyper-G and Tour Bite Soft (nadavin95)."
+  },
+  {
+   "model": "Confidential Soft",
+   "sources": [
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/reviews/strings/solinco_confidential_soft.html",
+     "kind": "playtest",
+     "author": "Tennis Warehouse editorial team",
+     "date": "not captured",
+     "language": "en",
+     "frame_or_tension": "Editorial scores on page: control 9, spin 8. Page says 'it is still very much a control-oriented co-poly string'.",
+     "quote": "The original version of Confidential is very controlled and low powered, while Soft is slightly softer and provides a bit more power",
+     "control": null,
+     "power": "medio",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Confidential",
+       "attribute": "power",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/reviews/strings/solinco_confidential_soft.html",
+     "kind": "playtest",
+     "author": "Michelle (TW playtester)",
+     "date": "not captured",
+     "language": "en",
+     "frame_or_tension": "Frame not captured. Michelle says the attribute was 'a little extra power', and the same page says 'Getting a little extra power without sacrificing control is a welcome attribute'.",
+     "quote": "I found a little more power than Solinco Hyper-G or standard Confidential, and thankfully, I didn't feel like I had to sacrifice control.",
+     "control": null,
+     "power": "medio",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "power",
+       "direction": "more"
+      },
+      {
+       "vs": "Solinco Confidential",
+       "attribute": "power",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/Learning_Center/reviews/strings/solinco_confidential_soft.html",
+     "kind": "playtest",
+     "author": "Troy (TW playtester)",
+     "date": "not captured",
+     "language": "en",
+     "frame_or_tension": "Frame not captured. Found it 'a little more power than the standard version' but still with control.",
+     "quote": "this softer version of Confidential proved even more spin-friendly than the original",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Confidential",
+       "attribute": "spin",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "TennisCompanion",
+     "url": "https://tenniscompanion.org/solinco-confidential-soft/",
+     "kind": "review",
+     "author": "Jon Crim",
+     "date": "2026-09-03",
+     "language": "en",
+     "frame_or_tension": "Title: 'Arm-Friendly or Not?'. Scores per page: power 6.5, spin 8.8, control 8.9, comfort 7.9, durability 8.9. Notes 'a drop in spin and control' after roughly three to five hours.",
+     "quote": "Solinco Confidential Soft sits on the moderately powerful side for a polyester string.",
+     "control": null,
+     "power": "medio",
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Confidential",
+       "attribute": "comfort",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "TennisNerd",
+     "url": "https://www.tennisnerd.net/gear/strings/solinco-hyper-g-soft-or-confidential-soft-my-full-review/66640",
+     "kind": "review",
+     "author": "Chris Nash (per WebFetch summary, not raw-verified)",
+     "date": "June 13, 2026 (per WebFetch summary, not raw-verified)",
+     "language": "en",
+     "frame_or_tension": "Frames: Wilson Blade 98 and Babolat Pure Aero 98. Spec list: 'Power: Low to medium.' for Confidential Soft, 'Power: Medium.' for Hyper-G Soft. Tension holding is the main difference.",
+     "quote": "Choose Confidential Soft if you're looking for a softer, more regulated string with better tension holding.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G Soft",
+       "attribute": "control",
+       "direction": "more"
+      },
+      {
+       "vs": "Solinco Hyper-G Soft",
+       "attribute": "power",
+       "direction": "less"
+      },
+      {
+       "vs": "Solinco Hyper-G Soft",
+       "attribute": "spin",
+       "direction": "less"
+      },
+      {
+       "vs": "Solinco Hyper-G Soft",
+       "attribute": "comfort",
+       "direction": "less"
+      },
+      {
+       "vs": "Solinco Hyper-G Soft",
+       "attribute": "durability",
+       "direction": "more"
+      }
+     ]
+    }
+   ],
+   "summary": "5 entries; 4 distinct authors (Michelle and Troy share one Tennis Warehouse page). Consensus: slightly more power than standard Confidential (medio), more plush, still control-oriented. Versus Hyper-G Soft, Confidential Soft is the more controlled and better tension-holding option, while Hyper-G Soft has more spin and comfort. No Italian or TalkTennis source found for this model."
+  },
+  {
+   "model": "Hyper-G",
+   "sources": [
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SHG16review.html",
+     "kind": "playtest",
+     "author": "Tennis Warehouse editorial team",
+     "date": "November 2015",
+     "language": "en",
+     "frame_or_tension": "16/1.30. Playtesters used 55 lbs in Prince Original Graphite 107 and Babolat Pure Drive Plus, and 48 lbs in Prince Extreme Warrior 107. Pros list 'Too firm and underpowered for beginners'.",
+     "quote": "Hyper-G was perfectly low-powered for our team; it enabled us to execute our most powerful strokes without having to worry about overhitting, but it never felt underpowered.",
+     "control": null,
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SHG16review.html",
+     "kind": "playtest",
+     "author": "Chris (TW playtester)",
+     "date": "November 2015",
+     "language": "en",
+     "frame_or_tension": "Frame not captured. Same page as above.",
+     "quote": "Low on power, high on control -- this was my kind of string!",
+     "control": "alto",
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Warehouse (playtest page, retailer-hosted)",
+     "url": "https://www.tennis-warehouse.com/learning_center/string_reviews/SHG16review.html",
+     "kind": "playtest",
+     "author": "Michelle (TW playtester)",
+     "date": "November 2015",
+     "language": "en",
+     "frame_or_tension": "Tension range: she 'likes to test the upper limits of her racquet's tension range'. Hyper-G gave her no comfort issues in the high-50s range. Same person as the Confidential entries (counted once as a person).",
+     "quote": "I had no comfort issues at all during this playtest.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "TennisCompanion",
+     "url": "https://tenniscompanion.org/solinco-hyper-g/",
+     "kind": "review",
+     "author": "Jon Crim",
+     "date": "not captured",
+     "language": "en",
+     "frame_or_tension": "Scores per page: control 9.5, power 4.7, spin 9.3, feel 8.9, comfort 6.8, durability 8.6. Arm note: 'its firmer feel can lead to discomfort over time'.",
+     "quote": "Hyper-G is unapologetically low-powered, and that’s part of its magic.",
+     "control": "alto",
+     "power": "basso",
+     "spin": "alto",
+     "comfort": "basso",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis.com",
+     "url": "https://www.tennis.com/news/articles/positive-energy-solinco-hyper-g",
+     "kind": "review",
+     "author": "Jon Levey",
+     "date": "2016-05-06",
+     "language": "en",
+     "frame_or_tension": "Frame not stated. Spin: 'But overall, spin was a definite asset'. Feel: 'our testers didn't deem feel to be the Hyper-G's best attribute'.",
+     "quote": "Players using the strings are generally doing so for the heightened control and spin potential. Finding them to be underpowered is expected, and generally preferred.",
+     "control": "alto",
+     "power": "basso",
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "Tennis Creative",
+     "url": "https://tenniscreative.com/solinco-hyper-g-review/",
+     "kind": "review",
+     "author": "not captured",
+     "date": "2021-10-23",
+     "language": "en",
+     "frame_or_tension": "Tested at 50 lbs and 55 lbs. Page also says 'the Solinco Hyper-G still offers a decent amount of power, especially when compared to similar strings'.",
+     "quote": "It’s no surprise that a control oriented string like the Solinco Hyper-G is also rather low-powered",
+     "control": "alto",
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "6 entries from about 5 distinct people (Chris and Michelle are TW playtesters on one page). Consistent verdict: control alto, power basso, spin strong. Comfort is mixed: TennisCompanion rates it 6.8 and says it is firm, while TW's Michelle reported no comfort issues. Tension maintenance is praised in the TW review."
+  },
+  {
+   "model": "Hyper-G Soft",
+   "sources": [
+    {
+     "site": "TennisCompanion",
+     "url": "https://tenniscompanion.org/solinco-hyper-g-soft/",
+     "kind": "review",
+     "author": "Jon Crim",
+     "date": "2025-08-08",
+     "language": "en",
+     "frame_or_tension": "Scores per page: power 6.0, spin 8.9, control 9.3, feel 8.6, comfort 8.0, durability 8.5. Comparisons per page: 'a moderate increase in power, especially compared to the original Hyper-G'; 'to be less stiff and more comfortable'.",
+     "quote": "Hand-in-hand with its lower power, Hyper-G Soft’s spin-friendly response plays a significant role in its excellent control.",
+     "control": "alto",
+     "power": "basso",
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "comfort",
+       "direction": "more"
+      },
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "power",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "TennisNerd",
+     "url": "https://www.tennisnerd.net/gear/strings/solinco-hyper-g-soft-or-confidential-soft-my-full-review/66640",
+     "kind": "review",
+     "author": "Chris Nash (per WebFetch summary, not raw-verified)",
+     "date": "June 13, 2026 (per WebFetch summary, not raw-verified)",
+     "language": "en",
+     "frame_or_tension": "Frames: Wilson Blade 98 and Babolat Pure Aero 98. Spec list: 'Spin: High.' Key trait: 'Easier access to spin and comfort than standard Hyper-G'.",
+     "quote": "If the primary things are spin and easier launch, I would choose Hyper-G Soft.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Confidential Soft",
+       "attribute": "spin",
+       "direction": "more"
+      },
+      {
+       "vs": "Solinco Confidential Soft",
+       "attribute": "comfort",
+       "direction": "more"
+      },
+      {
+       "vs": "Solinco Confidential Soft",
+       "attribute": "control",
+       "direction": "less"
+      },
+      {
+       "vs": "Solinco Confidential Soft",
+       "attribute": "power",
+       "direction": "more"
+      },
+      {
+       "vs": "Solinco Confidential Soft",
+       "attribute": "durability",
+       "direction": "less"
+      }
+     ]
+    }
+   ],
+   "summary": "Only 2 independent sources found (TennisCompanion and TennisNerd); not exhausted. Hyper-G Soft has more comfort and a bit more power than standard Hyper-G while keeping high control and spin. Versus Confidential Soft it has more spin and comfort and holds tension less well."
+  },
+  {
+   "model": "Hyper-G Round",
+   "sources": [],
+   "summary": "No sources found. Not searched in this session."
+  },
+  {
+   "model": "Barb Wire",
+   "sources": [],
+   "summary": "No sources found. Not searched in this session."
+  },
+  {
+   "model": "Mach-10",
+   "sources": [
+    {
+     "site": "TalkTennis (tt.tennis-warehouse.com, thread solinco-mach-10)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/solinco-mach-10.782213/",
+     "kind": "forum",
+     "author": "pub",
+     "date": "2025-03-06",
+     "language": "en",
+     "frame_or_tension": "Post #34, quoting a review. Thread opened 2025-03-03.",
+     "quote": "Reviewer says, this is the most POWERFUL amongst Solinco polys.",
+     "control": null,
+     "power": "alto",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "other Solinco polys",
+       "attribute": "power",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "TalkTennis (tt.tennis-warehouse.com, thread solinco-mach-10)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/solinco-mach-10.782213/",
+     "kind": "forum",
+     "author": "Miguelin",
+     "date": "2025-03-07",
+     "language": "en",
+     "frame_or_tension": "Post #36. Disputes that Mach-10 is not powerful, and says it is 'not too high' for power. Mentions a C/UR 4.0 test as a comparison.",
+     "quote": "imho I agree with the power being not too high.",
+     "control": null,
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "TalkTennis (tt.tennis-warehouse.com, thread solinco-mach-10)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/solinco-mach-10.782213/",
+     "kind": "forum",
+     "author": "SupahMan5000 (quoted in thread; post date not captured)",
+     "date": "2025-03 (approx.)",
+     "language": "en",
+     "frame_or_tension": "Quoted in the thread by another poster: 'Low ish power, shaped, stiff ish (this one softer than the rest but still), spin friendly, colorful'.",
+     "quote": "Low ish power, shaped, stiff ish (this one softer than the rest but still), spin friendly, colorful",
+     "control": null,
+     "power": "basso",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "TalkTennis (tt.tennis-warehouse.com, thread solinco-mach-10)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/solinco-mach-10.782213/",
+     "kind": "forum",
+     "author": "unnamed replier (author not captured; replying to SupahMan5000 quote)",
+     "date": "2025-03 (approx.)",
+     "language": "en",
+     "frame_or_tension": "Agrees that there is 'power, but only compared to ultra-low powered polys'.",
+     "quote": "Yeah, there's power, but only compared to ultra-low powered polys like 4g and Confidential.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Confidential",
+       "attribute": "power",
+       "direction": "more"
+      }
+     ]
+    }
+   ],
+   "summary": "4 entries from TalkTennis (about 3 distinct posters plus one quoted). Mach-10 is described as the most powerful Solinco poly, but several posters call its power low-ish. Compared with Confidential it has more power."
+  }
+ ],
+ "unreachable": [
+  {
+   "url": "https://www.reddit.com/r/10s/search/?q=solinco+confidential&restrict_sr=1",
+   "reason": "HTTP 403 via curl (blocked); the search.json endpoints on reddit.com and old.reddit.com also returned 403. No Reddit content was read."
+  },
+  {
+   "url": "https://talktennis.com/search/?q=solinco+confidential&o=date",
+   "reason": "Domain is a parked 'for sale' page, not the forum. The forum is at tt.tennis-warehouse.com, which was reachable."
+  },
+  {
+   "url": "https://tt.tennis-warehouse.com/index.php?search/&q=solinco+confidential&o=relevance",
+   "reason": "Page loaded (HTTP 200) but returned no parseable thread results. Not used as evidence."
+  },
+  {
+   "url": "https://www.passionetennis.com/?s=solinco+confidential",
+   "reason": "Page loaded (HTTP 200) but the search results were not parsed. Not used as evidence."
+  }
+ ],
+ "notes": "Quotes were checked against raw HTML (curl, then tag-stripped text) for most sources. Exceptions are flagged in frame_or_tension: the Michelle frame on the Confidential page, the Chris Nash author and date on the TennisNerd Confidential Soft vs Hyper-G Soft article, and the TennisNerd Hyper-G Soft spec line. Tennis Warehouse playtests are hosted by a retailer, so they are kind 'playtest', not 'brand'. Michelle appears on several TW pages and is counted once as a person. Hyper-G Round and Barb Wire were not searched. No TalkTennis Confidential or Hyper-G thread was found. The Passione Hyper-G thread (https://www.passionetennis.com/t45009-solinco-hyper-g) was opened but had no usable control or power verdicts. The Passione Confidential thread has pages beyond page 1 that were not read. Confidential Soft and Hyper-G Soft have few independent sources.",
+ "raccolta": {
+  "data": "2026-10-31",
+  "metodo": "Ricerca web da un agente (Haiku) che ha aperto le pagine; i livelli alto/medio/basso sono assegnati solo da parole esplicite nel testo; il marketing del produttore (kind brand) non conta.",
+  "citazioni_verificate_a_mano": [
+   "https://www.passionetennis.com/t56628-solinco-confidential",
+   "https://tt.tennis-warehouse.com/index.php?threads/solinco-mach-10.782213/"
+  ]
+ }
+}

@@ -1,7 +1,5 @@
 """Note da maestro incordatore: regole applicate ai dati di ogni corda + note scritte a mano che hanno precedenza."""
 
-import re
-
 KEYS = ("feel", "on_blade_100_v9", "for_your_style", "vs_favorites")
 SPIN_KIND_IT = {"parente": "da un calibro o colore gemello", "tester": "dai punteggi dei tester", "qualitativo": "dai giudizi dei tester",
                 "modello": "da un modello su rigidità e forma, bassa affidabilità"}
@@ -16,6 +14,10 @@ def _band(v, hi=65, lo=35):
     return "hi" if v >= hi else "lo" if v <= lo else "mid"
 
 
+def _stiff_pct(r):
+    return ((r.get("derived") or {}).get("dims") or {}).get("stiffness")
+
+
 def _kg(t):
     return f"{t['kg'][0]:g}/{t['kg'][1]:g} kg ({t['lbs'][0]:g}/{t['lbs'][1]:g} lbs)"
 
@@ -23,7 +25,7 @@ def _kg(t):
 def _feel(r, s):
     t = r.get("twu")
     shape = SHAPE_IT.get(r.get("shape") or "", "")
-    stiff = {"hi": "rigida e compatta", "mid": "di rigidità media", "lo": "morbida"}.get(_band(s["stiffness"]))
+    stiff = {"hi": "rigida", "mid": "di rigidità media", "lo": "morbida"}.get(_band(_stiff_pct(r)))
     sp = r.get("spin")
     if sp and sp.get("kind") not in (None, "misurato") and sp.get("value") is not None:
         est = f" Spin stimato ≈ {sp['value']:g} ({SPIN_KIND_IT.get(sp['kind'], sp['kind'])}, tra {sp['low']:g} e {sp['high']:g})."
@@ -53,21 +55,16 @@ INSUFFICIENT = "Dati insufficienti per giudicarla: non ci sono test di laborator
 
 
 def _blade(r, s):
-    if all(s.get(k) is None for k in ("stiffness", "spin")):
+    """Nessun dato misura come una corda si comporta su una racchetta precisa (angolo di uscita, profondità, direzione): niente promesse."""
+    if all(v is None for v in (s.get("spin"), _stiff_pct(r))):
         return INSUFFICIENT
-    b = _band(s["stiffness"])
-    if b == "hi":
-        return ("La Blade 100 v9 è flessibile e a RA basso: assorbe parte della rigidità, ma il piatto resta "
-                "controllato e la palla esce un po' corta. Non salire sopra la tensione suggerita; il 16×19 aiuta a ritrovare spin.")
-    if b == "lo":
-        return ("Corda morbida su telaio flessibile: piatto molto vivo, profondità facile. Sui colpi piatti può uscire lunga, "
-                "quindi parti dalla tensione suggerita senza scendere; il prestretch leggero aiuta a stabilizzarla.")
-    return ("Con il telaio flessibile della Blade l'equilibrio è neutro: palla controllata ma non spenta, e lo schema 16×19 "
-            "lascia scorrere le verticali per lo spin.")
+    return ("Nessun test misura il comportamento di questa corda sulla Blade 100 v9 (angolo di uscita, profondità, direzione): "
+            "i valori sopra sono misure di laboratorio e indici. Parti dalla tensione suggerita, che è una regola empirica, e prova; "
+            "se vuoi un confronto vero registra i voti nel diario.")
 
 
 def _style(r, s):
-    if all(s.get(k) is None for k in ("spin", "stiffness", "durability")):
+    if all(s.get(k) is None for k in ("spin", "durability")):
         return INSUFFICIENT
     out = []
     sp = _band(s["spin"])
@@ -77,8 +74,6 @@ def _style(r, s):
         out.append("Sulle rotazioni rende meno della media: va bene se cerchi stabilità nei colpi piatti, meno se vivi di topspin.")
     else:
         out.append("Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.")
-    if _band(s["stiffness"]) == "hi":
-        out.append("Sui colpi piatti dà direzione e stabilità.")
     d = _band(s["durability"])
     out.append({"lo": "Con 4–5 ore a settimana la sentirai calare dopo 6–8 ore: rincorda ogni 2 settimane circa.",
                 "hi": "Con 4–5 ore a settimana resta giocabile per 3–4 settimane.",
@@ -117,13 +112,11 @@ def _vs(r):
 
 
 def generate_notes(r):
-    s = r["derived"].get("lab_subscores") or r["derived"]["subscores"]  # serve anche la rigidità, che non entra nel punteggio
+    s = r["derived"]["subscores"]
     return {"feel": _feel(r, s), "on_blade_100_v9": _blade(r, s), "for_your_style": _style(r, s), "vs_favorites": _vs(r)}
 
 
 def apply_notes(records, manual):
     for r in records:
         r["notes"] = {**generate_notes(r), **{k: v for k, v in (manual.get(r["id"]) or {}).items() if k in KEYS}}
-        # punteggiatura italiana: virgola decimale anche nei testi generati
-        r["notes"] = {k: re.sub(r"(?<=\d)\.(?=\d)", ",", v) if isinstance(v, str) else v for k, v in r["notes"].items()}
     return records

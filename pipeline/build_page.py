@@ -7,19 +7,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
 
 
-# moduli concatenati in un solo <script type="module">: stesso scope, quindi i nomi in testa devono essere unici
-MODULES = ["score.js", "recommend.js", "format.js", "prov.js", "badges.js", "current.js", "home.js", "compare.js", "explore.js",
-           "app.js"]
+# Moduli JS inlinati, in ordine: i moduli puri prima, app.js per ultimo. Un file mancante è un errore, non si salta.
+# Tutti finiscono nello stesso scope: niente nomi top-level ripetuti (lo controlla tests/test_build_page.py con node --check).
+MODULES = ["format.js", "pairing.js", "diary.js", "state.js", "trials.js", "persist.js", "values.js", "cards.js", "wear.js", "ai.js", "filter.js", "choose.js", "compare.js", "diaryui.js", "mine.js", "map.js", "method.js", "app.js"]
 
 
 def _js():
     parts = []
-    for m in MODULES:
-        p = WEB / m
-        if not p.exists():
-            continue  # tra un task e l'altro un modulo può mancare
-        src = re.sub(r"^import .*?;\s*$", "", p.read_text(encoding="utf-8"), flags=re.M)
-        parts.append(f"/* ---- {m} ---- */\n" + re.sub(r"^export ", "", src, flags=re.M))
+    for name in MODULES:
+        src = (WEB / name).read_text(encoding="utf-8")
+        src = re.sub(r"^import .*?;\s*$", "", src, flags=re.M)
+        parts.append(re.sub(r"^export ", "", src, flags=re.M))
     return "\n".join(parts)
 
 

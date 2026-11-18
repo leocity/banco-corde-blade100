@@ -9,49 +9,187 @@
 <div class="wrap">
   <header class="top">
     <div class="brandline">
-      <div class="bed" aria-hidden="true"></div>
-      <div class="titles">
-        <p class="eyebrow">Banco di incordatura · Blade 100 v9 16×19 · poly 1.18–1.30 mm</p>
-        <h1>Banco Corde</h1>
-      </div>
-      <button class="guide-btn" type="button" id="open-how" aria-label="Come leggere i numeri">Come leggere</button>
+      <h1>Banco Corde Blade 100</h1>
+      <span class="sync" id="sync-badge" role="status"></span>
+      <button class="guide-btn" type="button" data-goto="metodo" aria-label="Apri il Metodo">Metodo</button>
     </div>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Sezioni">
-    <button role="tab" id="tab-casa" data-tab="casa" aria-selected="true"><span class="ico" aria-hidden="true">★</span>La tua corda</button>
-    <button role="tab" id="tab-confronta" data-tab="confronta" aria-selected="false"><span class="ico" aria-hidden="true">⇄</span>Confronta</button>
-    <button role="tab" id="tab-esplora" data-tab="esplora" aria-selected="false"><span class="ico" aria-hidden="true">◫</span>Esplora</button>
+    <button role="tab" id="tab-scegli" data-tab="scegli" aria-selected="true"><span class="ico" aria-hidden="true">★</span>Scegli</button>
+    <button role="tab" id="tab-mappa" data-tab="mappa" aria-selected="false"><span class="ico" aria-hidden="true">◫</span>Mappa</button>
+    <button role="tab" id="tab-montata" data-tab="montata" aria-selected="false"><span class="ico" aria-hidden="true">◴</span>Montata</button>
   </nav>
 
   <main>
-    <section id="casa" class="panel" role="tabpanel" aria-labelledby="tab-casa">
-      <div class="current" id="current"></div>
-      <div id="home-top"></div>
-      <div id="home-more"></div>
-      <div id="home-adv"></div>
+    <section id="scegli" class="panel" role="tabpanel" aria-labelledby="tab-scegli">
+      <button class="strip" id="strip" type="button" data-goto="montata" aria-label="Apri la schermata Montata"></button>
+      <div class="searchrow">
+        <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="q" placeholder="Cerca una corda"></label>
+        <button class="btn" type="button" id="filter-btn" data-open-filter>Filtra</button>
+      </div>
+      <p class="callout small" id="no-refs" hidden><b>Segna una corda «mi piace»</b> (★ nella scheda) per vedere il pairing.</p>
+      <div id="top3-wrap">
+        <div class="section-head"><h2>Le 3 da provare</h2><button class="q" type="button" data-method="pairing" aria-label="Come si calcola il pairing">?</button></div>
+        <div class="top3" id="top3"></div>
+      </div>
+      <div class="section-head"><h2 id="list-title">Tutte le altre</h2><span class="muted small" id="list-count"></span></div>
+      <div class="list" id="list"></div>
+      <button class="btn" type="button" id="more" hidden>Mostra altre</button>
+      <details class="ai-new" id="ai-new" hidden>
+        <summary>Valuta una corda che non c'è</summary>
+        <div class="equip-form">
+          <label>Nome <input id="ai-new-name" placeholder="Marca e modello"></label>
+          <label>Calibro <input id="ai-new-gauge" size="6" placeholder="1,24"></label>
+          <label>Descrizioni incollate (facoltativo) <textarea id="ai-pasted" rows="4"></textarea></label>
+          <button class="btn primary" type="button" id="ai-new-go">Valuta con AI</button>
+          <div class="ai-out" id="ai-new-out" aria-live="polite"></div>
+        </div>
+      </details>
     </section>
 
-    <section id="confronta" class="panel" role="tabpanel" aria-labelledby="tab-confronta" hidden>
-      <div id="cmp"></div>
+    <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden>
+      <div class="map-bar">
+        <div class="chips" id="map-presets" role="group" aria-label="Asse orizzontale">
+          <button type="button" class="chipbtn" data-axes="rs" aria-pressed="true">Rigidità</button>
+          <button type="button" class="chipbtn" data-axes="ts" aria-pressed="false">Tenuta</button>
+        </div>
+        <button class="btn" type="button" id="map-filter-btn" data-open-filter>Filtra</button>
+      </div>
+      <p class="map-status muted small" id="map-status"></p>
+      <p class="map-legend" id="map-legend"><span><i style="background:var(--s-target)"></i>montata</span><span><i style="background:var(--s-liked)"></i>★ preferite</span><span><i style="background:var(--s-disliked)"></i>non gradite</span><span><i style="background:var(--s-other)"></i>altre</span></p>
+      <div class="chart-box"><svg id="scatter" role="img" aria-label="Mappa delle corde: spin in verticale"></svg></div>
+      <div id="map-pick" aria-live="polite"></div>
     </section>
 
-    <section id="esplora" class="panel" role="tabpanel" aria-labelledby="tab-esplora" hidden>
-      <div id="explore"></div>
+    <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden>
+      <div id="mine-summary"></div>
+      <div class="wear-box" id="wear"></div>
+      <div class="card-actions"><button class="btn primary" type="button" id="equip-btn">Cambia corda</button></div>
+      <div class="log-box">
+        <h3>Segna le ore</h3>
+        <div class="card-actions">
+          <button class="btn" type="button" data-add-hours="1">+1 h</button>
+          <button class="btn" type="button" data-add-hours="1.5">+1,5 h</button>
+          <button class="btn" type="button" data-add-hours="2">+2 h</button>
+        </div>
+        <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
+          <button type="button" class="chipbtn" data-day="0" aria-pressed="true">Oggi</button>
+          <button type="button" class="chipbtn" data-day="1" aria-pressed="false">Ieri</button>
+        </div>
+        <details class="more" id="hours-more">
+          <summary>Altre ore, data o nota</summary>
+          <div class="controls">
+            <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="6"></label>
+            <label>Data <input type="date" id="hours-date"></label>
+            <label>Nota <input id="hours-note" placeholder="facoltativa"></label>
+            <button class="btn primary" type="button" id="hours-add">Aggiungi</button>
+          </div>
+        </details>
+        <p class="gaps" id="hours-error" role="alert" hidden></p>
+      </div>
+      <section class="diary" id="diary" data-dtarget="current" aria-label="Voti e sensazioni"></section>
+      <details class="more" id="sessions-box"><summary id="sessions-sum">Sessioni</summary><ul class="sessions" id="sessions"></ul></details>
+      <details class="more" id="history-box"><summary id="history-sum">Corde finite</summary><ul class="sessions" id="history"></ul><div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div></details>
+      <details class="more" id="other-box">
+        <summary>Altro</summary>
+        <div class="log-box" id="ai-wear-box" hidden>
+          <h3>Parere AI sull'usura</h3>
+          <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
+          <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
+          <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
+        </div>
+        <div class="card-actions">
+          <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
+          <button class="btn" type="button" id="export-diary" hidden>Esporta il diario (CSV)</button>
+        </div>
+      </details>
+      <p class="callout small" id="persist-note" role="status" hidden></p>
     </section>
+    <section id="metodo" class="panel prose" hidden></section>
   </main>
 
-  <footer class="foot muted small" id="foot"></footer>
 </div>
 
-<div id="prov-pop" class="pop" role="dialog" aria-label="Da dove viene questo dato" hidden>
-  <button class="pop-close" type="button" aria-label="Chiudi">×</button>
-  <div class="pop-body"></div>
-</div>
+<aside class="tray" id="tray" aria-label="Confronto" hidden></aside>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<dialog id="filter-dialog" aria-labelledby="flt-title">
+  <div class="equip-form">
+    <div class="dlg-body">
+      <h2 id="flt-title">Filtra</h2>
+      <div class="chips" id="flt-brands" role="group" aria-label="Marca"></div>
+      <label class="check"><input type="checkbox" id="flt-measured"> Solo dati misurati</label>
+      <label class="check"><input type="checkbox" id="flt-good"> Solo pairing buono o meglio</label>
+      <label class="check"><input type="checkbox" id="flt-others"> Anche altre marche</label>
+    </div>
+    <div class="dlg-foot"><div class="card-actions"><button class="btn" type="button" id="flt-reset">Azzera</button><button class="btn primary" type="button" id="flt-ok">Mostra</button></div></div>
+  </div>
+</dialog>
+
+<dialog id="equip-dialog" aria-labelledby="eq-title">
+  <div class="equip-form">
+    <div class="dlg-body">
+    <h2 id="eq-title">Cambia corda</h2>
+    <label>Cerca <input type="search" id="eq-q" placeholder="Nome della corda"></label>
+    <label>Nuova corda <select id="eq-pick" size="6"></select></label>
+    <div class="controls">
+      <label>Verticali (kg) <input id="eq-kgv" inputmode="decimal" size="5"></label>
+      <label>Orizzontali (kg) <input id="eq-kgh" inputmode="decimal" size="5"></label>
+      <label>Data <input type="date" id="eq-date"></label>
+    </div>
+    <p class="muted small">Tensione precompilata dalla regola empirica sulla tua montata (non è una misura).</p>
+    <div class="controls">
+      <label>La corda che togli è <select id="eq-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+      <label>Ore giocate <input id="eq-hours" inputmode="decimal" size="5"></label>
+    </div>
+    <label class="check"><input type="checkbox" id="eq-rate"> Dai i voti di fine vita alla corda che togli</label>
+    </div>
+    <div class="dlg-foot">
+    <p class="gaps" id="eq-error" role="alert" hidden></p>
+    <div class="card-actions"><button class="btn" type="button" id="eq-cancel">Annulla</button><button class="btn primary" type="button" id="eq-ok">Monta</button></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="trial-dialog" aria-labelledby="tr-title">
+  <div class="equip-form">
+    <div class="dlg-body">
+    <h2 id="tr-title">Aggiungi prova passata</h2>
+    <label>Cerca <input type="search" id="tr-q" placeholder="Nome della corda"></label>
+    <label>Corda <select id="tr-pick" size="5"></select></label>
+    <div class="controls">
+      <label>Verticali (kg) <input id="tr-kgv" inputmode="decimal" size="5"></label>
+      <label>Orizzontali (kg) <input id="tr-kgh" inputmode="decimal" size="5"></label>
+      <label>Ore giocate <input id="tr-hours" inputmode="decimal" size="5"></label>
+    </div>
+    <div class="controls">
+      <label>Dal <input type="date" id="tr-from"></label>
+      <label>Al <input type="date" id="tr-to"></label>
+      <label>Com'è finita <select id="tr-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+    </div>
+    <p class="muted small">Date e ore anche approssimate. Solo le corde «consumata» servono a stimare la vita attesa.</p>
+    </div>
+    <div class="dlg-foot">
+    <p class="gaps" id="tr-error" role="alert" hidden></p>
+    <div class="card-actions"><button class="btn" type="button" id="tr-cancel">Annulla</button><button class="btn primary" type="button" id="tr-ok">Aggiungi e dai i voti</button></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="past-dialog" aria-labelledby="past-title">
+  <div class="equip-form">
+    <div class="dlg-body">
+    <h2 id="past-title">Voti della corda</h2>
+    <section class="diary" id="past-diary"></section>
+    </div>
+    <div class="dlg-foot"><div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div></div>
+  </div>
+</dialog>
 
 <dialog id="sheet" aria-labelledby="sheet-title">
   <div class="sheet-inner">
-    <button class="close" id="sheet-close" type="button" aria-label="Chiudi scheda">×</button>
+    <button class="close sheet-back" id="sheet-close" type="button">‹ Indietro</button>
     <div id="sheet-body"></div>
   </div>
 </dialog>

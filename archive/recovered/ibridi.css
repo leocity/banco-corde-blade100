@@ -1,0 +1,76 @@
+/* Ibridi */
+.hy-build { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+.hy-controls { display: grid; gap: 10px; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: end; }
+.hy-controls label { display: grid; gap: 4px; font-size: .88rem; color: var(--fg-2); min-width: 0; }
+.hy-controls select { min-height: 44px; font: 600 .95rem var(--font-body); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; width: 100%; min-width: 0; }
+.hy-controls .chips { grid-column: 1 / -1; }
+.hy-preset { min-width: 44px; }
+.hy-visual { display: grid; justify-items: center; gap: 6px; }
+.hy-racket { width: min(220px, 60vw); height: auto; }
+.hy-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; color: var(--fg-2); justify-content: center; }
+.hy-legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+.hy-sides { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.hy-side { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; display: grid; gap: 6px; align-content: start; }
+.hy-side.v .hy-role::before { background: var(--s-c1); }
+.hy-side.o .hy-role::before { background: var(--s-c3); }
+.hy-side .hy-role::before { content: "";display: inline-block; width: 14px; height: 4px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.hy-role { font: 600 .82rem var(--font-display); text-transform: uppercase; letter-spacing: .1em; color: var(--fg-2); }
+.hy-name { font: 700 1.08rem/1.15 var(--font-display); }
+.hy-out { display: grid; gap: 10px; }
+.hy-verdict { font-size: 1.02rem; padding: 8px 12px; border-radius: var(--radius); background: var(--surface-2); }
+.hy-verdict.ok { background: var(--ok-bg); color: var(--ok-fg); }
+.hy-verdict.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.hy-why { margin: 0; padding-left: 1.1em; display: grid; gap: 2px; }
+.hy-meter { display: grid; gap: 4px; }
+.hy-mhead { display: flex; justify-content: space-between; gap: 8px; font-size: .9rem; color: var(--fg-2); }
+.hy-mhead b { color: var(--fg); }
+.hy-track { position: relative; height: 14px; background: var(--surface-2); border-radius: 999px; }
+.hy-band { position: absolute; top: 0; bottom: 0; background: var(--ok-bg); box-shadow: inset 0 0 0 1px var(--court); border-radius: 999px; }
+.hy-mark { position: absolute; top: -3px; width: 4px; height: 20px; margin-left: -2px; border-radius: 2px; background: var(--muted); }
+.hy-mark.base { background: var(--s-liked); }
+.hy-mark.bad { background: var(--s-disliked); }
+.hy-mark.ref { background: var(--fg-2); width: 2px; margin-left: -1px; }
+.hy-mark.cur { background: var(--accent); width: 14px; height: 14px; top: 0; margin-left: -7px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface); }
+.hy-scatter { width: 100%; height: auto; display: block; }
+.hy-ax { font: 11px var(--font-data); fill: var(--muted); }
+.hy-lab { font: 600 11px var(--font-body); fill: var(--fg); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+.hy-pt { cursor: pointer; }
+.hy-pt:focus-visible { outline: none; stroke: var(--accent); stroke-width: 3px; }
+.hy-setups { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.hy-phys summary { cursor: pointer; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.hy-big { color: var(--court); font-weight: 600; white-space: nowrap; }
+.hy-tw { overflow-x: auto; }
+.hy-tab { border-collapse: collapse; width: 100%; min-width: 520px; }
+.hy-tab th, .hy-tab td { text-align: left; vertical-align: top; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.hy-tab th { font-family: var(--font-display); font-weight: 600; color: var(--fg-2); }
+details.callout > summary { cursor: pointer; }
+@media (min-width: 900px) {
+  .hy-build { grid-template-columns: 240px minmax(0, 1fr); }
+  .hy-controls, .hy-out { grid-column: 1 / -1; }
+  .hy-controls { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .tabs button { padding: 8px 2px; font-size: .84rem; }
+}
+.hy-probs { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.hy-probs .btn { border-radius: var(--radius); text-align: left; justify-content: flex-start; }
+.hy-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; display: grid; gap: 6px; margin-top: 10px; }
+.hy-recipe { border: 2px solid var(--court); }
+.hy-ct { font: 700 1.12rem/1.2 var(--font-display); }
+.hy-k { font: 600 .78rem var(--font-display); text-transform: uppercase; letter-spacing: .1em; color: var(--court); margin-top: 6px; }
+.hy-ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; max-width: 72ch; }
+.hy-dat { background: var(--surface-2); border-radius: 6px; padding: 8px 10px; font-size: .93rem; }
+.hy-rhead { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.hy-rhead .small { white-space: nowrap; }
+.hy-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 6px; }
+.hy-dots { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
+.hy-dot { all: unset; cursor: pointer; width: 28px; height: 44px; display: grid; place-items: center; }
+.hy-dot::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.hy-dot.on::before { background: var(--accent); }
+.hy-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: -6px; border-radius: 6px; }
+#ibridi details > summary { min-height: 44px; display: flex; align-items: center; gap: 8px; }
+.hy-facs { display: grid; gap: 8px; }
+.hy-fac summary { align-items: flex-start; }
+.hy-fac summary > span:last-child { display: grid; gap: 2px; }
+.hy-fw { font-weight: 400; }
+.hy-rank { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-2); color: var(--court); font-weight: 700; }

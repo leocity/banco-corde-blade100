@@ -1,5 +1,5 @@
 // Logica pura della v3 (spec §4.3–4.6): consigli rispetto alla corda attuale, frase sulle differenze, tensione.
-import { kgToLbs } from './score.js';
+import { kgToLbs } from './state.js';
 
 // stessa lista di pipeline/estimate.py (COLOURS): i colori non distinguono il modello
 export const COLOURS = ['black', 'blue', 'pink', 'orange', 'ornage', 'green', 'yellow', 'white', 'neon', 'matcha', 'pom',

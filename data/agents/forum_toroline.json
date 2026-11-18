@@ -1,0 +1,1077 @@
+{
+ "brand": "Toroline",
+ "researched_at": "2026-10-31",
+ "models": [
+  {
+   "model": "O-Toro",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/?p=40704",
+     "kind": "review",
+     "author": "Jonas Eriksson",
+     "date": "2024-09-08",
+     "language": "en",
+     "frame_or_tension": "Tested in PT57A 18/20, Prince Phantom 100X 18/20, Nordicdots Model 99; tension not stated",
+     "quote": "this is a comfortable, semi-lively polyester with good spin potential",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G Soft",
+       "attribute": "durability",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "thenewbig3",
+     "date": "2026-10-04",
+     "language": "en",
+     "frame_or_tension": "Green 1.23 at 52 lbs (per poster's 2026-10-04 post); racquet not named in that post",
+     "quote": "Broke my last 2 sets of O-Toro 1.23 in 8 hours and 10 hours respectively",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "Brian2781",
+     "date": "2026-10-04",
+     "language": "en",
+     "frame_or_tension": "Stiff racquet (not named)",
+     "quote": "for spin and comfort especially in a stiff racquet, it's really good, and at least it keeps snapping back for a long time.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "ryushen21",
+     "date": "2026-10-01",
+     "language": "en",
+     "frame_or_tension": "Compared with Genesis Hexonic 2.0 1.23; frame not stated",
+     "quote": "OT feels crisper and more responsive, whereas Hexonic felt muted to me.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "hitthefence38",
+     "date": "2026-10-01",
+     "language": "en",
+     "frame_or_tension": "Compared with Genesis Hexonic; frame not stated",
+     "quote": "Overall, better response, feel and comfort for me.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Genesis Hexonic 2.0",
+       "attribute": "comfort",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline-in-the-house.804933/",
+     "kind": "forum",
+     "author": "J011yroger",
+     "date": "2026-10-30",
+     "language": "en",
+     "frame_or_tension": "Frame not stated; post pairs O-Toro with A5 Spin in the same test",
+     "quote": "Soft, feels great, amazing pop, hits a dastardly ball, still has good control and even response.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/descpage-TOTORO7.html",
+     "kind": "review",
+     "author": "Lucas (FL, US)",
+     "date": "2026-01-14",
+     "language": "en",
+     "frame_or_tension": "Hybrid cross with Toroline Snapper (O-Toro as main); racquet not named",
+     "quote": "This is the best poly that has snapback and control!",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/descpage-TOTORO7.html",
+     "kind": "review",
+     "author": "Gen (AZ, US)",
+     "date": "2025-11-16",
+     "language": "en",
+     "frame_or_tension": "Not stated",
+     "quote": "Great mix of spin and control, and it's not too stiff for a poly.",
+     "control": "alto",
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/descpage-TOTORO7.html",
+     "kind": "review",
+     "author": "Vincent (CA, US)",
+     "date": "2025-12-16",
+     "language": "en",
+     "frame_or_tension": "Not stated",
+     "quote": "Toroline o-toro 17 spin friendly, feel, and decent power...",
+     "control": null,
+     "power": "medio",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/descpage-TOTORO7.html",
+     "kind": "review",
+     "author": "Anonymous (developing 3.5 player, US)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Pure Aero; reviewer rated it 2/5 as a developing 3.5 player",
+     "quote": "It needs great amounts of racquet head speed to actually snapback.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "About 10 distinct posters, mostly positive. Spin and comfort are the most praised traits (TennisNerd 2024, TalkTennis Oct 2026 posts). Control is called good by several users (J011yroger, Lucas, Gen) and the TennisNerd reviewer said it was not max on control. Thread posters report it is stiff-feeling and lively in some frames, and one reported two sets broken in 8 and 10 hours. Some reported it needs high racquet head speed to snap back. Tension hold is described as slightly better than Solinco Hyper-G Soft (TennisNerd, one reviewer). Direct comparisons: better response and comfort than Genesis Hexonic 2.0 (2 TalkTennis posters). Colour variants (black, orange, white) are reported to feel different. O-Toro Max (2026 firmer O-Toro Tour style) got mixed reactions and is not counted here."
+  },
+  {
+   "model": "O-Toro Spin",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/gear/strings/string-reviews/toroline-otoro-spin-review-heavy-spin-firm-response-hidden-feel/63969",
+     "kind": "review",
+     "author": "Chris Nash",
+     "date": "2026-02-24",
+     "language": "en",
+     "frame_or_tension": "HEAD Speed MP",
+     "quote": "Access to spin is very good, especially on full, fast swings.",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "O-Toro Tour",
+       "attribute": "power",
+       "direction": "less"
+      },
+      {
+       "vs": "O-Toro Tour",
+       "attribute": "control",
+       "direction": "less"
+      },
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "control",
+       "direction": "less"
+      },
+      {
+       "vs": "Luxilon 4G Soft",
+       "attribute": "spin",
+       "direction": "more"
+      },
+      {
+       "vs": "Restring Zero",
+       "attribute": "comfort",
+       "direction": "less"
+      }
+     ]
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Spin_17_123_String/descpageACTORO-T7TOROS.html",
+     "kind": "review",
+     "author": "Anonymous (MA, US)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Not stated; reviewer previously played Hyper-G",
+     "quote": "I feel like this has the similar spin, much more comfort, and cheaper.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "spin",
+       "direction": "same"
+      },
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "comfort",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Spin_17_123_String/descpageACTORO-T7TOROS.html",
+     "kind": "review",
+     "author": "Anonymous (Wilson Blade v9 98 18x20 owner)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Wilson Blade v9 98 18x20 at 54 lbs; tested in lively tournament balls",
+     "quote": "I found it slightly more difficult to control power consistently and generate the usual amount of spin I prefer.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_O-TORO_Spin_17_123_String/descpageACTORO-T7TOROS.html",
+     "kind": "review",
+     "author": "Anonymous (VCORE 97 310 owner)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Yonex VCORE 97 (310) at 48 lbs",
+     "quote": "It’s a comfortable string with excellent response and a noticeable high launch angle",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "Only 4 distinct posters found (1 long-form review, 3 retailer-hosted customer reviews). Consistent message: very good access to spin, especially on full swings, and a firmer, higher-launch response. Reviewer says depth control is harder than the O-Toro Tour and the string gives less power than Tour. One reviewer finds it similar to Solinco Hyper-G in spin but more comfortable and cheaper. One user (lively balls) found it harder to control power and spin. No independent tension-holding data for O-Toro Spin itself was found (a reader's ERT test refers to O-Toro Tour). No TalkTennis or Passione thread dedicated to O-Toro Spin was read."
+  },
+  {
+   "model": "O-Toro Tour",
+   "sources": [
+    {
+     "site": "tennis-warehouse.com (learning center review)",
+     "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/toroline_otoro_tour.html",
+     "kind": "review",
+     "author": "Tennis Warehouse playtesters (Michelle and Troy); per-quote author not confirmed in extract",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Wilson RF 97 Autograph / Babolat Pure Drive 98 (one tester); Yonex EZONE 98+ (2025) / Solinco Whiteout 305 XTD 18x20 at 50/47 lbs (other tester)",
+     "quote": "The control is great and it has some nice grip on the ball from its sharp hexagonal profile.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "medio",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline-in-the-house.804933/",
+     "kind": "forum",
+     "author": "J011yroger",
+     "date": "2026-10-27",
+     "language": "en",
+     "frame_or_tension": "Frame not stated",
+     "quote": "Otoro tour is cooked in 45 minutes.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "audible013",
+     "date": "2026-09-27",
+     "language": "en",
+     "frame_or_tension": "Head Speed Legend MP 2025; O-Toro Tour mains with Wasabi X crosses; 23/22 kg",
+     "quote": "This combo (23/22kg) gives really nice control and feel, easy depth, and very good snapback.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-59",
+     "kind": "forum",
+     "author": "Seravii",
+     "date": "2026-10-17",
+     "language": "en",
+     "frame_or_tension": "Full bed; frame not stated",
+     "quote": "initial playability is good but it notches quite fast",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-59",
+     "kind": "forum",
+     "author": "jgard320",
+     "date": "2026-10-17",
+     "language": "en",
+     "frame_or_tension": "Full bed; frame not stated",
+     "quote": "after about 4 hours of wear, the bed settles in a way that becomes jarring and I have a lot of trouble with consistent spin on my serves.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "basso",
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "About 5 distinct posters. Praised for control and snapback (Tennis Warehouse playtesters, audible013). Main recurring complaint is durability: notches or goes dead within hours (J011yroger about 45 minutes, Seravii, jgard320 after about 4 hours). Tennis Warehouse playtesters rate tension holding as decent but not excellent and power as low (one con: too underpowered for beginners). Comparison data: TennisNerd Spin review places O-Toro Tour as more powerful and easier depth control than O-Toro Spin; TennisNerd Snap review places it above O-Toro Snap on power, spin and tension holding."
+  },
+  {
+   "model": "O-Toro Snap",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/?p=62115",
+     "kind": "review",
+     "author": "not captured in extract (Tennis Nerd)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Blade V9 full bed, 1.25 mm",
+     "quote": "Excellent baseline control and consistency",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": "medio",
+     "durability": "alto",
+     "comparisons": [
+      {
+       "vs": "O-Toro Tour",
+       "attribute": "power",
+       "direction": "less"
+      },
+      {
+       "vs": "O-Toro Tour",
+       "attribute": "spin",
+       "direction": "less"
+      },
+      {
+       "vs": "O-Toro Tour",
+       "attribute": "durability",
+       "direction": "less"
+      },
+      {
+       "vs": "O-Toro",
+       "attribute": "spin",
+       "direction": "less"
+      },
+      {
+       "vs": "Enso Pro",
+       "attribute": "comfort",
+       "direction": "less"
+      }
+     ]
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "Brian2781",
+     "date": "2026-09-26",
+     "language": "en",
+     "frame_or_tension": "Ranking of soft-to-firm Toroline strings for a cross",
+     "quote": "Wasabi X, A5 Infrared (thinner gauge than reg A5), or O-Toro Snap, in order of softest to firmest (but still pretty soft for a poly).",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Wasabi X",
+       "attribute": "comfort",
+       "direction": "less"
+      },
+      {
+       "vs": "A5 Infrared",
+       "attribute": "comfort",
+       "direction": "less"
+      }
+     ]
+    }
+   ],
+   "summary": "Only 2 sources. TennisNerd reviewer: excellent baseline control and consistency, comfortable for long sessions, but less power and spin than O-Toro Tour and O-Toro, and a firmer, more muted response than O-Toro. Brian2781 ranks it as the firmest of several Toroline soft-to-firm options. Not enough independent data for a firm conclusion."
+  },
+  {
+   "model": "Wasabi",
+   "sources": [
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/?p=31178",
+     "kind": "review",
+     "author": "not captured in extract (Tennis Nerd)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Neon Pink 1.23 in Wilson Shift 300, HEAD Radical MP Auxetic, Furi Arma Pro 98 at 23-24 kg (51-53 lbs)",
+     "quote": "It accentuated the spin and gave me excellent control.",
+     "control": "alto",
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": "medio",
+     "comparisons": [
+      {
+       "vs": "Caviar",
+       "attribute": "control",
+       "direction": "more"
+      },
+      {
+       "vs": "Caviar",
+       "attribute": "durability",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_Wasabi_17_123_String/descpageACTORO-TWASA.html",
+     "kind": "review",
+     "author": "Anonymous (TX, US)",
+     "date": "2026-01-21",
+     "language": "en",
+     "frame_or_tension": "Hybrid: Wasabi mains with Wasabi X crosses; VCore 95 at 48/46",
+     "quote": "It's a great balance of power, spin, and has good control.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_Wasabi_17_123_String/descpageACTORO-TWASA.html",
+     "kind": "review",
+     "author": "Ernesto (BC, Mexico)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Hybrid: Wasabi mains with Head Hawk Touch crosses; full bed not tried",
+     "quote": "I find these very durable for my game.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_Wasabi_17_123_String/descpageACTORO-TWASA.html",
+     "kind": "review",
+     "author": "Anonymous (Wilson Shift 99 V1 owner)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Wilson Shift 99 V1 at 50 lbs",
+     "quote": "Control, power, and spin were decent, and comfort level was good, but the feel was unsatisfying.",
+     "control": "medio",
+     "power": "medio",
+     "spin": "medio",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "Injured Again",
+     "date": "2021-05-30",
+     "language": "en",
+     "frame_or_tension": "Neon Pink Wasabi, strung 49/42 in a Wilson Blade v6 (per 2021-05-14 post); user-measured with RacquetTune",
+     "quote": "Tension loss is now an issue - RacquetTune says it's only at 32.1 pounds, a loss of 10.2 pounds or 24.1% tension loss from the 42.3",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "gooberwho",
+     "date": "2021-04-27",
+     "language": "en",
+     "frame_or_tension": "Green 1.25 mm",
+     "quote": "I strung up the green 1.25mm Wasabi and it has been a very pleasant surprise with its performance and tension maintenance.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "joshuadearing",
+     "date": "2021-05-06",
+     "language": "en",
+     "frame_or_tension": "Wilson Pro Staff Six.One at 50 lbs, red and green Wasabi",
+     "quote": "tended to like the spin slightly more on the red",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Wasabi green",
+       "attribute": "spin",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "hisreekanth",
+     "date": "2026-09-22",
+     "language": "en",
+     "frame_or_tension": "Hybrid: Wasabi 17g mains with Caviar 17g crosses",
+     "quote": "I like the tension maintainance for a longer duration and also the pop on the balls with deep shots.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "irulan",
+     "date": "2021-03-26",
+     "language": "en",
+     "frame_or_tension": "Wasabi full bed; frame not stated",
+     "quote": "I enjoyed the pocketing on the Toroline Wasabi full bed, but I could not vibe with the sound at all.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "J. T. Seal",
+     "date": "2026-09-15",
+     "language": "en",
+     "frame_or_tension": "Full bed of Wasabi X, per the sentence context; unclear whether this refers to Wasabi X or Toro Toro",
+     "quote": "But also liked a full bed of Wasabi X. Never got 20 hours. 10 max.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": "basso",
+     "comparisons": []
+    }
+   ],
+   "summary": "About 9 distinct posters across Wasabi (green, pink/red) and Wasabi X. Most consistent praise: comfort, pocketing and spin potential. Control rated good to excellent by some (TennisNerd, TX customer), but one user found control, power and spin only decent and the feel unsatisfying. Tension holding is mixed: TennisNerd says average, one hybrid user says it holds well, and a user measured about 24% loss within a week. Versus Caviar: slightly better tension holding and control (TennisNerd). Versus a 17g Silver 7 Tour: a bit less power, more comfort (TalkTennis). Red vs green: red felt slightly more spin to one user. Several reports are hybrid setups, not full beds. Wasabi X is noted as a slick cross string (retailer copy excluded)."
+  },
+  {
+   "model": "Caviar",
+   "sources": [
+    {
+     "site": "tennisnerd.net (roundup)",
+     "url": "https://www.tennisnerd.net/gear/strings/toroline-strings-review/23264",
+     "kind": "review",
+     "author": "not captured in extract (Tennis Nerd roundup)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "General description, no frame",
+     "quote": "Caviar : A six-sided string that is firmer and more control-oriented than Wasabi.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Wasabi",
+       "attribute": "control",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_Caviar_17120_String/descpageACTORO-T7CAVA.html",
+     "kind": "review",
+     "author": "Andrew (VA, US)",
+     "date": "2025-04-13",
+     "language": "en",
+     "frame_or_tension": "52 lbs",
+     "quote": "Super grippy amazing control at only 52 pounds tension.",
+     "control": "alto",
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennis-warehouse.com (customer review)",
+     "url": "https://www.tennis-warehouse.com/TOROLINE_Caviar_17120_String/descpageACTORO-T7CAVA.html",
+     "kind": "review",
+     "author": "Anonymous (GA, US)",
+     "date": "2025-03-17",
+     "language": "en",
+     "frame_or_tension": "Not stated",
+     "quote": "Great string Spin, comfort, above average tension maintained—what more could you ask for?",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "shoesandko",
+     "date": "2019-11-20",
+     "language": "en",
+     "frame_or_tension": "Full bed at 42 lbs in Technifibre T40 18/20",
+     "quote": "suprising spin in the 18/20 set up felt pretty comfy in that frame as well",
+     "control": null,
+     "power": null,
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "matchpoint9",
+     "date": "2019-11-21",
+     "language": "en",
+     "frame_or_tension": "Frame not stated",
+     "quote": "The Caviar plays similar to Hyper G but slightly more spin and more lively.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "Solinco Hyper-G",
+       "attribute": "spin",
+       "direction": "more"
+      }
+     ]
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "VAJ",
+     "date": "2021-04-21",
+     "language": "en",
+     "frame_or_tension": "16L; Wilson Ultra 100 V3 context in post",
+     "quote": "this 16L is great. Nice pop. easy on the elbow, good, not great spin but fine for top spin.",
+     "control": null,
+     "power": null,
+     "spin": "medio",
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "Holdfast44ID",
+     "date": "2021-05-06",
+     "language": "en",
+     "frame_or_tension": "Ripstick at 48 lbs; disliked 55/53",
+     "quote": "While it felt it could be too powerful at 48, it felt much better and was pretty consistent.",
+     "control": null,
+     "power": "alto",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "joshuadearing",
+     "date": "2021-04-10",
+     "language": "en",
+     "frame_or_tension": "Not stated",
+     "quote": "I really like their \"CAVIAR\" string its my goto along with Yonex Polytour Pro yellow.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "passionetennis.com",
+     "url": "https://www.passionetennis.com/t63159-consigli-toroline",
+     "kind": "forum",
+     "author": "not visible in extract (reply to a Caviar question; approximate date 2026-06-22)",
+     "date": "2026-06-22",
+     "language": "it",
+     "frame_or_tension": "Not stated",
+     "quote": "E' una Hawk Touch sagomata e con un po' più di stabilità sui decentrati ma meno controllo.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "About 9 distinct posters, the most of any Toroline string in this research. Mostly positive: spin, comfort, control and tension holding praised by different users; the 2019 and 2021 TalkTennis posts are the most detailed. Compared with Hyper-G: similar but more spin and more lively (matchpoint9). Compared with Wasabi: more control (TennisNerd roundup), but one Italian reply calls it less control than a shaped Hawk Touch-style string (wording not fully explicit). One user found it too powerful at 48 lbs in a Ripstick."
+  },
+  {
+   "model": "Enso Pro",
+   "sources": [
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-59",
+     "kind": "forum",
+     "author": "DTLTennisCoBrandon",
+     "date": "2026-10-22",
+     "language": "en",
+     "frame_or_tension": "Hybrid cross; tension guidance given as 2-3 lbs lower than mains",
+     "quote": "What I love about Enso Pro is that it really lets the mains do their thing as a cross string in a hybrid setup.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tennisnerd.net",
+     "url": "https://www.tennisnerd.net/?p=62115",
+     "kind": "review",
+     "author": "not captured in extract (Tennis Nerd)",
+     "date": "",
+     "language": "en",
+     "frame_or_tension": "Comparison list in O'Toro Snap review (Blade V9 full bed)",
+     "quote": "Enso Pro – Slightly softer feel; Snap feels a touch firmer with better snap-back",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": [
+      {
+       "vs": "O-Toro Snap",
+       "attribute": "comfort",
+       "direction": "more"
+      },
+      {
+       "vs": "O-Toro Snap",
+       "attribute": "spin",
+       "direction": "less"
+      }
+     ]
+    }
+   ],
+   "summary": "Only 2 sources. Used as a cross string in hybrids that lets the mains work. TennisNerd Snap review describes Enso Pro as softer-feeling than O-Toro Snap and slightly less spin-friendly. Not enough independent data for control, power or durability."
+  },
+  {
+   "model": "Super Toro",
+   "sources": [
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "JOSHL",
+     "date": "2021-02-09",
+     "language": "en",
+     "frame_or_tension": "Not stated",
+     "quote": "Super Toro is low powered but comfortable with good tension maintenance and spin potential.",
+     "control": null,
+     "power": "basso",
+     "spin": "alto",
+     "comfort": "alto",
+     "durability": "alto",
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "VAJ",
+     "date": "2021-05-06",
+     "language": "en",
+     "frame_or_tension": "Wilson Ultra Pro (97) 16x19",
+     "quote": "More control than expected but not as much as I prefer. The spin is good, power is great, and after six hours tension is holding.",
+     "control": "medio",
+     "power": "alto",
+     "spin": "alto",
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "passionetennis.com",
+     "url": "https://www.passionetennis.com/t63159-consigli-toroline",
+     "kind": "forum",
+     "author": "eiffel (inferred from the reply 'grazie eiffel'; post label not captured)",
+     "date": "2025-06-21",
+     "language": "it",
+     "frame_or_tension": "Suggested for a 4.3/4.4 rotation-based player at 22/21 kg, 123 gauge",
+     "quote": "Supponendo un livello medio (4.3/4.4) ed un gioco basato prevalentemente su rotazione direi che Super Toro 123 e Snapper 123 entrambe a 22/21 sono scelte abbastanza buone.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "Only 3 sources, 2 with attribute ratings. Consistent message: low power, comfortable, good spin and tension maintenance; one user found control more than expected but less than preferred on a 16x19 frame. Passione recommendation is a suggestion rather than a test."
+  },
+  {
+   "model": "Snapper",
+   "sources": [
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline-in-the-house.804933/",
+     "kind": "forum",
+     "author": "J011yroger",
+     "date": "2026-10-12",
+     "language": "en",
+     "frame_or_tension": "Hybrid: O-Toro Tour with Snapper (mains and crosses not stated)",
+     "quote": "The Otoro Tour/snapper was quite soft. Not much feel but pleasant to play with.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "passionetennis.com",
+     "url": "https://www.passionetennis.com/t63159-consigli-toroline",
+     "kind": "forum",
+     "author": "eiffel (inferred; see Super Toro entry)",
+     "date": "2025-06-21",
+     "language": "it",
+     "frame_or_tension": "Suggested at 123 gauge, 22/21 kg",
+     "quote": "le Snapper sono un po' più facili, stile Poly Tour Drive Soft di Yonex",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "Only 2 sources. Described as soft and easy to play with, and as a cross with aggressive mains. One user found the response unpredictable in a full swing. Not enough independent data."
+  },
+  {
+   "model": "Absolute",
+   "sources": [
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/",
+     "kind": "forum",
+     "author": "shoesandko",
+     "date": "2019-11-20",
+     "language": "en",
+     "frame_or_tension": "Hybrid cross with Gosen G-Tour 3 1.18 at 48 lbs in a 2012 PD",
+     "quote": "I have tested the absolute ( softest of their poly) with Gosen gtour 3 1.18 as the cross 48 pounds in a 2012 PD, felt great even good snapback",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": "alto",
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "Only 1 source found. Described as the softest Toroline poly, with good snapback in a hybrid. Not enough data."
+  },
+  {
+   "model": "Cash",
+   "sources": [
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-59",
+     "kind": "forum",
+     "author": "slevin011",
+     "date": "2026-10-24",
+     "language": "en",
+     "frame_or_tension": "Frame not named; tested alongside O-Toro Tour mains with Wasabi X crosses",
+     "quote": "It's not as viciously spinny, but it's just a great overall string in this frame. Good feel, control, and power.",
+     "control": "alto",
+     "power": "alto",
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "Only 1 source found with attributes. Described as a well-rounded string, with good control and power and less spin than O-Toro Tour."
+  },
+  {
+   "model": "Toro Toro",
+   "sources": [
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "J. T. Seal",
+     "date": "2026-09-15",
+     "language": "en",
+     "frame_or_tension": "Radicals, mostly graphene touch and later",
+     "quote": "I have used Toro Toro in a few different Radicals, mostly graphene touch and later. Liked it.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "Only 1 source. Liked, no attribute detail. Not enough data."
+  },
+  {
+   "model": "A5",
+   "sources": [
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "Brian2781",
+     "date": "2026-09-15",
+     "language": "en",
+     "frame_or_tension": "Not stated",
+     "quote": "A5 is on the stiffer end (for Toroline), though it plays somewhat muted IMO, not especially crisp or harsh.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    },
+    {
+     "site": "tt.tennis-warehouse.com (TalkTennis)",
+     "url": "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+     "kind": "forum",
+     "author": "atatu",
+     "date": "2026-09-26",
+     "language": "en",
+     "frame_or_tension": "A5 mains with Truffle X crosses at 50 lbs in Pro Kennex Black Ace 105",
+     "quote": "it was amazing, but I'm feeling a very slight twinge in my arm.",
+     "control": null,
+     "power": null,
+     "spin": null,
+     "comfort": null,
+     "durability": null,
+     "comparisons": []
+    }
+   ],
+   "summary": "Only 2 sources. Firm, muted feel; one user felt a slight arm twinge at 50 lbs in a hybrid, though it played well. Not enough data."
+  }
+ ],
+ "unreachable": [
+  {
+   "url": "https://www.reddit.com/r/10s/search.json?q=toroline&restrict_sr=1",
+   "reason": "Blocked by network policy (proxy returned a Reddit 'Blocked' page). No Reddit content obtained."
+  },
+  {
+   "url": "https://www.reddit.com/search/?q=toroline+o-toro",
+   "reason": "Same network-policy block as above."
+  },
+  {
+   "url": "https://talktennis.com/",
+   "reason": "Parked domain ('TalkTennis.com for sale'), not the forum. The real forum is tt.tennis-warehouse.com, which was read."
+  },
+  {
+   "url": "https://www.passionetennis.com/forum/",
+   "reason": "404 Not Found. Toroline section is at passionetennis.com/f211-toroline (listed, not fully read)."
+  },
+  {
+   "url": "https://tt.tennis-warehouse.com/search/?q=toroline&o=relevance",
+   "reason": "404 Not Found. Search URL not served; threads were found through the forum index instead."
+  },
+  {
+   "url": "https://www.passionetennis.com/search?q=toroline",
+   "reason": "Returns the advanced-search form only, with no results in the static HTML. Not used."
+  }
+ ],
+ "notes": "Method: WebSearch to find pages, then curl plus text extraction to read raw HTML. Quotes were checked against the raw text, not summarized output. WebFetch summaries were used only where raw text was also checked; unverified summary quotes were dropped (e.g. a TW 5/5 review on power and control). Control/power/spin/comfort/durability levels are set only from explicit wording: 'excellent', 'great', 'good', 'comfortable' map to alto; 'decent', 'average', 'enough' map to medio; 'low powered', 'too soft', 'cooked', 'notches quite fast' map to basso. Tension holding is recorded as durability. Comparisons come only from explicit more/less wording (some are inferred from list formats, e.g. TennisNerd Spin/Snap review). Retailer-hosted customer reviews on tennis-warehouse.com are counted as 'review' and flagged here. TennisNerd roundups (Toroline Strings 23264) are editorial overviews; treat as weak. Brand/shop copy and Toroline lab claims were excluded. Reddit could not be accessed, so there is no Reddit evidence. TalkTennis thread 657779 (60 pages) was read only at pages 1, 58, 59 and 60. TalkTennis threads 'Toroline in the house?' (804933) and the RPM Blast/Vamos thread (805546) were read in part. Passione t63159 'consigli Toroline' was read page 1; section f211-toroline (5 topics) was not read. Author labels not captured in extraction are left blank or marked 'not captured'. Some TalkTennis posts were ambiguous about which string they referred to (e.g. 'This o-toro and a5', 'Wasabi X or Toro Toro'); those are noted in frame_or_tension. Caveat: several posters are retailer customer reviews or the same person on multiple posts. Counts below are distinct posters, not posts.",
+ "raccolta": {
+  "data": "2026-10-31",
+  "metodo": "Ricerca web da un agente (Haiku) che ha aperto le pagine; i livelli alto/medio/basso sono assegnati solo da parole esplicite nel testo; il marketing del produttore (kind brand) non conta.",
+  "citazioni_verificate_a_mano": [
+   "https://tt.tennis-warehouse.com/index.php?threads/toroline.657779/page-58",
+   "https://www.tennis-warehouse.com/descpage-TOTORO7.html"
+  ]
+ }
+}

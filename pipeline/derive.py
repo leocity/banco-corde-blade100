@@ -8,8 +8,12 @@ DISLIKED_PENALTY_THRESHOLD = 75
 DISLIKED_PENALTY = 15
 KG_TO_LBS = 2.2046
 ANCHOR_TENSIONS = {"solinco-confidential-16l": [22, 21], "toroline-o-toro-17": [23, 22]}
-ANCHOR_NAMES = {"solinco-confidential-16l": "Confidential 1.25", "toroline-o-toro-17": "O-Toro 1.23"}
+ANCHOR_NAMES = {"solinco-confidential-16l": "Confidential 1,25", "toroline-o-toro-17": "O-Toro 1,23"}
 DISLIKED_GROUPS = {"confidential_soft": ("Solinco", "Confidential Soft"), "rpm_blast": ("Babolat", "RPM Blast")}
+# Riferimenti iniziali dell'utente (modificabili nell'app): preferite, non gradite e corda montata con la sua tensione.
+DEFAULT_LIKED = ["solinco-confidential-16l", "toroline-o-toro-17"]
+DEFAULT_DISLIKED = ["solinco-confidential-soft-16", "solinco-confidential-soft-17", "babolat-rpm-blast-16", "babolat-rpm-blast-17"]
+DEFAULT_EQUIPPED = {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
 
 
 def _get(d, *path):
@@ -90,23 +94,34 @@ def subscores(rec, pop):
     st = percentile(stiff_lab(rec), pop["stiff_measured"])
     return {
         "spin": percentile(spin_lab(rec), pop["spin_measured"]),
-        # stessa base per tutte: la perdita TWU (c'è per 70 corde); il TL6 del tuo test solo se manca TWU.
-        # Mescolare le due metriche penalizzava chi ha un tuo TL6 "cattivo" rispetto a chi non ce l'ha.
+        # v3: la tenuta qui è la perdita TWU (o il TL6 se TWU manca); derive_all la sostituisce con quella delle dimensioni
         "durability": _inv(pct("twu_tension_loss")) if pct("twu_tension_loss") is not None else _inv(pct("excel_tl6")),
         "stiffness": st,  # descrittiva (note e giudizio), non entra nel punteggio
     }
 
 
-# v3: tolti "controllo" e "comfort" (erano stime dalla rigidità) e la quota delle recensioni (codice morto dalla v2).
+# Controllo, comfort e potenza tolti: non sono misure (erano stime dalla rigidità).
+PROXY_CRITERIA = ()
 JUDGE_CRITERIA = ("stiffness", "spin", "durability")
+LAB_WEIGHT, REVIEW_WEIGHT = 0.7, 0.3
 WORDS = ("molto basso", "basso", "medio", "alto", "molto alto")
 STIFF_WORDS = ("molto morbida", "morbida", "media", "rigida", "molto rigida")
 
 
-def judgments(rec, sub, pop):
-    """Giudizio semplice per criterio, solo dai dati di laboratorio (percentili sulle corde misurate)."""
-    lab = dict(sub)
-    # stime da modello: si mostrano (tratteggiate) ma non entrano mai nel punteggio
+def _review_score(agg, crit):
+    if not agg:
+        return None
+    s = (agg.get("score") or {}).get(crit)
+    if s is not None:
+        return s
+    lv = (agg.get("level") or {}).get(crit)
+    return None if lv is None else (lv - 1) * 25
+
+
+def judgments(rec, sub, agg, pop):
+    """Giudizio semplice per criterio: 70% laboratorio + 30% recensioni, pesi rinormalizzati se una parte manca."""
+    lab = {**sub, "stiffness": percentile(stiff_lab(rec), pop["stiff_measured"])}
+    # stime da modello: si mostrano nelle barre (tratteggiate, lab_share 0) ma non entrano mai nel punteggio
     modelled = set()
     if lab["stiffness"] is None and (rec.get("stiffness") or {}).get("kind") == "modello":
         lab["stiffness"] = percentile(rec["stiffness"]["value_lbin"], pop["stiff_measured"]); modelled.add("stiffness")
@@ -114,12 +129,24 @@ def judgments(rec, sub, pop):
         lab["spin"] = percentile(rec["spin"]["value"], pop["spin_measured"]); modelled.add("spin")
     out = {}
     for c in JUDGE_CRITERIA:
-        score = lab.get(c)
-        if score is None:
-            out[c] = {"score": None, "level": None, "word": None}
+        l = lab.get(c)
+        if agg and "pct" in agg:
+            v = agg["pct"].get(c)
+            rel = min(1.0, (agg.get("wsum") or {}).get(c, 1.0))
+            if v is not None:
+                v = 50 + (v - 50) * rel  # fonti deboli (es. solo produttore) avvicinano il voto alla media
+            rw = REVIEW_WEIGHT * rel
+        else:
+            v, rw = _review_score(agg, c), REVIEW_WEIGHT
+        parts = [(x, w) for x, w in ((l, LAB_WEIGHT), (v, rw)) if x is not None]
+        if not parts:
+            out[c] = {"score": None, "level": None, "word": None, "lab_share": None}
             continue
+        den = sum(w for _, w in parts)
+        score = round(sum(x * w for x, w in parts) / den, 1)
         level = min(5, int(score // 20) + 1)
-        out[c] = {"score": score, "level": level, "word": (STIFF_WORDS if c == "stiffness" else WORDS)[level - 1]}
+        out[c] = {"score": score, "level": level, "word": (STIFF_WORDS if c == "stiffness" else WORDS)[level - 1],
+                  "lab_share": 0.0 if c in modelled else round((LAB_WEIGHT if l is not None else 0) / den, 2)}
         if c in modelled:
             out[c]["modelled"] = True
     return out
@@ -237,12 +264,20 @@ def discriminant_metrics(records, pop):
     return sorted(out, key=lambda x: x["separation"], reverse=True)
 
 
-def derive_all(records):
+def derive_all(records, reviews=None):
+    # import locali: dims e pairing importano questo modulo
+    from pipeline.dims import dim_populations, dimensions, excel_measures
+    from pipeline.pairing import pairing
+    reviews = reviews or {}
     pop = population(records)
     by_id = {r["id"]: r for r in records}
+    dpop = dim_populations(records)
+    dm = {r["id"]: dimensions(r, dpop) for r in records}
+    refs = lambda ids: [{"id": i, "dims": dm[i]["values"]} for i in ids if i in dm]
+    liked_refs, disliked_refs = refs(DEFAULT_LIKED), refs(DEFAULT_DISLIKED)
     liked = {k: by_id[k] for k in ANCHOR_TENSIONS if k in by_id}
-    disliked = {g: [r for r in records if (r["brand"], r["model"]) == bm] for g, bm in DISLIKED_GROUPS.items()}
     slope = anchor_slope([{"stiffness": stiff_lab(a), "kg": ANCHOR_TENSIONS[k]} for k, a in liked.items()])
+    disliked = {g: [r for r in records if (r["brand"], r["model"]) == bm] for g, bm in DISLIKED_GROUPS.items()}
     for r in records:
         sim_l = {("confidential" if "confidential" in k else "otoro"): similarity(r, a, pop) for k, a in liked.items()}
         sim_d = {}
@@ -255,19 +290,12 @@ def derive_all(records):
         anchors = [{"id": k, "kg": ANCHOR_TENSIONS[k], "stiffness": stiff_lab(a),
                     "sim": similarity(r, a, pop)} for k, a in liked.items()]
         lab = subscores(r, pop)
-        j = judgments(r, lab, pop)
-        sub = {k: lab[k] for k in ("spin", "durability")}  # punteggio: solo laboratorio, stessi campi letti da score.js
+        lab["durability"] = dm[r["id"]]["values"]["durability"]  # una sola tenuta: quella delle dimensioni (TWU, TL6, TL12, scorrimento)
+        j = judgments(r, lab, reviews.get(r["id"]), pop)
+        # punteggio profilo sui giudizi misti (laboratorio + recensioni); stessi campi letti da score.js
+        sub = {k: lab[k] for k in ("spin", "durability")}  # punteggio: solo laboratorio
         sub["affinity"] = best  # somiglianza massima con una preferita (0-100)
-        # margine dello spin (gemello ±0,5) propagato nel punteggio: percentile ai due estremi
-        sp = r.get("spin") or {}
-        sub_range = None
-        if sp.get("kind") == "parente" and sp.get("low") is not None and sp["low"] != sp["high"]:
-            lo, hi = (percentile(sp["low"], pop["spin_measured"]), percentile(sp["high"], pop["spin_measured"]))
-            pen = worst if flag else None
-            sub_range = {"spin": [lo, hi],
-                         "score": [profile_score({**sub, "spin": lo}, DEFAULT_WEIGHTS, pen), profile_score({**sub, "spin": hi}, DEFAULT_WEIGHTS, pen)]}
         r["derived"] = {
-            "subscores_range": sub_range,
             "subscores": sub,
             "lab_subscores": lab,
             "judgments": j,
@@ -278,5 +306,9 @@ def derive_all(records):
             "sources_disagree": sources_disagree(r, pop),
             "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if flag else None),
             "tension_start": tension_start(r, anchors, slope) if anchors else None,
+            "dims": dm[r["id"]]["values"],
+            "dim_inputs": dm[r["id"]]["inputs"],
+            "excel_measures": excel_measures(r),
+            "pairing": pairing(dm[r["id"]]["values"], liked_refs, disliked_refs, penalize=r["id"] not in DEFAULT_LIKED),
         }
     return discriminant_metrics(records, pop)

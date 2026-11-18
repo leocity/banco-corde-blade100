@@ -89,3 +89,18 @@ def test_null_subscores_say_insufficient_data():
     r["derived"]["similarity_liked"] = {"confidential": None, "otoro": None}
     n = generate_notes(r)
     assert "insufficienti" in n["on_blade_100_v9"] and "insufficienti" in n["for_your_style"]
+
+
+def test_blade_note_makes_no_unmeasured_physical_claims():
+    """Nessuna nota generata deve dire dove va la palla o quanto «esce lunga/corta»: nessuno lo misura."""
+    import json
+    data = json.load(open("data/strings.json", encoding="utf-8"))
+    banned = ("esce un po' corta", "uscire lunga", "palla controllata", "piatto molto vivo", "profondità facile")
+    curated = {k for k, v in json.load(open("data/notes.json", encoding="utf-8")).items() if isinstance(v, dict) and v.get("on_blade_100_v9")}
+    for r in data["strings"]:
+        if r["id"] in curated:  # note scritte a mano dall'utente o curate: non si toccano
+            continue
+        n = (r.get("notes") or {}).get("on_blade_100_v9") or ""
+        assert not any(b in n for b in banned), (r["id"], n[:80])
+    generated = {(r.get("notes") or {}).get("on_blade_100_v9") for r in data["strings"]}
+    assert any("regola empirica" in (g or "") for g in generated)

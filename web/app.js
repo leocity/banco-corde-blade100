@@ -1,41 +1,164 @@
-// Avvio: tre schermate (spec §4.1), corda attuale, provenienza. Le schermate stanno in home.js, compare.js, explore.js.
-import { $, $$, DATA, ALL, esc, store } from './format.js';
-import { initProv } from './prov.js';
-import { renderCurrentPicker } from './current.js';
+import { $, esc, fullName } from './format.js';
+import { pairing } from './pairing.js';
+import { defaultState, setPreference, equippedHours, tensionFor, sameState, trialsOf } from './state.js';
+import { trialsForString } from './trials.js';
+import { createPersistence } from './persist.js';
+import { sheetHtml } from './cards.js';
+import { renderChoose, initChoose, renderStrip, filteredCount } from './choose.js';
+import { initFilter } from './filter.js';
+import { wearStatus, lifeEstimate } from './wear.js';
+import { initAi, aiAvailable, aiCachedHtml } from './ai.js';
+import { initCompare, comparePicks } from './compare.js';
+import { renderMine, initMine, renderPersistNote } from './mine.js';
+import { initDiary } from './diaryui.js';
+import { renderMap, initMap } from './map.js';
+import { renderMethod } from './method.js';
 
-const TABS = ['casa', 'confronta', 'esplora'];
-const OLD_TABS = { perte: 'casa', mappa: 'esplora', guida: 'esplora' }; // link della v2
-const screens = {
-  casa: () => (typeof renderHome === 'function' ? renderHome() : null),
-  confronta: () => (typeof renderCompare === 'function' ? renderCompare() : null),
-  esplora: () => (typeof renderExplore === 'function' ? renderExplore() : null),
-};
+const DATA = window.STRINGS_DATA;
+const ALL = DATA.strings;
+const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
+const TABS = ['scegli', 'mappa', 'montata', 'metodo'];
+const RENDERERS = { scegli: renderChoose, montata: renderMine, mappa: renderMap, metodo: renderMethod };
+const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
+
+let state = defaultState(DATA.defaults);
+let current = 'scegli', sheetId = null, persist = null, loaded = false;
+let pendingFns = []; // modifiche fatte prima che lo stato salvato arrivi: si rieseguono sopra di esso, non lo sostituiscono
+const cache = new Map();
+const dlg = $('#sheet');
+
+const refsOf = (ids) => ids.filter((id) => BY_ID[id]).map((id) => ({ id, dims: BY_ID[id].derived.dims }));
+function pairingOf(id) {
+  if (!cache.has(id)) cache.set(id, pairing(BY_ID[id].derived.dims, refsOf(state.liked), refsOf(state.disliked), !state.liked.includes(id)));
+  return cache.get(id);
+}
+const equippedRec = () => BY_ID[state.equipped.id];
+const tenutaOf = (id) => (BY_ID[id] ? BY_ID[id].derived.dims.durability : null);
+const lifeFor = (r) => lifeEstimate(tenutaOf(r.id), state.lives, r.id, tenutaOf);
+const wear = () => wearStatus({ state, tenuta: tenutaOf(state.equipped.id), tenutaOf, now: new Date() });
+function cardCtx(r, extra = {}) {
+  return { pairing: pairingOf(r.id), pref: state.liked.includes(r.id) ? 'liked' : state.disliked.includes(r.id) ? 'disliked' : null,
+    equipped: equippedRec(), tension: tensionFor(r, equippedRec(), state.equipped.kg), isEquipped: r.id === state.equipped.id, life: lifeFor(r), ai: aiAvailable(), aiCachedHtml: aiAvailable() ? aiCachedHtml(r.id) : '',
+    nameOf: (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id), trials: trialsForString(trialsOf(state), r.id), inCompare: comparePicks().includes(r.id), ...extra };
+}
+
+const ctx = { DATA, ALL, BY_ID, state: () => state, pairingOf, equippedRec, cardCtx, hours: () => equippedHours(state), wear, tenutaOf,
+  wearLabel: () => `usura: ${wear().band}`, persist: () => persist, persistError: () => (persist ? persist.lastError : null), persistMode: () => (persist ? persist.mode : 'pending'), warnings: [],
+  update, openSheet, showTab, refresh: () => { renderAll(); if (dlg.open && sheetId) openSheet(sheetId); }, equip: (id) => { if (ctx.onEquip) ctx.onEquip(id); else showTab('montata'); } };
+
+const SYNC_TEXT = { sync: ['●', 'Sincronizzato', 'ok'], local: ['○', 'Solo su questo browser', 'local'], error: ['⚠', 'Errore di salvataggio', 'err'] };
+function renderSyncBadge() {
+  const b = $('#sync-badge'), t = SYNC_TEXT[persist ? persist.status : 'pending'];
+  b.innerHTML = t ? `<span class="dot">${t[0]}</span> <span class="t">${t[1]}</span>` : ''; b.className = `sync ${t ? t[2] : ''}`; b.title = persist && persist.lastError ? persist.lastError : (t ? t[1] : '');
+}
+// L'altezza vera della barra in basso (cambia con font e area sicura): serve a tutto ciò che sta sopra di essa
+const navEl = document.querySelector('.tabs');
+const syncNavH = () => { if (navEl && getComputedStyle(navEl).position === 'fixed') document.documentElement.style.setProperty('--nav-h', `${Math.ceil(navEl.getBoundingClientRect().height)}px`); };
+if (navEl && window.ResizeObserver) new ResizeObserver(syncNavH).observe(navEl);
+syncNavH();
+function renderAll() { (RENDERERS[current] || (() => {}))(ctx); renderStrip(ctx); } // la striscia sta in Scegli ma deve restare aggiornata ovunque
+function update(fn) {
+  $('#toast').hidden = true; // un annulla con una foto vecchia dello stato cancellerebbe questa modifica
+  state = fn(state); cache.clear();
+  if (!loaded) pendingFns.push(fn);
+  else if (persist) persist.save(state).then(() => { renderPersistNote(ctx); renderSyncBadge(); });
+  renderAll();
+  if (dlg.open && sheetId) openSheet(sheetId);
+}
 
 function showTab(id) {
-  id = OLD_TABS[id] || id;
-  if (!TABS.includes(id)) id = 'casa';
-  for (const t of TABS) { $('#' + t).hidden = t !== id; $('#tab-' + t).setAttribute('aria-selected', String(t === id)); }
-  store.set('tab', id);
-  screens[id]();
+  if (!TABS.includes(id)) id = 'scegli';
+  current = id;
+  for (const t of TABS) { $('#' + t).hidden = t !== id; const b = $('#tab-' + t); if (b) b.setAttribute('aria-selected', String(t === id)); }
+  try { localStorage.setItem('banco-corde:tab', id); } catch { /* archivio non disponibile */ }
+  renderAll();
 }
-function goTab(id) { showTab(id); history.replaceState(null, '', '#' + id); scrollTo(0, 0); }
-
-$$('.tabs button').forEach((b) => b.addEventListener('click', () => goTab(b.dataset.tab)));
-$('#open-how').addEventListener('click', () => {
-  goTab('esplora');
-  const how = document.getElementById('come-leggere');
-  if (how) { how.open = true; how.scrollIntoView({ block: 'start' }); }
+// Cronologia: ogni scheda corda, pannello o dialogo aperto aggiunge una voce, così il tasto Indietro del telefono lo chiude invece di uscire dall'app;
+// ogni cambio di schermata aggiunge una voce, così Indietro torna alla schermata precedente.
+const dlgStack = [];
+let ignorePop = 0, skipBack = 0, afterPop = [];
+const nativeShowModal = HTMLDialogElement.prototype.showModal;
+HTMLDialogElement.prototype.showModal = function showModalTracked() { nativeShowModal.call(this); dlgStack.push(this); history.pushState({ dlg: true }, ''); };
+document.addEventListener('close', (e) => {
+  const i = dlgStack.indexOf(e.target); if (i < 0) return;
+  dlgStack.splice(i, 1);
+  if (skipBack > 0) { skipBack -= 1; return; }       // chiusa dal tasto Indietro: la voce è già stata tolta
+  ignorePop += 1; history.back();                     // chiusa dall'interfaccia: si toglie la voce che aveva aggiunto
+}, true);
+window.addEventListener('popstate', () => {
+  if (ignorePop > 0) { ignorePop -= 1; const fns = afterPop; afterPop = []; fns.forEach((f) => f()); return; }
+  const top = dlgStack[dlgStack.length - 1];
+  if (top && top.open) { skipBack += 1; top.close(); }
 });
+// esegue fn dopo aver chiuso eventuali dialoghi aperti (e aver tolto le loro voci dalla cronologia)
+function whenDialogsClosed(fn) {
+  const open = dlgStack.filter((d) => d.open);
+  if (!open.length) { fn(); return; }
+  afterPop.push(fn);
+  open.forEach((d) => d.close());
+}
+function goto(id) {
+  whenDialogsClosed(() => {
+    showTab(id);
+    if (location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
+    scrollTo(0, 0);
+  });
+}
+
+function openSheet(id) {
+  const r = BY_ID[id]; if (!r) return;
+  sheetId = id;
+  $('#sheet-body').innerHTML = sheetHtml(r, cardCtx(r));
+  if (!dlg.open) dlg.showModal();
+  dlg.scrollTop = 0;
+}
+$('#sheet-close').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener('close', () => { sheetId = null; });
+
 document.addEventListener('click', (e) => {
-  const o = e.target.closest('[data-open]');
-  if (o && typeof openSheet === 'function') { openSheet(o.dataset.open); return; }
-  const c = e.target.closest('[data-compare]');
-  if (c && typeof addToCompare === 'function') { addToCompare(c.dataset.compare); goTab('confronta'); }
+  const t = e.target;
+  const tab = t.closest('.tabs [data-tab]'); if (tab) { goto(tab.dataset.tab); return; }
+  const g = t.closest('[data-goto]'); if (g) { goto(g.dataset.goto); return; }
+  const mth = t.closest('[data-method]'); if (mth) { goto('metodo'); const el = document.getElementById('m-' + mth.dataset.method); if (el) el.scrollIntoView({ block: 'start' }); return; }
+  const o = t.closest('[data-open]'); if (o) { openSheet(o.dataset.open); return; }
+  const l = t.closest('[data-like]'); if (l) { const id = l.dataset.like; update((s) => setPreference(s, id, s.liked.includes(id) ? null : 'liked')); return; }
+  const d = t.closest('[data-dislike]'); if (d) { const id = d.dataset.dislike; update((s) => setPreference(s, id, s.disliked.includes(id) ? null : 'disliked')); return; }
+  const q = t.closest('[data-equip]'); if (q) { const id = q.dataset.equip; whenDialogsClosed(() => ctx.equip(id)); return; }
+  const bk = t.closest('[data-back]'); if (bk) { if (history.length > 1) history.back(); else goto('scegli'); return; }
 });
-document.addEventListener('current-change', () => { for (const t of TABS) if (!$('#' + t).hidden) screens[t](); });
 
-initProv();
-renderCurrentPicker($('#current'));
-$('#foot').innerHTML = `<p>Fonti: test Ektelon del tuo file, <a href="https://twu.tennis-warehouse.com/learning_center/reporter2.php" target="_blank" rel="noopener">TWU</a>, <a href="https://www.racketpedia.com/" target="_blank" rel="noopener">Racketpedia</a> (rigidità statica gratuita). Recensioni solo come link nelle schede.</p><p>${ALL.length} corde poly, calibri 1.18–1.30 mm. Aggiornato il ${esc(DATA.generated)}.</p>`;
-showTab((location.hash || '').slice(1) || store.get('tab', 'casa'));
-addEventListener('hashchange', () => showTab(location.hash.slice(1)));
+initChoose(ctx);
+initCompare(ctx);
+initFilter(ctx, { count: () => filteredCount(ctx), changed: () => renderAll() });
+initMine(ctx);
+initDiary(ctx);
+initMap(ctx);
+initAi(ctx);
+renderMethod(ctx);
+const hashTab = (location.hash || '').slice(1);
+showTab(TABS.includes(hashTab) ? hashTab : 'scegli');
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); showTab(TABS.includes(h) ? h : 'scegli'); });
+history.replaceState(null, '', `#${current}`);
+
+// Lo stato salvato arriva dopo il primo disegno (il db può metterci un po'): le modifiche già fatte dall'utente si rieseguono sopra di esso.
+(async () => {
+  try {
+    persist = await createPersistence({ claude: window.claude, storage: safeStorage(), defaults: DATA.defaults, knownIds: ALL.map((r) => r.id) });
+    const got = await persist.load();
+    ctx.warnings = got.warnings;
+    state = got.state;
+    for (const fn of pendingFns) state = fn(state);
+    const replayed = pendingFns.length > 0;
+    pendingFns = []; loaded = true; cache.clear();
+    if (replayed || got.unsynced) persist.save(state);
+    renderAll(); renderSyncBadge();
+    // un altro dispositivo ha cambiato qualcosa: si aggiorna da solo, senza ricaricare (l'eco delle proprie scritture è uguale e si ignora)
+    persist.subscribe((remote) => {
+      if (!loaded || sameState(remote, state)) { renderSyncBadge(); return; }
+      $('#toast').hidden = true; // un annulla con una foto vecchia cancellerebbe ciò che l'altro dispositivo ha appena aggiunto
+      state = remote; cache.clear(); renderAll(); renderSyncBadge();
+      if (dlg.open && sheetId) openSheet(sheetId);
+    });
+  } finally { loaded = true; window.__bancoReady = true; }
+})();

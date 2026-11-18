@@ -56,3 +56,56 @@ def test_lone_level_is_not_ranked_against_numeric_scores():
     aggs["d"] = aggregate({"id": "d", "sources": [src("review", levels={"spin": 4})]})
     add_percentiles(aggs)
     assert aggs["d"]["pct"]["spin"] == 75.0  # "alto" resta alto, non finisce in fondo ai voti numerici
+
+
+from pipeline.reviews import mark_gauge_mismatch, review_conflicts
+
+
+def noted(note, site="x", **kw):
+    s = src("review", **kw)
+    return {**s, "site": site, "note": note}
+
+
+def test_gauge_mismatch_detected_from_note():
+    out = mark_gauge_mismatch([noted("Gauge not stated on page; applied to this id"), noted("Tested the 1.25 string"),
+                               noted("Tester used a nearby gauge")])
+    assert [s["gauge_mismatch"] for s in out] == [True, False, True]
+
+
+def test_override_wins():
+    out = mark_gauge_mismatch([noted("Gauge not stated", site="tw"), noted("Fine", site="rp")], {"tw": False, "rp": True})
+    assert [s["gauge_mismatch"] for s in out] == [False, True]
+
+
+def test_conflict_when_two_levels_apart():
+    s = [{**noted("", site="tw", levels={"spin": 4}), "gauge_mismatch": False}]
+    got = review_conflicts(s, {"spin": 1, "durability": None, "stiffness": None})
+    assert got == [{"criterion": "spin", "testers": 4.0, "lab": 1, "sites": ["tw"]}]
+
+
+def test_no_conflict_when_one_level_apart():
+    s = [{**noted("", levels={"spin": 3}), "gauge_mismatch": False}]
+    assert review_conflicts(s, {"spin": 2, "durability": None, "stiffness": None}) == []
+
+
+def test_mismatched_source_ignored():
+    s = [{**noted("", levels={"spin": 5}), "gauge_mismatch": True}]
+    assert review_conflicts(s, {"spin": 1, "durability": None, "stiffness": None}) == []
+
+
+def test_no_conflict_when_lab_missing():
+    s = [{**noted("", levels={"spin": 5}), "gauge_mismatch": False}]
+    assert review_conflicts(s, {"spin": None, "durability": None, "stiffness": None}) == []
+
+
+def test_numeric_scores_count_as_tester_level():
+    s = [{**noted("", scores={"durability": 100}), "gauge_mismatch": False}]
+    got = review_conflicts(s, {"spin": None, "durability": 2, "stiffness": None})
+    assert got[0]["criterion"] == "durability" and got[0]["testers"] == 5.0
+
+
+def test_conflict_sites_are_unique():
+    a = {**noted("", site="tw", levels={"spin": 5}), "gauge_mismatch": False}
+    b = {**noted("", site="tw", levels={"spin": 4}), "gauge_mismatch": False}
+    got = review_conflicts([a, b], {"spin": 1, "durability": None, "stiffness": None})
+    assert got[0]["sites"] == ["tw"]

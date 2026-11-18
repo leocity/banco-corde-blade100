@@ -1,0 +1,161 @@
+// Stato dell'utente (montata, preferite, ore, corde finite): funzioni pure che restituiscono nuovi oggetti.
+import { sanitizeDiary, emptyDiary } from './diary.js';
+
+const isStr = (v) => typeof v === 'string';
+const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
+const isDate = (v) => isStr(v) && !Number.isNaN(Date.parse(v));
+const uniq = (xs) => [...new Set(xs)];
+const okKg = (kg) => Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35);
+const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d } : {}; };
+
+export const STATE_VERSION = 2;
+// ID dei documenti db: lettere, cifre e _ - . ~ : @ + (nessuna barra né spazio)
+const isDocPart = (v) => isStr(v) && /^[A-Za-z0-9_.~:@+-]{1,150}$/.test(v) && v !== '.' && v !== '..';
+
+export function defaultState(defaults, now = new Date()) {
+  return {
+    v: STATE_VERSION,
+    equipped: { id: defaults.equipped.id, kg: [...defaults.equipped.kg], since: now.toISOString(), hours0: 0 },
+    liked: [...defaults.liked], disliked: [...defaults.disliked], sessions: [], lives: [],
+  };
+}
+
+export function setPreference(state, id, pref) {
+  const liked = state.liked.filter((x) => x !== id), disliked = state.disliked.filter((x) => x !== id);
+  if (pref === 'liked') liked.push(id);
+  if (pref === 'disliked') disliked.push(id);
+  return { ...state, liked, disliked };
+}
+
+export function equippedHours(state) {
+  return state.equipped.hours0 + state.sessions.filter((s) => s.life === state.equipped.since).reduce((a, s) => a + s.hours, 0);
+}
+
+export function addSession(state, { date, hours, note = '', ts }) {
+  const session = { ts: ts ?? `${Date.now()}-${state.sessions.length}`, date, hours, note, life: state.equipped.since };
+  return { ...state, sessions: [...state.sessions, session] };
+}
+export const removeSession = (state, ts) => ({ ...state, sessions: state.sessions.filter((s) => s.ts !== ts) });
+export const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
+
+export function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()) }) {
+  const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note, ...(state.equipped.diary ? { diary: state.equipped.diary } : {}) };
+  return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
+}
+
+// Prova passata (prima dell'app): una vita chiusa con tensione, date approssimate e ore. Dati non validi: lo stato non cambia.
+const PAST_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const dayIso = (d) => (isStr(d) && PAST_DAY.test(d) && !Number.isNaN(Date.parse(`${d}T12:00:00.000Z`)) && new Date(`${d}T12:00:00.000Z`).toISOString().slice(0, 10) === d ? `${d}T12:00:00.000Z` : null);
+export const PAST_REASONS = ['consumata', 'rotta', 'cambiata per prova'];
+export function addPastLife(state, { id, kg, from, to, hours, reason = 'consumata', note = '', lid = String(Date.now()) }) {
+  const f = dayIso(from), t = dayIso(to);
+  const ok = isStr(id) && id !== '' && Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35)
+    && f && t && t >= f && isNum(hours) && hours >= 0 && hours <= 500 && PAST_REASONS.includes(reason) && isDocPart(lid);
+  if (!ok) return state;
+  return { ...state, lives: [...state.lives, { lid, id, kg: [...kg], from: f, to: t, hours, reason, note: isStr(note) ? note : '' }] };
+}
+
+export function parseHours(input) {
+  const s = typeof input === 'number' ? String(input) : isStr(input) ? input.trim() : '';
+  if (!/^\d+([.,]\d+)?$/.test(s)) return { ok: false, reason: 'Scrivi le ore come numero, per esempio 1,5.' };
+  const value = Number(s.replace(',', '.'));
+  if (!(value > 0)) return { ok: false, reason: 'Le ore devono essere più di 0.' };
+  if (value > 24) return { ok: false, reason: 'Al massimo 24 ore per sessione.' };
+  return { ok: true, value };
+}
+
+// Rigidità usata per correggere la tensione: solo dati di laboratorio, non le stime dal solo calibro.
+export function labStiff(rec) {
+  const s = rec && rec.stiffness;
+  return s && ['misurata', 'parente', 'da Racketpedia'].includes(s.kind) && isNum(s.value_lbin) ? s.value_lbin : null;
+}
+
+const halfAway = (x) => Math.sign(x) * Math.round(Math.abs(x));
+export const kgToLbs = (kg) => Math.round(kg * 2.2046 * 2) / 2;
+
+// Tensione di partenza dalla montata: −0,75 kg ogni +15 lb/in di rigidità in più, al massimo ±2 kg (regola empirica, non validata).
+export function tensionFor(rec, equippedRec, equippedKg) {
+  const a = labStiff(rec), b = labStiff(equippedRec);
+  const corrected = a !== null && b !== null;
+  const delta = corrected ? Math.max(-2, Math.min(2, halfAway(-0.75 * (a - b) / 15 * 2) / 2)) : 0;
+  const kg = equippedKg.map((x) => x + delta);
+  return { kg, lbs: kg.map(kgToLbs), low: kg.map((x) => x - 1), high: kg.map((x) => x + 1), corrected };
+}
+
+// Le vite salvate prima dell'introduzione di `lid` ne ricevono uno stabile dalla data di inizio.
+const legacyLid = (from) => (Number.isFinite(Date.parse(from)) ? String(Date.parse(from)) : `x${String(from).replace(/[^A-Za-z0-9]/g, '').slice(0, 40)}`);
+
+export function sanitizeState(raw, defaults, knownIds) {
+  const warnings = [], known = new Set(knownIds), base = defaultState(defaults);
+  if (raw === null || raw === undefined) return { state: base, warnings };
+  let obj = raw;
+  if (isStr(raw)) { try { obj = JSON.parse(raw); } catch { obj = null; } }
+  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return { state: base, warnings: ['Lo stato salvato non è leggibile: riparto dalle impostazioni iniziali.'] };
+  const e = obj.equipped;
+  let equipped = base.equipped;
+  if (e !== undefined) {
+    if (e && isStr(e.id) && known.has(e.id) && Array.isArray(e.kg) && e.kg.length === 2 && e.kg.every(isNum) && isDate(e.since)) {
+      const kgOk = okKg(e.kg);
+      if (!kgOk) warnings.push('La tensione salvata della corda montata non è valida (15–35 kg): ho rimesso quella iniziale.');
+      equipped = { id: e.id, kg: kgOk ? [...e.kg] : [...base.equipped.kg], since: e.since, hours0: isNum(e.hours0) && e.hours0 >= 0 && e.hours0 <= 500 ? e.hours0 : 0, ...diaryOf(e.diary) };
+    } else warnings.push('La corda montata salvata non esiste più o non è valida: ho ripristinato quella iniziale.');
+  }
+  const ids = (v, dflt) => (Array.isArray(v) ? uniq(v.filter((x) => isStr(x) && known.has(x))) : dflt);
+  const liked = ids(obj.liked, base.liked);
+  const disliked = ids(obj.disliked, base.disliked).filter((x) => !liked.includes(x));
+  const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
+    .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
+  const rawLives = Array.isArray(obj.lives) ? obj.lives : [];
+  const lives = rawLives.filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && l.hours <= 500 && isStr(l.from) && isStr(l.to) && okKg(l.kg))
+    .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: !isStr(l.reason) ? 'consumata' : PAST_REASONS.includes(l.reason) ? l.reason : 'cambiata per prova', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
+  if (lives.length < rawLives.length) warnings.push(`${rawLives.length - lives.length} corda/e finita/e con dati non validi sono state ignorate.`);
+  return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
+}
+
+// ---------- stato <-> documenti db ----------
+// Chiavi ordinate: due stati uguali danno lo stesso testo, qualunque sia l'ordine con cui db restituisce i campi.
+export const stableJson = (o) => JSON.stringify(o, (k, v) => (v && typeof v === 'object' && !Array.isArray(v) ? Object.fromEntries(Object.keys(v).sort().map((x) => [x, v[x]])) : v));
+const byTs = (a, b) => (a.ts < b.ts ? -1 : a.ts > b.ts ? 1 : 0);
+const byFrom = (a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : a.lid < b.lid ? -1 : a.lid > b.lid ? 1 : 0);
+export const sameState = (a, b) => stableJson({ ...a, sessions: [...a.sessions].sort(byTs), lives: [...a.lives].sort(byFrom) }) === stableJson({ ...b, sessions: [...b.sessions].sort(byTs), lives: [...b.lives].sort(byFrom) });
+
+export function splitState(state) {
+  const sessions = {}, lives = {};
+  for (const s of state.sessions) sessions[`s-${s.ts}`] = s;
+  for (const l of state.lives) lives[`l-${l.lid}`] = l;
+  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives };
+}
+
+// Stato grezzo da passare a sanitizeState. Se il documento `state` è ancora quello v1 (con gli array), li unisce agli elementi.
+export function joinState(core, sessions, lives) {
+  const old = (k) => (core && Array.isArray(core[k]) ? core[k] : []);
+  const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
+  const { sessions: _s, lives: _l, ...rest } = core || {};
+  return { ...rest, sessions: merge(old('sessions'), sessions, 'ts').sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
+}
+
+// ---------- diario: prove e verdetto ----------
+// Cambia il diario della montata ('current') o di una vita chiusa (lid); una vita sconosciuta non cambia nulla.
+export function updateDiary(state, target, fn) {
+  if (target === 'current') return { ...state, equipped: { ...state.equipped, diary: fn(state.equipped.diary || emptyDiary()) } };
+  if (!state.lives.some((l) => l.lid === target)) return state;
+  return { ...state, lives: state.lives.map((l) => (l.lid === target ? { ...l, diary: fn(l.diary || emptyDiary()) } : l)) };
+}
+
+// Le prove dell'utente: la montata per prima, poi le corde finite dalla più recente.
+export function trialsOf(state) {
+  const cur = { lid: 'current', id: state.equipped.id, kg: state.equipped.kg, from: state.equipped.since, to: '', hours: equippedHours(state), reason: '', diary: state.equipped.diary };
+  const past = [...state.lives].sort(byFrom).reverse().map((l) => ({ lid: l.lid, id: l.id, kg: l.kg, from: l.from, to: l.to, hours: l.hours, reason: l.reason, diary: l.diary }));
+  return [cur, ...past];
+}
+
+// «Ricomprerei»: sì -> preferita, no -> non gradita; forse e nessun verdetto non cambiano nulla. I voti per categoria non toccano mai le preferite.
+export function applyVerdict(state, stringId, verdict) {
+  return verdict === 'si' ? setPreference(state, stringId, 'liked') : verdict === 'no' ? setPreference(state, stringId, 'disliked') : state;
+}
+
+// Tensione della corda montata (kg verticali/orizzontali), tra 15 e 35 kg; altrimenti non cambia nulla.
+export function setEquippedKg(state, kg) {
+  const ok = Array.isArray(kg) && kg.length === 2 && kg.every((v) => isNum(v) && v >= 15 && v <= 35);
+  return ok ? { ...state, equipped: { ...state.equipped, kg: [...kg] } } : state;
+}

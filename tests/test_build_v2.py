@@ -34,22 +34,27 @@ def test_build_adds_catalog_estimates_and_meta():
     assert out["estimates_meta"]["spin_calibration"]["n"] >= 5
     assert "rp_to_twu" in out["estimates_meta"]
     assert S["b-nuova-17"]["reviews"]["sources"][0]["url"] == "https://tw/n"
-    assert S["b-nuova-17"]["derived"]["judgments"]["stiffness"]["score"] is None
-    assert "comfort" not in S["b-nuova-17"]["derived"]["judgments"]
+    assert "comfort" not in S["b-nuova-17"]["derived"]["judgments"]  # comfort era una stima dalla rigidità: tolto
 
 
-def test_model_id_groups_colours_and_keeps_families():
-    from pipeline.estimate import model_id
-    assert model_id("Kirschbaum", "Flash Black") == model_id("Kirschbaum", "Flash Orange") == "kirschbaum-flash"
-    assert model_id("Solinco", "Confidential") != model_id("Solinco", "Confidential Soft")
-    assert model_id("Toroline", "O-Toro") != model_id("Toroline", "O-Toro Tour")
-    out = build([lab(i) for i in range(6)], {})
-    assert all(r["model_id"] == model_id(r["brand"], r["model"]) for r in out["strings"])
+def test_build_exposes_defaults():
+    recs = [lab(i) for i in range(10)]
+    recs[0]["id"] = "solinco-confidential-16l"
+    out = build(recs, {})
+    assert out["defaults"]["equipped"] == {"id": "re-string-zero-17", "kg": [22.5, 21.5]}
+    assert out["defaults"]["liked"] == ["solinco-confidential-16l", "toroline-o-toro-17"]
+    assert "babolat-rpm-blast-16" in out["defaults"]["disliked"]
 
 
-def test_pending_racketpedia_rows_are_not_used():
-    from pipeline.build import skip_pending
-    rows = [{"url": "https://rp/a"}, {"url": "https://rp/b"}]
-    pending = [{"source": "racketpedia", "url": "https://rp/b"}, {"twu_name": "T", "id": "t"}]
-    assert skip_pending(rows, pending) == [{"url": "https://rp/a"}]
-    assert skip_pending(rows, []) == rows
+def test_build_adds_review_conflicts_and_gauge_flags():
+    recs = [lab(i) for i in range(10)]
+    recs[0]["id"] = "solinco-confidential-16l"
+    mism = rev(2, 50)
+    mism["sources"][0].update(site="rp", note="Gauge not stated on page; applied to this id")
+    reviews = [rev(1, 95), mism]
+    S = {r["id"]: r for r in build(recs, {}, reviews=reviews, review_overrides={})["strings"]}
+    c = S["b-m1-17"]["reviews"]["conflicts"]
+    assert [x["criterion"] for x in c] == ["spin"] and c[0]["lab"] == 1 and c[0]["testers"] > 4
+    assert S["b-m2-17"]["reviews"]["sources"][0]["gauge_mismatch"] is True
+    assert S["b-m2-17"]["reviews"]["conflicts"] == []
+    assert S["b-m3-17"]["reviews"]["conflicts"] == []

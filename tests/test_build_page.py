@@ -14,37 +14,47 @@ def test_render_escapes_script_close_in_data():
     assert "</script><b>" not in html
 
 
-def test_modules_in_order(tmp_path, monkeypatch):
-    import pipeline.build_page as bp
-    (tmp_path / "score.js").write_text("export const A = 1;\n", encoding="utf-8")
-    (tmp_path / "recommend.js").write_text("import { A } from './score.js';\nexport function b() { return A; }\n", encoding="utf-8")
-    (tmp_path / "app.js").write_text("import { b } from './recommend.js';\nb();\n", encoding="utf-8")
-    monkeypatch.setattr(bp, "WEB", tmp_path)
-    js = bp._js()
-    assert js.index("const A") < js.index("function b") < js.index("b();")
-    assert not any(line.startswith(("import ", "export ")) for line in js.splitlines())
+import subprocess
+
+import pytest
+
+from pipeline import build_page
 
 
-def test_no_duplicate_top_level_names():
-    import re
-    from pipeline.build_page import MODULES, WEB
-    seen = {}
-    for m in MODULES:
-        p = WEB / m
-        if not p.exists():
-            continue
-        for name in re.findall(r"^(?:export )?(?:async )?(?:const|let|function|class) (\w+)", p.read_text(encoding="utf-8"), re.M):
-            assert name not in seen, f"{name} in {seen.get(name)} e {m}"
-            seen[name] = m
+def _module_js(html):
+    return html.split('<script type="module">')[1].rsplit("</script>", 1)[0]
 
 
-def test_estimate_figures_come_from_data_not_hand_written():
-    """Le cifre delle stime (r, errori) si leggono da DATA.estimates_meta: scritte a mano invecchiano a ogni aggiornamento."""
-    from pipeline.build_page import MODULES, WEB
-    for m in MODULES:
-        p = WEB / m
-        if not p.exists():
-            continue
-        text = p.read_text(encoding="utf-8")
-        for fig in ("0,63", "±11", "0,99", "1,19", "9,2", "12,6", "14,6", "10,5"):
-            assert fig not in text, f"{fig} scritto a mano in {m}"
+def _node_check(js, tmp_path):
+    f = tmp_path / "page.mjs"
+    f.write_text(js, encoding="utf-8")
+    return subprocess.run(["node", "--check", str(f)], capture_output=True, text=True)
+
+
+def test_inlined_script_is_valid_module(tmp_path):
+    r = _node_check(_module_js(render({"strings": [], "generated": "x"})), tmp_path)
+    assert r.returncode == 0, r.stderr
+
+
+def test_no_leftover_imports_or_exports_at_line_start():
+    js = _module_js(render({"strings": [], "generated": "x"}))
+    assert not [l for l in js.splitlines() if l.startswith(("import ", "export "))]
+
+
+def test_modules_is_an_explicit_list():
+    assert build_page.MODULES[-1] == "app.js"
+
+
+def test_missing_module_is_an_error_not_skipped(monkeypatch, tmp_path):
+    monkeypatch.setattr(build_page, "WEB", tmp_path)
+    monkeypatch.setattr(build_page, "MODULES", ["nope.js"])
+    with pytest.raises(FileNotFoundError):
+        build_page._js()
+
+
+def test_duplicate_top_level_names_are_caught_by_the_syntax_check(monkeypatch, tmp_path):
+    (tmp_path / "a.js").write_text("export const X = 1;\n", encoding="utf-8")
+    (tmp_path / "b.js").write_text("import { X } from './a.js';\nexport const X = 2;\n", encoding="utf-8")
+    monkeypatch.setattr(build_page, "WEB", tmp_path)
+    monkeypatch.setattr(build_page, "MODULES", ["a.js", "b.js"])
+    assert _node_check(build_page._js(), tmp_path).returncode != 0

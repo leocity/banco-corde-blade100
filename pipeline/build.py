@@ -5,15 +5,17 @@ import json
 import math
 import pathlib
 
+from pipeline.validate_indices import index_validation
+from pipeline.community import FORUM_ALIASES, build_community
 from pipeline.catalog import add_catalog_only, clean_catalog
-from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_WEIGHTS, derive_all
+from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, model_id, backtest_qualitative, calibrate_tester_spin, estimate_spin, check_gauge_usrsa, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
 from pipeline.notes_gen import apply_notes
 from pipeline.rpedia_site import apply_site
 from pipeline.production import filter_discontinued
 from pipeline.provenance import apply_provenance
-from pipeline.reviews import add_percentiles, aggregate, validate_reviews
+from pipeline.reviews import add_percentiles, aggregate, mark_gauge_mismatch, review_conflicts, validate_reviews
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -33,7 +35,7 @@ def _corr(xs, ys):
 REFERENCE_IDS = {"solinco-confidential-16l", "toroline-o-toro-17"}
 
 
-def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, sources=None, usrsa=None):
+def build(records, notes, reviews=None, catalog=None, production=None, years=None, site_rows=None, review_overrides=None, forum=None, sources=None, usrsa=None):
     records = add_catalog_only(records, catalog or [])
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
@@ -89,8 +91,20 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
 
     # giudizi e punteggi solo dal laboratorio; le recensioni restano in r["reviews"] come link informativi
     discriminant = derive_all(records)
+    for r in records:  # conflitti tester/dati: solo contro livelli di laboratorio misurati (o da gemello)
+        j = r["derived"]["judgments"]
+        lvl = lambda c: (j.get(c) or {}).get("level")
+        lab = {"spin": lvl("spin") if (r.get("spin") or {}).get("kind") in ("misurato", "parente") else None,
+               "stiffness": lvl("stiffness") if (r.get("stiffness") or {}).get("kind") in ("misurata", "parente") else None,
+               "durability": lvl("durability")}
+        r["reviews"]["sources"] = mark_gauge_mismatch(r["reviews"]["sources"], (review_overrides or {}).get(r["id"]))
+        r["reviews"]["conflicts"] = review_conflicts(r["reviews"]["sources"], lab)
     apply_notes(records, notes)
     apply_provenance(records, sources or {}, None)
+    comm = build_community(forum or [], records, aliases=FORUM_ALIASES)
+    for r in records:
+        r["community"] = comm.get(r["id"])
+    index_check = index_validation(records)
     twu_refs = {(r["twu"]["ref_tension_lbs"], r["twu"]["swing"]) for r in records if r["twu"]}
     ref = ", ".join(f"{t} lbs swing {'veloce' if s == 'Fast' else s}" for t, s in sorted(twu_refs))
     return {
@@ -101,11 +115,12 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         "tension_slope_kg_per_lbin": next((r["derived"]["tension_start"]["slope_kg_per_lbin"] for r in records
                                            if (r.get("derived") or {}).get("tension_start")), None),
         "anchors": ANCHOR_TENSIONS,
+        "defaults": {"equipped": DEFAULT_EQUIPPED, "liked": DEFAULT_LIKED, "disliked": DEFAULT_DISLIKED},
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),
         "guide": {"twu_ref": ref},
         "estimates_meta": {"spin_calibration": calib, "spin_qualitative": qual, "rp_to_twu": rp_meta, "spin_model": spin_model,
-                           "stiffness_gauge": gauge_model, "stiffness_model": stiff_model,
+                           "stiffness_gauge": gauge_model, "stiffness_model": stiff_model, "index_validation": index_check,
                            "rpedia_site": {"rows": len(site_rows or []), "changes": [list(x) for x in rp_log]}},
         "removed_discontinued": [{"name": n, "successor": sc, "reason": rs} for n, sc, rs in removed_list],
         "strings": records,
@@ -124,7 +139,7 @@ def skip_pending(site_rows, pending):
 
 
 def build_from_repo():
-    """Stesse fonti di `py -m pipeline.build`, senza scrivere: serve anche ai test di regressione."""
+    """Stesse fonti di `python3 -m pipeline.build`, senza scrivere: serve anche a refresh e ai test di regressione."""
     records = _load("data/merged.json")
     notes = _load("data/notes.json", {})
     reviews = [row for f in sorted(glob.glob(str(ROOT / "data/agents/reviews_r*.json")))
@@ -142,6 +157,8 @@ def build_from_repo():
     site_rows = skip_pending(_load("data/raw/racketpedia.json", []), _load("data/pending_matches.json", []))
     usrsa = (_load("data/raw/usrsa_trupro.json", {}) or {}).get("rows")
     return build(records, notes, reviews=reviews, catalog=catalog, production=production, years=years, site_rows=site_rows,
+                 review_overrides=_load("data/agents/review_overrides.json", {}),
+                 forum=[json.loads(pathlib.Path(f).read_text(encoding="utf-8")) for f in sorted(glob.glob(str(ROOT / "data/agents/forum_*.json")))],
                  sources=_load("data/raw/sources.json", {}), usrsa=usrsa)
 
 
