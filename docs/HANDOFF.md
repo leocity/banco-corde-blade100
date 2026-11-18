@@ -1,6 +1,6 @@
 # Passaggio di consegne — 2026-11-18
 
-Questo file è il punto di ingresso per chi riprende il lavoro in una sessione nuova (altro account, altro modello). Chi legge **non ha la conversazione precedente**: tutto quello che serve sta nel repo e qui.
+Questo file è il punto di ingresso per chi riprende il lavoro in una chat nuova (stessa persona, altro modello o altra sessione). Chi legge **non ha la conversazione precedente**: tutto quello che serve sta nel repo e qui.
 
 ## 1. Stato: quattro linee che non sono mai state unite
 
@@ -15,13 +15,13 @@ Questo file è il punto di ingresso per chi riprende il lavoro in una sessione n
 
 **Base consigliata:** `adoring-rubin` (è quello che l'utente usa online) + Ibridi recuperata dall'archivio + dalla v3 solo i pezzi di dati (`twu_compare`, `provenance`, `refresh`, `model_id`) e la logica pura (`web/recommend.js` con i suoi test). Va confermata con l'utente prima di unire (§3, fase 0).
 
-## 2. Cosa deve fare l'utente (una volta)
+## 2. Cosa deve fare l'utente (stesso account, nuova chat)
 
-1. **Repo:** l'account che apre la nuova sessione deve poter leggere e scrivere `leocity/banco-corde-blade100` (collegare GitHub a quell'account).
-2. **Artefatto:** l'URL appartiene al primo account. Per aggiornarlo dall'altro: dal menu *Condividi* dell'artefatto, invitare l'email del secondo account **con permesso di modifica**. Senza, il secondo account pubblica un artefatto nuovo, con un altro link e **senza i dati salvati** (montata, diario, preferite stanno nel `db` di questo artefatto).
-3. **Backup dei dati personali:** prima di cambiare chi pubblica, dall'app: Montata → esportazioni (JSON e CSV).
-4. **Nuova sessione:** aprirla sul repo, ramo di partenza `claude/great-hypatia-edrzae`, e incollare il prompt del §3.
-5. **Ritorno:** vedi §4.
+1. **Backup dei dati personali** (consigliato, due tocchi): nell'app, Montata → esportazioni (JSON e CSV).
+2. **Nuova sessione** sullo stesso account, sul repo `leocity/banco-corde-blade100`, ramo di partenza `claude/great-hypatia-edrzae`. Scegliere il modello Fable dal selettore dei modelli, se disponibile.
+3. **Incollare il prompt del §3.**
+
+Stesso account = stesso proprietario dell'artefatto: si aggiorna allo stesso link e i dati salvati nel `db` (montata, diario, preferite) restano.
 
 ## 3. Prompt da incollare nella nuova sessione
 
@@ -49,7 +49,7 @@ FASE 2 — Semplifica (proponi, poi con l'ok dell'utente implementa): una domand
 
 FASE 3 — Implementa con TDD, commit piccoli, su un ramo tuo (es. fable/v6), mai su master.
 
-FASE 4 — Spedisci: ricostruisci la pagina, esegui TUTTI i test e il controllo e2e, poi pubblica come artefatto. Prima di pubblicare sull'URL esistente leggi la versione online (l'Artifact tool lo richiede) e verifica che nulla di ciò che è online manchi nella nuova versione. Se non hai permesso di modifica su https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne, pubblica un artefatto nuovo e dillo all'utente (perde i dati salvati nel db: ricordagli l'esportazione).
+FASE 4 — Spedisci: ricostruisci la pagina, esegui TUTTI i test e il controllo e2e, poi pubblica come artefatto. Prima di pubblicare sull'URL esistente leggi la versione online (l'Artifact tool lo richiede) e verifica che nulla di ciò che è online manchi nella nuova versione. Pubblica sempre sullo stesso URL https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne (stesso proprietario: i dati salvati nel db restano).
 
 REGOLE CHE NON VANNO RIDISCUSSE (decise dall'utente): solo dati gratuiti (Excel dell'utente in data/source, TWU, Racketpedia gratuito); niente prezzi; punteggio e classifiche solo da dati di laboratorio, le recensioni restano link; stime sempre dichiarate e mai nei consigli; aggiornamento dei dati solo manuale; corde uscite prima del 2020 o fuori produzione tolte (le preferite restano); testo in italiano, numeri con la virgola.
 
@@ -58,11 +58,11 @@ RICHIEDONO IL SÌ DELL'UTENTE: unire rami, push su master, pubblicare sull'artef
 A FINE LAVORO: riepilogo con "Decisioni che ho preso" (ognuna con il costo se sbagliata), "Rimandato" e "Problemi aperti"; aggiorna docs/HANDOFF.md (stato, rami, cosa è online) e fai push del ramo, così l'utente può tornare nell'altro account.
 ```
 
-## 4. Tornare nell'altro account
+## 4. Chiudere e riprendere
 
 - Chi lavora **non tocca `master`** e lavora su un ramo suo (`fable/...`); a fine lavoro aggiorna questo file (§1 e §5) e fa push.
-- Per riprendere qui: nuova sessione sul repo, ramo di Fable, e scrivere «leggi docs/HANDOFF.md e riprendi da lì».
-- L'artefatto resta lo stesso link se entrambi gli account hanno permesso di modifica; ogni pubblicazione richiede prima di leggere la versione online, quindi nessuno sovrascrive il lavoro dell'altro senza vederlo.
+- Per riprendere in un'altra chat: nuova sessione sul repo, ramo di Fable, e scrivere «leggi docs/HANDOFF.md e riprendi da lì».
+- Ogni pubblicazione richiede prima di leggere la versione online, quindi nessuna chat sovrascrive il lavoro dell'altra senza vederlo.
 
 ## 5. Lavoro della v3 da conoscere (non rifare)
 
