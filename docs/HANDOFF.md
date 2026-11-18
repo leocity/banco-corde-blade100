@@ -1,78 +1,53 @@
-# Passaggio di consegne — 2026-11-18
+# Passaggio di consegne — aggiornato 2026-11-18 (v6)
 
-Questo file è il punto di ingresso per chi riprende il lavoro in una chat nuova (stessa persona, altro modello o altra sessione). Chi legge **non ha la conversazione precedente**: tutto quello che serve sta nel repo e qui.
+Punto di ingresso per chi riprende il lavoro in una chat nuova. Chi legge **non ha la conversazione precedente**: tutto quello che serve sta nel repo e qui.
 
-## 1. Stato: quattro linee che non sono mai state unite
+## 1. Stato
 
-| Linea | Dove | Cosa contiene |
-|---|---|---|
-| **Online** (artefatto `https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne`, versione 1794985945-32d7) | `archive/artifact-live-2026-11-18.html` (copia salvata il 2026-11-18) | La linea `adoring-rubin` **più** la scheda **Ibridi** e un blocco `verified` nei dati. **Ibridi e `verified` non esistono in nessun ramo git**: l'unica copia è l'artefatto e questo file. Se si ripubblica da git senza recuperarli, spariscono. |
-| `claude/adoring-rubin-dm98qp` (2026-10-31, partito da `master`) | ramo remoto | v4/v5: 3 schede (Scegli, Mappa, Montata), diario di prova con voti in tre momenti, usura, pairing Blade 100, sincronizzazione con `db`, parere AI con `sample`, pareri dei forum, `docs/FISICA.md`, 207 test Python, 184 JS, 109 e2e. |
-| `claude/great-hypatia-edrzae` (2026-10-28, v3) | ramo remoto | Dati: `pipeline/twu_compare.py` (restituzione di energia e attriti TWU), `provenance.py` (fonte e data di ogni numero), `refresh.py` (aggiornamento manuale con rollback), `model_id`. Interfaccia: confronto con la corda attuale, frase «rispetto alla tua corda», 3 modelli (non calibri). Spec e piano in `docs/superpowers/`. |
-| `master` (`07b338a`) | ramo remoto | v2, senza nessuna delle due linee sopra. |
+| Cosa | Dove |
+|---|---|
+| **Online** | https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — **v6**, versione `1795025262-965d` del 18/11/2026, pubblicata da `dist/string-explorer.html` del ramo sotto. Capability: `db`, `user`, `sample`, `downloads`. |
+| **Ramo di lavoro** | `claude/great-hypatia-edrzae`: contiene tutto (v3 + adoring-rubin + Ibridi recuperata + v6). È l'unica linea viva. |
+| Versione online precedente (v5 + Ibridi) | `archive/artifact-live-2026-11-18.html` (copia esatta, verificata byte per byte prima di ripubblicare). Il blocco `verified` ora sta in `data/verified.json`; il codice di Ibridi in `archive/recovered/`. |
+| `master` | `07b338a` (v2), **non toccato**. Unire il ramo su master richiede il sì dell'utente. |
+| `claude/adoring-rubin-dm98qp`, `claude/clever-sagan-tzfbkq` | Storici, già dentro il ramo di lavoro (merge `dfa0a60`). |
 
-`adoring-rubin` e `great-hypatia` partono entrambi da `master` e toccano gli stessi file (`web/`, `pipeline/derive.py`, `pipeline/build.py`, `data/strings.json`): unirli richiede lavoro vero, non un merge automatico.
+Dati dell'utente nel `db` al momento della pubblicazione: 18 documenti (`state`, 16 `s-*`, 1 `l-*`), intatti. La v6 aggiunge, solo quando servono, `prefs` (scorta, domanda) e `r-<ts>` (voto e parola dell'uscita).
 
-**Base consigliata:** `adoring-rubin` (è quello che l'utente usa online) + Ibridi recuperata dall'archivio + dalla v3 solo i pezzi di dati (`twu_compare`, `provenance`, `refresh`, `model_id`) e la logica pura (`web/recommend.js` con i suoi test). Va confermata con l'utente prima di unire (§3, fase 0).
+**Da dire all'utente:** ricaricare la pagina su tutti i dispositivi (telefono e PC). Una pagina v5 rimasta aperta non cancella i dati v6, ma non li mostra.
 
-## 2. Cosa deve fare l'utente (stesso account, nuova chat)
+## 2. Cosa è la v6 (in breve)
 
-1. **Backup dei dati personali** (consigliato, due tocchi): nell'app, Montata → esportazioni (JSON e CSV).
-2. **Nuova sessione** sullo stesso account, sul repo `leocity/banco-corde-blade100`, ramo di partenza `claude/great-hypatia-edrzae`. Scegliere il modello Fable dal selettore dei modelli, se disponibile.
-3. **Incollare il prompt del §3.**
+Tre schermate: **Oggi** (+ Uscita in un tocco, voto con le faccine, corde in casa, storico, cambio corda), **Prossima** (una domanda «cosa vuoi cambiare rispetto alla tua?», prima le corde in casa, poi al massimo 3 da comprare, confronto, ibridi, AI con casella), **Scienza** (schede con livello di prova, righelli, recensioni indipendenti, fonti). Tooltip su numeri e parole tecniche. Confronti e consigli **solo da misure** (TWU esatto, Racketpedia esatto, Excel dell'utente), mai stime, mai conversioni tra fonti. Dettagli: `README.md`, `docs/superpowers/specs/2026-11-18-banco-v6-design.md` (§12–13 decisioni dopo le revisioni).
 
-Stesso account = stesso proprietario dell'artefatto: si aggiorna allo stesso link e i dati salvati nel `db` (montata, diario, preferite) restano.
+## 3. Come si lavora
 
-## 3. Prompt da incollare nella nuova sessione
+- Comandi: `bash tests/run_all.sh` (pytest 267, node 106, e2e 28). Pagina: `python3 -m pipeline.build && python3 -m pipeline.build_page`.
+- Prima di pubblicare: leggere la versione online (Artifact `read`), verificare che nulla manchi, poi pubblicare `dist/string-explorer.html` sullo stesso URL. Dopo: elencare `data/users/me` e controllare che i documenti ci siano.
+- Novità dalle fonti: `python3 -m pipeline.watch` scrive solo `data/changes/watch-*.md`; l'aggiornamento resta manuale (`pipeline/refresh.py`).
+- Trappole: file con fine riga CRLF (`data/merged.json`, `data/agents/*.json`, `pipeline/merge.py`, `pipeline/twu_extract.py`); nomi top-level dei moduli `web/*.js` devono essere unici (pagina unica); un `import` per riga.
 
-```text
-Riprendi il progetto "Banco Corde Blade 100" (repo leocity/banco-corde-blade100, app italiana per scegliere corde poly per una Wilson Blade 100 v9, giocatore di club, <50 lbs). Non hai la conversazione precedente: leggi PRIMA, in quest'ordine, docs/HANDOFF.md, README.md, docs/superpowers/specs/2026-10-28-banco-corde-v3-design.md, docs/superpowers/plans/2026-10-28-banco-corde-v3.md, docs/AUDIT.md. Sul ramo origin/claude/adoring-rubin-dm98qp leggi anche README.md, docs/FISICA.md e docs/superpowers/specs/2026-10-30-banco-semplificato-design.md e 2026-10-31-diario-prove-design.md (git show origin/claude/adoring-rubin-dm98qp:<percorso>).
+## 4. Regole che non vanno ridiscusse (decise dall'utente)
 
-OBIETTIVO: audit completo dell'app, ricerca di dati migliori e più freschi, test di ciò che non va, semplificazione e miglioramento della UX, poi pubblicazione come artefatto. L'utente ha detto: "non si capisce bene". Vince la chiarezza: l'app deve rispondere a "cosa monto adesso → cosa provo dopo, e perché" in pochi secondi da telefono.
+Solo dati gratuiti; niente prezzi; punteggi e classifiche solo da laboratorio, recensioni solo link; stime dichiarate e mai nei consigli; aggiornamento dei dati solo manuale; corde pre-2020 o fuori produzione tolte (le preferite restano); italiano, numeri con la virgola. Richiedono il sì dell'utente: unire rami su master, cambiare una regola.
 
-USA SOTTOAGENTI (Agent tool) per tutto ciò che è parallelizzabile: te lo chiedo esplicitamente. Ogni agente riceve un compito, i file da leggere e il formato del report (evidenze con file:riga o numeri ricalcolati dal dataset, mai impressioni). Gli agenti non lanciano altri agenti e, salvo dove indicato, sono in sola lettura. Alla fine un revisore indipendente (modello più capace disponibile) rilegge TUTTO il ramo.
+## 5. Decisioni prese nella sessione v6 (ognuna con il costo se sbagliata)
 
-FASE 0 — Riconcilia (prima di scrivere codice):
-- Esistono quattro linee non unite (tabella in HANDOFF.md §1). Verifica con git cosa c'è in ognuna. Estrai la scheda Ibridi e il blocco `verified` da archive/artifact-live-2026-11-18.html: sono l'unica copia, NON perderli.
-- Proponi un piano di riconciliazione (base consigliata: adoring-rubin + Ibridi recuperata + dalla v3 twu_compare, provenance, refresh, model_id, recommend.js) e FERMATI a chiedere conferma all'utente. Non unire e non spingere su master senza il suo sì.
+- **Base = versione online (adoring-rubin)** + dati v3 + Ibridi recuperata. Costo: nessun lavoro perso; la UI v3 (home/explore) è stata tolta.
+- **Niente punteggio 0–100**: sostituito da frasi «rispetto alla tua» e «simile alla X in N misure su M». Costo se l'utente vuole un numero: un campo calcolato da `cmp.js`, mezza giornata.
+- **Soglie di confronto** (ipotesi dichiarate): rigidità TWU 10/15%, Racketpedia 0,10/0,20 kg/mm, perdita 5/10 punti, spin 0,5/1,0. Costo: una tabella in `web/cmp.js`.
+- **L'Excel non decide le direzioni** (non concorda con TWU né con Racketpedia, |ρ| < 0,15). Costo: un flag `decides` in `cmp.js`.
+- **«Tiene di più» e «più spin» con la Slap** (senza TWU): quarto migliore delle corde TWU, dichiarato. Costo: logica in `next.js`.
+- **Tensione e usura**: niente numero consigliato né vita attesa da formula; ipotesi −0,5 kg solo se nettamente più rigida in TWU. Costo: testi in `sheet.js` e `today.js`.
+- **Diario**: si compila solo il voto 1–5 e una parola per uscita; il diario dettagliato v5 si legge ma non si scrive più. Costo se lo rivuole: i moduli v5 sono nella storia git (`web/diaryui.js` a `76ea1ba`).
+- **Recensioni YouTube**: solo classificazione dei canali dai feed RSS; nessuna frase finché il video non è guardato.
+- **TWU a 51 lb** (la tabella dice 51; il «52» è di un articolo).
 
-FASE 1 — Audit in parallelo (agenti, sola lettura):
- A. Dati: ricalcola dal dataset i numeri che l'app mostra; controlla gli abbinamenti TWU/Racketpedia (es. RPM Blast 16L vs 17, Kirschbaum Competition 16L vs 17, le tre righe Racketpedia «Confidential Soft Pink» e le due Flash/Enso Pink entrate in automatico); le 31 corde con «anno da verificare»; coerenza tra le fonti.
- B. UX: Playwright a 390 e 1280 px su ogni flusso (cambio corda, scelta, confronto, diario, ibridi). Conta i tocchi, misura altezze e parole, annota il lessico incomprensibile. Confronta con i criteri misurabili della spec v3 §3.
- C. Accessibilità: contrasto, target 44 px, tastiera, screen reader, popover e dialoghi.
- D. Ricerca di fonti: solo GRATUITE e affidabili. Cerca dati di laboratorio nuovi (TWU anche altri strumenti, Racketpedia gratuito, USRSA, studi), e come ottenere aggiornamenti quasi in tempo reale (monitor delle novità con pipeline/refresh.py). Scarta con motivo le fonti non affidabili. Niente prezzi.
- E. Fisica e logica: rileggi docs/FISICA.md e le regole del punteggio/pairing: ogni affermazione è sostenuta dai dati? Cosa è ipotesi?
- F. Test: per ogni problema trovato scrivi prima un test che fallisce (pytest, node --test, Playwright).
-Sintetizza i report in un unico elenco ordinato per effetto sull'utente (Critico / Importante / Minore).
+## 6. Problemi aperti e rimandati
 
-FASE 2 — Semplifica (proponi, poi con l'ok dell'utente implementa): una domanda per schermata; niente gergo (percentile, gemello, parente, snapback, pairing senza spiegazione); ogni numero toccabile con fonte, data, condizioni e margine; stime sempre marcate; meno schede e meno badge; prima la risposta, poi i dettagli. Fissa obiettivi misurabili prima di toccare la UI e verificali con Playwright.
-
-FASE 3 — Implementa con TDD, commit piccoli, su un ramo tuo (es. fable/v6), mai su master.
-
-FASE 4 — Spedisci: ricostruisci la pagina, esegui TUTTI i test e il controllo e2e, poi pubblica come artefatto. Prima di pubblicare sull'URL esistente leggi la versione online (l'Artifact tool lo richiede) e verifica che nulla di ciò che è online manchi nella nuova versione. Pubblica sempre sullo stesso URL https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne (stesso proprietario: i dati salvati nel db restano).
-
-REGOLE CHE NON VANNO RIDISCUSSE (decise dall'utente): solo dati gratuiti (Excel dell'utente in data/source, TWU, Racketpedia gratuito); niente prezzi; punteggio e classifiche solo da dati di laboratorio, le recensioni restano link; stime sempre dichiarate e mai nei consigli; aggiornamento dei dati solo manuale; corde uscite prima del 2020 o fuori produzione tolte (le preferite restano); testo in italiano, numeri con la virgola.
-
-RICHIEDONO IL SÌ DELL'UTENTE: unire rami, push su master, pubblicare sull'artefatto, cambiare una regola sopra.
-
-A FINE LAVORO: riepilogo con "Decisioni che ho preso" (ognuna con il costo se sbagliata), "Rimandato" e "Problemi aperti"; aggiorna docs/HANDOFF.md (stato, rami, cosa è online) e fai push del ramo, così l'utente può tornare nell'altro account.
-```
-
-## 4. Chiudere e riprendere
-
-- Chi lavora **non tocca `master`** e lavora su un ramo suo (`fable/...`); a fine lavoro aggiorna questo file (§1 e §5) e fa push.
-- Per riprendere in un'altra chat: nuova sessione sul repo, ramo di Fable, e scrivere «leggi docs/HANDOFF.md e riprendi da lì».
-- Ogni pubblicazione richiede prima di leggere la versione online, quindi nessuna chat sovrascrive il lavoro dell'altra senza vederlo.
-
-## 5. Lavoro della v3 da conoscere (non rifare)
-
-**Decisioni prese** (ognuna con cosa costa se sbagliata):
-- Tenuta solo dalla perdita TWU; il TL6 dell'Excel conta solo se TWU manca (sessione precedente, tuttora «da confermare» dall'utente). Costo: una riga in `derive.subscores`.
-- Le tre righe Racketpedia «Confidential Soft Pink» 1,20/1,25/1,30 sono abbinate alla Confidential Soft 17/16L/16 (sul sito esiste solo in rosa). Effetto: la Super Toro 1,18 risulta «simile a una non gradita».
-- Nessun abbinamento TWU cambiato per RPM Blast 16L e Competition 16L: la 1,25 vera è già un record `exact`.
-- `refresh`: l'Excel conta se cambiano i valori; una fonte vuota o con più di un terzo di righe sparite è un errore; se la ricostruzione fallisce si ripristina tutto; le righe Racketpedia nuove aspettano revisione in `data/pending_matches.json`.
-- Le note automatiche seguono la rigidità di laboratorio (14 note cambiate).
-
-**Minori rimandati:** `--offline` non fa nulla di utile; Esc nella scheda chiude anche la scheda; con meno di 3 consigli il titolo dice ancora «Le 3»; margine nel popover senza unità; rigidità Racketpedia non toccabile nella scheda; in Esplora manca la colonna energia; stime marcate solo con «≈»; valori corrotti nel browser possono bloccare una schermata; «Confronta» su una 4ª corda toglie la più vecchia senza avviso; una riga del README parla ancora di Controllo e Comfort.
-
-**Trappole note:** diversi file (`data/merged.json`, `data/agents/*.json`, `pipeline/merge.py`, `pipeline/twu_extract.py`) hanno fine riga CRLF: modificarli con uno script che le preserva, altrimenti il diff diventa enorme. `data/raw/twu.html` cambia ad ogni scaricamento (un link nel piè di pagina) ma i dati no. TWU Compare collega il «Signum Pro Plasma HEXtreme 16L» al codice del 16 (226 contro 204,6 lb/in): la riga è scartata dal controllo di coerenza.
+- **Licenza TWU**: i Termini di Tennis Warehouse vietano crawling e riproduzione; app privata, ma la decisione sul rischio è dell'utente (`docs/audit/2026-11-18/D-fonti.md` §3).
+- Guardare i video delle recensioni e scrivere le frasi chiave; date dei video approssimate.
+- Confronto di 3 corde insieme; ingresso «cosa senti in campo» degli ibridi (rimandati, §13 del design).
+- 47 corde con «anno da verificare»; righe Excel Flash pink e Flash yellow identiche (la scheda lo segnala).
+- Codice di pipeline non più usato dalla pagina (pairing, dims, profile_score): da togliere in un passo separato.
+- Sincronizzazione tra due dispositivi reali: testata con db simulato, non dal vivo.
