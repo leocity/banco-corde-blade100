@@ -11,7 +11,7 @@ from pipeline.catalog import add_catalog_only, add_extra, apply_rpedia_fixes, cl
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, model_id, backtest_qualitative, calibrate_tester_spin, estimate_spin, check_gauge_usrsa, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
-from pipeline.lab import lab_block, lab_meta
+from pipeline.lab import fill_loss, lab_block, lab_meta
 from pipeline.notes_gen import apply_notes
 from pipeline.rpedia_site import apply_site
 from pipeline.production import filter_discontinued
@@ -109,6 +109,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     for r in records:
         r["lab"] = lab_block(r, sources or {})
         r["indep_reviews"] = [x for x in (indep or []) if x["string_id"] == r["id"]]
+    loss_model = fill_loss(records, _load("data/raw/twu.json", []) or [])
     comm = build_community(forum or [], records, aliases=FORUM_ALIASES)
     for r in records:
         r["community"] = comm.get(r["id"])
@@ -126,7 +127,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
         "tension_slope_kg_per_lbin": next((r["derived"]["tension_start"]["slope_kg_per_lbin"] for r in records
                                            if (r.get("derived") or {}).get("tension_start")), None),
         "anchors": ANCHOR_TENSIONS,
-        "lab_meta": lab_meta(records),
+        "lab_meta": {**lab_meta(records), "loss_model": loss_model},
         "defaults": {"equipped": DEFAULT_EQUIPPED, "liked": [i for i in DEFAULT_LIKED if i in ids], "disliked": [i for i in DEFAULT_DISLIKED if i in ids]},
         "discriminant": discriminant,
         "insight": notes.get("_insight", ""),

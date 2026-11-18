@@ -1,8 +1,9 @@
 // Ibridi, semplificata (design v6 §6.2, §12.5): verticali + orizzontali, letto pesato 16/19 solo nella stessa fonte,
 // confronto con la montata solo nella stessa fonte. Niente verdetti «controllo», niente soglie inventate, niente prezzi.
 import { $, esc, NF, fullName } from './format.js';
-import { CMP_KEYS, levelOf } from './cmp.js';
-import { tip, fmtV, infoTip } from './ui.js';
+import { valueOf } from './cmp.js';
+import { bedOf, compareBeds, physSummary, physPhrase, diffTxt } from './phys.js';
+import { tip, fmtV, infoTip, mk } from './ui.js';
 
 const HY_KEY = 'banco-corde:ibrido';
 const HY_KG = Array.from({ length: 25 }, (_, i) => 18 + i * 0.5);
@@ -42,40 +43,27 @@ function hyOptions(ctx, sel) {
   return h;
 }
 
-export function bedRows(V, O, ref, meta) {
-  const rows = [];
-  for (const key of Object.keys(CMP_KEYS)) {
-    const k = CMP_KEYS[key];
-    const v = V.lab ? k.get(V.lab) : null, o = O.lab ? k.get(O.lab) : null, b = ref.lab ? k.get(ref.lab) : null;
-    const has = (x) => typeof x === 'number';
-    if (!has(v) && !has(o)) continue;
-    const bed = has(v) && has(o) ? hyMean(v, o) : null;
-    let cmp = '';
-    if (bed !== null && has(b)) {
-      const lv = levelOf(key, bed, b, meta);
-      cmp = lv === 'simile' ? 'simile alla montata' : `${lv} ${bed > b ? k.up : k.down} della montata`;
-    } else if (bed !== null) cmp = 'la montata non ha questa misura';
-    else cmp = 'manca la misura di una delle due: niente letto';
-    rows.push({ key, v, o, bed, b, cmp });
-  }
-  return rows;
-}
+// Valori di una corda per il costruttore: misurati o ricavati, con il segno del tipo.
+const hyVal = (r, key) => { const v = valueOf(r, key); return v ? `${mk(v.est)}${esc(fmtV(key, v.v))}` : '<span class="nm">nessun valore</span>'; };
 
 export function renderHybrid(ctx) {
   const box = $('#hybrid');
   if (!box) return;
   const s = hyLoad(ctx), V = ctx.BY_ID[s.v], O = ctx.BY_ID[s.o], ref = ctx.equippedRec();
   const kgSel = (id, val) => `<select id="${id}">${HY_KG.map((k) => `<option value="${k}"${k === val ? ' selected' : ''}>${NF(1).format(k)} kg</option>`).join('')}</select>`;
-  const rows = bedRows(V, O, ref, ctx.META);
-  const table = rows.length ? `<ul class="cmp-rows">${rows.map((r) => `<li><p class="cmp-q">${tip(r.key, esc(CMP_KEYS[r.key].label))} <span class="muted small">· ${esc(CMP_KEYS[r.key].source)}</span></p>
-    <p class="cmp-v">V ${esc(fmtV(r.key, r.v))} · O ${esc(fmtV(r.key, r.o))} → ${tip('letto', 'letto')} <b class="num">${esc(fmtV(r.key, r.bed))}</b></p>
-    <p class="small">${esc(r.cmp)}${typeof r.b === 'number' ? ` (${esc(ref.model)}: ${esc(fmtV(r.key, r.b))})` : ''}</p></li>`).join('')}</ul>` : '<p class="muted">Nessuna misura per queste due corde.</p>';
+  const bed = bedOf(V, O, [s.kv, s.ko]), refBed = bedOf(ref, ref, ctx.state().equipped.kg);
+  const rows = compareBeds(bed, refBed);
+  const warnRole = (() => { const kv = valueOf(V, 'twu.stiffness'), ko = valueOf(O, 'twu.stiffness'); return kv && ko && kv.v < ko.v * 0.9 ? '<p class="callout warn small">La verticale è più morbida dell\'orizzontale: di solito si fa il contrario, la verticale dà rigidità e morso e l\'orizzontale lascia scorrere. Prova a invertirle.</p>' : ''; })();
+  const values = `<div class="mtable">${[['Verticali', V], ['Orizzontali', O]].map(([lab, r]) => `<div class="mrow"><div class="mname"><b>${lab}</b> <button type="button" class="linkish" data-open="${esc(r.id)}">${esc(fullName(r))}</button></div>
+    ${[['twu.stiffness', 'Rigidità in campo'], ['twu.loss', 'Perdita di tensione'], ['twu.spin', 'Spin']].map(([k, l]) => `<div class="mcell"><span class="mlab">${l}</span> <span class="num">${hyVal(r, k)}</span></div>`).join('')}</div>`).join('')}</div>`;
+  const table = rows.length ? `<p class="summary">${esc(physSummary(rows, ref.model))} ${tip('letto', 'ⓘ', null, 'Come si calcola un ibrido')}</p>
+    <ul class="cmp-rows">${rows.map((r) => `<li><p class="cmp-q">${tip(r.tip, esc(r.label))}</p><p class="cmp-w lvl-${r.level === 'simile' ? 'same' : r.level === 'nettamente' ? 'big' : 'some'}">${r.dir ? esc(physPhrase(r)) : 'simile'} <span class="muted small">(${esc(diffTxt(r))})</span></p><p class="small">${esc(r.why)}</p></li>`).join('')}</ul>` : '<p class="muted">Per queste due corde non c\'è nessun valore di rigidità, perdita o spin.</p>';
   const kgNote = `Tensione media del letto ${NF(1).format(hyMean(s.kv, s.ko))} kg contro ${NF(1).format(hyMean(...ctx.state().equipped.kg))} kg della montata.`;
   box.innerHTML = `<div class="hy-form">
       <label>Verticali (16) <select id="hy-v">${hyOptions(ctx, s.v)}</select></label><label>kg ${kgSel('hy-kv', s.kv)}</label>
       <label>Orizzontali (19) <select id="hy-o">${hyOptions(ctx, s.o)}</select></label><label>kg ${kgSel('hy-ko', s.ko)}</label>
     </div>
-    ${table}
+    ${warnRole}${values}${table}
     <p class="small">${esc(kgNote)} ${tip('tensione', 'Quanto conta un kg?')}</p>
     <details class="more"><summary>Idee da provare (non calcolate)</summary>
       <p class="small muted">Idee del progetto, con la fiducia che gli diamo noi: non sono consigli calcolati.</p>
@@ -94,6 +82,17 @@ export function initHybrid(ctx) {
     if (e.target.id === 'hy-ko') s.ko = Number(e.target.value);
     hySave(s); renderHybrid(ctx);
     const el = $(`#${e.target.id}`); if (el) el.focus();
+  });
+  // «Apri nel costruttore» dagli ibridi consigliati
+  document.addEventListener('click', (e) => {
+    const h = e.target.closest('[data-hy-set]'); if (!h) return;
+    const [v, o] = h.dataset.hySet.split('|');
+    const kg = ctx.state().equipped.kg;
+    hySave({ v, o, kv: kg[0], ko: kg[1] });
+    const d = $('#hy-box'); if (d) d.open = true;
+    renderHybrid(ctx);
+    $('#hy-box').scrollIntoView({ block: 'start' });
+    $('#hy-v').focus();
   });
   box.addEventListener('click', (e) => {
     const b = e.target.closest('[data-hy-load]'); if (!b) return;

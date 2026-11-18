@@ -1,108 +1,79 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { GOALS, candidates, likeness } from './next.js';
+import { GOALS, candidates, likeness, suggestHybrids, judgePhys } from './next.js';
 
 const meta = { excel_stretch50_sd: 1.0 };
-let n = 0;
-const S = (id, lab, extra = {}) => ({ id, brand: 'B', model: id, gauge_mm: 1.25, shape: 'RND', lab: { twu: null, rp: null, excel: null, ...lab }, ...extra, _n: n++ });
-const slap = S('slap', { rp: { kgmm: 0.75 }, excel: { stretch50: 3.3 } });
-const stiff1 = S('stiff1', { rp: { kgmm: 1.05 }, twu: { stiffness: 210, loss: 25, spin: 8 } });
-const stiff2 = S('stiff2', { rp: { kgmm: 0.95 } });
-const soft = S('soft', { rp: { kgmm: 0.60 }, twu: { stiffness: 170, loss: 45, spin: 9.5 } });
-const twin = S('twin', { rp: { kgmm: 0.80 } });
-const none = S('none', {}, { stiffness: { value_lbin: 300, kind: 'parente' } });
-const lossy = S('lossy', { twu: { stiffness: 200, loss: 50, spin: 7 } });
-const holder = S('holder', { twu: { stiffness: 200, loss: 18, spin: 7.5 } });
-const ALL = [slap, stiff1, stiff2, soft, twin, none, lossy, holder];
-const st = (extra = {}) => ({ equipped: { id: 'slap', kg: [22, 21] }, liked: ['slap'], disliked: [], stock: [], ...extra });
+const S = (id, twu = null, shape = 'HEX', est = {}, rp = null) => ({ id, brand: 'B', model: id, gauge_mm: 1.25, shape, lab: { twu, rp, excel: null, est } });
+const eq = S('eq', null, 'HEX', { 'twu.stiffness': { kind: 'ricavata', v: 195, margin: 10, from: 'rp' }, 'twu.spin': { kind: 'modello', v: 7.8 }, 'twu.loss': { kind: 'modello', v: 40.7 } }, { kgmm: 0.75 });
+const soft = S('soft', { stiffness: 165, loss: 44, spin: 9.4 });
+const stiff = S('stiff', { stiffness: 230, loss: 25, spin: 7.7 });
+const twin = S('twin', { stiffness: 198, loss: 40, spin: 7.9 });
+const holder = S('holder', { stiffness: 200, loss: 22, spin: 7.6 });
+const spinny = S('spinny', { stiffness: 190, loss: 38, spin: 9.0 }, 'RND');
+const roundSoft = S('roundsoft', { stiffness: 170, loss: 41, spin: 8.7 }, 'RND');
+const phys = S('phys', null, 'HEX', { 'twu.stiffness': { kind: 'modello', v: 230 }, 'twu.spin': { kind: 'modello', v: 7 }, 'twu.loss': { kind: 'modello', v: 35 } });
+const ALL = [eq, soft, stiff, twin, holder, spinny, roundSoft, phys];
+const st = (extra = {}) => ({ equipped: { id: 'eq', kg: [22, 21] }, liked: [], disliked: [], stock: [], ...extra });
 const ids = (xs) => xs.map((c) => c.rec.id);
 
-test('le domande sono cinque, con etichette in italiano', () => {
-  assert.deepEqual(GOALS.map((g) => g.key), ['same', 'softer', 'stiffer', 'holds', 'spin']);
-  for (const g of GOALS) assert.ok(g.label.length > 3);
+test('le domande sono sei, compresa «palla più bassa»', () => {
+  assert.deepEqual(GOALS.map((g) => g.key), ['same', 'softer', 'stiffer', 'lower', 'holds', 'spin']);
 });
 
-test('più rigida: solo corde misurate più rigide oltre la soglia, mai stime', () => {
-  const r = candidates(st(), ALL, 'stiffer', meta);
-  assert.deepEqual(ids(r.toBuy), ['stiff1', 'stiff2']);
-  assert.ok(!ids(r.toBuy).includes('none'));
+test('ogni domanda dà una risposta anche se la montata ha solo valori ricavati', () => {
+  for (const g of GOALS) {
+    const r = candidates(st(), ALL, g.key, meta);
+    assert.ok(r.toBuy.length >= 1, g.key);
+    for (const c of r.toBuy) assert.ok(c.summary.text.length > 10);
+  }
 });
 
-test('più morbida e simile', () => {
-  assert.deepEqual(ids(candidates(st(), ALL, 'softer', meta).toBuy), ['soft']);
-  assert.deepEqual(ids(candidates(st(), ALL, 'same', meta).toBuy), ['twin']);
+test('più rigida, palla più bassa, tiene di più, più spin: scelte fisiche', () => {
+  assert.equal(ids(candidates(st(), ALL, 'stiffer', meta).toBuy)[0], 'stiff');
+  assert.ok(ids(candidates(st(), ALL, 'lower', meta).toBuy).includes('stiff'));
+  assert.equal(ids(candidates(st(), ALL, 'holds', meta).toBuy)[0], 'holder');
+  assert.equal(ids(candidates(st(), ALL, 'spin', meta).toBuy)[0], 'spinny');
+  assert.equal(ids(candidates(st(), ALL, 'same', meta).toBuy)[0], 'twin');
 });
 
-test('le corde in casa vengono prima, anche se non compatibili (in fondo)', () => {
-  const r = candidates(st({ stock: [{ id: 'twin', size: 'mezza', n: 1 }, { id: 'stiff2', size: 'intera', n: 1 }] }), ALL, 'stiffer', meta);
-  assert.deepEqual(ids(r.inStock), ['stiff2', 'twin']);
-  assert.equal(r.inStock[0].compatible, true);
-  assert.equal(r.inStock[1].compatible, false);
-  assert.deepEqual(ids(r.toBuy), ['stiff1']);
+test('una corda con la rigidità solo dalla fisica non viene proposta', () => {
+  for (const g of GOALS) assert.ok(!ids(candidates(st(), ALL, g.key, meta).toBuy).includes('phys'), g.key);
 });
 
-test('non gradite e montata escluse', () => {
-  const r = candidates(st({ disliked: ['stiff1'] }), ALL, 'stiffer', meta);
-  assert.deepEqual(ids(r.toBuy), ['stiff2']);
+test('le corde in casa vengono prima; la montata e le non gradite in casa compaiono segnalate', () => {
+  const r = candidates(st({ stock: [{ id: 'eq', size: 'intera', n: 1 }, { id: 'stiff', size: 'mezza', n: 1 }], disliked: ['stiff'] }), ALL, 'stiffer', meta);
+  assert.deepEqual(ids(r.inStock).sort(), ['eq', 'stiff']);
+  assert.equal(r.inStock.find((c) => c.rec.id === 'stiff').disliked, true);
+  assert.ok(!ids(r.toBuy).includes('stiff'));
 });
 
-test('al massimo 3 da comprare', () => {
-  const many = Array.from({ length: 6 }, (_, i) => S(`s${i}`, { rp: { kgmm: 1.0 + i * 0.01 } }));
-  assert.equal(candidates(st(), [slap, ...many], 'stiffer', meta).toBuy.length, 3);
+test('lancio: chi resta più rigido dopo il calo di tensione fa partire la palla più bassa', () => {
+  const j = judgePhys('lower', [{ key: 'launch', dir: 'meno' }, { key: 'kAfter', diff: 15 }, { key: 'kNow', diff: 10 }]);
+  assert.equal(j.ok, true);
 });
 
-test('tiene di più: la Slap non ha TWU, quindi classifica assoluta dichiarata', () => {
-  const r = candidates(st(), ALL, 'holds', meta);
-  assert.equal(r.mode, 'absolute');
-  assert.match(r.note, /Metro di paragone/);
-  assert.equal(ids(r.toBuy)[0], 'holder');
-  assert.ok(r.toBuy[0].rank && r.toBuy[0].rank.n >= 4);
-});
-
-test('tiene di più: con la montata misurata da TWU il confronto è diretto', () => {
-  const r = candidates(st({ equipped: { id: 'lossy', kg: [22, 21] } }), ALL, 'holds', meta);
-  assert.equal(r.mode, 'relative');
-  assert.deepEqual(ids(r.toBuy), ['holder', 'stiff1', 'soft']); // 18, 25, 45 contro 50: tutte oltre i 5 punti
-});
-
-test('montata senza misure: simile usa le preferite come riferimento', () => {
-  const r = candidates(st({ equipped: { id: 'none', kg: [22, 21] }, liked: ['twin'] }), ALL, 'same', meta);
-  assert.match(r.note, /nessun valore/);
-  assert.ok(ids(r.toBuy).includes('slap'));
-});
-
-test('somiglianza alle preferite: conta solo misure nella stessa fonte', () => {
-  const l = likeness(twin, ['slap', 'stiff1'], [], ALL, meta);
-  assert.equal(l.id, 'slap');
-  assert.equal(l.similar, 1);
-  assert.equal(l.total, 1);
-  assert.equal(likeness(none, ['slap'], [], ALL, meta), null);
-});
-
-test('somiglia a una non gradita: avviso', () => {
-  const l = likeness(twin, [], ['slap'], ALL, meta);
-  assert.equal(l.warn, 'slap');
-});
-
-test('in casa compare anche la montata (rifare la stessa corda) e una non gradita, segnalata', () => {
-  const r = candidates(st({ stock: [{ id: 'slap', size: 'intera', n: 1 }, { id: 'stiff2', size: 'mezza', n: 1 }], disliked: ['stiff2'] }), ALL, 'same', meta);
-  assert.deepEqual(ids(r.inStock).sort(), ['slap', 'stiff2']);
-  assert.equal(r.inStock.find((c) => c.rec.id === 'stiff2').disliked, true);
-  assert.equal(r.inStock.find((c) => c.rec.id === 'slap').equipped, true);
-  assert.ok(!ids(r.toBuy).includes('slap'));
+test('ibridi suggeriti: dalle mezze in casa, verticale più rigida o uguale, orizzontale tonda preferita', () => {
+  const s = st({ stock: [{ id: 'stiff', size: 'mezza', n: 1 }, { id: 'roundsoft', size: 'mezza', n: 1 }, { id: 'soft', size: 'mezza', n: 1 }] });
+  const h = suggestHybrids(s, ALL, 'same', meta);
+  assert.ok(h.fromStock.length >= 1);
+  for (const p of h.fromStock) {
+    assert.notEqual(p.V.id, p.O.id);
+    assert.ok(p.V.lab.twu.stiffness >= p.O.lab.twu.stiffness * 0.9, 'verticale non più morbida');
+  }
+  assert.equal(h.fromStock[0].V.id, 'stiff');
+  assert.equal(h.fromStock[0].O.id, 'roundsoft');
+  assert.ok(h.buyOne.every((p) => p.inStock[0] || p.inStock[1]));
 });
 
 test('somiglianza alle preferite: con meno di metà misure simili non si dice «simile»', () => {
-  const p = S('p', { twu: { stiffness: 200, loss: 30, spin: 8 }, rp: { kgmm: 0.9 } });
-  const q = S('q', { twu: { stiffness: 260, loss: 50, spin: 6 }, rp: { kgmm: 0.92 } });
-  const l = likeness(q, ['p'], [], [p, q], meta);
-  assert.equal(l.id, null);
+  const p = S('p', { stiffness: 200, loss: 30, spin: 8 }, 'HEX', {}, { kgmm: 0.9 });
+  const q = S('q', { stiffness: 260, loss: 50, spin: 6 }, 'HEX', {}, { kgmm: 0.92 });
+  assert.equal(likeness(q, ['p'], [], [p, q], meta).id, null);
 });
 
-test('spin: se la montata ha un valore TWU ricavato, il confronto è diretto e la nota lo dice', () => {
-  const eq = S('eq', { rp: { kgmm: 0.8 }, est: { 'twu.spin': { kind: 'modello', v: 7.8, margin: 1.5, how: 'stima dalla fisica (rigidità e forma)', from: 'modello' } } });
-  const r = candidates(st({ equipped: { id: 'eq', kg: [22, 21] } }), [...ALL, eq], 'spin', meta);
-  assert.equal(r.mode, 'relative');
-  assert.match(r.note, /come metro uso il suo valore ricavato/);
-  assert.ok(ids(r.toBuy).includes('soft')); // spin 9,5 contro ≈ 7,8
+test('ibridi senza corde in casa: coppie tra corde misurate, da comprare', () => {
+  const h = suggestHybrids(st(), ALL, 'lower', meta);
+  assert.deepEqual(h.fromStock, []);
+  assert.ok(h.buyBoth.length >= 1);
+  for (const p of h.buyBoth) assert.ok(p.V.lab.twu && p.O.lab.twu);
 });

@@ -122,7 +122,7 @@ function openCompare(id) {
   const r = BY_ID[id], ref = BY_ID[state.equipped.id]; if (!r || !ref) return;
   cmpId = id;
   $('#cmp-title').textContent = `${r.model} contro la tua ${ref.model}`;
-  $('#cmp-body').innerHTML = `<p class="muted small">${esc(fullName(ref))} (montata) → ${esc(fullName(r))}</p>${compareHtml(r, ref, META)}`;
+  $('#cmp-body').innerHTML = `<p class="muted small">${esc(fullName(ref))} (montata) → ${esc(fullName(r))}</p>${compareHtml(r, ref, META, state.equipped.kg)}`;
   $('#cmp-open').dataset.open = id;
   if (!cmpDlg.open) { cmpDlg.showModal(); $('#cmp-close').focus(); }
 }

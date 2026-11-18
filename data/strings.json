@@ -44,6 +44,12 @@
    "twu": 55,
    "rp": 60,
    "excel": 44
+  },
+  "loss_model": {
+   "a": 79.884,
+   "b": -0.2014,
+   "n": 130,
+   "mae": 7.1
   }
  },
  "defaults": {
@@ -2634,6 +2640,13 @@
       "v": 5.88,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 35.7,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -3221,6 +3234,13 @@
       "v": 6.2,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.4,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -6002,6 +6022,13 @@
       "v": 7.83,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 40.7,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -6462,6 +6489,13 @@
       "v": 6.21,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -6877,6 +6911,13 @@
       "v": 7.42,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.4,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -7345,6 +7386,13 @@
       "v": 7.36,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 36.8,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -7827,6 +7875,13 @@
       "v": 7.42,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.4,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -8581,6 +8636,13 @@
       "v": 6.53,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 41.1,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -12114,6 +12176,13 @@
       "v": 7.49,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.9,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -12612,6 +12681,13 @@
       "v": 7.49,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.9,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -13077,6 +13153,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.0,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -13436,6 +13519,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.0,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -13791,6 +13881,13 @@
       "v": 6.41,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 40.1,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -14152,6 +14249,13 @@
       "v": 6.21,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -14596,6 +14700,13 @@
       "v": 6.34,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -14950,6 +15061,13 @@
       "v": 6.14,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.9,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -16325,6 +16443,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -16678,6 +16803,13 @@
       "v": 7.56,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -17035,6 +17167,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -31692,6 +31831,13 @@
       "v": 6.4,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 22.2,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -31999,6 +32145,13 @@
       "v": 6.0,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 26.3,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -32255,6 +32408,13 @@
       "v": 7.3,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 32.3,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -32549,6 +32709,13 @@
       "v": 5.2,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 28.7,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -32842,6 +33009,13 @@
       "v": 7.7,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 25.0,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -33104,6 +33278,13 @@
       "v": 7.7,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 25.0,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -33368,6 +33549,13 @@
       "v": 6.2,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.4,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -33570,6 +33758,13 @@
       "v": 6.2,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.4,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -33772,6 +33967,13 @@
       "v": 7.69,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -33978,6 +34180,13 @@
       "v": 7.23,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 46.8,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -34189,6 +34398,13 @@
       "v": 6.28,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.0,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -34391,6 +34607,13 @@
       "v": 6.53,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 41.1,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -34593,6 +34816,13 @@
       "v": 6.34,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -34795,6 +35025,13 @@
       "v": 7.69,
       "margin": 1.58,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -35012,6 +35249,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-enso-pro-carbon-125",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.0,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -35228,6 +35472,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-toro-toro-neon-pink-123",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -35444,6 +35695,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.9,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -35767,6 +36025,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/toroline-caviar-neon-yellow-124",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.9,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -36190,6 +36455,13 @@
       "v": 7.3,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 32.3,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -36610,6 +36882,13 @@
       "v": 7.3,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 32.3,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -37042,6 +37321,13 @@
       "v": 6.0,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 26.3,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -37419,6 +37705,13 @@
       "v": 6.0,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 26.3,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -37762,6 +38055,13 @@
       "v": 6.5,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 27.7,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -38137,6 +38437,13 @@
       "v": 6.5,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 27.7,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -38558,6 +38865,13 @@
       "v": 7.42,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 37.4,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -38942,6 +39256,13 @@
       "margin": 0.05,
       "url": "https://www.racketpedia.com/en-GB/tennis-string/restring-sync-silver-125",
       "how": "dalla scheda Racketpedia dello stesso modello in altro colore o calibro"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 38.5,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -39268,6 +39589,13 @@
       "v": 6.35,
       "margin": 1.52,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.6,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -39595,6 +39923,13 @@
       "v": 7.7,
       "margin": 1.52,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.6,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -39943,6 +40278,13 @@
       "v": 6.28,
       "margin": 1.51,
       "how": "dalla fisica, da rigidità e forma"
+     },
+     "twu.loss": {
+      "kind": "modello",
+      "from": "modello",
+      "v": 39.0,
+      "margin": 7.1,
+      "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"
      }
     }
    },
@@ -40259,6 +40601,13 @@
       "v": 5.8,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 32.0,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },
@@ -40661,6 +41010,13 @@
       "v": 8.2,
       "margin": 0.5,
       "how": "dallo stesso modello misurato da TWU in un altro calibro o colore"
+     },
+     "twu.loss": {
+      "kind": "ricavata",
+      "from": "twu",
+      "v": 34.3,
+      "margin": 6.0,
+      "how": "dallo stesso modello misurato da TWU in altri calibri (1 righe)"
      }
     }
    },

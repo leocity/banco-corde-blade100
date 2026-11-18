@@ -3,6 +3,7 @@ import { esc, NF, fullName, fmtN, safeUrl } from './format.js';
 import { CATS, MOMENTS } from './diary.js';
 import { CMP_KEYS, compareTo, summarize, agreement, UNKNOWN } from './cmp.js';
 import { likeness } from './next.js';
+import { bedOf, compareBeds, physSummary, physPhrase, diffTxt } from './phys.js';
 import { tip, labValue, specLine, fmtV, itDate, infoTip, misure, shapeOf } from './ui.js';
 
 const SRC_ROWS = [
@@ -38,14 +39,24 @@ function rowsHtml(rows, refName, name) {
     <p class="small">${esc(x.why)}</p></li>`).join('')}</ul>`;
 }
 
-export function compareHtml(r, ref, meta) {
+// Il confronto in campo (modello fisico, alla tua tensione) e sotto le misure fonte per fonte.
+function physBlock(r, ref, kg) {
+  const rows = compareBeds(bedOf(r, r, kg), bedOf(ref, ref, kg));
+  if (!rows.length) return '';
+  return `<p class="summary">${esc(physSummary(rows, ref.model))} ${tip('fisica', 'ⓘ', null, 'Come si calcola il confronto in campo')}</p>
+    <ul class="cmp-rows">${rows.map((x) => `<li><p class="cmp-q">${tip(x.tip, esc(x.label))}</p><p class="cmp-w lvl-${x.level === 'simile' ? 'same' : x.level === 'nettamente' ? 'big' : 'some'}">${x.dir ? esc(physPhrase(x)) : 'simile'} <span class="muted small">(${esc(diffTxt(x))})</span></p><p class="small">${esc(x.why)}</p></li>`).join('')}</ul>`;
+}
+
+export function compareHtml(r, ref, meta, kg = [22, 21]) {
+  const phys = physBlock(r, ref, kg);
   const rows = compareTo(r, ref, meta);
   const s = summarize(rows, ref.model);
   const ag = agreement(rows).stiffness;
   const agTxt = ag === 'concordano' ? 'TWU e Racketpedia concordano sulla rigidità.' : ag === 'disaccordo' ? 'TWU e Racketpedia non concordano sulla rigidità: nessuna conclusione.' : ag === 'in parte' ? 'Sulla rigidità una fonte vede una differenza, l\'altra no.' : '';
   const spec = `<ul class="spec-cmp"><li>${tip('calibro', 'Calibro')}: ${ref.gauge_mm ? NF(2).format(ref.gauge_mm) : '—'} → ${r.gauge_mm ? NF(2).format(r.gauge_mm) : '—'} mm${ref.gauge_mm && r.gauge_mm && Math.abs(r.gauge_mm - ref.gauge_mm) >= 0.03 ? (r.gauge_mm < ref.gauge_mm ? ' (più sottile: di solito più morso, dura meno)' : ' (più spessa: di solito dura di più, meno morso)') : ''}</li>
     <li>${tip('forma', 'Forma')}: ${esc(shapeOf(ref))} → ${esc(shapeOf(r))}</li></ul>`;
-  return `<p class="summary">${esc(s.text)} ${infoTip('soglie', 'Come decidiamo simile, un po\' o nettamente')}</p>${agTxt ? `<p class="small">${esc(agTxt)}</p>` : ''}${rowsHtml(rows, ref.model, r.model)}${spec}
+  const detail = `<p class="summary">${esc(s.text)} ${infoTip('soglie', 'Come decidiamo simile, un po\' o nettamente')}</p>${agTxt ? `<p class="small">${esc(agTxt)}</p>` : ''}${rowsHtml(rows, ref.model, r.model)}`;
+  return `${phys || detail}${phys ? `<details class="more"><summary>Le misure, fonte per fonte</summary>${detail}</details>` : ''}${spec}
     <p class="small muted">${tip('controllo', 'Cosa non sappiamo')}: ${esc(UNKNOWN)}</p>`;
 }
 
@@ -132,7 +143,7 @@ export function sheetHtml(r, ctx) {
   return `<h2 id="sheet-title">${esc(fullName(r))}</h2>
     <p class="muted">${specLine(r)} · ${esc(yearTxt(r))}</p>
     ${isEq ? '<p class="tag ok">montata ora</p>' : ''}${liked ? '<p class="tag ok">★ ti piace</p>' : ''}${disliked ? '<p class="tag warn">non ti piace</p>' : ''}${inStock.length ? `<p class="tag ok">in casa: ${inStock.map((x) => `${x.n} ${esc(x.size)}`).join(', ')}</p>` : ''}
-    ${isEq ? '' : `<section class="block"><h3>Rispetto alla tua (${esc(ref.model)})</h3>${compareHtml(r, ref, meta)}${tensionHtml(r, ref, st, meta, compareTo(r, ref, meta))}${lkTxt ? `<p class="small">${lkTxt}</p>` : ''}${warn}</section>`}
+    ${isEq ? '' : `<section class="block"><h3>Rispetto alla tua (${esc(ref.model)})</h3>${compareHtml(r, ref, meta, st.equipped.kg)}${tensionHtml(r, ref, st, meta, compareTo(r, ref, meta))}${lkTxt ? `<p class="small">${lkTxt}</p>` : ''}${warn}</section>`}
     <section class="block"><h3>Misure</h3>${measuresHtml(r)}${twinExcel(r, ctx.ALL)}${estimatesHtml(r)}</section>
     ${trialsHtml(r, st)}
     ${reviewsHtml(r)}

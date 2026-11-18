@@ -92,3 +92,17 @@ def test_est_only_where_measure_missing_and_always_labelled():
     conf = S["solinco-confidential-16l"]["lab"]["est"]
     assert conf["twu.loss"]["v"] == 22.2 and conf["twu.stiffness"]["from"] == "twu"
     assert S["toroline-enso-pro-neon-yl-16l"]["lab"]["est"]["rp.kgmm"]["kind"] == "ricavata"  # scheda di altro colore
+
+
+def test_loss_available_for_every_string_and_physics_is_declared():
+    import json
+    data = json.loads((pathlib.Path(__file__).resolve().parent.parent / "data/strings.json").read_text(encoding="utf-8"))
+    lm = data["lab_meta"]["loss_model"]
+    assert lm["n"] >= 100 and lm["b"] < 0  # le poly più rigide perdono meno tensione
+    for r in data["strings"]:
+        lab = r["lab"]
+        has = (lab.get("twu") or {}).get("loss") is not None or "twu.loss" in lab["est"]
+        assert has, r["id"]
+    S = {r["id"]: r for r in data["strings"]}
+    assert S["toroline-o-toro-tour-1-20"]["lab"]["est"]["twu.loss"]["v"] == 25.0  # stesso modello, misurato a 1,23
+    assert "fisica" in S["re-string-slap-17"]["lab"]["est"]["twu.loss"]["how"]

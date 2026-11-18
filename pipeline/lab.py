@@ -68,3 +68,50 @@ def lab_meta(records):
     xs = [l["excel"]["stretch50"] for l in labs if l.get("excel") and l["excel"].get("stretch50") is not None]
     return {"excel_stretch50_sd": round(statistics.stdev(xs), 3) if len(xs) > 1 else None,
             "n": {k: sum(1 for l in labs if l.get(k)) for k in ("twu", "rp", "excel")}}
+
+
+def _fit(xs, ys):
+    mx, my = statistics.mean(xs), statistics.mean(ys)
+    b = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sum((x - mx) ** 2 for x in xs)
+    return my - b * mx, b
+
+
+def _mkey(brand, model):
+    import re
+    return brand.lower(), re.sub(r"[^a-z0-9]", "", model.lower())
+
+
+def fill_loss(records, twu_rows):
+    """Perdita di tensione dove manca: (1) media della stessa famiglia misurata da TWU in altri calibri (ricavata),
+    (2) altrimenti dalla rigidità: nei dati TWU le poly più rigide perdono meno tensione (fisica, retta su tutte le righe).
+    Ritorna i parametri della retta con l'errore medio in prova «lascia uno fuori»."""
+    rows = [r for r in twu_rows if r.get("tension_loss_pct") is not None and r.get("stiffness_lbin")]
+    if len(rows) < 10:
+        return None
+    xs, ys = [r["stiffness_lbin"] for r in rows], [r["tension_loss_pct"] for r in rows]
+    a, b = _fit(xs, ys)
+    errs = []
+    for i in range(len(rows)):
+        ai, bi = _fit(xs[:i] + xs[i + 1:], ys[:i] + ys[i + 1:])
+        errs.append(abs(ai + bi * xs[i] - ys[i]))
+    mae = round(statistics.mean(errs), 1)
+    fam = {}
+    for r in rows:
+        fam.setdefault(_mkey(r["brand"], r["model"]), []).append(r["tension_loss_pct"])
+    for rec in records:
+        lab = rec["lab"]
+        if (lab.get("twu") or {}).get("loss") is not None or "twu.loss" in lab["est"]:
+            continue
+        f = fam.get(_mkey(rec["brand"], rec["model"]))
+        if f:
+            lab["est"]["twu.loss"] = {"kind": "ricavata", "from": "twu", "v": round(statistics.mean(f), 1), "margin": 6.0,
+                                      "how": f"dallo stesso modello misurato da TWU in altri calibri ({len(f)} righe)"}
+            continue
+        k = (lab.get("twu") or {}).get("stiffness")
+        if k is None:
+            k = (lab["est"].get("twu.stiffness") or {}).get("v")
+        if k is None:
+            continue
+        lab["est"]["twu.loss"] = {"kind": "modello", "from": "modello", "v": round(a + b * k, 1), "margin": mae,
+                                  "how": "dalla fisica: le poly più rigide perdono meno tensione (retta sui dati TWU, 130 corde)"}
+    return {"a": round(a, 3), "b": round(b, 4), "n": len(rows), "mae": mae}

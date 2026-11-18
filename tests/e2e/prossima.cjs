@@ -16,22 +16,24 @@ test('Prossima: le domande cambiano la lista e restano salvate', async () => {
   await page.locator('[data-goal="stiffer"]').click();
   assert.equal(await page.locator('[data-goal="stiffer"]').getAttribute('aria-checked'), 'true');
   assert.equal((await stateOf(page)).nextGoal, 'stiffer');
-  const sums = await page.locator('#next-list .cand .summary').allInnerTexts();
+  const sums = await page.locator('#next-list .cand.buy .summary').allInnerTexts();
   assert.ok(sums.length >= 1 && sums.length <= 3);
   for (const s of sums) assert.match(s, /più rigida/);
-  await page.locator('[data-goal="holds"]').click();
-  assert.match(await page.innerText('#next-q'), /Metro di paragone/);
-  assert.match(await page.innerText('#next-list'), /corde/);
+  await page.locator('[data-goal="lower"]').click();
+  assert.equal((await stateOf(page)).nextGoal, 'lower');
+  for (const s of await page.locator('#next-list .cand.buy .summary').allInnerTexts()) assert.match(s, /palla più bassa/);
+  assert.match(await page.innerText('#next-q'), /non è misurata da TWU/);
+  assert.match(await page.innerText('#next-list'), /Ibridi consigliati/);
   await ctx.close();
 });
 
 test('Prossima: una corda in casa compatibile compare per prima', async () => {
   const st = JSON.stringify({ v: 2, equipped: { id: 're-string-slap-17', kg: [22, 21], since: '2026-10-31T13:29:43.457Z', hours0: 0 }, liked: [], disliked: [], sessions: [], lives: [],
-    stock: [{ id: 'toroline-o-toro-17', size: 'mezza', n: 1 }], nextGoal: 'stiffer' });
+    stock: [{ id: 'toroline-o-toro-tour-17', size: 'mezza', n: 1 }], nextGoal: 'stiffer' });
   const { page, ctx } = await openPage({ hash: '#prossima', storage: { 'banco-corde:state': st } });
   const h = await page.locator('#next-list h2').first().innerText();
   assert.match(h, /Ce l'hai in casa/);
-  assert.match(await page.locator('#next-list .cand').first().innerText(), /O-Toro 1,23[\s\S]*in casa: 1 mezza/);
+  assert.match(await page.locator('#next-list .cand').first().innerText(), /O-Toro Tour 1,23[\s\S]*in casa: 1 mezza/);
   await ctx.close();
 });
 
@@ -101,5 +103,20 @@ test('Prossima: la domanda scritta all\'AI resta anche se cambi domanda o tocchi
   await page.locator('#ask-main textarea').fill('la Slap è spenta?');
   await page.locator('[data-goal="spin"]').click();
   assert.equal(await page.locator('#ask-main textarea').inputValue(), 'la Slap è spenta?');
+  await ctx.close();
+});
+
+test('Prossima: un ibrido consigliato si apre nel costruttore con il confronto in campo', async () => {
+  const st = JSON.stringify({ v: 2, equipped: { id: 're-string-slap-17', kg: [22, 21], since: '2026-10-31T13:29:43.457Z', hours0: 0 }, liked: [], disliked: [], sessions: [], lives: [],
+    stock: [{ id: 'toroline-o-toro-tour-17', size: 'mezza', n: 1 }, { id: 'toroline-o-toro-17', size: 'mezza', n: 1 }, { id: 'solinco-hyper-g-round-17', size: 'mezza', n: 1 }], nextGoal: 'lower' });
+  const { page, ctx, errors } = await openPage({ hash: '#prossima', storage: { 'banco-corde:state': st } });
+  const btn = page.locator('#next-list [data-hy-set]').first();
+  const pair = await btn.getAttribute('data-hy-set');
+  await btn.click();
+  assert.equal(await page.locator('#hy-v').inputValue(), pair.split('|')[0]);
+  const txt = await page.innerText('#hybrid');
+  assert.match(txt, /Rispetto alla Slap/);
+  assert.match(txt, /Lancio della palla/);
+  assert.deepEqual(errors, []);
   await ctx.close();
 });

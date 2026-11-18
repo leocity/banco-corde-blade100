@@ -11,7 +11,7 @@ const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d }
 export const STATE_VERSION = 2;
 // v6: scorta (matasse intere o mezze), voto dell'uscita, domanda di «Prossima». Campi facoltativi: la versione resta 2.
 export const SIZES = ['intera', 'mezza'];
-export const NEXT_GOALS = ['same', 'softer', 'stiffer', 'holds', 'spin'];
+export const NEXT_GOALS = ['same', 'softer', 'stiffer', 'lower', 'holds', 'spin'];
 export const SESSION_TAGS = ['viva', 'pastosa', 'scivola', 'secca', 'vibra', 'spenta', 'precisa', 'lunga'];
 const isFeel = (v) => Number.isInteger(v) && v >= 1 && v <= 5;
 const okStockItem = (x) => x && isStr(x.id) && SIZES.includes(x.size) && Number.isInteger(x.n) && x.n >= 1 && x.n <= 99;

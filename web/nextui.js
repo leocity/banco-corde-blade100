@@ -1,45 +1,44 @@
 // Schermata «Prossima»: una domanda, poi le corde in casa e quelle da comprare, ognuna con il confronto e il perché.
-import { $, esc, fullName } from './format.js';
-import { GOALS, candidates } from './next.js';
+import { $, esc, fullName, NF } from './format.js';
+import { GOALS, candidates, suggestHybrids } from './next.js';
+import { physPhrase } from './phys.js';
 import { setNextGoal } from './state.js';
 import { tip, nameBtn, specLine, hasMeasures, infoTip, misure } from './ui.js';
 
 const goalOf = (st) => st.nextGoal || 'same';
 
-function card(c, ctx, inStockInfo, goal) {
+const WHY_LIMIT = 3;
+function whyList(rows) {
+  const w = rows.filter((x) => x.dir && !(x.key === 'kAfter' && rows.some((y) => y.key === 'launch' && y.dir))).slice(0, WHY_LIMIT);
+  return w.length ? `<ul class="why">${w.map((x) => `<li><b>${esc(physPhrase(x))}</b>: ${esc(x.why)}</li>`).join('')}</ul>` : '';
+}
+
+function card(c, ctx, inStockInfo, cls = '') {
   const r = c.rec;
-  const common = [...new Set(c.rows.filter((x) => x.decides).map((x) => `${x.source}${x.est ? ' (≈ ricavato)' : ''}`))].join(', ');
-  const why = c.rows.filter((x) => x.decides && x.dir).slice(0, 2).map((x) => `<li>${esc(x.why)}</li>`).join('');
-  const rank = c.rank ? `<p class="small">${c.rank.pos}ª su ${c.rank.n} corde con il valore TWU (${esc(fmtRank(c, goal))}).</p>` : '';
   const lk = c.likeness && c.likeness.id ? `<p class="small muted">Simile alla ${esc(ctx.BY_ID[c.likeness.id].model)} (ti piace) in ${misure(c.likeness.similar)} su ${c.likeness.total}.</p>` : '';
   const warn = c.likeness && c.likeness.warn ? `<p class="small warn-t">Somiglia alla ${esc(ctx.BY_ID[c.likeness.warn].model)}, che non ti piace.</p>` : '';
   const stockTag = (inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '') + (c.equipped ? ' <span class="tag">è la tua montata</span>' : '') + (c.disliked ? ' <span class="tag warn">non ti piace</span>' : '');
   const off = c.inStock && !c.compatible ? '<p class="small muted">Non va nella direzione che hai chiesto.</p>' : '';
-  return `<article class="cand ${c.compatible ? '' : 'dim'}">
+  return `<article class="cand ${cls} ${c.compatible ? '' : 'dim'}">
     <h3>${nameBtn(r)} ${stockTag}</h3>
     <p class="muted small">${specLine(r)}</p>
-    <p class="summary">${esc(c.summary.text)} ${infoTip('soglie', 'Come decidiamo simile, un po\' o nettamente')}</p>
-    ${common ? `<p class="small muted common">Confrontata con la tua su: ${esc(common)}.</p>` : ''}
-    ${why ? `<ul class="why">${why}</ul>` : ''}${rank}${lk}${warn}${off}
+    <p class="summary">${esc(c.summary.text)} ${infoTip('fisica', 'Come si calcola il confronto in campo')}</p>
+    ${whyList(c.rows)}${lk}${warn}${off}
     <div class="actions"><button type="button" class="btn" data-cmp="${esc(r.id)}">Confronta</button>
       <button type="button" class="btn" data-equip="${esc(r.id)}">Monta</button></div>
   </article>`;
 }
-function fmtRank(c, goal) {
-  if (c.value === null || c.value === undefined) return '';
-  const v = String(c.value).replace('.', ',');
-  return goal === 'holds' ? `perde il ${v}%` : `spin potenziale ${v}`;
-}
 
-// Perché la lista è vuota, in parole: per «più morbida» con la Slap la risposta è che è già tra le più morbide.
-function emptyWhy(ctx, goal, ref) {
-  const g = GOALS.find((x) => x.key === goal);
-  if ((goal === 'softer' || goal === 'stiffer') && ref.lab && ref.lab.rp) {
-    const v = ref.lab.rp.kgmm, rp = ctx.ALL.filter((r) => r.lab && r.lab.rp);
-    const n = rp.filter((r) => (goal === 'softer' ? r.lab.rp.kgmm < v : r.lab.rp.kgmm > v)).length;
-    if (n < 5) return `La ${ref.model} è già tra le più ${goal === 'softer' ? 'morbide' : 'rigide'} a riposo: solo ${n} su ${rp.length} lo sono di più, e nessuna oltre la soglia.`;
-  }
-  return `Nessuna corda misurata è ${g.ask} oltre la soglia.`;
+function hyCard(p, ctx, st) {
+  const tag = (r, i) => (p.inStock[i] ? ` <span class="tag ok">in casa</span>` : ' <span class="tag">da comprare</span>');
+  return `<article class="cand hyc">
+    <h3>Ibrido</h3>
+    <p><b>Verticali:</b> ${nameBtn(p.V)}${tag(p.V, 0)}<br><b>Orizzontali:</b> ${nameBtn(p.O)}${tag(p.O, 1)}</p>
+    <p class="muted small">${NF(1).format(st.equipped.kg[0])}/${NF(1).format(st.equipped.kg[1])} kg come la tua${p.bed.roundCross ? ' · orizzontale tonda: lascia scivolare e tornare le verticali' : ''}</p>
+    <p class="summary">${esc(p.summary.text)} ${infoTip('letto', 'Come si calcola un ibrido')}</p>
+    ${whyList(p.rows)}
+    <div class="actions"><button type="button" class="btn" data-hy-set="${esc(p.V.id)}|${esc(p.O.id)}">Apri nel costruttore</button></div>
+  </article>`;
 }
 
 export function renderNext(ctx) {
@@ -50,10 +49,18 @@ export function renderNext(ctx) {
   $('#next-q').innerHTML = `<h2>Cosa vuoi cambiare rispetto alla ${esc(ref.model)}?</h2>
     <div class="chips goals" role="radiogroup" aria-label="Cosa vuoi cambiare">${GOALS.map((x) => `<button type="button" role="radio" class="chipbtn" data-goal="${x.key}" aria-checked="${x.key === goal}">${esc(x.label)}</button>`).join('')}</div>
     ${res.note ? `<p class="callout small">${esc(res.note)}</p>` : ''}`;
-  const stockHtml = res.inStock.length ? `<div class="section-head"><h2>${tip('scorta', 'Ce l\'hai in casa')}</h2></div>${res.inStock.map((c) => card(c, ctx, stockOf(c.rec.id), goal)).join('')}` : '';
-  const buyHtml = `<div class="section-head"><h2>Da comprare</h2><span class="muted small">${esc(g.ask)}, solo con misure</span></div>
-    ${res.toBuy.length ? res.toBuy.map((c) => card(c, ctx, '', goal)).join('') : `<p class="muted">${esc(emptyWhy(ctx, goal, ref))} Prova un'altra domanda o cerca una corda qui sotto.</p>`}`;
-  $('#next-list').innerHTML = (res.inStock.some((c) => c.compatible) ? stockHtml + buyHtml : buyHtml + stockHtml);
+  const okStock = res.inStock.filter((c) => c.compatible), otherStock = res.inStock.filter((c) => !c.compatible);
+  const stockHtml = res.inStock.length ? `<div class="section-head"><h2>${tip('scorta', 'Ce l\'hai in casa')}</h2></div>
+    ${okStock.length ? okStock.slice(0, 3).map((c) => card(c, ctx, stockOf(c.rec.id))).join('') : '<p class="small muted">Nessuna delle corde che hai in casa va in questa direzione.</p>'}
+    ${okStock.length + otherStock.length > 3 ? `<details class="more"><summary>Le altre corde in casa (${okStock.length + otherStock.length - Math.min(3, okStock.length)})</summary>${[...okStock.slice(3), ...otherStock].map((c) => card(c, ctx, stockOf(c.rec.id))).join('')}</details>` : ''}` : '';
+  const buyHtml = `<div class="section-head"><h2>Da comprare</h2><span class="muted small">${esc(g.ask)}</span></div>
+    ${res.toBuy.length ? res.toBuy.map((c) => card(c, ctx, '', 'buy')).join('') : `<p class="muted">${esc(emptyWhy(ctx, goal, ref))} Prova un'altra domanda o cerca una corda qui sotto.</p>`}`;
+  const hy = suggestHybrids(st, ctx.ALL, goal, ctx.META);
+  const hyHtml = (hy.fromStock.length || hy.buyOne.length || hy.buyBoth.length) ? `<div class="section-head"><h2>Ibridi consigliati</h2><span class="muted small">${esc(g.ask)}</span></div>
+    ${hy.fromStock.length ? `<p class="small"><b>Con le corde che hai in casa</b></p>${hy.fromStock.map((p) => hyCard(p, ctx, st)).join('')}` : (st.stock || []).length ? '<p class="small muted">Con le corde che hai in casa nessuna coppia va in questa direzione.</p>' : ''}
+    ${hy.buyBoth.length ? `<p class="small"><b>Comprando due mezze matasse</b> <span class="muted">(aggiungi le corde che hai in casa in «Oggi» per vedere prima quelle)</span></p>${hy.buyBoth.map((p) => hyCard(p, ctx, st)).join('')}` : ''}
+    ${hy.buyOne.length ? `<p class="small"><b>Comprando una mezza matassa</b></p>${hy.buyOne.map((p) => hyCard(p, ctx, st)).join('')}` : ''}` : '';
+  $('#next-list').innerHTML = (res.inStock.some((c) => c.compatible) ? stockHtml + buyHtml : buyHtml + stockHtml) + hyHtml;
 }
 
 function renderSearch(ctx) {
