@@ -1110,6 +1110,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -1560,6 +1561,20 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [
+    {
+     "string_id": "babolat-rpm-blast-17",
+     "url": "https://www.youtube.com/watch?v=mI-I1XH_zGc",
+     "channel": "MPTennis",
+     "class": "con affiliazioni",
+     "date": "≈2026-03",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Slap contro RPM Blast; contenuto non visionato, calibro non indicato."
+    }
+   ],
    "community": null
   },
   {
@@ -1899,6 +1914,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -2261,6 +2277,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -2546,6 +2563,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -2806,6 +2824,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -3092,6 +3111,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -3367,6 +3387,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -3635,6 +3656,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -3909,6 +3931,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -4183,6 +4206,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -4453,6 +4477,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -4727,6 +4752,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -4997,6 +5023,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -5341,6 +5368,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -5684,6 +5712,80 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [
+    {
+     "string_id": "re-string-slap-17",
+     "url": "https://www.youtube.com/watch?v=4GAcRi0HB0c",
+     "channel": "TennisTroll",
+     "class": "non verificabile",
+     "date": "≈2026-05",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Slap, verdetto dopo test estesi (dal titolo); contenuto non visionato."
+    },
+    {
+     "string_id": "re-string-slap-17",
+     "url": "https://www.youtube.com/watch?v=DKtuzKzB5Fs",
+     "channel": "PH Tennis",
+     "class": "commerciale",
+     "date": "≈2026-05",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Slap; contenuto non visionato."
+    },
+    {
+     "string_id": "re-string-slap-17",
+     "url": "https://www.youtube.com/watch?v=yUETBVUYZc4",
+     "channel": "ZeroLove",
+     "class": "con affiliazioni",
+     "date": "≈2026-03",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "ReString Brought SLAP Back (titolo); canale affiliato a ReString e Toroline; contenuto non visionato."
+    },
+    {
+     "string_id": "re-string-slap-17",
+     "url": "https://www.youtube.com/watch?v=mI-I1XH_zGc",
+     "channel": "MPTennis",
+     "class": "con affiliazioni",
+     "date": "≈2026-03",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Slap contro RPM Blast; contenuto non visionato."
+    },
+    {
+     "string_id": "re-string-slap-17",
+     "url": "https://www.youtube.com/watch?v=NOLhAwXXzaM",
+     "channel": "Tennis Spin",
+     "class": "con affiliazioni",
+     "date": "≈2026-04",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Slap; contenuto non visionato."
+    },
+    {
+     "string_id": "re-string-slap-17",
+     "url": "https://www.tennisnerd.net/?p=61581",
+     "channel": "Tennisnerd",
+     "class": "con affiliazioni",
+     "date": "≈2025-11",
+     "kind": "articolo",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Articolo su Slap; data in conflitto con un'altra fonte sul lancio (marzo 2026): da verificare. Canale affiliato a Toroline, non a ReString."
+    }
+   ],
    "community": {
     "spin": {
      "n": 1,
@@ -6054,6 +6156,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -6452,6 +6555,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 2,
@@ -6903,6 +7007,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -7368,6 +7473,32 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [
+    {
+     "string_id": "re-string-zero-17",
+     "url": "https://www.youtube.com/watch?v=s4esasDxEyI",
+     "channel": "Brody Taylor",
+     "class": "non verificabile",
+     "date": "≈2026-10",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "ReString Zero; contenuto non visionato."
+    },
+    {
+     "string_id": "re-string-zero-17",
+     "url": "https://www.youtube.com/watch?v=Fq7jvSnGT6g",
+     "channel": "Sweet Spot",
+     "class": "indipendente con riserva",
+     "date": "≈2024",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Zero a 35 lb, lezione sulla rigidita (dal titolo); contenuto non visionato."
+    }
+   ],
    "community": {
     "control": {
      "n": 1,
@@ -7826,6 +7957,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -8069,6 +8201,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -8425,6 +8558,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -8874,6 +9008,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -9353,6 +9488,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 4,
@@ -9819,6 +9955,44 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [
+    {
+     "string_id": "solinco-confidential-16l",
+     "url": "https://www.youtube.com/watch?v=_75PBtA8nYM",
+     "channel": "Trash Bin Tennis",
+     "class": "con affiliazioni",
+     "date": "≈2026-05",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Confidential contro Confidential Soft; contenuto non visionato, calibro non indicato."
+    },
+    {
+     "string_id": "solinco-confidential-16l",
+     "url": "https://www.youtube.com/watch?v=QO8YZXpcAU0",
+     "channel": "MPTennis",
+     "class": "con affiliazioni",
+     "date": "≈2023",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "3 anni di Confidential; contenuto non visionato, calibro non indicato."
+    },
+    {
+     "string_id": "solinco-confidential-16l",
+     "url": "https://www.tennis-warehouse.com/learning_center/reviews/strings/solinco_confidential.html?pcode=SLNC16LS",
+     "channel": "Tennis Warehouse (TW Lab)",
+     "class": "commerciale",
+     "date": null,
+     "kind": "articolo",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": false,
+     "note": "Punteggi soggettivi di un rivenditore: non entrano nei punteggi del banco."
+    }
+   ],
    "community": {
     "control": {
      "n": 4,
@@ -10292,6 +10466,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 4,
@@ -10678,6 +10853,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -11038,6 +11214,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "comfort": {
      "n": 1,
@@ -11421,6 +11598,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -11902,6 +12080,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -12342,6 +12521,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -12675,6 +12855,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -13008,6 +13189,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -13352,6 +13534,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 3,
@@ -13779,6 +13962,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -14116,6 +14300,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -14507,6 +14692,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -15008,6 +15194,20 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [
+    {
+     "string_id": "toroline-o-toro-17",
+     "url": "https://www.youtube.com/watch?v=gRlkNw_O_DA",
+     "channel": "TK Tennis",
+     "class": "indipendente",
+     "date": "≈2024",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": false,
+     "note": "Recensione dell'O-Toro 17; contenuto non visionato."
+    }
+   ],
    "community": {
     "control": {
      "n": 3,
@@ -15448,6 +15648,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -15784,6 +15985,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -16116,6 +16318,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -16413,6 +16616,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -16718,6 +16922,7 @@
      "date": "2026-08-26"
     }
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -17034,6 +17239,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -17407,6 +17613,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -17757,6 +17964,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "spin": {
      "n": 1,
@@ -18145,6 +18353,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 5,
@@ -18590,6 +18799,20 @@
     },
     "excel": null
    },
+   "indep_reviews": [
+    {
+     "string_id": "toroline-o-toro-tour-17",
+     "url": "https://www.youtube.com/watch?v=W1aqsSrzEWY",
+     "channel": "TK Tennis",
+     "class": "indipendente",
+     "date": "≈2026-01",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "O-Toro Tour, analisi approfondita; contenuto non visionato, calibro non indicato."
+    }
+   ],
    "community": {
     "control": {
      "n": 2,
@@ -18957,6 +19180,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -19316,6 +19540,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -19600,6 +19825,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -19906,6 +20132,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 4,
@@ -20307,6 +20534,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "comfort": {
      "n": 1,
@@ -20630,6 +20858,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -20948,6 +21177,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -21189,6 +21419,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -21560,6 +21791,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 3,
@@ -22038,6 +22270,20 @@
     },
     "excel": null
    },
+   "indep_reviews": [
+    {
+     "string_id": "solinco-confidential-soft-16l",
+     "url": "https://www.youtube.com/watch?v=_75PBtA8nYM",
+     "channel": "Trash Bin Tennis",
+     "class": "con affiliazioni",
+     "date": "≈2026-05",
+     "kind": "video",
+     "verified_by_viewing": false,
+     "phrase": null,
+     "gauge_unknown": true,
+     "note": "Confidential contro Confidential Soft; contenuto non visionato, calibro non indicato."
+    }
+   ],
    "community": {
     "power": {
      "n": 3,
@@ -22401,6 +22647,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -22682,6 +22929,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -23011,6 +23259,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "power": {
      "n": 3,
@@ -23278,6 +23527,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -23616,6 +23866,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 4,
@@ -23930,6 +24181,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -24163,6 +24415,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -24448,6 +24701,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -24808,6 +25062,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -25024,6 +25279,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -25264,6 +25520,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -25497,6 +25754,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -25827,6 +26085,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -26159,6 +26418,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -26392,6 +26652,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -26626,6 +26887,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -26986,6 +27248,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -27219,6 +27482,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -27462,6 +27726,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -27701,6 +27966,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -28104,6 +28370,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -28338,6 +28605,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -28698,6 +28966,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -28931,6 +29200,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -29165,6 +29435,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -29408,6 +29679,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -29642,6 +29914,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -29867,6 +30140,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -30093,6 +30367,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -30320,6 +30595,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -30610,6 +30886,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 4,
@@ -31004,6 +31281,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 4,
@@ -31410,6 +31688,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "power": {
      "n": 3,
@@ -31770,6 +32049,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "power": {
      "n": 3,
@@ -32096,6 +32376,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "power": {
      "n": 3,
@@ -32454,6 +32735,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "power": {
      "n": 3,
@@ -32858,6 +33140,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 2,
@@ -33217,6 +33500,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -33526,6 +33810,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 1,
@@ -33836,6 +34121,7 @@
     },
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "spin": {
      "n": 1,
@@ -34162,6 +34448,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": null
   },
   {
@@ -34461,6 +34748,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 4,
@@ -34846,6 +35134,7 @@
     "rp": null,
     "excel": null
    },
+   "indep_reviews": [],
    "community": {
     "control": {
      "n": 5,
