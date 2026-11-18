@@ -6,17 +6,21 @@ Punto di ingresso per chi riprende il lavoro in una chat nuova. Chi legge **non 
 
 | Cosa | Dove |
 |---|---|
-| **Online** | https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — **v6**, versione `1795025262-965d` del 18/11/2026, pubblicata da `dist/string-explorer.html` del ramo sotto. Capability: `db`, `user`, `sample`, `downloads`. |
+| **Online** | https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — **v6.1**, versione `1795029107-d8bf` del 18/11/2026, pubblicata da `dist/string-explorer.html` del ramo sotto. Capability: `db`, `user`, `sample`, `downloads`. |
 | **Ramo di lavoro** | `claude/great-hypatia-edrzae`: contiene tutto (v3 + adoring-rubin + Ibridi recuperata + v6). È l'unica linea viva. |
 | Versione online precedente (v5 + Ibridi) | `archive/artifact-live-2026-11-18.html` (copia esatta, verificata byte per byte prima di ripubblicare). Il blocco `verified` ora sta in `data/verified.json`; il codice di Ibridi in `archive/recovered/`. |
 | `master` | `07b338a` (v2), **non toccato**. Unire il ramo su master richiede il sì dell'utente. |
 | `claude/adoring-rubin-dm98qp`, `claude/clever-sagan-tzfbkq` | Storici, già dentro il ramo di lavoro (merge `dfa0a60`). |
 
-Dati dell'utente nel `db` al momento della pubblicazione: 18 documenti (`state`, 16 `s-*`, 1 `l-*`), intatti. La v6 aggiunge, solo quando servono, `prefs` (scorta, domanda) e `r-<ts>` (voto e parola dell'uscita).
+Dati dell'utente nel `db` alla pubblicazione v6.1: 19 documenti (`state`, `prefs` con 9 corde in casa, 16 `s-*`, 1 `l-*`), intatti. La v6 aggiunge, solo quando servono, `prefs` (scorta, domanda) e `r-<ts>` (voto e parola dell'uscita).
 
 **Da dire all'utente:** ricaricare la pagina su tutti i dispositivi (telefono e PC). Una pagina v5 rimasta aperta non cancella i dati v6, ma non li mostra.
 
-## 2. Cosa è la v6 (in breve)
+## 2. Cosa è la v6.1 (in breve)
+
+v6.1: tre schede **Oggi / Prossima / Mappa** (la Mappa con ricerca ha sostituito Scienza); valori ricavati dai dati e dalla fisica in `lab.est`, usati ovunque e marcati ≈ (design §14); 120 corde (18 aggiunte da `data/catalog_extra.json`).
+
+v6:
 
 Tre schermate: **Oggi** (+ Uscita in un tocco, voto con le faccine, corde in casa, storico, cambio corda), **Prossima** (una domanda «cosa vuoi cambiare rispetto alla tua?», prima le corde in casa, poi al massimo 3 da comprare, confronto, ibridi, AI con casella), **Scienza** (schede con livello di prova, righelli, recensioni indipendenti, fonti). Tooltip su numeri e parole tecniche. Confronti e consigli **solo da misure** (TWU esatto, Racketpedia esatto, Excel dell'utente), mai stime, mai conversioni tra fonti. Dettagli: `README.md`, `docs/superpowers/specs/2026-11-18-banco-v6-design.md` (§12–13 decisioni dopo le revisioni).
 
@@ -44,6 +48,10 @@ Solo dati gratuiti; niente prezzi; punteggi e classifiche solo da laboratorio, r
 - **TWU a 51 lb** (la tabella dice 51; il «52» è di un articolo).
 
 ## 6. Problemi aperti e rimandati
+
+- Toroline Ether: in vendita sul sito secondo la ricerca, ma i dati di produzione la danno fuori produzione: resta esclusa finché l'utente non conferma.
+- Toroline A5: nel banco ci sono sia `toroline-a5-17` (1,23, dato vecchio) sia `toroline-a5-16l` (1,25, l'unico calibro in vendita): probabile doppione da togliere.
+- Solinco Hyper-G Diamond Rough e Hyper-Con: non trovate su TW Europe, Racketpedia né TWU.
 
 - **Licenza TWU**: i Termini di Tennis Warehouse vietano crawling e riproduzione; app privata, ma la decisione sul rischio è dell'utente (`docs/audit/2026-11-18/D-fonti.md` §3).
 - Guardare i video delle recensioni e scrivere le frasi chiave; date dei video approssimate.
