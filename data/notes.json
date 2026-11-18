@@ -3,23 +3,23 @@
  "solinco-confidential-16l": {
   "feel": "Co-poly a 4 spigoli (quadrata per Solinco; nel tuo file è segnata tonda): risposta piena e prevedibile, poca tasca, ottima tenuta (22% su TWU sulla 1.30, circa 24% sulla 1.25 per un altro laboratorio, 15% a 6 mesi nel tuo test).",
   "on_blade_100_v9": "Sulla Blade flessibile a RA basso è l'abbinamento classico: il telaio restituisce la potenza che la corda non dà. I 4 spigoli e il 16×19 aperto danno buona presa sulla palla.",
-  "for_your_style": "Ideale quando giochi piatto e cerchi direzione; in rotazione funziona perché tiene a lungo la tensione. Con 4–5 ore a settimana resta stabile per 3–4 settimane.",
+  "for_your_style": "Ideale quando giochi piatto e cerchi direzione; in rotazione funziona perché tiene a lungo la tensione. Nei tuoi test tiene bene la tensione.",
   "vs_favorites": "È una delle tue preferite e il riferimento lato controllo. A 22/21 kg (48,5/46,5 lbs) è già calibrata: non scendere sotto 21 kg sulle verticali o perde precisione."
  },
  "toroline-o-toro-17": {
   "feel": "Co-poly esagonale molto morbida (166 lb/in su TWU, la più morbida del banco) con lo spin più alto (9,4). Perde molta tensione all'inizio (44% su TWU), poi si stabilizza.",
-  "on_blade_100_v9": "Su un telaio flessibile dà un piatto molto vivo e potente: per questo la incordavi più alta (23/22 kg). Il prestretch al 10% riduce il calo delle prime ore.",
-  "for_your_style": "Il massimo per le rotazioni e la profondità con poco sforzo. Sui colpi piatti va tenuta a tensione piena. Con il tuo volume rincorda ogni 2–3 settimane: il calo si sente.",
+  "on_blade_100_v9": "Su un telaio flessibile dà un piatto molto vivo e potente: per questo la incordavi più alta (23/22 kg). Il prestretch al 10% riduce il calo iniziale.",
+  "for_your_style": "Il massimo per le rotazioni e la profondità con poco sforzo. Sui colpi piatti va tenuta a tensione piena. Il calo di tensione si sente: rincordala quando il piatto si spegne.",
   "vs_favorites": "È una delle tue preferite e il riferimento lato spin e potenza. Tienila a 23/22 kg (50,5/48,5 lbs): sotto i 22 kg sulle verticali diventa troppo trampolino."
  },
  "solinco-confidential-soft-16l": {
   "feel": "Versione ammorbidita della Confidential (194 contro 222 lb/in), spin quasi uguale (6,5). Non ha però lo scatto di O-Toro: resta nel mezzo.",
   "on_blade_100_v9": "Sulla Blade, già flessibile, la morbidezza in più rende il piatto meno definito: palla meno incisa senza vero guadagno di spin.",
-  "for_your_style": "Non ti è piaciuta, ed è coerente: perde la compattezza che ami nella Confidential senza darti lo snapback di O-Toro.",
+  "for_your_style": "Non ti è piaciuta, ed è coerente: perde la compattezza che ami nella Confidential senza darti lo spin di O-Toro.",
   "vs_favorites": "Riferimento negativo: le corde che le assomigliano più che alle tue preferite ricevono l'avviso ⚠ e perdono 15 punti."
  },
  "babolat-rpm-blast-17": {
-  "feel": "Ottagonale rigida (234 lb/in) con snapback misurato basso da TWU (4,6), anche se i tester la considerano una corda da spin; calo di tensione sensibile (20% a 6 mesi nel tuo test).",
+  "feel": "Ottagonale rigida (234 lb/in) con spin potential misurato basso da TWU (4,6), anche se i tester la considerano una corda da spin; calo di tensione sensibile (20% a 6 mesi nel tuo test).",
   "on_blade_100_v9": "Su un telaio a RA basso la rigidità si sente come piatto 'secco': controllo sì, ma palla corta e poco aiuto sullo spin.",
   "for_your_style": "Non ti è piaciuta: è più rigida della Confidential (circa 234 contro 212 lb/in), con meno scorrimento delle corde, e il piatto cala prima.",
   "vs_favorites": "Riferimento negativo: segnala le corde rigide e poco 'scorrevoli'."
@@ -27,12 +27,12 @@
  "toroline-o-toro-tour-17": {
   "feel": "La O-Toro 'da controllo': più rigida (217 lb/in) e tiene molto meglio (25% su TWU), ma conserva spin alto (7,7). Esagonale 1.23.",
   "on_blade_100_v9": "Sulla Blade è un ponte tra le tue due preferite: piatto compatto come la Confidential, palla che morde come una O-Toro. Racketpedia 1,1 kg/mm.",
-  "for_your_style": "Per chi alterna rotazioni e colpi piatti è la candidata più completa del banco. Con 4–5 ore a settimana resta giocabile 3 settimane abbondanti."
+  "for_your_style": "Per chi alterna rotazioni e colpi piatti è la candidata più completa del banco. Tiene bene la tensione."
  },
  "solinco-hyper-g-16l": {
   "feel": "Co-poly profilata, rigidità simile alla Confidential (218 lb/in) e tenuta ottima (25% su TWU). Spin medio-alto (6,1).",
   "on_blade_100_v9": "Sulla Blade si comporta quasi come la tua Confidential: controllo e stabilità, con un po' più di presa sulla palla grazie al profilo.",
-  "for_your_style": "Scelta sicura se vuoi restare sul lato Confidential: stessa tenuta, qualcosa in più sui top. Rincorda ogni 3–4 settimane."
+  "for_your_style": "Scelta sicura se vuoi restare sul lato Confidential: stessa tenuta, qualcosa in più sui top. Tiene la tensione come la Confidential."
  },
  "solinco-hyper-g-16": {
   "feel": "Stessa famiglia della 16L in 1.30: 220 lb/in, tenuta molto buona (26%), spin 7,0 su TWU.",
@@ -42,12 +42,12 @@
  "solinco-revolution-16l": {
   "feel": "Esagonale (per Solinco), poco più morbida della Confidential (213 lb/in) e con più spin (8,0 su TWU). Racketpedia 1,15 kg/mm.",
   "on_blade_100_v9": "Sulla Blade dà una risposta vicina alla Confidential, con più rotazione grazie al profilo a 6 spigoli.",
-  "for_your_style": "Interessante per il tuo stile, ma nel tuo test perde il 27% a 6 mesi: tienila d'occhio dopo 10–12 ore di gioco."
+  "for_your_style": "Interessante per il tuo stile, ma nel tuo test perde il 27% a 6 mesi: tieni d'occhio il calo di tensione."
  },
  "grapplesnake-tour-m8-17": {
-  "feel": "Ottagonale di rigidità media (210 lb/in), snapback alto (8,2 su TWU). Il produttore dichiara una tenuta eccezionale, TWU misura 34% (nella media). È la Grapplesnake di mezzo tra Alpha e Tour Sniper.",
+  "feel": "Ottagonale di rigidità media (210 lb/in), spin potential alto (8,2 su TWU). Il produttore dichiara una tenuta eccezionale, TWU misura 34% (nella media). È la Grapplesnake di mezzo tra Alpha e Tour Sniper.",
   "on_blade_100_v9": "Sulla Blade dà un piatto equilibrato: più vivo della Confidential, più controllato di O-Toro.",
-  "for_your_style": "Buona per giocare in rotazione senza perdere troppo il colpo piatto. Con il tuo volume, rincorda ogni 3 settimane."
+  "for_your_style": "Buona per giocare in rotazione senza perdere troppo il colpo piatto. Il calo di tensione è nella media."
  },
  "grapplesnake-alpha-17": {
   "feel": "Pentagonale. Il produttore e Tennis Warehouse la indicano come la più morbida e potente delle tre Grapplesnake; la riga TWU (218 lb/in) dice il contrario, quindi i numeri sono poco affidabili.",
@@ -55,14 +55,14 @@
   "for_your_style": "Più adatta al lato O-Toro che al lato Confidential: comfort e potenza più che controllo."
  },
  "babolat-rpm-blast-rough-16": {
-  "feel": "È la stessa corda oggi venduta come 'RPM Rough'. Ottagonale testurizzata, più morbida della RPM Blast (210 contro 233 lb/in) e con più snapback in laboratorio (8,2); il vantaggio di spin nei test di gioco è reale ma più contenuto.",
+  "feel": "È la stessa corda oggi venduta come 'RPM Rough'. Ottagonale testurizzata, più morbida della RPM Blast (210 contro 233 lb/in) e con più spin potential in laboratorio (8,2); il vantaggio di spin nei test di gioco è reale ma più contenuto.",
   "on_blade_100_v9": "Sulla Blade dà un piatto medio-compatto con buona presa.",
   "for_your_style": "Funziona per il tuo stile sulla carta, ma è della stessa famiglia della corda che non ti è piaciuta: provala solo dopo O-Toro Tour e Hyper-G."
  },
  "babolat-rpm-blast-rough-17": {
-  "feel": "La versione 1.25 (non 1.20) della RPM Rough: più morbida (196 lb/in) e con snapback molto alto in laboratorio (9,9). Calo nella media (36%) e durata di gioco bassa nel test di Tennis Warehouse.",
+  "feel": "La versione 1.25 (non 1.20) della RPM Rough: più morbida (196 lb/in) e con spin potential molto alto in laboratorio (9,9). Calo nella media (36%) e durata di gioco bassa nel test di Tennis Warehouse.",
   "on_blade_100_v9": "Sulla Blade è vivace e potente, più vicina a O-Toro che a RPM Blast.",
-  "for_your_style": "Buona per il topspin, ma con il tuo volume aspettati 2 settimane prima che cali. Ricorda che la tua riga 'RPM Rough' del file è questa stessa corda."
+  "for_your_style": "Buona per il topspin, ma aspettati un calo di tensione rapido. Ricorda che la tua riga 'RPM Rough' del file è questa stessa corda."
  },
  "toroline-super-toro-17l": {
   "feel": "Esagonale 1.23, spin alto (7,8 su TWU). Rigidità incerta: TWU la dà medio-morbida (190 lb/in), il tuo test e il rivenditore la danno piuttosto rigida. Nel tuo test tiene bene a 6 mesi (13%) ma cala a 12 (24%).",
@@ -77,7 +77,7 @@
  "toroline-absolute-17l": {
   "feel": "Spin altissimo (9,3) e morbida (181 lb/in), ma perde molta tensione (47% su TWU).",
   "on_blade_100_v9": "Sulla Blade diventa molto potente: tienila a tensione piena.",
-  "for_your_style": "Per il topspin è vicina a O-Toro; il calo rapido la rende una corda da 2 settimane con il tuo volume."
+  "for_your_style": "Per il topspin è vicina a O-Toro; il calo rapido la rende una corda da rincordare presto."
  },
  "solinco-tour-bite-16l": {
   "feel": "Più rigida della Confidential (238 lb/in), tiene bene (25%), spin 5,9.",
@@ -87,7 +87,7 @@
  "wilson-revolve-spin-16": {
   "feel": "Pentagonale. TWU la misura morbida (173 lb/in) con calo fortissimo (55%), ma i test di gioco la descrivono rigida e 'spenta' con calo graduale (nel tuo file 27% a 12 mesi).",
   "on_blade_100_v9": "Sulla Blade dà un piatto poco vivo: la flessibilità del telaio non basta a renderla potente.",
-  "for_your_style": "Poco adatta: non ha né la risposta compatta della Confidential né lo snapback di O-Toro."
+  "for_your_style": "Poco adatta: non ha né la risposta compatta della Confidential né lo spin di O-Toro."
  },
  "re-string-zero-17": {
   "feel": "Esagonale 1.23, testata solo nel tuo file e su Racketpedia (1,05 kg/mm). Stiff Index 2,49, vicino alla Confidential (2,33); tiene bene (11% a 6 mesi, 19% a 12) e le recensioni ne lodano la tenuta.",
