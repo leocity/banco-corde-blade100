@@ -1,0 +1,188 @@
+// Schermata «Oggi»: corda montata, + Uscita in un tocco, voto in un secondo tocco, scorta, cambio corda.
+import { $, esc, NF, fullName, fmtN } from './format.js';
+import { addSession, rateSession, removeSession, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours } from './state.js';
+import { setVerdict } from './diary.js';
+import { tip, nameBtn, specLine, hasMeasures, itDate } from './ui.js';
+
+const QUICK_HOURS = 1.5;
+const FACES = ['', '😖', '🙁', '😐', '🙂', '😄'];
+const FEEL_WORD = ['', 'pessima', 'così così', 'normale', 'bene', 'benissimo'];
+const todayIso = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+const lifeSessions = (st) => st.sessions.filter((s) => s.life === st.equipped.since).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.ts < b.ts ? 1 : -1));
+const hoursTxt = (h) => `${fmtN(h, 1)} h`;
+
+function lastLifeLine(st, BY_ID) {
+  const done = st.lives.filter((l) => l.reason === 'consumata');
+  if (!done.length) return '';
+  const last = [...done].sort((a, b) => (a.to < b.to ? 1 : -1))[0];
+  const r = BY_ID[last.id];
+  const avg = done.length >= 3 ? ` In media le tue corde durano ${hoursTxt(done.reduce((a, l) => a + l.hours, 0) / done.length)} (${done.length} corde).` : '';
+  return `<p class="muted small">La tua corda precedente consumata (${esc(r ? r.model : last.id)}) è durata ${hoursTxt(last.hours)}.${avg}</p>`;
+}
+
+function rateRow(s) {
+  if (!s) return '';
+  const when = s.date === todayIso() ? 'oggi' : itDate(s.date);
+  const faces = [1, 2, 3, 4, 5].map((v) => `<button type="button" class="face" data-feel="${v}" data-ts="${esc(s.ts)}" aria-pressed="${s.feel === v}" aria-label="${v} su 5, ${FEEL_WORD[v]}">${FACES[v]}<span>${v}</span></button>`).join('');
+  const tags = SESSION_TAGS.map((t) => `<button type="button" class="chipbtn" data-stag="${esc(t)}" data-ts="${esc(s.ts)}" aria-pressed="${s.tag === t}">${esc(t)}</button>`).join('');
+  return `<div class="rate" aria-label="Voto dell'ultima uscita">
+    <p class="rate-q">${tip('voto', 'Com\'era?')} <span class="muted">uscita di ${esc(when)}, ${hoursTxt(s.hours)}</span></p>
+    <div class="faces" role="group" aria-label="Voto da 1 a 5">${faces}</div>
+    <details class="more"><summary>Una parola (facoltativa)</summary><div class="chips" role="group" aria-label="Una parola">${tags}</div></details>
+  </div>`;
+}
+
+function stockHtml(st, BY_ID) {
+  const items = (st.stock || []).filter((x) => BY_ID[x.id]);
+  const rows = items.map((x) => {
+    const r = BY_ID[x.id];
+    return `<li class="stock-item"><div>${nameBtn(r)}<span class="muted small"> · ${esc(x.size)}${x.size === 'mezza' ? ' (per ibrido)' : ''}</span></div>
+      <div class="stepper" role="group" aria-label="Quantità di ${esc(fullName(r))} ${esc(x.size)}">
+        <button type="button" class="btn sq" data-stock-dec="${esc(x.id)}" data-size="${esc(x.size)}" aria-label="Una in meno">−</button>
+        <span class="n" aria-live="polite">${x.n}</span>
+        <button type="button" class="btn sq" data-stock-inc="${esc(x.id)}" data-size="${esc(x.size)}" aria-label="Una in più">+</button></div></li>`;
+  }).join('');
+  return `<div class="section-head"><h2>${tip('scorta', 'In casa')}</h2></div>
+    ${items.length ? `<ul class="stock">${rows}</ul>` : '<p class="muted">Nessuna corda in casa. Aggiungi le matasse che hai: in «Prossima» le vedrai per prime.</p>'}
+    <button type="button" class="btn" id="stock-add">+ Aggiungi una corda che hai</button>`;
+}
+
+export function renderToday(ctx) {
+  const st = ctx.state(), r = ctx.equippedRec();
+  const ss = lifeSessions(st), hours = equippedHours(st);
+  const el = $('#oggi');
+  el.innerHTML = `
+    <div class="hero">
+      <p class="eyebrow">Montata ora</p>
+      <h2 class="hero-name">${nameBtn(r)}</h2>
+      <p class="muted">${specLine(r)} · ${tip('tensione', `${NF(1).format(st.equipped.kg[0])}/${NF(1).format(st.equipped.kg[1])} kg`)}</p>
+      <p class="hero-hours">${tip('ore', `<b class="num">${hoursTxt(hours)}</b>`)} su questa corda · ${ss.length} ${ss.length === 1 ? 'uscita' : 'uscite'}</p>
+      <div class="actions"><button type="button" class="btn primary big" id="quick-add">+ Uscita ${fmtN(QUICK_HOURS, 1)} h</button>
+        <button type="button" class="btn" id="other-hours" aria-expanded="false" aria-controls="hours-form">Altre ore</button></div>
+      <div class="hours-form" id="hours-form" hidden>
+        <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="5"></label>
+        <label>Data <input type="date" id="hours-date" value="${todayIso()}"></label>
+        <label class="grow">Nota <input id="hours-note" placeholder="facoltativa, es. torneo"></label>
+        <button type="button" class="btn primary" id="hours-add">Aggiungi</button>
+        <p class="err" id="hours-error" role="alert" hidden></p>
+      </div>
+      ${rateRow(ss[0])}
+    </div>
+    <section class="block">${stockHtml(st, ctx.BY_ID)}</section>
+    <section class="block">
+      <div class="section-head"><h2>Uscite</h2></div>
+      ${ss.length ? `<ul class="sessions">${ss.slice(0, 5).map((s) => `<li><span>${esc(itDate(s.date))}</span><span>${hoursTxt(s.hours)}</span><span>${s.feel ? `${FACES[s.feel]} ${s.feel}/5` : '<span class="muted">senza voto</span>'}${s.tag ? ` · ${esc(s.tag)}` : ''}${s.note ? ` · ${esc(s.note)}` : ''}</span><button type="button" class="btn sq ghost" data-del-session="${esc(s.ts)}" aria-label="Togli l'uscita del ${esc(itDate(s.date))}">✕</button></li>`).join('')}</ul>` : '<p class="muted">Nessuna uscita su questa corda.</p>'}
+      ${lastLifeLine(st, ctx.BY_ID)}
+      <button type="button" class="btn" id="change-btn">Cambia corda</button>
+    </section>`;
+}
+
+// ---------- dialogo per scegliere una corda (cambio corda e scorta) ----------
+function pickList(ctx, q, selected) {
+  const st = ctx.state();
+  const stockIds = (st.stock || []).map((x) => x.id);
+  const words = q.toLowerCase().split(/\s+/).filter(Boolean);
+  const all = ctx.ALL.filter((r) => words.every((w) => fullName(r).toLowerCase().includes(w)));
+  all.sort((a, b) => (stockIds.includes(b.id) - stockIds.includes(a.id)) || fullName(a).localeCompare(fullName(b)));
+  return all.slice(0, 40).map((r) => `<li><button type="button" class="pick ${r.id === selected ? 'on' : ''}" data-pick="${esc(r.id)}" aria-pressed="${r.id === selected}">
+    <span>${esc(fullName(r))}</span>${stockIds.includes(r.id) ? '<span class="tag ok">in casa</span>' : ''}${hasMeasures(r) ? '' : '<span class="tag">nessuna misura</span>'}</button></li>`).join('') || '<li class="muted">Nessuna corda trovata.</li>';
+}
+
+function openPicker(ctx, { title, okLabel, withChange, onOk }) {
+  const dlg = $('#pick-dialog');
+  const st = ctx.state();
+  let selected = null, verdict = null, size = 'intera';
+  $('#pk-title').textContent = title;
+  $('#pk-ok').textContent = okLabel;
+  $('#pk-q').value = '';
+  $('#pk-change').hidden = !withChange;
+  $('#pk-stock').hidden = withChange;
+  $('#pk-err').hidden = true;
+  if (withChange) {
+    $('#pk-kgv').value = NF(1).format(st.equipped.kg[0]); $('#pk-kgh').value = NF(1).format(st.equipped.kg[1]);
+    $('#pk-old').textContent = ctx.equippedRec().model;
+    $('#pk-reason').value = 'consumata';
+    for (const b of dlg.querySelectorAll('[data-verdict]')) b.setAttribute('aria-pressed', 'false');
+  }
+  for (const b of dlg.querySelectorAll('[data-size]')) b.setAttribute('aria-pressed', String(b.dataset.size === size));
+  const draw = () => {
+    $('#pk-list').innerHTML = pickList(ctx, $('#pk-q').value, selected);
+    const inStock = (ctx.state().stock || []).filter((x) => x.id === selected);
+    $('#pk-from-stock').hidden = !withChange || !inStock.length;
+    $('#pk-from-stock-sel').innerHTML = inStock.map((x) => `<option value="${esc(x.size)}">sì, una ${esc(x.size)}</option>`).join('') + '<option value="">no</option>';
+  };
+  dlg.oninput = (e) => { if (e.target.id === 'pk-q') draw(); };
+  dlg.onclick = (e) => {
+    const p = e.target.closest('[data-pick]'); if (p) { selected = p.dataset.pick; draw(); return; }
+    const v = e.target.closest('[data-verdict]'); if (v) { verdict = verdict === v.dataset.verdict ? null : v.dataset.verdict; for (const b of dlg.querySelectorAll('[data-verdict]')) b.setAttribute('aria-pressed', String(b.dataset.verdict === verdict)); return; }
+    const z = e.target.closest('[data-size]'); if (z) { size = z.dataset.size; for (const b of dlg.querySelectorAll('[data-size]')) b.setAttribute('aria-pressed', String(b.dataset.size === size)); return; }
+    if (e.target.closest('#pk-cancel')) { dlg.close(); return; }
+    if (e.target.closest('#pk-ok')) {
+      const err = (m) => { $('#pk-err').textContent = m; $('#pk-err').hidden = false; };
+      if (!selected) { err('Scegli una corda dall\'elenco.'); return; }
+      if (withChange) {
+        const kv = Number(String($('#pk-kgv').value).replace(',', '.')), kh = Number(String($('#pk-kgh').value).replace(',', '.'));
+        if (![kv, kh].every((k) => Number.isFinite(k) && k >= 15 && k <= 35)) { err('Tensioni tra 15 e 35 kg.'); return; }
+        onOk({ id: selected, kg: [kv, kh], reason: $('#pk-reason').value, verdict, fromStock: $('#pk-from-stock').hidden ? null : ($('#pk-from-stock-sel').value || null) });
+      } else onOk({ id: selected, size });
+      dlg.close();
+    }
+  };
+  draw();
+  dlg.showModal();
+  $('#pk-q').focus();
+}
+
+export function initToday(ctx) {
+  const root = $('#oggi');
+  root.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t.closest('#quick-add')) {
+      const ts = `${Date.now()}-q`, before = ctx.state();
+      ctx.update((s) => addSession(s, { date: todayIso(), hours: QUICK_HOURS, ts }));
+      ctx.toast(`Uscita di ${fmtN(QUICK_HOURS, 1)} h aggiunta. Com'era? Tocca una faccina.`, () => ctx.update(() => before));
+      const f = $('#oggi .face'); if (f) f.focus();
+      return;
+    }
+    if (t.closest('#other-hours')) { const f = $('#hours-form'); f.hidden = !f.hidden; t.closest('#other-hours').setAttribute('aria-expanded', String(!f.hidden)); if (!f.hidden) $('#hours-input').focus(); return; }
+    if (t.closest('#hours-add')) {
+      const h = parseHours($('#hours-input').value), date = $('#hours-date').value || todayIso();
+      if (!h.ok) { $('#hours-error').textContent = h.reason; $('#hours-error').hidden = false; return; }
+      const note = $('#hours-note').value.trim().slice(0, 200);
+      ctx.update((s) => addSession(s, { date, hours: h.value, note, ts: `${Date.now()}-m` }));
+      ctx.toast(`Uscita di ${hoursTxt(h.value)} aggiunta.`);
+      return;
+    }
+    const fc = t.closest('[data-feel]');
+    if (fc) { const v = Number(fc.dataset.feel), ts = fc.dataset.ts; ctx.update((s) => { const cur = s.sessions.find((x) => x.ts === ts); return rateSession(s, ts, { feel: cur && cur.feel === v ? null : v }); }); return; }
+    const tg = t.closest('[data-stag]');
+    if (tg) { const v = tg.dataset.stag, ts = tg.dataset.ts; ctx.update((s) => { const cur = s.sessions.find((x) => x.ts === ts); return rateSession(s, ts, { tag: cur && cur.tag === v ? null : v }); }); return; }
+    const del = t.closest('[data-del-session]');
+    if (del) { const before = ctx.state(); ctx.update((s) => removeSession(s, del.dataset.delSession)); ctx.toast('Uscita tolta.', () => ctx.update(() => before)); return; }
+    const inc = t.closest('[data-stock-inc]'); if (inc) { ctx.update((s) => addStock(s, inc.dataset.stockInc, inc.dataset.size)); return; }
+    const dec = t.closest('[data-stock-dec]');
+    if (dec) { const it = (ctx.state().stock || []).find((x) => x.id === dec.dataset.stockDec && x.size === dec.dataset.size); if (it) ctx.update((s) => setStockCount(s, it.id, it.size, it.n - 1)); return; }
+    if (t.closest('#stock-add')) {
+      openPicker(ctx, { title: 'Aggiungi una corda che hai', okLabel: 'Aggiungi', withChange: false,
+        onOk: ({ id, size }) => { ctx.update((s) => addStock(s, id, size)); ctx.toast(`${fullName(ctx.BY_ID[id])} (${size}) aggiunta alle corde in casa.`); } });
+      return;
+    }
+    if (t.closest('#change-btn')) ctx.equip(null);
+  });
+  ctx.onEquip = (preset) => {
+    openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', withChange: true,
+      onOk: ({ id, kg, reason, verdict, fromStock }) => {
+        const before = ctx.state(), old = ctx.equippedRec();
+        ctx.update((s) => {
+          let n = verdict ? updateDiary(s, 'current', (d) => setVerdict(d, verdict)) : s;
+          n = applyVerdict(n, s.equipped.id, verdict);
+          return changeString(n, { id, kg, date: new Date().toISOString(), endReason: reason, fromStock });
+        });
+        const vtxt = verdict === 'si' ? ` La ${old.model} va tra le preferite.` : verdict === 'no' ? ` La ${old.model} va tra quelle che non ti piacciono.` : '';
+        ctx.toast(`Montata ${fullName(ctx.BY_ID[id])}.${vtxt}`, () => ctx.update(() => before));
+        ctx.goto('oggi');
+      } });
+    if (preset) { const b = $(`#pk-list [data-pick="${CSS.escape(preset)}"]`); if (b) b.click(); }
+  };
+}
+

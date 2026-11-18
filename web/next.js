@@ -80,7 +80,7 @@ export function candidates(state, ALL, goal, meta, limit = 3) {
     else if (refs.length > 1 || (refs[0] && refs[0] !== ref)) {
       for (const rf of refs) { const j = judge(goal, compareTo(rec, rf, meta)); if (j.ok) { ok = true; confirm = Math.max(confirm, j.confirm); } }
     } else if (refs[0]) { const j = judge(goal, rows); ok = j.ok; confirm = j.confirm; }
-    const lk = likeness(rec, state.liked || [], state.disliked || [], ALL, meta);
+    const lk = likeness(rec, (state.liked || []).filter((id) => id !== state.equipped.id), state.disliked || [], ALL, meta);
     const value = g && rec.lab && rec.lab.twu && typeof rec.lab.twu[g.field] === 'number' ? rec.lab.twu[g.field] : null;
     return { rec, rows, summary: summarize(rows, refName), compatible: ok, confirm, likeness: lk, rank, value, inStock: stockIds.includes(rec.id) };
   });

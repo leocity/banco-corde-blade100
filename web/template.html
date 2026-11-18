@@ -8,189 +8,91 @@
 
 <div class="wrap">
   <header class="top">
-    <div class="brandline">
-      <h1>Banco Corde Blade 100</h1>
-      <span class="sync" id="sync-badge" role="status"></span>
-      <button class="guide-btn" type="button" data-goto="metodo" aria-label="Apri il Metodo">Metodo</button>
-    </div>
+    <h1>Banco Corde <span>Blade 100</span></h1>
+    <span class="sync" id="sync-badge" role="status"></span>
   </header>
 
-  <nav class="tabs" role="tablist" aria-label="Sezioni">
-    <button role="tab" id="tab-scegli" data-tab="scegli" aria-selected="true"><span class="ico" aria-hidden="true">★</span>Scegli</button>
-    <button role="tab" id="tab-mappa" data-tab="mappa" aria-selected="false"><span class="ico" aria-hidden="true">◫</span>Mappa</button>
-    <button role="tab" id="tab-montata" data-tab="montata" aria-selected="false"><span class="ico" aria-hidden="true">◴</span>Montata</button>
-  </nav>
-
   <main>
-    <section id="scegli" class="panel" role="tabpanel" aria-labelledby="tab-scegli">
-      <button class="strip" id="strip" type="button" data-goto="montata" aria-label="Apri la schermata Montata"></button>
-      <div class="searchrow">
-        <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="q" placeholder="Cerca una corda"></label>
-        <button class="btn" type="button" id="filter-btn" data-open-filter>Filtra</button>
-      </div>
-      <p class="callout small" id="no-refs" hidden><b>Segna una corda «mi piace»</b> (★ nella scheda) per vedere il pairing.</p>
-      <div id="top3-wrap">
-        <div class="section-head"><h2>Le 3 da provare</h2><button class="q" type="button" data-method="pairing" aria-label="Come si calcola il pairing">?</button></div>
-        <div class="top3" id="top3"></div>
-      </div>
-      <div class="section-head"><h2 id="list-title">Tutte le altre</h2><span class="muted small" id="list-count"></span></div>
-      <div class="list" id="list"></div>
-      <button class="btn" type="button" id="more" hidden>Mostra altre</button>
-      <details class="ai-new" id="ai-new" hidden>
-        <summary>Valuta una corda che non c'è</summary>
-        <div class="equip-form">
-          <label>Nome <input id="ai-new-name" placeholder="Marca e modello"></label>
-          <label>Calibro <input id="ai-new-gauge" size="6" placeholder="1,24"></label>
-          <label>Descrizioni incollate (facoltativo) <textarea id="ai-pasted" rows="4"></textarea></label>
-          <button class="btn primary" type="button" id="ai-new-go">Valuta con AI</button>
-          <div class="ai-out" id="ai-new-out" aria-live="polite"></div>
-        </div>
+    <section id="oggi" class="panel" role="tabpanel" aria-labelledby="tab-oggi"></section>
+
+    <section id="prossima" class="panel" role="tabpanel" aria-labelledby="tab-prossima" hidden>
+      <div id="next-q"></div>
+      <div id="next-list"></div>
+      <section class="block">
+        <div class="section-head"><h2>Cerca una corda</h2></div>
+        <label class="search"><span class="sr">Cerca una corda</span><input type="search" id="next-search" placeholder="Nome, es. O-Toro" autocomplete="off"></label>
+        <ul class="results" id="next-results" aria-live="polite"></ul>
+      </section>
+      <details class="block hy" id="hy-box">
+        <summary><h2>Ibridi</h2><span class="muted small">verticali e orizzontali diverse</span></summary>
+        <div id="hybrid"></div>
       </details>
+      <div id="ask-main"></div>
     </section>
 
-    <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden>
-      <div class="map-bar">
-        <div class="chips" id="map-presets" role="group" aria-label="Asse orizzontale">
-          <button type="button" class="chipbtn" data-axes="rs" aria-pressed="true">Rigidità</button>
-          <button type="button" class="chipbtn" data-axes="ts" aria-pressed="false">Tenuta</button>
-        </div>
-        <button class="btn" type="button" id="map-filter-btn" data-open-filter>Filtra</button>
-      </div>
-      <p class="map-status muted small" id="map-status"></p>
-      <p class="map-legend" id="map-legend"><span><i style="background:var(--s-target)"></i>montata</span><span><i style="background:var(--s-liked)"></i>★ preferite</span><span><i style="background:var(--s-disliked)"></i>non gradite</span><span><i style="background:var(--s-other)"></i>altre</span></p>
-      <div class="chart-box"><svg id="scatter" role="img" aria-label="Mappa delle corde: spin in verticale"></svg></div>
-      <div id="map-pick" aria-live="polite"></div>
-    </section>
-
-    <section id="montata" class="panel" role="tabpanel" aria-labelledby="tab-montata" hidden>
-      <div id="mine-summary"></div>
-      <div class="wear-box" id="wear"></div>
-      <div class="card-actions"><button class="btn primary" type="button" id="equip-btn">Cambia corda</button></div>
-      <div class="log-box">
-        <h3>Segna le ore</h3>
-        <div class="card-actions">
-          <button class="btn" type="button" data-add-hours="1">+1 h</button>
-          <button class="btn" type="button" data-add-hours="1.5">+1,5 h</button>
-          <button class="btn" type="button" data-add-hours="2">+2 h</button>
-        </div>
-        <div class="chips" id="day-chips" role="group" aria-label="Giorno della sessione">
-          <button type="button" class="chipbtn" data-day="0" aria-pressed="true">Oggi</button>
-          <button type="button" class="chipbtn" data-day="1" aria-pressed="false">Ieri</button>
-        </div>
-        <details class="more" id="hours-more">
-          <summary>Altre ore, data o nota</summary>
-          <div class="controls">
-            <label>Ore <input id="hours-input" inputmode="decimal" placeholder="1,5" size="6"></label>
-            <label>Data <input type="date" id="hours-date"></label>
-            <label>Nota <input id="hours-note" placeholder="facoltativa"></label>
-            <button class="btn primary" type="button" id="hours-add">Aggiungi</button>
-          </div>
-        </details>
-        <p class="gaps" id="hours-error" role="alert" hidden></p>
-      </div>
-      <section class="diary" id="diary" data-dtarget="current" aria-label="Voti e sensazioni"></section>
-      <details class="more" id="sessions-box"><summary id="sessions-sum">Sessioni</summary><ul class="sessions" id="sessions"></ul></details>
-      <details class="more" id="history-box"><summary id="history-sum">Corde finite</summary><ul class="sessions" id="history"></ul><div class="card-actions"><button class="btn" type="button" id="past-add">Aggiungi prova passata</button></div></details>
-      <details class="more" id="other-box">
-        <summary>Altro</summary>
-        <div class="log-box" id="ai-wear-box" hidden>
-          <h3>Parere AI sull'usura</h3>
-          <label class="small">Come suona? (facoltativo) <textarea id="ai-wear-note" rows="2" placeholder="suona spenta, palla lunga…"></textarea></label>
-          <button class="btn" type="button" id="ai-wear">Chiedi un parere</button>
-          <div class="ai-out" id="ai-wear-out" aria-live="polite"></div>
-        </div>
-        <div class="card-actions">
-          <button class="btn" type="button" id="export-btn" hidden>Esporta lo storico</button>
-          <button class="btn" type="button" id="export-diary" hidden>Esporta il diario (CSV)</button>
-        </div>
-      </details>
-      <p class="callout small" id="persist-note" role="status" hidden></p>
-    </section>
-    <section id="metodo" class="panel prose" hidden></section>
+    <section id="scienza" class="panel" role="tabpanel" aria-labelledby="tab-scienza" hidden></section>
   </main>
-
 </div>
 
-<aside class="tray" id="tray" aria-label="Confronto" hidden></aside>
+<nav class="tabs" role="tablist" aria-label="Sezioni">
+  <button role="tab" id="tab-oggi" data-tab="oggi" aria-controls="oggi" aria-selected="true"><span class="ico" aria-hidden="true">◴</span>Oggi</button>
+  <button role="tab" id="tab-prossima" data-tab="prossima" aria-controls="prossima" aria-selected="false" tabindex="-1"><span class="ico" aria-hidden="true">→</span>Prossima</button>
+  <button role="tab" id="tab-scienza" data-tab="scienza" aria-controls="scienza" aria-selected="false" tabindex="-1"><span class="ico" aria-hidden="true">≡</span>Scienza</button>
+</nav>
+
 <div class="toast" id="toast" role="status" hidden></div>
 
-<dialog id="filter-dialog" aria-labelledby="flt-title">
-  <div class="equip-form">
-    <div class="dlg-body">
-      <h2 id="flt-title">Filtra</h2>
-      <div class="chips" id="flt-brands" role="group" aria-label="Marca"></div>
-      <label class="check"><input type="checkbox" id="flt-measured"> Solo dati misurati</label>
-      <label class="check"><input type="checkbox" id="flt-good"> Solo pairing buono o meglio</label>
-      <label class="check"><input type="checkbox" id="flt-others"> Anche altre marche</label>
-    </div>
-    <div class="dlg-foot"><div class="card-actions"><button class="btn" type="button" id="flt-reset">Azzera</button><button class="btn primary" type="button" id="flt-ok">Mostra</button></div></div>
-  </div>
-</dialog>
+<div class="tipbox" id="tip" role="dialog" aria-modal="false" aria-labelledby="tip-body" hidden>
+  <div id="tip-body"></div>
+  <button type="button" class="btn" id="tip-close">Chiudi</button>
+</div>
 
-<dialog id="equip-dialog" aria-labelledby="eq-title">
-  <div class="equip-form">
+<dialog id="pick-dialog" aria-labelledby="pk-title">
+  <div class="dlg">
     <div class="dlg-body">
-    <h2 id="eq-title">Cambia corda</h2>
-    <label>Cerca <input type="search" id="eq-q" placeholder="Nome della corda"></label>
-    <label>Nuova corda <select id="eq-pick" size="6"></select></label>
-    <div class="controls">
-      <label>Verticali (kg) <input id="eq-kgv" inputmode="decimal" size="5"></label>
-      <label>Orizzontali (kg) <input id="eq-kgh" inputmode="decimal" size="5"></label>
-      <label>Data <input type="date" id="eq-date"></label>
-    </div>
-    <p class="muted small">Tensione precompilata dalla regola empirica sulla tua montata (non è una misura).</p>
-    <div class="controls">
-      <label>La corda che togli è <select id="eq-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
-      <label>Ore giocate <input id="eq-hours" inputmode="decimal" size="5"></label>
-    </div>
-    <label class="check"><input type="checkbox" id="eq-rate"> Dai i voti di fine vita alla corda che togli</label>
+      <h2 id="pk-title">Cambia corda</h2>
+      <label class="search"><span class="sr">Cerca</span><input type="search" id="pk-q" placeholder="Cerca per nome" autocomplete="off"></label>
+      <ul class="picklist" id="pk-list"></ul>
+      <div id="pk-stock">
+        <p class="small">Che cosa hai?</p>
+        <div class="chips" role="group" aria-label="Intera o mezza"><button type="button" class="chipbtn" data-size="intera" aria-pressed="true">Intera (un set)</button><button type="button" class="chipbtn" data-size="mezza" aria-pressed="false">Mezza (per ibrido)</button></div>
+      </div>
+      <div id="pk-change">
+        <div class="row">
+          <label>Verticali (kg) <input id="pk-kgv" inputmode="decimal" size="5"></label>
+          <label>Orizzontali (kg) <input id="pk-kgh" inputmode="decimal" size="5"></label>
+        </div>
+        <p class="small muted">Precompilate con la tensione della corda che togli.</p>
+        <label id="pk-from-stock" hidden>La prendi da quelle in casa? <select id="pk-from-stock-sel"></select></label>
+        <label>La <span id="pk-old"></span> che togli è <select id="pk-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
+        <p class="small">La ricompreresti?</p>
+        <div class="chips" role="group" aria-label="La ricompreresti?"><button type="button" class="chipbtn" data-verdict="si" aria-pressed="false">Sì (va tra le preferite)</button><button type="button" class="chipbtn" data-verdict="forse" aria-pressed="false">Forse</button><button type="button" class="chipbtn" data-verdict="no" aria-pressed="false">No (non mi piace)</button></div>
+      </div>
     </div>
     <div class="dlg-foot">
-    <p class="gaps" id="eq-error" role="alert" hidden></p>
-    <div class="card-actions"><button class="btn" type="button" id="eq-cancel">Annulla</button><button class="btn primary" type="button" id="eq-ok">Monta</button></div>
+      <p class="err" id="pk-err" role="alert" hidden></p>
+      <div class="actions"><button type="button" class="btn" id="pk-cancel">Annulla</button><button type="button" class="btn primary" id="pk-ok">Monta</button></div>
     </div>
   </div>
 </dialog>
 
-<dialog id="trial-dialog" aria-labelledby="tr-title">
-  <div class="equip-form">
+<dialog id="cmp-dialog" aria-labelledby="cmp-title">
+  <div class="dlg">
     <div class="dlg-body">
-    <h2 id="tr-title">Aggiungi prova passata</h2>
-    <label>Cerca <input type="search" id="tr-q" placeholder="Nome della corda"></label>
-    <label>Corda <select id="tr-pick" size="5"></select></label>
-    <div class="controls">
-      <label>Verticali (kg) <input id="tr-kgv" inputmode="decimal" size="5"></label>
-      <label>Orizzontali (kg) <input id="tr-kgh" inputmode="decimal" size="5"></label>
-      <label>Ore giocate <input id="tr-hours" inputmode="decimal" size="5"></label>
+      <button type="button" class="btn back" id="cmp-close">‹ Indietro</button>
+      <h2 id="cmp-title">Confronto</h2>
+      <div id="cmp-body"></div>
     </div>
-    <div class="controls">
-      <label>Dal <input type="date" id="tr-from"></label>
-      <label>Al <input type="date" id="tr-to"></label>
-      <label>Com'è finita <select id="tr-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
-    </div>
-    <p class="muted small">Date e ore anche approssimate. Solo le corde «consumata» servono a stimare la vita attesa.</p>
-    </div>
-    <div class="dlg-foot">
-    <p class="gaps" id="tr-error" role="alert" hidden></p>
-    <div class="card-actions"><button class="btn" type="button" id="tr-cancel">Annulla</button><button class="btn primary" type="button" id="tr-ok">Aggiungi e dai i voti</button></div>
-    </div>
-  </div>
-</dialog>
-
-<dialog id="past-dialog" aria-labelledby="past-title">
-  <div class="equip-form">
-    <div class="dlg-body">
-    <h2 id="past-title">Voti della corda</h2>
-    <section class="diary" id="past-diary"></section>
-    </div>
-    <div class="dlg-foot"><div class="card-actions"><button class="btn primary" type="button" id="past-close">Fatto</button></div></div>
+    <div class="dlg-foot"><div class="actions"><button type="button" class="btn" id="cmp-open" data-open="">Apri la scheda</button></div></div>
   </div>
 </dialog>
 
 <dialog id="sheet" aria-labelledby="sheet-title">
-  <div class="sheet-inner">
-    <button class="close sheet-back" id="sheet-close" type="button">‹ Indietro</button>
-    <div id="sheet-body"></div>
+  <div class="dlg">
+    <div class="dlg-body">
+      <button type="button" class="btn back" id="sheet-close">‹ Indietro</button>
+      <div id="sheet-body"></div>
+    </div>
   </div>
 </dialog>
 

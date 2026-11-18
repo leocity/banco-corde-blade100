@@ -117,6 +117,8 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     return {
         "generated": datetime.date.today().isoformat(),
         "sources": sources or {},
+        # verifiche fatte a mano sulle fonti (recuperato dalla pagina online: era l'unica copia)
+        "verified": {k: v for k, v in (_load("data/verified.json", {}) or {}).items() if not k.startswith("_")} or None,
         "weights_default": DEFAULT_WEIGHTS,
         # pendenza della tensione (kg per lb/in) ricavata dalle due preferite: la pagina la usa partendo dalla corda attuale
         "tension_slope_kg_per_lbin": next((r["derived"]["tension_start"]["slope_kg_per_lbin"] for r in records
