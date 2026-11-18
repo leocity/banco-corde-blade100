@@ -9,6 +9,12 @@ const okKg = (kg) => Array.isArray(kg) && kg.length === 2 && kg.every((v) => isN
 const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d } : {}; };
 
 export const STATE_VERSION = 2;
+// v6: scorta (matasse intere o mezze), voto dell'uscita, domanda di «Prossima». Campi facoltativi: la versione resta 2.
+export const SIZES = ['intera', 'mezza'];
+export const NEXT_GOALS = ['same', 'softer', 'stiffer', 'holds', 'spin'];
+export const SESSION_TAGS = ['viva', 'pastosa', 'scivola', 'secca', 'vibra', 'spenta', 'precisa', 'lunga'];
+const isFeel = (v) => Number.isInteger(v) && v >= 1 && v <= 5;
+const okStockItem = (x) => x && isStr(x.id) && SIZES.includes(x.size) && Number.isInteger(x.n) && x.n >= 1 && x.n <= 99;
 // ID dei documenti db: lettere, cifre e _ - . ~ : @ + (nessuna barra né spazio)
 const isDocPart = (v) => isStr(v) && /^[A-Za-z0-9_.~:@+-]{1,150}$/.test(v) && v !== '.' && v !== '..';
 
@@ -27,6 +33,33 @@ export function setPreference(state, id, pref) {
   return { ...state, liked, disliked };
 }
 
+export function addStock(state, id, size) {
+  if (!isStr(id) || !SIZES.includes(size)) return state;
+  const stock = [...(state.stock || [])];
+  const i = stock.findIndex((x) => x.id === id && x.size === size);
+  if (i >= 0) stock[i] = { ...stock[i], n: Math.min(99, stock[i].n + 1) }; else stock.push({ id, size, n: 1 });
+  return { ...state, stock };
+}
+export function setStockCount(state, id, size, n) {
+  const stock = (state.stock || []).map((x) => (x.id === id && x.size === size ? { ...x, n } : x)).filter((x) => x.n >= 1);
+  return { ...state, stock };
+}
+export function useStock(state, id, size) {
+  const it = (state.stock || []).find((x) => x.id === id && x.size === size);
+  return it ? setStockCount(state, id, size, it.n - 1) : state;
+}
+// Voto (1–5) e un tag sull'uscita; null toglie il campo; valori non validi non cambiano nulla.
+export function rateSession(state, ts, { feel, tag } = {}) {
+  return { ...state, sessions: state.sessions.map((s) => {
+    if (s.ts !== ts) return s;
+    const out = { ...s };
+    if (feel === null) delete out.feel; else if (isFeel(feel)) out.feel = feel;
+    if (tag === null) delete out.tag; else if (isStr(tag) && tag.length <= 30) out.tag = tag;
+    return out;
+  }) };
+}
+export const setNextGoal = (state, goal) => (NEXT_GOALS.includes(goal) ? { ...state, nextGoal: goal } : state);
+
 export function equippedHours(state) {
   return state.equipped.hours0 + state.sessions.filter((s) => s.life === state.equipped.since).reduce((a, s) => a + s.hours, 0);
 }
@@ -38,9 +71,10 @@ export function addSession(state, { date, hours, note = '', ts }) {
 export const removeSession = (state, ts) => ({ ...state, sessions: state.sessions.filter((s) => s.ts !== ts) });
 export const editSession = (state, ts, patch) => ({ ...state, sessions: state.sessions.map((s) => (s.ts === ts ? { ...s, ...patch } : s)) });
 
-export function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()) }) {
+export function changeString(state, { id, kg, date, endReason, endHours, note = '', lid = String(Date.now()), fromStock = null }) {
   const life = { lid, id: state.equipped.id, kg: [...state.equipped.kg], from: state.equipped.since, to: date, hours: endHours ?? equippedHours(state), reason: endReason, note, ...(state.equipped.diary ? { diary: state.equipped.diary } : {}) };
-  return { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
+  const next = { ...state, equipped: { id, kg: [...kg], since: date, hours0: 0 }, lives: [...state.lives, life] };
+  return fromStock ? useStock(next, id, fromStock) : next;
 }
 
 // Prova passata (prima dell'app): una vita chiusa con tensione, date approssimate e ore. Dati non validi: lo stato non cambia.
@@ -104,12 +138,16 @@ export function sanitizeState(raw, defaults, knownIds) {
   const liked = ids(obj.liked, base.liked);
   const disliked = ids(obj.disliked, base.disliked).filter((x) => !liked.includes(x));
   const sessions = (Array.isArray(obj.sessions) ? obj.sessions : []).filter((s) => s && isDocPart(s.ts) && isDate(s.date) && isNum(s.hours) && s.hours > 0 && s.hours <= 24 && isStr(s.life))
-    .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life }));
+    .map((s) => ({ ts: s.ts, date: s.date, hours: s.hours, note: isStr(s.note) ? s.note : '', life: s.life,
+      ...(isFeel(s.feel) ? { feel: s.feel } : {}), ...(isStr(s.tag) && s.tag.length <= 30 ? { tag: s.tag } : {}) }));
   const rawLives = Array.isArray(obj.lives) ? obj.lives : [];
   const lives = rawLives.filter((l) => l && isStr(l.id) && isNum(l.hours) && l.hours >= 0 && l.hours <= 500 && isStr(l.from) && isStr(l.to) && okKg(l.kg))
     .map((l) => ({ lid: isDocPart(l.lid) ? l.lid : legacyLid(l.from), id: l.id, kg: [...l.kg], from: l.from, to: l.to, hours: l.hours, reason: !isStr(l.reason) ? 'consumata' : PAST_REASONS.includes(l.reason) ? l.reason : 'cambiata per prova', note: isStr(l.note) ? l.note : '', ...diaryOf(l.diary) }));
   if (lives.length < rawLives.length) warnings.push(`${rawLives.length - lives.length} corda/e finita/e con dati non validi sono state ignorate.`);
-  return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives }, warnings };
+  const stock = [];
+  for (const x of Array.isArray(obj.stock) ? obj.stock : []) if (okStockItem(x) && known.has(x.id) && !stock.some((y) => y.id === x.id && y.size === x.size)) stock.push({ id: x.id, size: x.size, n: x.n });
+  const extra = { ...(stock.length ? { stock } : {}), ...(NEXT_GOALS.includes(obj.nextGoal) ? { nextGoal: obj.nextGoal } : {}) };
+  return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives, ...extra }, warnings };
 }
 
 // ---------- stato <-> documenti db ----------
@@ -123,7 +161,8 @@ export function splitState(state) {
   const sessions = {}, lives = {};
   for (const s of state.sessions) sessions[`s-${s.ts}`] = s;
   for (const l of state.lives) lives[`l-${l.lid}`] = l;
-  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives };
+  const extra = { ...(state.stock && state.stock.length ? { stock: state.stock } : {}), ...(state.nextGoal ? { nextGoal: state.nextGoal } : {}) };
+  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked, ...extra }, sessions, lives };
 }
 
 // Stato grezzo da passare a sanitizeState. Se il documento `state` è ancora quello v1 (con gli array), li unisce agli elementi.

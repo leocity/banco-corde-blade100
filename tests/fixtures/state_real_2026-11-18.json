@@ -1,0 +1,236 @@
+{
+ "_note": "Copia dei documenti db reali al 2026-11-18 (nessun dato personale: solo corde, ore, voti)",
+ "core": {
+  "disliked": [
+   "solinco-confidential-soft-16",
+   "solinco-confidential-soft-17",
+   "babolat-rpm-blast-16",
+   "babolat-rpm-blast-17",
+   "solinco-barb-wire-16",
+   "solinco-confidential-soft-16l"
+  ],
+  "equipped": {
+   "diary": {
+    "meter": [],
+    "nextKgDelta": null,
+    "notes": "Forse ha perso un po' rispetto alla restring zero",
+    "ratings": {
+     "first": {
+      "comfort": 4,
+      "control": 4,
+      "power": 4,
+      "spin": 4
+     },
+     "mid": {
+      "comfort": 4,
+      "control": 3,
+      "liveness": 3,
+      "power": 4,
+      "spin": 3
+     }
+    },
+    "setup": {
+     "prestretch": null,
+     "stringer": "",
+     "strungOn": null,
+     "surface": "mista"
+    },
+    "tags": [
+     "pastosa"
+    ],
+    "verdict": "forse"
+   },
+   "hours0": 0,
+   "id": "re-string-slap-17",
+   "kg": [
+    22,
+    21
+   ],
+   "since": "2026-10-31T13:29:43.457Z"
+  },
+  "liked": [
+   "solinco-confidential-16l",
+   "toroline-o-toro-17",
+   "re-string-zero-17",
+   "re-string-slap-17"
+  ],
+  "v": 2
+ },
+ "sessions": {
+  "s-1794235906128-12": {
+   "date": "2026-11-08",
+   "hours": 2.5,
+   "life": "2026-10-31T13:29:43.457Z",
+   "note": "torneo",
+   "ts": "1794235906128-12"
+  },
+  "s-1793446694885-1": {
+   "date": "2026-10-08",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446694885-1"
+  },
+  "s-1793446787299-5": {
+   "date": "2026-10-20",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446787299-5"
+  },
+  "s-1793446698071-2": {
+   "date": "2026-10-08",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446698071-2"
+  },
+  "s-1794952925718-15": {
+   "date": "2026-11-17",
+   "hours": 1.5,
+   "life": "2026-10-31T13:29:43.457Z",
+   "note": "",
+   "ts": "1794952925718-15"
+  },
+  "s-1793446803795-8": {
+   "date": "2026-10-29",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446803795-8"
+  },
+  "s-1794235838030-11": {
+   "date": "2026-11-05",
+   "hours": 1.5,
+   "life": "2026-10-31T13:29:43.457Z",
+   "note": "",
+   "ts": "1794235838030-11"
+  },
+  "s-1793446807236-9": {
+   "date": "2026-10-30",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446807236-9"
+  },
+  "s-1793446726372-2": {
+   "date": "2026-10-10",
+   "hours": 4,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "Torneo",
+   "ts": "1793446726372-2"
+  },
+  "s-1793446764930-3": {
+   "date": "2026-10-15",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446764930-3"
+  },
+  "s-1793446790308-6": {
+   "date": "2026-10-22",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446790308-6"
+  },
+  "s-1793446773014-4": {
+   "date": "2026-10-17",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446773014-4"
+  },
+  "s-1794822542749-13": {
+   "date": "2026-11-10",
+   "hours": 1.5,
+   "life": "2026-10-31T13:29:43.457Z",
+   "note": "",
+   "ts": "1794822542749-13"
+  },
+  "s-1794822550377-14": {
+   "date": "2026-11-12",
+   "hours": 1.5,
+   "life": "2026-10-31T13:29:43.457Z",
+   "note": "",
+   "ts": "1794822550377-14"
+  },
+  "s-1793741398867-10": {
+   "date": "2026-11-03",
+   "hours": 1.5,
+   "life": "2026-10-31T13:29:43.457Z",
+   "note": "",
+   "ts": "1793741398867-10"
+  },
+  "s-1793446801155-7": {
+   "date": "2026-10-27",
+   "hours": 1.5,
+   "life": "2026-10-31T10:39:49.706Z",
+   "note": "",
+   "ts": "1793446801155-7"
+  }
+ },
+ "lives": {
+  "l-1793453383457": {
+   "diary": {
+    "meter": [],
+    "nextKgDelta": null,
+    "notes": "",
+    "ratings": {
+     "end": {
+      "comfort": 3,
+      "control": 2,
+      "durability": 4,
+      "liveness": 4,
+      "power": 3,
+      "spin": 4,
+      "stability": 3,
+      "touch": 3
+     },
+     "first": {
+      "comfort": 4,
+      "control": 3,
+      "durability": 4,
+      "liveness": 4,
+      "power": 3,
+      "spin": 4,
+      "stability": 4,
+      "touch": 3
+     },
+     "mid": {
+      "comfort": 4,
+      "control": 4,
+      "durability": 3,
+      "liveness": 3,
+      "power": 4,
+      "spin": 4,
+      "stability": 3,
+      "touch": 4
+     }
+    },
+    "setup": {
+     "prestretch": null,
+     "stringer": "",
+     "strungOn": "2026-10-06",
+     "surface": null
+    },
+    "tags": [
+     "resta-viva",
+     "scivola"
+    ],
+    "verdict": "forse"
+   },
+   "from": "2026-10-31T10:39:49.706Z",
+   "hours": 17.5,
+   "id": "re-string-zero-17",
+   "kg": [
+    22.5,
+    21.5
+   ],
+   "lid": "1793453383457",
+   "note": "",
+   "reason": "consumata",
+   "to": "2026-10-31T13:29:43.457Z"
+  }
+ }
+}
