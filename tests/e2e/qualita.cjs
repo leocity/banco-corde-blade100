@@ -4,8 +4,8 @@ const { openPage, tab, BAD, test, assert } = require('./ui.cjs');
 const TABS = ['oggi', 'prossima', 'scienza'];
 const JARGON = /\b(percentil\w*|gemell\w*|parente|pairing|snapback|TL6|TL12)\b/i;
 
-async function eachView(fn) {
-  const { page, ctx, errors } = await openPage();
+async function eachView(fn, opts = {}) {
+  const { page, ctx, errors } = await openPage(opts);
   for (const t of TABS) { await tab(page, t); await fn(page, t); }
   // una scheda corda aperta (con confronto e stime)
   await tab(page, 'prossima');
@@ -68,12 +68,13 @@ test('O7: bersagli da almeno 44 px (tranne i tooltip nel testo) e nessuno scroll
   });
 });
 
-test('O7: contrasto del testo almeno 4,5:1 (3:1 per testo grande)', async () => {
+for (const scheme of ['light', 'dark']) {
+test(`O7: contrasto del testo almeno 4,5:1 (3:1 per testo grande), tema ${scheme}`, async () => {
   await eachView(async (page, where) => {
     const low = await page.evaluate(() => {
       const rgb = (s) => (s.match(/[\d.]+/g) || []).map(Number);
       const lum = ([r, g, b]) => { const f = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
-      const bgOf = (el) => { for (let e = el; e; e = e.parentElement) { const c = rgb(getComputedStyle(e).backgroundColor); if (c.length === 3 || (c.length === 4 && c[3] > 0.9)) return c.slice(0, 3); } return [255, 255, 255]; };
+      const bgOf = (el) => { for (let e = el; e; e = e.parentElement) { const c = rgb(getComputedStyle(e).backgroundColor); if (c.length === 3 || (c.length === 4 && c[3] > 0.9)) return c.slice(0, 3); } return (document.documentElement.matches(':root') && matchMedia('(prefers-color-scheme: dark)').matches ? [18, 24, 23] : [255, 255, 255]); };
       const out = [];
       for (const el of document.querySelectorAll('body *')) {
         if (!el.offsetParent || el.closest('[aria-hidden="true"]')) continue;
@@ -90,8 +91,10 @@ test('O7: contrasto del testo almeno 4,5:1 (3:1 per testo grande)', async () => 
       return out;
     });
     assert.deepEqual(low, [], where);
-  });
+  }, { colorScheme: scheme });
 });
+
+}
 
 test('O7: il tasto Indietro chiude la scheda, poi torna alla schermata precedente', async () => {
   const { page, ctx } = await openPage();

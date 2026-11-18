@@ -11,8 +11,8 @@ before(async () => { browser = await chromium.launch(); });
 after(async () => { await browser.close(); });
 
 // claude: sorgente di una funzione eseguita prima della pagina per simulare window.claude
-async function openPage({ width = 390, height = 844, claude, storage, hash = '' } = {}) {
-  const ctx = await browser.newContext({ viewport: { width, height } });
+async function openPage({ width = 390, height = 844, claude, storage, hash = '', colorScheme = 'light' } = {}) {
+  const ctx = await browser.newContext({ viewport: { width, height }, colorScheme });
   const page = await ctx.newPage();
   page.setDefaultTimeout(5000);
   const errors = [];
