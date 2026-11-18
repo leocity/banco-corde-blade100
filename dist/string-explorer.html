@@ -1579,7 +1579,7 @@ function renderHybrid(ctx) {
     <p class="small">${esc(kgNote)}</p>
     <details class="more"><summary>Idee da provare (non calcolate)</summary>
       <p class="small muted">Idee del progetto, con la fiducia che gli diamo noi: non sono consigli calcolati.</p>
-      <ul class="ideas">${HY_IDEAS.filter((x) => ctx.BY_ID[x.v] && ctx.BY_ID[x.o]).map((x) => `<li><b>${esc(x.k)}</b> · ${esc(ctx.BY_ID[x.v].model)} in verticale, ${esc(ctx.BY_ID[x.o].model)} in orizzontale, ${NF(1).format(x.kv)}/${NF(1).format(x.ko)} kg <span class="tag">fiducia ${esc(x.conf)}</span><br><span class="small">${esc(x.why)}</span><br><button type="button" class="btn" data-hy-load="${esc(x.k)}">Prova questa</button></li>`).join('')}</ul>
+      <ul class="ideas">${HY_IDEAS.filter((x) => ctx.BY_ID[x.v] && ctx.BY_ID[x.o]).map((x) => `<li><b>${esc(x.k)}</b> · ${esc(ctx.BY_ID[x.v].model)} in verticale, ${esc(ctx.BY_ID[x.o].model)} in orizzontale, ${NF(1).format(x.kv)}/${NF(1).format(x.ko)} kg <span class="tag">fiducia ${esc(x.conf)}</span><br><span class="small">${esc(x.why)}</span>${/lb\/in/.test(x.why) ? ` ${infoTip('twu.stiffness', 'Cos\'è la rigidità in gioco')}` : ''}${/kg\/mm/.test(x.why) ? ` ${infoTip('rp.kgmm', 'Cos\'è la rigidità a riposo')}` : ''}<br><button type="button" class="btn" data-hy-load="${esc(x.k)}">Prova questa</button></li>`).join('')}</ul>
     </details>`;
 }
 
@@ -1867,17 +1867,22 @@ function showTab(id) {
 const dlgStack = [];
 let ignorePop = 0, skipBack = 0, afterPop = [];
 const lastFocus = new Map();
+let lastClicked = null; // alcuni browser non danno il focus ai bottoni toccati: si ricorda l'ultimo toccato
+document.addEventListener('click', (e) => { const b = e.target.closest('button, a, summary'); if (b) lastClicked = b; }, true);
 const nativeShowModal = HTMLDialogElement.prototype.showModal;
 HTMLDialogElement.prototype.showModal = function showModalTracked() {
-  lastFocus.set(this, document.activeElement);
+  const a = document.activeElement;
+  lastFocus.set(this, a && a !== document.body && !this.contains(a) ? a : lastClicked);
   nativeShowModal.call(this); dlgStack.push(this); history.pushState({ dlg: true }, '');
 };
 document.addEventListener('close', (e) => {
   const i = dlgStack.indexOf(e.target); if (i < 0) return;
   dlgStack.splice(i, 1);
   const f = lastFocus.get(e.target); lastFocus.delete(e.target);
-  if (f && document.contains(f)) f.focus(); // il focus torna a chi ha aperto il dialogo, non al body
+  const refocus = () => { if (f && document.contains(f) && !dlgStack.some((d) => d.open)) f.focus(); }; // il focus torna a chi ha aperto il dialogo
+  refocus();
   if (skipBack > 0) { skipBack -= 1; return; }
+  afterPop.push(() => setTimeout(refocus, 0)); // tornare indietro nella cronologia toglie il focus: lo si rimette dopo
   ignorePop += 1; history.back();
 }, true);
 window.addEventListener('popstate', () => {

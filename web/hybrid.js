@@ -2,7 +2,7 @@
 // confronto con la montata solo nella stessa fonte. Niente verdetti «controllo», niente soglie inventate, niente prezzi.
 import { $, esc, NF, fullName } from './format.js';
 import { CMP_KEYS, levelOf } from './cmp.js';
-import { tip, fmtV } from './ui.js';
+import { tip, fmtV, infoTip } from './ui.js';
 
 const HY_KEY = 'banco-corde:ibrido';
 const HY_KG = Array.from({ length: 17 }, (_, i) => 20 + i * 0.5);
@@ -74,7 +74,7 @@ export function renderHybrid(ctx) {
     <p class="small">${esc(kgNote)}</p>
     <details class="more"><summary>Idee da provare (non calcolate)</summary>
       <p class="small muted">Idee del progetto, con la fiducia che gli diamo noi: non sono consigli calcolati.</p>
-      <ul class="ideas">${HY_IDEAS.filter((x) => ctx.BY_ID[x.v] && ctx.BY_ID[x.o]).map((x) => `<li><b>${esc(x.k)}</b> · ${esc(ctx.BY_ID[x.v].model)} in verticale, ${esc(ctx.BY_ID[x.o].model)} in orizzontale, ${NF(1).format(x.kv)}/${NF(1).format(x.ko)} kg <span class="tag">fiducia ${esc(x.conf)}</span><br><span class="small">${esc(x.why)}</span><br><button type="button" class="btn" data-hy-load="${esc(x.k)}">Prova questa</button></li>`).join('')}</ul>
+      <ul class="ideas">${HY_IDEAS.filter((x) => ctx.BY_ID[x.v] && ctx.BY_ID[x.o]).map((x) => `<li><b>${esc(x.k)}</b> · ${esc(ctx.BY_ID[x.v].model)} in verticale, ${esc(ctx.BY_ID[x.o].model)} in orizzontale, ${NF(1).format(x.kv)}/${NF(1).format(x.ko)} kg <span class="tag">fiducia ${esc(x.conf)}</span><br><span class="small">${esc(x.why)}</span>${/lb\/in/.test(x.why) ? ` ${infoTip('twu.stiffness', 'Cos\'è la rigidità in gioco')}` : ''}${/kg\/mm/.test(x.why) ? ` ${infoTip('rp.kgmm', 'Cos\'è la rigidità a riposo')}` : ''}<br><button type="button" class="btn" data-hy-load="${esc(x.k)}">Prova questa</button></li>`).join('')}</ul>
     </details>`;
 }
 

@@ -69,17 +69,22 @@ function showTab(id) {
 const dlgStack = [];
 let ignorePop = 0, skipBack = 0, afterPop = [];
 const lastFocus = new Map();
+let lastClicked = null; // alcuni browser non danno il focus ai bottoni toccati: si ricorda l'ultimo toccato
+document.addEventListener('click', (e) => { const b = e.target.closest('button, a, summary'); if (b) lastClicked = b; }, true);
 const nativeShowModal = HTMLDialogElement.prototype.showModal;
 HTMLDialogElement.prototype.showModal = function showModalTracked() {
-  lastFocus.set(this, document.activeElement);
+  const a = document.activeElement;
+  lastFocus.set(this, a && a !== document.body && !this.contains(a) ? a : lastClicked);
   nativeShowModal.call(this); dlgStack.push(this); history.pushState({ dlg: true }, '');
 };
 document.addEventListener('close', (e) => {
   const i = dlgStack.indexOf(e.target); if (i < 0) return;
   dlgStack.splice(i, 1);
   const f = lastFocus.get(e.target); lastFocus.delete(e.target);
-  if (f && document.contains(f)) f.focus(); // il focus torna a chi ha aperto il dialogo, non al body
+  const refocus = () => { if (f && document.contains(f) && !dlgStack.some((d) => d.open)) f.focus(); }; // il focus torna a chi ha aperto il dialogo
+  refocus();
   if (skipBack > 0) { skipBack -= 1; return; }
+  afterPop.push(() => setTimeout(refocus, 0)); // tornare indietro nella cronologia toglie il focus: lo si rimette dopo
   ignorePop += 1; history.back();
 }, true);
 window.addEventListener('popstate', () => {

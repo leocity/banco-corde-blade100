@@ -1,4 +1,4 @@
-// Smoke test della pagina costruita (dist/preview.html) con Playwright. Prima: python3 -m pipeline.build_page
+// Test della pagina costruita (dist/preview.html) con Playwright. Prima: python3 -m pipeline.build_page
 const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('node:path');
@@ -11,34 +11,35 @@ before(async () => { browser = await chromium.launch(); });
 after(async () => { await browser.close(); });
 
 // claude: sorgente di una funzione eseguita prima della pagina per simulare window.claude
-async function openPage({ width = 1280, height = 900, claude, hasTouch = false, storage, clock = false, waitReady = true } = {}) {
-  const ctx = await browser.newContext({ viewport: { width, height }, hasTouch });
+async function openPage({ width = 390, height = 844, claude, storage, hash = '' } = {}) {
+  const ctx = await browser.newContext({ viewport: { width, height } });
   const page = await ctx.newPage();
   page.setDefaultTimeout(5000);
   const errors = [];
   page.on('pageerror', (e) => errors.push(String(e)));
   if (storage) await page.addInitScript((s) => { for (const [k, v] of Object.entries(s)) if (localStorage.getItem(k) === null) localStorage.setItem(k, v); }, storage);
   if (claude) await page.addInitScript(claude);
-  if (clock) await page.clock.install();
-  await page.goto(URL);
-  if (waitReady) await page.waitForFunction(() => window.__bancoReady === true && window.__aiReady === true);
+  await page.goto(URL + hash);
+  await page.waitForFunction(() => window.__bancoReady === true);
   return { page, ctx, errors };
 }
-const bodyText = (page) => page.innerText('body');
-// Apre la scheda di una corda dalla ricerca di Scegli (con il nome, non serve conoscere la posizione in lista)
-async function openSheetById(page, id) {
-  const name = await page.evaluate((i) => { const r = window.STRINGS_DATA.strings.find((x) => x.id === i); return `${r.brand} ${r.model}`; }, id);
-  await page.locator('#tab-scegli').click();
-  await page.locator('#q').fill(name);
-  for (let k = 0; k < 6 && !(await page.locator(`#list [data-open="${id}"]`).count()); k++) { if (await page.locator('#more').isVisible()) await page.locator('#more').click(); else break; }
-  await page.locator(`#list [data-open="${id}"]`).first().click();
-  await page.waitForSelector('dialog#sheet[open]');
-}
 const stateOf = (page) => page.evaluate(() => JSON.parse(localStorage.getItem('banco-corde:state') || 'null'));
-// In Montata le parti secondarie stanno in sezioni chiuse: i test che le usano le aprono tutte
-const expandMontata = (page) => page.evaluate(() => document.querySelectorAll('#montata details.more').forEach((d) => { d.open = true; }));
-module.exports = { openPage, openSheetById, expandMontata, bodyText, stateOf, BAD, test, assert };
+const tab = async (page, id) => { await page.locator(`#tab-${id}`).click(); await page.waitForSelector(`#${id}:not([hidden])`); };
+
+// db a raccolta simulato (data/users/u1): sopravvive al reload (usa localStorage); `extra` aggiunge altre capability
+const FAKE_CLAUDE = (extra = '') => `(() => {
+  const P = 'fakedb:'; const subs = [];
+  const all = () => Object.keys(localStorage).filter((k) => k.startsWith(P)).sort().map((k) => { const id = k.slice(P.length); const v = JSON.parse(localStorage.getItem(k)); return { id, exists: true, data: () => v }; });
+  const notify = () => subs.forEach((cb) => cb({ docs: all() }));
+  const col = { get: async () => ({ docs: all() }), onSnapshot: (cb) => { subs.push(cb); return () => {}; },
+    doc: (id) => ({ set: async (d) => { localStorage.setItem(P + id, JSON.stringify(d)); notify(); }, delete: async () => { localStorage.removeItem(P + id); notify(); } }) };
+  const caps = { db: { collection: () => col }, user: { id: async () => 'u1' } ${extra} };
+  window.claude = { use: async (n) => caps[n] || null };
+})()`;
+const dbDocs = (page) => page.evaluate(() => Object.fromEntries(Object.keys(localStorage).filter((k) => k.startsWith('fakedb:')).map((k) => [k.slice(7), JSON.parse(localStorage.getItem(k))])));
+
+module.exports = { openPage, stateOf, tab, FAKE_CLAUDE, dbDocs, BAD, test, assert };
 
 if (require.main === module) {
-  for (const f of ['scegli', 'compare', 'montata', 'mappa', 'ai', 'sheet', 'nav', 'diario']) require(`./${f}.cjs`);
+  for (const f of ['oggi', 'prossima', 'scienza', 'qualita']) require(`./${f}.cjs`);
 }
