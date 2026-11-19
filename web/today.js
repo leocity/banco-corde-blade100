@@ -1,6 +1,6 @@
 // Schermata «Oggi»: corda montata, + Uscita in un tocco, voto in un secondo tocco, scorta, cambio corda.
 import { $, esc, NF, fullName, fmtN } from './format.js';
-import { addSession, rateSession, removeSession, restoreSession, addPastLife, setEquippedKg, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours } from './state.js';
+import { addSession, rateSession, removeSession, restoreSession, addPastLife, setEquippedKg, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours, SIZE_LABEL, canStringFull } from './state.js';
 import { setVerdict } from './diary.js';
 import { tip, nameBtn, specLine, hasMeasures, itDate } from './ui.js';
 
@@ -43,14 +43,14 @@ function stockHtml(st, BY_ID) {
   const items = (st.stock || []).filter((x) => BY_ID[x.id]);
   const rows = items.map((x) => {
     const r = BY_ID[x.id];
-    return `<li class="stock-item"><div>${nameBtn(r)}<span class="muted small"> · ${esc(x.size)}${x.size === 'mezza' ? ' (per ibrido)' : ''}</span></div>
+    return `<li class="stock-item"><div>${nameBtn(r)}<span class="muted small"> · ${esc(SIZE_LABEL[x.size] || x.size)}${x.size === 'mezza' ? ' (metà di un ibrido)' : ' (una racchetta)'}</span></div>
       <div class="stepper" role="group" aria-label="Quantità di ${esc(fullName(r))} ${esc(x.size)}">
         <button type="button" class="btn sq" data-stock-dec="${esc(x.id)}" data-size="${esc(x.size)}" aria-label="Una in meno">−</button>
         <span class="n" aria-live="polite">${x.n}</span>
         <button type="button" class="btn sq" data-stock-inc="${esc(x.id)}" data-size="${esc(x.size)}" aria-label="Una in più">+</button></div></li>`;
   }).join('');
   return `<div class="section-head"><h2>${tip('scorta', 'In casa')}</h2></div>
-    ${items.length ? `<ul class="stock">${rows}</ul>` : '<p class="muted">Nessuna corda in casa. Aggiungi le matasse che hai: in «Prossima» le vedrai per prime.</p>'}
+    ${items.length ? `<ul class="stock">${rows}</ul>` : '<p class="muted">Nessuna corda in casa. Aggiungi le matassine e le mezze che hai: in «Prossima» le vedrai per prime.</p>'}
     <button type="button" class="btn" id="stock-add">+ Aggiungi una corda che hai</button>`;
 }
 
@@ -131,8 +131,13 @@ function openPicker(ctx, { title, okLabel, mode, onOk }) {
   const draw = () => {
     $('#pk-list').innerHTML = pickList(ctx, $('#pk-q').value, selected);
     const inStock = (ctx.state().stock || []).filter((x) => x.id === selected);
-    $('#pk-from-stock').hidden = !withChange || !inStock.length;
-    $('#pk-from-stock-sel').innerHTML = inStock.map((x) => `<option value="${esc(x.size)}">sì, una ${esc(x.size)}</option>`).join('') + '<option value="">no</option>';
+    const st2 = ctx.state();
+    const opts = [];
+    if (inStock.some((x) => x.size === 'intera')) opts.push('<option value="intera">sì, una matassina</option>');
+    if (inStock.some((x) => x.size === 'mezza' && x.n >= 2)) opts.push('<option value="due-mezze">sì, due mezze</option>');
+    $('#pk-from-stock').hidden = !withChange || !selected || !canStringFull(st2, selected);
+    $('#pk-from-stock-sel').innerHTML = opts.join('') + '<option value="">no</option>';
+    $('#pk-half-only').hidden = !withChange || !inStock.length || canStringFull(st2, selected);
   };
   dlg.oninput = (e) => { if (e.target.id === 'pk-q') draw(); };
   dlg.onclick = (e) => {

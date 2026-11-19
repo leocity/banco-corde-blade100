@@ -243,3 +243,11 @@ L'utente: consigli, confronti e ibridi devono tenere conto di rigidità, lancio,
 - **Consigli** (`web/next.js`): ogni domanda è un obiettivo fisico sul confronto tra letti (nuova domanda «Palla più bassa»); il valore principale della corda proposta deve essere misurato o ricavato da dati.
 - **Ibridi consigliati**: coppie dalle corde in casa, poi comprando una mezza, o due mezze se la scorta è vuota; regola fisica: verticale rigida almeno quanto l'orizzontale (entro il 10%), orizzontale tonda preferita; una coppia sola per combinazione, mai la stessa corda in due calibri. Il costruttore usa lo stesso modello.
 - **Confronto** (dialogo e scheda): prima il confronto in campo, poi le misure fonte per fonte.
+
+## 16. v6.3 (19/11/2026)
+
+- **Scorta**: «matassina» (set da 12 m, una racchetta intera) e «mezza» (circa 6 m, metà ibrido). Una racchetta intera richiede una matassina o due mezze della stessa corda (`canStringFull`); con una mezza sola niente «Monta», solo ibridi; il cambio corda consuma una matassina o due mezze.
+- **Marche preferite** (quelle delle corde con ★): bonus nel punteggio dei consigli e degli ibridi (≈ 10 punti percentuali di rigidità): prima le tue marche, un'altra marca solo se nettamente migliore.
+- **Comparatore** (`web/cmpui.js`): la montata e fino a 3 corde fianco a fianco su rigidità appena montata, dopo il calo, lancio, spin, perdita, più calibro, forma, materiale e rigidità da ferma; «Confronta» aggiunge, la ricerca nel dialogo aggiunge, ✕ toglie; dalla Mappa «Confronta queste corde».
+- **AI con i dati** (`web/ask.js`): nel testo sempre un riassunto (montata con valori e tipo, corde in casa confrontate col modello fisico, consigli per ogni domanda, regola della scorta); dove la pagina lo permette, strumenti per cercare qualsiasi corda, leggerne i valori, confrontarne fino a 4 e chiedere i consigli.
+- **Excel aggiornato**: il file è di Kerry Hlady (metadati); il gruppo Facebook non è raggiungibile senza accesso. Da fare: l'utente carica il nuovo file nel repo (`data/source/`) o su Google Drive.

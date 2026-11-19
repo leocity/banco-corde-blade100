@@ -4,6 +4,12 @@
 // principale per la domanda è misurato o ricavato da dati (non solo dalla fisica). Puro, testato.
 import { compareTo, valueOf } from './cmp.js';
 import { bedOf, compareBeds, physSummary } from './phys.js';
+import { canStringFull } from './state.js';
+
+// Le tue marche: quelle delle corde che hai segnato con ★. Tra le corde che vanno nella direzione chiesta vengono prima;
+// un'altra marca passa davanti solo se è nettamente migliore (il bonus vale circa 10 punti percentuali di rigidità).
+export const BRAND_BONUS = 1.0;
+export const prefBrands = (state, by) => new Set((state.liked || []).map((id) => by[id] && by[id].brand).filter(Boolean));
 
 export const GOALS = [
   { key: 'same', label: 'Simile', ask: 'simile alla tua' },
@@ -76,18 +82,21 @@ export function candidates(state, ALL, goal, meta, limit = 3) {
   const note = !refBed.kNow ? `Per la ${refName} non c'è nessun valore di rigidità: il confronto usa solo spin e tenuta.`
     : refEst.length ? `La ${refName} non è misurata da TWU: i suoi valori in campo sono ricavati (rigidità dalla misura Racketpedia, spin e tenuta dalla fisica). Il segno ≈ nelle frasi indica i valori ricavati della corda proposta.` : '';
   const likedNoEq = (state.liked || []).filter((id) => id !== state.equipped.id);
+  const brands = prefBrands(state, by);
   const items = pool.map((rec) => {
     const bed = bedOf(rec, rec, kg);
     const rows = compareBeds(bed, refBed);
     const j = judgePhys(goal, rows);
     const solid = solidFor(rec, goal);
     return { rec, bed, rows, summary: { text: physSummary(rows, refName) }, cmpRows: compareTo(rec, ref, meta),
-      compatible: j.ok && solid, score: j.score - estPenalty(rows), solid, likeness: likeness(rec, likedNoEq, state.disliked || [], ALL, meta),
-      inStock: stockIds.includes(rec.id), equipped: rec.id === state.equipped.id, disliked: (state.disliked || []).includes(rec.id) };
+      compatible: j.ok && solid, score: j.score - estPenalty(rows) + (brands.has(rec.brand) ? BRAND_BONUS : 0), solid, likeness: likeness(rec, likedNoEq, state.disliked || [], ALL, meta),
+      prefBrand: brands.has(rec.brand), inStock: stockIds.includes(rec.id), full: canStringFull(state, rec.id),
+      equipped: rec.id === state.equipped.id, disliked: (state.disliked || []).includes(rec.id) };
   });
   const sorter = (a, b) => (b.compatible - a.compatible) || (b.score - a.score)
     || `${a.rec.brand} ${a.rec.model} ${a.rec.gauge_mm}`.localeCompare(`${b.rec.brand} ${b.rec.model} ${b.rec.gauge_mm}`);
-  const inStock = items.filter((x) => x.inStock).sort(sorter);
+  // in casa: prima quelle che bastano per una racchetta intera (matassina o due mezze), poi le mezze sole (vanno negli ibridi)
+  const inStock = items.filter((x) => x.inStock).sort((a, b) => (b.full - a.full) || sorter(a, b));
   const toBuy = items.filter((x) => !x.inStock && x.compatible && !excluded.has(x.rec.id)).sort(sorter).slice(0, limit);
   return { mode: 'relative', note, inStock, toBuy, refName, refBed };
 }
@@ -98,6 +107,7 @@ export function suggestHybrids(state, ALL, goal, meta, limit = 3) {
   const by = Object.fromEntries(ALL.map((r) => [r.id, r]));
   const ref = by[state.equipped.id], kg = state.equipped.kg;
   const refBed = bedOf(ref, ref, kg);
+  const brands = prefBrands(state, by);
   const disliked = new Set(state.disliked || []);
   const stock = [...new Set(STOCK_ORDER(state))].map((id) => by[id]).filter(Boolean);
   const okStiff = (r) => { const v = valueOf(r, 'twu.stiffness'); return !!v && v.est !== 'modello'; };
@@ -111,7 +121,8 @@ export function suggestHybrids(state, ALL, goal, meta, limit = 3) {
     const rows = compareBeds(bed, refBed);
     const j = judgePhys(goal, rows);
     if (!j.ok) return null;
-    return { V, O, bed, rows, summary: { text: physSummary(rows, shortName(ref)) }, score: j.score - estPenalty(rows) + (bed.roundCross ? 0.3 : 0),
+    const bb = (brands.has(V.brand) ? BRAND_BONUS / 2 : 0) + (brands.has(O.brand) ? BRAND_BONUS / 2 : 0);
+    return { V, O, bed, rows, summary: { text: physSummary(rows, shortName(ref)) }, score: j.score - estPenalty(rows) + (bed.roundCross ? 0.3 : 0) + bb,
       inStock: [stockHas(state, V.id), stockHas(state, O.id)] };
   };
   // una coppia sola per combinazione di corde (il verso migliore), poi le migliori

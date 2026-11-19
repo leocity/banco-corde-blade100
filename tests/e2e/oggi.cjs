@@ -62,11 +62,13 @@ test('Oggi: corde in casa, aggiunta e conto; cambio corda dalla scorta con verde
   // le corde in casa sono in cima all'elenco
   assert.equal(await page.locator('#pk-list [data-pick]').first().getAttribute('data-pick'), 'toroline-o-toro-17');
   await page.locator('#pk-list [data-pick="toroline-o-toro-17"]').click();
+  assert.equal(await page.locator('#pk-from-stock-sel').inputValue(), 'due-mezze', 'due mezze fanno una racchetta intera');
+  assert.equal(await page.locator('#pk-half-only').isVisible(), false);
   await page.locator('#pick-dialog [data-verdict="no"]').click();
   await page.locator('#pk-ok').click();
   const st = await stateOf(page);
   assert.equal(st.equipped.id, 'toroline-o-toro-17');
-  assert.deepEqual(st.stock, [{ id: 'toroline-o-toro-17', size: 'mezza', n: 1 }]);
+  assert.equal((st.stock || []).length, 0, 'consumate le due mezze');
   assert.ok(st.disliked.includes('re-string-slap-17'));
   assert.equal(st.lives[0].diary.verdict, 'no');
   assert.match(await page.innerText('#toast'), /non ti piacciono/);
@@ -157,5 +159,19 @@ test('Oggi: storico completo, corda passata aggiunta, tensione corretta', async 
   const docs = await dbDocs(page);
   assert.deepEqual(docs.state.equipped.kg, [22.5, 21]);
   assert.equal(Object.keys(docs).filter((k) => k.startsWith('l-')).length, 2);
+  await ctx.close();
+});
+
+test('Oggi: con una mezza sola il cambio corda avvisa che non basta per una racchetta intera', async () => {
+  const { page, ctx } = await openPage();
+  await page.locator('#stock-add').click();
+  await page.locator('#pk-q').fill('O-Toro 1,23');
+  await page.locator('#pk-list [data-pick="toroline-o-toro-17"]').click();
+  await page.locator('#pick-dialog [data-size="mezza"]').click();
+  await page.locator('#pk-ok').click();
+  await page.locator('#change-btn').click();
+  await page.locator('#pk-list [data-pick="toroline-o-toro-17"]').click();
+  assert.equal(await page.locator('#pk-half-only').isVisible(), true);
+  assert.equal(await page.locator('#pk-from-stock').isVisible(), false);
   await ctx.close();
 });

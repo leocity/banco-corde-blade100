@@ -8,6 +8,7 @@ import { renderHybrid, initHybrid } from './hybrid.js';
 import { renderMap, initMap } from './mappa.js';
 import { sheetHtml, compareHtml } from './sheet.js';
 import { askBoxHtml, initAsk } from './ask.js';
+import { compareListHtml, cmpSearch, addCompare, delCompare, setCompare, compareIds } from './cmpui.js';
 
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
@@ -46,7 +47,7 @@ function update(fn) {
   else if (persist) persist.save(state).then(renderSyncBadge);
   renderAll();
   if (sheet.open && sheetId) openSheet(sheetId);
-  if (cmpDlg.open && cmpId) openCompare(cmpId);
+  if (cmpDlg.open && cmpId) renderCompare();
 }
 
 // ---------- avvisi brevi con «Annulla» ----------
@@ -118,14 +119,25 @@ function openSheet(id) {
   if (keep) { const fresh = $('#sheet-body [data-ask]'); if (fresh) fresh.replaceWith(keep); }
   if (!sheet.open) { sheet.showModal(); sheet.scrollTop = 0; $('#sheet-close').focus(); }
 }
-function openCompare(id) {
-  const r = BY_ID[id], ref = BY_ID[state.equipped.id]; if (!r || !ref) return;
-  cmpId = id;
-  $('#cmp-title').textContent = `${r.model} contro la tua ${ref.model}`;
-  $('#cmp-body').innerHTML = `<p class="muted small">${esc(fullName(ref))} (montata) → ${esc(fullName(r))}</p>${compareHtml(r, ref, META, state.equipped.kg)}`;
-  $('#cmp-open').dataset.open = id;
+// Comparatore: «Confronta» aggiunge la corda al confronto (fino a 3 più la tua), che resta finché non la togli.
+function openCompare(id, list = null) {
+  if (list) setCompare(list); else if (id && id !== state.equipped.id) addCompare(id);
+  cmpId = id || 'list';
+  renderCompare();
   if (!cmpDlg.open) { cmpDlg.showModal(); $('#cmp-close').focus(); }
 }
+function renderCompare() {
+  const q = $('#cmp-q') ? $('#cmp-q').value : '';
+  $('#cmp-title').textContent = `Confronto (${compareIds().length + 1} corde)`;
+  $('#cmp-body').innerHTML = compareListHtml(ctx);
+  if ($('#cmp-q')) { $('#cmp-q').value = q; cmpSearch(ctx); }
+}
+cmpDlg.addEventListener('input', (e) => { if (e.target.id === 'cmp-q') cmpSearch(ctx); });
+cmpDlg.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-cmp-add]'); if (a) { addCompare(a.dataset.cmpAdd); if ($('#cmp-q')) $('#cmp-q').value = ''; renderCompare(); return; }
+  const d = e.target.closest('[data-cmp-del]'); if (d) { delCompare(d.dataset.cmpDel); renderCompare(); return; }
+  if (e.target.closest('#cmp-clear')) { setCompare([]); renderCompare(); }
+});
 for (const [d, btn] of [[sheet, '#sheet-close'], [cmpDlg, '#cmp-close']]) {
   $(btn).addEventListener('click', () => d.close());
   d.addEventListener('click', (e) => { if (e.target === d) d.close(); });
@@ -144,6 +156,7 @@ document.addEventListener('click', (e) => {
   const t = e.target;
   const tab = t.closest('.tabs [data-tab]'); if (tab) { goto(tab.dataset.tab); return; }
   const g = t.closest('[data-goto]'); if (g) { e.preventDefault(); goto(g.dataset.goto); return; }
+  const cl = t.closest('[data-cmp-list]'); if (cl) { const ids = cl.dataset.cmpList.split('|').filter(Boolean); whenDialogsClosed(() => openCompare(null, ids)); return; }
   const c = t.closest('[data-cmp]'); if (c) { const id = c.dataset.cmp; whenDialogsClosed(() => openCompare(id)); return; }
   const o = t.closest('[data-open]'); if (o) { const id = o.dataset.open; if (cmpDlg.open) whenDialogsClosed(() => openSheet(id)); else openSheet(id); return; }
   const l = t.closest('[data-like]'); if (l) { const id = l.dataset.like; update((s) => setPreference(s, id, s.liked.includes(id) ? null : 'liked')); return; }

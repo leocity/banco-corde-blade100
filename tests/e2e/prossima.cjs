@@ -37,14 +37,21 @@ test('Prossima: una corda in casa compatibile compare per prima', async () => {
   await ctx.close();
 });
 
-test('Prossima: Confronta apre il confronto con la montata; Esc chiude e il focus torna al bottone', async () => {
+test('Prossima: il comparatore mette la tua e fino a 3 corde fianco a fianco; Esc chiude e il focus torna', async () => {
   const { page, ctx } = await openPage({ hash: '#prossima' });
   const btn = page.locator('#next-list [data-cmp]').first();
   await btn.click();
   await page.waitForSelector('#cmp-dialog[open]');
+  await page.locator('#cmp-q').fill('o-toro tour 1,23');
+  await page.locator('#cmp-results [data-cmp-add]').first().click();
+  await page.locator('#cmp-q').fill('confidential 1,25');
+  await page.locator('#cmp-results [data-cmp-add]').first().click();
   const txt = await page.innerText('#cmp-dialog');
-  assert.match(txt, /contro la tua Slap/);
-  assert.match(txt, /Cosa non sappiamo/);
+  assert.match(txt, /Confronto \(4 corde\)/);
+  for (const re of [/Rigidità appena montata/, /Lancio della palla/, /Spin/, /Perdita di tensione/, /Slap/, /O-Toro Tour/, /Confidential/]) assert.match(txt, re);
+  assert.equal(await page.locator('#cmp-q').count(), 0, 'al massimo 4 corde');
+  await page.locator('#cmp-dialog [data-cmp-del]').first().click();
+  assert.match(await page.innerText('#cmp-title'), /3 corde/);
   await page.keyboard.press('Escape');
   await page.waitForSelector('#cmp-dialog:not([open])', { state: 'attached' });
   assert.equal(await page.evaluate(() => document.activeElement && document.activeElement.dataset.cmp !== undefined), true);

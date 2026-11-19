@@ -142,7 +142,7 @@ export function sheetHtml(r, ctx) {
   const inStock = (st.stock || []).filter((x) => x.id === r.id);
   return `<h2 id="sheet-title">${esc(fullName(r))}</h2>
     <p class="muted">${specLine(r)} · ${esc(yearTxt(r))}</p>
-    ${isEq ? '<p class="tag ok">montata ora</p>' : ''}${liked ? '<p class="tag ok">★ ti piace</p>' : ''}${disliked ? '<p class="tag warn">non ti piace</p>' : ''}${inStock.length ? `<p class="tag ok">in casa: ${inStock.map((x) => `${x.n} ${esc(x.size)}`).join(', ')}</p>` : ''}
+    ${isEq ? '<p class="tag ok">montata ora</p>' : ''}${liked ? '<p class="tag ok">★ ti piace</p>' : ''}${disliked ? '<p class="tag warn">non ti piace</p>' : ''}${inStock.length ? `<p class="tag ok">in casa: ${inStock.map((x) => `${x.n} ${esc(x.size === 'intera' ? (x.n === 1 ? 'matassina' : 'matassine') : (x.n === 1 ? 'mezza' : 'mezze'))}`).join(', ')}</p>` : ''}
     ${isEq ? '' : `<section class="block"><h3>Rispetto alla tua (${esc(ref.model)})</h3>${compareHtml(r, ref, meta, st.equipped.kg)}${tensionHtml(r, ref, st, meta, compareTo(r, ref, meta))}${lkTxt ? `<p class="small">${lkTxt}</p>` : ''}${warn}</section>`}
     <section class="block"><h3>Misure</h3>${measuresHtml(r)}${twinExcel(r, ctx.ALL)}${estimatesHtml(r)}</section>
     ${trialsHtml(r, st)}
@@ -153,7 +153,7 @@ export function sheetHtml(r, ctx) {
       ${isEq ? '' : `<button type="button" class="btn primary" data-equip="${esc(r.id)}">Monta questa</button>`}
       <button type="button" class="btn" data-like="${esc(r.id)}" aria-pressed="${liked}">${liked ? '★ Ti piace' : '☆ Mi piace'}</button>
       <button type="button" class="btn" data-dislike="${esc(r.id)}" aria-pressed="${disliked}">${disliked ? '✕ Non ti piace' : '✕ Non mi piace'}</button>
-      <button type="button" class="btn" data-stock-add="${esc(r.id)}" data-size="intera">+ In casa (intera)</button>
+      <button type="button" class="btn" data-stock-add="${esc(r.id)}" data-size="intera">+ In casa (matassina)</button>
       <button type="button" class="btn" data-stock-add="${esc(r.id)}" data-size="mezza">+ In casa (mezza)</button>
     </div>`;
 }

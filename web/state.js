@@ -11,6 +11,12 @@ const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d }
 export const STATE_VERSION = 2;
 // v6: scorta (matasse intere o mezze), voto dell'uscita, domanda di «Prossima». Campi facoltativi: la versione resta 2.
 export const SIZES = ['intera', 'mezza'];
+// «intera» = matassina (set da 12 m, una racchetta intera); «mezza» = mezza matassina (circa 6 m, solo metà di un ibrido).
+export const SIZE_LABEL = { intera: 'matassina', mezza: 'mezza matassina' };
+const countOf = (state, id, size) => ((state.stock || []).find((x) => x.id === id && x.size === size) || { n: 0 }).n;
+// Basta per una racchetta intera? Una matassina, oppure due mezze della stessa corda.
+export const canStringFull = (state, id) => countOf(state, id, 'intera') >= 1 || countOf(state, id, 'mezza') >= 2;
+export const canStringHalf = (state, id) => countOf(state, id, 'intera') >= 1 || countOf(state, id, 'mezza') >= 1;
 export const NEXT_GOALS = ['same', 'softer', 'stiffer', 'lower', 'holds', 'spin'];
 export const SESSION_TAGS = ['viva', 'pastosa', 'scivola', 'secca', 'vibra', 'spenta', 'precisa', 'lunga'];
 const isFeel = (v) => Number.isInteger(v) && v >= 1 && v <= 5;
@@ -45,6 +51,7 @@ export function setStockCount(state, id, size, n) {
   return { ...state, stock };
 }
 export function useStock(state, id, size) {
+  if (size === 'due-mezze') { const n = countOf(state, id, 'mezza'); return n >= 2 ? setStockCount(state, id, 'mezza', n - 2) : state; }
   const it = (state.stock || []).find((x) => x.id === id && x.size === size);
   return it ? setStockCount(state, id, size, it.n - 1) : state;
 }

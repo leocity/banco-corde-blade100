@@ -37,7 +37,7 @@ export const GLOSS = {
   letto: { title: 'Letto (ibrido)', kind: 'concetto',
     text: 'Media pesata delle due corde: 16 verticali e 19 orizzontali sulla Blade 100 (16×19), ognuna alla sua tensione. Lo spin viene per il 60% dalle verticali, che sono quelle che scivolano e tornano. La verticale deve essere rigida almeno quanto l\'orizzontale; un\'orizzontale tonda e liscia aiuta lo spin.' },
   scorta: { title: 'In casa', kind: 'tuo',
-    text: 'Le corde che hai già: matasse intere (un set) o mezze (per un ibrido). Quando ne monti una, il conto scende da solo.' },
+    text: 'Le corde che hai già: matassine (set da 12 m, una racchetta intera) o mezze (circa 6 m, metà di un ibrido). Due mezze della stessa corda fanno una racchetta intera. Quando ne monti una, il conto scende da solo.' },
   voto: { title: 'Com\'era?', kind: 'tuo',
     text: 'Il tuo voto all\'uscita, da 1 a 5. È un\'opinione tua: non cambia mai misure, confronti o consigli.' },
   ore: { title: 'Ore sulla corda', kind: 'tuo',

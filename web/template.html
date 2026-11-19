@@ -55,7 +55,7 @@
       <ul class="picklist" id="pk-list"></ul>
       <div id="pk-stock">
         <p class="small">Che cosa hai?</p>
-        <div class="chips" role="group" aria-label="Intera o mezza"><button type="button" class="chipbtn" data-size="intera" aria-pressed="true">Intera (un set)</button><button type="button" class="chipbtn" data-size="mezza" aria-pressed="false">Mezza (per ibrido)</button></div>
+        <div class="chips" role="group" aria-label="Matassina o mezza"><button type="button" class="chipbtn" data-size="intera" aria-pressed="true">Matassina (12 m, una racchetta)</button><button type="button" class="chipbtn" data-size="mezza" aria-pressed="false">Mezza (6 m, metà ibrido)</button></div>
       </div>
       <div id="pk-kg">
         <div class="row">
@@ -78,6 +78,7 @@
       <div id="pk-change">
         <label>Montata il <input type="date" id="pk-date"></label>
         <label id="pk-from-stock" hidden>La prendi da quelle in casa? <select id="pk-from-stock-sel"></select></label>
+        <p class="small callout warn" id="pk-half-only" hidden>In casa hai solo una mezza di questa corda: basta per metà racchetta. Per montarla intera te ne serve un'altra mezza o una matassina.</p>
         <label>La <span id="pk-old"></span> che togli è <select id="pk-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
         <p class="small">La ricompreresti?</p>
         <div class="chips" role="group" aria-label="La ricompreresti?"><button type="button" class="chipbtn" data-verdict="si" aria-pressed="false">Sì (va tra le preferite)</button><button type="button" class="chipbtn" data-verdict="forse" aria-pressed="false">Forse</button><button type="button" class="chipbtn" data-verdict="no" aria-pressed="false">No (non mi piace)</button></div>
@@ -97,7 +98,7 @@
       <h2 id="cmp-title">Confronto</h2>
       <div id="cmp-body"></div>
     </div>
-    <div class="dlg-foot"><div class="actions"><button type="button" class="btn" id="cmp-open" data-open="">Apri la scheda</button></div></div>
+    <div class="dlg-foot"><div class="actions"><button type="button" class="btn" id="cmp-clear">Svuota il confronto</button></div></div>
   </div>
 </dialog>
 

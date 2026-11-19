@@ -112,3 +112,15 @@ test('stato reale salvato (2026-11-18): si legge senza avvisi e senza perdere nu
   for (const [k, v] of Object.entries(fx.sessions)) assert.deepEqual(sessions[k], v, k);
   assert.deepEqual(core.equipped.kg, fx.core.equipped.kg);
 });
+
+test('matassina e mezza: una racchetta intera serve una matassina o due mezze della stessa corda', async () => {
+  const { canStringFull, canStringHalf, SIZE_LABEL } = await import('./state.js');
+  let s = addStock(base(), 'otoro', 'mezza');
+  assert.equal(canStringFull(s, 'otoro'), false);
+  assert.equal(canStringHalf(s, 'otoro'), true);
+  s = addStock(s, 'otoro', 'mezza');
+  assert.equal(canStringFull(s, 'otoro'), true);
+  assert.equal(useStock(s, 'otoro', 'due-mezze').stock.length, 0);
+  assert.equal(canStringFull(addStock(base(), 'conf', 'intera'), 'conf'), true);
+  assert.equal(SIZE_LABEL.intera, 'matassina');
+});

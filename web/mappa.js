@@ -54,7 +54,8 @@ function tableHtml(ctx) {
   const ids = [ref.id, ...mapSel.filter((id) => id !== ref.id)];
   const keys = MAP_RULERS;
   const cell = (r, key) => { const v = valueOf(r, key); return v ? `${mk(v.est)}${esc(fmtV(key, v.v))}` : '<span class="nm">nessun valore</span>'; };
-  return `<div class="mtable" role="table" aria-label="Le corde scelte">
+  const cmpBtn = ids.length > 1 ? `<div class="actions"><button type="button" class="btn primary" data-cmp-list="${esc(ids.slice(1).join('|'))}">Confronta queste ${ids.length} corde</button></div>` : '';
+  return `${cmpBtn}<div class="mtable" role="table" aria-label="Le corde scelte">
     ${ids.map((id) => { const r = ctx.BY_ID[id]; return `<div class="mrow" role="row"><div class="mname" role="cell"><button type="button" class="linkish" data-open="${esc(id)}">${esc(fullName(r))}</button>${id === ref.id ? ' <span class="tag ok">montata</span>' : ` <button type="button" class="btn sq ghost" data-map-del="${esc(id)}" aria-label="Togli ${esc(fullName(r))} dalla mappa">✕</button>`}</div>
       ${keys.map((R) => `<div class="mcell" role="cell"><span class="mlab">${esc(R.short)}</span> <span class="num">${cell(r, R.key)}</span></div>`).join('')}
       ${id === ref.id ? '' : `<div class="mcell" role="cell"><button type="button" class="btn" data-cmp="${esc(id)}">Confronta con la tua</button></div>`}</div>`; }).join('')}

@@ -77,3 +77,19 @@ test('ibridi senza corde in casa: coppie tra corde misurate, da comprare', () =>
   assert.ok(h.buyBoth.length >= 1);
   for (const p of h.buyBoth) assert.ok(p.V.lab.twu && p.O.lab.twu);
 });
+
+test('le marche delle preferite vengono prima, a parità di direzione', () => {
+  const a = { ...S('a', { stiffness: 230, loss: 25, spin: 7.7 }), brand: 'Mia' };
+  const b = { ...S('b', { stiffness: 232, loss: 25, spin: 7.7 }), brand: 'Altra' };
+  const fav = { ...S('fav', { stiffness: 200, loss: 30, spin: 8 }), brand: 'Mia' };
+  const r = candidates(st({ liked: ['fav'] }), [eq, a, b, fav], 'stiffer', meta);
+  assert.equal(r.toBuy[0].rec.id, 'a');
+  assert.equal(r.toBuy[0].prefBrand, true);
+});
+
+test('in casa: una mezza sola non basta per una racchetta intera; due mezze sì', () => {
+  const r1 = candidates(st({ stock: [{ id: 'stiff', size: 'mezza', n: 1 }] }), ALL, 'stiffer', meta);
+  assert.equal(r1.inStock[0].full, false);
+  const r2 = candidates(st({ stock: [{ id: 'stiff', size: 'mezza', n: 2 }] }), ALL, 'stiffer', meta);
+  assert.equal(r2.inStock[0].full, true);
+});

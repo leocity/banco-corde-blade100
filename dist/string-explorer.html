@@ -241,6 +241,15 @@ details.sci[open] { padding-bottom: 10px; }
 .mk-der { border: 2px solid var(--fg); background: linear-gradient(90deg, var(--fg) 50%, transparent 50%); }
 .mk-phys { border: 2px dashed var(--fg-2); }
 
+/* comparatore */
+.cchips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.cchip { display: inline-flex; align-items: center; gap: 4px; padding: 2px 4px 2px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-2); font-weight: 600; font-size: .9rem; }
+.cblock { margin: 12px 0; }
+.clist { list-style: none; padding: 0; margin: 4px 0; }
+.clist li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; border-bottom: 1px solid var(--line); padding: 6px 0; }
+.cname { font-weight: 600; }
+.cval { text-align: right; }
+
 </style>
 
 <div class="wrap">
@@ -292,7 +301,7 @@ details.sci[open] { padding-bottom: 10px; }
       <ul class="picklist" id="pk-list"></ul>
       <div id="pk-stock">
         <p class="small">Che cosa hai?</p>
-        <div class="chips" role="group" aria-label="Intera o mezza"><button type="button" class="chipbtn" data-size="intera" aria-pressed="true">Intera (un set)</button><button type="button" class="chipbtn" data-size="mezza" aria-pressed="false">Mezza (per ibrido)</button></div>
+        <div class="chips" role="group" aria-label="Matassina o mezza"><button type="button" class="chipbtn" data-size="intera" aria-pressed="true">Matassina (12 m, una racchetta)</button><button type="button" class="chipbtn" data-size="mezza" aria-pressed="false">Mezza (6 m, metà ibrido)</button></div>
       </div>
       <div id="pk-kg">
         <div class="row">
@@ -315,6 +324,7 @@ details.sci[open] { padding-bottom: 10px; }
       <div id="pk-change">
         <label>Montata il <input type="date" id="pk-date"></label>
         <label id="pk-from-stock" hidden>La prendi da quelle in casa? <select id="pk-from-stock-sel"></select></label>
+        <p class="small callout warn" id="pk-half-only" hidden>In casa hai solo una mezza di questa corda: basta per metà racchetta. Per montarla intera te ne serve un'altra mezza o una matassina.</p>
         <label>La <span id="pk-old"></span> che togli è <select id="pk-reason"><option>consumata</option><option>rotta</option><option>cambiata per prova</option></select></label>
         <p class="small">La ricompreresti?</p>
         <div class="chips" role="group" aria-label="La ricompreresti?"><button type="button" class="chipbtn" data-verdict="si" aria-pressed="false">Sì (va tra le preferite)</button><button type="button" class="chipbtn" data-verdict="forse" aria-pressed="false">Forse</button><button type="button" class="chipbtn" data-verdict="no" aria-pressed="false">No (non mi piace)</button></div>
@@ -334,7 +344,7 @@ details.sci[open] { padding-bottom: 10px; }
       <h2 id="cmp-title">Confronto</h2>
       <div id="cmp-body"></div>
     </div>
-    <div class="dlg-foot"><div class="actions"><button type="button" class="btn" id="cmp-open" data-open="">Apri la scheda</button></div></div>
+    <div class="dlg-foot"><div class="actions"><button type="button" class="btn" id="cmp-clear">Svuota il confronto</button></div></div>
   </div>
 </dialog>
 
@@ -409,7 +419,7 @@ const GLOSS = {
   letto: { title: 'Letto (ibrido)', kind: 'concetto',
     text: 'Media pesata delle due corde: 16 verticali e 19 orizzontali sulla Blade 100 (16×19), ognuna alla sua tensione. Lo spin viene per il 60% dalle verticali, che sono quelle che scivolano e tornano. La verticale deve essere rigida almeno quanto l\'orizzontale; un\'orizzontale tonda e liscia aiuta lo spin.' },
   scorta: { title: 'In casa', kind: 'tuo',
-    text: 'Le corde che hai già: matasse intere (un set) o mezze (per un ibrido). Quando ne monti una, il conto scende da solo.' },
+    text: 'Le corde che hai già: matassine (set da 12 m, una racchetta intera) o mezze (circa 6 m, metà di un ibrido). Due mezze della stessa corda fanno una racchetta intera. Quando ne monti una, il conto scende da solo.' },
   voto: { title: 'Com\'era?', kind: 'tuo',
     text: 'Il tuo voto all\'uscita, da 1 a 5. È un\'opinione tua: non cambia mai misure, confronti o consigli.' },
   ore: { title: 'Ore sulla corda', kind: 'tuo',
@@ -569,6 +579,12 @@ const diaryOf = (raw) => { const d = sanitizeDiary(raw); return d ? { diary: d }
 const STATE_VERSION = 2;
 // v6: scorta (matasse intere o mezze), voto dell'uscita, domanda di «Prossima». Campi facoltativi: la versione resta 2.
 const SIZES = ['intera', 'mezza'];
+// «intera» = matassina (set da 12 m, una racchetta intera); «mezza» = mezza matassina (circa 6 m, solo metà di un ibrido).
+const SIZE_LABEL = { intera: 'matassina', mezza: 'mezza matassina' };
+const countOf = (state, id, size) => ((state.stock || []).find((x) => x.id === id && x.size === size) || { n: 0 }).n;
+// Basta per una racchetta intera? Una matassina, oppure due mezze della stessa corda.
+const canStringFull = (state, id) => countOf(state, id, 'intera') >= 1 || countOf(state, id, 'mezza') >= 2;
+const canStringHalf = (state, id) => countOf(state, id, 'intera') >= 1 || countOf(state, id, 'mezza') >= 1;
 const NEXT_GOALS = ['same', 'softer', 'stiffer', 'lower', 'holds', 'spin'];
 const SESSION_TAGS = ['viva', 'pastosa', 'scivola', 'secca', 'vibra', 'spenta', 'precisa', 'lunga'];
 const isFeel = (v) => Number.isInteger(v) && v >= 1 && v <= 5;
@@ -603,6 +619,7 @@ function setStockCount(state, id, size, n) {
   return { ...state, stock };
 }
 function useStock(state, id, size) {
+  if (size === 'due-mezze') { const n = countOf(state, id, 'mezza'); return n >= 2 ? setStockCount(state, id, 'mezza', n - 2) : state; }
   const it = (state.stock || []).find((x) => x.id === id && x.size === size);
   return it ? setStockCount(state, id, size, it.n - 1) : state;
 }
@@ -1119,6 +1136,12 @@ function physSummary(rows, refName) {
 // principale per la domanda è misurato o ricavato da dati (non solo dalla fisica). Puro, testato.
 
 
+
+// Le tue marche: quelle delle corde che hai segnato con ★. Tra le corde che vanno nella direzione chiesta vengono prima;
+// un'altra marca passa davanti solo se è nettamente migliore (il bonus vale circa 10 punti percentuali di rigidità).
+const BRAND_BONUS = 1.0;
+const prefBrands = (state, by) => new Set((state.liked || []).map((id) => by[id] && by[id].brand).filter(Boolean));
+
 const GOALS = [
   { key: 'same', label: 'Simile', ask: 'simile alla tua' },
   { key: 'softer', label: 'Più morbida', ask: 'più morbida' },
@@ -1190,18 +1213,21 @@ function candidates(state, ALL, goal, meta, limit = 3) {
   const note = !refBed.kNow ? `Per la ${refName} non c'è nessun valore di rigidità: il confronto usa solo spin e tenuta.`
     : refEst.length ? `La ${refName} non è misurata da TWU: i suoi valori in campo sono ricavati (rigidità dalla misura Racketpedia, spin e tenuta dalla fisica). Il segno ≈ nelle frasi indica i valori ricavati della corda proposta.` : '';
   const likedNoEq = (state.liked || []).filter((id) => id !== state.equipped.id);
+  const brands = prefBrands(state, by);
   const items = pool.map((rec) => {
     const bed = bedOf(rec, rec, kg);
     const rows = compareBeds(bed, refBed);
     const j = judgePhys(goal, rows);
     const solid = solidFor(rec, goal);
     return { rec, bed, rows, summary: { text: physSummary(rows, refName) }, cmpRows: compareTo(rec, ref, meta),
-      compatible: j.ok && solid, score: j.score - estPenalty(rows), solid, likeness: likeness(rec, likedNoEq, state.disliked || [], ALL, meta),
-      inStock: stockIds.includes(rec.id), equipped: rec.id === state.equipped.id, disliked: (state.disliked || []).includes(rec.id) };
+      compatible: j.ok && solid, score: j.score - estPenalty(rows) + (brands.has(rec.brand) ? BRAND_BONUS : 0), solid, likeness: likeness(rec, likedNoEq, state.disliked || [], ALL, meta),
+      prefBrand: brands.has(rec.brand), inStock: stockIds.includes(rec.id), full: canStringFull(state, rec.id),
+      equipped: rec.id === state.equipped.id, disliked: (state.disliked || []).includes(rec.id) };
   });
   const sorter = (a, b) => (b.compatible - a.compatible) || (b.score - a.score)
     || `${a.rec.brand} ${a.rec.model} ${a.rec.gauge_mm}`.localeCompare(`${b.rec.brand} ${b.rec.model} ${b.rec.gauge_mm}`);
-  const inStock = items.filter((x) => x.inStock).sort(sorter);
+  // in casa: prima quelle che bastano per una racchetta intera (matassina o due mezze), poi le mezze sole (vanno negli ibridi)
+  const inStock = items.filter((x) => x.inStock).sort((a, b) => (b.full - a.full) || sorter(a, b));
   const toBuy = items.filter((x) => !x.inStock && x.compatible && !excluded.has(x.rec.id)).sort(sorter).slice(0, limit);
   return { mode: 'relative', note, inStock, toBuy, refName, refBed };
 }
@@ -1212,6 +1238,7 @@ function suggestHybrids(state, ALL, goal, meta, limit = 3) {
   const by = Object.fromEntries(ALL.map((r) => [r.id, r]));
   const ref = by[state.equipped.id], kg = state.equipped.kg;
   const refBed = bedOf(ref, ref, kg);
+  const brands = prefBrands(state, by);
   const disliked = new Set(state.disliked || []);
   const stock = [...new Set(STOCK_ORDER(state))].map((id) => by[id]).filter(Boolean);
   const okStiff = (r) => { const v = valueOf(r, 'twu.stiffness'); return !!v && v.est !== 'modello'; };
@@ -1225,7 +1252,8 @@ function suggestHybrids(state, ALL, goal, meta, limit = 3) {
     const rows = compareBeds(bed, refBed);
     const j = judgePhys(goal, rows);
     if (!j.ok) return null;
-    return { V, O, bed, rows, summary: { text: physSummary(rows, shortName(ref)) }, score: j.score - estPenalty(rows) + (bed.roundCross ? 0.3 : 0),
+    const bb = (brands.has(V.brand) ? BRAND_BONUS / 2 : 0) + (brands.has(O.brand) ? BRAND_BONUS / 2 : 0);
+    return { V, O, bed, rows, summary: { text: physSummary(rows, shortName(ref)) }, score: j.score - estPenalty(rows) + (bed.roundCross ? 0.3 : 0) + bb,
       inStock: [stockHas(state, V.id), stockHas(state, O.id)] };
   };
   // una coppia sola per combinazione di corde (il verso migliore), poi le migliori
@@ -1297,6 +1325,68 @@ const specLine = (r) => [r.gauge_mm ? tip('calibro', `${NF(2).format(r.gauge_mm)
 const nameBtn = (r, cls = '') => `<button type="button" class="linkish ${cls}" data-open="${esc(r.id)}">${esc(fullName(r))}</button>`;
 const measuredCount = (r) => (r.lab ? Object.keys(CMP_KEYS).filter((k) => typeof CMP_KEYS[k].get(r.lab) === 'number').length : 0);
 const hasMeasures = (r) => measuredCount(r) > 0;
+
+// Comparatore: la corda montata e fino a 3 altre, una grandezza per blocco, con il segno del tipo di valore
+// (misurata, ricavata dai dati, dalla fisica) e il verdetto rispetto alla montata. Stesso modello fisico dei consigli.
+
+
+
+
+const CMP_MAX = 4;
+let cmpIds = [];
+
+const BLOCKS = [
+  { key: 'kNow', label: 'Rigidità appena montata', tip: 'twu.stiffness', unit: 'lb/in', dec: 0 },
+  { key: 'kAfter', label: 'Rigidità dopo il calo di tensione', tip: 'twu.loss', unit: 'lb/in', dec: 0 },
+  { key: 'launch', label: 'Lancio della palla', tip: 'lancio' },
+  { key: 'spin', label: 'Spin', tip: 'twu.spin', unit: '', dec: 1 },
+  { key: 'loss', label: 'Perdita di tensione', tip: 'twu.loss', unit: '%', dec: 0 },
+];
+
+function bedVal(bed, key) {
+  const v = key === 'launch' ? bed.kAfter : bed[key];
+  if (!v) return '<span class="nm">nessun valore</span>';
+  if (key === 'launch') return '';
+  const b = BLOCKS.find((x) => x.key === key);
+  return `${mk(v.est)}<b class="num">${NF(b.dec).format(v.v)}${b.unit === '%' ? '%' : b.unit ? ` ${b.unit}` : ''}</b>`;
+}
+
+function compareListHtml(ctx) {
+  const st = ctx.state(), ref = ctx.equippedRec(), kg = st.equipped.kg;
+  const ids = [ref.id, ...cmpIds.filter((id) => id !== ref.id && ctx.BY_ID[id])].slice(0, CMP_MAX);
+  const recs = ids.map((id) => ctx.BY_ID[id]);
+  const refBed = bedOf(ref, ref, kg);
+  const beds = recs.map((r) => bedOf(r, r, kg));
+  const rowsOf = beds.map((b, i) => (i === 0 ? [] : compareBeds(b, refBed)));
+  const chips = recs.map((r, i) => `<span class="cchip">${esc(fullName(r))}${i === 0 ? ' <span class="tag ok">montata</span>' : ` <button type="button" class="btn sq ghost" data-cmp-del="${esc(r.id)}" aria-label="Togli ${esc(fullName(r))} dal confronto">✕</button>`}</span>`).join('');
+  const block = (B) => `<section class="cblock"><h3>${tip(B.tip, esc(B.label))}</h3><ul class="clist">${recs.map((r, i) => {
+    const row = i === 0 ? null : rowsOf[i].find((x) => x.key === B.key);
+    const verdict = i === 0 ? '<span class="muted small">la tua</span>' : row ? `<span class="lvl-${row.level === 'simile' ? 'same' : row.level === 'nettamente' ? 'big' : 'some'}">${row.dir ? esc(physPhrase(row)) : 'simile'}</span> <span class="muted small">(${esc(diffTxt(row))})</span>` : '';
+    return `<li><span class="cname">${esc(r.model)} ${r.gauge_mm ? NF(2).format(r.gauge_mm) : ''}</span><span class="cval">${bedVal(beds[i], B.key)} ${verdict}</span></li>`;
+  }).join('')}</ul></section>`;
+  const spec = `<section class="cblock"><h3>Calibro, forma, materiale, rigidità da ferma</h3><ul class="clist">${recs.map((r) => {
+    const rp = valueOf(r, 'rp.kgmm');
+    return `<li><span class="cname">${esc(r.model)}</span><span class="cval small">${r.gauge_mm ? `${NF(2).format(r.gauge_mm)} mm` : '—'} · ${esc(shapeOf(r))} · ${esc(r.material || '—')} · ${rp ? `${mk(rp.est)}${esc(fmtV('rp.kgmm', rp.v))}` : 'da ferma: nessun valore'}</span></li>`;
+  }).join('')}</ul></section>`;
+  return `<p class="small muted">Alla tua tensione (${NF(1).format(kg[0])}/${NF(1).format(kg[1])} kg). ${mk(null)}misurata ${mk('ricavata')}ricavata dai dati ${mk('modello')}dalla fisica</p>
+    <div class="cchips">${chips}</div>
+    ${ids.length < CMP_MAX ? `<label class="search"><span class="sr">Aggiungi una corda al confronto</span><input type="search" id="cmp-q" placeholder="Aggiungi una corda (fino a ${CMP_MAX - 1})" autocomplete="off"></label><ul class="picklist results" id="cmp-results"></ul>` : ''}
+    ${BLOCKS.map(block).join('')}${spec}`;
+}
+
+function cmpSearch(ctx) {
+  const q = (($('#cmp-q') || {}).value || '').trim().toLowerCase();
+  const out = $('#cmp-results'); if (!out) return;
+  if (!q) { out.innerHTML = ''; return; }
+  const words = q.split(/\s+/);
+  out.innerHTML = ctx.ALL.filter((r) => words.every((w) => fullName(r).toLowerCase().includes(w))).slice(0, 8)
+    .map((r) => `<li><button type="button" class="pick" data-cmp-add="${esc(r.id)}"><span>${esc(fullName(r))}</span></button></li>`).join('') || '<li class="muted">Nessuna corda trovata.</li>';
+}
+
+const setCompare = (ids) => { cmpIds = [...new Set(ids)].slice(0, CMP_MAX - 1); };
+const addCompare = (id) => { if (!cmpIds.includes(id)) cmpIds = [...cmpIds, id].slice(-(CMP_MAX - 1)); };
+const delCompare = (id) => { cmpIds = cmpIds.filter((x) => x !== id); };
+const compareIds = () => [...cmpIds];
 
 // Popover dei tooltip: si apre al tocco su .tip, si chiude toccando fuori, con Esc o con «Chiudi».
 
@@ -1403,14 +1493,14 @@ function stockHtml(st, BY_ID) {
   const items = (st.stock || []).filter((x) => BY_ID[x.id]);
   const rows = items.map((x) => {
     const r = BY_ID[x.id];
-    return `<li class="stock-item"><div>${nameBtn(r)}<span class="muted small"> · ${esc(x.size)}${x.size === 'mezza' ? ' (per ibrido)' : ''}</span></div>
+    return `<li class="stock-item"><div>${nameBtn(r)}<span class="muted small"> · ${esc(SIZE_LABEL[x.size] || x.size)}${x.size === 'mezza' ? ' (metà di un ibrido)' : ' (una racchetta)'}</span></div>
       <div class="stepper" role="group" aria-label="Quantità di ${esc(fullName(r))} ${esc(x.size)}">
         <button type="button" class="btn sq" data-stock-dec="${esc(x.id)}" data-size="${esc(x.size)}" aria-label="Una in meno">−</button>
         <span class="n" aria-live="polite">${x.n}</span>
         <button type="button" class="btn sq" data-stock-inc="${esc(x.id)}" data-size="${esc(x.size)}" aria-label="Una in più">+</button></div></li>`;
   }).join('');
   return `<div class="section-head"><h2>${tip('scorta', 'In casa')}</h2></div>
-    ${items.length ? `<ul class="stock">${rows}</ul>` : '<p class="muted">Nessuna corda in casa. Aggiungi le matasse che hai: in «Prossima» le vedrai per prime.</p>'}
+    ${items.length ? `<ul class="stock">${rows}</ul>` : '<p class="muted">Nessuna corda in casa. Aggiungi le matassine e le mezze che hai: in «Prossima» le vedrai per prime.</p>'}
     <button type="button" class="btn" id="stock-add">+ Aggiungi una corda che hai</button>`;
 }
 
@@ -1491,8 +1581,13 @@ function openPicker(ctx, { title, okLabel, mode, onOk }) {
   const draw = () => {
     $('#pk-list').innerHTML = pickList(ctx, $('#pk-q').value, selected);
     const inStock = (ctx.state().stock || []).filter((x) => x.id === selected);
-    $('#pk-from-stock').hidden = !withChange || !inStock.length;
-    $('#pk-from-stock-sel').innerHTML = inStock.map((x) => `<option value="${esc(x.size)}">sì, una ${esc(x.size)}</option>`).join('') + '<option value="">no</option>';
+    const st2 = ctx.state();
+    const opts = [];
+    if (inStock.some((x) => x.size === 'intera')) opts.push('<option value="intera">sì, una matassina</option>');
+    if (inStock.some((x) => x.size === 'mezza' && x.n >= 2)) opts.push('<option value="due-mezze">sì, due mezze</option>');
+    $('#pk-from-stock').hidden = !withChange || !selected || !canStringFull(st2, selected);
+    $('#pk-from-stock-sel').innerHTML = opts.join('') + '<option value="">no</option>';
+    $('#pk-half-only').hidden = !withChange || !inStock.length || canStringFull(st2, selected);
   };
   dlg.oninput = (e) => { if (e.target.id === 'pk-q') draw(); };
   dlg.onclick = (e) => {
@@ -1747,7 +1842,7 @@ function sheetHtml(r, ctx) {
   const inStock = (st.stock || []).filter((x) => x.id === r.id);
   return `<h2 id="sheet-title">${esc(fullName(r))}</h2>
     <p class="muted">${specLine(r)} · ${esc(yearTxt(r))}</p>
-    ${isEq ? '<p class="tag ok">montata ora</p>' : ''}${liked ? '<p class="tag ok">★ ti piace</p>' : ''}${disliked ? '<p class="tag warn">non ti piace</p>' : ''}${inStock.length ? `<p class="tag ok">in casa: ${inStock.map((x) => `${x.n} ${esc(x.size)}`).join(', ')}</p>` : ''}
+    ${isEq ? '<p class="tag ok">montata ora</p>' : ''}${liked ? '<p class="tag ok">★ ti piace</p>' : ''}${disliked ? '<p class="tag warn">non ti piace</p>' : ''}${inStock.length ? `<p class="tag ok">in casa: ${inStock.map((x) => `${x.n} ${esc(x.size === 'intera' ? (x.n === 1 ? 'matassina' : 'matassine') : (x.n === 1 ? 'mezza' : 'mezze'))}`).join(', ')}</p>` : ''}
     ${isEq ? '' : `<section class="block"><h3>Rispetto alla tua (${esc(ref.model)})</h3>${compareHtml(r, ref, meta, st.equipped.kg)}${tensionHtml(r, ref, st, meta, compareTo(r, ref, meta))}${lkTxt ? `<p class="small">${lkTxt}</p>` : ''}${warn}</section>`}
     <section class="block"><h3>Misure</h3>${measuresHtml(r)}${twinExcel(r, ctx.ALL)}${estimatesHtml(r)}</section>
     ${trialsHtml(r, st)}
@@ -1758,7 +1853,7 @@ function sheetHtml(r, ctx) {
       ${isEq ? '' : `<button type="button" class="btn primary" data-equip="${esc(r.id)}">Monta questa</button>`}
       <button type="button" class="btn" data-like="${esc(r.id)}" aria-pressed="${liked}">${liked ? '★ Ti piace' : '☆ Mi piace'}</button>
       <button type="button" class="btn" data-dislike="${esc(r.id)}" aria-pressed="${disliked}">${disliked ? '✕ Non ti piace' : '✕ Non mi piace'}</button>
-      <button type="button" class="btn" data-stock-add="${esc(r.id)}" data-size="intera">+ In casa (intera)</button>
+      <button type="button" class="btn" data-stock-add="${esc(r.id)}" data-size="intera">+ In casa (matassina)</button>
       <button type="button" class="btn" data-stock-add="${esc(r.id)}" data-size="mezza">+ In casa (mezza)</button>
     </div>`;
 }
@@ -1781,20 +1876,21 @@ function card(c, ctx, inStockInfo, cls = '') {
   const r = c.rec;
   const lk = c.likeness && c.likeness.id ? `<p class="small muted">Simile alla ${esc(ctx.BY_ID[c.likeness.id].model)} (ti piace) in ${misure(c.likeness.similar)} su ${c.likeness.total}.</p>` : '';
   const warn = c.likeness && c.likeness.warn ? `<p class="small warn-t">Somiglia alla ${esc(ctx.BY_ID[c.likeness.warn].model)}, che non ti piace.</p>` : '';
-  const stockTag = (inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '') + (c.equipped ? ' <span class="tag">è la tua montata</span>' : '') + (c.disliked ? ' <span class="tag warn">non ti piace</span>' : '');
+  const stockTag = (inStockInfo ? `<span class="tag ok">in casa: ${inStockInfo}</span>` : '') + (c.prefBrand ? ' <span class="tag">tua marca</span>' : '') + (c.equipped ? ' <span class="tag">è la tua montata</span>' : '') + (c.disliked ? ' <span class="tag warn">non ti piace</span>' : '');
+  const half = c.inStock && !c.full ? '<p class="small callout">Hai solo una mezza: basta per metà racchetta. La trovi negli ibridi consigliati; per montarla intera serve un\'altra mezza o una matassina.</p>' : '';
   const off = c.inStock && !c.compatible ? '<p class="small muted">Non va nella direzione che hai chiesto.</p>' : '';
   return `<article class="cand ${cls} ${c.compatible ? '' : 'dim'}">
     <h3>${nameBtn(r)} ${stockTag}</h3>
     <p class="muted small">${specLine(r)}</p>
     <p class="summary">${esc(c.summary.text)} ${infoTip('fisica', 'Come si calcola il confronto in campo')}</p>
-    ${whyList(c.rows)}${lk}${warn}${off}
+    ${whyList(c.rows)}${lk}${warn}${off}${half}
     <div class="actions"><button type="button" class="btn" data-cmp="${esc(r.id)}">Confronta</button>
-      <button type="button" class="btn" data-equip="${esc(r.id)}">Monta</button></div>
+      ${c.inStock && !c.full ? '' : `<button type="button" class="btn" data-equip="${esc(r.id)}">Monta</button>`}</div>
   </article>`;
 }
 
 function hyCard(p, ctx, st) {
-  const tag = (r, i) => (p.inStock[i] ? ` <span class="tag ok">in casa</span>` : ' <span class="tag">da comprare</span>');
+  const tag = (r, i) => (p.inStock[i] ? ` <span class="tag ok">in casa</span>` : ' <span class="tag">da comprare: una mezza</span>');
   return `<article class="cand hyc">
     <h3>Ibrido</h3>
     <p><b>Verticali:</b> ${nameBtn(p.V)}${tag(p.V, 0)}<br><b>Orizzontali:</b> ${nameBtn(p.O)}${tag(p.O, 1)}</p>
@@ -1809,7 +1905,7 @@ function renderNext(ctx) {
   const st = ctx.state(), goal = goalOf(st), ref = ctx.equippedRec();
   const res = candidates(st, ctx.ALL, goal, ctx.META);
   const g = GOALS.find((x) => x.key === goal);
-  const stockOf = (id) => (st.stock || []).filter((x) => x.id === id).map((x) => `${x.n} ${x.size}`).join(', ');
+  const stockOf = (id) => (st.stock || []).filter((x) => x.id === id).map((x) => `${x.n} ${x.size === 'intera' ? (x.n === 1 ? 'matassina' : 'matassine') : (x.n === 1 ? 'mezza' : 'mezze')}`).join(', ');
   $('#next-q').innerHTML = `<h2>Cosa vuoi cambiare rispetto alla ${esc(ref.model)}?</h2>
     <div class="chips goals" role="radiogroup" aria-label="Cosa vuoi cambiare">${GOALS.map((x) => `<button type="button" role="radio" class="chipbtn" data-goal="${x.key}" aria-checked="${x.key === goal}">${esc(x.label)}</button>`).join('')}</div>
     ${res.note ? `<p class="callout small">${esc(res.note)}</p>` : ''}`;
@@ -1822,8 +1918,8 @@ function renderNext(ctx) {
   const hy = suggestHybrids(st, ctx.ALL, goal, ctx.META);
   const hyHtml = (hy.fromStock.length || hy.buyOne.length || hy.buyBoth.length) ? `<div class="section-head"><h2>Ibridi consigliati</h2><span class="muted small">${esc(g.ask)}</span></div>
     ${hy.fromStock.length ? `<p class="small"><b>Con le corde che hai in casa</b></p>${hy.fromStock.map((p) => hyCard(p, ctx, st)).join('')}` : (st.stock || []).length ? '<p class="small muted">Con le corde che hai in casa nessuna coppia va in questa direzione.</p>' : ''}
-    ${hy.buyBoth.length ? `<p class="small"><b>Comprando due mezze matasse</b> <span class="muted">(aggiungi le corde che hai in casa in «Oggi» per vedere prima quelle)</span></p>${hy.buyBoth.map((p) => hyCard(p, ctx, st)).join('')}` : ''}
-    ${hy.buyOne.length ? `<p class="small"><b>Comprando una mezza matassa</b></p>${hy.buyOne.map((p) => hyCard(p, ctx, st)).join('')}` : ''}` : '';
+    ${hy.buyBoth.length ? `<p class="small"><b>Comprando due mezze matassine</b> <span class="muted">(aggiungi le corde che hai in casa in «Oggi» per vedere prima quelle)</span></p>${hy.buyBoth.map((p) => hyCard(p, ctx, st)).join('')}` : ''}
+    ${hy.buyOne.length ? `<p class="small"><b>Comprando una mezza matassina</b></p>${hy.buyOne.map((p) => hyCard(p, ctx, st)).join('')}` : ''}` : '';
   $('#next-list').innerHTML = (res.inStock.some((c) => c.compatible) ? stockHtml + buyHtml : buyHtml + stockHtml) + hyHtml;
 }
 
@@ -2002,7 +2098,8 @@ function tableHtml(ctx) {
   const ids = [ref.id, ...mapSel.filter((id) => id !== ref.id)];
   const keys = MAP_RULERS;
   const cell = (r, key) => { const v = valueOf(r, key); return v ? `${mk(v.est)}${esc(fmtV(key, v.v))}` : '<span class="nm">nessun valore</span>'; };
-  return `<div class="mtable" role="table" aria-label="Le corde scelte">
+  const cmpBtn = ids.length > 1 ? `<div class="actions"><button type="button" class="btn primary" data-cmp-list="${esc(ids.slice(1).join('|'))}">Confronta queste ${ids.length} corde</button></div>` : '';
+  return `${cmpBtn}<div class="mtable" role="table" aria-label="Le corde scelte">
     ${ids.map((id) => { const r = ctx.BY_ID[id]; return `<div class="mrow" role="row"><div class="mname" role="cell"><button type="button" class="linkish" data-open="${esc(id)}">${esc(fullName(r))}</button>${id === ref.id ? ' <span class="tag ok">montata</span>' : ` <button type="button" class="btn sq ghost" data-map-del="${esc(id)}" aria-label="Togli ${esc(fullName(r))} dalla mappa">✕</button>`}</div>
       ${keys.map((R) => `<div class="mcell" role="cell"><span class="mlab">${esc(R.short)}</span> <span class="num">${cell(r, R.key)}</span></div>`).join('')}
       ${id === ref.id ? '' : `<div class="mcell" role="cell"><button type="button" class="btn" data-cmp="${esc(id)}">Confronta con la tua</button></div>`}</div>`; }).join('')}
@@ -2076,65 +2173,138 @@ function initMap(ctx) {
   });
 }
 
-// «Chiedi all'AI»: una casella di testo libera. Il parere è testo, marcato «non misurato», mai usato nei calcoli.
+// «Chiedi all'AI» con accesso ai dati dell'app: un riassunto nel testo (sempre) e degli strumenti che l'AI chiama
+// (cercare una corda, leggerne i valori misurati o ricavati, confrontarne fino a 4 con il modello fisico, i consigli
+// per una domanda). Il parere è marcato «non misurato» e non entra mai nei calcoli.
+
+
+
 
 
 const AI_MARK = 'Parere AI — non misurato';
-let askSample = null;
+let askSample = null, askTools = false;
 
-const labOf = (r) => Object.fromEntries(Object.keys(CMP_KEYS).map((k) => [k, r.lab ? CMP_KEYS[k].get(r.lab) ?? null : null]));
-const brief = (r) => (r ? { nome: fullName(r), calibro_mm: r.gauge_mm, forma: r.shape, materiale: r.material || null, misure: labOf(r) } : null);
+const KIND = { null: 'misurata', ricavata: 'ricavata dai dati', modello: 'ricavata dalla fisica' };
+const r1 = (x) => Math.round(x * 10) / 10;
+function stringData(r) {
+  const vals = {};
+  for (const k of Object.keys(CMP_KEYS)) {
+    const v = valueOf(r, k);
+    if (v) vals[CMP_KEYS[k].label] = { valore: r1(v.v), unita: CMP_KEYS[k].unit, tipo: KIND[v.est], ...(v.how ? { come: v.how } : {}) };
+  }
+  return { id: r.id, nome: fullName(r), calibro_mm: r.gauge_mm, forma: r.shape, materiale: r.material || null, anno: (r.production || {}).year || null, valori: vals };
+}
+const stockTxt = (st, BY_ID) => (st.stock || []).map((x) => `${BY_ID[x.id] ? fullName(BY_ID[x.id]) : x.id}: ${x.n} ${SIZE_LABEL[x.size] || x.size}`);
 
-function buildAskPrompt({ question, state, BY_ID, focus }) {
-  const name = (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id);
-  const cur = state.sessions.filter((s) => s.life === state.equipped.since).slice(-6).map((s) => ({ data: s.date, ore: s.hours, voto: s.feel ?? null, parola: s.tag ?? null, nota: s.note || null }));
-  const ctx = {
-    racchetta: 'Wilson Blade 100 v9, piatto 16×19',
-    giocatore: 'di club, tutto campo con rotazioni, swing sotto le 50 lbs, 4–5 ore a settimana',
-    montata: { ...brief(BY_ID[state.equipped.id]), tensione_kg: state.equipped.kg, da: state.equipped.since.slice(0, 10) },
-    uscite_recenti_sulla_montata: cur,
-    preferite: state.liked.map(name), non_gradite: state.disliked.map(name),
-    in_casa: (state.stock || []).map((x) => `${name(x.id)} (${x.size}, ${x.n})`),
-    corde_finite: state.lives.slice(-5).map((l) => ({ corda: name(l.id), ore: l.hours, motivo: l.reason, ricomprerebbe: l.diary ? l.diary.verdict : null })),
-    corda_in_esame: focus ? brief(BY_ID[focus]) : null,
-    legenda_misure: 'twu.stiffness = rigidità dinamica TWU in lb/in (51 lb, swing veloce); twu.loss = perdita di tensione TWU in %; twu.spin = spin potenziale TWU; rp.kgmm = rigidità statica Racketpedia in kg/mm; excel.stretch50 = allungamento a 50 lb nel test Ektelon dell\'utente in %. null = non misurato.',
+function compareData(ids, st, BY_ID) {
+  const ref = BY_ID[st.equipped.id], kg = st.equipped.kg, refBed = bedOf(ref, ref, kg);
+  return ids.filter((id) => BY_ID[id] && id !== ref.id).slice(0, 4).map((id) => {
+    const rows = compareBeds(bedOf(BY_ID[id], BY_ID[id], kg), refBed);
+    return { corda: fullName(BY_ID[id]), frase: physSummary(rows, ref.model),
+      righe: rows.map((x) => ({ grandezza: x.label, verdetto: x.dir ? x.word : 'simile', livello: x.level, differenza: r1(x.diff), relativa_percento: x.rel, tipo_valore: KIND[x.estA ?? null] })) };
+  });
+}
+
+function adviceData(goal, st, ALL, meta) {
+  const res = candidates(st, ALL, goal, meta), hy = suggestHybrids(st, ALL, goal, meta);
+  const line = (c) => `${fullName(c.rec)}: ${c.summary.text}`;
+  return { domanda: (GOALS.find((g) => g.key === goal) || {}).label,
+    in_casa_adatte: res.inStock.filter((c) => c.compatible).slice(0, 4).map((c) => `${line(c)}${c.full ? '' : ' (solo una mezza: va in un ibrido)'}`),
+    da_comprare: res.toBuy.map(line),
+    ibridi: [...hy.fromStock, ...hy.buyOne, ...hy.buyBoth].slice(0, 4).map((p) => `verticali ${fullName(p.V)} + orizzontali ${fullName(p.O)}: ${p.summary.text}`) };
+}
+
+// Riassunto sempre presente nel testo: basta da solo se la pagina non può usare gli strumenti.
+function askDigest(st, ALL, meta) {
+  const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
+  const ref = BY_ID[st.equipped.id];
+  const sess = st.sessions.filter((s) => s.life === st.equipped.since).slice(-6).map((s) => ({ data: s.date, ore: s.hours, voto: s.feel ?? null, parola: s.tag ?? null, nota: s.note || null }));
+  return {
+    racchetta: 'Wilson Blade 100 v9, piatto 16×19', giocatore: 'di club, tutto campo con rotazioni, 4–5 ore a settimana',
+    montata: { ...stringData(ref), tensione_kg: st.equipped.kg, dal: st.equipped.since.slice(0, 10), diario: st.equipped.diary ? { note: st.equipped.diary.notes, parole: st.equipped.diary.tags, verdetto: st.equipped.diary.verdict } : null },
+    uscite_recenti: sess,
+    in_casa: stockTxt(st, BY_ID), regola_scorta: 'una matassina (12 m) basta per una racchetta intera; una mezza (6 m) solo per metà ibrido; due mezze della stessa corda fanno una racchetta',
+    preferite: (st.liked || []).map((id) => (BY_ID[id] ? fullName(BY_ID[id]) : id)), non_gradite: (st.disliked || []).map((id) => (BY_ID[id] ? fullName(BY_ID[id]) : id)),
+    corde_finite: st.lives.slice(-5).map((l) => ({ corda: BY_ID[l.id] ? fullName(BY_ID[l.id]) : l.id, ore: l.hours, motivo: l.reason, ricomprerebbe: l.diary ? l.diary.verdict : null, note: l.diary ? l.diary.notes : null })),
+    corde_in_casa_contro_la_montata: compareData((st.stock || []).map((x) => x.id), st, BY_ID),
+    consigli_dell_app: GOALS.map((g) => adviceData(g.key, st, ALL, meta)),
   };
-  return `Sei un esperto di corde da tennis e di fisica del tennis. Rispondi in italiano, in modo semplice e breve (massimo 180 parole), a un giocatore di club.
-Regole: usa solo le misure che ti do e dillo quando una cosa non è misurata; non inventare numeri; controllo e potenza non sono misure (puoi parlarne solo come esperienza comune, dicendolo); distingui sempre ciò che è misurato da ciò che è un'opinione; niente prezzi; se la domanda non riguarda corde o tennis, dillo.
+}
+
+const RULES = `Sei un esperto di corde da tennis e di fisica del tennis. Rispondi in italiano, in modo diretto e concreto (al massimo 200 parole), a un giocatore di club.
+Hai i dati dell'app: valori misurati (TWU in campo, Racketpedia da ferma, Excel dell'utente) e ricavati (dai dati o dalla fisica), e un modello fisico che alla tensione dell'utente confronta rigidità appena montata, rigidità dopo il calo di tensione, lancio della palla, spin e tenuta.
+Regole: usa i numeri dei dati, citali, e di' se un valore è ricavato; non inventare numeri; dai sempre una risposta netta con il perché fisico; rispetta la regola della scorta (una mezza non basta per una racchetta intera); controllo e potenza non sono misure: parlane solo come conseguenza della fisica; niente prezzi.`;
+
+function buildAskPrompt({ question, state, ALL, meta, focus, tools }) {
+  const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
+  const digest = askDigest(state, ALL, meta);
+  if (focus && BY_ID[focus]) digest.corda_in_esame = { ...stringData(BY_ID[focus]), contro_la_montata: compareData([focus], state, BY_ID)[0] || null };
+  return `${RULES}
+${tools ? 'Puoi usare gli strumenti per cercare qualsiasi corda del banco, leggerne i valori e confrontarne fino a 4 con la montata. Usali quando la domanda nomina corde che non sono nel riassunto.' : ''}
 Dati (JSON):
-${JSON.stringify(ctx)}
+${JSON.stringify(digest)}
 
 Domanda: ${question}`;
 }
 
+function makeTools(getState, ALL, meta) {
+  const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
+  const find = (q) => { const w = String(q || '').toLowerCase().split(/\s+/).filter(Boolean); return ALL.filter((r) => w.every((x) => fullName(r).toLowerCase().includes(x))).slice(0, 10); };
+  return [
+    { name: 'cerca_corde', description: 'Cerca corde nel banco per nome (marca, modello, calibro). Ritorna fino a 10 corde con id e nome.',
+      inputSchema: { type: 'object', properties: { testo: { type: 'string', description: 'es. "o-toro tour 1,20"' } }, required: ['testo'] },
+      execute: (i) => find(i.testo).map((r) => ({ id: r.id, nome: fullName(r) })) },
+    { name: 'dati_corda', description: 'Valori di una corda (per id): rigidità in campo e da ferma, perdita di tensione, spin, allungamento Excel, ognuno con il tipo (misurata o ricavata) e come è stato ricavato.',
+      inputSchema: { type: 'object', properties: { id: { type: 'string' } }, required: ['id'] },
+      execute: (i) => { const r = BY_ID[String(i.id)]; if (!r) throw new Error('id sconosciuto: usa cerca_corde'); return stringData(r); } },
+    { name: 'confronta_con_la_montata', description: 'Confronta fino a 4 corde (per id) con la corda montata, alla tensione dell\'utente: rigidità appena montata e dopo il calo, lancio, spin, tenuta, con verdetto e differenza.',
+      inputSchema: { type: 'object', properties: { ids: { type: 'array', items: { type: 'string' } } }, required: ['ids'] },
+      execute: (i) => compareData((Array.isArray(i.ids) ? i.ids : []).map(String), getState(), BY_ID) },
+    { name: 'consigli', description: 'I consigli dell\'app per una domanda: same (simile), softer, stiffer, lower (palla più bassa), holds (tiene di più), spin. Corde in casa adatte, da comprare e ibridi.',
+      inputSchema: { type: 'object', properties: { domanda: { type: 'string', enum: GOALS.map((g) => g.key) } }, required: ['domanda'] },
+      execute: (i) => adviceData(String(i.domanda), getState(), ALL, meta) },
+  ];
+}
+
 const askBoxHtml = (focus = '') => (askSample ? `<section class="block ask" data-ask="${esc(focus)}">
   <h3>Chiedi all'AI${focus ? ' su questa corda' : ''}</h3>
+  <p class="small muted">Conosce la tua corda, le corde in casa, i valori di tutto il banco e il modello fisico dell'app.</p>
   <label class="sr" for="ask-q-${esc(focus || 'main')}">La tua domanda</label>
-  <textarea id="ask-q-${esc(focus || 'main')}" rows="2" maxlength="600" placeholder="${focus ? 'Es. come la sentirei rispetto alla mia?' : 'Es. la Slap si è spenta dopo 10 ore: cosa provo dopo?'}"></textarea>
+  <textarea id="ask-q-${esc(focus || 'main')}" rows="2" maxlength="600" placeholder="${focus ? 'Es. come la sentirei rispetto alla mia? E in ibrido con la O-Toro?' : 'Es. con le mezze che ho, che ibrido monto per avere palle meno lunghe?'}"></textarea>
   <div class="actions"><button type="button" class="btn primary" data-ask-go>Chiedi</button></div>
   <div class="ai-out" aria-live="polite"></div></section>` : '');
 
 function initAsk(ctx) {
   if (window.claude && window.claude.use) {
-    Promise.resolve(window.claude.use('sample')).then((s) => { if (s) { askSample = s; ctx.refresh(); } }).catch(() => {});
+    Promise.resolve(window.claude.use('sample')).then(async (s) => {
+      if (!s) return;
+      askSample = s;
+      try { const lim = s.limits ? await s.limits() : null; askTools = !!(lim && lim.tools); } catch { askTools = false; }
+      ctx.refresh();
+    }).catch(() => {});
   }
   document.addEventListener('click', async (e) => {
     const go = e.target.closest('[data-ask-go]');
     if (!go || !askSample) return;
     const box = go.closest('[data-ask]'), out = box.querySelector('.ai-out'), q = box.querySelector('textarea').value.trim();
     if (!q) { out.textContent = 'Scrivi una domanda.'; return; }
-    go.disabled = true; out.innerHTML = '<p class="muted">Sto pensando…</p>';
+    go.disabled = true; out.innerHTML = '<p class="muted">Sto leggendo i dati e pensando…</p>';
+    const show = (text) => { out.innerHTML = `<p class="tag est">${AI_MARK}</p><div class="ai-text"></div>`; out.querySelector('.ai-text').textContent = text; };
     try {
-      const res = await askSample(buildAskPrompt({ question: q, state: ctx.state(), BY_ID: ctx.BY_ID, focus: box.dataset.ask || null }), {
-        cache: false, onText: ({ text }) => { out.innerHTML = `<p class="tag est">${AI_MARK}</p><div class="ai-text"></div>`; out.querySelector('.ai-text').textContent = text; } });
-      out.innerHTML = `<p class="tag est">${AI_MARK}</p><div class="ai-text"></div>`;
-      out.querySelector('.ai-text').textContent = res.text || '';
+      const prompt = buildAskPrompt({ question: q, state: ctx.state(), ALL: ctx.ALL, meta: ctx.META, focus: box.dataset.ask || null, tools: askTools });
+      const opts = { onText: ({ text }) => show(text) };
+      if (askTools) opts.tools = makeTools(ctx.state, ctx.ALL, ctx.META).map((t) => ({ ...t, execute: (i) => { out.querySelector('.muted') && (out.querySelector('.muted').textContent = 'Sto consultando i dati delle corde…'); return t.execute(i); } }));
+      else opts.cache = false;
+      const res = await askSample(prompt, opts);
+      show(res.text || '');
     } catch (err) {
       const code = err && err.code;
-      out.textContent = code === 'rate_limited' ? 'Troppe domande di fila: riprova tra un minuto.' : code === 'not_granted' ? 'Il parere AI non è autorizzato su questa pagina.' : 'Il parere AI non ha risposto. Riprova più tardi.';
+      if (err && err.text) show(err.text);
+      else out.textContent = code === 'rate_limited' ? 'Troppe domande di fila: riprova tra un minuto.' : code === 'not_granted' ? 'Il parere AI non è autorizzato su questa pagina.' : 'Il parere AI non ha risposto. Riprova più tardi.';
     } finally { go.disabled = false; }
   });
 }
+
 
 
 
@@ -2183,7 +2353,7 @@ function update(fn) {
   else if (persist) persist.save(state).then(renderSyncBadge);
   renderAll();
   if (sheet.open && sheetId) openSheet(sheetId);
-  if (cmpDlg.open && cmpId) openCompare(cmpId);
+  if (cmpDlg.open && cmpId) renderCompare();
 }
 
 // ---------- avvisi brevi con «Annulla» ----------
@@ -2255,14 +2425,25 @@ function openSheet(id) {
   if (keep) { const fresh = $('#sheet-body [data-ask]'); if (fresh) fresh.replaceWith(keep); }
   if (!sheet.open) { sheet.showModal(); sheet.scrollTop = 0; $('#sheet-close').focus(); }
 }
-function openCompare(id) {
-  const r = BY_ID[id], ref = BY_ID[state.equipped.id]; if (!r || !ref) return;
-  cmpId = id;
-  $('#cmp-title').textContent = `${r.model} contro la tua ${ref.model}`;
-  $('#cmp-body').innerHTML = `<p class="muted small">${esc(fullName(ref))} (montata) → ${esc(fullName(r))}</p>${compareHtml(r, ref, META, state.equipped.kg)}`;
-  $('#cmp-open').dataset.open = id;
+// Comparatore: «Confronta» aggiunge la corda al confronto (fino a 3 più la tua), che resta finché non la togli.
+function openCompare(id, list = null) {
+  if (list) setCompare(list); else if (id && id !== state.equipped.id) addCompare(id);
+  cmpId = id || 'list';
+  renderCompare();
   if (!cmpDlg.open) { cmpDlg.showModal(); $('#cmp-close').focus(); }
 }
+function renderCompare() {
+  const q = $('#cmp-q') ? $('#cmp-q').value : '';
+  $('#cmp-title').textContent = `Confronto (${compareIds().length + 1} corde)`;
+  $('#cmp-body').innerHTML = compareListHtml(ctx);
+  if ($('#cmp-q')) { $('#cmp-q').value = q; cmpSearch(ctx); }
+}
+cmpDlg.addEventListener('input', (e) => { if (e.target.id === 'cmp-q') cmpSearch(ctx); });
+cmpDlg.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-cmp-add]'); if (a) { addCompare(a.dataset.cmpAdd); if ($('#cmp-q')) $('#cmp-q').value = ''; renderCompare(); return; }
+  const d = e.target.closest('[data-cmp-del]'); if (d) { delCompare(d.dataset.cmpDel); renderCompare(); return; }
+  if (e.target.closest('#cmp-clear')) { setCompare([]); renderCompare(); }
+});
 for (const [d, btn] of [[sheet, '#sheet-close'], [cmpDlg, '#cmp-close']]) {
   $(btn).addEventListener('click', () => d.close());
   d.addEventListener('click', (e) => { if (e.target === d) d.close(); });
@@ -2281,6 +2462,7 @@ document.addEventListener('click', (e) => {
   const t = e.target;
   const tab = t.closest('.tabs [data-tab]'); if (tab) { goto(tab.dataset.tab); return; }
   const g = t.closest('[data-goto]'); if (g) { e.preventDefault(); goto(g.dataset.goto); return; }
+  const cl = t.closest('[data-cmp-list]'); if (cl) { const ids = cl.dataset.cmpList.split('|').filter(Boolean); whenDialogsClosed(() => openCompare(null, ids)); return; }
   const c = t.closest('[data-cmp]'); if (c) { const id = c.dataset.cmp; whenDialogsClosed(() => openCompare(id)); return; }
   const o = t.closest('[data-open]'); if (o) { const id = o.dataset.open; if (cmpDlg.open) whenDialogsClosed(() => openSheet(id)); else openSheet(id); return; }
   const l = t.closest('[data-like]'); if (l) { const id = l.dataset.like; update((s) => setPreference(s, id, s.liked.includes(id) ? null : 'liked')); return; }
