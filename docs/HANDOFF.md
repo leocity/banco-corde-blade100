@@ -6,7 +6,7 @@ Punto di ingresso per chi riprende il lavoro in una chat nuova. Chi legge **non 
 
 | Cosa | Dove |
 |---|---|
-| **Online** | https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — **v6.2** (modello fisico del letto, ibridi consigliati; design §15), versione `1795038165-c7b4` (v6.2) del 18/11/2026, pubblicata da `dist/string-explorer.html` del ramo sotto. Capability: `db`, `user`, `sample`, `downloads`. |
+| **Online** | https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — **v6.3** (comparatore fino a 4 corde, AI con i dati, matassina/mezza, marche preferite; design §16), versione `1795112966-7dbf` (v6.3) del 19/11/2026, pubblicata da `dist/string-explorer.html` del ramo sotto. Capability: `db`, `user`, `sample`, `downloads`. |
 | **Ramo di lavoro** | `claude/great-hypatia-edrzae`: contiene tutto (v3 + adoring-rubin + Ibridi recuperata + v6). È l'unica linea viva. |
 | Versione online precedente (v5 + Ibridi) | `archive/artifact-live-2026-11-18.html` (copia esatta, verificata byte per byte prima di ripubblicare). Il blocco `verified` ora sta in `data/verified.json`; il codice di Ibridi in `archive/recovered/`. |
 | `master` | `07b338a` (v2), **non toccato**. Unire il ramo su master richiede il sì dell'utente. |
