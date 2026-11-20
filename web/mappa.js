@@ -70,6 +70,7 @@ function sourcesHtml(ctx) {
     <li>${mk('ricavata')}Ricavata da altri dati: la stessa corda misurata in un altro calibro o colore (corretta per il diametro), oppure la misura da ferma di Racketpedia portata sulla scala in campo.</li>
     <li>${mk('modello')}Ricavata dalla fisica: dal calibro e dal materiale per la rigidità (più spessa = più rigida), dalla rigidità e dalla forma per lo spin. Usata solo dove non c'è nient'altro.</li>
     ${v ? `<li>Verifiche a mano del ${esc(itDate(v.date))}: ${esc(v.note)}.</li>` : ''}
+    ${s.excel_rank ? `<li>Il tuo Excel (String chart di Kerry Hlady, 26/08/2026) verificato il ${esc(itDate(s.excel_rank.checked))} con la sua classifica del ${esc(itDate(s.excel_rank.modified))}: ${esc(s.excel_rank.note)}.</li>` : ''}
   </ul></details>
   <details class="more"><summary>Recensioni (opinioni, mai nei numeri)</summary><ul class="reviews">${rows.map((r) => `<li><button type="button" class="linkish" data-open="${esc(r.id)}">${esc(fullName(r))}</button>: ${r.indep_reviews.map((x) => `<a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">${esc(x.channel)}</a>${x.date ? ` <span class="small muted">${esc(itMonth(x.date))}</span>` : ''} <span class="tag ${x.class.startsWith('indipendente') ? 'ok' : ''}">${esc(x.class)}</span>`).join(' · ')}</li>`).join('')}</ul></details>
   <div class="actions" id="exports" hidden><button type="button" class="btn" id="export-json">Esporta tutto (JSON)</button><button type="button" class="btn" id="export-csv">Esporta le prove (CSV)</button></div>`;

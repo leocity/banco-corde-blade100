@@ -14,5 +14,11 @@
  "twu_compare": {
   "fetched": "2026-10-28",
   "url": "https://twu.tennis-warehouse.com/learning_center/comparestrings.php"
+ },
+ "excel_rank": {
+  "file": "list_rank_oct72026.xlsx",
+  "modified": "2026-10-07",
+  "checked": "2026-11-20",
+  "note": "stessi valori dello String chart per Toroline, Solinco e Re-String; nuove solo 2 NeverFault (fuori dalle marche del banco); cambiato lo Stiff Index della Tecnifibre Razor 1,23 a 40 e 50 lb"
  }
 }
