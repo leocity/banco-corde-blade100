@@ -210,3 +210,12 @@ def test_real_data_hybrids_file_matches_inputs_and_inventory():
     for h in out["evaluated"]:
         assert h["stiffness"]["reliability"] in ("misurata", "ricavata", "dalla fisica", "mancante")
         assert h["geometry"]["basis"] and h["holding"]["verdict"]
+
+
+def test_hybrids_file_is_fresh_with_respect_to_strings_inventory_and_inputs():
+    strings = json.loads((ROOT / "data/strings.json").read_text(encoding="utf-8"))["strings"]
+    inputs = json.loads((ROOT / "data/hybrids_input.json").read_text(encoding="utf-8"))
+    inv = json.loads((ROOT / "data/inventory.json").read_text(encoding="utf-8"))
+    fresh = json.loads(json.dumps(build_hybrids(strings, inputs, inv)))
+    on_disk = json.loads((ROOT / "data/hybrids.json").read_text(encoding="utf-8"))
+    assert fresh == on_disk, "data/hybrids.json non è aggiornato: lancia python3 -m pipeline.build (o python3 -m pipeline.hybrids)"

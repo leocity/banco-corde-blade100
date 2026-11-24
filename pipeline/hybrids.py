@@ -164,6 +164,10 @@ def _level(d, bands):
     return "simile" if d < bands[0] else "un po'" if d <= bands[1] else "nettamente"
 
 
+def _who(side):
+    return "la verticale" if side == "main" else "l'orizzontale"
+
+
 def holding(V, O, ctx):
     """Una corda cede molto prima dell'altra? TWU e Excel si leggono ciascuno nella propria fonte e non si fondono mai
     (nei dati TL6 dell'Excel e perdita TWU non concordano). La perdita ricavata dalla sola fisica non si usa: sarebbe circolare."""
@@ -190,18 +194,18 @@ def holding(V, O, ctx):
     tw = out["twu"]["weaker"] if out["twu"] else None
     exw = out["excel"]["weaker"] if out["excel"] else None
     if tw and exw and tw != exw:
-        out["verdict"], out["note"] = "fonti discordanti", f"TWU dice che cede prima la {'verticale' if tw == 'main' else 'orizzontale'}, l'Excel l'altra: nessuna conclusione"
+        out["verdict"], out["note"] = "fonti discordanti", f"TWU dice che cede prima {_who(tw)}, l'Excel l'altra: nessuna conclusione"
     elif out["twu"]:
         lvl = out["twu"]["level"]
         out["verdict"] = {"simile": "bilanciata", "un po'": "leggermente sbilanciata", "nettamente": "sbilanciata"}[lvl]
         out["weaker"] = tw
         if tw:
-            out["note"] = f"secondo TWU cede prima la {'verticale' if tw == 'main' else 'orizzontale'} ({abs(out['twu']['delta']):.0f} punti di perdita in più)"
+            out["note"] = f"secondo TWU cede prima {_who(tw)} ({abs(out['twu']['delta']):.0f} punti di perdita in più)"
     elif out["excel"]:
         out["verdict"] = "sbilanciata (solo Excel)" if out["excel"]["flagged"] else "bilanciata (solo Excel)"
         out["weaker"] = out["excel"]["weaker"]
         if out["weaker"]:
-            out["note"] = f"secondo l'Excel cede prima la {'verticale' if out['weaker'] == 'main' else 'orizzontale'}"
+            out["note"] = f"secondo l'Excel cede prima {_who(out['weaker'])}"
     else:
         out["note"] = "nessuna misura di tenuta in comune"
     return out
@@ -402,10 +406,15 @@ def _load(p, default=None):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
 
 
-if __name__ == "__main__":
+def write_hybrids():
     strings = _load("data/strings.json")["strings"]
     out = build_hybrids(strings, _load("data/hybrids_input.json", {}), _load("data/inventory.json", {}))
     (ROOT / "data" / "hybrids.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return out
+
+
+if __name__ == "__main__":
+    out = write_hybrids()
     print(f"{len(out['evaluated'])} ibridi valutati; suggeriti dalle corde in casa: " +
           ", ".join(f"{g} {len(v)}" for g, v in out["suggested_from_stock"].items()), "| problemi:", out["problems"] or "nessuno")
     sys.exit(1 if out["problems"] else 0)

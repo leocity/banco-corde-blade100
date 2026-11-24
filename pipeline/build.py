@@ -191,6 +191,12 @@ if __name__ == "__main__":
     print("Racketpedia dal sito:", len(site_rows), "righe;", len(out["estimates_meta"]["rpedia_site"]["changes"]), "abbinamenti nuovi o corretti")
     print("rimosse:", [(x["name"], x["reason"]) for x in out["removed_discontinued"]])
     (ROOT / "data" / "strings.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    # passi che dipendono da strings.json: ibridi valutati ed export compatto per l'AI (dist/banco-corde-ai.json e .md)
+    from pipeline.export_ai import write_export
+    from pipeline.hybrids import write_hybrids
+    hy = write_hybrids()
+    sj, sm = write_export()
+    print(f"ibridi: {len(hy['evaluated'])} valutati, problemi: {hy['problems'] or 'nessuno'} | export AI: {sj / 1000:.1f} KB json, {sm / 1000:.1f} KB md")
     S = out["strings"]
     kinds = {}
     for r in S:

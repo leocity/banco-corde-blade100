@@ -59,7 +59,7 @@
     "excel": null,
     "verdict": "sbilanciata",
     "weaker": "cross",
-    "note": "secondo TWU cede prima la orizzontale (19 punti di perdita in più)"
+    "note": "secondo TWU cede prima l'orizzontale (19 punti di perdita in più)"
    },
    "tension": {
     "kg": [
@@ -191,7 +191,7 @@
     },
     "verdict": "sbilanciata",
     "weaker": "cross",
-    "note": "secondo TWU cede prima la orizzontale (22 punti di perdita in più)"
+    "note": "secondo TWU cede prima l'orizzontale (22 punti di perdita in più)"
    },
    "tension": {
     "kg": [
@@ -327,7 +327,7 @@
      },
      "verdict": "sbilanciata",
      "weaker": "cross",
-     "note": "secondo TWU cede prima la orizzontale (22 punti di perdita in più)"
+     "note": "secondo TWU cede prima l'orizzontale (22 punti di perdita in più)"
     },
     "tension": {
      "kg": [
@@ -444,7 +444,7 @@
      "excel": null,
      "verdict": "sbilanciata",
      "weaker": "cross",
-     "note": "secondo TWU cede prima la orizzontale (12 punti di perdita in più)"
+     "note": "secondo TWU cede prima l'orizzontale (12 punti di perdita in più)"
     },
     "tension": {
      "kg": [
@@ -561,7 +561,7 @@
      "excel": null,
      "verdict": "sbilanciata",
      "weaker": "cross",
-     "note": "secondo TWU cede prima la orizzontale (18 punti di perdita in più)"
+     "note": "secondo TWU cede prima l'orizzontale (18 punti di perdita in più)"
     },
     "tension": {
      "kg": [
@@ -811,7 +811,7 @@
      },
      "verdict": "sbilanciata (solo Excel)",
      "weaker": "cross",
-     "note": "secondo l'Excel cede prima la orizzontale"
+     "note": "secondo l'Excel cede prima l'orizzontale"
     },
     "tension": {
      "kg": [
@@ -2205,7 +2205,7 @@
      "excel": null,
      "verdict": "sbilanciata",
      "weaker": "cross",
-     "note": "secondo TWU cede prima la orizzontale (10 punti di perdita in più)"
+     "note": "secondo TWU cede prima l'orizzontale (10 punti di perdita in più)"
     },
     "tension": {
      "kg": [
@@ -2322,7 +2322,7 @@
      "excel": null,
      "verdict": "sbilanciata",
      "weaker": "cross",
-     "note": "secondo TWU cede prima la orizzontale (19 punti di perdita in più)"
+     "note": "secondo TWU cede prima l'orizzontale (19 punti di perdita in più)"
     },
     "tension": {
      "kg": [
