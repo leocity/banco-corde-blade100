@@ -1,6 +1,8 @@
 """Metriche derivate: sotto-punteggi, somiglianze, tensione suggerita, metriche discriminanti (spec §6)."""
 import math
 
+from pipeline.twuflag import quarantine_twu, restore_twu
+
 # Pesi del punteggio su assi indipendenti: spin e tenuta (misurati) e affinità con le preferite.
 # La v2 usava anche controllo (25) e potenza (20), ma potenza = 100 − controllo: i due pesi si annullavano.
 DEFAULT_WEIGHTS = {"spin": 35, "durability": 20, "affinity": 20}
@@ -242,21 +244,32 @@ def anchor_slope(anchors):
 
 def tension_start(rec, anchors, slope=None):
     anchor = max(anchors, key=lambda a: -1 if a.get("sim") is None else a["sim"])
+    flag = rec.get("twu_flag")
     st = stiff_lab(rec)
     k = DEFAULT_TENSION_SLOPE if slope is None else slope
+    # dato TWU contestato: si ripiega sulla rigidità di Racketpedia solo se la scheda è esatta, altrimenti sulla preferita
+    rp_ok = (rec.get("rpedia") or {}).get("match") == "exact" and (rec.get("stiffness") or {}).get("kind") == "da Racketpedia"
+    if flag and not rp_ok:
+        st = None
+    name = ANCHOR_NAMES.get(anchor["id"], anchor["id"])
+    source = "racketpedia" if flag and st is not None else "preferita" if st is None or anchor.get("stiffness") is None else "twu"
     if st is None or anchor.get("stiffness") is None:
         kg = list(anchor["kg"])
-        note = f"tensione della preferita più simile ({ANCHOR_NAMES.get(anchor['id'], anchor['id'])}), senza una rigidità misurata per correggerla"
+        note = f"tensione della preferita più simile ({name}), senza una rigidità misurata per correggerla"
     else:
         delta = max(-2.0, min(2.0, _half(k * (st - anchor["stiffness"]))))
         kg = [anchor["kg"][0] + delta, anchor["kg"][1] + delta]
         src = {"misurata": "TWU", "parente": "TWU di un calibro gemello", "da Racketpedia": "Racketpedia convertita, ±11 lb/in"}.get(
             ((rec.get("stiffness") or {}).get("kind")), "TWU")
         basis = "dalle tue due preferite" if slope is not None else "regola empirica non validata"
-        note = (f"da {ANCHOR_NAMES.get(anchor['id'], anchor['id'])} corretta di {delta:+.1f} kg per la differenza di rigidità "
+        note = (f"da {name} corretta di {delta:+.1f} kg per la differenza di rigidità "
                 f"({src}; pendenza {k * 15:+.2f} kg ogni 15 lb/in, {basis})").replace(".", ",")
+    if flag:
+        why = "abbinamento TWU sbagliato" if flag["reason"] == "abbinamento" else "dato TWU contestato dal controllo incrociato"
+        note = f"non stimabile da TWU ({why}): {note}"
     return {"kg": kg, "lbs": [_half(x * KG_TO_LBS) for x in kg], "from": anchor["id"],
-            "indicative": True, "note": note, "slope_kg_per_15": round(k * 15, 2), "slope_kg_per_lbin": k, "range_kg": 1.0}
+            "indicative": True, "note": note, "slope_kg_per_15": round(k * 15, 2), "slope_kg_per_lbin": k, "range_kg": 1.0,
+            "estimable_from_twu": not flag, "source": source}
 
 
 def discriminant_metrics(records, pop):
@@ -274,10 +287,18 @@ def discriminant_metrics(records, pop):
 
 
 def derive_all(records, reviews=None):
+    reviews = reviews or {}
+    stash = quarantine_twu(records)  # il TWU contestato non entra in punteggi, somiglianze e tensioni
+    try:
+        return _derive_all(records, reviews)
+    finally:
+        restore_twu(records, stash)
+
+
+def _derive_all(records, reviews):
     # import locali: dims e pairing importano questo modulo
     from pipeline.dims import dim_populations, dimensions, excel_measures
     from pipeline.pairing import pairing
-    reviews = reviews or {}
     pop = population(records)
     by_id = {r["id"]: r for r in records}
     dpop = dim_populations(records)
@@ -317,7 +338,8 @@ def derive_all(records, reviews=None):
             "disliked_warning": flag,
             "disliked_reason": "somiglianza" if by_sim else ("modello" if by_name else None),
             "sources_disagree": sources_disagree(r, pop),
-            "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if by_sim else None),
+            "profile_score": None if r.get("twu_flag") else profile_score(sub, DEFAULT_WEIGHTS, worst if by_sim else None),
+            "twu_flag": r.get("twu_flag"),
             "tension_start": tension_start(r, anchors, slope) if anchors else None,
             "dims": dm[r["id"]]["values"],
             "dim_inputs": dm[r["id"]]["inputs"],

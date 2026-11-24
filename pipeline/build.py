@@ -17,6 +17,7 @@ from pipeline.rpedia_site import apply_site
 from pipeline.production import filter_discontinued
 from pipeline.provenance import apply_provenance
 from pipeline.reviews_indep import validate_indep
+from pipeline.twuflag import quarantine_twu, restore_twu
 from pipeline.reviews import add_percentiles, aggregate, mark_gauge_mismatch, review_conflicts, validate_reviews
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -46,6 +47,8 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
     # Racketpedia dal sito (fonte primaria): verifica, riempie e corregge gli abbinamenti scritti dall'agente
     rp_log = apply_site(records, site_rows or [], base_model) if site_rows else []
     apply_rpedia_fixes(records, extra)  # dopo il sito: le schede trovate a mano hanno l'ultima parola
+    # corde con verdetto «contradicted»: il loro TWU non entra in stime (nemmeno come gemello), punteggio e tensione
+    twu_stash = quarantine_twu(records)
     removed_list = sorted({(f"{r['brand']} {r['model']}", (r.get("production") or {}).get("successor"),
                             (r.get("production") or {}).get("reason")) for r in removed})
     agg = add_percentiles({row["id"]: aggregate(row) for row in (reviews or [])})
@@ -96,6 +99,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
 
     # giudizi e punteggi solo dal laboratorio; le recensioni restano in r["reviews"] come link informativi
     discriminant = derive_all(records)
+    restore_twu(records, twu_stash)  # il dato TWU resta nel record e in `lab`: la pagina lo mostra ancora
     for r in records:  # conflitti tester/dati: solo contro livelli di laboratorio misurati (o da gemello)
         j = r["derived"]["judgments"]
         lvl = lambda c: (j.get(c) or {}).get("level")

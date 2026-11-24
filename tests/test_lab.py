@@ -84,6 +84,8 @@ def test_est_only_where_measure_missing_and_always_labelled():
         lab = r["lab"]
         for key, e in lab["est"].items():
             src, field = key.split(".")
+            if lab.get("twu_flag") and src == "twu":
+                continue  # TWU contestato: la misura resta in lab.twu (la pagina la mostra), est dà l'alternativa senza TWU
             assert not (lab.get(src) and lab[src].get(field if src != "rp" else "kgmm") is not None), (r["id"], key)
             assert e["kind"] in ("ricavata", "modello") and e["how"] and e["v"] is not None, (r["id"], key)
     slap = S["re-string-slap-17"]["lab"]["est"]

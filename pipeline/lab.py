@@ -23,7 +23,11 @@ def lab_block(rec, sources):
     if ex:
         out["excel"] = {"stretch50": (ex.get("stretch_pct") or {}).get("50"), "recover50": (ex.get("recover_pct") or {}).get("50"),
                         "creep24": ex.get("static_24h_creep"), "date": _src(sources, "excel", "modified")}
-    out["est"] = est_block(rec, out)
+    flag = rec.get("twu_flag")
+    if flag:
+        # il TWU resta in `twu` (la pagina lo mostra); i valori ricavati qui sotto ne fanno a meno e li usano ibridi ed export
+        out["twu_flag"] = {k: flag[k] for k in ("untrusted", "reason", "note")}
+    out["est"] = est_block(rec, {**out, "twu": None} if flag else out)
     return out
 
 
@@ -54,7 +58,7 @@ def est_block(rec, lab):
         else:
             est["twu.spin"] = {"kind": "modello", "from": "modello", "v": sp["value"], "margin": _range(sp.get("low"), sp.get("high"), sp["value"]),
                                "how": "dalla fisica, da rigidità e forma"}
-    if twu.get("loss") is None and t.get("match") in ("proxy", "probable") and t.get("tension_loss_pct") is not None:
+    if twu.get("loss") is None and not rec.get("twu_flag") and t.get("match") in ("proxy", "probable") and t.get("tension_loss_pct") is not None:
         est["twu.loss"] = {"kind": "ricavata", "from": "twu", "v": t["tension_loss_pct"], "margin": 5.0,
                            "how": f"dalla riga TWU «{t.get('twu_name')}» (stesso modello, altro calibro o colore)"}
     if not lab.get("rp") and rp.get("match") == "proxy" and rp.get("static_stiffness_kgmm") is not None:
@@ -85,7 +89,8 @@ def fill_loss(records, twu_rows):
     """Perdita di tensione dove manca: (1) media della stessa famiglia misurata da TWU in altri calibri (ricavata),
     (2) altrimenti dalla rigidità: nei dati TWU le poly più rigide perdono meno tensione (fisica, retta su tutte le righe).
     Ritorna i parametri della retta con l'errore medio in prova «lascia uno fuori»."""
-    rows = [r for r in twu_rows if r.get("tension_loss_pct") is not None and r.get("stiffness_lbin")]
+    blocked = {(r.get("twu_flag") or {}).get("twu_name") for r in records} - {None}  # righe TWU contestate: fuori dalla retta e dalle famiglie
+    rows = [r for r in twu_rows if r.get("tension_loss_pct") is not None and r.get("stiffness_lbin") and r.get("twu_name") not in blocked]
     if len(rows) < 10:
         return None
     xs, ys = [r["stiffness_lbin"] for r in rows], [r["tension_loss_pct"] for r in rows]
@@ -100,14 +105,14 @@ def fill_loss(records, twu_rows):
         fam.setdefault(_mkey(r["brand"], r["model"]), []).append(r["tension_loss_pct"])
     for rec in records:
         lab = rec["lab"]
-        if (lab.get("twu") or {}).get("loss") is not None or "twu.loss" in lab["est"]:
+        if ((lab.get("twu") or {}).get("loss") is not None and not rec.get("twu_flag")) or "twu.loss" in lab["est"]:
             continue
         f = fam.get(_mkey(rec["brand"], rec["model"]))
         if f:
             lab["est"]["twu.loss"] = {"kind": "ricavata", "from": "twu", "v": round(statistics.mean(f), 1), "margin": 6.0,
                                       "how": f"dallo stesso modello misurato da TWU in altri calibri ({len(f)} righe)"}
             continue
-        k = (lab.get("twu") or {}).get("stiffness")
+        k = None if rec.get("twu_flag") else (lab.get("twu") or {}).get("stiffness")  # TWU contestato: si usa la rigidità ricavata senza TWU
         if k is None:
             k = (lab["est"].get("twu.stiffness") or {}).get("v")
         if k is None:
