@@ -1075,6 +1075,45 @@
      "tl12": 17.0,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.33,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.18,
+       "points": 0.37,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "OCT",
+       "points": 0.0,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.3,
+       "points": -0.01,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 3.378,
+      "tl6": 17.0,
+      "tl12": 17.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -1530,6 +1569,47 @@
      "tl12": 18.0,
      "creep24": 0.5
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.09,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.18,
+       "points": 0.37,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "OCT",
+       "points": 0.0,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.5,
+       "points": -0.17,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 4.444,
+       "points": -0.11,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro test Excel elastico (cross)"
+     ],
+     "descr": {
+      "stiff_index_avg": 2.778,
+      "tl6": 20.0,
+      "tl12": 18.0,
+      "creep_24h": 0.5
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 3,
      "band": "Poco adatta",
@@ -1887,6 +1967,45 @@
      "tl6": 12.0,
      "tl12": 17.0,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.83,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.75,
+       "points": -0.32,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.25,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.4,
+       "points": -0.13,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 5.511,
+       "points": -0.13,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 3.333,
+      "tl6": 12.0,
+      "tl12": 17.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 44,
@@ -2256,6 +2375,45 @@
      "tl12": 16.0,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.39,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.15,
+       "points": 0.34,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.778,
+      "tl6": 8.0,
+      "tl12": 16.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 43,
      "band": "Attenzione",
@@ -2587,6 +2745,39 @@
      "tl12": 12.0,
      "creep24": 0.13
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.48,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.48,
+       "points": -0.24,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.18,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 1.378,
+      "tl6": 8.0,
+      "tl12": 12.0,
+      "creep_24h": 0.13
+     },
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -2869,6 +3060,38 @@
      "tl6": null,
      "tl12": 10.0,
      "creep24": 0.5
+    },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.59,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.24,
+       "points": 0.01,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 4.444,
+       "points": -0.18,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 3.889,
+      "tl12": 10.0,
+      "creep_24h": 0.5
+     },
+     "note": ""
     },
     "pairing": {
      "score": 49,
@@ -3189,6 +3412,38 @@
      "tl12": null,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.24,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.23,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.06,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 6.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -3476,6 +3731,45 @@
      "tl12": 22.0,
      "creep24": 0.19
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.08,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.88,
+       "points": -0.11,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "TWST",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.39,
+       "points": -0.1,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.04,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 1.956,
+      "tl6": 7.0,
+      "tl12": 22.0,
+      "creep_24h": 0.19
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 84,
      "band": "Ottimo",
@@ -3756,6 +4050,47 @@
      "tl6": 7.0,
      "tl12": 22.0,
      "creep24": 0.19
+    },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.0,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.05,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "TWST",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.49,
+       "points": -0.16,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [
+      "forma sagomata (main) contro test Excel elastico (cross)"
+     ],
+     "descr": {
+      "stiff_index_avg": 1.956,
+      "tl6": 7.0,
+      "tl12": 22.0,
+      "creep_24h": 0.19
+     },
+     "note": ""
     },
     "pairing": {
      "score": 52,
@@ -4042,6 +4377,45 @@
      "tl6": 16.0,
      "tl12": 20.0,
      "creep24": 0.38
+    },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.2,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.05,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.25,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.733,
+      "tl6": 16.0,
+      "tl12": 20.0,
+      "creep_24h": 0.38
+     },
+     "note": ""
     },
     "pairing": {
      "score": 58,
@@ -4345,6 +4719,45 @@
      "tl12": 18.0,
      "creep24": 0.38
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.59,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.8,
+       "points": -0.26,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.25,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.32,
+       "points": -0.05,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.2,
+      "tl6": 16.0,
+      "tl12": 18.0,
+      "creep_24h": 0.38
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 53,
      "band": "Attenzione",
@@ -4646,6 +5059,39 @@
      "tl6": 16.0,
      "tl12": 18.0,
      "creep24": 0.38
+    },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.55,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.32,
+       "points": -0.08,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.06,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.2,
+      "tl6": 16.0,
+      "tl12": 18.0,
+      "creep_24h": 0.38
+     },
+     "note": ""
     },
     "pairing": {
      "score": 53,
@@ -4953,6 +5399,45 @@
      "tl12": 18.0,
      "creep24": 0.38
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.51,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.17,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.25,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.32,
+       "points": -0.05,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 16.0,
+      "tl12": 18.0,
+      "creep_24h": 0.38
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 53,
      "band": "Attenzione",
@@ -5254,6 +5739,41 @@
      "tl6": 12.0,
      "tl12": 24.0,
      "creep24": 0.31
+    },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.01,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.23,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.18,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [
+      "test Excel poco elastico (main) contro forma tonda (cross)"
+     ],
+     "descr": {
+      "stiff_index_avg": 1.533,
+      "tl6": 12.0,
+      "tl12": 24.0,
+      "creep_24h": 0.31
+     },
+     "note": ""
     },
     "pairing": {
      "score": 68,
@@ -5637,6 +6157,39 @@
      "tl12": 15.0,
      "creep24": 0.5
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.97,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.57,
+       "points": -0.31,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 7.733,
+       "points": -0.24,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 3.289,
+      "tl6": 11.0,
+      "tl12": 15.0,
+      "creep_24h": 0.5
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 37,
      "band": "Poco adatta",
@@ -6009,6 +6562,43 @@
      "tl6": null,
      "tl12": null,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.34,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.75,
+       "points": -0.32,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.16,
+       "points": 0.07,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.911,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 100,
@@ -6481,6 +7071,43 @@
      "tl12": null,
      "creep24": 0.13
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.13,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.95,
+       "points": 0.03,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.25,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.19,
+       "points": 0.04,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.04,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 3.178,
+      "creep_24h": 0.13
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 62,
      "band": "Buono",
@@ -6906,6 +7533,43 @@
      "tl6": null,
      "tl12": null,
      "creep24": 0.13
+    },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.1,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.05,
+       "points": 0.21,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.39,
+       "points": -0.1,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.04,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 1.778,
+      "creep_24h": 0.13
+     },
+     "note": ""
     },
     "pairing": {
      "score": 90,
@@ -7385,6 +8049,45 @@
      "tl6": 20.0,
      "tl12": 24.0,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.48,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.1,
+       "points": 0.29,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.11,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 1.667,
+      "tl6": 20.0,
+      "tl12": 24.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 21,
@@ -7879,6 +8582,45 @@
      "tl12": 19.0,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.07,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.05,
+       "points": 0.21,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.32,
+       "points": -0.05,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 11.0,
+      "tl12": 19.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -8357,6 +9099,38 @@
      "tl12": null,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.49,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.3,
+       "points": -0.02,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.06,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.267,
+      "tl6": 5.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 58,
      "band": "Attenzione",
@@ -8650,6 +9424,38 @@
      "tl6": 12.0,
      "tl12": null,
      "creep24": 0.24
+    },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.84,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.4,
+       "points": -0.19,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 5.6,
+       "points": -0.23,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 4.489,
+      "tl6": 12.0,
+      "creep_24h": 0.24
+     },
+     "note": ""
     },
     "pairing": {
      "score": null,
@@ -9034,6 +9840,43 @@
      "tl6": null,
      "tl12": null,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.47,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.0,
+       "points": 0.11,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 3.356,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 55,
@@ -9516,6 +10359,37 @@
      "tl12": null,
      "creep24": 0.38
     },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.59,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.42,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.23,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.06,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.511,
+      "creep_24h": 0.38
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 59,
      "band": "Attenzione",
@@ -9987,6 +10861,45 @@
      "tl6": 15.0,
      "tl12": 26.0,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.84,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.15,
+       "points": 0.34,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.11,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 1.933,
+      "tl6": 15.0,
+      "tl12": 26.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 46,
@@ -10490,6 +11403,45 @@
      "tl6": 15.0,
      "tl12": 20.0,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.28,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1,
+       "points": 0.11,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.32,
+       "points": -0.05,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.333,
+      "tl6": 15.0,
+      "tl12": 20.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 100,
@@ -11029,6 +11981,45 @@
      "tl12": null,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.08,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1,
+       "points": 0.11,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.5,
+       "points": -0.17,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 4.444,
+       "points": -0.11,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [
+      "forma sagomata (main) contro test Excel elastico (cross)"
+     ],
+     "descr": {
+      "stiff_index_avg": 2.222,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 50,
      "band": "Attenzione",
@@ -11423,6 +12414,41 @@
      "tl12": 15.0,
      "creep24": 0.38
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.22,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.24,
+       "points": 0.02,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.18,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [
+      "test Excel poco elastico (main) contro forma tonda (cross)"
+     ],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 13.0,
+      "tl12": 15.0,
+      "creep_24h": 0.38
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 37,
      "band": "Poco adatta",
@@ -11797,6 +12823,39 @@
      "tl6": 12.0,
      "tl12": 23.0,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.51,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.08,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.4,
+       "points": -0.21,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 5.511,
+       "points": -0.22,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.778,
+      "tl6": 12.0,
+      "tl12": 23.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 67,
@@ -12219,6 +13278,45 @@
      "tl6": 19.0,
      "tl12": 24.0,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.31,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1,
+       "points": 0.11,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.11,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.222,
+      "tl6": 19.0,
+      "tl12": 24.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 17,
@@ -12729,6 +13827,45 @@
      "tl12": 25.0,
      "creep24": 0.13
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.02,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1,
+       "points": 0.11,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.48,
+       "points": -0.15,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.11,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.222,
+      "tl6": 17.0,
+      "tl12": 25.0,
+      "creep_24h": 0.13
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 22,
      "band": "Poco adatta",
@@ -13201,6 +14338,39 @@
      "tl12": 8.0,
      "creep24": 0.13
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.51,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.39,
+       "points": -0.16,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.07,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.067,
+      "tl6": 14.0,
+      "tl12": 8.0,
+      "creep_24h": 0.13
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 49,
      "band": "Attenzione",
@@ -13571,6 +14741,39 @@
      "tl12": 12.0,
      "creep24": 0.56
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.3,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.33,
+       "points": -0.13,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 1.6,
+       "points": 0.24,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.044,
+      "tl6": 17.0,
+      "tl12": 12.0,
+      "creep_24h": 0.56
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 24,
      "band": "Poco adatta",
@@ -13940,6 +15143,45 @@
      "tl6": 14.0,
      "tl12": 16.0,
      "creep24": 0.32
+    },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.43,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.8,
+       "points": -0.26,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.25,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.19,
+       "points": 0.04,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.04,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.622,
+      "tl6": 14.0,
+      "tl12": 16.0,
+      "creep_24h": 0.32
+     },
+     "note": ""
     },
     "pairing": {
      "score": 90,
@@ -14312,6 +15554,45 @@
      "tl6": 15.0,
      "tl12": 12.0,
      "creep24": 0.12
+    },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.53,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.95,
+       "points": 0.03,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.11,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.2,
+      "tl6": 15.0,
+      "tl12": 12.0,
+      "creep_24h": 0.12
+     },
+     "note": ""
     },
     "pairing": {
      "score": 46,
@@ -14771,6 +16052,39 @@
      "tl12": 17.0,
      "creep24": 0.19
     },
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.92,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.42,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.62,
+       "points": -0.33,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 4.444,
+       "points": -0.18,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.356,
+      "tl6": 12.0,
+      "tl12": 17.0,
+      "creep_24h": 0.19
+     },
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -15132,6 +16446,45 @@
      "tl6": 9.0,
      "tl12": 19.0,
      "creep24": 0.13
+    },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.28,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.0,
+       "points": 0.11,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.25,
+       "reading": "sagomata"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.32,
+       "points": -0.05,
+       "reading": "molto elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.289,
+       "points": -0.04,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.222,
+      "tl6": 9.0,
+      "tl12": 19.0,
+      "creep_24h": 0.13
+     },
+     "note": ""
     },
     "pairing": {
      "score": 71,
@@ -15514,6 +16867,45 @@
      "tl6": 13.0,
      "tl12": 24.0,
      "creep24": 0.25
+    },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.14,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.05,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.11,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 1.667,
+      "tl6": 13.0,
+      "tl12": 24.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
     },
     "pairing": {
      "score": 58,
@@ -16022,6 +17414,45 @@
      "tl12": 7.0,
      "creep24": 0.32
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.03,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.95,
+       "points": 0.03,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.14,
+       "points": 0.08,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 3.822,
+       "points": -0.09,
+       "reading": "molto allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 3.6,
+      "tl6": 18.0,
+      "tl12": 7.0,
+      "creep_24h": 0.32
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -16523,6 +17954,39 @@
      "tl12": 16.0,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.05,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.08,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.19,
+       "points": 0.07,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.07,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 14.0,
+      "tl12": 16.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 62,
      "band": "Buono",
@@ -16891,6 +18355,45 @@
      "tl12": 8.0,
      "creep24": 0.25
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.07,
+     "confidence": "alta",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.95,
+       "points": 0.03,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.19,
+       "points": 0.04,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.04,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 14.0,
+      "tl12": 8.0,
+      "creep_24h": 0.25
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 62,
      "band": "Buono",
@@ -17255,6 +18758,39 @@
      "tl12": 13.0,
      "creep24": 0.38
     },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.05,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.08,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.19,
+       "points": 0.07,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.756,
+       "points": 0.07,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 8.0,
+      "tl12": 13.0,
+      "creep_24h": 0.38
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 62,
      "band": "Buono",
@@ -17546,6 +19082,47 @@
      "tl6": 8.0,
      "tl12": 16.0,
      "creep24": 0.37
+    },
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.02,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.17,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.05,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.14,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.11,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [
+      "test Excel poco elastico (main) contro rigidità a riposo morbida (cross)"
+     ],
+     "descr": {
+      "stiff_index_avg": 2.489,
+      "tl6": 8.0,
+      "tl12": 16.0,
+      "creep_24h": 0.37
+     },
+     "note": ""
     },
     "pairing": {
      "score": 67,
@@ -17893,6 +19470,38 @@
      "tl12": null,
      "creep24": 0.38
     },
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.33,
+     "confidence": "bassa",
+     "basis": [
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.08,
+       "reading": "tonda"
+      },
+      {
+       "signal": "elasticità",
+       "value": 0.0,
+       "points": 0.23,
+       "reading": "poco elastica"
+      },
+      {
+       "signal": "allungamento",
+       "value": 2.222,
+       "points": 0.18,
+       "reading": "poco allungabile"
+      }
+     ],
+     "conflicts": [],
+     "descr": {
+      "stiff_index_avg": 2.2,
+      "tl6": 10.0,
+      "creep_24h": 0.38
+     },
+     "note": ""
+    },
     "pairing": {
      "score": 55,
      "band": "Attenzione",
@@ -18232,6 +19841,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -18641,6 +20259,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 62,
      "band": "Buono",
@@ -19007,6 +20634,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 81,
      "band": "Ottimo",
@@ -19401,6 +21037,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -19848,6 +21493,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.36,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.1,
+       "points": 0.44,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.08,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 78,
      "band": "Buono",
@@ -20238,6 +21905,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 66,
      "band": "Buono",
@@ -20599,6 +22275,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.14,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.15,
+       "points": 0.52,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro forma tonda (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -20889,6 +22589,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.06,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.1,
+       "points": 0.44,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro forma tonda (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 56,
      "band": "Attenzione",
@@ -21205,6 +22929,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 56,
      "band": "Attenzione",
@@ -21608,6 +23341,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.27,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.27,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "OCT",
+       "points": 0.0,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -21937,6 +23692,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.07,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.05,
+       "points": 0.32,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro forma tonda (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 75,
      "band": "Buono",
@@ -22265,6 +24044,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 34,
      "band": "Poco adatta",
@@ -22508,6 +24296,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.93,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.73,
+       "points": -0.54,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 97,
      "band": "Ottimo",
@@ -22888,6 +24698,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.19,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.08,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "PENT",
+       "points": 0.27,
+       "reading": "sagomata"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -23401,6 +25233,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.12,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.27,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.38,
+       "reading": "sagomata"
+      }
+     ],
+     "conflicts": [
+      "forma sagomata (main) contro rigidità a riposo morbida (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -23783,6 +25639,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.01,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.08,
+       "points": 0.38,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro forma tonda (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -24074,6 +25954,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 49,
      "band": "Attenzione",
@@ -24418,6 +26307,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 55,
      "band": "Attenzione",
@@ -24711,6 +26609,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.06,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.1,
+       "points": 0.44,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro forma tonda (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 40,
      "band": "Attenzione",
@@ -25035,6 +26957,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 79,
      "band": "Buono",
@@ -25355,6 +27286,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 50,
      "band": "Attenzione",
@@ -25603,6 +27543,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 20,
      "band": "Poco adatta",
@@ -25890,6 +27839,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.13,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.03,
+       "points": 0.26,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro forma tonda (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 35,
      "band": "Poco adatta",
@@ -26256,6 +28229,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.47,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.08,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 81,
      "band": "Ottimo",
@@ -26506,6 +28501,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 26,
      "band": "Poco adatta",
@@ -26737,6 +28741,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 11,
      "band": "Poco adatta",
@@ -26985,6 +28998,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 42,
      "band": "Attenzione",
@@ -27326,6 +29348,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 65,
      "band": "Buono",
@@ -27668,6 +29699,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 33,
      "band": "Poco adatta",
@@ -27916,6 +29956,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 83,
      "band": "Ottimo",
@@ -28156,6 +30205,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 50,
      "band": "Attenzione",
@@ -28518,6 +30576,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.88,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.75,
+       "points": -0.49,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 43,
      "band": "Attenzione",
@@ -28761,6 +30841,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 100,
      "band": "Ottimo",
@@ -29006,6 +31095,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.95,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.72,
+       "points": -0.56,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 25,
      "band": "Poco adatta",
@@ -29255,6 +31366,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 18,
      "band": "Poco adatta",
@@ -29669,6 +31789,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.61,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.25,
+       "points": 0.61,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "OCT",
+       "points": 0.0,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 0,
      "band": "Poco adatta",
@@ -29913,6 +32055,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 50,
      "band": "Attenzione",
@@ -30275,6 +32426,30 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.07,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.05,
+       "points": 0.32,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [
+      "rigidità a riposo rigida (main) contro forma tonda (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 48,
      "band": "Attenzione",
@@ -30518,6 +32693,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 35,
      "band": "Poco adatta",
@@ -30758,6 +32942,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 14,
      "band": "Poco adatta",
@@ -31003,6 +33196,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.78,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.8,
+       "points": -0.4,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 38,
      "band": "Poco adatta",
@@ -31247,6 +33462,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 47,
      "band": "Attenzione",
@@ -31486,6 +33710,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": 50,
      "band": "Attenzione",
@@ -31730,6 +33963,28 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.78,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.8,
+       "points": -0.4,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": 92,
      "band": "Ottimo",
@@ -31974,6 +34229,15 @@
      "durability": 1
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -32206,6 +34470,30 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.0,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.27,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "PENT",
+       "points": 0.27,
+       "reading": "sagomata"
+      }
+     ],
+     "conflicts": [
+      "forma sagomata (main) contro rigidità a riposo morbida (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -32524,6 +34812,30 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.32,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.7,
+       "points": -0.58,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "PENT",
+       "points": 0.27,
+       "reading": "sagomata"
+      }
+     ],
+     "conflicts": [
+      "forma sagomata (main) contro rigidità a riposo morbida (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -32791,6 +35103,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.78,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.8,
+       "points": -0.4,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -33100,6 +35434,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -33404,6 +35747,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -33677,6 +36029,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -33950,6 +36311,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -34163,6 +36533,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -34376,6 +36755,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -34590,6 +36978,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.99,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.2,
+       "points": -0.61,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -34812,6 +37222,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.47,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.08,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -35028,6 +37460,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -35241,6 +37682,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -35454,6 +37904,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -35675,6 +38134,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -35902,6 +38370,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -36129,6 +38606,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -36463,6 +38949,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -36902,6 +39397,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.21,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.0,
+       "points": 0.17,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -37333,6 +39850,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.33,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.95,
+       "points": 0.05,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -37776,6 +40315,30 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": -0.22,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.75,
+       "points": -0.49,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "PENT",
+       "points": 0.27,
+       "reading": "sagomata"
+      }
+     ],
+     "conflicts": [
+      "forma sagomata (main) contro rigidità a riposo morbida (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -38168,6 +40731,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -38518,6 +41090,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "main",
+     "score": 0.3,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.08,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.38,
+       "reading": "sagomata"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -38904,6 +41498,30 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.12,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.27,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "SQ",
+       "points": 0.38,
+       "reading": "sagomata"
+      }
+     ],
+     "conflicts": [
+      "forma sagomata (main) contro rigidità a riposo morbida (cross)"
+     ],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -39335,6 +41953,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "flessibile",
+     "score": 0.24,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 1.05,
+       "points": 0.32,
+       "reading": "rigida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.08,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -39726,6 +42366,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -40067,6 +42716,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.65,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.27,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -40405,6 +43076,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.34,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.85,
+       "points": -0.27,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "HEX",
+       "points": -0.08,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -40764,6 +43457,28 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "cross",
+     "score": -0.47,
+     "confidence": "media",
+     "basis": [
+      {
+       "signal": "rigidità a riposo",
+       "value": 0.9,
+       "points": -0.08,
+       "reading": "morbida"
+      },
+      {
+       "signal": "forma",
+       "value": "RND",
+       "points": -0.38,
+       "reading": "tonda"
+      }
+     ],
+     "conflicts": [],
+     "descr": {},
+     "note": ""
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -41096,6 +43811,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",
@@ -41509,6 +44233,15 @@
      "durability": 0
     },
     "excel_measures": null,
+    "hybrid_role": {
+     "role": "non valutabile",
+     "score": null,
+     "confidence": null,
+     "basis": [],
+     "conflicts": [],
+     "descr": {},
+     "note": "servono almeno due tra Racketpedia esatta, forma e test Excel"
+    },
     "pairing": {
      "score": null,
      "band": "Non valutabile",

@@ -1,6 +1,7 @@
 """Metriche derivate: sotto-punteggi, somiglianze, tensione suggerita, metriche discriminanti (spec §6)."""
 import math
 
+from pipeline.hybrid_role import hybrid_role, role_populations
 from pipeline.twuflag import quarantine_twu, restore_twu
 
 # Pesi del punteggio su assi indipendenti: spin e tenuta (misurati) e affinità con le preferite.
@@ -300,6 +301,7 @@ def _derive_all(records, reviews):
     from pipeline.dims import dim_populations, dimensions, excel_measures
     from pipeline.pairing import pairing
     pop = population(records)
+    hpop = role_populations(records)
     by_id = {r["id"]: r for r in records}
     dpop = dim_populations(records)
     dm = {r["id"]: dimensions(r, dpop) for r in records}
@@ -344,6 +346,7 @@ def _derive_all(records, reviews):
             "dims": dm[r["id"]]["values"],
             "dim_inputs": dm[r["id"]]["inputs"],
             "excel_measures": excel_measures(r),
+            "hybrid_role": hybrid_role(r, hpop),  # solo Racketpedia, forma ed Excel: mai nel punteggio
             "pairing": pairing(dm[r["id"]]["values"], liked_refs, disliked_refs, penalize=r["id"] not in DEFAULT_LIKED),
         }
     return discriminant_metrics(records, pop)
