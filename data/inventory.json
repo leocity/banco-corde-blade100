@@ -1,0 +1,23 @@
+{
+  "_comment": "Le corde che hai fisicamente a casa. Copiato dal database della pagina il 24/11/2026: dopo, questo file si aggiorna a mano (non segue le modifiche fatte nell'app). Distinto da data/agents/catalog_have.json (corde presenti nel tuo Excel, non la scorta).",
+  "_schema": {
+    "equipped": "corda montata ora: id, tensione [verticali, orizzontali] in kg",
+    "stock[].id": "id di una corda in data/strings.json",
+    "stock[].size": "matassina = set da 12 m, basta per una racchetta intera; mezza = circa 6 m, metà di un ibrido. Due mezze della stessa corda fanno una racchetta intera",
+    "stock[].n": "quante ne hai",
+    "stock[].metri": "facoltativo: metri reali, se diversi da 12 (matassina) e 6 (mezza)",
+    "stock[].note": "facoltativo"
+  },
+  "equipped": {"id": "re-string-slap-17", "kg": [22, 21], "since": "2026-10-31"},
+  "stock": [
+    {"id": "toroline-wasabi-x-blue-17", "size": "mezza", "n": 3, "note": ""},
+    {"id": "toroline-wasabi-green-17", "size": "mezza", "n": 1, "note": ""},
+    {"id": "grapplesnake-tour-m8-17", "size": "matassina", "n": 1, "note": ""},
+    {"id": "solinco-confidential-17", "size": "matassina", "n": 1, "note": ""},
+    {"id": "solinco-mach-10-17", "size": "mezza", "n": 1, "note": ""},
+    {"id": "solinco-hyper-g-round-17", "size": "mezza", "n": 1, "note": ""},
+    {"id": "toroline-o-toro-17", "size": "mezza", "n": 3, "note": ""},
+    {"id": "toroline-o-toro-tour-17", "size": "mezza", "n": 3, "note": ""},
+    {"id": "toroline-o-toro-snap-16l", "size": "mezza", "n": 2, "note": "il TWU di questa corda è contestato: nei calcoli si usano valori ricavati senza TWU"}
+  ]
+}

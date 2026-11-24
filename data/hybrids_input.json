@@ -1,0 +1,9 @@
+{
+  "_comment": "Ibridi da simulare o già montati. main = verticali, cross = orizzontali, kg = [verticali, orizzontali]. status: montato | da_provare. Aggiungi qui i tuoi: python3 -m pipeline.hybrids ricalcola data/hybrids.json. Le due voci sono esempi tratti dalle idee del progetto (da cancellare o cambiare).",
+  "hybrids": [
+    {"id": "esempio-tour-otoro", "main": "toroline-o-toro-tour-17", "cross": "toroline-o-toro-17", "kg": [23, 22], "status": "da_provare", "date": null,
+     "note": "esempio: verticale più rigida che perde meno tensione, O-Toro in orizzontale"},
+    {"id": "esempio-confidential-otoro", "main": "solinco-confidential-17", "cross": "toroline-o-toro-17", "kg": [23, 22], "status": "da_provare", "date": null,
+     "note": "esempio: Confidential sagomata in verticale, O-Toro in orizzontale"}
+  ]
+}
