@@ -35,6 +35,15 @@ Strumento per scegliere corde poly (1.18–1.30 mm) per una **Wilson Blade 100 v
 | Catalogo, produzione, anni di uscita | `data/agents/catalog.json`, `prod_p*.json`, `year_p*.json` | completezza marche, fuori produzione, corde uscite prima del 2020 |
 | Correzioni curate | `data/crosscheck_overrides.json`, `data/catalog_fixes.json`, `data/agents/*_overrides.json`, `data/notes.json` | forme dai produttori, esiti del controllo web, note da incordatore |
 
+## Ibridi, inventario ed export per l'AI (pipeline)
+
+- **Corde con verdetto crosscheck «contradicted»** (oggi 3 nel banco: `babolat-rpm-blast-16l` per abbinamento sbagliato, `grapplesnake-alpha-17` e `toroline-o-toro-snap-16l` per dato contestato): `derived.twu_flag` ne segnala il TWU come inattendibile (`pipeline/twuflag.py`). Il TWU non entra in stime (nemmeno come gemello di altre corde), `profile_score` (null), `tension_start` («non stimabile da TWU», con ripiego su Racketpedia solo se la scheda è esatta, altrimenti sulla preferita più simile) e ibridi. `lab.twu` resta com'è (la pagina continua a mostrarlo); `lab.est` ha i valori ricavati senza TWU. `BLOCK_ISSUES` in `twuflag.py` sceglie quali motivi bloccare (abbinamento, contestata). Il motivo «contestata» nasce da test di gioco: è una scelta dichiarata, perché le recensioni altrimenti non entrano nei calcoli.
+- **`derived.hybrid_role`** (`pipeline/hybrid_role.py`): ruolo main / cross / flessibile / non valutabile da Racketpedia esatta (peso 0,40), forma (0,25) ed Excel (elasticità 0,20, allungamento 0,15), con confidenza e conflitti. Mai TWU, mai nel punteggio (`REQUIRED_FOR_SCORE` invariato). L'Excel non concorda con TWU né con Racketpedia: da solo dà confidenza bassa.
+- **`pipeline/hybrids.py`**: valuta coppie verticali + orizzontali. Rigidità equivalente alla tensione (stessa matematica di `web/phys.js`, parità verificata da `tests/fixtures/hybrid_cases.json`, generata dal JS con `node tests/fixtures/make_hybrid_cases.mjs`), con peso 16/35 e intervallo fino al 65% verticali; geometria (ipotesi); coerenza di tenuta per fonte (TWU ed Excel mai fusi); tensione differenziata dall'ancora; generatore dalla scorta per obiettivo (simile, più morbida, più rigida, palla più bassa, tiene di più, più spin). Input `data/hybrids_input.json` (ibridi da simulare o montati), output `data/hybrids.json`.
+- **`data/inventory.json`**: la scorta reale (matassina = 12 m, mezza = 6 m; due mezze fanno una racchetta intera) e la montata. Copiata dal database della pagina il 24/11/2026; dopo si aggiorna a mano. Distinta da `data/agents/catalog_have.json`.
+- **Export per l'AI** (`pipeline/export_ai.py`): `dist/banco-corde-ai.json` (43 KB) e `dist/banco-corde-ai.md` (21 KB, ciascuno sotto 100 KB) da incollare in chat: ancore, racchetta, regole di calcolo, scorta, scheda di ogni corda (misure, valori ricavati, crosscheck, ruolo, tensione) e ibridi. Niente testi di recensioni. `python3 -m pipeline.build` ricalcola ibridi ed export.
+- **`disliked_warning`** ora segnala anche le varianti solo catalogo di un modello non gradito (`derived.disliked_reason`: «somiglianza» o «modello»).
+
 ## Comandi
 
 Richiede Python 3 (`py` su Windows) con `openpyxl` e `pytest`, Node 20+ e Playwright per i test della pagina.
@@ -45,6 +54,8 @@ bash tests/run_all.sh                    # ricostruisce la pagina ed esegue pyte
 python3 -m pytest -q                     # 267 test Python
 node --test web/*.test.mjs               # 105 test JS dei moduli puri (confronto, consigli, stato, righelli, AI)
 node tests/e2e/ui.cjs                    # 22 test della pagina in Chromium (richiede dist/preview.html)
+python3 -m pipeline.hybrids               # ricalcola data/hybrids.json da hybrids_input.json e inventory.json
+python3 -m pipeline.export_ai            # dist/banco-corde-ai.json e .md
 python3 -m pipeline.watch                # novità TWU, Racketpedia e YouTube: scrive solo data/changes/watch-*.md
 node tests/e2e/shots.cjs                 # screenshot in docs/audit/
 py -m pipeline.excel_extract "data/source/String chart Aug 262026.xlsx" data/raw/excel.json

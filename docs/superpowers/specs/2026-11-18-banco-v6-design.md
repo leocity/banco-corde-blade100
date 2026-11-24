@@ -251,3 +251,7 @@ L'utente: consigli, confronti e ibridi devono tenere conto di rigidità, lancio,
 - **Comparatore** (`web/cmpui.js`): la montata e fino a 3 corde fianco a fianco su rigidità appena montata, dopo il calo, lancio, spin, perdita, più calibro, forma, materiale e rigidità da ferma; «Confronta» aggiunge, la ricerca nel dialogo aggiunge, ✕ toglie; dalla Mappa «Confronta queste corde».
 - **AI con i dati** (`web/ask.js`): nel testo sempre un riassunto (montata con valori e tipo, corde in casa confrontate col modello fisico, consigli per ogni domanda, regola della scorta); dove la pagina lo permette, strumenti per cercare qualsiasi corda, leggerne i valori, confrontarne fino a 4 e chiedere i consigli.
 - **Excel aggiornato**: il file è di Kerry Hlady (metadati); il gruppo Facebook non è raggiungibile senza accesso. Da fare: l'utente carica il nuovo file nel repo (`data/source/`) o su Google Drive.
+
+## 17. Pipeline ibridi, ruolo, TWU contestato, export AI (24/11/2026)
+
+Vedi README (sezione «Ibridi, inventario ed export per l'AI») e HANDOFF §5b. In breve: `twu_flag` (quarantena del TWU contestato in stime e derive, `lab.twu` invariato), `hybrid_role`, `pipeline/hybrids.py` (matematica uguale a `web/phys.js`, fixture condivisa), `inventory.json`, `hybrids_input.json`, `export_ai.py`. La pagina non è stata toccata; non c'è ancora la lettura di `twu_flag` lato JS (i confronti della pagina usano ancora `lab.twu` anche per le 3 corde contestate).

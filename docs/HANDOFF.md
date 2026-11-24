@@ -47,6 +47,10 @@ Solo dati gratuiti; niente prezzi; punteggi e classifiche solo da laboratorio, r
 - **Recensioni YouTube**: solo classificazione dei canali dai feed RSS; nessuna frase finché il video non è guardato.
 - **TWU a 51 lb** (la tabella dice 51; il «52» è di un articolo).
 
+## 5b. Pipeline ibridi e export AI (24/11/2026, non ancora pubblicata)
+
+Sul ramo ci sono, **non pubblicati** (la pagina online è ancora la v6.3 del 19/11 con i dati di allora): `derived.twu_flag` (TWU contestato fuori da calcoli, `lab.twu` invariato), `derived.hybrid_role`, `pipeline/hybrids.py` con fixture di parità col JS, `data/inventory.json`, `data/hybrids_input.json`, `data/hybrids.json`, `dist/banco-corde-ai.json/.md`. Togliere il TWU contestato sposta di 1-2 punti i percentili degli altri: 9 corde cambiano fascia di pairing (nessuna pagina mostra più il pairing). Per pubblicare: `python3 -m pipeline.build && python3 -m pipeline.build_page`, test, poi l'Artifact come sempre. Decisioni: blocco in derived/ibridi/export e non in `lab` (la pagina non cambia comportamento); motivo «contestata» bloccato come richiesto, anche se nasce da recensioni (cambiabile in `twuflag.BLOCK_ISSUES`); peso verticali 16/35 con intervallo fino a 65%; hybrid_role da Racketpedia e forma, Excel con peso basso.
+
 ## 6. Problemi aperti e rimandati
 
 - Toroline Ether: in vendita sul sito secondo la ricerca, ma i dati di produzione la danno fuori produzione: resta esclusa finché l'utente non conferma.
