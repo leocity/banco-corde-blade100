@@ -77,3 +77,23 @@ def test_corrected_catalog_data():
     assert by["head-lynx-tour-17"]["shape"] == "HEX"        # corretta da RND
     eco = by["luxilon-eco-power-17"]
     assert eco["shape"] == "HEX" and eco["lab"]["twu"]["stiffness"] == 194.9 and eco["lab"]["rp"]["kgmm"] == 1.05
+
+
+def test_page_payload_has_plan_order_and_field_tests_without_prices():
+    from pipeline.test_plan import page_payload
+    FT = json.loads((ROOT / "data/field_tests.json").read_text(encoding="utf-8"))
+    p = page_payload(S, PLAN, INV, FT)
+    assert [r["prio"] for r in p["rows"]] == sorted(r["prio"] for r in p["rows"]) and len(p["rows"]) == len(PLAN["plan"])
+    assert all(r["window"] in p["windows"] for r in p["rows"])
+    assert all(r["loss_affidabilita"] in ("misurata", "ricavata", "dalla fisica", "mancante") for r in p["rows"])
+    assert p["incoming"]["key"] == "ordine-2026-12-15" and sum(p["incoming"]["halves"].values()) == 22
+    assert p["field_file"] and p["field_file"][0]["setup_id"] == "re-string-slap-17-fb"
+    assert "prezz" not in json.dumps(p, ensure_ascii=False).lower().replace("prezzi esclusi", "")
+
+
+def test_plan_lives_outside_strings_json_and_reaches_the_page():
+    d = json.loads((ROOT / "data/strings.json").read_text(encoding="utf-8"))
+    assert "plan" not in d  # dati personali fuori dal file dei calcoli
+    p = json.loads((ROOT / "data/plan_page.json").read_text(encoding="utf-8"))
+    assert p["rows"] and not p["problems"]
+    assert '"plan": {"rows"' in (ROOT / "dist/string-explorer.html").read_text(encoding="utf-8")

@@ -42,5 +42,5 @@ const dbDocs = (page) => page.evaluate(() => Object.fromEntries(Object.keys(loca
 module.exports = { openPage, stateOf, tab, FAKE_CLAUDE, dbDocs, BAD, test, assert };
 
 if (require.main === module) {
-  for (const f of ['oggi', 'prossima', 'mappa', 'qualita']) require(`./${f}.cjs`);
+  for (const f of ['oggi', 'prossima', 'prove', 'mappa', 'qualita']) require(`./${f}.cjs`);
 }

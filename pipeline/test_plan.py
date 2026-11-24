@@ -113,8 +113,47 @@ def evaluate_plan(strings, plan, inventory):
             "geom": ev["geometry"]["tag"] if e["kind"] == "hybrid" else None, "tenuta": ev["holding"]["verdict"],
             "vs_montata": [f"{v['label']}: {v['word']}" for v in ev["vs_reference"] if v["dir"]],
             "avvisi": ev["flags"] + ev["tension"]["flags"],
+            "loss_affidabilita": _kind_word((bed_of(V, O, e["kg_piano"]) or {}).get("loss")),
+            "tenuta_nota": ev["holding"].get("note") or "", "kg_nota": ev["tension"].get("note") or "",
+            "ore_ipotesi": e.get("ore_ipotesi"),
         })
     return {"rows": rows, "budget": budget(plan, inventory), "problems": problems}
+
+
+def _kind_word(v):
+    from pipeline.hybrids import KIND_WORD
+    return KIND_WORD[v["est"]] if v else "mancante"
+
+
+WINDOWS = {"subito": "Subito", "prima_del_pacco": "Prima che arrivi il pacco", "pacco": "Quando arriva il pacco",
+           "ibridi_a": "Ibridi", "ibridi_b": "Ibridi", "ibridi_c": "Ibridi", "ibridi_d": "Ibridi", "ibridi_e": "Ibridi",
+           "bassa": "Priorità bassa", "ultima": "Per ultima"}
+
+
+def order_key(inventory):
+    """Chiave stabile dell'ordine in arrivo (la pagina ricorda così se l'hai già messo tra le corde in casa)."""
+    inc = (inventory or {}).get("incoming") or {}
+    return f"ordine-{inc.get('expected') or 'senza-data'}" if inc.get("bags") else None
+
+
+def page_payload(strings, plan, inventory, field=None):
+    """Quello che la scheda «Prove» della pagina mostra: piano valutato, bilancio delle mezze, ordine in arrivo, regole e
+    schede di campo del file (sola lettura: quelle nuove l'utente le scrive nella pagina). Niente prezzi, niente punteggi."""
+    from pipeline.field_tests import ALERT_LOSS_PCT, FEEL_HELP, analyze
+    ev = evaluate_plan(strings, plan, inventory)
+    inc = (inventory or {}).get("incoming") or {}
+    ft = analyze((field or {}).get("tests", []), strings, plan)
+    return {
+        "rows": ev["rows"], "budget": ev["budget"], "problems": ev["problems"], "windows": WINDOWS,
+        "alias": (plan or {}).get("alias", {}), "panchina": (plan or {}).get("panchina", []),
+        "regole": (plan or {}).get("regole_dichiarate", []), "regole_nota": (plan or {}).get("_regole_nota", ""),
+        "equipped": (inventory or {}).get("equipped"),
+        "incoming": {"key": order_key(inventory), "status": inc.get("status"), "expected": inc.get("expected"),
+                     "bags": [{k: b.get(k) for k in ("name", "n", "main", "cross", "note")} for b in inc.get("bags", [])],
+                     "halves": incoming_halves(inventory)} if inc.get("bags") else None,
+        "field_file": ft["prove"], "field_problems": ft["problems"],
+        "alert_pct": ALERT_LOSS_PCT, "feel_help": FEEL_HELP,
+    }
 
 
 def _load(p, default=None):

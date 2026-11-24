@@ -1,5 +1,6 @@
 // Stato dell'utente (montata, preferite, ore, corde finite): funzioni pure che restituiscono nuovi oggetti.
 import { sanitizeDiary, emptyDiary } from './diary.js';
+import { sanitizeFields, sanitizeProve } from './prove.js';
 
 const isStr = (v) => typeof v === 'string';
 const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
@@ -140,7 +141,12 @@ export function sanitizeState(raw, defaults, knownIds) {
   if (lives.length < rawLives.length) warnings.push(`${rawLives.length - lives.length} corda/e finita/e con dati non validi sono state ignorate.`);
   const stock = [];
   for (const x of Array.isArray(obj.stock) ? obj.stock : []) if (okStockItem(x) && known.has(x.id) && !stock.some((y) => y.id === x.id && y.size === x.size)) stock.push({ id: x.id, size: x.size, n: x.n });
-  const extra = { ...(stock.length ? { stock } : {}), ...(NEXT_GOALS.includes(obj.nextGoal) ? { nextGoal: obj.nextGoal } : {}) };
+  // Prove: schede di campo e collegamenti uscite <-> piano. Campi facoltativi, solo se presenti.
+  const fieldTests = sanitizeFields(obj.fieldTests, known);
+  const prove = sanitizeProve(obj.prove);
+  const hasProve = Object.keys(prove.links).length || prove.received.length;
+  const extra = { ...(stock.length ? { stock } : {}), ...(NEXT_GOALS.includes(obj.nextGoal) ? { nextGoal: obj.nextGoal } : {}),
+    ...(fieldTests.length ? { fieldTests } : {}), ...(hasProve ? { prove } : {}) };
   return { state: { v: STATE_VERSION, equipped, liked, disliked, sessions, lives, ...extra }, warnings };
 }
 
@@ -162,11 +168,16 @@ export function splitState(state) {
   }
   for (const l of state.lives) lives[`l-${l.lid}`] = l;
   const prefs = { ...(state.stock && state.stock.length ? { stock: state.stock } : {}), ...(state.nextGoal ? { nextGoal: state.nextGoal } : {}) };
-  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives, prefs, rates };
+  // Prove (dalla v6.4): schede `f-<fid>` e documento `x-prove` (collegamenti e ordini ricevuti). Le pagine più vecchie non li leggono e non li cancellano.
+  const fields = {};
+  for (const t of state.fieldTests || []) fields[`f-${t.fid}`] = t;
+  const p = state.prove || {};
+  const prove = (p.links && Object.keys(p.links).length) || (p.received && p.received.length) ? { links: p.links || {}, received: p.received || [] } : {};
+  return { core: { v: STATE_VERSION, equipped: state.equipped, liked: state.liked, disliked: state.disliked }, sessions, lives, prefs, rates, fields, prove };
 }
 
 // Stato grezzo da passare a sanitizeState. Se il documento `state` è ancora quello v1 (con gli array), li unisce agli elementi.
-export function joinState(core, sessions, lives, prefs = null, rates = {}) {
+export function joinState(core, sessions, lives, prefs = null, rates = {}, fields = {}, prove = null) {
   const old = (k) => (core && Array.isArray(core[k]) ? core[k] : []);
   const merge = (legacy, items, key) => { const seen = new Set(Object.values(items).map((x) => x[key])); return [...legacy.filter((x) => x && !seen.has(x[key])), ...Object.values(items)]; };
   const { sessions: _s, lives: _l, ...rest } = core || {};
@@ -174,7 +185,8 @@ export function joinState(core, sessions, lives, prefs = null, rates = {}) {
   const withRates = merge(old('sessions'), sessions, 'ts').map((x) => { const r = x && rateOf[x.ts]; return r ? { ...x, ...(r.feel !== undefined ? { feel: r.feel } : {}), ...(r.tag !== undefined ? { tag: r.tag } : {}) } : x; });
   const p = prefs && typeof prefs === 'object' ? prefs : {};
   return { ...rest, ...(p.stock !== undefined ? { stock: p.stock } : {}), ...(p.nextGoal !== undefined ? { nextGoal: p.nextGoal } : {}),
-    sessions: withRates.sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom) };
+    sessions: withRates.sort(byTs), lives: merge(old('lives'), lives, 'from').sort(byFrom),
+    ...(fields && Object.keys(fields).length ? { fieldTests: Object.values(fields) } : {}), ...(prove && typeof prove === 'object' && Object.keys(prove).length ? { prove } : {}) };
 }
 
 // ---------- diario: prove e verdetto ----------

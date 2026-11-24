@@ -3,6 +3,7 @@ import { $, esc, NF, fullName, fmtN } from './format.js';
 import { addSession, rateSession, removeSession, restoreSession, addPastLife, setEquippedKg, equippedHours, changeString, updateDiary, applyVerdict, addStock, setStockCount, SESSION_TAGS, parseHours, SIZE_LABEL, canStringFull } from './state.js';
 import { setVerdict } from './diary.js';
 import { tip, nameBtn, specLine, hasMeasures, itDate } from './ui.js';
+import { linkPlan, useHybridHalves, planOfLife, planUsage } from './prove.js';
 
 const QUICK_HOURS = 1.5;
 const FACES = ['', '😖', '🙁', '😐', '🙂', '😄'];
@@ -69,6 +70,7 @@ export function renderToday(ctx) {
         <button type="button" class="btn primary" id="kg-save">Salva</button>
         <p class="err" id="kg-err" role="alert" hidden>Tensioni tra 15 e 35 kg.</p>
       </div>
+      ${planLine(ctx, st)}
       <p class="hero-hours">${tip('ore', `<b class="num">${hoursTxt(hours)}</b>`)} su questa corda · ${ss.length} ${ss.length === 1 ? 'uscita' : 'uscite'}</p>
       <div class="actions"><button type="button" class="btn primary big" id="quick-add">+ Uscita ${fmtN(QUICK_HOURS, 1)} h</button>
         <button type="button" class="btn" id="other-hours" aria-expanded="false" aria-controls="hours-form">Altre ore</button></div>
@@ -91,6 +93,14 @@ export function renderToday(ctx) {
       <div class="actions"><button type="button" class="btn" id="change-btn">Cambia corda</button><button type="button" class="btn" id="past-add">Aggiungi una corda finita prima</button></div>
     </section>`;
 }
+// La montata fa parte del piano di prove? Riga con l'ibrido (le orizzontali) e le ore contro l'ipotesi del piano.
+function planLine(ctx, st) {
+  const pid = planOfLife(st, st.equipped.since), row = pid && ctx.DATA.plan ? ctx.DATA.plan.rows.find((r) => r.id === pid) : null;
+  if (!row) return '';
+  const u = planUsage(st, row.id);
+  const cross = row.kind === 'hybrid' && ctx.BY_ID[row.cross] ? ` · ibrido, orizzontali ${nameBtn(ctx.BY_ID[row.cross])}` : '';
+  return `<p class="small"><span class="tag ok">prova n° ${row.prio} del piano</span>${cross}${row.ore_ipotesi ? ` · ${hoursTxt(u.hours)} su ${row.ore_ipotesi[0]}–${row.ore_ipotesi[1]} h previste` : ''} <button type="button" class="btn ghost" data-goto="prove">Scheda di campo</button></p>`;
+}
 const sessionLi = (s) => `<li><span>${esc(itDate(s.date))}</span><span>${hoursTxt(s.hours)}</span><span>${s.feel ? `${FACES[s.feel]} ${s.feel}/5` : '<span class="muted">senza voto</span>'}${s.tag ? ` · ${esc(s.tag)}` : ''}${s.note ? ` · ${esc(s.note)}` : ''}</span><button type="button" class="btn sq ghost" data-del-session="${esc(s.ts)}" aria-label="Togli l'uscita del ${esc(itDate(s.date))}">✕</button></li>`;
 
 // ---------- dialogo per scegliere una corda (cambio corda e scorta) ----------
@@ -105,7 +115,7 @@ function pickList(ctx, q, selected) {
 }
 
 // mode: 'stock' (aggiungi in casa), 'change' (cambia corda), 'past' (corda finita prima dell'app)
-function openPicker(ctx, { title, okLabel, mode, onOk }) {
+function openPicker(ctx, { title, okLabel, mode, onOk, kg = null, note = null, noStock = false }) {
   const dlg = $('#pick-dialog');
   const st = ctx.state();
   const withChange = mode === 'change';
@@ -119,7 +129,9 @@ function openPicker(ctx, { title, okLabel, mode, onOk }) {
   $('#pk-kg').hidden = mode === 'stock';
   $('#pk-kg-note').hidden = !withChange;
   $('#pk-err').hidden = true;
-  $('#pk-kgv').value = NF(1).format(st.equipped.kg[0]); $('#pk-kgh').value = NF(1).format(st.equipped.kg[1]);
+  const kg0 = kg || st.equipped.kg;
+  $('#pk-kgv').value = NF(1).format(kg0[0]); $('#pk-kgh').value = NF(1).format(kg0[1]);
+  $('#pk-kg-note').textContent = note || 'Precompilate con la tensione della corda che togli.';
   if (withChange) {
     $('#pk-old').textContent = ctx.equippedRec().model;
     $('#pk-reason').value = 'consumata';
@@ -135,9 +147,9 @@ function openPicker(ctx, { title, okLabel, mode, onOk }) {
     const opts = [];
     if (inStock.some((x) => x.size === 'intera')) opts.push('<option value="intera">sì, una matassina</option>');
     if (inStock.some((x) => x.size === 'mezza' && x.n >= 2)) opts.push('<option value="due-mezze">sì, due mezze</option>');
-    $('#pk-from-stock').hidden = !withChange || !selected || !canStringFull(st2, selected);
+    $('#pk-from-stock').hidden = noStock || !withChange || !selected || !canStringFull(st2, selected);
     $('#pk-from-stock-sel').innerHTML = opts.join('') + '<option value="">no</option>';
-    $('#pk-half-only').hidden = !withChange || !inStock.length || canStringFull(st2, selected);
+    $('#pk-half-only').hidden = noStock || !withChange || !inStock.length || canStringFull(st2, selected);
   };
   dlg.oninput = (e) => { if (e.target.id === 'pk-q') draw(); };
   dlg.onclick = (e) => {
@@ -230,21 +242,32 @@ export function initToday(ctx) {
       ctx.toast('Tensione corretta.');
     }
   });
-  ctx.onEquip = (preset) => {
-    openPicker(ctx, { title: 'Cambia corda', okLabel: 'Monta', mode: 'change',
+  // `row`: una prova del piano (scheda «Prove»). La vita nuova si collega alla prova: le uscite contano come ore della prova.
+  ctx.onEquip = (preset, { row = null } = {}) => {
+    const hy = row && row.kind === 'hybrid';
+    openPicker(ctx, { title: row ? `Monta la prova n° ${row.prio}` : 'Cambia corda', okLabel: 'Monta', mode: 'change',
+      kg: row ? row.kg_piano : null, noStock: hy,
+      note: row ? (hy ? `Ibrido: ${ctx.BY_ID[row.main].model} in verticale, ${ctx.BY_ID[row.cross].model} in orizzontale. Tensioni del piano; dalle corde in casa tolgo una mezza per lato, se c'è.` : 'Tensioni del piano.') : null,
       onOk: ({ id, kg, reason, verdict, fromStock, date }) => {
         const before = ctx.state(), old = ctx.equippedRec(), ep = ctx.epoch();
+        const inPlan = row && id === row.main;
         ctx.update((s) => {
           let n = verdict ? updateDiary(s, 'current', (d) => setVerdict(d, verdict)) : s;
           n = applyVerdict(n, s.equipped.id, verdict);
-          return changeString(n, { id, kg, date, endReason: reason, fromStock });
+          n = changeString(n, { id, kg, date, endReason: reason, fromStock });
+          if (inPlan) { n = linkPlan(n, n.equipped.since, row.id); if (hy) n = useHybridHalves(n, row); }
+          return n;
         });
         const vtxt = verdict === 'si' ? ` La ${old.model} va tra le preferite.` : verdict === 'no' ? ` La ${old.model} va tra quelle che non ti piacciono.` : '';
         // il cambio corda tocca molte cose: si annulla solo se nel frattempo non è arrivato nulla dal server
         ctx.toast(`Montata ${fullName(ctx.BY_ID[id])}.${vtxt}`, ctx.loaded() ? () => { if (ctx.epoch() === ep) ctx.update(() => before); else ctx.toast('Non si può più annullare: sono arrivati dati da un altro dispositivo.'); } : null);
         ctx.goto('oggi');
       } });
-    if (preset) { const b = $(`#pk-list [data-pick="${CSS.escape(preset)}"]`); if (b) b.click(); }
+    if (preset) {
+      let b = $(`#pk-list [data-pick="${CSS.escape(preset)}"]`);
+      if (!b && ctx.BY_ID[preset]) { $('#pk-q').value = fullName(ctx.BY_ID[preset]); $('#pk-q').dispatchEvent(new Event('input', { bubbles: true })); b = $(`#pk-list [data-pick="${CSS.escape(preset)}"]`); }
+      if (b) b.click();
+    }
   };
 }
 

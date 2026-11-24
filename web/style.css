@@ -76,7 +76,7 @@ a { color: var(--court); }
 .sync.err { color: var(--warn-fg); }
 
 /* barra delle schede in basso */
-.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: grid; grid-template-columns: repeat(3, 1fr);
+.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: grid; grid-template-columns: repeat(4, 1fr);
   background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); }
 .tabs button { min-height: 56px; border: 0; background: none; color: var(--fg-2); font: 600 .95rem var(--font-body); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; cursor: pointer; }
 .tabs .ico { font-size: 1.1rem; line-height: 1; }
@@ -244,3 +244,23 @@ details.sci[open] { padding-bottom: 10px; }
 .clist li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; border-bottom: 1px solid var(--line); padding: 6px 0; }
 .cname { font-weight: 600; }
 .cval { text-align: right; }
+
+/* Prove (v6.4): piano, ordine in arrivo, schede di campo */
+.pv-bar { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-top: 12px; }
+.pv-bar span { display: block; height: 100%; background: var(--court); }
+.pv-hours { margin: 8px 0 4px; }
+.pv-w { margin: 16px 0 4px; font-size: 1rem; color: var(--fg-2); text-transform: uppercase; letter-spacing: .04em; }
+.pv-list, .pv-cards, .pv-bags, .pv-flist, .pv-feel { list-style: none; padding: 0; margin: 6px 0; }
+details.pv-row > summary { flex-wrap: nowrap; align-items: center; gap: 12px; padding: 6px 0; }
+.pv-n { flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-2); font: 700 1rem var(--font-data); }
+.pv-sum { flex: 1 1 auto; min-width: 0; }
+.pv-nums { margin: 8px 0 4px; }
+.pv-bags li { border-bottom: 1px solid var(--line); padding: 6px 0; }
+.pv-flist li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; border-bottom: 1px solid var(--line); font-size: .95rem; }
+.pv-card h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.pv-dt { display: grid; grid-template-columns: 1fr auto; gap: 0 12px; margin: 8px 0; }
+.pv-dt dt, .pv-dt dd { margin: 0; padding: 4px 0; border-bottom: 1px solid var(--line); }
+.pv-dt dd { text-align: right; }
+.pv-feel li { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 4px 0; font-size: .95rem; }
+.pv-dtform { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#field-dialog h3 { margin-top: 16px; }

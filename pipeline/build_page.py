@@ -9,7 +9,7 @@ WEB = ROOT / "web"
 
 # Moduli JS inlinati, in ordine: i moduli puri prima, app.js per ultimo. Un file mancante è un errore, non si salta.
 # Tutti finiscono nello stesso scope: niente nomi top-level ripetuti (lo controlla tests/test_build_page.py con node --check).
-MODULES = ["format.js", "glossary.js", "diary.js", "state.js", "persist.js", "cmp.js", "phys.js", "next.js", "ui.js", "cmpui.js", "tip.js", "rulers.js", "today.js", "sheet.js", "nextui.js", "hybrid.js", "mappa.js", "ask.js", "app.js"]
+MODULES = ["format.js", "glossary.js", "diary.js", "prove.js", "state.js", "persist.js", "cmp.js", "phys.js", "next.js", "ui.js", "cmpui.js", "tip.js", "rulers.js", "today.js", "sheet.js", "nextui.js", "hybrid.js", "proveui.js", "mappa.js", "ask.js", "app.js"]
 
 
 def _js():
@@ -31,6 +31,9 @@ def render(data: dict) -> str:
 
 if __name__ == "__main__":
     data = json.loads((ROOT / "data" / "strings.json").read_text(encoding="utf-8"))
+    extras = ROOT / "data" / "plan_page.json"  # scheda «Prove» (pipeline/page_extras.py)
+    if extras.exists():
+        data["plan"] = json.loads(extras.read_text(encoding="utf-8"))
     out = ROOT / "dist" / "string-explorer.html"
     out.parent.mkdir(exist_ok=True)
     page = render(data)

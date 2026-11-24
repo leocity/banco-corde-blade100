@@ -1,0 +1,1027 @@
+{
+ "rows": [
+  {
+   "prio": 1,
+   "id": "full-o-toro-tour",
+   "window": "subito",
+   "kind": "full",
+   "main": "toroline-o-toro-tour-17",
+   "cross": "toroline-o-toro-tour-17",
+   "from": [
+    "casa",
+    "casa"
+   ],
+   "goal": "nuovo riferimento dopo la Slap: compatta lato Confidential, scatto da O-Toro",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 216.6,
+   "k_now": 208.9,
+   "k_after": 183.7,
+   "range_k_now": [
+    208.9,
+    209.8
+   ],
+   "affidabilita": "misurata",
+   "spin": 7.7,
+   "spin_affidabilita": "misurata",
+   "loss": 25.0,
+   "geom": null,
+   "tenuta": "bilanciata",
+   "vs_montata": [
+    "Appena montata: più rigida",
+    "Dopo il calo di tensione: resta più rigida",
+    "Lancio della palla: più bassa",
+    "Tenuta della tensione: tiene di più"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "misurata",
+   "tenuta_nota": "",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    12,
+    16
+   ]
+  },
+  {
+   "prio": 2,
+   "id": "full-lynx-tour",
+   "window": "prima_del_pacco",
+   "kind": "full",
+   "main": "head-lynx-tour-17",
+   "cross": "head-lynx-tour-17",
+   "from": [
+    "da_comprare",
+    "da_comprare"
+   ],
+   "goal": "confronto 1 a 1 con la O-Toro Tour a rigidità e tenuta simili",
+   "kg_piano": [
+    21.5,
+    20.5
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    -0.5,
+    -0.5
+   ],
+   "k51": 217.7,
+   "k_now": 207.6,
+   "k_after": 183.3,
+   "range_k_now": [
+    207.6,
+    208.5
+   ],
+   "affidabilita": "misurata",
+   "spin": 7.1,
+   "spin_affidabilita": "misurata",
+   "loss": 24.6,
+   "geom": null,
+   "tenuta": "bilanciata",
+   "vs_montata": [
+    "Appena montata: più rigida",
+    "Dopo il calo di tensione: resta più rigida",
+    "Lancio della palla: più bassa",
+    "Spin: meno spin",
+    "Tenuta della tensione: tiene di più"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "misurata",
+   "tenuta_nota": "",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    14,
+    18
+   ]
+  },
+  {
+   "prio": 3,
+   "id": "full-octa",
+   "window": "pacco",
+   "kind": "full",
+   "main": "toroline-o-toro-octa-16l",
+   "cross": "toroline-o-toro-octa-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "geometria ottagonale 1,25 prima di usarla in ibrido",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 206.3,
+   "k_now": 199.0,
+   "k_after": 162.3,
+   "range_k_now": [
+    199.0,
+    199.8
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 6.1,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 38.3,
+   "geom": null,
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 4,
+   "id": "full-a5-carbon",
+   "window": "pacco",
+   "kind": "full",
+   "main": "toroline-a5-16l",
+   "cross": "toroline-a5-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "la tonda secca da sola, prima di valutarla come orizzontale",
+   "kg_piano": [
+    21.5,
+    20.5
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    -0.5,
+    -0.5
+   ],
+   "k51": 201.8,
+   "k_now": 192.4,
+   "k_after": 156.5,
+   "range_k_now": [
+    192.4,
+    193.3
+   ],
+   "affidabilita": "ricavata",
+   "spin": 6.2,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 39.3,
+   "geom": null,
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    14,
+    16
+   ]
+  },
+  {
+   "prio": 5,
+   "id": "full-caviar",
+   "window": "pacco",
+   "kind": "full",
+   "main": "toroline-caviar-17l",
+   "cross": "toroline-caviar-17l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "controllo puro vicino alla Confidential",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 207.3,
+   "k_now": 199.9,
+   "k_after": 163.2,
+   "range_k_now": [
+    199.9,
+    200.8
+   ],
+   "affidabilita": "ricavata",
+   "spin": 7.5,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 38.1,
+   "geom": null,
+   "tenuta": "bilanciata (solo Excel)",
+   "vs_montata": [],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 6,
+   "id": "ib-heavy-balls",
+   "window": "ibridi_a",
+   "kind": "hybrid",
+   "main": "toroline-o-toro-octa-16l",
+   "cross": "toroline-o-toro-snap-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "ibrido di controllo: quanto la orizzontale tonda stabilizza rispetto al full Octa",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 206.3,
+   "k_now": 199.0,
+   "k_after": 162.3,
+   "range_k_now": [
+    199.0,
+    199.8
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 6.1,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 38.3,
+   "geom": "classica",
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [
+    "toroline-o-toro-snap-16l: dato TWU contestato (contestata), usati i valori senza TWU"
+   ],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    12,
+    14
+   ]
+  },
+  {
+   "prio": 7,
+   "id": "ib-ontour",
+   "window": "ibridi_b",
+   "kind": "hybrid",
+   "main": "toroline-o-toro-tour-1-20",
+   "cross": "toroline-a5-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "ibrido di precisione: orizzontale tonda 1,25 con verticale 1,20",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 205.8,
+   "k_now": 198.5,
+   "k_after": 167.5,
+   "range_k_now": [
+    198.5,
+    201.0
+   ],
+   "affidabilita": "ricavata",
+   "spin": 7.1,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 32.8,
+   "geom": "classica",
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Dopo il calo di tensione: resta più rigida",
+    "Lancio della palla: più bassa",
+    "Spin: meno spin",
+    "Tenuta della tensione: tiene di più"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    11,
+    14
+   ]
+  },
+  {
+   "prio": 8,
+   "id": "ib-dreddy",
+   "window": "ibridi_c",
+   "kind": "hybrid",
+   "main": "toroline-o-toro-tour-17",
+   "cross": "toroline-o-toro-snap-16l",
+   "from": [
+    "casa",
+    "in_arrivo"
+   ],
+   "goal": "ammorbidire la Tour con la Snap in orizzontale",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 211.0,
+   "k_now": 203.6,
+   "k_after": 172.3,
+   "range_k_now": [
+    203.6,
+    206.4
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 7.1,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 32.2,
+   "geom": "classica",
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Dopo il calo di tensione: resta più rigida",
+    "Lancio della palla: più bassa",
+    "Spin: meno spin",
+    "Tenuta della tensione: tiene di più"
+   ],
+   "avvisi": [
+    "toroline-o-toro-snap-16l: dato TWU contestato (contestata), usati i valori senza TWU"
+   ],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 8,
+   "id": "ib-lynx-snap",
+   "window": "ibridi_c",
+   "kind": "hybrid",
+   "main": "head-lynx-tour-17",
+   "cross": "toroline-o-toro-snap-16l",
+   "from": [
+    "da_comprare",
+    "in_arrivo"
+   ],
+   "goal": "alternativa a Dreddy con la Lynx Tour (serve una terza mezza di Lynx, oltre alle due del full bed #2)",
+   "kg_piano": [
+    21.5,
+    20.5
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    -0.5,
+    -0.5
+   ],
+   "k51": 211.5,
+   "k_now": 201.8,
+   "k_after": 171.3,
+   "range_k_now": [
+    201.8,
+    204.7
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 6.7,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 32.0,
+   "geom": "classica",
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Dopo il calo di tensione: resta più rigida",
+    "Lancio della palla: più bassa",
+    "Spin: meno spin",
+    "Tenuta della tensione: tiene di più"
+   ],
+   "avvisi": [
+    "toroline-o-toro-snap-16l: dato TWU contestato (contestata), usati i valori senza TWU"
+   ],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 9,
+   "id": "ib-frizione",
+   "window": "ibridi_d",
+   "kind": "hybrid",
+   "main": "toroline-a5-spin-17",
+   "cross": "toroline-caviar-17l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "esplorativo: forma pentagonale in verticale ed esagonale in orizzontale",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 204.4,
+   "k_now": 197.1,
+   "k_after": 160.3,
+   "range_k_now": [
+    196.8,
+    197.1
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 6.7,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 38.7,
+   "geom": "classica",
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    8,
+    10
+   ]
+  },
+  {
+   "prio": 10,
+   "id": "ib-k-pipo",
+   "window": "ibridi_e",
+   "kind": "hybrid",
+   "main": "toroline-wasabi-green-17",
+   "cross": "toroline-caviar-17l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "quadrata in verticale, esagonale da controllo in orizzontale",
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.0,
+    0.0
+   ],
+   "k51": 206.1,
+   "k_now": 198.7,
+   "k_after": 162.0,
+   "range_k_now": [
+    198.7,
+    199.1
+   ],
+   "affidabilita": "ricavata",
+   "spin": 6.7,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 38.4,
+   "geom": "classica",
+   "tenuta": "sbilanciata (solo Excel)",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "secondo l'Excel cede prima l'orizzontale",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    9,
+    11
+   ]
+  },
+  {
+   "prio": 11,
+   "id": "full-a5-spin",
+   "window": "bassa",
+   "kind": "full",
+   "main": "toroline-a5-spin-17",
+   "cross": "toroline-a5-spin-17",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "mescola più elastica: da tenere alta di tensione (ipotesi del piano)",
+   "kg_piano": [
+    22.5,
+    21.5
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.5,
+    0.5
+   ],
+   "k51": 201.0,
+   "k_now": 196.0,
+   "k_after": 158.3,
+   "range_k_now": [
+    196.0,
+    196.9
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 6.2,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 39.5,
+   "geom": null,
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    6,
+    8
+   ]
+  },
+  {
+   "prio": 11,
+   "id": "ib-fire-ice",
+   "window": "bassa",
+   "kind": "hybrid",
+   "main": "toroline-a5-spin-17",
+   "cross": "toroline-wasabi-x-blue-17",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "ridurre il differenziale a 0,5 kg (ipotesi del piano)",
+   "kg_piano": [
+    22.5,
+    22.0
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.5,
+    1.0
+   ],
+   "k51": 201.0,
+   "k_now": 197.2,
+   "k_after": 159.0,
+   "range_k_now": [
+    197.2,
+    197.6
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 6.2,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 39.5,
+   "geom": "classica",
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    6,
+    8
+   ]
+  },
+  {
+   "prio": 12,
+   "id": "full-a5-infrared-round",
+   "window": "ultima",
+   "kind": "full",
+   "main": "toroline-a5-infrared-17",
+   "cross": "toroline-a5-infrared-17",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "goal": "morbida ed elastica: la più propensa a scappare lunga (ipotesi del piano)",
+   "kg_piano": [
+    23.0,
+    22.0
+   ],
+   "kg_calcolati": [
+    22.5,
+    21.5
+   ],
+   "kg_scarto": [
+    0.5,
+    0.5
+   ],
+   "k51": 193.1,
+   "k_now": 190.4,
+   "k_after": 151.8,
+   "range_k_now": [
+    190.4,
+    191.2
+   ],
+   "affidabilita": "dalla fisica",
+   "spin": 6.4,
+   "spin_affidabilita": "dalla fisica",
+   "loss": 41.1,
+   "geom": null,
+   "tenuta": "non valutabile",
+   "vs_montata": [
+    "Spin: meno spin"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "dalla fisica",
+   "tenuta_nota": "nessuna misura di tenuta in comune",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,5 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": [
+    6,
+    8
+   ]
+  }
+ ],
+ "budget": {
+  "rows": [
+   {
+    "id": "head-lynx-tour-17",
+    "stock": 0,
+    "cart": 0,
+    "need_stock": 0,
+    "need_cart": 0,
+    "to_buy": 3,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-a5-16l",
+    "stock": 0,
+    "cart": 3,
+    "need_stock": 0,
+    "need_cart": 3,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-a5-infrared-17",
+    "stock": 0,
+    "cart": 2,
+    "need_stock": 0,
+    "need_cart": 2,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-a5-spin-17",
+    "stock": 0,
+    "cart": 4,
+    "need_stock": 0,
+    "need_cart": 4,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-caviar-17l",
+    "stock": 0,
+    "cart": 4,
+    "need_stock": 0,
+    "need_cart": 4,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-o-toro-octa-16l",
+    "stock": 0,
+    "cart": 3,
+    "need_stock": 0,
+    "need_cart": 3,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-o-toro-snap-16l",
+    "stock": 2,
+    "cart": 3,
+    "need_stock": 0,
+    "need_cart": 3,
+    "to_buy": 0,
+    "stock_left": 2,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-o-toro-tour-1-20",
+    "stock": 0,
+    "cart": 1,
+    "need_stock": 0,
+    "need_cart": 1,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-o-toro-tour-17",
+    "stock": 3,
+    "cart": 0,
+    "need_stock": 3,
+    "need_cart": 0,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-wasabi-green-17",
+    "stock": 1,
+    "cart": 1,
+    "need_stock": 0,
+    "need_cart": 1,
+    "to_buy": 0,
+    "stock_left": 1,
+    "cart_left": 0
+   },
+   {
+    "id": "toroline-wasabi-x-blue-17",
+    "stock": 3,
+    "cart": 1,
+    "need_stock": 0,
+    "need_cart": 1,
+    "to_buy": 0,
+    "stock_left": 3,
+    "cart_left": 0
+   }
+  ],
+  "short": [],
+  "cart_halves": 22,
+  "cart_halves_used": 22,
+  "cart_halves_left": 0,
+  "zero_leftovers": true,
+  "to_buy": {
+   "head-lynx-tour-17": {
+    "mezze": 3,
+    "matassine": 2
+   }
+  }
+ },
+ "problems": [],
+ "windows": {
+  "subito": "Subito",
+  "prima_del_pacco": "Prima che arrivi il pacco",
+  "pacco": "Quando arriva il pacco",
+  "ibridi_a": "Ibridi",
+  "ibridi_b": "Ibridi",
+  "ibridi_c": "Ibridi",
+  "ibridi_d": "Ibridi",
+  "ibridi_e": "Ibridi",
+  "bassa": "Priorità bassa",
+  "ultima": "Per ultima"
+ },
+ "alias": {
+  "toroline-o-toro-octa-16l": "O-Toro Octa Mint 1,25",
+  "toroline-caviar-17l": "Caviar Yellow 1,24 (nel banco 1,23: calibro da confermare)",
+  "toroline-a5-16l": "A5 Carbon Round 1,25",
+  "toroline-a5-spin-17": "A5 Spin Infrared 1,23 e A5 Spin Carbon 1,23 (nel banco c'è un solo record)",
+  "toroline-a5-infrared-17": "A5 Infrared Round 1,20",
+  "toroline-o-toro-tour-1-20": "O-Toro Tour Green 1,20",
+  "toroline-wasabi-green-17": "Wasabi Pink 1,23 (il banco ha Green e Pom, non Pink: abbinamento da confermare)",
+  "toroline-wasabi-x-blue-17": "Wasabi X Blue 1,23",
+  "toroline-o-toro-snap-16l": "O-Toro Snap 1,25",
+  "head-lynx-tour-17": "Head Lynx Tour 1,25 esagonale"
+ },
+ "panchina": [
+  {
+   "id": "grapplesnake-tour-m8-17",
+   "kg_piano": [
+    22.5,
+    21.5
+   ],
+   "note": "full bed; evitare M8 + Wasabi X (indicazione del piano)"
+  },
+  {
+   "id": "luxilon-eco-power-17",
+   "kg_piano": [
+    22.5,
+    21.5
+   ],
+   "note": "full bed, dopo i primi sette punti"
+  }
+ ],
+ "regole": [
+  "Cross tonda e ferma (A5 Carbon 1,25, O-Toro Snap 1,25): differenziale verticali/orizzontali −1,0 kg (esempio 22/21).",
+  "Cross molto elastica (Wasabi X 1,23: allungamento 4,44% a 50 lb e recupero 6,67% a 65 lb nell'Excel Ektelon): differenziale −0,5 kg per evitare l'effetto fionda.",
+  "Evitare una cross tonda sottile e morbida (A5 Infrared 1,20) sotto una verticale pentagonale 1,23 (A5 Spin) su un 16×19 aperto: intaglio precoce e parabola alta. Meglio cross tonde da 1,24–1,25 mm."
+ ],
+ "regole_nota": "Le tre regole sono ipotesi dell'utente, non misure: il calcolo del progetto non le usa (la tensione consigliata viene dalle ancore e dalla rigidità, tetto ±2 kg). Si confrontano con le prove di campo.",
+ "equipped": {
+  "id": "re-string-slap-17",
+  "kg": [
+   22,
+   21
+  ],
+  "since": "2026-10-31"
+ },
+ "incoming": {
+  "key": "ordine-2026-12-15",
+  "status": "ordinato",
+  "expected": "2026-12-15",
+  "bags": [
+   {
+    "name": "Hot Pipe",
+    "n": 1,
+    "main": "toroline-a5-spin-17",
+    "cross": "toroline-o-toro-snap-16l",
+    "note": "A5 Spin Infrared 1,23 / O-Toro Snap White 1,25"
+   },
+   {
+    "name": "Pipo Spin Neon",
+    "n": 1,
+    "main": "toroline-a5-spin-17",
+    "cross": "toroline-o-toro-snap-16l",
+    "note": "A5 Spin Infrared 1,23 / O-Toro Snap Yellow 1,25"
+   },
+   {
+    "name": "Pipo Fire & Ice",
+    "n": 1,
+    "main": "toroline-a5-spin-17",
+    "cross": "toroline-wasabi-x-blue-17",
+    "note": "A5 Spin Infrared 1,23 / Wasabi X Blue 1,23"
+   },
+   {
+    "name": "Pipo Edge Neon",
+    "n": 2,
+    "main": "toroline-o-toro-octa-16l",
+    "cross": "toroline-caviar-17l",
+    "note": "O-Toro Octa Mint 1,25 / Caviar Yellow 1,24 (nel banco il calibro è 1,23, 17L)"
+   },
+   {
+    "name": "Pipo onTour",
+    "n": 1,
+    "main": "toroline-o-toro-tour-1-20",
+    "cross": "toroline-a5-16l",
+    "note": "O-Toro Tour Green 1,20 / A5 Carbon Round 1,25"
+   },
+   {
+    "name": "K Pipo",
+    "n": 1,
+    "main": "toroline-wasabi-green-17",
+    "cross": "toroline-caviar-17l",
+    "note": "Wasabi Pink 1,23 (quadrata) / Caviar Yellow 1,24: nel banco non c'è la Pink, la più vicina è Wasabi Green"
+   },
+   {
+    "name": "Pipo Round & Slick",
+    "n": 1,
+    "main": "toroline-a5-16l",
+    "cross": "toroline-a5-16l",
+    "note": "A5 Carbon Round 1,25 in entrambi i lati"
+   },
+   {
+    "name": "Pipo Heavy Balls",
+    "n": 1,
+    "main": "toroline-o-toro-octa-16l",
+    "cross": "toroline-o-toro-snap-16l",
+    "note": "O-Toro Octa Mint 1,25 / O-Toro Snap White 1,25"
+   },
+   {
+    "name": "Red Hot Chili Pipo",
+    "n": 1,
+    "main": "toroline-a5-infrared-17",
+    "cross": "toroline-a5-infrared-17",
+    "note": "A5 Infrared Round 1,20 in entrambi i lati"
+   },
+   {
+    "name": "Pipo a Frizione",
+    "n": 1,
+    "main": "toroline-a5-spin-17",
+    "cross": "toroline-caviar-17l",
+    "note": "A5 Spin Carbon 1,23 (pentagonale) / Caviar Yellow 1,24"
+   }
+  ],
+  "halves": {
+   "toroline-a5-spin-17": 4,
+   "toroline-o-toro-snap-16l": 3,
+   "toroline-wasabi-x-blue-17": 1,
+   "toroline-o-toro-octa-16l": 3,
+   "toroline-caviar-17l": 4,
+   "toroline-o-toro-tour-1-20": 1,
+   "toroline-a5-16l": 3,
+   "toroline-wasabi-green-17": 1,
+   "toroline-a5-infrared-17": 2
+  }
+ },
+ "field_file": [
+  {
+   "setup_id": "re-string-slap-17-fb",
+   "date": null,
+   "mains": "re-string-slap-17",
+   "cross": "re-string-slap-17",
+   "kg": [
+    22.0,
+    21.0
+   ],
+   "verdict": "disliked",
+   "temp_c": null,
+   "surface": null,
+   "dt": [],
+   "loss_24h_riposo_pct": null,
+   "loss_ultima_pct": null,
+   "ore_ultima_misura": null,
+   "ore_alla_soglia": null,
+   "soglia_pct": 15.0,
+   "soglia_nota": "soglia del piano (15-18%), ipotesi non misura",
+   "feel": {},
+   "snapback_8h": null,
+   "notching_8h": null,
+   "ore_giocabili": null,
+   "ore_ipotesi_piano": null,
+   "laboratorio": {
+    "twu_o_ricavata_loss_pct": 41.0,
+    "tipo": "ricavata",
+    "nota": "TWU misura la perdita in prova di laboratorio (51 lb), la DT è la tua tensione dinamica dopo ore di gioco: non sono lo stesso numero e non si convertono"
+   },
+   "excel": {
+    "creep24": 0.25,
+    "tl6": null,
+    "tl12": null
+   },
+   "note": "dichiarata dall'utente il 24/11/2026: troppo morbida e launchy dopo il calo iniziale. Nessuna misura DT registrata."
+  }
+ ],
+ "field_problems": [],
+ "alert_pct": 15.0,
+ "feel_help": {
+  "compactness_vs_confidential": "5 = piena e prevedibile come la Confidential 1,25; 1 = spugnosa come la Confidential Soft",
+  "snapback_vs_otoro": "5 = scatto immediato delle verticali come la O-Toro 1,23; 1 = corde bloccate",
+  "launch_angle": "1 = teso/basso; 3 = neutro; 5 = parabola troppo alta (launchy)",
+  "flat_control": "5 = controllo massimo sul colpo piatto",
+  "arm_comfort": "5 = braccio a posto"
+ }
+}

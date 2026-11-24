@@ -6,7 +6,7 @@ Punto di ingresso per chi riprende il lavoro in una chat nuova. Chi legge **non 
 
 | Cosa | Dove |
 |---|---|
-| **Online** | https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — **v6.3** (comparatore fino a 4 corde, AI con i dati, matassina/mezza, marche preferite; design §16), versione `1795112966-7dbf` (v6.3) del 19/11/2026, pubblicata da `dist/string-explorer.html` del ramo sotto. Capability: `db`, `user`, `sample`, `downloads`. |
+| **Online** | https://claude.ai/artifact/Up1BjSe7qFPH7zaRgsh5Ne — **v6.4 del 24/11/2026** (scheda Prove, §5d); prima: **v6.3** (comparatore fino a 4 corde, AI con i dati, matassina/mezza, marche preferite; design §16), versione `1795112966-7dbf` (v6.3) del 19/11/2026, pubblicata da `dist/string-explorer.html` del ramo sotto. Capability: `db`, `user`, `sample`, `downloads`. |
 | **Ramo di lavoro** | `claude/great-hypatia-edrzae`: contiene tutto (v3 + adoring-rubin + Ibridi recuperata + v6). È l'unica linea viva. |
 | Versione online precedente (v5 + Ibridi) | `archive/artifact-live-2026-11-18.html` (copia esatta, verificata byte per byte prima di ripubblicare). Il blocco `verified` ora sta in `data/verified.json`; il codice di Ibridi in `archive/recovered/`. |
 | `master` | `07b338a` (v2), **non toccato**. Unire il ramo su master richiede il sì dell'utente. |
@@ -54,6 +54,10 @@ Sul ramo ci sono, **non pubblicati** (la pagina online è ancora la v6.3 del 19/
 ### 5c. Piano di prove, registro di campo, correzioni catalogo (24/11/2026, non pubblicate)
 
 `data/test_plan.json` (13 prove, ordine dell'utente), `pipeline/test_plan.py`, `data/field_tests.json` + `pipeline/field_tests.py`, `inventory.incoming` (ordine Toroline: 10 tipi di busta, 11 buste, 22 mezzi-set, stato `ordinato`; prezzi non registrati), export con `piano_prove`, `prove_tue`, `in_arrivo`, `regole_utente`. Bilancio verificato: le 22 mezze si usano tutte solo se si fanno **entrambi** gli ibridi con le due Snap liberate (Dreddy e Lynx/Snap); in tal caso servono **3 mezze di Lynx (2 matassine)**, non una. Il piano parla di «5 full + 6 ibridi = 11 incordature»: i conti tornano con 5 + 7 = 12. Le durate (`ore_ipotesi`) e le tre regole sul differenziale sono ipotesi dell'utente: non entrano nei calcoli, si confrontano con le schede di campo. Soglia di calo 15% = ipotesi del piano (`field_tests.ALERT_LOSS_PCT`). I numeri TWU della ECO Power sono quelli indicati dall'utente (la copia `data/raw/twu.html` elenca la corda ma non i valori). L'Eco Power è in `inventory.stock` come 1 mezza (quantità minima: da confermare). `tl6`/`tl12` dell'Excel restano senza definizione documentata: non si usano per dare una soglia.
+
+### 5d. Scheda «Prove» nella pagina (v6.4, 24/11/2026, pubblicata)
+
+Quarta scheda **Prove** (Oggi / Prossima / Prove / Mappa): prossima prova con ore e durata contro `ore_ipotesi`, piano per finestre con i numeri di `pipeline/test_plan.py`, «Monta questa prova» (collega la vita della corda alla prova: le uscite diventano ore della prova; per gli ibridi `equipped.id` è la verticale e la riga in Oggi nomina l'orizzontale), ordine in arrivo con bilancio e «È arrivato», schede di campo scritte nella pagina (db `f-<fid>`, collegamenti in `x-prove`) e scaricabili come `field_tests.json`. Dati della scheda in `data/plan_page.json` (`pipeline/page_extras.py`), non in `strings.json`: il test di isolamento vieta dati personali in `build.py`. Le schede scritte nella pagina **non** arrivano da sole nella pipeline: si scaricano e si uniscono a `data/field_tests.json`. Decisioni: niente campo «orizzontale» nella corda montata (le pagine v6.3 lo cancellerebbero riscrivendo `state`); una prova è «fatta» se è stata montata e tolta, o se ha una scheda con verdetto. Alias della Lynx Tour corretto (esagonale).
 
 ## 6. Problemi aperti e rimandati
 

@@ -30,6 +30,8 @@
       <div id="ask-main"></div>
     </section>
 
+    <section id="prove" class="panel" role="tabpanel" aria-labelledby="tab-prove" hidden></section>
+
     <section id="mappa" class="panel" role="tabpanel" aria-labelledby="tab-mappa" hidden></section>
   </main>
 </div>
@@ -37,6 +39,7 @@
 <nav class="tabs" role="tablist" aria-label="Sezioni">
   <button role="tab" id="tab-oggi" data-tab="oggi" aria-controls="oggi" aria-selected="true"><span class="ico" aria-hidden="true">◴</span>Oggi</button>
   <button role="tab" id="tab-prossima" data-tab="prossima" aria-controls="prossima" aria-selected="false" tabindex="-1"><span class="ico" aria-hidden="true">→</span>Prossima</button>
+  <button role="tab" id="tab-prove" data-tab="prove" aria-controls="prove" aria-selected="false" tabindex="-1"><span class="ico" aria-hidden="true">✓</span>Prove</button>
   <button role="tab" id="tab-mappa" data-tab="mappa" aria-controls="mappa" aria-selected="false" tabindex="-1"><span class="ico" aria-hidden="true">⇹</span>Mappa</button>
 </nav>
 
@@ -87,6 +90,19 @@
     <div class="dlg-foot">
       <p class="err" id="pk-err" role="alert" hidden></p>
       <div class="actions"><button type="button" class="btn" id="pk-cancel">Annulla</button><button type="button" class="btn primary" id="pk-ok">Monta</button></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="field-dialog" aria-labelledby="pvf-title">
+  <div class="dlg">
+    <div class="dlg-body">
+      <h2 id="pvf-title">Scheda di campo</h2>
+      <div id="pvf-body"></div>
+    </div>
+    <div class="dlg-foot">
+      <p class="err" id="pvf-err" role="alert" hidden></p>
+      <div class="actions"><button type="button" class="btn" id="pvf-cancel">Annulla</button><button type="button" class="btn primary" id="pvf-save">Salva la scheda</button></div>
     </div>
   </div>
 </dialog>

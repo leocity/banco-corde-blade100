@@ -8,13 +8,14 @@ import { renderHybrid, initHybrid } from './hybrid.js';
 import { renderMap, initMap } from './mappa.js';
 import { sheetHtml, compareHtml } from './sheet.js';
 import { askBoxHtml, initAsk } from './ask.js';
+import { renderProve, initProve } from './proveui.js';
 import { compareListHtml, cmpSearch, addCompare, delCompare, setCompare, compareIds } from './cmpui.js';
 
 const DATA = window.STRINGS_DATA;
 const ALL = DATA.strings;
 const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
 const META = DATA.lab_meta || {};
-const TABS = ['oggi', 'prossima', 'mappa'];
+const TABS = ['oggi', 'prossima', 'prove', 'mappa'];
 const safeStorage = () => { try { return window.localStorage; } catch { return null; } };
 
 let state = defaultState(DATA.defaults);
@@ -26,7 +27,8 @@ const sheet = $('#sheet'), cmpDlg = $('#cmp-dialog');
 const ctx = { DATA, ALL, BY_ID, META, state: () => state, equippedRec: () => BY_ID[state.equipped.id], persist: () => persist, downloads: null,
   update, openSheet, openCompare, goto, toast, askBox: (id) => askBoxHtml(id), epoch: () => epoch, loaded: () => loaded,
   refresh: () => { renderAll(); if (sheet.open && sheetId) openSheet(sheetId); },
-  equip: (id) => { if (ctx.onEquip) whenDialogsClosed(() => ctx.onEquip(id)); } };
+  equip: (id) => { if (ctx.onEquip) whenDialogsClosed(() => ctx.onEquip(id)); },
+  mountPlan: (row) => { if (ctx.onEquip) whenDialogsClosed(() => ctx.onEquip(row.main, { row })); } };
 
 // ---------- stato e salvataggio ----------
 const SYNC_TEXT = { sync: ['●', 'Sincronizzato', 'ok'], local: ['○', 'Solo su questo browser', 'local'], error: ['⚠', 'Errore di salvataggio', 'err'] };
@@ -38,6 +40,7 @@ function renderSyncBadge() {
 function renderAll() {
   if (current === 'oggi') renderToday(ctx);
   if (current === 'prossima') { renderNext(ctx); renderHybrid(ctx); renderAskMain(); }
+  if (current === 'prove') renderProve(ctx);
   if (current === 'mappa') renderMap(ctx);
 }
 function update(fn) {
@@ -169,6 +172,7 @@ initTips();
 initToday(ctx);
 initNext(ctx);
 initHybrid(ctx);
+initProve(ctx);
 initMap(ctx);
 initAsk(ctx);
 const hashTab = (location.hash || '').slice(1);

@@ -1,7 +1,7 @@
 // Obiettivi misurabili del design v6 (O2, O4, O5, O7): gergo, tocchi da 44 px, contrasto, nessuno scroll orizzontale, niente prezzi.
 const { openPage, tab, BAD, test, assert } = require('./ui.cjs');
 
-const TABS = ['oggi', 'prossima', 'mappa'];
+const TABS = ['oggi', 'prossima', 'prove', 'mappa'];
 const JARGON = /\b(percentil\w*|gemell\w*|parente|pairing|snapback|TL6|TL12)\b/i;
 
 async function eachView(fn, opts = {}) {
@@ -17,9 +17,9 @@ async function eachView(fn, opts = {}) {
   await ctx.close();
 }
 
-test('O2: tre schede in basso, con frecce da tastiera', async () => {
+test('O2: quattro schede in basso, con frecce da tastiera', async () => {
   const { page, ctx } = await openPage();
-  assert.deepEqual(await page.locator('.tabs [role="tab"]').allInnerTexts(), ['◴\nOggi', '→\nProssima', '⇹\nMappa']);
+  assert.deepEqual(await page.locator('.tabs [role="tab"]').allInnerTexts(), ['◴\nOggi', '→\nProssima', '✓\nProve', '⇹\nMappa']);
   await page.locator('#tab-oggi').focus();
   await page.keyboard.press('ArrowRight');
   assert.equal(await page.locator('#tab-prossima').getAttribute('aria-selected'), 'true');

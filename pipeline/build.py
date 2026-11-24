@@ -196,6 +196,8 @@ if __name__ == "__main__":
     from pipeline.export_ai import write_export
     from pipeline.hybrids import write_hybrids
     hy = write_hybrids()
+    from pipeline.page_extras import write_page_extras  # scheda «Prove»: dati tuoi in un file a parte, mai in strings.json
+    write_page_extras()
     sj, sm = write_export()
     print(f"ibridi: {len(hy['evaluated'])} valutati, problemi: {hy['problems'] or 'nessuno'} | export AI: {sj / 1000:.1f} KB json, {sm / 1000:.1f} KB md")
     S = out["strings"]

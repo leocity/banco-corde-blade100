@@ -6,6 +6,7 @@ import { CMP_KEYS, valueOf } from './cmp.js';
 import { bedOf, compareBeds, physSummary } from './phys.js';
 import { GOALS, candidates, suggestHybrids } from './next.js';
 import { SIZE_LABEL } from './state.js';
+import { planUsage, planStatus, nextPlanRow, dtSeries, planOfLife } from './prove.js';
 
 export const AI_MARK = 'Parere AI — non misurato';
 let askSample = null, askTools = false;
@@ -40,8 +41,23 @@ export function adviceData(goal, st, ALL, meta) {
     ibridi: [...hy.fromStock, ...hy.buyOne, ...hy.buyBoth].slice(0, 4).map((p) => `verticali ${fullName(p.V)} + orizzontali ${fullName(p.O)}: ${p.summary.text}`) };
 }
 
+// Piano di prove: ogni prova con i numeri calcolati, lo stato, le ore giocate contro l'ipotesi del piano e le schede di campo (dati tuoi).
+export function planData(plan, st, BY_ID, all = false) {
+  if (!plan || !plan.rows) return null;
+  const nm = (id) => (BY_ID[id] ? fullName(BY_ID[id]) : id);
+  const one = (r) => { const s = planStatus(st, r), u = s.usage;
+    return { n: r.prio, id: r.id, verticali: nm(r.main), orizzontali: nm(r.cross), kg_piano: r.kg_piano, kg_calcolati: r.kg_calcolati, obiettivo: r.goal, stato: s.word,
+      ore_giocate: u.hours, uscite: u.sessions, giorni: u.days, ore_ipotesi_piano: r.ore_ipotesi,
+      rigidita_lbin: { a_51_lb: r.k51, appena_montata: r.k_now, dopo_il_calo: r.k_after, dati: r.affidabilita }, spin: r.spin, perdita_pct: r.loss, tenuta: r.tenuta, contro_la_slap: r.vs_montata,
+      schede: (st.fieldTests || []).filter((t) => t.plan === r.id).map((t) => ({ data: t.date || null, calo_pct: dtSeries(t.dt_log).map((x) => `${x.key}: ${x.loss}%`), voti: t.feel_1_5 || {}, ore_giocabili: t.playability_hours ?? null, verdetto: t.verdict || null, nota: t.note || null })) }; };
+  const cur = planOfLife(st, st.equipped.since), next = nextPlanRow(st, plan.rows);
+  return all ? { prove: plan.rows.map(one), regole_del_piano_ipotesi: plan.regole, nota: 'schede e ore sono dati personali, separati dal laboratorio' }
+    : { prova_in_corso: cur ? one(plan.rows.find((r) => r.id === cur) || next) : null, prossima: next && next.id !== cur ? one(next) : null,
+      fatte: plan.rows.filter((r) => planStatus(st, r).key === 'fatta').map((r) => `${r.prio}. ${nm(r.main)} / ${nm(r.cross)}`), totale: plan.rows.length };
+}
+
 // Riassunto sempre presente nel testo: basta da solo se la pagina non può usare gli strumenti.
-export function askDigest(st, ALL, meta) {
+export function askDigest(st, ALL, meta, plan = null) {
   const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
   const ref = BY_ID[st.equipped.id];
   const sess = st.sessions.filter((s) => s.life === st.equipped.since).slice(-6).map((s) => ({ data: s.date, ore: s.hours, voto: s.feel ?? null, parola: s.tag ?? null, nota: s.note || null }));
@@ -54,6 +70,7 @@ export function askDigest(st, ALL, meta) {
     corde_finite: st.lives.slice(-5).map((l) => ({ corda: BY_ID[l.id] ? fullName(BY_ID[l.id]) : l.id, ore: l.hours, motivo: l.reason, ricomprerebbe: l.diary ? l.diary.verdict : null, note: l.diary ? l.diary.notes : null })),
     corde_in_casa_contro_la_montata: compareData((st.stock || []).map((x) => x.id), st, BY_ID),
     consigli_dell_app: GOALS.map((g) => adviceData(g.key, st, ALL, meta)),
+    ...(plan ? { piano_di_prove: planData(plan, st, BY_ID) } : {}),
   };
 }
 
@@ -61,9 +78,9 @@ const RULES = `Sei un esperto di corde da tennis e di fisica del tennis. Rispond
 Hai i dati dell'app: valori misurati (TWU in campo, Racketpedia da ferma, Excel dell'utente) e ricavati (dai dati o dalla fisica), e un modello fisico che alla tensione dell'utente confronta rigidità appena montata, rigidità dopo il calo di tensione, lancio della palla, spin e tenuta.
 Regole: usa i numeri dei dati, citali, e di' se un valore è ricavato; non inventare numeri; dai sempre una risposta netta con il perché fisico; rispetta la regola della scorta (una mezza non basta per una racchetta intera); controllo e potenza non sono misure: parlane solo come conseguenza della fisica; niente prezzi.`;
 
-export function buildAskPrompt({ question, state, ALL, meta, focus, tools }) {
+export function buildAskPrompt({ question, state, ALL, meta, focus, tools, plan = null }) {
   const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
-  const digest = askDigest(state, ALL, meta);
+  const digest = askDigest(state, ALL, meta, plan);
   if (focus && BY_ID[focus]) digest.corda_in_esame = { ...stringData(BY_ID[focus]), contro_la_montata: compareData([focus], state, BY_ID)[0] || null };
   return `${RULES}
 ${tools ? 'Puoi usare gli strumenti per cercare qualsiasi corda del banco, leggerne i valori e confrontarne fino a 4 con la montata. Usali quando la domanda nomina corde che non sono nel riassunto.' : ''}
@@ -73,7 +90,7 @@ ${JSON.stringify(digest)}
 Domanda: ${question}`;
 }
 
-export function makeTools(getState, ALL, meta) {
+export function makeTools(getState, ALL, meta, plan = null) {
   const BY_ID = Object.fromEntries(ALL.map((r) => [r.id, r]));
   const find = (q) => { const w = String(q || '').toLowerCase().split(/\s+/).filter(Boolean); return ALL.filter((r) => w.every((x) => fullName(r).toLowerCase().includes(x))).slice(0, 10); };
   return [
@@ -89,6 +106,8 @@ export function makeTools(getState, ALL, meta) {
     { name: 'consigli', description: 'I consigli dell\'app per una domanda: same (simile), softer, stiffer, lower (palla più bassa), holds (tiene di più), spin. Corde in casa adatte, da comprare e ibridi.',
       inputSchema: { type: 'object', properties: { domanda: { type: 'string', enum: GOALS.map((g) => g.key) } }, required: ['domanda'] },
       execute: (i) => adviceData(String(i.domanda), getState(), ALL, meta) },
+    ...(plan ? [{ name: 'piano_prove', description: 'Tutto il piano di prove dell\'utente: per ogni prova corde, tensioni (piano e calcolata), numeri del letto, stato, ore giocate contro le ore ipotizzate e schede di campo.',
+      inputSchema: { type: 'object', properties: {} }, execute: () => planData(plan, getState(), BY_ID, true) }] : []),
   ];
 }
 
@@ -117,9 +136,9 @@ export function initAsk(ctx) {
     go.disabled = true; out.innerHTML = '<p class="muted">Sto leggendo i dati e pensando…</p>';
     const show = (text) => { out.innerHTML = `<p class="tag est">${AI_MARK}</p><div class="ai-text"></div>`; out.querySelector('.ai-text').textContent = text; };
     try {
-      const prompt = buildAskPrompt({ question: q, state: ctx.state(), ALL: ctx.ALL, meta: ctx.META, focus: box.dataset.ask || null, tools: askTools });
+      const prompt = buildAskPrompt({ question: q, state: ctx.state(), ALL: ctx.ALL, meta: ctx.META, focus: box.dataset.ask || null, tools: askTools, plan: ctx.DATA.plan || null });
       const opts = { onText: ({ text }) => show(text) };
-      if (askTools) opts.tools = makeTools(ctx.state, ctx.ALL, ctx.META).map((t) => ({ ...t, execute: (i) => { out.querySelector('.muted') && (out.querySelector('.muted').textContent = 'Sto consultando i dati delle corde…'); return t.execute(i); } }));
+      if (askTools) opts.tools = makeTools(ctx.state, ctx.ALL, ctx.META, ctx.DATA.plan || null).map((t) => ({ ...t, execute: (i) => { out.querySelector('.muted') && (out.querySelector('.muted').textContent = 'Sto consultando i dati delle corde…'); return t.execute(i); } }));
       else opts.cache = false;
       const res = await askSample(prompt, opts);
       show(res.text || '');
