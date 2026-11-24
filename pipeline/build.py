@@ -7,7 +7,7 @@ import pathlib
 
 from pipeline.validate_indices import index_validation
 from pipeline.community import FORUM_ALIASES, build_community
-from pipeline.catalog import add_catalog_only, add_extra, apply_rpedia_fixes, clean_catalog
+from pipeline.catalog import add_catalog_only, add_extra, apply_fixes, apply_rpedia_fixes, clean_catalog
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_EQUIPPED, DEFAULT_LIKED, DEFAULT_WEIGHTS, derive_all
 from pipeline.estimate import (MEASURED, base_model, model_id, backtest_qualitative, calibrate_tester_spin, estimate_spin, check_gauge_usrsa, fit_spin_model, fit_gauge_model, fit_stiffness_model, siblings_with_rp,
                                estimate_stiffness, fit_linear, loo_mae, relatives_of, tester_level)
@@ -42,6 +42,7 @@ def build(records, notes, reviews=None, catalog=None, production=None, years=Non
           indep=None, extra=None):
     records = add_extra(records, extra)
     records = add_catalog_only(records, catalog or [])
+    records, _ = apply_fixes(records, extra)  # doppioni e forme corretti a mano (catalog_extra.json: drop, fix_shape)
     keep = REFERENCE_IDS | {r["id"] for r in records if r.get("preference")}
     records, removed = filter_discontinued(records, production or [], keep, years=years, cutoff=2020)
     # Racketpedia dal sito (fonte primaria): verifica, riempie e corregge gli abbinamenti scritti dall'agente

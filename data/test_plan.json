@@ -1,0 +1,346 @@
+{
+ "_comment": "Piano di prove dell'utente (24/11/2026, riscritto con l'ordine Toroline confermato). Qui ci sono solo le scelte di setup, non le affermazioni di fisica del piano: i numeri li calcola pipeline/test_plan.py dai dati del progetto. Prezzi esclusi (regola del progetto). Gli id sono corde del banco: dove il piano usa un colore o un calibro diverso dal banco, vedi `alias`.",
+ "_schema": {
+  "prio": "ordine di prova (1 = prima)",
+  "window": "quando farla: subito | prima_del_pacco | pacco | ibridi_a..e | bassa | ultima",
+  "kind": "full = stessa corda in verticali e orizzontali (2 mezze), hybrid = due corde (1 mezza + 1 mezza)",
+  "main/cross": "id in data/strings.json; per un full sono uguali",
+  "from": "[origine delle verticali, origine delle orizzontali]: casa (scorta), in_arrivo (carrello), da_comprare (non c'è ancora). Ogni metà usa una mezza della sua origine",
+  "kg_piano": "tensione [verticali, orizzontali] proposta dal piano; il calcolo la confronta con quella del progetto",
+  "alias": "come il piano chiama la corda, se diverso dal nome nel banco",
+  "goal": "cosa si vuole imparare (parole del piano)",
+  "ore_ipotesi": "durata utile stimata dal piano [min, max] ore di gioco: ipotesi da confrontare con `playability_hours` di data/field_tests.json, non misura e mai nei punteggi"
+ },
+ "alias": {
+  "toroline-o-toro-octa-16l": "O-Toro Octa Mint 1,25",
+  "toroline-caviar-17l": "Caviar Yellow 1,24 (nel banco 1,23: calibro da confermare)",
+  "toroline-a5-16l": "A5 Carbon Round 1,25",
+  "toroline-a5-spin-17": "A5 Spin Infrared 1,23 e A5 Spin Carbon 1,23 (nel banco c'è un solo record)",
+  "toroline-a5-infrared-17": "A5 Infrared Round 1,20",
+  "toroline-o-toro-tour-1-20": "O-Toro Tour Green 1,20",
+  "toroline-wasabi-green-17": "Wasabi Pink 1,23 (il banco ha Green e Pom, non Pink: abbinamento da confermare)",
+  "toroline-wasabi-x-blue-17": "Wasabi X Blue 1,23",
+  "toroline-o-toro-snap-16l": "O-Toro Snap 1,25",
+  "head-lynx-tour-17": "Head Lynx Tour 1,25 (tonda nel banco, non esagonale)"
+ },
+ "plan": [
+  {
+   "prio": 1,
+   "id": "full-o-toro-tour",
+   "window": "subito",
+   "kind": "full",
+   "main": "toroline-o-toro-tour-17",
+   "cross": "toroline-o-toro-tour-17",
+   "from": [
+    "casa",
+    "casa"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "nuovo riferimento dopo la Slap: compatta lato Confidential, scatto da O-Toro",
+   "ore_ipotesi": [
+    12,
+    16
+   ]
+  },
+  {
+   "prio": 2,
+   "id": "full-lynx-tour",
+   "window": "prima_del_pacco",
+   "kind": "full",
+   "main": "head-lynx-tour-17",
+   "cross": "head-lynx-tour-17",
+   "from": [
+    "da_comprare",
+    "da_comprare"
+   ],
+   "kg_piano": [
+    21.5,
+    20.5
+   ],
+   "goal": "confronto 1 a 1 con la O-Toro Tour a rigidità e tenuta simili",
+   "ore_ipotesi": [
+    14,
+    18
+   ]
+  },
+  {
+   "prio": 3,
+   "id": "full-octa",
+   "window": "pacco",
+   "kind": "full",
+   "main": "toroline-o-toro-octa-16l",
+   "cross": "toroline-o-toro-octa-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "geometria ottagonale 1,25 prima di usarla in ibrido",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 4,
+   "id": "full-a5-carbon",
+   "window": "pacco",
+   "kind": "full",
+   "main": "toroline-a5-16l",
+   "cross": "toroline-a5-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    21.5,
+    20.5
+   ],
+   "goal": "la tonda secca da sola, prima di valutarla come orizzontale",
+   "ore_ipotesi": [
+    14,
+    16
+   ]
+  },
+  {
+   "prio": 5,
+   "id": "full-caviar",
+   "window": "pacco",
+   "kind": "full",
+   "main": "toroline-caviar-17l",
+   "cross": "toroline-caviar-17l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "controllo puro vicino alla Confidential",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 6,
+   "id": "ib-heavy-balls",
+   "window": "ibridi_a",
+   "kind": "hybrid",
+   "main": "toroline-o-toro-octa-16l",
+   "cross": "toroline-o-toro-snap-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "ibrido di controllo: quanto la orizzontale tonda stabilizza rispetto al full Octa",
+   "ore_ipotesi": [
+    12,
+    14
+   ]
+  },
+  {
+   "prio": 7,
+   "id": "ib-ontour",
+   "window": "ibridi_b",
+   "kind": "hybrid",
+   "main": "toroline-o-toro-tour-1-20",
+   "cross": "toroline-a5-16l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "ibrido di precisione: orizzontale tonda 1,25 con verticale 1,20",
+   "ore_ipotesi": [
+    11,
+    14
+   ]
+  },
+  {
+   "prio": 8,
+   "id": "ib-dreddy",
+   "window": "ibridi_c",
+   "kind": "hybrid",
+   "main": "toroline-o-toro-tour-17",
+   "cross": "toroline-o-toro-snap-16l",
+   "from": [
+    "casa",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "ammorbidire la Tour con la Snap in orizzontale",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 8,
+   "id": "ib-lynx-snap",
+   "window": "ibridi_c",
+   "kind": "hybrid",
+   "main": "head-lynx-tour-17",
+   "cross": "toroline-o-toro-snap-16l",
+   "from": [
+    "da_comprare",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    21.5,
+    20.5
+   ],
+   "goal": "alternativa a Dreddy con la Lynx Tour (serve una terza mezza di Lynx, oltre alle due del full bed #2)",
+   "ore_ipotesi": [
+    12,
+    15
+   ]
+  },
+  {
+   "prio": 9,
+   "id": "ib-frizione",
+   "window": "ibridi_d",
+   "kind": "hybrid",
+   "main": "toroline-a5-spin-17",
+   "cross": "toroline-caviar-17l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "esplorativo: forma pentagonale in verticale ed esagonale in orizzontale",
+   "ore_ipotesi": [
+    8,
+    10
+   ]
+  },
+  {
+   "prio": 10,
+   "id": "ib-k-pipo",
+   "window": "ibridi_e",
+   "kind": "hybrid",
+   "main": "toroline-wasabi-green-17",
+   "cross": "toroline-caviar-17l",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.0,
+    21.0
+   ],
+   "goal": "quadrata in verticale, esagonale da controllo in orizzontale",
+   "ore_ipotesi": [
+    9,
+    11
+   ]
+  },
+  {
+   "prio": 11,
+   "id": "full-a5-spin",
+   "window": "bassa",
+   "kind": "full",
+   "main": "toroline-a5-spin-17",
+   "cross": "toroline-a5-spin-17",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.5,
+    21.5
+   ],
+   "goal": "mescola più elastica: da tenere alta di tensione (ipotesi del piano)",
+   "ore_ipotesi": [
+    6,
+    8
+   ]
+  },
+  {
+   "prio": 11,
+   "id": "ib-fire-ice",
+   "window": "bassa",
+   "kind": "hybrid",
+   "main": "toroline-a5-spin-17",
+   "cross": "toroline-wasabi-x-blue-17",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    22.5,
+    22.0
+   ],
+   "goal": "ridurre il differenziale a 0,5 kg (ipotesi del piano)",
+   "ore_ipotesi": [
+    6,
+    8
+   ]
+  },
+  {
+   "prio": 12,
+   "id": "full-a5-infrared-round",
+   "window": "ultima",
+   "kind": "full",
+   "main": "toroline-a5-infrared-17",
+   "cross": "toroline-a5-infrared-17",
+   "from": [
+    "in_arrivo",
+    "in_arrivo"
+   ],
+   "kg_piano": [
+    23.0,
+    22.0
+   ],
+   "goal": "morbida ed elastica: la più propensa a scappare lunga (ipotesi del piano)",
+   "ore_ipotesi": [
+    6,
+    8
+   ]
+  }
+ ],
+ "panchina": [
+  {
+   "id": "grapplesnake-tour-m8-17",
+   "kg_piano": [
+    22.5,
+    21.5
+   ],
+   "note": "full bed; evitare M8 + Wasabi X (indicazione del piano)"
+  },
+  {
+   "id": "luxilon-eco-power-17",
+   "kg_piano": [
+    22.5,
+    21.5
+   ],
+   "note": "full bed, dopo i primi sette punti"
+  }
+ ],
+ "regole_dichiarate": [
+  "Cross tonda e ferma (A5 Carbon 1,25, O-Toro Snap 1,25): differenziale verticali/orizzontali −1,0 kg (esempio 22/21).",
+  "Cross molto elastica (Wasabi X 1,23: allungamento 4,44% a 50 lb e recupero 6,67% a 65 lb nell'Excel Ektelon): differenziale −0,5 kg per evitare l'effetto fionda.",
+  "Evitare una cross tonda sottile e morbida (A5 Infrared 1,20) sotto una verticale pentagonale 1,23 (A5 Spin) su un 16×19 aperto: intaglio precoce e parabola alta. Meglio cross tonde da 1,24–1,25 mm."
+ ],
+ "_regole_nota": "Le tre regole sono ipotesi dell'utente, non misure: il calcolo del progetto non le usa (la tensione consigliata viene dalle ancore e dalla rigidità, tetto ±2 kg). Si confrontano con le prove di campo."
+}

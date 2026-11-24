@@ -284,6 +284,28 @@
    },
    "twu": null,
    "note": "sito: 1.20MM/17 quadrata, Firm; scheda RP ether-blue-120 1,0 kg/mm (pubblicata 22/03/2024)"
+  },
+  {
+   "brand": "Luxilon",
+   "model": "ECO Power",
+   "gauge_mm": 1.25,
+   "gauge_label": "17",
+   "shape": "HEX",
+   "material": "copoly",
+   "year": null,
+   "year_source": "non trovato in fonti gratuite; TWU la elenca tra le corde attuali (ECO Power 17 (1.25))",
+   "maker_url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-eco-power-green-125",
+   "rpedia": {
+    "url": "https://www.racketpedia.com/en-GB/tennis-string/luxilon-eco-power-green-125",
+    "kgmm": 1.05
+   },
+   "twu": {
+    "name": "Luxilon ECO Power 17 (1.25)",
+    "stiffness_lbin": 194.9,
+    "tension_loss_pct": 34.5,
+    "spin_potential": 8.3
+   },
+   "note": "TWU: i tre valori sono quelli indicati dall'utente il 24/11/2026 (la copia data/raw/twu.html elenca la corda ma non i numeri): da riverificare alla prossima estrazione. Racketpedia: scheda Green 1,25 esatta, da data/raw/racketpedia.json"
   }
  ],
  "fix_rpedia": [
@@ -349,6 +371,20 @@
    "kgmm": 0.95,
    "match": "altro colore",
    "note": "nessuna scheda Orange trovata (slug neon-orange-123 = 404); Neon Pink stesso calibro"
+  }
+ ],
+ "drop": [
+  {
+   "id": "toroline-a5-17",
+   "reason": "A5 tonda esiste solo in 1,25 (16L, già nel banco come toroline-a5-16l): la riga 1,23 era un doppione con il calibro sbagliato e portava la scheda Racketpedia della 1,25. La A5 da 1,23 è la pentagonale A5 Spin (toroline-a5-spin-17)."
+  }
+ ],
+ "fix_shape": [
+  {
+   "id": "head-lynx-tour-17",
+   "shape": "HEX",
+   "source": "indicazione dell'utente 24/11/2026; la Lynx Tour 1,30 del banco è già HEX",
+   "note": "era RND"
   }
  ]
 }

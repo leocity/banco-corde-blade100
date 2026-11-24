@@ -88,6 +88,27 @@ def add_extra(records, extra):
     return out
 
 
+def apply_fixes(records, extra):
+    """Correzioni dichiarate dall'utente (24/11/2026) in catalog_extra.json: `drop` toglie un doppione con il calibro sbagliato,
+    `fix_shape` corregge una forma. Ogni voce ha un motivo; restituisce (record rimasti, cosa è stato fatto)."""
+    done = []
+    drop = {d["id"]: d for d in (extra or {}).get("drop", [])}
+    out = []
+    for r in records:
+        if r["id"] in drop:
+            done.append(f"tolta {r['id']}: {drop[r['id']].get('reason', '')}")
+            continue
+        out.append(r)
+    by = {r["id"]: r for r in out}
+    for f in (extra or {}).get("fix_shape", []):
+        r = by.get(f["id"])
+        if r and r.get("shape") != f["shape"]:
+            done.append(f"forma di {r['id']}: {r.get('shape')} -> {f['shape']}")
+            r["shape"] = f["shape"]
+            r["shape_source"] = f.get("source") or "correzione dichiarata dall'utente"
+    return out, done
+
+
 def apply_rpedia_fixes(records, extra):
     """Schede Racketpedia trovate a mano: «exact» diventa una misura, «altro colore» resta un valore ricavato (proxy)."""
     by = {r["id"]: r for r in records}

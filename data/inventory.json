@@ -6,7 +6,8 @@
     "stock[].size": "matassina = set da 12 m, basta per una racchetta intera; mezza = circa 6 m, metà di un ibrido. Due mezze della stessa corda fanno una racchetta intera",
     "stock[].n": "quante ne hai",
     "stock[].metri": "facoltativo: metri reali, se diversi da 12 (matassina) e 6 (mezza)",
-    "stock[].note": "facoltativo"
+    "stock[].note": "facoltativo",
+    "incoming": "ordine in arrivo: status (ordinato|arrivato), expected, bags[name, n, main, cross, note]; ogni busta = 2 mezzi-set (una mezza per lato). NON è scorta: le funzioni di scorta lo ignorano finché non sposti le corde arrivate in `stock`"
   },
   "equipped": {"id": "re-string-slap-17", "kg": [22, 21], "since": "2026-10-31"},
   "stock": [
@@ -18,6 +19,23 @@
     {"id": "solinco-hyper-g-round-17", "size": "mezza", "n": 1, "note": ""},
     {"id": "toroline-o-toro-17", "size": "mezza", "n": 3, "note": ""},
     {"id": "toroline-o-toro-tour-17", "size": "mezza", "n": 3, "note": ""},
-    {"id": "toroline-o-toro-snap-16l", "size": "mezza", "n": 2, "note": "il TWU di questa corda è contestato: nei calcoli si usano valori ricavati senza TWU"}
-  ]
+    {"id": "toroline-o-toro-snap-16l", "size": "mezza", "n": 2, "note": "il TWU di questa corda è contestato: nei calcoli si usano valori ricavati senza TWU"},
+    {"id": "luxilon-eco-power-17", "size": "mezza", "n": 1, "note": "dichiarata in casa dall'utente il 24/11/2026; misura e quantità da confermare (registrata la quantità minima)"}
+  ],
+  "incoming": {
+    "status": "ordinato", "expected": "2026-12-15",
+    "from": "ordine Toroline String Bar confermato dall'utente il 24/11/2026: 11 buste = 22 mezzi-set (arrivo tra circa 20 giorni). Prezzi non registrati (regola del progetto)",
+    "bags": [
+      {"name": "Hot Pipe", "n": 1, "main": "toroline-a5-spin-17", "cross": "toroline-o-toro-snap-16l", "note": "A5 Spin Infrared 1,23 / O-Toro Snap White 1,25"},
+      {"name": "Pipo Spin Neon", "n": 1, "main": "toroline-a5-spin-17", "cross": "toroline-o-toro-snap-16l", "note": "A5 Spin Infrared 1,23 / O-Toro Snap Yellow 1,25"},
+      {"name": "Pipo Fire & Ice", "n": 1, "main": "toroline-a5-spin-17", "cross": "toroline-wasabi-x-blue-17", "note": "A5 Spin Infrared 1,23 / Wasabi X Blue 1,23"},
+      {"name": "Pipo Edge Neon", "n": 2, "main": "toroline-o-toro-octa-16l", "cross": "toroline-caviar-17l", "note": "O-Toro Octa Mint 1,25 / Caviar Yellow 1,24 (nel banco il calibro è 1,23, 17L)"},
+      {"name": "Pipo onTour", "n": 1, "main": "toroline-o-toro-tour-1-20", "cross": "toroline-a5-16l", "note": "O-Toro Tour Green 1,20 / A5 Carbon Round 1,25"},
+      {"name": "K Pipo", "n": 1, "main": "toroline-wasabi-green-17", "cross": "toroline-caviar-17l", "note": "Wasabi Pink 1,23 (quadrata) / Caviar Yellow 1,24: nel banco non c'è la Pink, la più vicina è Wasabi Green"},
+      {"name": "Pipo Round & Slick", "n": 1, "main": "toroline-a5-16l", "cross": "toroline-a5-16l", "note": "A5 Carbon Round 1,25 in entrambi i lati"},
+      {"name": "Pipo Heavy Balls", "n": 1, "main": "toroline-o-toro-octa-16l", "cross": "toroline-o-toro-snap-16l", "note": "O-Toro Octa Mint 1,25 / O-Toro Snap White 1,25"},
+      {"name": "Red Hot Chili Pipo", "n": 1, "main": "toroline-a5-infrared-17", "cross": "toroline-a5-infrared-17", "note": "A5 Infrared Round 1,20 in entrambi i lati"},
+      {"name": "Pipo a Frizione", "n": 1, "main": "toroline-a5-spin-17", "cross": "toroline-caviar-17l", "note": "A5 Spin Carbon 1,23 (pentagonale) / Caviar Yellow 1,24"}
+    ]
+  }
 }

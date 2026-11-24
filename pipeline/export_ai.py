@@ -8,7 +8,9 @@ import json
 import pathlib
 
 from pipeline.derive import ANCHOR_TENSIONS, DEFAULT_DISLIKED, DEFAULT_LIKED, DISLIKED_GROUPS
+from pipeline.field_tests import analyze as analyze_field
 from pipeline.hybrids import GOALS, W_COUNT, W_RANGE, W_SPIN_MAIN, build_hybrids, stock_counts
+from pipeline.test_plan import evaluate_plan, incoming_halves
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MAX_BYTES = 100_000
@@ -36,6 +38,14 @@ RULES = {
     "ruolo_ibrido": "hr = [ruolo, confidenza, punteggio -1 cross … +1 main]: da Racketpedia esatta, forma ed Excel (mai TWU, mai nel punteggio). Con solo Excel la confidenza è bassa.",
     "scorta": "matassina = 12 m, una racchetta intera; mezza = circa 6 m, metà di un ibrido; due mezze della stessa corda fanno una racchetta intera. "
               "Una corda con una sola mezza va solo in un ibrido.",
+    "prove_tue": "`prove_tue` = schede di campo dell'utente (DT, snapback, intaglio, voti 1-5, ore giocabili): misure e giudizi PERSONALI, fonte separata dal laboratorio. "
+                 "Non si fondono con TWU/Racketpedia/Excel e non entrano in punteggi, stime, ruolo ibrido né tensione. Il calo DT (tua tensione dinamica dopo ore di gioco) "
+                 "non è la perdita TWU (prova di laboratorio): confrontali affiancati, senza convertire. La soglia del 15% di calo è un'ipotesi del piano, non una misura.",
+    "piano_prove": "`piano_prove` = ordine di prova dell'utente, valutato con i dati del banco: k51 = rigidità a 51 lb, k_now a tensione, k_after dopo il calo; `affidabilita` dice "
+                   "se i numeri sono misurati, ricavati o dalla fisica (solo O-Toro Tour e Lynx Tour hanno TWU misurato). `kg_scarto` = tensione del piano meno quella calcolata. "
+                   "`ore_ipotesi` = durata stimata dal piano, non misura.",
+    "regole_utente": "`regole_utente` = ipotesi dell'utente sulla tensione (differenziale −1,0 kg con cross tonda ferma, −0,5 kg con cross molto elastica, niente cross tonda sottile sotto una pentagonale). "
+                     "Non sono misure e il calcolo non le usa: citale come ipotesi dell'utente.",
     "filtri": "Nel banco solo corde uscite dal 2020 in poi e ancora in produzione; le preferite restano sempre.",
     "chiavi": "id, n nome, mm calibro, f forma, mat materiale, tw {k rigidità lb/in, l perdita %, s spin}, rp kg/mm, ex {st50, rc50, tl6, tl12, cr}, est, cc verdetto "
               "crosscheck (confirmed/plausible/questionable/contradicted), twf, ps profile_score (solo laboratorio), hr, tk [kg verticali, orizzontali, fonte], "
@@ -100,7 +110,34 @@ def _hy(h):
     return out
 
 
-def build_export(strings, inventory, inputs, data_meta=None, today=None):
+def _incoming(inventory, by):
+    inc = (inventory or {}).get("incoming")
+    if not inc:
+        return None
+    return {"stato": inc.get("status"), "atteso": inc.get("expected"), "mezze": [{"id": i, "n": by[i]["model"] + " " + str(by[i].get("gauge_mm")) if i in by else i, "qta": q}
+                                                                         for i, q in sorted(incoming_halves(inventory).items())],
+            "nota": "Non è scorta: finché le corde non arrivano non vanno usate per suggerire ibridi da montare ora."}
+
+
+def _plan(strings, plan, inventory):
+    if not (plan or {}).get("plan"):
+        return None
+    ev = evaluate_plan(strings, plan, inventory)
+    rows = [{k: r[k] for k in ("prio", "id", "window", "main", "cross", "from", "kg_piano", "kg_calcolati", "kg_scarto", "k51", "k_now", "k_after", "spin", "loss", "tenuta",
+                                "affidabilita", "geom", "vs_montata", "avvisi", "goal") if r.get(k) is not None} for r in ev["rows"]]
+    for r, e in zip(rows, plan["plan"]):
+        r["ore_ipotesi"] = e.get("ore_ipotesi")
+    b = ev["budget"]
+    return {"prove": rows, "bilancio_mezze": {"in_arrivo": b["cart_halves"], "usate": b["cart_halves_used"], "avanzate": b["cart_halves_left"], "zero_avanzi": b["zero_leftovers"],
+                                              "da_procurarsi": b["to_buy"], "mancanze": b["short"]}, "problemi": ev["problems"], "panchina": plan.get("panchina", [])}
+
+
+def _field(strings, field, plan):
+    res = analyze_field((field or {}).get("tests", []), strings, plan)
+    return {"regola": res["regola"], "schede": res["prove"], "per_setup": res["per_setup"], "problemi": res["problems"]}
+
+
+def build_export(strings, inventory, inputs, data_meta=None, today=None, plan=None, field=None):
     by = {r["id"]: r for r in strings}
     hyb = build_hybrids(strings, inputs, inventory)
     eq = (inventory or {}).get("equipped") or {}
@@ -121,6 +158,10 @@ def build_export(strings, inventory, inputs, data_meta=None, today=None):
         "corde": [compact(r) for r in strings],
         "ibridi": {"valutati": [_hy(h) for h in hyb["evaluated"]],
                    "suggeriti_dalla_scorta": {GOAL_NAME[g]: [_hy(h) for h in hyb["suggested_from_stock"][g][:3]] for g in GOALS}},
+        "in_arrivo": _incoming(inventory, by),
+        "piano_prove": _plan(strings, plan, inventory),
+        "prove_tue": _field(strings, field, plan),
+        "regole_utente": (plan or {}).get("regole_dichiarate", []),
         "fonti_dati": {k: v for k, v in (data_meta or {}).items()},
     }
 
@@ -145,6 +186,24 @@ def to_markdown(x):
         L.append(f"- **{h.get('id', '')}** {h['main']} + {h['cross']} a {h['kg']} kg ({h.get('status', '')}): rigidità k51 {h['k51']}, appena montata {h['k_now']} "
                  f"(intervallo {h['range_k_now']}), dopo il calo {h['k_after']}, Δ {h['delta_k51']}, affidabilità {h['affidabilita']}; spin {h['spin']}, geometria {h['geom']}, "
                  f"tenuta {h['tenuta']} ({h['tenuta_nota']}); tensione consigliata {h['kg_consigliati']}. " + " ".join(h["vs_montata"]))
+    pp = x.get("piano_prove")
+    if pp:
+        L += ["", "## Piano di prove (valutato con i dati del banco; ore = ipotesi del piano)",
+              "| prio | prova | verticali / orizzontali | kg piano | kg calcolati | k51 | k a tensione | dopo il calo | spin | perdita % | dati | ore |", "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+        for r in pp["prove"]:
+            L.append("| " + " | ".join(str(v) for v in (r["prio"], r["id"], f"{r['main']} / {r['cross']}", "/".join(map(str, r["kg_piano"])), "/".join(map(str, r["kg_calcolati"])) if r.get("kg_calcolati") else "",
+                                                           r.get("k51", ""), r.get("k_now", ""), r.get("k_after", ""), r.get("spin", ""), r.get("loss", ""), r.get("affidabilita", ""),
+                                                           "-".join(map(str, r["ore_ipotesi"])) if r.get("ore_ipotesi") else "")) + " |")
+        b = pp["bilancio_mezze"]
+        L.append(f"Mezze in arrivo {b['in_arrivo']}, usate {b['usate']}, avanzate {b['avanzate']}; da procurarsi: {b['da_procurarsi'] or 'nessuna'}; mancanze: {b['mancanze'] or 'nessuna'}.")
+    if x.get("in_arrivo"):
+        L += ["", "## In arrivo (ordine, non scorta)", ", ".join(f"{m['id']} ×{m['qta']}" for m in x["in_arrivo"]["mezze"])]
+    if x.get("regole_utente"):
+        L += ["", "## Ipotesi dell'utente sulla tensione (non misure)"] + [f"- {r}" for r in x["regole_utente"]]
+    L += ["", "## Prove di campo dell'utente (separate dal laboratorio)"]
+    schede = (x.get("prove_tue") or {}).get("schede", [])
+    L += [f"- {r['setup_id']}: {r['verdict'] or 'senza verdetto'}; kg {r['kg']}; calo 24h {r['loss_24h_riposo_pct']}, ultimo {r['loss_ultima_pct']} a {r['ore_ultima_misura']} h; "
+          f"voti {r['feel'] or 'n.d.'}; snapback 8h {r['snapback_8h']}; intaglio 8h {r['notching_8h']}; ore giocabili {r['ore_giocabili']}" + (f"; {r['note']}" if r.get("note") else "") for r in schede] or ["- nessuna scheda"]
     L += ["", "## Ibridi suggeriti dalla scorta"]
     for goal, hs in x["ibridi"]["suggeriti_dalla_scorta"].items():
         L.append(f"- **{goal}:** " + ("; ".join(f"{h['main']} + {h['cross']} {h['kg']} kg ({'; '.join(h['vs_montata'])})" for h in hs) or "nessuna coppia"))
@@ -160,7 +219,8 @@ def write_export():
     data = _load("data/strings.json")
     meta = {"twu": data["sources"].get("twu"), "racketpedia": data["sources"].get("racketpedia"), "excel": data["sources"].get("excel"),
             "excel_rank": data["sources"].get("excel_rank"), "corde": len(data["strings"])}
-    x = build_export(data["strings"], _load("data/inventory.json", {}), _load("data/hybrids_input.json", {}), meta)
+    x = build_export(data["strings"], _load("data/inventory.json", {}), _load("data/hybrids_input.json", {}), meta,
+                     plan=_load("data/test_plan.json", {}), field=_load("data/field_tests.json", {"tests": []}))
     (ROOT / "dist").mkdir(exist_ok=True)
     js = json.dumps(x, ensure_ascii=False, separators=(",", ":"))
     md = to_markdown(x)

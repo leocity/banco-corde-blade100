@@ -1,0 +1,22 @@
+{
+  "_comment": "Registro delle prove di campo: una scheda a fine sessione (o per setup). Misure e giudizi PERSONALI, separati dal laboratorio: non entrano in punteggi, stime, ruolo ibrido né tensione consigliata. Dopo ogni modifica: python3 -m pipeline.field_tests (valida) e python3 -m pipeline.build (rigenera l'export per l'AI).",
+  "_schema": {
+    "setup_id": "nome libero e unico del setup, es. toroline-o-toro-tour-17-fb (fb = full bed)",
+    "mains / cross": "id in data/strings.json (verticali / orizzontali; uguali se full bed)",
+    "tension_kg": "[verticali, orizzontali] in kg",
+    "date": "facoltativa, AAAA-MM-GG",
+    "court_temp_c / surface": "temperatura del campo e superficie (es. clay_indoor): la temperatura sposta la tensione misurata, si registra per leggere le DT",
+    "dt_log": "tensione dinamica con lo strumento (app di frequenza o tester): 0h = appena montata, 24h = dopo 24 ore a riposo (assestamento), 4h/8h/12h = ore di gioco. Numeri nella stessa unità dello strumento (conta solo il rapporto con la 0h); null se non misurata. dt_unit facoltativa",
+    "feel_1_5": "voti interi 1-5: compactness_vs_confidential, snapback_vs_otoro, launch_angle (1 teso, 3 neutro, 5 troppo alto), flat_control, arm_comfort",
+    "snapback_check_8h": "prova col pollice sulla verticale centrale: 3 = scatta subito, 2 = torna lenta, 1 = resta fuori sede. Facoltativo `snapback` {ora: 1-3} per 0h/4h/8h",
+    "notching_8h": "intaglio agli incroci in controluce: low | medium | deep (anche trascurabile | medio | profondo). Facoltativo `notching` {ora: …} per 6h/10h",
+    "playability_hours": "ore giocate prima che perda controllo o comfort",
+    "verdict": "liked | ok | disliked",
+    "note": "testo libero"
+  },
+  "tests": [
+    {"setup_id": "re-string-slap-17-fb", "mains": "re-string-slap-17", "cross": "re-string-slap-17", "tension_kg": [22.0, 21.0], "date": null,
+     "dt_log": {"0h": null, "24h": null, "4h": null, "8h": null, "12h": null}, "verdict": "disliked",
+     "note": "dichiarata dall'utente il 24/11/2026: troppo morbida e launchy dopo il calo iniziale. Nessuna misura DT registrata."}
+  ]
+}

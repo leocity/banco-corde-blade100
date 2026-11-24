@@ -73,7 +73,8 @@ def test_built_data_matches_raw_sources():
             assert s["twu"]["match"] == "exact" and t["stiffness"] == s["twu"]["stiffness_lbin"]
         else:
             assert (s["twu"] or {}).get("match") != "exact"
-    assert d["lab_meta"]["n"] == {"twu": 55, "rp": 60, "excel": 44}
+    # +1 TWU e +1 Racketpedia con la Luxilon ECO Power (24/11/2026); −1 Racketpedia con il doppione A5 1,23 tolto
+    assert d["lab_meta"]["n"] == {"twu": 56, "rp": 60, "excel": 44}
 
 
 def test_est_only_where_measure_missing_and_always_labelled():
