@@ -212,6 +212,14 @@ def disliked_flag(best_liked, worst_disliked):
     return best_liked is None or worst_disliked > best_liked
 
 
+def disliked_group_of(rec):
+    """Gruppo non gradito a cui appartiene la corda per marca e modello (ogni calibro e colore), o None."""
+    for g, bm in DISLIKED_GROUPS.items():
+        if (rec.get("brand"), rec.get("model")) == bm:
+            return g
+    return None
+
+
 def _half(x):
     return round(x * 2) / 2
 
@@ -287,7 +295,10 @@ def derive_all(records, reviews=None):
             sim_d[g] = max(vals) if vals else None
         worst = max([v for v in sim_d.values() if v is not None], default=None)
         best = max([v for v in sim_l.values() if v is not None], default=None)
-        flag = r.get("preference") is None and disliked_flag(best, worst)
+        by_sim = r.get("preference") is None and disliked_flag(best, worst)
+        # le varianti con poche misure (solo catalogo) non hanno somiglianza: si segnalano per marca e modello
+        by_name = r.get("preference") is None and not by_sim and disliked_group_of(r) is not None
+        flag = by_sim or by_name
         anchors = [{"id": k, "kg": ANCHOR_TENSIONS[k], "stiffness": stiff_lab(a),
                     "sim": similarity(r, a, pop)} for k, a in liked.items()]
         lab = subscores(r, pop)
@@ -304,8 +315,9 @@ def derive_all(records, reviews=None):
             "similarity_disliked": sim_d,
             "similarity_basis": {("confidential" if "confidential" in k else "otoro"): shared_features(r, a) for k, a in liked.items()},
             "disliked_warning": flag,
+            "disliked_reason": "somiglianza" if by_sim else ("modello" if by_name else None),
             "sources_disagree": sources_disagree(r, pop),
-            "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if flag else None),
+            "profile_score": profile_score(sub, DEFAULT_WEIGHTS, worst if by_sim else None),
             "tension_start": tension_start(r, anchors, slope) if anchors else None,
             "dims": dm[r["id"]]["values"],
             "dim_inputs": dm[r["id"]]["inputs"],

@@ -100,8 +100,12 @@ def _vs(r):
                 missing = [n for n, k in (("TWU", "twu"), ("test Ektelon", "excel"), ("Racketpedia", "rpedia")) if not r.get(k)]
                 out.append(f"Calcolata su sole {basis} misure (mancano {' e '.join(missing)}): prendila come indicazione.")
         if d.get("disliked_warning"):
-            g, v = max(((k, v) for k, v in (d.get("similarity_disliked") or {}).items() if v is not None), key=lambda kv: kv[1])
-            out.append(f"Attenzione: assomiglia molto a {DISLIKED_NAMES[g]} ({v}/100), che non ti è piaciuta.")
+            sims = [(k, v) for k, v in (d.get("similarity_disliked") or {}).items() if v is not None]
+            if d.get("disliked_reason") == "modello" or not sims:
+                out.append(f"Attenzione: è un calibro di {r['model']}, modello che non ti è piaciuto.")
+            else:
+                g, v = max(sims, key=lambda kv: kv[1])
+                out.append(f"Attenzione: assomiglia molto a {DISLIKED_NAMES[g]} ({v}/100), che non ti è piaciuta.")
     t = d.get("tension_start")
     if t and r.get("preference") != "liked":
         out.append(f"Parti da {_kg(t)}.")

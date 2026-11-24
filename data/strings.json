@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-20",
+ "generated": "2026-11-24",
  "sources": {
   "excel": {
    "file": "String chart Aug 262026.xlsx",
@@ -1037,6 +1037,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": true,
     "profile_score": 22,
     "tension_start": {
@@ -1480,6 +1481,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": true,
     "profile_score": 29,
     "tension_start": {
@@ -1834,6 +1836,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 61,
     "tension_start": {
@@ -2198,6 +2201,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": true,
     "profile_score": 61,
     "tension_start": {
@@ -2525,6 +2529,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -2804,6 +2809,7 @@
      "otoro": 4
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 8,
     "tension_start": {
@@ -3119,6 +3125,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -3402,6 +3409,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 40,
     "tension_start": {
@@ -3679,6 +3687,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 40,
     "tension_start": {
@@ -3961,6 +3970,7 @@
      "otoro": 5
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -4259,6 +4269,7 @@
      "otoro": 5
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -4557,6 +4568,7 @@
      "otoro": 5
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -4859,6 +4871,7 @@
      "otoro": 5
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -5157,6 +5170,7 @@
      "otoro": 5
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": true,
     "profile_score": null,
     "tension_start": {
@@ -5535,6 +5549,7 @@
      "otoro": 5
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 54,
     "tension_start": {
@@ -5904,6 +5919,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -6371,6 +6387,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -6793,6 +6810,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -7268,6 +7286,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -7757,6 +7776,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -8231,6 +8251,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 64,
     "tension_start": {
@@ -8521,6 +8542,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -8901,6 +8923,7 @@
      "otoro": 5
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 41,
     "tension_start": {
@@ -9378,6 +9401,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 37,
     "tension_start": {
@@ -9846,6 +9870,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 67,
     "tension_start": {
@@ -10345,6 +10370,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 70,
     "tension_start": {
@@ -10879,6 +10905,7 @@
      "otoro": 5
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 76,
     "tension_start": {
@@ -11269,6 +11296,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 52,
     "tension_start": {
@@ -11640,6 +11668,7 @@
      "otoro": 5
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 73,
     "tension_start": {
@@ -12058,6 +12087,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -12563,6 +12593,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -13031,6 +13062,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -13397,6 +13429,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -13763,6 +13796,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -14131,6 +14165,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -14585,6 +14620,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -14943,6 +14979,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -15321,6 +15358,7 @@
      "otoro": 6
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": true,
     "profile_score": 51,
     "tension_start": {
@@ -15824,6 +15862,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 83,
     "tension_start": {
@@ -16321,6 +16360,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -16685,6 +16725,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -17045,6 +17086,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -17333,6 +17375,7 @@
      "otoro": 6
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 47,
     "tension_start": {
@@ -17675,6 +17718,7 @@
      "otoro": 6
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 65,
     "tension_start": {
@@ -18010,6 +18054,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 78,
     "tension_start": {
@@ -18385,6 +18430,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 83,
     "tension_start": {
@@ -18737,6 +18783,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 74,
     "tension_start": {
@@ -19127,6 +19174,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 71,
     "tension_start": {
@@ -19570,6 +19618,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 87,
     "tension_start": {
@@ -19956,6 +20005,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 68,
     "tension_start": {
@@ -20313,6 +20363,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 72,
     "tension_start": {
@@ -20599,6 +20650,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 84,
     "tension_start": {
@@ -20911,6 +20963,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 73,
     "tension_start": {
@@ -21310,6 +21363,7 @@
      "otoro": 4
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 48,
     "tension_start": {
@@ -21635,6 +21689,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 83,
     "tension_start": {
@@ -21959,6 +22014,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 49,
     "tension_start": {
@@ -22198,6 +22254,7 @@
      "otoro": 4
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 39,
     "tension_start": {
@@ -22571,6 +22628,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 73,
     "tension_start": {
@@ -23051,6 +23109,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 70,
     "tension_start": {
@@ -23429,6 +23488,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 74,
     "tension_start": {
@@ -23716,6 +23776,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 70,
     "tension_start": {
@@ -24056,6 +24117,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 74,
     "tension_start": {
@@ -24345,6 +24407,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 43,
     "tension_start": {
@@ -24665,6 +24728,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 44,
     "tension_start": {
@@ -24981,6 +25045,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 30,
     "tension_start": {
@@ -25225,6 +25290,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 25,
     "tension_start": {
@@ -25508,6 +25574,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 68,
     "tension_start": {
@@ -25870,6 +25937,7 @@
      "otoro": 4
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 32,
     "tension_start": {
@@ -26116,6 +26184,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 21,
     "tension_start": {
@@ -26343,6 +26412,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 21,
     "tension_start": {
@@ -26587,6 +26657,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 27,
     "tension_start": {
@@ -26924,6 +26995,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 43,
     "tension_start": {
@@ -27262,6 +27334,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 19,
     "tension_start": {
@@ -27506,6 +27579,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 42,
     "tension_start": {
@@ -27742,6 +27816,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 2,
     "tension_start": {
@@ -28100,6 +28175,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 23,
     "tension_start": {
@@ -28339,6 +28415,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 20,
     "tension_start": {
@@ -28580,6 +28657,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 20,
     "tension_start": {
@@ -28825,6 +28903,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 25,
     "tension_start": {
@@ -29235,6 +29314,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 14,
     "tension_start": {
@@ -29475,6 +29555,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 0,
     "tension_start": {
@@ -29833,6 +29914,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 25,
     "tension_start": {
@@ -30072,6 +30154,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 13,
     "tension_start": {
@@ -30308,6 +30391,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 2,
     "tension_start": {
@@ -30549,6 +30633,7 @@
      "otoro": 4
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 15,
     "tension_start": {
@@ -30789,6 +30874,7 @@
      "otoro": 3
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 7,
     "tension_start": {
@@ -31024,6 +31110,7 @@
      "otoro": 2
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": 32,
     "tension_start": {
@@ -31264,6 +31351,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": 50,
     "tension_start": {
@@ -31504,6 +31592,7 @@
      "otoro": 3
     },
     "disliked_warning": true,
+    "disliked_reason": "somiglianza",
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -31732,6 +31821,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -32046,6 +32136,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -32309,6 +32400,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -32614,6 +32706,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -32914,6 +33007,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -33183,6 +33277,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -33452,6 +33547,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -33661,6 +33757,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -33870,6 +33967,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -34080,6 +34178,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -34298,6 +34397,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -34510,6 +34610,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -34719,6 +34820,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -34928,6 +35030,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -35145,6 +35248,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -35368,6 +35472,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -35591,6 +35696,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -35921,6 +36027,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -36356,6 +36463,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -36783,6 +36891,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -37222,6 +37331,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -37610,6 +37720,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -37955,7 +38066,8 @@
      "confidential": 1,
      "otoro": 1
     },
-    "disliked_warning": false,
+    "disliked_warning": true,
+    "disliked_reason": "modello",
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -38019,7 +38131,7 @@
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo quadrata. Spin stimato ≈ 6.5 (da un calibro o colore gemello, tra 6 e 7).",
     "on_blade_100_v9": "Nessun test misura il comportamento di questa corda sulla Blade 100 v9 (angolo di uscita, profondità, direzione): i valori sopra sono misure di laboratorio e indici. Parti dalla tensione suggerita, che è una regola empirica, e prova; se vuoi un confronto vero registra i voti nel diario.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22/21 kg (48.5/46.5 lbs)."
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Attenzione: è un calibro di Confidential Soft, modello che non ti è piaciuto. Parti da 22/21 kg (48.5/46.5 lbs)."
    },
    "prov": {
     "stiffness": {
@@ -38337,7 +38449,8 @@
      "confidential": 1,
      "otoro": 1
     },
-    "disliked_warning": false,
+    "disliked_warning": true,
+    "disliked_reason": "modello",
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -38401,7 +38514,7 @@
     "feel": "Nessun test di laboratorio su questa corda, quindi non la giudichiamo. Le recensioni nella scheda (2 fonti) sono solo un riferimento. Profilo quadrata. Spin stimato ≈ 6.5 (da un calibro o colore gemello, tra 6 e 7).",
     "on_blade_100_v9": "Nessun test misura il comportamento di questa corda sulla Blade 100 v9 (angolo di uscita, profondità, direzione): i valori sopra sono misure di laboratorio e indici. Parti dalla tensione suggerita, che è una regola empirica, e prova; se vuoi un confronto vero registra i voti nel diario.",
     "for_your_style": "Rotazione nella media: lascia spazio sia al topspin sia al colpo piatto.",
-    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
+    "vs_favorites": "Dati insufficienti per misurare la somiglianza con le tue preferite. Attenzione: è un calibro di Confidential Soft, modello che non ti è piaciuto. Parti da 22.5/21.5 kg (49.5/47.5 lbs)."
    },
    "prov": {
     "stiffness": {
@@ -38765,6 +38878,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -39152,6 +39266,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -39489,6 +39604,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -39823,6 +39939,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -40178,6 +40295,7 @@
      "otoro": 1
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -40506,6 +40624,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
@@ -40915,6 +41034,7 @@
      "otoro": 0
     },
     "disliked_warning": false,
+    "disliked_reason": null,
     "sources_disagree": false,
     "profile_score": null,
     "tension_start": {
