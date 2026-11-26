@@ -2,7 +2,7 @@
  "_comment": "Piano di prove dell'utente (24/11/2026, riscritto con l'ordine Toroline confermato). Qui ci sono solo le scelte di setup, non le affermazioni di fisica del piano: i numeri li calcola pipeline/test_plan.py dai dati del progetto. Prezzi esclusi (regola del progetto). Gli id sono corde del banco: dove il piano usa un colore o un calibro diverso dal banco, vedi `alias`.",
  "_schema": {
   "prio": "ordine di prova (1 = prima)",
-  "window": "quando farla: subito | prima_del_pacco | pacco | ibridi_a..e | bassa | ultima",
+  "window": "quando farla: subito | prima_del_pacco | pacco | ibridi_a..e | bassa | ultima | panchina",
   "kind": "full = stessa corda in verticali e orizzontali (2 mezze), hybrid = due corde (1 mezza + 1 mezza)",
   "main/cross": "id in data/strings.json; per un full sono uguali",
   "from": "[origine delle verticali, origine delle orizzontali]: casa (scorta), in_arrivo (carrello), da_comprare (non c'è ancora). Ogni metà usa una mezza della sua origine",
@@ -317,17 +317,26 @@
     6,
     8
    ]
-  }
- ],
- "panchina": [
+  },
   {
-   "id": "grapplesnake-tour-m8-17",
+   "prio": 13,
+   "id": "full-m8",
+   "window": "panchina",
+   "kind": "full",
+   "main": "grapplesnake-tour-m8-17",
+   "cross": "grapplesnake-tour-m8-17",
+   "from": [
+    "casa",
+    "casa"
+   ],
    "kg_piano": [
     22.5,
     21.5
    ],
-   "note": "full bed; evitare M8 + Wasabi X (indicazione del piano)"
-  },
+   "goal": "full bed dalla matassina che hai già in casa; evitare M8 + Wasabi X (indicazione del piano)"
+  }
+ ],
+ "panchina": [
   {
    "id": "luxilon-eco-power-17",
    "kg_piano": [

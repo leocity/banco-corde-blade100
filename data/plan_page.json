@@ -705,10 +705,68 @@
     6,
     8
    ]
+  },
+  {
+   "prio": 13,
+   "id": "full-m8",
+   "window": "panchina",
+   "kind": "full",
+   "main": "grapplesnake-tour-m8-17",
+   "cross": "grapplesnake-tour-m8-17",
+   "from": [
+    "casa",
+    "casa"
+   ],
+   "goal": "full bed dalla matassina che hai già in casa; evitare M8 + Wasabi X (indicazione del piano)",
+   "kg_piano": [
+    22.5,
+    21.5
+   ],
+   "kg_calcolati": [
+    22.0,
+    21.0
+   ],
+   "kg_scarto": [
+    0.5,
+    0.5
+   ],
+   "k51": 210.3,
+   "k_now": 205.1,
+   "k_after": 170.8,
+   "range_k_now": [
+    205.1,
+    206.0
+   ],
+   "affidabilita": "misurata",
+   "spin": 8.2,
+   "spin_affidabilita": "misurata",
+   "loss": 34.3,
+   "geom": null,
+   "tenuta": "bilanciata",
+   "vs_montata": [
+    "Dopo il calo di tensione: resta più rigida",
+    "Lancio della palla: più bassa",
+    "Tenuta della tensione: tiene di più"
+   ],
+   "avvisi": [],
+   "loss_affidabilita": "misurata",
+   "tenuta_nota": "",
+   "kg_nota": "da solinco-confidential-16l 22/21 kg corretta di +0,0 kg per la rigidità equivalente dell'ibrido",
+   "ore_ipotesi": null
   }
  ],
  "budget": {
   "rows": [
+   {
+    "id": "grapplesnake-tour-m8-17",
+    "stock": 2,
+    "cart": 0,
+    "need_stock": 2,
+    "need_cart": 0,
+    "to_buy": 0,
+    "stock_left": 0,
+    "cart_left": 0
+   },
    {
     "id": "head-lynx-tour-17",
     "stock": 0,
@@ -843,7 +901,8 @@
   "ibridi_d": "Ibridi",
   "ibridi_e": "Ibridi",
   "bassa": "Priorità bassa",
-  "ultima": "Per ultima"
+  "ultima": "Per ultima",
+  "panchina": "In panchina (già in casa)"
  },
  "alias": {
   "toroline-o-toro-octa-16l": "O-Toro Octa Mint 1,25",
@@ -858,14 +917,6 @@
   "head-lynx-tour-17": "Head Lynx Tour 1,25 esagonale"
  },
  "panchina": [
-  {
-   "id": "grapplesnake-tour-m8-17",
-   "kg_piano": [
-    22.5,
-    21.5
-   ],
-   "note": "full bed; evitare M8 + Wasabi X (indicazione del piano)"
-  },
   {
    "id": "luxilon-eco-power-17",
    "kg_piano": [

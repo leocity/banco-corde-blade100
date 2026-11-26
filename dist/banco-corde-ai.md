@@ -1,4 +1,4 @@
-# Banco Corde Blade 100 — dati per l'AI (2026-11-24)
+# Banco Corde Blade 100 — dati per l'AI (2026-11-26)
 
 Dati del Banco Corde per fare domande e simulazioni sugli ibridi (verticali + orizzontali) della Wilson Blade 100 v9 16×19. Rispondi solo con questi dati, cita i numeri e dichiara quando un valore è ricavato (est) o contestato (twf).
 
@@ -182,6 +182,7 @@ Tensioni di riferimento: Confidential 22/21 kg; O-Toro 23/22 kg.
 | 11 | full-a5-spin | toroline-a5-spin-17 / toroline-a5-spin-17 | 22.5/21.5 | 22.0/21.0 | 201.0 | 196.0 | 158.3 | 6.2 | 39.5 | dalla fisica | 6-8 |
 | 11 | ib-fire-ice | toroline-a5-spin-17 / toroline-wasabi-x-blue-17 | 22.5/22.0 | 22.0/21.0 | 201.0 | 197.2 | 159.0 | 6.2 | 39.5 | dalla fisica | 6-8 |
 | 12 | full-a5-infrared-round | toroline-a5-infrared-17 / toroline-a5-infrared-17 | 23.0/22.0 | 22.5/21.5 | 193.1 | 190.4 | 151.8 | 6.4 | 41.1 | dalla fisica | 6-8 |
+| 13 | full-m8 | grapplesnake-tour-m8-17 / grapplesnake-tour-m8-17 | 22.5/21.5 | 22.0/21.0 | 210.3 | 205.1 | 170.8 | 8.2 | 34.3 | misurata |  |
 Mezze in arrivo 22, usate 22, avanzate 0; da procurarsi: {'head-lynx-tour-17': {'mezze': 3, 'matassine': 2}}; mancanze: nessuna.
 
 ## In arrivo (ordine, non scorta)

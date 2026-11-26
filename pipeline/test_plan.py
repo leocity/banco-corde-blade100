@@ -127,7 +127,7 @@ def _kind_word(v):
 
 WINDOWS = {"subito": "Subito", "prima_del_pacco": "Prima che arrivi il pacco", "pacco": "Quando arriva il pacco",
            "ibridi_a": "Ibridi", "ibridi_b": "Ibridi", "ibridi_c": "Ibridi", "ibridi_d": "Ibridi", "ibridi_e": "Ibridi",
-           "bassa": "Priorità bassa", "ultima": "Per ultima"}
+           "bassa": "Priorità bassa", "ultima": "Per ultima", "panchina": "In panchina (già in casa)"}
 
 
 def order_key(inventory):
